@@ -1,0 +1,15 @@
+# Normalise les fins de ligne : LF dans le dépôt, quel que soit l'OS du poste.
+# Sans ça, un checkout Windows peut faire apparaître tout le dépôt comme modifié.
+* text=auto eol=lf
+
+# Fichiers binaires — ne jamais convertir.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.avif binary
+*.ico binary
+*.woff binary
+*.woff2 binary
+*.pdf binary
+*.docx binary
