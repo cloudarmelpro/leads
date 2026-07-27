@@ -30,8 +30,9 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
+# env files — jamais de secrets commités ; seul le modèle .env.example l'est.
 .env*
+!.env.example
 
 # vercel
 .vercel
@@ -52,3 +53,7 @@ __pycache__/
 
 # documents internes (cahier de charges, notes client) — jamais versionnés
 /docs
+
+# sorties d'inspection navigateur
+/.playwright-mcp
+/*.png

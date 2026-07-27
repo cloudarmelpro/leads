@@ -1,0 +1,323 @@
+{
+  "meta": {
+    "title": "LEADS — Bilingual websites for hands-on businesses",
+    "description": "LEADS builds bilingual websites for hands-on businesses in Québec. One goal: getting your customers to call you."
+  },
+  "common": {
+    "close": "Close",
+    "soon": "soon",
+    "tbd": "to confirm",
+    "openMenu": "Open menu",
+    "skipToContent": "Skip to content"
+  },
+  "placeholders": {
+    "phone": "[PHONE — to be confirmed]",
+    "email": "[EMAIL — to be confirmed]",
+    "address": "[ADDRESS — or “by appointment”]",
+    "whatsapp": "[NUMBER TBC]"
+  },
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "method": "Method",
+    "about": "About",
+    "faq": "FAQ",
+    "blog": "Blog",
+    "contact": "Contact",
+    "quickNav": "Quick navigation"
+  },
+  "header": {
+    "call": "Call",
+    "menuCall": "Call now",
+    "menuRdv": "Book a call",
+    "langAria": "Choose language"
+  },
+  "hero": {
+    "badge": "Web agency — Québec small business",
+    "titleA": "A website that makes",
+    "titleB": "your phone ring.",
+    "subtitle": "LEADS builds bilingual websites for hands-on businesses. One goal: getting your customers to call you.",
+    "tradesLabel": "What’s your trade?",
+    "ctaCall": "Call now",
+    "ctaRdv": "book a time slot",
+    "strip1": "Built in Québec",
+    "strip2": "Bilingual FR · EN",
+    "strip3": "Service area: [TBC]",
+    "demoTag": "Preview — your trade",
+    "demoHandle": "@your-business",
+    "demoCaption": "This preview changes with your trade. Your site will speak to your customers — in their words.",
+    "demos": [
+      {
+        "trade": "Landscaping",
+        "title": "Residential and commercial landscaping",
+        "cta": "Request a quote",
+        "imgLabel": "job-site photo — landscaping"
+      },
+      {
+        "trade": "Excavation",
+        "title": "Excavation and grading, on schedule",
+        "cta": "Call for a quote",
+        "imgLabel": "job-site photo — excavation"
+      },
+      {
+        "trade": "Construction",
+        "title": "General contractor — projects done right",
+        "cta": "Book a site visit",
+        "imgLabel": "job-site photo — construction"
+      },
+      {
+        "trade": "Renovation",
+        "title": "Interior and exterior renovation",
+        "cta": "Get a quote",
+        "imgLabel": "before / after photo — renovation"
+      },
+      {
+        "trade": "Local shop",
+        "title": "Visible in the neighbourhood, one tap away",
+        "cta": "Reach us",
+        "imgLabel": "storefront photo — local shop"
+      }
+    ]
+  },
+  "services": {
+    "kicker": "Services",
+    "titleA": "What we do,",
+    "titleB": "concretely",
+    "intro": "Three to five offers, named in your words. The real list will be confirmed with the client — nothing here is made up.",
+    "items": [
+      {
+        "name": "[SERVICE 1]",
+        "note": "Real content goes here: what the client gets, for whom, and how fast."
+      },
+      {
+        "name": "[SERVICE 2]",
+        "note": "Real content goes here: the concrete outcome, the starting point, what changes after."
+      },
+      {
+        "name": "[SERVICE 3]",
+        "note": "Real content goes here: who it’s for, what it fixes for the owner."
+      }
+    ]
+  },
+  "method": {
+    "kicker": "Method",
+    "titleA": "How we",
+    "titleB": "work",
+    "intro": "No black box: you always know where your project stands, and what’s left for you to decide.",
+    "stepLabel": "Step",
+    "steps": [
+      {
+        "n": "1",
+        "title": "We listen",
+        "desc": "A short call. You talk trade, not technology. We leave with your words — they’re what goes on the site."
+      },
+      {
+        "n": "2",
+        "title": "We propose",
+        "desc": "A clear plan and a firm price before anything is committed. [TERMS TO CONFIRM]"
+      },
+      {
+        "n": "3",
+        "title": "We build",
+        "desc": "The site takes shape in front of you, in French and English. Your feedback beats our preferences."
+      },
+      {
+        "n": "4",
+        "title": "We measure",
+        "desc": "Calls, bookings, requests: everything is counted. The site is judged on the clients it brings."
+      }
+    ]
+  },
+  "proof": {
+    "title": "Social proof — reserved slot",
+    "note": "Real testimonials only, with written permission. Until there are some, this section stays off: the page stands without it.",
+    "img": "real client / project photo"
+  },
+  "faq": {
+    "kicker": "FAQ",
+    "titleA": "Your questions,",
+    "titleB": "straight up",
+    "items": [
+      {
+        "q": "How much does it cost?",
+        "a": "Every project is priced in writing before it starts. No surprises along the way. [RANGE TO CONFIRM]"
+      },
+      {
+        "q": "How much of my time will it take?",
+        "a": "As little as possible. A few short meetings, by phone if you prefer — we handle the rest, copy included."
+      },
+      {
+        "q": "I have no copy, photos, or logo.",
+        "a": "That’s expected. Writing is part of the job, and we guide you on visuals. You’re never “not ready”."
+      },
+      {
+        "q": "I already have a website, but it’s weak. Do you rebuild it?",
+        "a": "Yes. Most of our clients start from an outdated or unconvincing site. We rebuild on a solid foundation, with a far more professional and effective result."
+      },
+      {
+        "q": "Will the site be in both French and English?",
+        "a": "Yes, fully bilingual from the start. Every page exists in both languages, built for your French- and English-speaking customers alike."
+      },
+      {
+        "q": "How will my customers reach me or book a meeting?",
+        "a": "Contact form, online booking, and quick access via WhatsApp. The goal is simple: let a customer reach you in a single tap."
+      },
+      {
+        "q": "Will I be able to manage my blog myself?",
+        "a": "Yes. The blog is self-managed: you publish and edit your articles whenever you want, without depending on us."
+      },
+      {
+        "q": "Will the site rank well on Google?",
+        "a": "SEO is planned from the start: structure, metadata, and content built for Google. It’s an ongoing effort over time, not a checkbox."
+      }
+    ]
+  },
+  "final": {
+    "kicker": "Contact",
+    "titleA": "Your project starts",
+    "titleB": "right now",
+    "subtitle": "One call is enough to know whether we can help. No pressure, no jargon.",
+    "call": "Call",
+    "rdv": "Book a time slot",
+    "bookingNote": "Online booking — real-time slots.",
+    "form": "or use the contact form",
+    "gallery": [
+      "job-site photo — landscaping",
+      "job-site photo — excavation",
+      "job-site photo — construction"
+    ]
+  },
+  "footer": {
+    "tagA": "Websites for",
+    "tagB": "hands-on businesses.",
+    "description": "LEADS builds bilingual websites for hands-on businesses in Québec — designed to turn your visitors into calls.",
+    "navTitle": "Sitemap",
+    "coordTitle": "Contact details",
+    "legal1": "Legal notice",
+    "legal2": "Privacy (Law 25)",
+    "rights": "All rights reserved"
+  },
+  "floating": {
+    "label": "Contact",
+    "aria": "Open the contact module",
+    "sheetTitle": "Talk to us",
+    "rowCall": "Call",
+    "rowWaSub": "Fast reply",
+    "rowRdv": "Book an appointment",
+    "rowRdvSub": "Calendly — pick your slot"
+  },
+  "blog": {
+    "meta": {
+      "title": "Blog — LEADS",
+      "description": "Ideas and advice to help Québec small businesses attract more customers with their website."
+    },
+    "kicker": "Blog",
+    "title": "Ideas & advice",
+    "subtitle": "Practical articles to attract more customers with your website.",
+    "featured": "Featured",
+    "readArticle": "Read the article",
+    "minRead": "min read",
+    "writtenBy": "Written by",
+    "backToBlog": "Back to the blog",
+    "moreArticles": "More articles"
+  },
+  "about": {
+    "meta": {
+      "title": "About — LEADS",
+      "description": "The agency behind websites that make Québec small businesses’ phones ring. Our approach: quality, professionalism, trust."
+    },
+    "heroTitle": "About",
+    "heroImgLabel": "photo — team / office",
+    "principles": {
+      "kicker": "Principles",
+      "leadA": "LEADS is built on a simple idea: your website should bring you customers — ",
+      "leadB": "not just look good.",
+      "leadC": " We build for results.",
+      "items": [
+        {
+          "title": "Quality",
+          "desc": "We never compete on low prices. Every detail is refined to project a premium, credible image."
+        },
+        {
+          "title": "Professionalism",
+          "desc": "Serious work, rigorous execution. Your site conveys credibility from the very first second."
+        },
+        {
+          "title": "Trust",
+          "desc": "A firm price, clear steps, no surprises. You always know where your project stands."
+        }
+      ]
+    },
+    "team": {
+      "kicker": "The team",
+      "titleA": "The people behind",
+      "titleB": "your results",
+      "note": "Strategy, design and development, together to turn your site into a source of customers.",
+      "members": [
+        { "name": "Marc Tremblay", "role": "Founder & strategy", "imgLabel": "photo — member 1" },
+        { "name": "Sophie Gagnon", "role": "Art direction", "imgLabel": "photo — member 2" },
+        { "name": "Alex Roy", "role": "Web development", "imgLabel": "photo — member 3" }
+      ]
+    }
+  },
+  "contactPage": {
+    "meta": {
+      "title": "Contact — LEADS",
+      "description": "Let’s talk about your project. Book a free call or write to us — we’ll get back to you fast."
+    },
+    "kicker": "Contact",
+    "title": "Let’s talk about your project",
+    "subtitle": "One call is enough to know whether we can help. No pressure, no jargon.",
+    "booking": {
+      "title": "Book a free call",
+      "service": "Discovery call",
+      "duration": "45 min",
+      "channel": "Phone or video",
+      "expectTitle": "What we cover together",
+      "expect": [
+        "Your goals and your trade",
+        "A first look at your online presence",
+        "The next steps — no commitment"
+      ],
+      "timezone": "Eastern Time (Québec)",
+      "pickSlot": "Available slots",
+      "book": "Book this slot",
+      "pickDatePrompt": "Pick a date on the calendar to see available times.",
+      "viewSlots": "See available times",
+      "realtimeNote": "Real-time availability, confirmed in Calendly.",
+      "prevMonth": "Previous month",
+      "nextMonth": "Next month",
+      "embedNote": "Design preview — the real Calendly calendar will appear here once the URL is provided."
+    },
+    "form": {
+      "title": "Or write to us",
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone",
+      "message": "Your message",
+      "intro": "Tell us what you need — we’ll get back to you shortly.",
+      "messageHint": "Type of business, what you’re looking for, rough timeline.",
+      "consent": "I agree to be contacted about my request.",
+      "consentLink": "Privacy policy",
+      "send": "Send my request",
+      "sending": "Sending…",
+      "successTitle": "Message received!",
+      "successBody": "We’ll get back to you very soon. Thank you.",
+      "errorTitle": "Something went wrong",
+      "errorBody": "Your message couldn’t be sent. Please try again, or call us directly.",
+      "requiredNote": "Add at least a phone or an email so we can reply.",
+      "quickTitle": "Or reach us directly",
+      "errors": {
+        "name": "Enter your name (2 characters minimum).",
+        "nameMax": "This name is too long.",
+        "email": "This email is invalid.",
+        "emailMax": "This email is too long.",
+        "phoneMax": "This phone number is too long.",
+        "message": "Write your message.",
+        "messageMax": "This message is too long.",
+        "consent": "You must agree in order to send.",
+        "contactRequired": "Add at least an email or a phone number."
+      }
+    }
+  }
+}

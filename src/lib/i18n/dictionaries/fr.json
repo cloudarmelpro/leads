@@ -1,0 +1,323 @@
+{
+  "meta": {
+    "title": "LEADS — Sites web bilingues pour les entreprises de terrain",
+    "description": "LEADS conçoit des sites bilingues pour les entreprises de terrain du Québec. Un seul objectif : que vos clients vous appellent."
+  },
+  "common": {
+    "close": "Fermer",
+    "soon": "à venir",
+    "tbd": "à confirmer",
+    "openMenu": "Ouvrir le menu",
+    "skipToContent": "Aller au contenu"
+  },
+  "placeholders": {
+    "phone": "[TÉLÉPHONE — à confirmer]",
+    "email": "[COURRIEL — à confirmer]",
+    "address": "[ADRESSE — ou « sur rendez-vous »]",
+    "whatsapp": "[NUMÉRO À CONFIRMER]"
+  },
+  "nav": {
+    "home": "Accueil",
+    "services": "Services",
+    "method": "Méthode",
+    "about": "À propos",
+    "faq": "FAQ",
+    "blog": "Blog",
+    "contact": "Contact",
+    "quickNav": "Navigation rapide"
+  },
+  "header": {
+    "call": "Appeler",
+    "menuCall": "Appeler maintenant",
+    "menuRdv": "Rendez-vous",
+    "langAria": "Choisir la langue"
+  },
+  "hero": {
+    "badge": "Agence web — PME du Québec",
+    "titleA": "Un site qui fait",
+    "titleB": "sonner votre téléphone.",
+    "subtitle": "LEADS conçoit des sites bilingues pour les entreprises de terrain. Un seul objectif : que vos clients vous appellent.",
+    "tradesLabel": "Vous êtes dans quoi ?",
+    "ctaCall": "Appeler maintenant",
+    "ctaRdv": "réserver un créneau",
+    "strip1": "Conçu au Québec",
+    "strip2": "Bilingue FR · EN",
+    "strip3": "Zone desservie : [À CONFIRMER]",
+    "demoTag": "Aperçu — votre secteur",
+    "demoHandle": "@votre-entreprise",
+    "demoCaption": "Cet aperçu change selon votre métier. Votre site parlera à vos clients — dans leurs mots.",
+    "demos": [
+      {
+        "trade": "Paysagement",
+        "title": "Aménagement paysager résidentiel et commercial",
+        "cta": "Demander une soumission",
+        "imgLabel": "photo chantier — paysagement"
+      },
+      {
+        "trade": "Excavation",
+        "title": "Excavation et terrassement, sans retard",
+        "cta": "Appeler pour une soumission",
+        "imgLabel": "photo chantier — excavation"
+      },
+      {
+        "trade": "Construction",
+        "title": "Entrepreneur général — projets menés au propre",
+        "cta": "Planifier une visite",
+        "imgLabel": "photo chantier — construction"
+      },
+      {
+        "trade": "Rénovation",
+        "title": "Rénovation intérieure et extérieure",
+        "cta": "Obtenir une soumission",
+        "imgLabel": "photo avant / après — rénovation"
+      },
+      {
+        "trade": "Commerce local",
+        "title": "Visible dans le quartier, joignable en un clic",
+        "cta": "Nous joindre",
+        "imgLabel": "photo commerce — vitrine"
+      }
+    ]
+  },
+  "services": {
+    "kicker": "Services",
+    "titleA": "Ce qu’on fait,",
+    "titleB": "concrètement",
+    "intro": "Trois à cinq offres, nommées dans vos mots. La liste réelle sera confirmée avec le client — rien n’est inventé ici.",
+    "items": [
+      {
+        "name": "[SERVICE 1]",
+        "note": "Contenu réel à injecter : ce que le client obtient, pour qui, en combien de temps."
+      },
+      {
+        "name": "[SERVICE 2]",
+        "note": "Contenu réel à injecter : le résultat concret, la situation de départ, ce qui change après."
+      },
+      {
+        "name": "[SERVICE 3]",
+        "note": "Contenu réel à injecter : à qui ça s’adresse, ce que ça règle pour le dirigeant."
+      }
+    ]
+  },
+  "method": {
+    "kicker": "Méthode",
+    "titleA": "Comment on",
+    "titleB": "travaille",
+    "intro": "Pas de boîte noire : vous savez toujours où en est votre projet, et ce qu’il vous reste à décider.",
+    "stepLabel": "Étape",
+    "steps": [
+      {
+        "n": "1",
+        "title": "On écoute",
+        "desc": "Un appel court. Vous parlez métier, pas technologie. On repart avec vos mots — ce sont eux qui iront sur le site."
+      },
+      {
+        "n": "2",
+        "title": "On propose",
+        "desc": "Un plan clair et un prix ferme avant d’engager quoi que ce soit. [MODALITÉS À CONFIRMER]"
+      },
+      {
+        "n": "3",
+        "title": "On construit",
+        "desc": "Le site prend forme sous vos yeux, en français et en anglais. Vos retours passent avant nos préférences."
+      },
+      {
+        "n": "4",
+        "title": "On mesure",
+        "desc": "Appels, rendez-vous, demandes : tout est compté. Le site est jugé sur les clients qu’il amène."
+      }
+    ]
+  },
+  "proof": {
+    "title": "Preuve sociale — emplacement réservé",
+    "note": "Témoignages réels uniquement, avec autorisation écrite. Tant qu’il n’y en a pas, cette section reste éteinte : la page tient debout sans elle.",
+    "img": "photo client / projet réel"
+  },
+  "faq": {
+    "kicker": "FAQ",
+    "titleA": "Vos questions,",
+    "titleB": "sans détour",
+    "items": [
+      {
+        "q": "Combien ça coûte ?",
+        "a": "Chaque projet est chiffré avant de commencer, par écrit. Pas de surprise en cours de route. [FOURCHETTE À CONFIRMER]"
+      },
+      {
+        "q": "Combien de temps ça va me demander ?",
+        "a": "Le moins possible. Quelques rencontres courtes, au téléphone si vous préférez — on s’occupe du reste, textes compris."
+      },
+      {
+        "q": "Je n’ai ni textes, ni photos, ni logo.",
+        "a": "C’est prévu. La rédaction fait partie du travail, et on vous guide pour les visuels. Vous n’arrivez jamais « pas prêt »."
+      },
+      {
+        "q": "J’ai déjà un site, mais il est faible. Vous le refaites ?",
+        "a": "Oui. La plupart de nos clients partent d’un site dépassé ou peu convaincant. On repart sur une base solide, avec un rendu nettement plus professionnel et plus performant."
+      },
+      {
+        "q": "Le site sera-t-il en français et en anglais ?",
+        "a": "Oui, entièrement bilingue dès le départ. Chaque page existe dans les deux langues, pensée autant pour vos clients francophones qu’anglophones."
+      },
+      {
+        "q": "Comment mes clients pourront-ils me joindre ou prendre rendez-vous ?",
+        "a": "Formulaire de contact, prise de rendez-vous en ligne et accès rapide par WhatsApp. L’objectif est simple : qu’un client vous joigne en un seul geste."
+      },
+      {
+        "q": "Vais-je pouvoir gérer mon blog moi-même ?",
+        "a": "Oui. Le blog est administrable : vous publiez et modifiez vos articles quand vous voulez, sans dépendre de nous."
+      },
+      {
+        "q": "Le site sera-t-il bien référencé sur Google ?",
+        "a": "Le référencement (SEO) est prévu dès le départ : structure, métadonnées et contenu pensés pour Google. C’est un travail suivi dans le temps, pas une simple case à cocher."
+      }
+    ]
+  },
+  "final": {
+    "kicker": "Contact",
+    "titleA": "Votre projet commence",
+    "titleB": "maintenant",
+    "subtitle": "Un appel suffit pour savoir si on peut vous aider. Pas de pression, pas de jargon.",
+    "call": "Appeler",
+    "rdv": "Réserver un créneau",
+    "bookingNote": "Réservation en ligne — créneaux en temps réel.",
+    "form": "ou passez par le formulaire de contact",
+    "gallery": [
+      "photo chantier — paysagement",
+      "photo chantier — excavation",
+      "photo chantier — construction"
+    ]
+  },
+  "footer": {
+    "tagA": "Des sites pour les entreprises",
+    "tagB": "de terrain.",
+    "description": "LEADS conçoit des sites web bilingues pour les entreprises de terrain du Québec — pensés pour transformer vos visiteurs en appels.",
+    "navTitle": "Plan du site",
+    "coordTitle": "Coordonnées",
+    "legal1": "Mentions légales",
+    "legal2": "Confidentialité (Loi 25)",
+    "rights": "Tous droits réservés"
+  },
+  "floating": {
+    "label": "Contact",
+    "aria": "Ouvrir le module de contact",
+    "sheetTitle": "Parlez-nous",
+    "rowCall": "Appeler",
+    "rowWaSub": "Réponse rapide",
+    "rowRdv": "Prendre rendez-vous",
+    "rowRdvSub": "Calendly — choisissez votre créneau"
+  },
+  "blog": {
+    "meta": {
+      "title": "Blog — LEADS",
+      "description": "Idées et conseils pour aider les PME du Québec à attirer plus de clients avec leur site web."
+    },
+    "kicker": "Blog",
+    "title": "Idées & conseils",
+    "subtitle": "Des articles concrets pour attirer plus de clients avec votre site web.",
+    "featured": "À la une",
+    "readArticle": "Lire l’article",
+    "minRead": "min de lecture",
+    "writtenBy": "Écrit par",
+    "backToBlog": "Retour au blog",
+    "moreArticles": "Autres articles"
+  },
+  "about": {
+    "meta": {
+      "title": "À propos — LEADS",
+      "description": "L’agence derrière les sites qui font sonner le téléphone des PME du Québec. Notre approche : qualité, professionnalisme, confiance."
+    },
+    "heroTitle": "À propos",
+    "heroImgLabel": "photo — équipe / bureau",
+    "principles": {
+      "kicker": "Principes",
+      "leadA": "LEADS repose sur une idée simple : un site doit vous amener des clients — ",
+      "leadB": "pas seulement être beau.",
+      "leadC": " On construit pour le résultat.",
+      "items": [
+        {
+          "title": "Qualité",
+          "desc": "On ne joue jamais sur les bas prix. Chaque détail est soigné pour donner une image premium et crédible."
+        },
+        {
+          "title": "Professionnalisme",
+          "desc": "Un travail sérieux, une exécution rigoureuse. Votre site inspire le sérieux dès la première seconde."
+        },
+        {
+          "title": "Confiance",
+          "desc": "Un prix ferme, des étapes claires, aucune surprise. Vous savez toujours où en est votre projet."
+        }
+      ]
+    },
+    "team": {
+      "kicker": "L’équipe",
+      "titleA": "Les personnes derrière",
+      "titleB": "vos résultats",
+      "note": "Stratégie, design et développement réunis pour transformer votre site en source de clients.",
+      "members": [
+        { "name": "Marc Tremblay", "role": "Fondateur & stratégie", "imgLabel": "photo — membre 1" },
+        { "name": "Sophie Gagnon", "role": "Direction artistique", "imgLabel": "photo — membre 2" },
+        { "name": "Alex Roy", "role": "Développement web", "imgLabel": "photo — membre 3" }
+      ]
+    }
+  },
+  "contactPage": {
+    "meta": {
+      "title": "Contact — LEADS",
+      "description": "Parlons de votre projet. Réservez un appel gratuit ou écrivez-nous — on vous revient vite."
+    },
+    "kicker": "Contact",
+    "title": "Parlons de votre projet",
+    "subtitle": "Un appel suffit pour savoir si on peut vous aider. Pas de pression, pas de jargon.",
+    "booking": {
+      "title": "Réservez un appel gratuit",
+      "service": "Appel découverte",
+      "duration": "45 min",
+      "channel": "Téléphone ou visio",
+      "expectTitle": "Ce qu’on couvre ensemble",
+      "expect": [
+        "Vos objectifs et votre métier",
+        "Un premier regard sur votre présence en ligne",
+        "Les prochaines étapes — sans engagement"
+      ],
+      "timezone": "Heure de l’Est (Québec)",
+      "pickSlot": "Créneaux disponibles",
+      "book": "Réserver ce créneau",
+      "pickDatePrompt": "Choisissez une date dans le calendrier pour voir les créneaux disponibles.",
+      "viewSlots": "Voir les créneaux disponibles",
+      "realtimeNote": "Disponibilités en temps réel, confirmées dans Calendly.",
+      "prevMonth": "Mois précédent",
+      "nextMonth": "Mois suivant",
+      "embedNote": "Aperçu du design — le vrai calendrier Calendly s’affichera ici dès que l’URL sera fournie."
+    },
+    "form": {
+      "title": "Ou écrivez-nous",
+      "name": "Nom",
+      "email": "Courriel",
+      "phone": "Téléphone",
+      "message": "Votre message",
+      "intro": "Dites-nous ce dont vous avez besoin, on vous revient rapidement.",
+      "messageHint": "Type d’entreprise, ce que vous cherchez, échéance approximative.",
+      "consent": "J’accepte d’être recontacté au sujet de ma demande.",
+      "consentLink": "Politique de confidentialité",
+      "send": "Envoyer ma demande",
+      "sending": "Envoi…",
+      "successTitle": "Message bien reçu !",
+      "successBody": "On vous revient très vite. Merci de votre confiance.",
+      "errorTitle": "Un souci est survenu",
+      "errorBody": "Votre message n’a pas pu être envoyé. Réessayez, ou appelez-nous directement.",
+      "requiredNote": "Indiquez au moins un téléphone ou un courriel pour qu’on puisse vous répondre.",
+      "quickTitle": "Ou joignez-nous directement",
+      "errors": {
+        "name": "Indiquez votre nom (2 caractères minimum).",
+        "nameMax": "Ce nom est trop long.",
+        "email": "Ce courriel est invalide.",
+        "emailMax": "Ce courriel est trop long.",
+        "phoneMax": "Ce numéro est trop long.",
+        "message": "Écrivez votre message.",
+        "messageMax": "Ce message est trop long.",
+        "consent": "Vous devez accepter pour envoyer.",
+        "contactRequired": "Indiquez au moins un courriel ou un téléphone."
+      }
+    }
+  }
+}

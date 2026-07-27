@@ -1,26 +1,169 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/*
+ * Système de design — issu de la maquette « Accueil v2 » (Claude Design).
+ * Les noms de couleurs sont volontairement en français : ils viennent de la
+ * direction artistique et servent de vocabulaire commun avec le client.
+ */
+@theme {
+  --color-encre: #0f1d17;
+  --color-sapin: #14402f;
+  --color-sapin-fonce: #0e2f22;
+  --color-emeraude: #177e4f;
+  --color-lueur: #9be8c0;
+  --color-menthe: #e7f2eb;
+  --color-fond: #f3f5f2;
+  --color-ligne: #e3ebe4;
+  --color-texte2: #4a5f54;
+  --color-sapin-doux: #c9dad1;
+
+  --font-display: var(--font-cal-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: ui-serif, Georgia, serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /*
+   * Tokens shadcn/ui mappés sur la marque (site clair uniquement, pas de mode
+   * sombre). Les composants ui/ (base-ui) lisent ces variables — jamais de
+   * couleur codée en dur dans un composant.
+   */
+  --color-background: #ffffff;
+  --color-foreground: var(--color-encre);
+  --color-primary: var(--color-emeraude);
+  --color-primary-foreground: #ffffff;
+  --color-secondary: var(--color-menthe);
+  --color-secondary-foreground: var(--color-sapin);
+  --color-muted: var(--color-fond);
+  --color-muted-foreground: var(--color-texte2);
+  --color-accent: var(--color-menthe);
+  --color-accent-foreground: var(--color-sapin);
+  --color-destructive: #c0362c;
+  --color-border: var(--color-ligne);
+  /* Bordure d'input volontairement plus foncée que --border (gris moyen défini),
+     comme dans le projet de référence — sinon les champs paraissent effacés. */
+  --color-input: oklch(0.62 0 0);
+  --color-ring: var(--color-emeraude);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
   }
 }
 
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes sheetup {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* L'en-tête est collant : sans cette marge, une ancre place le titre dessous. */
+section[id] {
+  scroll-margin-top: 84px;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-fond);
+  color: var(--color-encre);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-lueur);
+  color: var(--color-encre);
+}
+
+/* Focus visible global (liens, boutons…). Les champs de formulaire ont leur
+   propre indicateur de focus (bordure) : on les exclut pour éviter un double
+   liseré vert par-dessus la bordure. */
+:focus-visible:not(input):not(textarea):not(select):not([role="checkbox"]) {
+  outline: 3px solid var(--color-emeraude);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/*
+ * Révélation au défilement, pilotée par `animation-timeline: view()`.
+ * Là où la propriété n'est pas supportée (Safari, Firefox), l'animation se joue
+ * une fois au chargement : le contenu reste visible, jamais bloqué à opacity 0.
+ */
+.reveal {
+  animation: rise 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  animation-timeline: view();
+  animation-range: entry 0% entry 30%;
+}
+
+.animate-fadein {
+  animation: fadein 0.25s ease both;
+}
+
+.animate-sheetup {
+  animation: sheetup 0.28s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+/*
+ * Révélation au scroll par IntersectionObserver (voir `ScrollReveal`).
+ * L'état masqué n'est appliqué QUE si `html.reveal-ready` est posé (script inline
+ * du layout, seulement si JS actif et hors reduced-motion) → sinon tout est visible.
+ * `--reveal-delay` (posé en inline sur l'élément) crée l'effet cascade.
+ */
+html.reveal-ready [data-reveal] {
+  opacity: 0;
+  transition:
+    opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+html.reveal-ready [data-reveal="up"] {
+  transform: translate3d(0, 38px, 0);
+}
+html.reveal-ready [data-reveal="down"] {
+  transform: translate3d(0, -38px, 0);
+}
+html.reveal-ready [data-reveal="left"] {
+  transform: translate3d(-46px, 0, 0);
+}
+html.reveal-ready [data-reveal="right"] {
+  transform: translate3d(46px, 0, 0);
+}
+html.reveal-ready [data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
 }
