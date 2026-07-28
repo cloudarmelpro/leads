@@ -137,6 +137,7 @@
     "kicker": "FAQ",
     "titleA": "Your questions,",
     "titleB": "straight up",
+    "intro": "Answers to the questions we hear most often. Have another one? Reach out — we reply fast.",
     "items": [
       {
         "q": "How much does it cost?",
@@ -267,7 +268,16 @@
     },
     "kicker": "Contact",
     "title": "Let’s talk about your project",
+    "heroTitle": "Contact",
+    "heroImgLabel": "photo — office / team",
     "subtitle": "One call is enough to know whether we can help. No pressure, no jargon.",
+    "aside": {
+      "title": "Contact details",
+      "email": "Email",
+      "phone": "Phone",
+      "address": "Address",
+      "follow": "Follow us"
+    },
     "booking": {
       "title": "Book a free call",
       "service": "Discovery call",

@@ -1,14 +1,15 @@
 "use client";
 
 import Link from "next/link";
-import { Fragment, useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 
 type Props = { lang: Locale; dict: Dictionary };
 
-const SECTION_IDS = ["accueil", "services", "methode", "faq", "contact"] as const;
+const SECTION_IDS = ["accueil", "services", "methode", "faq"] as const;
 
 /**
  * Navigation flottante persistante (inspirée de sesame.com) : reste visible au
@@ -17,9 +18,15 @@ const SECTION_IDS = ["accueil", "services", "methode", "faq", "contact"] as cons
  * Desktop seulement : sur mobile, le menu hamburger tient ce rôle.
  */
 export function SectionNav({ lang, dict }: Props) {
+  const pathname = usePathname();
   const [active, setActive] = useState<string>("");
 
+  // Ré-exécuté à chaque navigation : sinon l'état actif reste figé sur la
+  // dernière section de l'accueil quand on passe sur une autre page (les
+  // sections observées ont disparu, mais l'observateur gardait sa valeur).
   useEffect(() => {
+    setActive("");
+
     const els = SECTION_IDS.map((id) => document.getElementById(id)).filter(
       (el): el is HTMLElement => el !== null,
     );
@@ -37,14 +44,20 @@ export function SectionNav({ lang, dict }: Props) {
 
     els.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
-  }, []);
+  }, [pathname]);
 
-  const items = [
+  // Ancres de l'accueil (avec scroll-spy), puis pages dédiées à la fin —
+  // même logique d'ordre que le header.
+  const anchors = [
     { id: "accueil", label: dict.nav.home },
     { id: "services", label: dict.nav.services },
     { id: "methode", label: dict.nav.method },
     { id: "faq", label: dict.nav.faq },
-    { id: "contact", label: dict.nav.contact },
+  ];
+  const pages = [
+    { href: `/${lang}/a-propos`, label: dict.nav.about },
+    { href: `/${lang}/blog`, label: dict.nav.blog },
+    { href: `/${lang}/contact`, label: dict.nav.contact },
   ];
 
   return (
@@ -52,23 +65,37 @@ export function SectionNav({ lang, dict }: Props) {
       aria-label={dict.nav.quickNav}
       className="fixed right-4 bottom-[calc(78px+env(safe-area-inset-bottom))] z-70 hidden flex-col items-end gap-2 rounded-2xl bg-white px-4 py-3 shadow-[0_8px_30px_-14px_rgba(15,29,23,.3)] md:flex"
     >
-      {items.map((item, index) => {
+      {anchors.map((item) => {
         const isActive = active === item.id;
         return (
-          <Fragment key={item.id}>
-            {index === items.length - 1 && (
-              <span aria-hidden className="my-0.5 h-px w-5 bg-ligne" />
-            )}
-            <Link
-              href={`/${lang}#${item.id}`}
-              aria-current={isActive ? "true" : undefined}
-              className={`text-sm transition-colors ${
-                isActive ? "font-semibold text-encre" : "text-texte2 hover:text-encre"
-              }`}
-            >
-              {item.label}
-            </Link>
-          </Fragment>
+          <Link
+            key={item.id}
+            href={`/${lang}#${item.id}`}
+            aria-current={isActive ? "true" : undefined}
+            className={`text-sm transition-colors ${
+              isActive ? "font-semibold text-encre" : "text-texte2 hover:text-encre"
+            }`}
+          >
+            {item.label}
+          </Link>
+        );
+      })}
+
+      <span aria-hidden className="my-0.5 h-px w-5 bg-ligne" />
+
+      {pages.map((item) => {
+        const isActive = pathname === item.href;
+        return (
+          <Link
+            key={item.href}
+            href={item.href}
+            aria-current={isActive ? "true" : undefined}
+            className={`text-sm transition-colors ${
+              isActive ? "font-semibold text-encre" : "text-texte2 hover:text-encre"
+            }`}
+          >
+            {item.label}
+          </Link>
         );
       })}
     </nav>

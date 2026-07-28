@@ -28,11 +28,13 @@ export function Header({ lang, dict }: Props) {
   const phoneLabel = site.phone ?? dict.placeholders.phone;
   const whatsappLabel = site.whatsapp ?? dict.placeholders.whatsapp;
 
+  // D'abord les ancres de l'accueil, puis les pages dédiées (à la fin).
   const nav = [
     { label: dict.nav.services, href: `/${lang}#services` },
+    { label: dict.nav.method, href: `/${lang}#methode` },
+    { label: dict.nav.faq, href: `/${lang}#faq` },
     { label: dict.nav.about, href: `/${lang}/a-propos` },
     { label: dict.nav.blog, href: `/${lang}/blog` },
-    { label: dict.nav.faq, href: `/${lang}#faq` },
     { label: dict.nav.contact, href: `/${lang}/contact` },
   ];
 
@@ -64,7 +66,13 @@ export function Header({ lang, dict }: Props) {
         {/* Trois sections d'égale largeur : nom à gauche, nav centrée, actions à droite. */}
         <div className="mx-auto flex min-h-[68px] max-w-[1160px] items-center py-4">
           <div className="flex flex-1 items-center">
-            <Link href={`/${lang}`} className="text-encre no-underline">
+            <Link
+              href={`/${lang}`}
+              data-reveal="left"
+              data-reveal-dist="24px"
+              data-reveal-duration="700"
+              className="text-encre no-underline"
+            >
               <Wordmark />
             </Link>
           </div>
@@ -73,18 +81,28 @@ export function Header({ lang, dict }: Props) {
             aria-label={dict.nav.home}
             className="hidden flex-1 items-center justify-center gap-5 md:flex"
           >
-            {nav.map((item) => (
+            {nav.map((item, index) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-sm font-medium text-texte2 no-underline transition-colors hover:text-encre"
+                data-reveal="up"
+                data-reveal-dist="16px"
+                data-reveal-delay={`${100 + index * 70}`}
+                data-reveal-duration="700"
+                className="relative whitespace-nowrap text-sm font-medium text-texte2 no-underline transition-colors hover:text-encre after:absolute after:-bottom-1 after:left-0 after:h-[1.5px] after:w-0 after:rounded-full after:bg-encre after:transition-[width] after:duration-300 motion-reduce:after:transition-none hover:after:w-full"
               >
                 {item.label}
               </Link>
             ))}
           </nav>
 
-          <div className="flex flex-1 items-center justify-end gap-3">
+          <div
+            data-reveal="right"
+            data-reveal-dist="24px"
+            data-reveal-delay="120"
+            data-reveal-duration="700"
+            className="flex flex-1 items-center justify-end gap-3"
+          >
             <LanguageSwitcher current={lang} label={dict.header.langAria} />
 
             {/* Masqué sous md : le module flottant porte déjà l'appel, en zone du pouce. */}

@@ -29,7 +29,7 @@ export function Footer({ lang, dict }: Props) {
         <div className="relative z-10">
           <div className="grid grid-cols-1 gap-[clamp(28px,4vw,48px)] md:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)_minmax(0,1fr)]">
             {/* Marque + description + réseaux. */}
-            <div>
+            <div data-reveal="left" data-reveal-dist="80px">
               <span className="font-display text-[22px] tracking-[0.04em]">{site.name}</span>
               <p className="mt-4 max-w-[44ch] text-sm leading-[1.65] text-texte2">
                 {dict.footer.description}
@@ -48,7 +48,7 @@ export function Footer({ lang, dict }: Props) {
             </div>
 
             {/* Plan du site. */}
-            <div>
+            <div data-reveal="up" data-reveal-delay="120">
               <p className="mb-3.5 text-sm font-bold text-encre">{dict.footer.navTitle}</p>
               <div className="flex flex-col gap-2.5">
                 {nav.map((item) => (
@@ -64,7 +64,7 @@ export function Footer({ lang, dict }: Props) {
             </div>
 
             {/* Coordonnées. */}
-            <div>
+            <div data-reveal="right" data-reveal-dist="80px" data-reveal-delay="240">
               <p className="mb-3.5 text-sm font-bold text-encre">{dict.footer.coordTitle}</p>
               <div className="flex flex-col gap-2.5">
                 {coords.map((line) => (
@@ -77,7 +77,11 @@ export function Footer({ lang, dict }: Props) {
           </div>
 
           {/* Barre du bas : copyright à gauche, liens légaux à droite. */}
-          <div className="mt-[clamp(32px,5vw,48px)] flex flex-wrap items-center justify-between gap-x-6 gap-y-2 border-t border-ligne pt-[18px]">
+          <div
+            data-reveal="up"
+            data-reveal-delay="340"
+            className="mt-[clamp(32px,5vw,48px)] flex flex-wrap items-center justify-between gap-x-6 gap-y-2 border-t border-ligne pt-[18px]"
+          >
             <span className="text-[13px] text-texte2">
               © {new Date().getFullYear()} {site.name} — {dict.footer.rights}
             </span>

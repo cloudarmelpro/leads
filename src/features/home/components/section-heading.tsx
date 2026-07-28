@@ -1,3 +1,5 @@
+import type { CSSProperties } from "react";
+
 type Props = {
   kicker: string;
   titleA: string;
@@ -15,15 +17,23 @@ export function SectionHeading({ kicker, titleA, titleB, intro, introMaxCh = "56
           {kicker}
         </span>
       </p>
-      <h2
-        data-reveal="up"
-        data-reveal-delay="80"
-        className="font-display text-[clamp(23px,4.8vw,46px)] leading-[1.15] tracking-normal"
+      {/* Conteneur observé (en place) ; le titre glisse depuis la droite — même
+          effet que le titre du hero, sans blocage. Variables en inline pour un
+          départ correct dès le 1er rendu (cf. hero). */}
+      <div
+        data-reveal-child="right"
+        style={{
+          "--reveal-delay": "80ms",
+          "--reveal-dist": "40vw",
+          "--reveal-dur": "3400ms",
+        } as CSSProperties}
       >
-        {titleA}
-        <br />
-        {titleB}
-      </h2>
+        <h2 className="font-display text-[clamp(23px,4.8vw,46px)] leading-[1.15] tracking-normal">
+          {titleA}
+          <br />
+          {titleB}
+        </h2>
+      </div>
       {intro && (
         <p
           data-reveal="left"
