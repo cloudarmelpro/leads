@@ -20,8 +20,9 @@ export function ScrollReveal() {
     const root = document.documentElement;
     if (!root.classList.contains("reveal-ready")) return; // reduced-motion / no-JS
 
-    // Rejeu : on (dé)révèle à CHAQUE entrée/sortie de vue (pas de `unobserve`) →
-    // l'animation se relance quand on scrolle vers le bas puis qu'on remonte.
+    // Rejeu : on (dé)révèle à CHAQUE entrée/sortie de vue → l'animation se relance
+    // quand on scrolle vers le bas puis qu'on remonte. (Les décalages restent
+    // modérés pour que l'élément reste détectable par l'observateur.)
     const io = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
@@ -33,9 +34,13 @@ export function ScrollReveal() {
 
     // Laisse le DOM de la nouvelle page se peindre avant d'observer.
     const raf = requestAnimationFrame(() => {
-      root.querySelectorAll<HTMLElement>("[data-reveal]").forEach((el) => {
-        const delay = el.dataset.revealDelay;
-        if (delay) el.style.setProperty("--reveal-delay", `${delay}ms`);
+      root
+        .querySelectorAll<HTMLElement>("[data-reveal], [data-reveal-child]")
+        .forEach((el) => {
+        const { revealDelay, revealDist, revealDuration } = el.dataset;
+        if (revealDelay) el.style.setProperty("--reveal-delay", `${revealDelay}ms`);
+        if (revealDist) el.style.setProperty("--reveal-dist", revealDist);
+        if (revealDuration) el.style.setProperty("--reveal-dur", `${revealDuration}ms`);
         io.observe(el);
       });
     });

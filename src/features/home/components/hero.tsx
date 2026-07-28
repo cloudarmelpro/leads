@@ -1,3 +1,5 @@
+import type { CSSProperties } from "react";
+
 import { TradeMarquee } from "@/features/home/components/trade-marquee";
 import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
@@ -22,14 +24,24 @@ export function Hero({ dict }: Props) {
           {t.badge}
         </p>
 
-        <h1
-          data-reveal="left"
-          data-reveal-delay="90"
-          className="max-w-[20ch] font-display text-[40px] leading-none tracking-normal text-balance antialiased md:text-[56px] xl:text-[64px]"
+        {/* Conteneur observé (reste en place) ; le titre glisse depuis la droite.
+            Les variables sont posées en inline (et non via le JS après montage)
+            pour que le décalage soit correct dès le 1er rendu — sinon, au
+            chargement, le CSS prend sa valeur par défaut et le titre part de
+            l'extrême droite avant que le JS ne corrige. */}
+        <div
+          data-reveal-child="right"
+          style={{
+            "--reveal-delay": "90ms",
+            "--reveal-dist": "40vw",
+            "--reveal-dur": "3400ms",
+          } as CSSProperties}
         >
-          {t.titleA}{" "}
-          <span>{t.titleB}</span>
-        </h1>
+          <h1 className="max-w-[20ch] font-display text-[40px] leading-none tracking-normal text-balance antialiased md:text-[56px] xl:text-[64px]">
+            {t.titleA}{" "}
+            <span>{t.titleB}</span>
+          </h1>
+        </div>
 
         <p
           data-reveal="left"
@@ -38,8 +50,6 @@ export function Hero({ dict }: Props) {
         >
           {t.subtitle}
         </p>
-
-        <hr className="mt-9 border-0 border-t border-ligne" />
       </div>
 
       {/* Rangée d'images métier — même grille (1160), défile/déborde à droite. */}

@@ -57,3 +57,5 @@ __pycache__/
 # sorties d'inspection navigateur
 /.playwright-mcp
 /*.png
+
+.vercel
