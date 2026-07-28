@@ -32,7 +32,7 @@ export function Principles({ dict }: Props) {
           }
           className="w-full"
         >
-          <h2 className="max-w-[30ch] text-[clamp(23px,3.2vw,30px)] leading-[1.22] tracking-normal text-balance">
+          <h2 className="max-w-[30ch] text-[clamp(23px,3.2vw,30px)] leading-none font-display tracking-normal text-balance">
             {t.leadA}
             <span className="text-texte2">{t.leadB}</span>
             {t.leadC}
@@ -56,7 +56,6 @@ export function Principles({ dict }: Props) {
                 <div className="group flex h-full cursor-pointer flex-col rounded-2xl bg-white p-7 transition-[translate,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none hover:-translate-y-1.5 hover:shadow-[0_0_22px_0_rgba(15,29,23,.14)]">
                   {/* Badge foncé numéroté, comme les cartes Services. */}
                   <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-encre font-display text-[15px] text-white shadow-[0_10px_20px_-8px_rgba(15,29,23,.5)]">
-                    {index + 1}
                   </span>
 
                   <div className="flex flex-1 items-center justify-center py-28">
