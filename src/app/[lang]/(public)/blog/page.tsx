@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import type { CSSProperties } from "react";
 
 import { BlogFeatured, PostCard, getPosts } from "@/features/blog";
 import { isLocale } from "@/lib/i18n/config";
@@ -36,13 +37,22 @@ export default async function BlogPage({ params }: PageProps<"/[lang]/blog">) {
             {dict.blog.kicker}
           </span>
         </p>
-        <h1
-          data-reveal="up"
-          data-reveal-delay="80"
-          className="max-w-[18ch] font-display text-[clamp(30px,5vw,52px)] leading-[1.1] tracking-normal text-balance"
+        {/* Titre : glisse depuis la droite, comme les titres de l'accueil. */}
+        <div
+          data-reveal-child="right"
+          style={
+            {
+              "--reveal-delay": "80ms",
+              "--reveal-dist": "40vw",
+              "--reveal-dur": "3400ms",
+            } as CSSProperties
+          }
+          className="w-full"
         >
-          {dict.blog.title}
-        </h1>
+          <h1 className="max-w-[18ch] font-display text-[clamp(30px,5vw,52px)] leading-[1.1] tracking-normal text-balance">
+            {dict.blog.title}
+          </h1>
+        </div>
         <p
           data-reveal="left"
           data-reveal-delay="160"
@@ -59,15 +69,22 @@ export default async function BlogPage({ params }: PageProps<"/[lang]/blog">) {
 
         {rest.length > 0 && (
           <div className="mt-12 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
-            {rest.map((post, index) => (
-              <PostCard
-                key={post.slug}
-                post={post}
-                lang={lang}
-                dict={dict}
-                revealDelay={index * 90}
-              />
-            ))}
+            {rest.map((post, index) => {
+              // Sens d'entrée selon la colonne (grille 3 colonnes), comme l'accueil.
+              const col = index % 3;
+              const dir = col === 0 ? "left" : col === 2 ? "right" : "up";
+              return (
+                <PostCard
+                  key={post.slug}
+                  post={post}
+                  lang={lang}
+                  dict={dict}
+                  revealDelay={index * 80}
+                  revealDir={dir}
+                  revealDist={col === 1 ? "0px" : "120px"}
+                />
+              );
+            })}
           </div>
         )}
       </div>

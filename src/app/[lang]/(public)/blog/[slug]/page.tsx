@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import type { CSSProperties } from "react";
 
 import { ArticleBody, PostMeta, getAllSlugs, getPost } from "@/features/blog";
 import { isLocale, locales } from "@/lib/i18n/config";
@@ -55,12 +56,23 @@ export default async function ArticlePage({ params }: PageProps<"/[lang]/blog/[s
           {dict.blog.backToBlog}
         </Link>
 
-        <h1
-          data-reveal="up"
-          className="mt-6 font-display text-[clamp(28px,4.4vw,44px)] leading-[1.12] tracking-normal text-balance"
+        {/* Titre : glisse depuis la droite (clippé à la colonne de lecture),
+            comme les autres titres du site. */}
+        <div
+          data-reveal-child="right"
+          style={
+            {
+              "--reveal-delay": "80ms",
+              "--reveal-dist": "40vw",
+              "--reveal-dur": "3400ms",
+            } as CSSProperties
+          }
+          className="mt-6 w-full"
         >
-          {post.title}
-        </h1>
+          <h1 className="font-display text-[clamp(28px,4.4vw,44px)] leading-[1.12] tracking-normal text-balance">
+            {post.title}
+          </h1>
+        </div>
         <p
           data-reveal="up"
           data-reveal-delay="80"

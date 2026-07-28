@@ -1,3 +1,5 @@
+import type { CSSProperties } from "react";
+
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 import { PREVIEW_IMAGES, teamPreviewBg } from "@/lib/preview-image";
 
@@ -20,15 +22,24 @@ export function Team({ dict }: Props) {
           </span>
         </p>
 
-        <h2
-          data-reveal="up"
-          data-reveal-delay="80"
-          className="max-w-[24ch] font-display text-[clamp(23px,3.2vw,36px)] leading-[1.2] tracking-normal text-balance"
+        {/* Titre : glisse depuis la droite, comme les titres de l'accueil. */}
+        <div
+          data-reveal-child="right"
+          style={
+            {
+              "--reveal-delay": "80ms",
+              "--reveal-dist": "40vw",
+              "--reveal-dur": "3400ms",
+            } as CSSProperties
+          }
+          className="w-full"
         >
-          {t.titleA}
-          <br />
-          {t.titleB}
-        </h2>
+          <h2 className="max-w-[24ch] font-display text-[clamp(23px,3.2vw,36px)] leading-[1.2] tracking-normal text-balance">
+            {t.titleA}
+            <br />
+            {t.titleB}
+          </h2>
+        </div>
 
         {/* ⚠️ Placeholder : noms, rôles et photos ci-dessous sont des EXEMPLES
             (voir dictionnaires + pravatar). À remplacer par la vraie équipe. */}
@@ -41,24 +52,37 @@ export function Team({ dict }: Props) {
         </p>
 
         <div className="mt-9 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {t.members.map((member, index) => (
-            <figure key={index} data-reveal="up" data-reveal-delay={`${index * 90}`}>
-              <div
-                style={teamPreviewBg(index)}
-                className="flex aspect-[4/5] items-end overflow-hidden rounded-2xl bg-[repeating-linear-gradient(45deg,#DCE9E0_0_14px,#EDF4EF_14px_28px)] p-3.5"
+          {t.members.map((member, index) => {
+            const col = index % 3;
+            const dir = col === 0 ? "left" : col === 2 ? "right" : "up";
+            return (
+              <figure
+                key={index}
+                data-reveal={dir}
+                data-reveal-delay={`${index * 80}`}
+                data-reveal-dist={col === 1 ? "0px" : "120px"}
+                className="group"
               >
-                {!PREVIEW_IMAGES && (
-                  <span className="rounded-md bg-white/85 px-2.5 py-1 font-mono text-[11px] text-texte2">
-                    {member.imgLabel}
-                  </span>
-                )}
-              </div>
-              <figcaption className="mt-4">
-                <p className="font-display text-lg">{member.name}</p>
-                <p className="mt-0.5 text-sm text-texte2">{member.role}</p>
-              </figcaption>
-            </figure>
-          ))}
+                {/* Wrapper qui découpe le zoom de l'image au survol. */}
+                <div className="overflow-hidden rounded-2xl">
+                  <div
+                    style={teamPreviewBg(index)}
+                    className="flex aspect-[4/5] items-end bg-[repeating-linear-gradient(45deg,#DCE9E0_0_14px,#EDF4EF_14px_28px)] p-3.5 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105 motion-reduce:transition-none"
+                  >
+                    {!PREVIEW_IMAGES && (
+                      <span className="rounded-md bg-white/85 px-2.5 py-1 font-mono text-[11px] text-texte2">
+                        {member.imgLabel}
+                      </span>
+                    )}
+                  </div>
+                </div>
+                <figcaption className="mt-4">
+                  <p className="font-display text-lg">{member.name}</p>
+                  <p className="mt-0.5 text-sm text-texte2">{member.role}</p>
+                </figcaption>
+              </figure>
+            );
+          })}
         </div>
       </div>
     </section>
