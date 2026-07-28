@@ -64,9 +64,9 @@ export function Header({ lang, dict }: Props) {
       {/* Marge horizontale sur le <header>, pas sur le conteneur max-w : c'est le
           patron des sections. La mettre à l'intérieur décalerait le logo de 32px. */}
       <header className="w-full px-[clamp(16px,4vw,32px)]">
-        {/* Trois sections d'égale largeur : nom à gauche, nav centrée, actions à droite. */}
+        {/* Logo + nav groupés à gauche (alignés à LEADS) ; actions à droite. */}
         <div className="mx-auto flex min-h-[68px] max-w-[1160px] items-center py-4">
-          <div className="flex flex-1 items-center">
+          <div className="flex items-center gap-8">
             <Link
               href={`/${lang}`}
               data-reveal="left"
@@ -76,12 +76,11 @@ export function Header({ lang, dict }: Props) {
             >
               <Wordmark />
             </Link>
-          </div>
 
-          <nav
-            aria-label={dict.nav.home}
-            className="hidden flex-1 items-center justify-center gap-5 md:flex"
-          >
+            <nav
+              aria-label={dict.nav.home}
+              className="hidden items-center gap-6 md:flex"
+            >
             {nav.map((item, index) => (
               <Link
                 key={item.href}
@@ -95,14 +94,15 @@ export function Header({ lang, dict }: Props) {
                 {item.label}
               </Link>
             ))}
-          </nav>
+            </nav>
+          </div>
 
           <div
             data-reveal="right"
             data-reveal-dist="24px"
             data-reveal-delay="120"
             data-reveal-duration="700"
-            className="flex flex-1 items-center justify-end gap-3"
+            className="ml-auto flex items-center gap-3"
           >
             <ThemeToggle
               label={dict.header.themeAria}
