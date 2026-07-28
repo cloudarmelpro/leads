@@ -30,7 +30,13 @@
     "call": "Call",
     "menuCall": "Call now",
     "menuRdv": "Book a call",
-    "langAria": "Choose language"
+    "langAria": "Choose language",
+    "themeAria": "Choose theme",
+    "theme": {
+      "system": "System",
+      "light": "Light",
+      "dark": "Dark"
+    }
   },
   "hero": {
     "badge": "Web agency — Québec small business",
@@ -199,13 +205,15 @@
     "rights": "All rights reserved"
   },
   "floating": {
-    "label": "Contact",
+    "label": "Talk to us",
     "aria": "Open the contact module",
+    "eyebrow": "Contact · FR / EN",
     "sheetTitle": "Talk to us",
-    "rowCall": "Call",
+    "sheetSub": "A real person replies.",
+    "rowCall": "Call now",
     "rowWaSub": "Fast reply",
     "rowRdv": "Book an appointment",
-    "rowRdvSub": "Calendly — pick your slot"
+    "rowRdvSub": "Cal.com — pick your slot"
   },
   "blog": {
     "meta": {
@@ -220,7 +228,8 @@
     "minRead": "min read",
     "writtenBy": "Written by",
     "backToBlog": "Back to the blog",
-    "moreArticles": "More articles"
+    "moreArticles": "More articles",
+    "listSubtitle": "More reads to get the most out of your website."
   },
   "about": {
     "meta": {
@@ -231,9 +240,9 @@
     "heroImgLabel": "photo — team / office",
     "principles": {
       "kicker": "Principles",
-      "leadA": "LEADS is built on a simple idea: your website should bring you customers — ",
-      "leadB": "not just look good.",
-      "leadC": " We build for results.",
+      "titleA": "We build",
+      "titleB": "for results",
+      "note": "LEADS is built on a simple idea: your website should bring you customers, not just look good.",
       "items": [
         {
           "title": "Quality",
@@ -294,10 +303,10 @@
       "book": "Book this slot",
       "pickDatePrompt": "Pick a date on the calendar to see available times.",
       "viewSlots": "See available times",
-      "realtimeNote": "Real-time availability, confirmed in Calendly.",
+      "realtimeNote": "Real-time availability, confirmed in Cal.com.",
       "prevMonth": "Previous month",
       "nextMonth": "Next month",
-      "embedNote": "Design preview — the real Calendly calendar will appear here once the URL is provided."
+      "embedNote": "Design preview — the real Cal.com calendar will appear here once the URL is provided."
     },
     "form": {
       "title": "Or write to us",

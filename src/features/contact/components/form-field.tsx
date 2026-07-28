@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 const controlBase =
   "peer w-full rounded-lg border border-input bg-transparent text-base text-encre outline-none " +
   "transition-colors duration-200 motion-reduce:transition-none " +
-  "focus:border-[#171717] " +
+  "focus:border-encre " +
   "aria-invalid:border-destructive aria-invalid:text-destructive " +
   "focus:aria-invalid:border-destructive " +
   "disabled:cursor-not-allowed disabled:border-input/50 disabled:bg-encre/4 disabled:text-texte2/60";
@@ -20,9 +20,9 @@ const controlBase =
    « focus » et « rempli » posent les mêmes valeurs — l'ordre CSS n'importe pas. */
 const labelBase =
   "pointer-events-none absolute left-3 px-1 text-texte2 transition-all duration-200 motion-reduce:transition-none " +
-  "peer-focus:top-0 peer-focus:-translate-y-1/2 peer-focus:bg-fond peer-focus:text-xs peer-focus:font-medium peer-focus:text-[#171717] " +
+  "peer-focus:top-0 peer-focus:-translate-y-1/2 peer-focus:bg-fond peer-focus:text-xs peer-focus:font-medium peer-focus:text-encre " +
   "peer-[:not(:placeholder-shown)]:top-0 peer-[:not(:placeholder-shown)]:-translate-y-1/2 peer-[:not(:placeholder-shown)]:bg-fond " +
-  "peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:font-medium peer-[:not(:placeholder-shown)]:text-[#171717] " +
+  "peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:font-medium peer-[:not(:placeholder-shown)]:text-encre " +
   "peer-aria-invalid:text-destructive peer-focus:peer-aria-invalid:text-destructive " +
   "peer-[:not(:placeholder-shown)]:peer-aria-invalid:text-destructive " +
   "peer-disabled:text-texte2/50";

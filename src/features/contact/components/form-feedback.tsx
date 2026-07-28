@@ -1,5 +1,6 @@
-import { ArrowRight, CheckCircle2, Loader2, XCircle } from "lucide-react";
+import { CheckCircle2, Loader2, XCircle } from "lucide-react";
 
+import { ArrowRight } from "@/components/ui/arrows";
 import { Button } from "@/components/ui/button";
 
 export type FormStatus = "idle" | "success" | "error";
@@ -65,7 +66,7 @@ export function FormSubmitButton({
       ) : (
         <>
           {label}
-          <ArrowRight className="size-4" aria-hidden />
+          <ArrowRight className="w-4" />
         </>
       )}
     </Button>

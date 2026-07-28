@@ -30,7 +30,13 @@
     "call": "Appeler",
     "menuCall": "Appeler maintenant",
     "menuRdv": "Rendez-vous",
-    "langAria": "Choisir la langue"
+    "langAria": "Choisir la langue",
+    "themeAria": "Choisir le thème",
+    "theme": {
+      "system": "Système",
+      "light": "Clair",
+      "dark": "Sombre"
+    }
   },
   "hero": {
     "badge": "Agence web — PME du Québec",
@@ -199,13 +205,15 @@
     "rights": "Tous droits réservés"
   },
   "floating": {
-    "label": "Contact",
+    "label": "Parlez-nous",
     "aria": "Ouvrir le module de contact",
+    "eyebrow": "Contact · FR / EN",
     "sheetTitle": "Parlez-nous",
-    "rowCall": "Appeler",
+    "sheetSub": "Une vraie personne vous répond.",
+    "rowCall": "Appeler maintenant",
     "rowWaSub": "Réponse rapide",
     "rowRdv": "Prendre rendez-vous",
-    "rowRdvSub": "Calendly — choisissez votre créneau"
+    "rowRdvSub": "Cal.com — choisissez votre créneau"
   },
   "blog": {
     "meta": {
@@ -220,7 +228,8 @@
     "minRead": "min de lecture",
     "writtenBy": "Écrit par",
     "backToBlog": "Retour au blog",
-    "moreArticles": "Autres articles"
+    "moreArticles": "Autres articles",
+    "listSubtitle": "D’autres lectures pour tirer le meilleur de votre site web."
   },
   "about": {
     "meta": {
@@ -231,9 +240,9 @@
     "heroImgLabel": "photo — équipe / bureau",
     "principles": {
       "kicker": "Principes",
-      "leadA": "LEADS repose sur une idée simple : un site doit vous amener des clients — ",
-      "leadB": "pas seulement être beau.",
-      "leadC": " On construit pour le résultat.",
+      "titleA": "On construit",
+      "titleB": "pour le résultat",
+      "note": "LEADS repose sur une idée simple : un site doit vous amener des clients, pas seulement être beau.",
       "items": [
         {
           "title": "Qualité",
@@ -294,10 +303,10 @@
       "book": "Réserver ce créneau",
       "pickDatePrompt": "Choisissez une date dans le calendrier pour voir les créneaux disponibles.",
       "viewSlots": "Voir les créneaux disponibles",
-      "realtimeNote": "Disponibilités en temps réel, confirmées dans Calendly.",
+      "realtimeNote": "Disponibilités en temps réel, confirmées dans Cal.com.",
       "prevMonth": "Mois précédent",
       "nextMonth": "Mois suivant",
-      "embedNote": "Aperçu du design — le vrai calendrier Calendly s’affichera ici dès que l’URL sera fournie."
+      "embedNote": "Aperçu du design — le vrai calendrier Cal.com s’affichera ici dès que l’URL sera fournie."
     },
     "form": {
       "title": "Ou écrivez-nous",

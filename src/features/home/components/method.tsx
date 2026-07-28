@@ -36,9 +36,9 @@ export function Method({ dict }: Props) {
                 data-reveal-delay={`${index * 80}`}
                 data-reveal-dist={col === 1 ? "0px" : "120px"}
               >
-                <div className="group flex h-full min-h-[465px] cursor-pointer flex-col rounded-3xl bg-white p-7 transition-[translate,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none hover:-translate-y-1.5 hover:shadow-[0_0_22px_0_rgba(15,29,23,.14)]">
+                <div className="group flex h-full min-h-[465px] cursor-pointer flex-col rounded-3xl bg-surface p-7 transition-[translate,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none hover:-translate-y-1.5 hover:shadow-[0_0_22px_0_rgba(15,29,23,.14)]">
                   <div className="flex items-center justify-between">
-                    <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-encre font-display text-[15px] text-white shadow-[0_10px_20px_-8px_rgba(15,29,23,.5)]">
+                    <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-ink font-display text-[15px] text-white shadow-[0_10px_20px_-8px_rgba(15,29,23,.5)]">
                       {step.n}
                     </span>
                     <span className="font-mono text-[13px] text-texte2">

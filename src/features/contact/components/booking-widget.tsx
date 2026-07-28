@@ -36,24 +36,24 @@ export function BookingWidget({ lang, dict }: Props) {
   }).format(now);
 
   return (
-    <div className="overflow-hidden rounded-3xl border border-ligne bg-white">
+    <div className="overflow-hidden rounded-3xl border border-ligne bg-surface">
       <div className="grid gap-px bg-ligne md:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)_minmax(0,0.85fr)]">
         {/* Colonne 1 — informations du rendez-vous. */}
-        <div className="bg-white p-6">
-          <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-encre font-display text-[15px] text-white">
+        <div className="bg-surface p-6">
+          <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-ink font-display text-[15px] text-white">
             L
           </span>
           <h3 className="mt-4 font-display text-lg">{t.service}</h3>
 
           <ul className="mt-4 flex flex-col gap-2.5 text-sm text-texte2">
             <li className="flex items-center gap-2.5">
-              <Clock size={16} className="text-sapin" aria-hidden /> {t.duration}
+              <Clock size={16} className="text-sapin dark:text-accent-strong" aria-hidden /> {t.duration}
             </li>
             <li className="flex items-center gap-2.5">
-              <Video size={16} className="text-sapin" aria-hidden /> {t.channel}
+              <Video size={16} className="text-sapin dark:text-accent-strong" aria-hidden /> {t.channel}
             </li>
             <li className="flex items-center gap-2.5">
-              <Globe size={16} className="text-sapin" aria-hidden /> {t.timezone}
+              <Globe size={16} className="text-sapin dark:text-accent-strong" aria-hidden /> {t.timezone}
             </li>
           </ul>
 
@@ -63,7 +63,7 @@ export function BookingWidget({ lang, dict }: Props) {
           <ul className="flex flex-col gap-1.5 text-sm text-texte2">
             {t.expect.map((line) => (
               <li key={line} className="flex gap-2">
-                <span aria-hidden className="text-sapin">
+                <span aria-hidden className="text-sapin dark:text-accent-strong">
                   —
                 </span>
                 {line}
@@ -73,7 +73,7 @@ export function BookingWidget({ lang, dict }: Props) {
         </div>
 
         {/* Colonne 2 — calendrier (mois courant, lecture seule). */}
-        <div className="bg-white p-6">
+        <div className="bg-surface p-6">
           <p className="mb-4 font-display text-base capitalize">{monthLabel}</p>
           <div className="grid grid-cols-7 gap-1 text-center">
             {weekdays.map((d) => (
@@ -96,7 +96,7 @@ export function BookingWidget({ lang, dict }: Props) {
                   aria-current={isToday ? "date" : undefined}
                   className={`flex aspect-square items-center justify-center rounded-lg text-sm ${
                     isToday
-                      ? "bg-encre font-bold text-white"
+                      ? "bg-ink font-bold text-white"
                       : isPast
                         ? "text-texte2/40"
                         : "text-encre hover:bg-menthe"
@@ -110,7 +110,7 @@ export function BookingWidget({ lang, dict }: Props) {
         </div>
 
         {/* Colonne 3 — créneaux (statiques). */}
-        <div className="bg-white p-6">
+        <div className="bg-surface p-6">
           <p className="mb-1 font-display text-base capitalize">{selectedLabel}</p>
           <p className="mb-4 text-[13px] text-texte2">{t.pickSlot}</p>
           <div className="flex max-h-[300px] flex-col gap-2 overflow-y-auto pr-1">

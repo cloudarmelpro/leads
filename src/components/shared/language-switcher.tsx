@@ -59,7 +59,7 @@ export function LanguageSwitcher({ current, label, variant = "light" }: Props) {
   return (
     <div
       aria-label={label}
-      className="inline-flex items-center gap-0.5 rounded-[11px] border border-white bg-white p-[3px]"
+      className="inline-flex items-center gap-0.5 rounded-[11px] border border-surface bg-surface p-[3px]"
     >
       {locales.map((locale) => {
         const active = locale === current;

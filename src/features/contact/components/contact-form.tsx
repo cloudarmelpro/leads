@@ -143,7 +143,7 @@ export function ContactForm({ lang, dict }: Props) {
                 {t.consent}{" "}
                 <Link
                   href={`/${lang}#`}
-                  className="font-medium text-sapin underline underline-offset-2"
+                  className="font-medium text-sapin dark:text-accent-strong underline underline-offset-2"
                 >
                   {t.consentLink}
                 </Link>

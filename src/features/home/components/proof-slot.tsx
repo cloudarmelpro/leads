@@ -16,7 +16,7 @@ export function ProofSlot({ dict }: Props) {
     <section className="px-[clamp(16px,4vw,32px)] py-[clamp(40px,6vw,80px)]">
       <div
         data-reveal="up"
-        className="mx-auto grid max-w-[900px] grid-cols-[repeat(auto-fit,minmax(min(100%,260px),1fr))] items-center gap-6 rounded-[22px] border border-dashed border-[#B7CDBF] bg-white p-[clamp(24px,4vw,40px)]"
+        className="mx-auto grid max-w-[900px] grid-cols-[repeat(auto-fit,minmax(min(100%,260px),1fr))] items-center gap-6 rounded-[22px] border border-dashed border-ligne bg-surface p-[clamp(24px,4vw,40px)]"
       >
         <div>
           <span className="mb-4 inline-flex h-11 w-11 -rotate-[5deg] items-center justify-center rounded-xl bg-sapin text-white">
@@ -26,7 +26,7 @@ export function ProofSlot({ dict }: Props) {
           <p className="font-mono text-[13px] leading-[1.6] text-texte2">{t.note}</p>
         </div>
         <div className="flex aspect-[4/3] items-center justify-center rounded-2xl bg-[repeating-linear-gradient(45deg,#DCE9E0_0_14px,#EDF4EF_14px_28px)]">
-          <span className="rounded-md bg-white/90 px-2.5 py-[5px] font-mono text-xs text-texte2">
+          <span className="rounded-md bg-white/90 px-2.5 py-[5px] font-mono text-xs text-ink">
             {t.img}
           </span>
         </div>
