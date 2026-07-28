@@ -14,9 +14,15 @@ export function BlogFeatured({ post, lang, dict }: Props) {
     <Link
       href={`/${lang}/blog/${post.slug}`}
       data-reveal="up"
-      style={previewBg(post.coverSeed, 1200, 700)}
       className="group relative flex min-h-[clamp(340px,42vw,500px)] flex-col justify-end overflow-hidden rounded-[28px] bg-encre p-[clamp(24px,4vw,48px)] no-underline"
     >
+      {/* Image de fond sur son propre calque : zoome au survol (clippée par le
+          conteneur), sans entrer en conflit avec la transform de révélation. */}
+      <div
+        aria-hidden
+        style={previewBg(post.coverSeed, 1200, 700)}
+        className="absolute inset-0 transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105 motion-reduce:transition-none"
+      />
       <div
         aria-hidden
         className="absolute inset-0 bg-[linear-gradient(transparent,rgba(15,29,23,.5)_40%,rgba(15,29,23,.9))]"
