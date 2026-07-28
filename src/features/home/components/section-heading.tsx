@@ -13,7 +13,7 @@ export function SectionHeading({ kicker, titleA, titleB, intro, introMaxCh = "56
   return (
     <div className="mb-11 text-center">
       <p data-reveal="up" className="mb-4">
-        <span className="rounded-full bg-white px-3.75 py-1.75 text-[13px] font-semibold text-texte2">
+        <span className="rounded-full bg-surface px-3.75 py-1.75 text-[13px] font-semibold text-texte2">
           {kicker}
         </span>
       </p>

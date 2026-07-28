@@ -11,10 +11,10 @@ export function ContactHero({ dict }: Props) {
     <section className="px-[clamp(16px,4vw,32px)] pt-[clamp(16px,3vw,32px)] pb-[clamp(40px,6vw,72px)]">
       <div
         style={previewBg("contact-hero", 1200, 700)}
-        className="relative mx-auto flex min-h-[clamp(280px,40vw,460px)] max-w-[1160px] items-center justify-center overflow-hidden rounded-[28px] bg-encre"
+        className="relative mx-auto flex min-h-[clamp(280px,40vw,460px)] max-w-[1160px] items-center justify-center overflow-hidden rounded-[28px] bg-ink"
       >
         {/* Voile sombre : garantit la lisibilité du titre quelle que soit l'image. */}
-        <div aria-hidden className="absolute inset-0 bg-encre/65" />
+        <div aria-hidden className="absolute inset-0 bg-ink/65" />
 
         <h1
           data-reveal="up"
@@ -23,7 +23,7 @@ export function ContactHero({ dict }: Props) {
           {t.heroTitle}
         </h1>
 
-        <span className="absolute bottom-4 left-4 rounded-md bg-encre/60 px-2.5 py-1 font-mono text-[11px] text-white/70">
+        <span className="absolute bottom-4 left-4 rounded-md bg-ink/60 px-2.5 py-1 font-mono text-[11px] text-white/70">
           {t.heroImgLabel}
         </span>
       </div>

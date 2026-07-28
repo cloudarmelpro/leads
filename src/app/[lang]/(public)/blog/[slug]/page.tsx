@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { CSSProperties } from "react";
 
+import { ArrowLeft } from "@/components/ui/arrows";
 import { ArticleBody, PostMeta, getAllSlugs, getPost } from "@/features/blog";
 import { isLocale, locales } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
@@ -52,7 +52,7 @@ export default async function ArticlePage({ params }: PageProps<"/[lang]/blog/[s
           href={`/${lang}/blog`}
           className="inline-flex items-center gap-1.5 text-sm font-medium text-texte2 no-underline transition-colors hover:text-encre"
         >
-          <ArrowLeft size={15} aria-hidden />
+          <ArrowLeft className="w-[15px]" />
           {dict.blog.backToBlog}
         </Link>
 

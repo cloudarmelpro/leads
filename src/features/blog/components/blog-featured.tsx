@@ -1,5 +1,6 @@
-import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
+
+import { ArrowRight } from "@/components/ui/arrows";
 
 import type { Post } from "@/features/blog/mock-posts";
 import { formatDate } from "@/lib/format/date";
@@ -14,7 +15,7 @@ export function BlogFeatured({ post, lang, dict }: Props) {
     <Link
       href={`/${lang}/blog/${post.slug}`}
       data-reveal="up"
-      className="group relative flex min-h-[clamp(340px,42vw,500px)] flex-col justify-end overflow-hidden rounded-[28px] bg-encre p-[clamp(24px,4vw,48px)] no-underline"
+      className="group relative flex min-h-[clamp(340px,42vw,500px)] flex-col justify-end overflow-hidden rounded-[28px] bg-ink p-[clamp(24px,4vw,48px)] no-underline"
     >
       {/* Image de fond sur son propre calque : zoome au survol (clippée par le
           conteneur), sans entrer en conflit avec la transform de révélation. */}
@@ -42,9 +43,9 @@ export function BlogFeatured({ post, lang, dict }: Props) {
         <p className="mt-3 max-w-[52ch] text-[15px] leading-[1.6] text-pretty text-white/75">
           {post.excerpt}
         </p>
-        <span className="mt-6 inline-flex h-10 items-center gap-2 rounded-xl bg-white px-4 text-sm font-semibold text-encre">
+        <span className="mt-6 inline-flex h-10 items-center gap-2 rounded-xl bg-white px-4 text-sm font-semibold text-ink">
           {dict.blog.readArticle}
-          <ArrowUpRight size={16} aria-hidden />
+          <ArrowRight className="w-4" />
         </span>
       </div>
     </Link>

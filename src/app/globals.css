@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+/* Mode sombre piloté par la classe `.dark` sur <html> (posée avant peinture par
+   le script du layout) — et non par `prefers-color-scheme`, pour permettre la
+   bascule 3 états (Système / Clair / Sombre). */
+@custom-variant dark (&:where(.dark, .dark *));
+
 /*
  * Système de design — issu de la maquette « Accueil v2 » (Claude Design).
  * Les noms de couleurs sont volontairement en français : ils viennent de la
@@ -16,6 +21,16 @@
   --color-ligne: #e3ebe4;
   --color-texte2: #4a5f54;
   --color-sapin-doux: #c9dad1;
+
+  /* Tokens sémantiques ajoutés pour le mode sombre (voir bloc `.dark` plus bas).
+     - surface : couleur des cartes (remplace les `bg-white` codés en dur).
+     - ink : surface volontairement SOMBRE et FIXE dans les deux thèmes
+       (badges numérotés, fonds d'image de hero) — découplée du texte `encre`.
+     - accent-strong : émeraude en TEXTE/icône (plus lumineuse en sombre). */
+  --color-surface: #ffffff;
+  --color-surface-2: #ffffff;
+  --color-ink: #0f1d17;
+  --color-accent-strong: #177e4f;
 
   --font-display: var(--font-cal-sans), ui-sans-serif, system-ui, sans-serif;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
@@ -43,6 +58,36 @@
      comme dans le projet de référence — sinon les champs paraissent effacés. */
   --color-input: oklch(0.62 0 0);
   --color-ring: var(--color-emeraude);
+}
+
+/*
+ * Mode sombre — palette « gris-vert neutre ». On ne redéfinit QUE les tokens
+ * sémantiques : `sapin`, `ink`, `lueur` et l'émeraude des boutons pleins restent
+ * fixes (surfaces sombres volontaires). Contrastes vérifiés ≥ 4.5:1 (texte).
+ */
+.dark {
+  --color-fond: #0c110f;
+  --color-surface: #18211d;
+  --color-surface-2: #212b26;
+  --color-encre: #e9f0ea;
+  --color-texte2: #9fb2a8;
+  --color-ligne: #27342d;
+  --color-menthe: #183327;
+  --color-accent-strong: #35c489;
+
+  /* Alias shadcn */
+  --color-background: #16221d;
+  --color-foreground: var(--color-encre);
+  --color-secondary: var(--color-menthe);
+  --color-secondary-foreground: #a7e0c0;
+  --color-accent: var(--color-menthe);
+  --color-accent-foreground: #a7e0c0;
+  --color-muted: #16221d;
+  --color-muted-foreground: var(--color-texte2);
+  --color-border: var(--color-ligne);
+  --color-input: oklch(0.48 0.01 160);
+  --color-destructive: #e5675c;
+  --color-ring: #4fd39a;
 }
 
 @keyframes rise {
@@ -76,6 +121,26 @@
   }
 }
 
+@keyframes sheetdown {
+  from {
+    opacity: 1;
+    transform: none;
+  }
+  to {
+    opacity: 0;
+    transform: translateY(24px) scale(0.98);
+  }
+}
+
+@keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -90,6 +155,8 @@ body {
   color: var(--color-encre);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  /* Pas de transition sur le body : elle animerait le passage clair→sombre au
+     chargement (flash). La bascule de thème est donc instantanée. */
   /* `clip` masque le débordement horizontal (slides hors-champ, marquee) sans
      créer de conteneur de défilement — le `position: sticky` reste fonctionnel. */
   overflow-x: clip;
@@ -97,16 +164,30 @@ body {
 
 ::selection {
   background: var(--color-lueur);
-  color: var(--color-encre);
+  /* `ink` reste foncé dans les deux thèmes → texte sélectionné lisible sur menthe. */
+  color: var(--color-ink);
 }
 
 /* Focus visible global (liens, boutons…). Les champs de formulaire ont leur
    propre indicateur de focus (bordure) : on les exclut pour éviter un double
    liseré vert par-dessus la bordure. */
 :focus-visible:not(input):not(textarea):not(select):not([role="checkbox"]) {
-  outline: 3px solid var(--color-emeraude);
+  outline: 3px solid var(--color-ring);
   outline-offset: 2px;
   border-radius: 6px;
+}
+
+/* Ombre douce des cartes (FAQ, aside contact). Auparavant utilisée mais jamais
+   définie → aucune ombre. Version sombre : ink presque invisible, on passe au noir. */
+@utility shadow-soft {
+  box-shadow:
+    0 1px 2px rgb(15 29 23 / 0.06),
+    0 10px 28px -8px rgb(15 29 23 / 0.12);
+}
+.dark .shadow-soft {
+  box-shadow:
+    0 1px 2px rgb(0 0 0 / 0.4),
+    0 12px 32px -8px rgb(0 0 0 / 0.55);
 }
 
 /*
@@ -125,7 +206,15 @@ body {
 }
 
 .animate-sheetup {
-  animation: sheetup 0.28s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  animation: sheetup 0.32s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-sheetdown {
+  animation: sheetdown 0.26s cubic-bezier(0.4, 0, 1, 1) both;
+}
+
+.animate-fadeout {
+  animation: fadeout 0.26s ease both;
 }
 
 /*

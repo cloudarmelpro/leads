@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 
 import { ActionLink } from "@/components/shared/action-link";
 import { LanguageSwitcher } from "@/components/shared/language-switcher";
+import { ThemeToggle } from "@/components/shared/theme-toggle";
 import { site, telHref, whatsappHref } from "@/config/site";
 import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
@@ -103,6 +104,10 @@ export function Header({ lang, dict }: Props) {
             data-reveal-duration="700"
             className="flex flex-1 items-center justify-end gap-3"
           >
+            <ThemeToggle
+              label={dict.header.themeAria}
+              optionLabels={dict.header.theme}
+            />
             <LanguageSwitcher current={lang} label={dict.header.langAria} />
 
             {/* Masqué sous md : le module flottant porte déjà l'appel, en zone du pouce. */}
@@ -120,7 +125,7 @@ export function Header({ lang, dict }: Props) {
               onClick={() => setMenuOpen(true)}
               aria-label={dict.common.openMenu}
               aria-expanded={menuOpen}
-              className="inline-flex h-8 w-8 items-center justify-center cursor-pointer rounded-xl bg-white text-encre md:hidden"
+              className="inline-flex h-8 w-8 items-center justify-center cursor-pointer rounded-xl bg-surface text-encre md:hidden"
             >
               <Menu size={16} aria-hidden />
             </button>
@@ -160,8 +165,13 @@ export function Header({ lang, dict }: Props) {
             ))}
           </nav>
 
-          <div className="mt-6">
+          <div className="mt-6 flex flex-wrap items-center gap-3">
             <LanguageSwitcher current={lang} label={dict.header.langAria} variant="dark" />
+            <ThemeToggle
+              label={dict.header.themeAria}
+              optionLabels={dict.header.theme}
+              variant="dark"
+            />
           </div>
 
           <div className="mt-auto flex flex-col gap-3 pt-7">

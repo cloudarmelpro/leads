@@ -25,7 +25,7 @@ export function FinalCta({ lang, dict }: Props) {
           data-reveal="up"
           data-reveal-dist="24px"
           data-reveal-delay="120"
-          className="mb-7 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-white text-encre"
+          className="mb-7 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-white text-ink"
         >
           <Phone size={24} strokeWidth={2.2} aria-hidden />
         </span>
@@ -60,7 +60,7 @@ export function FinalCta({ lang, dict }: Props) {
           data-reveal="up"
           data-reveal-dist="24px"
           data-reveal-delay="420"
-          className="inline-flex h-11 items-center justify-center rounded-xl bg-white px-7 text-sm text-encre no-underline transition-colors hover:bg-white/90"
+          className="inline-flex h-11 items-center justify-center rounded-xl bg-white px-7 text-sm text-ink no-underline transition-colors hover:bg-white/90"
         >
           {t.rdv}
         </Link>

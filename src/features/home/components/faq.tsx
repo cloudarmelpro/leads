@@ -34,7 +34,7 @@ export function Faq({ dict }: Props) {
                 key={item.q}
                 data-reveal="up"
                 data-reveal-delay={`${index * 80}`}
-                className="rounded-2xl bg-white shadow-soft"
+                className="rounded-2xl bg-surface"
               >
                 <h3>
                   <button

@@ -96,7 +96,7 @@ export default async function ContactPage({ params }: PageProps<"/[lang]/contact
               data-reveal="right"
               data-reveal-dist="80px"
               data-reveal-delay="120"
-              className="h-fit rounded-2xl bg-white p-7 shadow-soft"
+              className="h-fit rounded-2xl bg-surface p-7 shadow-soft"
             >
               <p className="mb-5 text-sm font-bold text-encre">{t.aside.title}</p>
               <div className="flex flex-col gap-5">

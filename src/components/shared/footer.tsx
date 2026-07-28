@@ -24,7 +24,7 @@ export function Footer({ lang, dict }: Props) {
 
   return (
     <footer className="px-[clamp(16px,4vw,32px)] pt-[clamp(32px,5vw,56px)] pb-7">
-      <div className="relative mx-auto max-w-[1160px] overflow-hidden rounded-[26px] bg-white px-[clamp(28px,4vw,48px)] pt-[clamp(28px,4vw,48px)] pb-[clamp(56px,9vw,116px)]">
+      <div className="relative mx-auto max-w-[1160px] overflow-hidden rounded-[26px] bg-surface px-[clamp(28px,4vw,48px)] pt-[clamp(28px,4vw,48px)] pb-[clamp(56px,9vw,116px)]">
         {/* Contenu au-dessus du filigrane. */}
         <div className="relative z-10">
           <div className="grid grid-cols-1 gap-[clamp(28px,4vw,48px)] md:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)_minmax(0,1fr)]">

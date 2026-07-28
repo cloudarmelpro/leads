@@ -1,5 +1,6 @@
-import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
+
+import { ArrowRight } from "@/components/ui/arrows";
 
 import type { Post } from "@/features/blog/mock-posts";
 import { formatDate } from "@/lib/format/date";
@@ -34,21 +35,21 @@ export function PostCard({ post, lang, dict, revealDelay, revealDir = "up", reve
       </div>
       <div className="mt-4 flex flex-1 flex-col">
         <div className="flex flex-wrap items-center gap-2 text-[13px] text-texte2">
-          <span className="rounded-full bg-menthe px-2.5 py-1 font-semibold text-sapin">
+          <span className="rounded-full bg-menthe px-2.5 py-1 font-semibold text-sapin dark:text-accent-strong">
             {post.category}
           </span>
           <span>{formatDate(post.date, lang)}</span>
         </div>
-        <h3 className="mt-3 font-display text-lg leading-snug text-encre transition-colors group-hover:text-sapin">
+        <h3 className="mt-3 font-display text-lg leading-snug text-encre transition-colors group-hover:text-sapin dark:group-hover:text-accent-strong">
           {post.title}
         </h3>
         <p className="mt-2 line-clamp-2 text-sm leading-[1.6] text-texte2 text-pretty">
           {post.excerpt}
         </p>
         {/* Ancré en bas : remplit la carte vers le bas, comme les cartes Services. */}
-        <span className="mt-auto inline-flex items-center gap-1.5 pt-5 text-sm font-semibold text-sapin">
+        <span className="mt-auto inline-flex items-center gap-1.5 pt-5 text-sm font-semibold text-sapin dark:text-accent-strong">
           {dict.blog.readArticle}
-          <ArrowUpRight size={15} aria-hidden />
+          <ArrowRight className="w-[15px]" />
         </span>
       </div>
     </Link>

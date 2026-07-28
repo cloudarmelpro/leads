@@ -15,9 +15,9 @@ export function Team({ dict }: Props) {
 
   return (
     <section className="px-[clamp(16px,4vw,32px)] py-[clamp(48px,7vw,96px)]">
-      <div className="mx-auto max-w-[1160px]">
+      <div className="mx-auto max-w-290">
         <p data-reveal="up" className="mb-6">
-          <span className="rounded-full bg-white px-3.75 py-1.75 text-[13px] font-semibold text-texte2 shadow-[0_4px_10px_-6px_rgba(15,29,23,.2)]">
+          <span className="rounded-full bg-surface px-3.75 py-1.75 text-[13px] font-semibold text-texte2">
             {t.kicker}
           </span>
         </p>
@@ -70,7 +70,7 @@ export function Team({ dict }: Props) {
                     className="flex aspect-[4/5] items-end bg-[repeating-linear-gradient(45deg,#DCE9E0_0_14px,#EDF4EF_14px_28px)] p-3.5 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105 motion-reduce:transition-none"
                   >
                     {!PREVIEW_IMAGES && (
-                      <span className="rounded-md bg-white/85 px-2.5 py-1 font-mono text-[11px] text-texte2">
+                      <span className="rounded-md bg-white/85 px-2.5 py-1 font-mono text-[11px] text-ink">
                         {member.imgLabel}
                       </span>
                     )}
