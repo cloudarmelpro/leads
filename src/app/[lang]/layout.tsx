@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import { Cal_Sans, Inter } from "next/font/google";
 import { notFound } from "next/navigation";
-import Script from "next/script";
 
 import "../globals.css";
 
 import { Footer } from "@/components/shared/footer";
 import { FloatingContact } from "@/components/shared/floating-contact";
 import { Header } from "@/components/shared/header";
+import { PrePaintScript } from "@/components/shared/pre-paint-script";
 import { ScrollReveal } from "@/components/shared/scroll-reveal";
 import { SectionNav } from "@/components/shared/section-nav";
 import { isLocale, localeHtmlLang, locales } from "@/lib/i18n/config";
@@ -71,18 +71,7 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[la
       suppressHydrationWarning
     >
       <body className="min-h-dvh bg-fond text-encre">
-        {/* Pose `.dark` AVANT peinture (anti-flash) selon le choix mémorisé ou la
-            préférence système. Même mécanisme `beforeInteractive` que ci-dessous. */}
-        <Script id="theme-init" strategy="beforeInteractive">
-          {`try{var e=localStorage.getItem('theme');var m=matchMedia('(prefers-color-scheme: dark)').matches;if(e==='dark'||((e===null||e==='system')&&m))document.documentElement.classList.add('dark')}catch(e){}`}
-        </Script>
-        {/* Pose `reveal-ready` AVANT peinture : le contenu ne se masque que si JS
-            est actif et hors reduced-motion (sinon tout reste visible). `next/script`
-            + `beforeInteractive` (au lieu d'un <script> brut) évite l'avertissement
-            React « script tag » lors des navigations client (ex. changement de langue). */}
-        <Script id="reveal-ready" strategy="beforeInteractive">
-          {`try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('reveal-ready')}catch(e){}`}
-        </Script>
+        <PrePaintScript />
         <a
           href="#contenu"
           className="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-100 focus:rounded-xl focus:bg-sapin focus:px-4 focus:py-3 focus:font-bold focus:text-white"
