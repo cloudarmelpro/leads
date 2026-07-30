@@ -8,9 +8,9 @@
 export const site = {
   /** ⚠️ Nom non arrêté — placeholder assumé jusqu'à la décision client (T0.1). */
   name: "Leads", // Nom de l'entreprise, affiché dans le header et le footer.
-  phone: null as string | null,
+  phone: "514-808-6549" as string | null,
   email: "code.maldia@outlook.com" as string | null,
-  address: null as string | null,
+  address: "Sur rendez-vous · partout au Québec" as string | null,
   whatsapp: null as string | null,
   // Lien Cal.com au format "compte/evenement" (ex. "cloudarmelpro-jj7yjv/leads").
   // Tant qu'il est null, la page contact affiche la maquette ; dès qu'il est

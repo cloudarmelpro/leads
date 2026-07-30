@@ -145,9 +145,11 @@ html {
   scroll-behavior: smooth;
 }
 
-/* L'en-tête est collant : sans cette marge, une ancre place le titre dessous. */
+/* L'en-tête n'est PAS collant (il défile avec la page) : pas besoin de réserver sa
+   hauteur. La section a déjà un généreux padding haut ; on ajoute juste un petit
+   décalage pour un cadrage propre près du haut (le carrousel précédent ne dépasse pas). */
 section[id] {
-  scroll-margin-top: 84px;
+  scroll-margin-top: 40px;
 }
 
 body {

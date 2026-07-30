@@ -40,15 +40,15 @@
   },
   "hero": {
     "badge": "Web agency — Québec small business",
-    "titleA": "A website that makes",
-    "titleB": "your phone ring.",
+    "titleA": "A website that",
+    "titleB": "earns trust.",
     "subtitle": "LEADS builds bilingual websites for hands-on businesses. One goal: getting your customers to call you.",
     "tradesLabel": "What’s your trade?",
     "ctaCall": "Call now",
     "ctaRdv": "book a time slot",
     "strip1": "Built in Québec",
     "strip2": "Bilingual FR · EN",
-    "strip3": "Service area: [TBC]",
+    "strip3": "Across Québec",
     "demoTag": "Preview — your trade",
     "demoHandle": "@your-business",
     "demoCaption": "This preview changes with your trade. Your site will speak to your customers — in their words.",
@@ -82,6 +82,18 @@
         "title": "Visible in the neighbourhood, one tap away",
         "cta": "Reach us",
         "imgLabel": "storefront photo — local shop"
+      },
+      {
+        "trade": "Snow removal",
+        "title": "Residential and commercial snow-removal contracts",
+        "cta": "Book my season",
+        "imgLabel": "job-site photo — snow removal"
+      },
+      {
+        "trade": "Arboriculture",
+        "title": "Pruning, felling and tree care",
+        "cta": "Request a quote",
+        "imgLabel": "job-site photo — arboriculture"
       }
     ]
   },
@@ -89,19 +101,15 @@
     "kicker": "Services",
     "titleA": "What we do,",
     "titleB": "concretely",
-    "intro": "Three to five offers, named in your words. The real list will be confirmed with the client — nothing here is made up.",
+    "intro": "Two clear offers, built for hands-on Québec businesses.",
     "items": [
       {
-        "name": "[SERVICE 1]",
-        "note": "Real content goes here: what the client gets, for whom, and how fast."
+        "name": "Bilingual showcase website",
+        "note": "A simple, fast, clear site that gives just enough information for the customer to pick up the phone. No jargon, no useless pages."
       },
       {
-        "name": "[SERVICE 2]",
-        "note": "Real content goes here: the concrete outcome, the starting point, what changes after."
-      },
-      {
-        "name": "[SERVICE 3]",
-        "note": "Real content goes here: who it’s for, what it fixes for the owner."
+        "name": "Existing site rebuild",
+        "note": "We take what’s there, cut the clutter, and rebuild it around one goal: getting the visitor to call."
       }
     ]
   },
@@ -115,22 +123,32 @@
       {
         "n": "1",
         "title": "We listen",
-        "desc": "A short call. You talk trade, not technology. We leave with your words — they’re what goes on the site."
+        "desc": "A short call. You talk trade, we note down what really matters to your customers."
       },
       {
         "n": "2",
-        "title": "We propose",
-        "desc": "A clear plan and a firm price before anything is committed. [TERMS TO CONFIRM]"
+        "title": "We analyze",
+        "desc": "We look at your current site and your market — an honest read of what works and what’s missing, and we figure out the best way to improve your site."
       },
       {
         "n": "3",
-        "title": "We build",
-        "desc": "The site takes shape in front of you, in French and English. Your feedback beats our preferences."
+        "title": "A strategy, not just a site",
+        "desc": "A plan built for your trade: which pages, which calls to action, which structure to bring in qualified leads."
       },
       {
         "n": "4",
-        "title": "We measure",
-        "desc": "Calls, bookings, requests: everything is counted. The site is judged on the clients it brings."
+        "title": "We build to best practices",
+        "desc": "Bilingual, fast, mobile-optimized, structured for Google from the start. You watch the site take shape — we handle the technical details."
+      },
+      {
+        "n": "5",
+        "title": "We polish it together",
+        "desc": "Final review before launch: we go over every detail with you before putting the site live."
+      },
+      {
+        "n": "6",
+        "title": "We put the site live",
+        "desc": "The site is deployed and ready to receive visitors."
       }
     ]
   },
@@ -147,35 +165,35 @@
     "items": [
       {
         "q": "How much does it cost?",
-        "a": "Every project is priced in writing before it starts. No surprises along the way. [RANGE TO CONFIRM]"
+        "a": "It depends on the project. We chat on the phone to pin down your needs before giving you a clear price."
       },
       {
         "q": "How much of my time will it take?",
-        "a": "As little as possible. A few short meetings, by phone if you prefer — we handle the rest, copy included."
+        "a": "It depends on the project, but for simple projects, count on less than 5 days."
       },
       {
         "q": "I have no copy, photos, or logo.",
-        "a": "That’s expected. Writing is part of the job, and we guide you on visuals. You’re never “not ready”."
+        "a": "No problem — it’s actually the most common situation. For copy, we guide you at every step. For photos, we have access to professional image libraries and AI tools to generate custom ones. And for the logo, we can help you create it, from concept to final result."
       },
       {
         "q": "I already have a website, but it’s weak. Do you rebuild it?",
-        "a": "Yes. Most of our clients start from an outdated or unconvincing site. We rebuild on a solid foundation, with a far more professional and effective result."
+        "a": "Yes — it’s actually a good part of what we do. We look at what’s there, keep what works, and optimize the rest."
       },
       {
         "q": "Will the site be in both French and English?",
-        "a": "Yes, fully bilingual from the start. Every page exists in both languages, built for your French- and English-speaking customers alike."
+        "a": "Yes, all our sites are built bilingual by default, to reach your entire customer base."
       },
       {
         "q": "How will my customers reach me or book a meeting?",
-        "a": "Contact form, online booking, and quick access via WhatsApp. The goal is simple: let a customer reach you in a single tap."
+        "a": "They can send a request right on the site, or reach you by email, phone, or social media to schedule a consultation with you."
       },
       {
         "q": "Will I be able to manage my blog myself?",
-        "a": "Yes. The blog is self-managed: you publish and edit your articles whenever you want, without depending on us."
+        "a": "Yes, you can manage your blog yourself. Or we can also handle it for you as a service."
       },
       {
         "q": "Will the site rank well on Google?",
-        "a": "SEO is planned from the start: structure, metadata, and content built for Google. It’s an ongoing effort over time, not a checkbox."
+        "a": "We structure every site to SEO best practices (speed, mobile, local content). Final ranking also depends on factors we don’t control — but we start from a strong base."
       }
     ]
   },

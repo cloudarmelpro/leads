@@ -40,15 +40,15 @@
   },
   "hero": {
     "badge": "Agence web — PME du Québec",
-    "titleA": "Un site qui fait",
-    "titleB": "sonner votre téléphone.",
+    "titleA": "Un site web qui",
+    "titleB": "inspire confiance.",
     "subtitle": "LEADS conçoit des sites bilingues pour les entreprises de terrain. Un seul objectif : que vos clients vous appellent.",
     "tradesLabel": "Vous êtes dans quoi ?",
     "ctaCall": "Appeler maintenant",
     "ctaRdv": "réserver un créneau",
     "strip1": "Conçu au Québec",
     "strip2": "Bilingue FR · EN",
-    "strip3": "Zone desservie : [À CONFIRMER]",
+    "strip3": "Partout au Québec",
     "demoTag": "Aperçu — votre secteur",
     "demoHandle": "@votre-entreprise",
     "demoCaption": "Cet aperçu change selon votre métier. Votre site parlera à vos clients — dans leurs mots.",
@@ -82,6 +82,18 @@
         "title": "Visible dans le quartier, joignable en un clic",
         "cta": "Nous joindre",
         "imgLabel": "photo commerce — vitrine"
+      },
+      {
+        "trade": "Déneigement",
+        "title": "Contrats de déneigement résidentiel et commercial",
+        "cta": "Réserver ma saison",
+        "imgLabel": "photo chantier — déneigement"
+      },
+      {
+        "trade": "Arboriculture",
+        "title": "Élagage, abattage et entretien des arbres",
+        "cta": "Demander une soumission",
+        "imgLabel": "photo chantier — arboriculture"
       }
     ]
   },
@@ -89,19 +101,15 @@
     "kicker": "Services",
     "titleA": "Ce qu’on fait,",
     "titleB": "concrètement",
-    "intro": "Trois à cinq offres, nommées dans vos mots. La liste réelle sera confirmée avec le client — rien n’est inventé ici.",
+    "intro": "Deux offres claires, pensées pour les entreprises de terrain du Québec.",
     "items": [
       {
-        "name": "[SERVICE 1]",
-        "note": "Contenu réel à injecter : ce que le client obtient, pour qui, en combien de temps."
+        "name": "Site vitrine bilingue",
+        "note": "Un site simple, rapide et clair qui donne juste assez d’information pour que le client décroche son téléphone. Pas de jargon, pas de page inutile."
       },
       {
-        "name": "[SERVICE 2]",
-        "note": "Contenu réel à injecter : le résultat concret, la situation de départ, ce qui change après."
-      },
-      {
-        "name": "[SERVICE 3]",
-        "note": "Contenu réel à injecter : à qui ça s’adresse, ce que ça règle pour le dirigeant."
+        "name": "Refonte de site existant",
+        "note": "On reprend ce qui existe, on coupe le superflu, et on rebâtit autour d’un seul objectif : que le visiteur appelle."
       }
     ]
   },
@@ -115,22 +123,32 @@
       {
         "n": "1",
         "title": "On écoute",
-        "desc": "Un appel court. Vous parlez métier, pas technologie. On repart avec vos mots — ce sont eux qui iront sur le site."
+        "desc": "Un appel court. Vous parlez métier, on prend en note ce qui compte vraiment pour vos clients."
       },
       {
         "n": "2",
-        "title": "On propose",
-        "desc": "Un plan clair et un prix ferme avant d’engager quoi que ce soit. [MODALITÉS À CONFIRMER]"
+        "title": "On analyse",
+        "desc": "On regarde votre site actuel pis votre marché — un constat honnête de ce qui fonctionne et ce qui manque, et on analyse la meilleure façon d’optimiser votre site."
       },
       {
         "n": "3",
-        "title": "On construit",
-        "desc": "Le site prend forme sous vos yeux, en français et en anglais. Vos retours passent avant nos préférences."
+        "title": "Une stratégie, pas juste un site",
+        "desc": "Un plan pensé pour votre métier : quelles pages, quels appels à l’action, quelle structure pour amener des leads qualifiés."
       },
       {
         "n": "4",
-        "title": "On mesure",
-        "desc": "Appels, rendez-vous, demandes : tout est compté. Le site est jugé sur les clients qu’il amène."
+        "title": "On bâtit selon les bonnes pratiques",
+        "desc": "Bilingue, rapide, optimisé mobile, structuré pour Google dès le départ. Vous voyez le site prendre forme — les détails techniques, on les prend en charge."
+      },
+      {
+        "n": "5",
+        "title": "On peaufine ensemble",
+        "desc": "Révision finale avant lancement : on passe en revue chaque détail avec vous avant de mettre le site en ligne."
+      },
+      {
+        "n": "6",
+        "title": "On met le site en ligne",
+        "desc": "Le site est déployé et prêt à recevoir des visiteurs."
       }
     ]
   },
@@ -147,35 +165,35 @@
     "items": [
       {
         "q": "Combien ça coûte ?",
-        "a": "Chaque projet est chiffré avant de commencer, par écrit. Pas de surprise en cours de route. [FOURCHETTE À CONFIRMER]"
+        "a": "Ça dépend du projet. On en jase ensemble au téléphone pour bien cerner vos besoins avant de vous donner un prix clair."
       },
       {
         "q": "Combien de temps ça va me demander ?",
-        "a": "Le moins possible. Quelques rencontres courtes, au téléphone si vous préférez — on s’occupe du reste, textes compris."
+        "a": "Ça dépend du projet, mais pour les projets simples, comptez moins de 5 jours."
       },
       {
         "q": "Je n’ai ni textes, ni photos, ni logo.",
-        "a": "C’est prévu. La rédaction fait partie du travail, et on vous guide pour les visuels. Vous n’arrivez jamais « pas prêt »."
+        "a": "Pas de problème, c’est même la situation la plus courante. Pour les textes, on vous accompagne à chaque étape. Pour les photos, on a accès à des banques d’images professionnelles et à des outils IA pour en générer sur mesure. Et pour le logo, on peut vous accompagner dans sa création, du concept jusqu’au résultat final."
       },
       {
         "q": "J’ai déjà un site, mais il est faible. Vous le refaites ?",
-        "a": "Oui. La plupart de nos clients partent d’un site dépassé ou peu convaincant. On repart sur une base solide, avec un rendu nettement plus professionnel et plus performant."
+        "a": "Oui, c’est même une bonne partie de ce qu’on fait. On regarde ce qui existe, on garde ce qui fonctionne, et on optimise le reste."
       },
       {
         "q": "Le site sera-t-il en français et en anglais ?",
-        "a": "Oui, entièrement bilingue dès le départ. Chaque page existe dans les deux langues, pensée autant pour vos clients francophones qu’anglophones."
+        "a": "Oui, tous nos sites sont conçus bilingues par défaut, pour rejoindre l’ensemble de votre clientèle."
       },
       {
         "q": "Comment mes clients pourront-ils me joindre ou prendre rendez-vous ?",
-        "a": "Formulaire de contact, prise de rendez-vous en ligne et accès rapide par WhatsApp. L’objectif est simple : qu’un client vous joigne en un seul geste."
+        "a": "Ils peuvent faire une demande directement sur le site, ou vous contacter par courriel, téléphone ou réseaux sociaux pour planifier une consultation avec vous."
       },
       {
         "q": "Vais-je pouvoir gérer mon blog moi-même ?",
-        "a": "Oui. Le blog est administrable : vous publiez et modifiez vos articles quand vous voulez, sans dépendre de nous."
+        "a": "Oui, vous pouvez gérer votre blog vous-même. Sinon, on offre aussi le service de s’en occuper pour vous."
       },
       {
         "q": "Le site sera-t-il bien référencé sur Google ?",
-        "a": "Le référencement (SEO) est prévu dès le départ : structure, métadonnées et contenu pensés pour Google. C’est un travail suivi dans le temps, pas une simple case à cocher."
+        "a": "On structure chaque site selon les bonnes pratiques SEO (vitesse, mobile, contenu local). Le classement final dépend aussi de facteurs qu’on ne contrôle pas — mais on part sur de bonnes bases."
       }
     ]
   },

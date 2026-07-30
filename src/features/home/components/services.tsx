@@ -17,13 +17,11 @@ export function Services({ dict }: Props) {
       <div className="mx-auto max-w-290">
         <SectionHeading kicker={t.kicker} titleA={t.titleA} titleB={t.titleB} intro={t.intro} />
 
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
           {t.items.map((item, index) => {
             const Icon = ICONS[index % ICONS.length];
-            // Sens d'entrée selon la colonne (grille 3 colonnes) : gauche depuis la
-            // gauche, droite depuis la droite, centre en simple fondu (dist 0).
-            const col = index % 3;
-            const dir = col === 0 ? "left" : col === 2 ? "right" : "up";
+            // Deux colonnes : la gauche glisse depuis la gauche, la droite depuis la droite.
+            const dir = index % 2 === 0 ? "left" : "right";
             return (
               // Conteneur externe = révélation (glissement). Carte interne = survol :
               // séparés pour que les deux transforms ne se recouvrent pas.
@@ -31,7 +29,7 @@ export function Services({ dict }: Props) {
                 key={item.name}
                 data-reveal={dir}
                 data-reveal-delay={`${index * 80}`}
-                data-reveal-dist={col === 1 ? "0px" : "120px"}
+                data-reveal-dist="120px"
               >
                 <div className="group flex h-full cursor-pointer flex-col rounded-2xl bg-surface p-7 transition-[translate,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none hover:-translate-y-1.5 hover:shadow-[0_0_22px_0_rgba(15,29,23,.14)]">
                   {/* Badge foncé numéroté, en haut à gauche (comme la référence). */}
@@ -49,13 +47,7 @@ export function Services({ dict }: Props) {
                     />
                   </div>
 
-                  {/* Titre + repère « à confirmer » (contenu encore placeholder). */}
-                  <p className="flex flex-wrap items-center gap-2">
-                    <span className="font-display text-lg">{item.name}</span>
-                    <span className="rounded-full border border-dashed border-ligne bg-fond px-2 py-[3px] font-mono text-[11px] text-texte2">
-                      {dict.common.tbd}
-                    </span>
-                  </p>
+                  <h3 className="font-display text-lg">{item.name}</h3>
                   <p className="mt-2 text-sm leading-[1.6] text-texte2 text-pretty">{item.note}</p>
                 </div>
               </div>
