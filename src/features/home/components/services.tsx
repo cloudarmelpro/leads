@@ -1,13 +1,13 @@
-import { LineChart, Monitor, PenTool, Rocket } from "lucide-react";
+import { AtSign, Monitor, RefreshCw, Server } from "lucide-react";
 
 import { SectionHeading } from "@/features/home/components/section-heading";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 
 type Props = { dict: Dictionary };
 
-// Icônes décoratives par carte (placeholder — remplacées quand les vrais services
-// seront confirmés). lucide-react uniquement, jamais d'emoji (CLAUDE.md).
-const ICONS = [Monitor, PenTool, Rocket, LineChart];
+// Une icône par service, dans l'ordre du dictionnaire : création, refonte,
+// hébergement, courriels. lucide-react uniquement, jamais d'emoji (CLAUDE.md).
+const ICONS = [Monitor, RefreshCw, Server, AtSign];
 
 export function Services({ dict }: Props) {
   const t = dict.services;

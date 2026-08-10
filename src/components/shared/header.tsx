@@ -64,7 +64,7 @@ export function Header({ lang, dict }: Props) {
       {/* Marge horizontale sur le <header>, pas sur le conteneur max-w : c'est le
           patron des sections. La mettre à l'intérieur décalerait le logo de 32px. */}
       <header className="w-full px-[clamp(16px,4vw,32px)]">
-        {/* Logo + nav groupés à gauche (alignés à LEADS) ; actions à droite. */}
+        {/* Logo + nav groupés à gauche (alignés au logotype) ; actions à droite. */}
         <div className="mx-auto flex min-h-[68px] max-w-[1160px] items-center py-4">
           <div className="flex items-center gap-8">
             <Link
