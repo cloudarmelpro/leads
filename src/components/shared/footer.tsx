@@ -96,10 +96,12 @@ export function Footer({ lang, dict }: Props) {
           </div>
         </div>
 
-        {/* Mot-symbole géant en filigrane, coupé par le bas de la carte. */}
+        {/* Mot-symbole géant en filigrane, coupé par le bas de la carte.
+            `whitespace-nowrap` : « Talgasy Web » (deux mots) doit rester sur UNE
+            seule ligne, sinon il se casse en deux et remplit tout le footer. */}
         <span
           aria-hidden
-          className="pointer-events-none absolute -bottom-[0.3em] left-1/2 -translate-x-1/2 select-none font-display text-[clamp(88px,23vw,300px)] leading-none font-bold text-encre/[0.035]"
+          className="pointer-events-none absolute bottom-[-0.3em] left-1/2 -translate-x-1/2 select-none whitespace-nowrap font-display text-[clamp(56px,13vw,156px)] leading-none font-bold text-encre/[0.035]"
         >
           {site.name}
         </span>
