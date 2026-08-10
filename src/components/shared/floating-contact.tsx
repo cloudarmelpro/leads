@@ -65,7 +65,7 @@ export function FloatingContact({ dict }: Props) {
         onClick={() => (open ? handleClose() : setOpen(true))}
         aria-label={t.aria}
         aria-expanded={open}
-        className="group animate-sheetup fixed right-4 bottom-[calc(16px+env(safe-area-inset-bottom))] z-95 inline-flex cursor-pointer items-center gap-2.5 rounded-2xl border-none bg-surface px-4 py-3 font-display text-[15px] text-encre shadow-[0_8px_30px_-14px_rgba(15,29,23,.3)] transition-[translate,box-shadow] duration-300 ease-out motion-reduce:transition-none hover:-translate-y-0.5 hover:shadow-[0_14px_36px_-14px_rgba(15,29,23,.4)]"
+        className="group animate-sheetup fixed right-4 bottom-[calc(16px+env(safe-area-inset-bottom))] z-95 inline-flex cursor-pointer items-center gap-2.5 rounded-2xl border-none bg-surface px-4 py-3 font-display text-[15px] text-encre transition-[translate] duration-300 ease-out motion-reduce:transition-none hover:-translate-y-0.5"
       >
         <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-emeraude text-white">
           <Phone

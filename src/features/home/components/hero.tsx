@@ -37,7 +37,7 @@ export function Hero({ dict }: Props) {
             "--reveal-dur": "3400ms",
           } as CSSProperties}
         >
-          <h1 className="max-w-[20ch] font-display text-[40px] leading-none tracking-normal text-balance antialiased md:text-[56px] xl:text-[64px]">
+          <h1 className="max-w-[30ch] font-display text-[40px] leading-none tracking-normal text-balance antialiased md:text-[44px] xl:text-[60px]">
             {t.titleA}{" "}
             <span>{t.titleB}</span>
           </h1>

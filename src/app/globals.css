@@ -17,7 +17,9 @@
   --color-emeraude: #177e4f;
   --color-lueur: #9be8c0;
   --color-menthe: #e7f2eb;
-  --color-fond: #f3f5f2;
+  /* Fond de page = blanc pur ; les cartes/surfaces prennent l'ancien gris-vert
+     (#f3f5f2) via --color-surface ci-dessous : figure-fond inversé (choix client). */
+  --color-fond: #ffffff;
   --color-ligne: #e3ebe4;
   --color-texte2: #4a5f54;
   --color-sapin-doux: #c9dad1;
@@ -27,7 +29,7 @@
      - ink : surface volontairement SOMBRE et FIXE dans les deux thèmes
        (badges numérotés, fonds d'image de hero) — découplée du texte `encre`.
      - accent-strong : émeraude en TEXTE/icône (plus lumineuse en sombre). */
-  --color-surface: #ffffff;
+  --color-surface: #f3f5f2;
   --color-surface-2: #ffffff;
   --color-ink: #0f1d17;
   --color-accent-strong: #177e4f;

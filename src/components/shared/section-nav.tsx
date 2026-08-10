@@ -63,7 +63,7 @@ export function SectionNav({ lang, dict }: Props) {
   return (
     <nav
       aria-label={dict.nav.quickNav}
-      className="fixed right-4 bottom-[calc(78px+env(safe-area-inset-bottom))] z-70 hidden flex-col items-end gap-2 rounded-2xl bg-surface px-4 py-3 shadow-[0_8px_30px_-14px_rgba(15,29,23,.3)] md:flex"
+      className="fixed right-4 bottom-[calc(78px+env(safe-area-inset-bottom))] z-70 hidden flex-col items-end gap-2 rounded-2xl bg-surface px-4 py-3 md:flex"
     >
       {anchors.map((item) => {
         const isActive = active === item.id;
