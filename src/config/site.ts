@@ -6,8 +6,8 @@
  */
 
 export const site = {
-  /** ⚠️ Nom non arrêté — placeholder assumé jusqu'à la décision client (T0.1). */
-  name: "Leads", // Nom de l'entreprise, affiché dans le header et le footer.
+  name: "Talgasy Web", // Nom de l'entreprise, affiché dans le header et le footer.
+  domain: "talgasyweb.ca",
   phone: "514-808-6549" as string | null,
   email: "code.maldia@outlook.com" as string | null,
   address: "Sur rendez-vous · partout au Québec" as string | null,

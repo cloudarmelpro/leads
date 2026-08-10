@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "LEADS — Sites web bilingues pour les entreprises de terrain",
-    "description": "LEADS conçoit des sites bilingues pour les entreprises de terrain du Québec. Un seul objectif : que vos clients vous appellent."
+    "title": "Talgasy Web — Sites web professionnels qui convertissent",
+    "description": "Talgasy Web conçoit des sites web professionnels, structurés pour convertir. Un seul objectif : que vos clients vous appellent, pas votre compétiteur."
   },
   "common": {
     "close": "Fermer",
@@ -40,9 +40,9 @@
   },
   "hero": {
     "badge": "Agence web — PME du Québec",
-    "titleA": "Un site web qui",
-    "titleB": "inspire confiance.",
-    "subtitle": "LEADS conçoit des sites bilingues pour les entreprises de terrain. Un seul objectif : que vos clients vous appellent.",
+    "titleA": "Votre prochain contrat commence par un clic.",
+    "titleB": "Assurez-vous qu’il se termine par un appel.",
+    "subtitle": "Talgasy Web conçoit des sites web professionnels, structurés pour convertir — pour que vos clients vous appellent, pas votre compétiteur.",
     "tradesLabel": "Vous êtes dans quoi ?",
     "ctaCall": "Appeler maintenant",
     "ctaRdv": "réserver un créneau",
@@ -101,15 +101,23 @@
     "kicker": "Services",
     "titleA": "Ce qu’on fait,",
     "titleB": "concrètement",
-    "intro": "Deux offres claires, pensées pour les entreprises de terrain du Québec.",
+    "intro": "Quatre services clairs, pensés pour les entreprises et commerces du Québec.",
     "items": [
       {
-        "name": "Site vitrine bilingue",
-        "note": "Un site simple, rapide et clair qui donne juste assez d’information pour que le client décroche son téléphone. Pas de jargon, pas de page inutile."
+        "name": "Création de site web",
+        "note": "Structure claire, navigation fluide, contenu qui va droit au but : une expérience web premium qui reflète le sérieux de votre entreprise — et qui donne envie d’appeler."
       },
       {
         "name": "Refonte de site existant",
-        "note": "On reprend ce qui existe, on coupe le superflu, et on rebâtit autour d’un seul objectif : que le visiteur appelle."
+        "note": "On analyse ce qui existe, on identifie ce qui bloque la conversion, puis on optimise et améliore chaque élément — structure, vitesse, contenu — pour rebâtir un site qui pousse le visiteur à vous contacter."
+      },
+      {
+        "name": "Hébergement",
+        "note": "On s’occupe de tout : serveur performant, certificat de sécurité, sauvegardes régulières et surveillance continue. Le site reste en ligne, rapide et protégé — en tout temps."
+      },
+      {
+        "name": "Adresses courriel professionnelles",
+        "note": "Un courriel à votre nom de domaine, ça change tout — au lieu d’un Gmail générique, vos clients voient une entreprise établie, sérieuse, qui inspire confiance dès le premier échange."
       }
     ]
   },
@@ -161,49 +169,49 @@
     "kicker": "FAQ",
     "titleA": "Vos questions,",
     "titleB": "sans détour",
-    "intro": "Les réponses aux questions qu'on nous pose le plus souvent. Une autre en tête ? Écrivez-nous, on répond vite.",
+    "intro": "Vous avez des questions avant de démarrer votre projet ? Voici les réponses aux plus fréquentes. Si la vôtre n’y figure pas, contactez-nous — nous répondons rapidement.",
     "items": [
       {
         "q": "Combien ça coûte ?",
-        "a": "Ça dépend du projet. On en jase ensemble au téléphone pour bien cerner vos besoins avant de vous donner un prix clair."
+        "a": "Chaque projet est différent. On commence par une consultation pour bien cerner vos besoins, puis on vous propose un prix clair. Un site web commence à partir de 499 $, et l’hébergement à partir de 299 $."
       },
       {
-        "q": "Combien de temps ça va me demander ?",
-        "a": "Ça dépend du projet, mais pour les projets simples, comptez moins de 5 jours."
+        "q": "Combien de temps prend la conception d’un site ?",
+        "a": "Pour les projets simples, comptez 3 à 5 jours, surtout si vous avez déjà vos photos et vos textes prêts. Pour les projets plus complexes, ça peut prendre quelques semaines."
       },
       {
-        "q": "Je n’ai ni textes, ni photos, ni logo.",
-        "a": "Pas de problème, c’est même la situation la plus courante. Pour les textes, on vous accompagne à chaque étape. Pour les photos, on a accès à des banques d’images professionnelles et à des outils IA pour en générer sur mesure. Et pour le logo, on peut vous accompagner dans sa création, du concept jusqu’au résultat final."
+        "q": "Je n’ai ni textes, ni photos.",
+        "a": "Pas de problème, c’est la situation la plus courante. On vous accompagne pour les textes, et on trouve ou on crée les photos qui conviennent."
       },
       {
         "q": "J’ai déjà un site, mais il est faible. Vous le refaites ?",
-        "a": "Oui, c’est même une bonne partie de ce qu’on fait. On regarde ce qui existe, on garde ce qui fonctionne, et on optimise le reste."
+        "a": "Oui, une refonte est tout à fait possible. On commence par une consultation pour analyser votre site actuel, puis on vous accompagne dans tout le processus de refonte."
       },
       {
         "q": "Le site sera-t-il en français et en anglais ?",
-        "a": "Oui, tous nos sites sont conçus bilingues par défaut, pour rejoindre l’ensemble de votre clientèle."
+        "a": "Oui, tous nos sites sont conçus bilingues par défaut, pour que vous puissiez rejoindre l’ensemble de votre clientèle, peu importe leur langue."
       },
       {
         "q": "Comment mes clients pourront-ils me joindre ou prendre rendez-vous ?",
-        "a": "Ils peuvent faire une demande directement sur le site, ou vous contacter par courriel, téléphone ou réseaux sociaux pour planifier une consultation avec vous."
+        "a": "Ils ont plusieurs façons simples de vous rejoindre : une demande directement sur le site, un courriel, un appel, ou même un message sur les réseaux sociaux. De là, vous planifiez la consultation avec eux, comme ça vous arrange."
       },
       {
-        "q": "Vais-je pouvoir gérer mon blog moi-même ?",
-        "a": "Oui, vous pouvez gérer votre blog vous-même. Sinon, on offre aussi le service de s’en occuper pour vous."
+        "q": "Vais-je pouvoir gérer mon blogue moi-même ?",
+        "a": "Oui, vous êtes libre de gérer votre blogue vous-même. Et si vous manquez de temps ou n’avez pas envie de vous en occuper, on peut aussi s’en charger pour vous."
       },
       {
         "q": "Le site sera-t-il bien référencé sur Google ?",
-        "a": "On structure chaque site selon les bonnes pratiques SEO (vitesse, mobile, contenu local). Le classement final dépend aussi de facteurs qu’on ne contrôle pas — mais on part sur de bonnes bases."
+        "a": "On structure chaque site selon les bonnes pratiques SEO — vitesse, mobile et contenu local — pour optimiser son référencement sur Google. C’est Google qui contrôle le classement final, mais on met toutes les chances de votre côté avec de bonnes bases pour maximiser votre visibilité et votre rendement."
       }
     ]
   },
   "final": {
     "kicker": "Contact",
-    "titleA": "Votre projet commence",
-    "titleB": "maintenant",
-    "subtitle": "Un appel suffit pour savoir si on peut vous aider. Pas de pression, pas de jargon.",
+    "titleA": "Prêt à",
+    "titleB": "commencer",
+    "subtitle": "Une consultation suffit pour déterminer votre besoin et débuter votre projet.",
     "call": "Appeler",
-    "rdv": "Réserver un créneau",
+    "rdv": "Réserver votre consultation",
     "bookingNote": "Réservation en ligne — créneaux en temps réel.",
     "form": "ou passez par le formulaire de contact",
     "gallery": [
@@ -215,7 +223,7 @@
   "footer": {
     "tagA": "Des sites pour les entreprises",
     "tagB": "de terrain.",
-    "description": "LEADS conçoit des sites web bilingues pour les entreprises de terrain du Québec — pensés pour transformer vos visiteurs en appels.",
+    "description": "Talgasy Web conçoit des sites web professionnels et bilingues au Québec — structurés pour transformer vos visiteurs en appels.",
     "navTitle": "Plan du site",
     "coordTitle": "Coordonnées",
     "legal1": "Mentions légales",
@@ -235,7 +243,7 @@
   },
   "blog": {
     "meta": {
-      "title": "Blog — LEADS",
+      "title": "Blog — Talgasy Web",
       "description": "Idées et conseils pour aider les PME du Québec à attirer plus de clients avec leur site web."
     },
     "kicker": "Blog",
@@ -251,7 +259,7 @@
   },
   "about": {
     "meta": {
-      "title": "À propos — LEADS",
+      "title": "À propos — Talgasy Web",
       "description": "L’agence derrière les sites qui font sonner le téléphone des PME du Québec. Notre approche : qualité, professionnalisme, confiance."
     },
     "heroTitle": "À propos",
@@ -260,7 +268,7 @@
       "kicker": "Principes",
       "titleA": "On construit",
       "titleB": "pour le résultat",
-      "note": "LEADS repose sur une idée simple : un site doit vous amener des clients, pas seulement être beau.",
+      "note": "Talgasy Web repose sur une idée simple : un site doit vous amener des clients, pas seulement être beau.",
       "items": [
         {
           "title": "Qualité",
@@ -290,7 +298,7 @@
   },
   "contactPage": {
     "meta": {
-      "title": "Contact — LEADS",
+      "title": "Contact — Talgasy Web",
       "description": "Parlons de votre projet. Réservez un appel gratuit ou écrivez-nous — on vous revient vite."
     },
     "kicker": "Contact",

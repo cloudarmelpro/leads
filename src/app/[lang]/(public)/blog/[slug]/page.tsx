@@ -8,6 +8,7 @@ import { ArticleBody, PostMeta, getAllSlugs, getPost } from "@/features/blog";
 import { isLocale, locales } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { previewBg } from "@/lib/preview-image";
+import { site } from "@/config/site";
 
 export function generateStaticParams() {
   return locales.flatMap((lang) => getAllSlugs().map((slug) => ({ lang, slug })));
@@ -23,7 +24,7 @@ export async function generateMetadata({
   if (!post) return {};
 
   return {
-    title: `${post.title} — LEADS`,
+    title: `${post.title} — ${site.name}`,
     description: post.excerpt,
     alternates: {
       canonical: `/${lang}/blog/${slug}`,

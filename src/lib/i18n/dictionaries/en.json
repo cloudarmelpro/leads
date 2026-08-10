@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "LEADS — Bilingual websites for hands-on businesses",
-    "description": "LEADS builds bilingual websites for hands-on businesses in Québec. One goal: getting your customers to call you."
+    "title": "Talgasy Web — Professional websites that convert",
+    "description": "Talgasy Web builds professional websites, structured to convert. One goal: getting your customers to call you, not your competitor."
   },
   "common": {
     "close": "Close",
@@ -40,9 +40,9 @@
   },
   "hero": {
     "badge": "Web agency — Québec small business",
-    "titleA": "A website that",
-    "titleB": "earns trust.",
-    "subtitle": "LEADS builds bilingual websites for hands-on businesses. One goal: getting your customers to call you.",
+    "titleA": "Your next contract starts with a click.",
+    "titleB": "Make sure it ends with a phone call.",
+    "subtitle": "Talgasy Web builds professional websites, structured to convert — so your customers call you, not your competitor.",
     "tradesLabel": "What’s your trade?",
     "ctaCall": "Call now",
     "ctaRdv": "book a time slot",
@@ -101,15 +101,23 @@
     "kicker": "Services",
     "titleA": "What we do,",
     "titleB": "concretely",
-    "intro": "Two clear offers, built for hands-on Québec businesses.",
+    "intro": "Four clear services, built for Québec businesses and shops.",
     "items": [
       {
-        "name": "Bilingual showcase website",
-        "note": "A simple, fast, clear site that gives just enough information for the customer to pick up the phone. No jargon, no useless pages."
+        "name": "Website creation",
+        "note": "A clear structure, smooth navigation, content that gets straight to the point: a premium web experience that reflects how serious your business is — and makes people want to call."
       },
       {
         "name": "Existing site rebuild",
-        "note": "We take what’s there, cut the clutter, and rebuild it around one goal: getting the visitor to call."
+        "note": "We analyze what’s there, pinpoint what’s blocking conversion, then optimize and improve every element — structure, speed, content — to rebuild a site that pushes the visitor to contact you."
+      },
+      {
+        "name": "Hosting",
+        "note": "We handle everything: a fast server, a security certificate, regular backups and continuous monitoring. Your site stays online, fast and protected — at all times."
+      },
+      {
+        "name": "Professional email addresses",
+        "note": "An email on your own domain changes everything — instead of a generic Gmail, your customers see an established, serious business that earns trust from the very first exchange."
       }
     ]
   },
@@ -161,49 +169,49 @@
     "kicker": "FAQ",
     "titleA": "Your questions,",
     "titleB": "straight up",
-    "intro": "Answers to the questions we hear most often. Have another one? Reach out — we reply fast.",
+    "intro": "Have questions before starting your project? Here are the answers to the most common ones. If yours isn’t here, contact us — we reply fast.",
     "items": [
       {
         "q": "How much does it cost?",
-        "a": "It depends on the project. We chat on the phone to pin down your needs before giving you a clear price."
+        "a": "Every project is different. We start with a consultation to pin down your needs, then give you a clear price. A website starts at $499, and hosting at $299."
       },
       {
-        "q": "How much of my time will it take?",
-        "a": "It depends on the project, but for simple projects, count on less than 5 days."
+        "q": "How long does it take to build a site?",
+        "a": "For simple projects, count on 3 to 5 days, especially if you already have your photos and copy ready. For more complex projects, it can take a few weeks."
       },
       {
-        "q": "I have no copy, photos, or logo.",
-        "a": "No problem — it’s actually the most common situation. For copy, we guide you at every step. For photos, we have access to professional image libraries and AI tools to generate custom ones. And for the logo, we can help you create it, from concept to final result."
+        "q": "I have no copy or photos.",
+        "a": "No problem — it’s the most common situation. We guide you with the copy, and we find or create the photos that fit."
       },
       {
         "q": "I already have a website, but it’s weak. Do you rebuild it?",
-        "a": "Yes — it’s actually a good part of what we do. We look at what’s there, keep what works, and optimize the rest."
+        "a": "Yes, a rebuild is entirely possible. We start with a consultation to analyze your current site, then guide you through the whole rebuild process."
       },
       {
         "q": "Will the site be in both French and English?",
-        "a": "Yes, all our sites are built bilingual by default, to reach your entire customer base."
+        "a": "Yes, all our sites are built bilingual by default, so you can reach your entire customer base, whatever their language."
       },
       {
         "q": "How will my customers reach me or book a meeting?",
-        "a": "They can send a request right on the site, or reach you by email, phone, or social media to schedule a consultation with you."
+        "a": "They have several easy ways to reach you: a request right on the site, an email, a phone call, or even a message on social media. From there, you schedule the consultation with them, however suits you."
       },
       {
         "q": "Will I be able to manage my blog myself?",
-        "a": "Yes, you can manage your blog yourself. Or we can also handle it for you as a service."
+        "a": "Yes, you’re free to manage your blog yourself. And if you’re short on time or would rather not, we can handle it for you too."
       },
       {
         "q": "Will the site rank well on Google?",
-        "a": "We structure every site to SEO best practices (speed, mobile, local content). Final ranking also depends on factors we don’t control — but we start from a strong base."
+        "a": "We structure every site to SEO best practices — speed, mobile and local content — to optimize its Google ranking. Google controls the final ranking, but we put every chance on your side with a strong foundation to maximize your visibility and returns."
       }
     ]
   },
   "final": {
     "kicker": "Contact",
-    "titleA": "Your project starts",
-    "titleB": "right now",
-    "subtitle": "One call is enough to know whether we can help. No pressure, no jargon.",
+    "titleA": "Ready to",
+    "titleB": "get started",
+    "subtitle": "One consultation is enough to define your need and get your project started.",
     "call": "Call",
-    "rdv": "Book a time slot",
+    "rdv": "Book your consultation",
     "bookingNote": "Online booking — real-time slots.",
     "form": "or use the contact form",
     "gallery": [
@@ -215,7 +223,7 @@
   "footer": {
     "tagA": "Websites for",
     "tagB": "hands-on businesses.",
-    "description": "LEADS builds bilingual websites for hands-on businesses in Québec — designed to turn your visitors into calls.",
+    "description": "Talgasy Web builds professional, bilingual websites in Québec — structured to turn your visitors into calls.",
     "navTitle": "Sitemap",
     "coordTitle": "Contact details",
     "legal1": "Legal notice",
@@ -235,7 +243,7 @@
   },
   "blog": {
     "meta": {
-      "title": "Blog — LEADS",
+      "title": "Blog — Talgasy Web",
       "description": "Ideas and advice to help Québec small businesses attract more customers with their website."
     },
     "kicker": "Blog",
@@ -251,7 +259,7 @@
   },
   "about": {
     "meta": {
-      "title": "About — LEADS",
+      "title": "About — Talgasy Web",
       "description": "The agency behind websites that make Québec small businesses’ phones ring. Our approach: quality, professionalism, trust."
     },
     "heroTitle": "About",
@@ -260,7 +268,7 @@
       "kicker": "Principles",
       "titleA": "We build",
       "titleB": "for results",
-      "note": "LEADS is built on a simple idea: your website should bring you customers, not just look good.",
+      "note": "Talgasy Web is built on a simple idea: your website should bring you customers, not just look good.",
       "items": [
         {
           "title": "Quality",
@@ -290,7 +298,7 @@
   },
   "contactPage": {
     "meta": {
-      "title": "Contact — LEADS",
+      "title": "Contact — Talgasy Web",
       "description": "Let’s talk about your project. Book a free call or write to us — we’ll get back to you fast."
     },
     "kicker": "Contact",
