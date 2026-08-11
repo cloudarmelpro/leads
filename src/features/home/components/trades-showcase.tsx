@@ -59,14 +59,14 @@ export function TradesShowcase({ lang, dict }: Props) {
           <div
             data-reveal="up"
             data-reveal-delay={`${t.demos.length * 60}`}
-            className="flex flex-col justify-between rounded-3xl bg-ink p-6 text-white sm:col-span-2 dark:ring-1 dark:ring-white/10"
+            className="flex flex-col justify-between rounded-3xl bg-surface p-6 text-encre sm:col-span-2"
           >
             <p className="max-w-[26ch] font-display text-[clamp(20px,2.4vw,28px)] leading-[1.2] text-balance">
               {t.tradesCardTitle}
             </p>
             <Link
               href={`/${lang}/contact`}
-              className="mt-4 inline-flex w-fit items-center gap-2 text-sm font-medium text-white/90 no-underline transition-colors hover:text-white"
+              className="mt-4 inline-flex w-fit items-center gap-2 text-sm font-medium text-encre no-underline transition-colors hover:text-emeraude dark:hover:text-accent-strong"
             >
               {t.tradesCta}
               <ArrowRight size={16} strokeWidth={2.2} aria-hidden />
