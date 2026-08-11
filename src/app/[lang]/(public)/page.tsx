@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 
-import { Faq, FinalCta, Hero, Method, ProofSlot, Services } from "@/features/home";
+import { Faq, FinalCta, Hero, Method, ProofSlot, Services, TradesShowcase } from "@/features/home";
 import { isLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 
@@ -19,6 +19,7 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
   return (
     <>
       <Hero lang={lang} dict={dict} />
+      <TradesShowcase lang={lang} dict={dict} />
       <Services dict={dict} />
       <Method dict={dict} />
       {SHOW_SOCIAL_PROOF && <ProofSlot dict={dict} />}

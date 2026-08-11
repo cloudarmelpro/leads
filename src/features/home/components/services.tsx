@@ -5,9 +5,12 @@ import type { Dictionary } from "@/lib/i18n/dictionaries";
 
 type Props = { dict: Dictionary };
 
-// Une icône par service, dans l'ordre du dictionnaire : création, refonte,
-// hébergement, courriels. lucide-react uniquement, jamais d'emoji (CLAUDE.md).
+// Une icône par service, dans l'ordre : création, refonte, hébergement, courriels.
 const ICONS = [Monitor, RefreshCw, Server, AtSign];
+// Bento (réf.) : étroite + large / large + étroite.
+const SPAN = ["lg:col-span-1", "lg:col-span-2", "lg:col-span-2", "lg:col-span-1"];
+// Première ligne un peu plus haute que la seconde.
+const ROW_H = ["lg:h-88", "lg:h-88", "lg:h-72", "lg:h-72"];
 
 export function Services({ dict }: Props) {
   const t = dict.services;
@@ -17,40 +20,50 @@ export function Services({ dict }: Props) {
       <div className="mx-auto max-w-290">
         <SectionHeading kicker={t.kicker} titleA={t.titleA} titleB={t.titleB} intro={t.intro} />
 
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+        <div className="mt-10 grid grid-cols-1 gap-5 lg:grid-cols-3">
           {t.items.map((item, index) => {
             const Icon = ICONS[index % ICONS.length];
-            // Deux colonnes : la gauche glisse depuis la gauche, la droite depuis la droite.
-            const dir = index % 2 === 0 ? "left" : "right";
+            const wide = index === 1 || index === 2;
+            const dark = index === 3; // dernière carte foncée : contraste dans le bento
+
             return (
-              // Conteneur externe = révélation (glissement). Carte interne = survol :
-              // séparés pour que les deux transforms ne se recouvrent pas.
-              <div
+              <article
                 key={item.name}
-                data-reveal={dir}
-                data-reveal-delay={`${index * 80}`}
-                data-reveal-dist="120px"
+                data-reveal="up"
+                data-reveal-delay={`${index * 90}`}
+                data-reveal-dist="70px"
+                className={`flex min-h-56 ${ROW_H[index]} flex-col justify-between rounded-3xl p-7 sm:p-8 ${SPAN[index]} ${
+                  dark ? "bg-ink text-white dark:ring-1 dark:ring-white/10" : "bg-surface"
+                }`}
               >
-                <div className="group flex h-full cursor-pointer flex-col rounded-2xl bg-surface p-7 transition-[translate,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none hover:-translate-y-1.5 hover:shadow-[0_0_22px_0_rgba(15,29,23,.14)]">
-                  {/* Badge foncé numéroté, en haut à gauche (comme la référence). */}
-                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-ink font-display text-[15px] text-white shadow-[0_10px_20px_-8px_rgba(15,29,23,.5)]">
-                    {index + 1}
-                  </span>
+                <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-sapin dark:bg-white/12 dark:text-accent-strong">
+                  <Icon size={22} strokeWidth={1.6} aria-hidden />
+                </span>
 
-                  {/* Icône centrale — grande zone verticale pour des cartes hautes. */}
-                  <div className="flex flex-1 items-center justify-center py-28">
-                    <Icon
-                      size={60}
-                      strokeWidth={1.3}
-                      className="text-sapin dark:text-accent-strong transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110 motion-reduce:transition-none"
-                      aria-hidden
-                    />
+                {wide ? (
+                  <div className="sm:flex sm:items-end sm:justify-between sm:gap-10">
+                    <h3 className="font-display text-[clamp(20px,2.2vw,28px)] leading-[1.15] sm:max-w-[46%]">
+                      {item.name}
+                    </h3>
+                    <p className="mt-3 text-sm leading-[1.6] text-texte2 text-pretty sm:mt-0 sm:max-w-[50%]">
+                      {item.note}
+                    </p>
                   </div>
-
-                  <h3 className="font-display text-lg">{item.name}</h3>
-                  <p className="mt-2 text-sm leading-[1.6] text-texte2 text-pretty">{item.note}</p>
-                </div>
-              </div>
+                ) : (
+                  <div>
+                    <h3 className={`font-display text-xl leading-[1.2] ${dark ? "text-white" : ""}`}>
+                      {item.name}
+                    </h3>
+                    <p
+                      className={`mt-3 text-sm leading-[1.6] text-pretty ${
+                        dark ? "text-white/80" : "text-texte2"
+                      }`}
+                    >
+                      {item.note}
+                    </p>
+                  </div>
+                )}
+              </article>
             );
           })}
         </div>

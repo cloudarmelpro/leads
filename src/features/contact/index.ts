@@ -3,4 +3,4 @@
 export { ContactForm } from "./components/contact-form";
 export { ContactHero } from "./components/contact-hero";
 export { BookingWidget } from "./components/booking-widget";
-export { CalcomEmbed } from "./components/calcom-embed";
+export { BookingGate } from "./components/booking-gate";

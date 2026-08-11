@@ -44,6 +44,8 @@
     "titleB": "Assurez-vous qu’il se termine par un appel.",
     "subtitle": "Talgasy Web conçoit des sites web professionnels, structurés pour convertir — pour que vos clients vous appellent, pas votre compétiteur.",
     "tradesLabel": "Vous êtes dans quoi ?",
+    "tradesCta": "Discutons de votre projet",
+    "tradesCardTitle": "Votre secteur n’est pas listé ? On s’adapte à votre métier.",
     "ctaCall": "Appeler maintenant",
     "ctaRdv": "réserver un créneau",
     "strip1": "Conçu au Québec",
@@ -102,6 +104,7 @@
     "titleA": "Ce qu’on fait,",
     "titleB": "concrètement",
     "intro": "Quatre services clairs, pensés pour les entreprises et commerces du Québec.",
+    "cardCta": "Discutons-en",
     "items": [
       {
         "name": "Création de site web",
@@ -332,7 +335,55 @@
       "realtimeNote": "Disponibilités en temps réel, confirmées dans Cal.com.",
       "prevMonth": "Mois précédent",
       "nextMonth": "Mois suivant",
-      "embedNote": "Aperçu du design — le vrai calendrier Cal.com s’affichera ici dès que l’URL sera fournie."
+      "embedNote": "Aperçu du design — le vrai calendrier Cal.com s’affichera ici dès que l’URL sera fournie.",
+      "prequalify": {
+        "intro": "Avant de choisir un créneau, dites-nous en un peu plus. Ça nous permet de préparer un appel vraiment utile — et vous accédez au calendrier juste après.",
+        "name": "Nom",
+        "company": "Entreprise (facultatif)",
+        "service": "Service recherché",
+        "serviceOptions": [
+          "Création de site web",
+          "Refonte de site existant",
+          "Hébergement",
+          "Adresses courriel professionnelles",
+          "Plusieurs services",
+          "Autre / je ne sais pas encore"
+        ],
+        "budget": "Budget approximatif",
+        "budgetOptions": [
+          "Moins de 500 $",
+          "500 – 1 500 $",
+          "1 500 – 3 000 $",
+          "3 000 $ et plus",
+          "À déterminer"
+        ],
+        "choose": "Choisir…",
+        "description": "Décrivez votre besoin",
+        "descriptionHint": "En quelques mots : votre objectif, votre échéance.",
+        "email": "Courriel",
+        "phone": "Téléphone",
+        "consent": "J’accepte d’être contacté au sujet de ma demande.",
+        "consentLink": "Politique de confidentialité",
+        "submit": "Accéder au calendrier",
+        "submitting": "Un instant…",
+        "unlockedTitle": "Parfait — choisissez votre créneau ci-dessous.",
+        "errorTitle": "Un souci est survenu",
+        "errorBody": "Impossible d’enregistrer votre demande. Réessayez, ou écrivez-nous plus bas.",
+        "errors": {
+          "name": "Indiquez votre nom (2 caractères minimum).",
+          "nameMax": "Ce nom est trop long.",
+          "companyMax": "Ce nom d’entreprise est trop long.",
+          "service": "Choisissez un service.",
+          "budget": "Choisissez un budget approximatif.",
+          "description": "Décrivez brièvement votre besoin.",
+          "descriptionMax": "Cette description est trop longue.",
+          "email": "Ce courriel est invalide.",
+          "emailMax": "Ce courriel est trop long.",
+          "phoneMax": "Ce numéro est trop long.",
+          "consent": "Vous devez accepter pour continuer.",
+          "contactRequired": "Indiquez au moins un courriel ou un téléphone."
+        }
+      }
     },
     "form": {
       "title": "Ou écrivez-nous",

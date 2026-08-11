@@ -19,7 +19,7 @@ export function FinalCta({ lang, dict }: Props) {
         data-reveal="up"
         data-reveal-dist="64px"
         data-reveal-duration="1400"
-        className="mx-auto flex max-w-290 flex-col items-center rounded-4xl bg-ink px-[clamp(24px,4vw,56px)] py-[clamp(56px,9vw,90px)] text-center text-white dark:ring-1 dark:ring-white/10"
+        className="mx-auto flex max-w-290 flex-col items-center rounded-4xl bg-sapin px-[clamp(24px,4vw,56px)] py-[clamp(56px,9vw,90px)] text-center text-white dark:ring-1 dark:ring-white/10"
       >
         <span
           data-reveal="up"

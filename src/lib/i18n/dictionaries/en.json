@@ -44,6 +44,8 @@
     "titleB": "Make sure it ends with a phone call.",
     "subtitle": "Talgasy Web builds professional websites, structured to convert — so your customers call you, not your competitor.",
     "tradesLabel": "What’s your trade?",
+    "tradesCta": "Let’s talk about your project",
+    "tradesCardTitle": "Don’t see your trade? We adapt to your field.",
     "ctaCall": "Call now",
     "ctaRdv": "book a time slot",
     "strip1": "Built in Québec",
@@ -102,6 +104,7 @@
     "titleA": "What we do,",
     "titleB": "concretely",
     "intro": "Four clear services, built for Québec businesses and shops.",
+    "cardCta": "Let’s talk",
     "items": [
       {
         "name": "Website creation",
@@ -332,7 +335,55 @@
       "realtimeNote": "Real-time availability, confirmed in Cal.com.",
       "prevMonth": "Previous month",
       "nextMonth": "Next month",
-      "embedNote": "Design preview — the real Cal.com calendar will appear here once the URL is provided."
+      "embedNote": "Design preview — the real Cal.com calendar will appear here once the URL is provided.",
+      "prequalify": {
+        "intro": "Before you pick a time, tell us a bit more. It helps us prepare a genuinely useful call — and you get to the calendar right after.",
+        "name": "Name",
+        "company": "Company (optional)",
+        "service": "Service you need",
+        "serviceOptions": [
+          "Website creation",
+          "Existing site rebuild",
+          "Hosting",
+          "Professional email addresses",
+          "Several services",
+          "Other / not sure yet"
+        ],
+        "budget": "Approximate budget",
+        "budgetOptions": [
+          "Under $500",
+          "$500 – $1,500",
+          "$1,500 – $3,000",
+          "$3,000 and up",
+          "To be determined"
+        ],
+        "choose": "Choose…",
+        "description": "Describe your need",
+        "descriptionHint": "In a few words: your goal, your timeline.",
+        "email": "Email",
+        "phone": "Phone",
+        "consent": "I agree to be contacted about my request.",
+        "consentLink": "Privacy policy",
+        "submit": "Access the calendar",
+        "submitting": "One moment…",
+        "unlockedTitle": "Great — pick your time slot below.",
+        "errorTitle": "Something went wrong",
+        "errorBody": "We couldn’t save your request. Please try again, or write to us below.",
+        "errors": {
+          "name": "Enter your name (2 characters minimum).",
+          "nameMax": "This name is too long.",
+          "companyMax": "This company name is too long.",
+          "service": "Choose a service.",
+          "budget": "Choose an approximate budget.",
+          "description": "Briefly describe your need.",
+          "descriptionMax": "This description is too long.",
+          "email": "This email is invalid.",
+          "emailMax": "This email is too long.",
+          "phoneMax": "This phone number is too long.",
+          "consent": "You must agree to continue.",
+          "contactRequired": "Add at least an email or a phone number."
+        }
+      }
     },
     "form": {
       "title": "Or write to us",

@@ -16,10 +16,10 @@ export function Footer({ lang, dict }: Props) {
     { label: dict.nav.contact, href: `/${lang}/contact` },
   ];
 
+  // Adresse physique retirée : aucun bureau officiel à afficher pour l'instant.
   const coords = [
     site.phone ?? dict.placeholders.phone,
     site.email ?? dict.placeholders.email,
-    site.address ?? dict.placeholders.address,
   ];
 
   return (
