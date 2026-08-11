@@ -1,12 +1,17 @@
-import { Phone } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
-import type { CSSProperties } from "react";
 
 import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 
 type Props = { lang: Locale; dict: Dictionary };
 
+/**
+ * CTA final en bandeau horizontal (réf. « Let's Discuss With Our Team ») :
+ * grand titre à gauche, intitulé + paragraphe au centre, gros bouton-flèche à
+ * droite. Fond émeraude (la couleur de la marque, au lieu du lime de la réf.),
+ * texte en blanc pour le contraste.
+ */
 export function FinalCta({ lang, dict }: Props) {
   const t = dict.final;
 
@@ -18,51 +23,23 @@ export function FinalCta({ lang, dict }: Props) {
       <div
         data-reveal="up"
         data-reveal-dist="64px"
-        data-reveal-duration="1400"
-        className="mx-auto flex max-w-290 flex-col items-center rounded-4xl bg-surface px-[clamp(24px,4vw,56px)] py-[clamp(56px,9vw,90px)] text-center text-encre"
+        className="mx-auto flex max-w-290 flex-col gap-9 rounded-4xl bg-surface px-[clamp(28px,4vw,56px)] py-[clamp(36px,5vw,56px)] text-encre md:flex-row md:items-center md:justify-between md:gap-10"
       >
-        <span
-          data-reveal="up"
-          data-reveal-dist="24px"
-          data-reveal-delay="120"
-          className="mb-7 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-ink text-white"
-        >
-          <Phone size={24} strokeWidth={2.2} aria-hidden />
-        </span>
+        <h2 className="max-w-[13ch] font-display text-[clamp(30px,4.6vw,52px)] leading-[1.04] tracking-normal text-balance">
+          {t.titleA} {t.titleB}
+        </h2>
 
-        {/* Conteneur observé (en place) ; le titre glisse depuis la droite, comme
-            les titres de section. `w-full` pour que le clip couvre toute la carte. */}
-        <div
-          data-reveal-child="right"
-          style={{
-            "--reveal-delay": "220ms",
-            "--reveal-dist": "40vw",
-            "--reveal-dur": "3400ms",
-          } as CSSProperties}
-          className="mb-4 w-full"
-        >
-          <h2 className="mx-auto max-w-[20ch] font-display text-[clamp(28px,5.5vw,46px)] leading-[1.12] tracking-normal text-balance">
-            {t.titleA} {t.titleB}
-          </h2>
+        <div className="md:max-w-[32ch] md:flex-1">
+          <p className="font-display text-[15px]">{t.rdv}</p>
+          <p className="mt-2 text-sm leading-[1.6] text-texte2 text-pretty">{t.subtitle}</p>
         </div>
-
-        <p
-          data-reveal="up"
-          data-reveal-dist="24px"
-          data-reveal-delay="320"
-          className="mx-auto mb-9 max-w-[46ch] text-[17px] leading-[1.6] text-texte2 text-pretty"
-        >
-          {t.subtitle}
-        </p>
 
         <Link
           href={`/${lang}/contact`}
-          data-reveal="up"
-          data-reveal-dist="24px"
-          data-reveal-delay="420"
-          className="inline-flex h-11 items-center justify-center rounded-xl bg-emeraude px-7 text-sm text-white no-underline transition-colors hover:bg-emeraude/90"
+          aria-label={t.rdv}
+          className="group inline-flex h-[clamp(78px,9vw,112px)] w-[clamp(78px,9vw,112px)] shrink-0 items-center justify-center rounded-[26px] border-2 border-encre text-encre transition-colors duration-300 ease-out hover:bg-encre hover:text-surface motion-reduce:transition-none"
         >
-          {t.rdv}
+          <ArrowUpRight size={34} strokeWidth={2} aria-hidden />
         </Link>
       </div>
     </section>
