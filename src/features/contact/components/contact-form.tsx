@@ -142,7 +142,7 @@ export function ContactForm({ lang, dict }: Props) {
               <Label htmlFor="contact-consent" className="font-normal text-texte2">
                 {t.consent}{" "}
                 <Link
-                  href={`/${lang}#`}
+                  href={`/${lang}/confidentialite`}
                   className="font-medium text-sapin dark:text-accent-strong underline underline-offset-2"
                 >
                   {t.consentLink}

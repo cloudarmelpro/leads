@@ -16,7 +16,7 @@ export const site = {
   // Lien Cal.com au format "compte/evenement" (ex. "cloudarmelpro-jj7yjv/leads").
   // Tant qu'il est null, la page contact affiche la maquette ; dès qu'il est
   // rempli, l'embed Cal.com réel s'affiche automatiquement.
-  calLink: "cedric-lxyx74/leads" as string | null,
+  calLink: "cedric.agence/talgasy-web" as string | null,
   social: [
     { key: "facebook", label: "f" },
     { key: "linkedin", label: "in" },

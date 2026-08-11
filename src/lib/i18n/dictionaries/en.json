@@ -229,9 +229,16 @@
     "description": "Talgasy Web builds professional, bilingual websites in Québec — structured to turn your visitors into calls.",
     "navTitle": "Sitemap",
     "coordTitle": "Contact details",
-    "legal1": "Legal notice",
     "legal2": "Privacy (Law 25)",
     "rights": "All rights reserved"
+  },
+  "cookies": {
+    "title": "Your cookies",
+    "body": "We use cookies essential to the site’s operation. With your consent, we may also measure audience to improve it — never advertising.",
+    "accept": "I accept",
+    "decline": "Decline",
+    "learnMore": "Privacy policy",
+    "manage": "Manage my cookies"
   },
   "floating": {
     "label": "Talk to us",
@@ -258,7 +265,9 @@
     "writtenBy": "Written by",
     "backToBlog": "Back to the blog",
     "moreArticles": "More articles",
-    "listSubtitle": "More reads to get the most out of your website."
+    "listSubtitle": "More reads to get the most out of your website.",
+    "emptyTitle": "The first articles are coming soon.",
+    "emptyBody": "We’re preparing practical tips to attract more customers with your website. Check back soon — or reach out in the meantime."
   },
   "about": {
     "meta": {
@@ -335,55 +344,7 @@
       "realtimeNote": "Real-time availability, confirmed in Cal.com.",
       "prevMonth": "Previous month",
       "nextMonth": "Next month",
-      "embedNote": "Design preview — the real Cal.com calendar will appear here once the URL is provided.",
-      "prequalify": {
-        "intro": "Before you pick a time, tell us a bit more. It helps us prepare a genuinely useful call — and you get to the calendar right after.",
-        "name": "Name",
-        "company": "Company (optional)",
-        "service": "Service you need",
-        "serviceOptions": [
-          "Website creation",
-          "Existing site rebuild",
-          "Hosting",
-          "Professional email addresses",
-          "Several services",
-          "Other / not sure yet"
-        ],
-        "budget": "Approximate budget",
-        "budgetOptions": [
-          "Under $500",
-          "$500 – $1,500",
-          "$1,500 – $3,000",
-          "$3,000 and up",
-          "To be determined"
-        ],
-        "choose": "Choose…",
-        "description": "Describe your need",
-        "descriptionHint": "In a few words: your goal, your timeline.",
-        "email": "Email",
-        "phone": "Phone",
-        "consent": "I agree to be contacted about my request.",
-        "consentLink": "Privacy policy",
-        "submit": "Access the calendar",
-        "submitting": "One moment…",
-        "unlockedTitle": "Great — pick your time slot below.",
-        "errorTitle": "Something went wrong",
-        "errorBody": "We couldn’t save your request. Please try again, or write to us below.",
-        "errors": {
-          "name": "Enter your name (2 characters minimum).",
-          "nameMax": "This name is too long.",
-          "companyMax": "This company name is too long.",
-          "service": "Choose a service.",
-          "budget": "Choose an approximate budget.",
-          "description": "Briefly describe your need.",
-          "descriptionMax": "This description is too long.",
-          "email": "This email is invalid.",
-          "emailMax": "This email is too long.",
-          "phoneMax": "This phone number is too long.",
-          "consent": "You must agree to continue.",
-          "contactRequired": "Add at least an email or a phone number."
-        }
-      }
+      "embedNote": "Design preview — the real Cal.com calendar will appear here once the URL is provided."
     },
     "form": {
       "title": "Or write to us",
