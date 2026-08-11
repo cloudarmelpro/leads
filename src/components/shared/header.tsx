@@ -17,7 +17,7 @@ function Wordmark() {
   // Logotype texte façon « MDCC » : gras, sans icône, lettres légèrement espacées.
   // Couleur héritée du parent.
   return (
-    <span className="font-display text-[22px] uppercase tracking-wider">
+    <span className="font-display text-[22px] uppercase tracking-[0.12em]">
       {site.name}
     </span>
   );
@@ -65,8 +65,8 @@ export function Header({ lang, dict }: Props) {
           patron des sections. La mettre à l'intérieur décalerait le logo de 32px. */}
       <header className="w-full px-[clamp(16px,4vw,32px)]">
         {/* Logo + nav groupés à gauche (alignés au logotype) ; actions à droite. */}
-        <div className="mx-auto flex min-h-[68px] max-w-[1160px] items-center py-4">
-          <div className="flex items-center gap-8">
+        <div className="mx-auto flex min-h-17 max-w-290 items-center py-4">
+          <div className="flex items-center gap-4">
             <Link
               href={`/${lang}`}
               data-reveal="left"
@@ -79,7 +79,7 @@ export function Header({ lang, dict }: Props) {
 
             <nav
               aria-label={dict.nav.home}
-              className="hidden items-center gap-6 md:flex"
+              className="hidden items-center gap-4 md:flex"
             >
             {nav.map((item, index) => (
               <Link

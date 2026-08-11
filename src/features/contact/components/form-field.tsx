@@ -1,3 +1,4 @@
+import { ChevronDown } from "lucide-react";
 import type { ComponentProps, ReactNode } from "react";
 
 import { cn } from "@/lib/utils";
@@ -100,5 +101,66 @@ export function FloatingTextarea({
         {label}
       </label>
     </FieldShell>
+  );
+}
+
+type SelectOwnProps = {
+  id: string;
+  label: string;
+  placeholder: string;
+  options: readonly string[];
+  hint?: string;
+  error?: string;
+};
+
+/* Select « outlined » à label au-dessus (un `<select>` a toujours une valeur
+   visible → pas de label flottant à la place-holder). Même bordure que les champs.
+   La valeur enregistrée = le libellé choisi (les options viennent du dictionnaire). */
+export function LabeledSelect({
+  id,
+  label,
+  placeholder,
+  options,
+  hint,
+  error,
+  className,
+  ...props
+}: SelectOwnProps & Omit<ComponentProps<"select">, "id" | "children">) {
+  return (
+    <div className="flex flex-col gap-1.5">
+      <label htmlFor={id} className="text-[13px] font-medium text-texte2">
+        {label}
+      </label>
+      <div className="relative">
+        <select
+          id={id}
+          aria-invalid={!!error}
+          aria-describedby={error ? `${id}-error` : undefined}
+          className={cn(
+            "h-12 w-full appearance-none rounded-lg border border-input bg-transparent pr-10 pl-4 text-base text-encre outline-none transition-colors duration-200 motion-reduce:transition-none focus:border-encre aria-invalid:border-destructive aria-invalid:text-destructive",
+            className,
+          )}
+          {...props}
+        >
+          <option value="">{placeholder}</option>
+          {options.map((opt) => (
+            <option key={opt} value={opt}>
+              {opt}
+            </option>
+          ))}
+        </select>
+        <ChevronDown
+          aria-hidden
+          size={16}
+          className="pointer-events-none absolute top-1/2 right-3.5 -translate-y-1/2 text-texte2"
+        />
+      </div>
+      {hint && !error && <p className="text-[13px] text-texte2">{hint}</p>}
+      {error && (
+        <p id={`${id}-error`} className="text-[13px] text-destructive">
+          {error}
+        </p>
+      )}
+    </div>
   );
 }

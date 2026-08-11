@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import type { CSSProperties } from "react";
 
 import { site } from "@/config/site";
-import { BookingWidget, CalcomEmbed, ContactForm, ContactHero } from "@/features/contact";
+import { BookingGate, BookingWidget, ContactForm, ContactHero } from "@/features/contact";
 import { isLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 
@@ -66,11 +66,9 @@ export default async function ContactPage({ params }: PageProps<"/[lang]/contact
             {t.booking.title}
           </h2>
           {site.calLink ? (
-            // Carte Cal.com à largeur fixe (~1040px) : contrainte + alignée à
-            // gauche pour que son bord gauche colle au titre/header (pas centrée).
-            <div className="max-w-260">
-              <CalcomEmbed calLink={site.calLink} />
-            </div>
+            // Préqualification d'abord : le calendrier ne s'ouvre qu'après le
+            // court formulaire (le lead est capté avec service + budget + besoin).
+            <BookingGate calLink={site.calLink} lang={lang} dict={dict} />
           ) : (
             <BookingWidget lang={lang} dict={dict} />
           )}
@@ -110,12 +108,6 @@ export default async function ContactPage({ params }: PageProps<"/[lang]/contact
                   <p className="text-[13px] text-texte2">{t.aside.phone}</p>
                   <p className="mt-1 font-mono text-sm text-encre">
                     {site.phone ?? dict.placeholders.phone}
-                  </p>
-                </div>
-                <div>
-                  <p className="text-[13px] text-texte2">{t.aside.address}</p>
-                  <p className="mt-1 text-sm leading-[1.5] text-encre">
-                    {site.address ?? dict.placeholders.address}
                   </p>
                 </div>
               </div>

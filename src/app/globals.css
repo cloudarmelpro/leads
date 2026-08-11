@@ -250,6 +250,9 @@ html.reveal-ready [data-reveal="right"] {
 html.reveal-ready [data-reveal].is-visible {
   opacity: 1;
   transform: none;
+  /* Révélation finie : on relâche la couche GPU, sinon le texte reste rasterisé
+     sur un calque composite et paraît légèrement flou (surtout sur grandes cartes). */
+  will-change: auto;
 }
 
 /*
@@ -279,6 +282,7 @@ html.reveal-ready [data-reveal-child="left"] > * {
 html.reveal-ready [data-reveal-child].is-visible > * {
   opacity: 1;
   transform: none;
+  will-change: auto;
 }
 
 @media (prefers-reduced-motion: reduce) {
