@@ -19,13 +19,13 @@ export function FinalCta({ lang, dict }: Props) {
         data-reveal="up"
         data-reveal-dist="64px"
         data-reveal-duration="1400"
-        className="mx-auto flex max-w-290 flex-col items-center rounded-4xl bg-sapin px-[clamp(24px,4vw,56px)] py-[clamp(56px,9vw,90px)] text-center text-white dark:ring-1 dark:ring-white/10"
+        className="mx-auto flex max-w-290 flex-col items-center rounded-4xl bg-surface px-[clamp(24px,4vw,56px)] py-[clamp(56px,9vw,90px)] text-center text-encre"
       >
         <span
           data-reveal="up"
           data-reveal-dist="24px"
           data-reveal-delay="120"
-          className="mb-7 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-white text-ink"
+          className="mb-7 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-ink text-white"
         >
           <Phone size={24} strokeWidth={2.2} aria-hidden />
         </span>
@@ -50,7 +50,7 @@ export function FinalCta({ lang, dict }: Props) {
           data-reveal="up"
           data-reveal-dist="24px"
           data-reveal-delay="320"
-          className="mx-auto mb-9 max-w-[46ch] text-[17px] leading-[1.6] text-white/90 text-pretty"
+          className="mx-auto mb-9 max-w-[46ch] text-[17px] leading-[1.6] text-texte2 text-pretty"
         >
           {t.subtitle}
         </p>
@@ -60,7 +60,7 @@ export function FinalCta({ lang, dict }: Props) {
           data-reveal="up"
           data-reveal-dist="24px"
           data-reveal-delay="420"
-          className="inline-flex h-11 items-center justify-center rounded-xl bg-white px-7 text-sm text-ink no-underline transition-colors hover:bg-white/90"
+          className="inline-flex h-11 items-center justify-center rounded-xl bg-emeraude px-7 text-sm text-white no-underline transition-colors hover:bg-emeraude/90"
         >
           {t.rdv}
         </Link>
