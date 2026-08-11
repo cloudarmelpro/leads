@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { CSSProperties } from "react";
 
@@ -60,6 +61,28 @@ export default async function BlogPage({ params }: PageProps<"/[lang]/blog">) {
         >
           {dict.blog.subtitle}
         </p>
+
+        {/* Aucun article publié pour l'instant : état « à venir » (le placeholder a
+            été retiré). Dès qu'un article existe, le featured + la liste reprennent. */}
+        {posts.length === 0 && (
+          <div
+            data-reveal="up"
+            className="mt-12 rounded-3xl bg-surface p-[clamp(28px,5vw,56px)] text-center"
+          >
+            <p className="mx-auto max-w-[24ch] font-display text-[clamp(22px,3vw,30px)] leading-[1.2] text-balance">
+              {dict.blog.emptyTitle}
+            </p>
+            <p className="mx-auto mt-3 max-w-[48ch] text-base leading-[1.6] text-texte2 text-pretty">
+              {dict.blog.emptyBody}
+            </p>
+            <Link
+              href={`/${lang}/contact`}
+              className="mt-6 inline-flex items-center justify-center rounded-xl bg-emeraude px-5 py-2.5 text-sm font-medium text-white no-underline transition-colors hover:bg-emeraude/90"
+            >
+              {dict.nav.contact}
+            </Link>
+          </div>
+        )}
 
         {featured && (
           <div className="mt-10">

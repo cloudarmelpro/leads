@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { ManageCookiesButton } from "@/components/shared/manage-cookies-button";
 import { site } from "@/config/site";
 import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
@@ -86,12 +87,16 @@ export function Footer({ lang, dict }: Props) {
               © {new Date().getFullYear()} {site.name} — {dict.footer.rights}
             </span>
             <div className="flex flex-wrap gap-x-5 gap-y-1">
-              <span className="text-[13px] text-texte2 transition-colors hover:text-encre">
+              <Link
+                href={`/${lang}/confidentialite`}
+                className="text-[13px] text-texte2 no-underline transition-colors hover:text-encre"
+              >
                 {dict.footer.legal2}
-              </span>
-              <span className="text-[13px] text-texte2 transition-colors hover:text-encre">
-                {dict.footer.legal1}
-              </span>
+              </Link>
+              <ManageCookiesButton
+                label={dict.cookies.manage}
+                className="cursor-pointer text-[13px] text-texte2 transition-colors hover:text-encre"
+              />
             </div>
           </div>
         </div>

@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import type { CSSProperties } from "react";
 
 import { site } from "@/config/site";
-import { BookingGate, BookingWidget, ContactForm, ContactHero } from "@/features/contact";
+import { BookingWidget, CalcomEmbed, ContactForm, ContactHero } from "@/features/contact";
 import { isLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 
@@ -66,9 +66,10 @@ export default async function ContactPage({ params }: PageProps<"/[lang]/contact
             {t.booking.title}
           </h2>
           {site.calLink ? (
-            // Préqualification d'abord : le calendrier ne s'ouvre qu'après le
-            // court formulaire (le lead est capté avec service + budget + besoin).
-            <BookingGate calLink={site.calLink} lang={lang} dict={dict} />
+            // Le formulaire de préqualification est géré par Cal.com lui-même.
+            <div className="max-w-260">
+              <CalcomEmbed calLink={site.calLink} />
+            </div>
           ) : (
             <BookingWidget lang={lang} dict={dict} />
           )}

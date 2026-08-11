@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 
 import "../globals.css";
 
+import { CookieConsent } from "@/components/shared/cookie-consent";
 import { Footer } from "@/components/shared/footer";
 import { FloatingContact } from "@/components/shared/floating-contact";
 import { Header } from "@/components/shared/header";
@@ -83,6 +84,7 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[la
         <Footer lang={lang} dict={dict} />
         <SectionNav lang={lang} dict={dict} />
         <FloatingContact dict={dict} />
+        <CookieConsent lang={lang} dict={dict} />
         <ScrollReveal />
       </body>
     </html>
