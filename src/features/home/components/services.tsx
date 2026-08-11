@@ -24,7 +24,6 @@ export function Services({ dict }: Props) {
           {t.items.map((item, index) => {
             const Icon = ICONS[index % ICONS.length];
             const wide = index === 1 || index === 2;
-            const dark = index === 3; // dernière carte foncée : contraste dans le bento
 
             return (
               <article
@@ -32,9 +31,7 @@ export function Services({ dict }: Props) {
                 data-reveal="up"
                 data-reveal-delay={`${index * 90}`}
                 data-reveal-dist="70px"
-                className={`flex min-h-56 ${ROW_H[index]} flex-col justify-between rounded-3xl p-7 sm:p-8 ${SPAN[index]} ${
-                  dark ? "bg-ink text-white dark:ring-1 dark:ring-white/10" : "bg-surface"
-                }`}
+                className={`flex min-h-56 ${ROW_H[index]} flex-col justify-between rounded-3xl bg-surface p-7 sm:p-8 ${SPAN[index]}`}
               >
                 <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-sapin dark:bg-white/12 dark:text-accent-strong">
                   <Icon size={22} strokeWidth={1.6} aria-hidden />
@@ -51,16 +48,8 @@ export function Services({ dict }: Props) {
                   </div>
                 ) : (
                   <div>
-                    <h3 className={`font-display text-xl leading-[1.2] ${dark ? "text-white" : ""}`}>
-                      {item.name}
-                    </h3>
-                    <p
-                      className={`mt-3 text-sm leading-[1.6] text-pretty ${
-                        dark ? "text-white/80" : "text-texte2"
-                      }`}
-                    >
-                      {item.note}
-                    </p>
+                    <h3 className="font-display text-xl leading-[1.2]">{item.name}</h3>
+                    <p className="mt-3 text-sm leading-[1.6] text-texte2 text-pretty">{item.note}</p>
                   </div>
                 )}
               </article>
