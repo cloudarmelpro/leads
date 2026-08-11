@@ -2,9 +2,8 @@
 
 import { ChevronDown } from "lucide-react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { useId, useState } from "react";
+import { useId, useState, type CSSProperties } from "react";
 
-import { SectionHeading } from "@/features/home/components/section-heading";
 import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 
@@ -19,10 +18,39 @@ export function Faq({ dict }: Props) {
 
   return (
     <section id="faq" className="px-[clamp(16px,4vw,32px)] py-[clamp(56px,8vw,110px)]">
-      <div className="mx-auto max-w-190">
-        <SectionHeading kicker={t.kicker} titleA={t.titleA} titleB={t.titleB} intro={t.intro} />
+      <div className="mx-auto grid max-w-290 grid-cols-1 gap-x-16 gap-y-9 md:grid-cols-[minmax(0,1fr)_minmax(0,1.25fr)] md:items-start">
+        {/* Colonne gauche : intitulé + titre + intro (comme la Méthode). */}
+        <div>
+          <p data-reveal="up" className="mb-4">
+            <span className="rounded-full bg-surface px-3.5 py-1.5 text-[13px] font-semibold text-texte2">
+              {t.kicker}
+            </span>
+          </p>
+          <div
+            data-reveal-child="right"
+            style={
+              {
+                "--reveal-delay": "80ms",
+                "--reveal-dist": "40vw",
+                "--reveal-dur": "3400ms",
+              } as CSSProperties
+            }
+            className="w-full"
+          >
+            <h2 className="font-display text-[clamp(30px,5vw,52px)] leading-[1.05] tracking-normal text-balance">
+              {t.titleA} {t.titleB}
+            </h2>
+          </div>
+          <p
+            data-reveal="left"
+            data-reveal-delay="160"
+            className="mt-5 max-w-[42ch] text-base leading-[1.6] text-texte2 text-pretty"
+          >
+            {t.intro}
+          </p>
+        </div>
 
-        {/* Chaque question dans sa propre carte (blanche, ombre douce, sans bordure). */}
+        {/* Colonne droite : les questions (accordéon). */}
         <div className="flex flex-col gap-4">
           {t.items.map((item, index) => {
             const open = openIndex === index;
