@@ -1,6 +1,6 @@
 import { AtSign, Monitor, RefreshCw, Server } from "lucide-react";
+import type { CSSProperties } from "react";
 
-import { SectionHeading } from "@/features/home/components/section-heading";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 
 type Props = { dict: Dictionary };
@@ -18,7 +18,38 @@ export function Services({ dict }: Props) {
   return (
     <section id="services" className="px-[clamp(16px,4vw,32px)] py-[clamp(56px,8vw,110px)]">
       <div className="mx-auto max-w-290">
-        <SectionHeading kicker={t.kicker} titleA={t.titleA} titleB={t.titleB} intro={t.intro} />
+        {/* En-tête deux colonnes : titre à gauche, intro à droite (alignée en bas). */}
+        <div className="grid grid-cols-1 gap-x-16 gap-y-5 md:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] md:items-end">
+          <div>
+            <p data-reveal="up" className="mb-4">
+              <span className="rounded-full bg-surface px-3.5 py-1.5 text-[13px] font-semibold text-texte2">
+                {t.kicker}
+              </span>
+            </p>
+            <div
+              data-reveal-child="right"
+              style={
+                {
+                  "--reveal-delay": "80ms",
+                  "--reveal-dist": "40vw",
+                  "--reveal-dur": "3400ms",
+                } as CSSProperties
+              }
+              className="w-full"
+            >
+              <h2 className="font-display text-[clamp(30px,5vw,52px)] leading-[1.05] tracking-normal text-balance">
+                {t.titleA} {t.titleB}
+              </h2>
+            </div>
+          </div>
+          <p
+            data-reveal="left"
+            data-reveal-delay="160"
+            className="max-w-[46ch] text-base leading-[1.6] text-texte2 text-pretty md:pb-2"
+          >
+            {t.intro}
+          </p>
+        </div>
 
         <div className="mt-10 grid grid-cols-1 gap-5 lg:grid-cols-3">
           {t.items.map((item, index) => {
