@@ -9,7 +9,7 @@ export const site = {
   name: "Talgasy Web", // Nom de l'entreprise, affiché dans le header et le footer.
   domain: "talgasyweb.ca",
   phone: "514-808-6549" as string | null,
-  email: "code.maldia@outlook.com" as string | null,
+  email: "cedric@talgasyweb.ca" as string | null,
   // Aucun bureau officiel pour l'instant → adresse retirée du site (footer + contact).
   address: null as string | null,
   whatsapp: null as string | null,

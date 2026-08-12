@@ -1,88 +1,43 @@
-import type { CSSProperties } from "react";
-
 import type { Dictionary } from "@/lib/i18n/dictionaries";
-import { PREVIEW_IMAGES, teamPreviewBg } from "@/lib/preview-image";
 
 type Props = { dict: Dictionary };
 
 /**
- * Section équipe. Volontairement SANS photo réelle : on n'invente ni visage ni
- * personne. Les cases restent des placeholders explicites jusqu'à ce que les
- * vrais membres (noms, rôles, photos) soient fournis.
+ * Section équipe SANS visage ni nom : on n'invente personne. Panneau éditorial
+ * clair (statement + note) cohérent avec le reste de la page ; l'accent émeraude
+ * fait écho à l'épine du récit. `team.members` est volontairement ignoré tant que
+ * la vraie équipe n'est pas fournie.
  */
 export function Team({ dict }: Props) {
   const t = dict.about.team;
 
   return (
     <section className="px-[clamp(16px,4vw,32px)] py-[clamp(48px,7vw,96px)]">
-      <div className="mx-auto max-w-290">
-        <p data-reveal="up" className="mb-6">
-          <span className="rounded-full bg-surface px-3.75 py-1.75 text-[13px] font-semibold text-texte2">
-            {t.kicker}
-          </span>
-        </p>
+      <div
+        data-reveal="up"
+        data-reveal-dist="64px"
+        className="relative mx-auto max-w-290 overflow-hidden rounded-4xl bg-surface px-[clamp(24px,4vw,64px)] py-[clamp(44px,6vw,88px)]"
+      >
+        {/* Halo émeraude décoratif dans le coin haut-droit (couleur signature). */}
+        <span
+          aria-hidden
+          className="pointer-events-none absolute -top-24 -right-24 h-80 w-80 rounded-full bg-[radial-gradient(circle,rgba(23,126,79,.16),transparent_70%)] blur-2xl"
+        />
 
-        {/* Titre : glisse depuis la droite, comme les titres de l'accueil. */}
-        <div
-          data-reveal-child="right"
-          style={
-            {
-              "--reveal-delay": "80ms",
-              "--reveal-dist": "40vw",
-              "--reveal-dur": "3400ms",
-            } as CSSProperties
-          }
-          className="w-full"
-        >
-          <h2 className="max-w-[24ch] font-display text-[clamp(23px,3.2vw,36px)] leading-[1.2] tracking-normal text-balance">
-            {t.titleA}
-            <br />
-            {t.titleB}
+        <div className="relative max-w-[46ch]">
+          <p className="mb-6">
+            <span className="rounded-full bg-fond px-3.5 py-1.5 text-[13px] font-semibold text-texte2">
+              {t.kicker}
+            </span>
+          </p>
+
+          <h2 className="font-display text-[clamp(26px,4vw,46px)] leading-[1.1] tracking-normal text-encre text-balance">
+            {t.titleA} {t.titleB}
           </h2>
-        </div>
 
-        {/* ⚠️ Placeholder : noms, rôles et photos ci-dessous sont des EXEMPLES
-            (voir dictionnaires + pravatar). À remplacer par la vraie équipe. */}
-        <p
-          data-reveal="left"
-          data-reveal-delay="160"
-          className="mt-4 max-w-[52ch] text-base leading-[1.6] text-texte2 text-pretty"
-        >
-          {t.note}
-        </p>
-
-        <div className="mt-9 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {t.members.map((member, index) => {
-            const col = index % 3;
-            const dir = col === 0 ? "left" : col === 2 ? "right" : "up";
-            return (
-              <figure
-                key={index}
-                data-reveal={dir}
-                data-reveal-delay={`${index * 80}`}
-                data-reveal-dist={col === 1 ? "0px" : "120px"}
-                className="group"
-              >
-                {/* Wrapper qui découpe le zoom de l'image au survol. */}
-                <div className="overflow-hidden rounded-2xl">
-                  <div
-                    style={teamPreviewBg(index)}
-                    className="flex aspect-[4/5] items-end bg-[repeating-linear-gradient(45deg,#DCE9E0_0_14px,#EDF4EF_14px_28px)] p-3.5 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105 motion-reduce:transition-none"
-                  >
-                    {!PREVIEW_IMAGES && (
-                      <span className="rounded-md bg-white/85 px-2.5 py-1 font-mono text-[11px] text-ink">
-                        {member.imgLabel}
-                      </span>
-                    )}
-                  </div>
-                </div>
-                <figcaption className="mt-4">
-                  <p className="font-display text-lg">{member.name}</p>
-                  <p className="mt-0.5 text-sm text-texte2">{member.role}</p>
-                </figcaption>
-              </figure>
-            );
-          })}
+          <p className="mt-5 text-[clamp(15px,1.8vw,18px)] leading-[1.7] text-texte2 text-pretty">
+            {t.note}
+          </p>
         </div>
       </div>
     </section>

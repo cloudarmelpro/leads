@@ -277,7 +277,13 @@
       "description": "L’agence derrière les sites qui font sonner le téléphone des PME du Québec. Notre approche : qualité, professionnalisme, confiance."
     },
     "heroTitle": "À propos",
-    "heroImgLabel": "photo — équipe / bureau",
+    "story": [
+      "Talgasy Web est né d’une idée simple : aider les entrepreneurs à avancer.",
+      "On sait qu’un bon départ peut faire toute la différence. C’est pourquoi on accompagne les nouvelles entreprises et les jeunes entrepreneurs en leur donnant des bases solides pour présenter leur travail, gagner en crédibilité et commencer à développer leur clientèle.",
+      "Mais on travaille aussi avec des entrepreneurs déjà bien établis qui veulent moderniser leur présence en ligne et enfin avoir un site à la hauteur de l’entreprise qu’ils ont bâtie.",
+      "Pour nous, un site web n’est pas juste une présence sur Internet. C’est un outil qui doit servir l’entreprise : présenter clairement ce qu’elle fait, inspirer confiance et aider les clients à passer à l’action.",
+      "Que ce soit pour lancer votre entreprise, soutenir sa croissance ou améliorer ce qui existe déjà, Talgasy Web veut contribuer concrètement à la réussite des entrepreneurs d’ici."
+    ],
     "principles": {
       "kicker": "Principes",
       "titleA": "On construit",
@@ -286,15 +292,15 @@
       "items": [
         {
           "title": "Qualité",
-          "desc": "On ne joue jamais sur les bas prix. Chaque détail est soigné pour donner une image premium et crédible."
+          "desc": "Nous ne faisons aucun compromis sur la qualité. Chaque détail est soigné afin d’offrir un résultat professionnel, crédible et à la hauteur de votre entreprise."
         },
         {
           "title": "Professionnalisme",
-          "desc": "Un travail sérieux, une exécution rigoureuse. Votre site inspire le sérieux dès la première seconde."
+          "desc": "Nous travaillons avec sérieux, rigueur et transparence à chaque étape. De la première discussion jusqu’à la livraison, vous pouvez compter sur une équipe professionnelle, fiable et engagée dans la réussite de votre projet."
         },
         {
           "title": "Confiance",
-          "desc": "Un prix ferme, des étapes claires, aucune surprise. Vous savez toujours où en est votre projet."
+          "desc": "Des échanges honnêtes, des engagements respectés et un suivi clair du début à la fin."
         }
       ]
     },
@@ -302,12 +308,16 @@
       "kicker": "L’équipe",
       "titleA": "Les personnes derrière",
       "titleB": "vos résultats",
-      "note": "Stratégie, design et développement réunis pour transformer votre site en source de clients.",
+      "note": "Une équipe aux expertises complémentaires, réunie autour d’un même objectif : réaliser chaque projet avec soin.",
       "members": [
         { "name": "Marc Tremblay", "role": "Fondateur & stratégie", "imgLabel": "photo — membre 1" },
         { "name": "Sophie Gagnon", "role": "Direction artistique", "imgLabel": "photo — membre 2" },
         { "name": "Alex Roy", "role": "Développement web", "imgLabel": "photo — membre 3" }
       ]
+    },
+    "cta": {
+      "title": "Parlons de votre projet",
+      "body": "Vous avez un projet en tête? Discutons de vos besoins et voyons comment nous pouvons vous accompagner."
     }
   },
   "contactPage": {
