@@ -1,5 +1,7 @@
-import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import type { CSSProperties } from "react";
+
+import { ArrowRight } from "@/components/ui/arrows";
 
 import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
@@ -17,16 +19,31 @@ export function TradesShowcase({ lang, dict }: Props) {
   const t = dict.hero;
 
   return (
-    <section className="px-[clamp(16px,4vw,32px)] py-[clamp(40px,6vw,80px)]">
+    <section id="secteurs" className="px-[clamp(16px,4vw,32px)] py-[clamp(40px,6vw,80px)]">
       <div className="mx-auto max-w-290">
         <div className="grid grid-cols-1 gap-x-10 gap-y-6 md:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] md:items-end">
-          <h2
-            data-reveal="right"
-            data-reveal-dist="60px"
-            className="font-display text-[clamp(28px,4vw,46px)] leading-[1.06] tracking-normal text-balance"
-          >
-            {t.tradesLabel}
-          </h2>
+          <div>
+            <p data-reveal="up" className="mb-4">
+              <span className="rounded-full bg-surface px-3.5 py-1.5 text-[13px] font-semibold text-texte2">
+                {t.tradesKicker}
+              </span>
+            </p>
+            <div
+              data-reveal-child="right"
+              style={
+                {
+                  "--reveal-delay": "80ms",
+                  "--reveal-dist": "40vw",
+                  "--reveal-dur": "3400ms",
+                } as CSSProperties
+              }
+              className="w-full"
+            >
+              <h2 className="font-display text-[clamp(28px,4vw,46px)] leading-[1.06] tracking-normal text-balance">
+                {t.tradesLabel}
+              </h2>
+            </div>
+          </div>
 
           <div data-reveal="left" data-reveal-delay="120" data-reveal-dist="60px">
             <p className="text-base leading-[1.6] text-texte2 text-pretty">{t.demoCaption}</p>
@@ -69,7 +86,7 @@ export function TradesShowcase({ lang, dict }: Props) {
               className="mt-4 inline-flex w-fit items-center gap-2 text-sm font-medium text-encre no-underline transition-colors hover:text-emeraude dark:hover:text-accent-strong"
             >
               {t.tradesCta}
-              <ArrowRight size={16} strokeWidth={2.2} aria-hidden />
+              <ArrowRight className="w-4" />
             </Link>
           </div>
         </div>

@@ -88,46 +88,6 @@ export default async function ContactPage({ params }: PageProps<"/[lang]/contact
               <p className="mb-6 text-sm text-texte2">{t.form.intro}</p>
               <ContactForm lang={lang} dict={dict} />
             </div>
-
-            {/* Coordonnées à droite — placeholders tant que les vraies infos ne sont
-                pas fournies (CLAUDE.md : ne rien inventer). */}
-            <aside
-              data-reveal="right"
-              data-reveal-dist="80px"
-              data-reveal-delay="120"
-              className="h-fit rounded-2xl bg-surface p-7 shadow-soft"
-            >
-              <p className="mb-5 text-sm font-bold text-encre">{t.aside.title}</p>
-              <div className="flex flex-col gap-5">
-                <div>
-                  <p className="text-[13px] text-texte2">{t.aside.email}</p>
-                  <p className="mt-1 font-mono text-sm break-words text-encre">
-                    {site.email ?? dict.placeholders.email}
-                  </p>
-                </div>
-                <div>
-                  <p className="text-[13px] text-texte2">{t.aside.phone}</p>
-                  <p className="mt-1 font-mono text-sm text-encre">
-                    {site.phone ?? dict.placeholders.phone}
-                  </p>
-                </div>
-              </div>
-
-              <div className="mt-7">
-                <p className="mb-3 text-[13px] text-texte2">{t.aside.follow}</p>
-                <div className="flex gap-2">
-                  {site.social.map((network) => (
-                    <span
-                      key={network.key}
-                      title={dict.common.soon}
-                      className="inline-flex h-[38px] w-[38px] items-center justify-center rounded-[11px] bg-emeraude font-mono text-[13px] font-bold text-white"
-                    >
-                      {network.label}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </aside>
           </div>
         </section>
         </div>
