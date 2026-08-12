@@ -63,20 +63,18 @@ export function FloatingContact({ dict }: Props) {
           z au-dessus du voile pour rester cliquable (bascule ouvrir/fermer). */}
       <button
         type="button"
+        data-floating-contact
         onClick={() => (open ? handleClose() : setOpen(true))}
         aria-label={t.aria}
         aria-expanded={open}
-        className="group animate-sheetup fixed right-4 bottom-[calc(16px+env(safe-area-inset-bottom))] z-95 inline-flex cursor-pointer items-center gap-2.5 rounded-2xl border-none bg-surface px-4 py-3 font-display text-[15px] text-encre transition-[translate] duration-300 ease-out motion-reduce:transition-none hover:-translate-y-0.5"
+        className="group animate-sheetup fixed right-4 bottom-[calc(16px+env(safe-area-inset-bottom))] z-95 inline-flex h-12 w-12 cursor-pointer items-center justify-center rounded-xl border-none bg-emeraude text-white transition-[translate,background-color] duration-300 ease-out motion-reduce:transition-none hover:-translate-y-0.5 hover:bg-emeraude/90"
       >
-        <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-emeraude text-white">
-          <Phone
-            size={15}
-            strokeWidth={2.2}
-            aria-hidden
-            className="transition-transform duration-300 ease-out group-hover:scale-110 motion-reduce:transition-none"
-          />
-        </span>
-        {t.label}
+        <Phone
+          size={20}
+          strokeWidth={2.2}
+          aria-hidden
+          className="transition-transform duration-300 ease-out group-hover:scale-110 motion-reduce:transition-none"
+        />
       </button>
 
       {open && (

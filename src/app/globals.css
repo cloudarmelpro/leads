@@ -154,6 +154,15 @@ section[id] {
   scroll-margin-top: 40px;
 }
 
+/* Sur mobile, le bandeau témoins est une barre pleine largeur en bas : on masque
+   la bulle « Parlez-nous » pendant qu'il est affiché pour éviter le chevauchement.
+   Desktop : bandeau en bas à gauche, bulle en bas à droite → aucun conflit. */
+@media (max-width: 767px) {
+  html.cookie-open [data-floating-contact] {
+    display: none;
+  }
+}
+
 body {
   background: var(--color-fond);
   color: var(--color-encre);
