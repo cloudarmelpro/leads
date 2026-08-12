@@ -20,7 +20,7 @@ export type PrivacyDoc = {
 };
 
 // Date de dernière mise à jour (à réviser à chaque changement de pratiques).
-const UPDATED = "2026-08-11";
+const UPDATED = "2026-08-12";
 
 // ⚠️ À confirmer avec le client : nom de la personne responsable désignée (Loi 25).
 // Tant qu'il n'est pas fourni, on désigne l'entreprise + les coordonnées ci-dessous.
@@ -106,7 +106,8 @@ function fr(): PrivacyDoc {
         h: "Responsable de la protection des renseignements personnels",
         p: [
           `Pour exercer vos droits ou pour toute question sur cette politique, contactez le responsable de la protection des renseignements personnels (${responsable}) : ${email}, ${phone}.`,
-          "Si vous estimez que vos droits n'ont pas été respectés, vous pouvez porter plainte auprès de la Commission d'accès à l'information du Québec.",
+          "Vous pouvez également adresser au responsable toute plainte relative à la protection de vos renseignements personnels. Nous en accusons réception, l'examinons et vous communiquons notre réponse dans un délai raisonnable.",
+          "Si vous estimez que vos droits n'ont pas été respectés, vous pouvez aussi porter plainte auprès de la Commission d'accès à l'information du Québec.",
         ],
       },
     ],
@@ -190,7 +191,8 @@ function en(): PrivacyDoc {
         h: "Person responsible for the protection of personal information",
         p: [
           `To exercise your rights or for any question about this policy, contact the person responsible for the protection of personal information (${responsible}): ${email}, ${phone}.`,
-          "If you believe your rights have not been respected, you may file a complaint with Quebec's Commission d'accès à l'information.",
+          "You may also send the person responsible any complaint regarding the protection of your personal information. We acknowledge receipt, review it, and provide our response within a reasonable time.",
+          "If you believe your rights have not been respected, you may also file a complaint with Quebec's Commission d'accès à l'information.",
         ],
       },
     ],
