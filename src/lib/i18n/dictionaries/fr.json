@@ -18,6 +18,7 @@
   },
   "nav": {
     "home": "Accueil",
+    "sectors": "Secteurs",
     "services": "Services",
     "method": "Méthode",
     "about": "À propos",
@@ -43,6 +44,7 @@
     "titleA": "Votre prochain contrat commence par un clic.",
     "titleB": "Assurez-vous qu’il se termine par un appel.",
     "subtitle": "Talgasy Web conçoit des sites web professionnels, structurés pour convertir — pour que vos clients vous appellent, pas votre compétiteur.",
+    "tradesKicker": "Secteurs",
     "tradesLabel": "Vous êtes dans quoi ?",
     "tradesCta": "Discutons de votre projet",
     "tradesCardTitle": "Votre secteur n’est pas listé ? On s’adapte à votre métier.",

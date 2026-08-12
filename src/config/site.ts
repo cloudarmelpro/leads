@@ -13,6 +13,8 @@ export const site = {
   // Aucun bureau officiel pour l'instant → adresse retirée du site (footer + contact).
   address: null as string | null,
   whatsapp: null as string | null,
+  // Nom d'utilisateur Messenger (m.me/<nom>). null tant que le compte n'existe pas.
+  messenger: null as string | null,
   // Lien Cal.com au format "compte/evenement" (ex. "cloudarmelpro-jj7yjv/leads").
   // Tant qu'il est null, la page contact affiche la maquette ; dès qu'il est
   // rempli, l'embed Cal.com réel s'affiche automatiquement.
@@ -34,6 +36,10 @@ export function mailtoHref(email: string | null): string | null {
 
 export function whatsappHref(number: string | null): string | null {
   return number ? `https://wa.me/${number.replace(/\D/g, "")}` : null;
+}
+
+export function messengerHref(username: string | null): string | null {
+  return username ? `https://m.me/${username}` : null;
 }
 
 export function calcomHref(calLink: string | null): string | null {

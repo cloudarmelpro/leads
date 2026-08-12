@@ -9,7 +9,7 @@ import type { Dictionary } from "@/lib/i18n/dictionaries";
 
 type Props = { lang: Locale; dict: Dictionary };
 
-const SECTION_IDS = ["accueil", "services", "methode", "faq"] as const;
+const SECTION_IDS = ["accueil", "secteurs", "services", "methode", "faq"] as const;
 
 /**
  * Navigation flottante persistante (inspirée de sesame.com) : reste visible au
@@ -50,6 +50,7 @@ export function SectionNav({ lang, dict }: Props) {
   // même logique d'ordre que le header.
   const anchors = [
     { id: "accueil", label: dict.nav.home },
+    { id: "secteurs", label: dict.nav.sectors },
     { id: "services", label: dict.nav.services },
     { id: "methode", label: dict.nav.method },
     { id: "faq", label: dict.nav.faq },

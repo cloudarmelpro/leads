@@ -1,5 +1,6 @@
-import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
+
+import { ArrowRight } from "@/components/ui/arrows";
 
 import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
@@ -37,9 +38,9 @@ export function FinalCta({ lang, dict }: Props) {
         <Link
           href={`/${lang}/contact`}
           aria-label={t.rdv}
-          className="group inline-flex h-[clamp(78px,9vw,112px)] w-[clamp(78px,9vw,112px)] shrink-0 items-center justify-center rounded-[26px] border-2 border-encre text-encre transition-colors duration-300 ease-out hover:bg-encre hover:text-surface motion-reduce:transition-none"
+          className="group inline-flex h-[clamp(78px,9vw,112px)] w-[clamp(78px,9vw,112px)] shrink-0 items-center justify-center rounded-[26px] border border-encre text-encre transition-colors duration-300 ease-out hover:bg-encre hover:text-surface motion-reduce:transition-none"
         >
-          <ArrowUpRight size={34} strokeWidth={2} aria-hidden />
+          <ArrowRight className="w-9" />
         </Link>
       </div>
     </section>

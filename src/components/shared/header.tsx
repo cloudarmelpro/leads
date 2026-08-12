@@ -17,7 +17,7 @@ function Wordmark() {
   // Logotype texte façon « MDCC » : gras, sans icône, lettres légèrement espacées.
   // Couleur héritée du parent.
   return (
-    <span className="font-display text-[22px] uppercase tracking-[0.12em]">
+    <span className="font-display text-[22px] uppercase tracking-wider">
       {site.name}
     </span>
   );
@@ -31,6 +31,7 @@ export function Header({ lang, dict }: Props) {
 
   // D'abord les ancres de l'accueil, puis les pages dédiées (à la fin).
   const nav = [
+    { label: dict.nav.sectors, href: `/${lang}#secteurs` },
     { label: dict.nav.services, href: `/${lang}#services` },
     { label: dict.nav.method, href: `/${lang}#methode` },
     { label: dict.nav.faq, href: `/${lang}#faq` },

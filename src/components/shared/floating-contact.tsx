@@ -1,11 +1,12 @@
 "use client";
 
-import { Calendar, ChevronRight, MessageCircle, Phone, X } from "lucide-react";
+import { Calendar, MessageCircle, Phone, Send, X } from "lucide-react";
 import { useReducedMotion } from "motion/react";
 import { useEffect, useState } from "react";
 
 import { ActionLink } from "@/components/shared/action-link";
-import { calcomHref, site, telHref, whatsappHref } from "@/config/site";
+import { ArrowRight } from "@/components/ui/arrows";
+import { calcomHref, messengerHref, site, telHref, whatsappHref } from "@/config/site";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 
 type Props = { dict: Dictionary };
@@ -133,7 +134,22 @@ export function FloatingContact({ dict }: Props) {
                   <span className="text-[14.5px]">WhatsApp</span>
                   <span className="text-[12px] leading-[1.2] text-texte2">{t.rowWaSub}</span>
                 </span>
-                <ChevronRight size={18} strokeWidth={2.2} aria-hidden className="ml-auto text-texte2" />
+                <ArrowRight className="ml-auto text-texte2" />
+              </ActionLink>
+
+              <ActionLink
+                href={messengerHref(site.messenger)}
+                unavailableLabel={`Messenger — ${dict.common.soon}`}
+                className={ghostRow}
+              >
+                <span className="flex-none text-emeraude dark:text-accent-strong">
+                  <Send size={22} strokeWidth={2.2} aria-hidden />
+                </span>
+                <span className="flex flex-col gap-px">
+                  <span className="text-[14.5px]">Messenger</span>
+                  <span className="text-[12px] leading-[1.2] text-texte2">{t.rowWaSub}</span>
+                </span>
+                <ArrowRight className="ml-auto text-texte2" />
               </ActionLink>
 
               <ActionLink
@@ -149,7 +165,7 @@ export function FloatingContact({ dict }: Props) {
                   <span className="text-[14.5px]">{t.rowRdv}</span>
                   <span className="text-[12px] leading-[1.2] text-texte2">{t.rowRdvSub}</span>
                 </span>
-                <ChevronRight size={18} strokeWidth={2.2} aria-hidden className="ml-auto text-texte2" />
+                <ArrowRight className="ml-auto text-texte2" />
               </ActionLink>
             </div>
 

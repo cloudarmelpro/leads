@@ -18,6 +18,7 @@
   },
   "nav": {
     "home": "Home",
+    "sectors": "Sectors",
     "services": "Services",
     "method": "Method",
     "about": "About",
@@ -43,6 +44,7 @@
     "titleA": "Your next contract starts with a click.",
     "titleB": "Make sure it ends with a phone call.",
     "subtitle": "Talgasy Web builds professional websites, structured to convert — so your customers call you, not your competitor.",
+    "tradesKicker": "Sectors",
     "tradesLabel": "What’s your trade?",
     "tradesCta": "Let’s talk about your project",
     "tradesCardTitle": "Don’t see your trade? We adapt to your field.",
