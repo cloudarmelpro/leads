@@ -10,7 +10,6 @@ import { FloatingContact } from "@/components/shared/floating-contact";
 import { Header } from "@/components/shared/header";
 import { PrePaintScript } from "@/components/shared/pre-paint-script";
 import { ScrollReveal } from "@/components/shared/scroll-reveal";
-import { SectionNav } from "@/components/shared/section-nav";
 import { isLocale, localeHtmlLang, locales } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 
@@ -82,7 +81,6 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[la
         <Header lang={lang} dict={dict} />
         <main id="contenu">{children}</main>
         <Footer lang={lang} dict={dict} />
-        <SectionNav lang={lang} dict={dict} />
         <FloatingContact dict={dict} />
         <CookieConsent lang={lang} dict={dict} />
         <ScrollReveal />

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { CSSProperties } from "react";
 
@@ -5,7 +6,19 @@ import { ArrowRight } from "@/components/ui/arrows";
 
 import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
-import { tradePreviewBg } from "@/lib/preview-image";
+
+// Vraies photos par métier (public/images), dans le MÊME ordre que `hero.demos` :
+// paysagement, excavation, construction, rénovation, commerce local, déneigement,
+// arboriculture. Couplage par index — garder les deux listes synchronisées.
+const TRADE_IMAGES = [
+  "/images/paysagement.jpg",
+  "/images/excavation.jpg",
+  "/images/construction.jpg",
+  "/images/renovation.jpg",
+  "/images/commerce_local.jpg",
+  "/images/deneigemement.jpg",
+  "/images/arboriculture.jpg",
+];
 
 type Props = { lang: Locale; dict: Dictionary };
 
@@ -64,10 +77,16 @@ export function TradesShowcase({ lang, dict }: Props) {
               key={demo.trade}
               data-reveal="up"
               data-reveal-delay={`${i * 60}`}
-              style={tradePreviewBg(i, 600, 600)}
               className="relative flex aspect-5/6 items-end overflow-hidden rounded-3xl bg-menthe"
             >
-              <figcaption className="w-full bg-[linear-gradient(transparent,rgba(15,29,23,.82))] p-5">
+              <Image
+                src={TRADE_IMAGES[i % TRADE_IMAGES.length]}
+                alt={demo.imgLabel}
+                fill
+                sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 380px"
+                className="object-cover"
+              />
+              <figcaption className="relative w-full bg-[linear-gradient(transparent,rgba(15,29,23,.82))] p-5">
                 <span className="text-base font-semibold text-white">{demo.trade}</span>
               </figcaption>
             </figure>

@@ -20,6 +20,13 @@ export function CookieConsent({ lang, dict }: { lang: Locale; dict: Dictionary }
   const t = dict.cookies;
   const [open, setOpen] = useState(false);
 
+  // Sur mobile, le bandeau est une barre pleine largeur en bas : on masque alors
+  // la bulle « Parlez-nous » (via cette classe) pour éviter le chevauchement.
+  useEffect(() => {
+    document.documentElement.classList.toggle("cookie-open", open);
+    return () => document.documentElement.classList.remove("cookie-open");
+  }, [open]);
+
   useEffect(() => {
     let stored: string | null = null;
     try {
@@ -46,7 +53,7 @@ export function CookieConsent({ lang, dict }: { lang: Locale; dict: Dictionary }
     <div
       role="dialog"
       aria-label={t.title}
-      className="animate-fadein fixed bottom-4 left-4 z-90 w-[min(380px,calc(100vw-2rem))] rounded-2xl border border-ligne bg-surface p-5 shadow-[0_20px_50px_-20px_rgba(15,29,23,.4)]"
+      className="animate-fadein fixed right-4 bottom-4 left-4 z-90 rounded-2xl bg-surface p-5 shadow-[0_20px_50px_-20px_rgba(15,29,23,.4)] md:right-auto md:w-[min(380px,calc(100vw-2rem))]"
     >
       <p className="font-display text-[15px] text-encre">{t.title}</p>
       <p className="mt-2 text-[13px] leading-[1.6] text-texte2 text-pretty">
