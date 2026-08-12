@@ -44,6 +44,10 @@ export function useTheme() {
   }, []);
 
   useEffect(() => {
+    // Lecture initiale du choix réel (localStorage/matchMedia, absents au SSR) :
+    // sync unique au montage — volontaire pour un rendu SSR stable, puis correction
+    // côté client. Ne se rejoue pas à chaque rendu.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     sync();
 
     const mq = window.matchMedia("(prefers-color-scheme: dark)");

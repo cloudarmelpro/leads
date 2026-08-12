@@ -277,7 +277,13 @@
       "description": "The agency behind websites that make Québec small businesses’ phones ring. Our approach: quality, professionalism, trust."
     },
     "heroTitle": "About",
-    "heroImgLabel": "photo — team / office",
+    "story": [
+      "Talgasy Web was born from a simple idea: helping entrepreneurs move forward.",
+      "We know a strong start can make all the difference. That’s why we support new businesses and young entrepreneurs, giving them solid foundations to showcase their work, build credibility and start growing their client base.",
+      "But we also work with well-established entrepreneurs who want to modernize their online presence and finally have a website worthy of the business they’ve built.",
+      "To us, a website isn’t just a presence on the Internet. It’s a tool that has to serve the business: clearly present what it does, inspire trust and help clients take action.",
+      "Whether it’s to launch your business, support its growth or improve what already exists, Talgasy Web wants to make a real contribution to the success of local entrepreneurs."
+    ],
     "principles": {
       "kicker": "Principles",
       "titleA": "We build",
@@ -286,15 +292,15 @@
       "items": [
         {
           "title": "Quality",
-          "desc": "We never compete on low prices. Every detail is refined to project a premium, credible image."
+          "desc": "We make no compromise on quality. Every detail is refined to deliver a professional, credible result worthy of your business."
         },
         {
           "title": "Professionalism",
-          "desc": "Serious work, rigorous execution. Your site conveys credibility from the very first second."
+          "desc": "We work with seriousness, rigor and transparency at every step. From the first conversation to delivery, you can count on a professional, reliable team committed to your project’s success."
         },
         {
           "title": "Trust",
-          "desc": "A firm price, clear steps, no surprises. You always know where your project stands."
+          "desc": "Honest exchanges, commitments kept and clear follow-up from start to finish."
         }
       ]
     },
@@ -302,12 +308,16 @@
       "kicker": "The team",
       "titleA": "The people behind",
       "titleB": "your results",
-      "note": "Strategy, design and development, together to turn your site into a source of customers.",
+      "note": "A team with complementary expertise, united around one goal: to carry out every project with care.",
       "members": [
         { "name": "Marc Tremblay", "role": "Founder & strategy", "imgLabel": "photo — member 1" },
         { "name": "Sophie Gagnon", "role": "Art direction", "imgLabel": "photo — member 2" },
         { "name": "Alex Roy", "role": "Web development", "imgLabel": "photo — member 3" }
       ]
+    },
+    "cta": {
+      "title": "Let’s talk about your project",
+      "body": "Have a project in mind? Let’s discuss your needs and see how we can support you."
     }
   },
   "contactPage": {

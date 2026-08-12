@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { AboutHero, Principles, Team } from "@/features/about";
+import { CtaBanner } from "@/components/shared/cta-banner";
+import { AboutHero, Principles, Story, Team } from "@/features/about";
 import { isLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 
@@ -36,8 +37,15 @@ export default async function AboutPage({ params }: PageProps<"/[lang]/a-propos"
   return (
     <>
       <AboutHero dict={dict} />
+      <Story dict={dict} />
       <Principles dict={dict} />
       <Team dict={dict} />
+      <CtaBanner
+        lang={lang}
+        title={dict.about.cta.title}
+        body={dict.about.cta.body}
+        ariaLabel={dict.about.cta.title}
+      />
     </>
   );
 }

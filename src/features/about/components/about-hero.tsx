@@ -21,10 +21,6 @@ export function AboutHero({ dict }: Props) {
         >
           {t.heroTitle}
         </h1>
-
-        <span className="absolute bottom-4 left-4 rounded-md bg-ink/60 px-2.5 py-1 font-mono text-[11px] text-white/70">
-          {t.heroImgLabel}
-        </span>
       </div>
     </section>
   );

@@ -32,6 +32,9 @@ export function CookieConsent({ lang, dict }: { lang: Locale; dict: Dictionary }
     try {
       stored = localStorage.getItem(STORAGE_KEY);
     } catch {}
+    // Ouverture décidée d'après localStorage (indisponible au SSR) : sync unique au
+    // montage, volontaire pour éviter un mismatch d'hydratation de la bannière.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     if (!stored) setOpen(true);
 
     const reopen = () => setOpen(true);

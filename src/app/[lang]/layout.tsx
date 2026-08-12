@@ -8,8 +8,10 @@ import { CookieConsent } from "@/components/shared/cookie-consent";
 import { Footer } from "@/components/shared/footer";
 import { FloatingContact } from "@/components/shared/floating-contact";
 import { Header } from "@/components/shared/header";
+import { JsonLd } from "@/components/shared/json-ld";
 import { PrePaintScript } from "@/components/shared/pre-paint-script";
 import { ScrollReveal } from "@/components/shared/scroll-reveal";
+import { site } from "@/config/site";
 import { isLocale, localeHtmlLang, locales } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 
@@ -37,6 +39,7 @@ export async function generateMetadata({ params }: LayoutProps<"/[lang]">): Prom
   const dict = await getDictionary(lang);
 
   return {
+    metadataBase: new URL(`https://${site.domain}`),
     title: dict.meta.title,
     description: dict.meta.description,
     alternates: {
@@ -72,6 +75,7 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[la
     >
       <body className="min-h-dvh bg-fond text-encre">
         <PrePaintScript />
+        <JsonLd lang={lang} dict={dict} />
         <a
           href="#contenu"
           className="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-100 focus:rounded-xl focus:bg-sapin focus:px-4 focus:py-3 focus:font-bold focus:text-white"
