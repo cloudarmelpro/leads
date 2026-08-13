@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import { ManageCookiesButton } from "@/components/shared/manage-cookies-button";
@@ -31,7 +32,21 @@ export function Footer({ lang, dict }: Props) {
           <div className="grid grid-cols-1 gap-[clamp(28px,4vw,48px)] md:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)_minmax(0,1fr)]">
             {/* Marque + description + réseaux. */}
             <div data-reveal="left" data-reveal-dist="80px">
-              <span className="font-display text-[22px] tracking-[0.04em]">{site.name}</span>
+              {/* Logo (variante inversée en mode sombre). */}
+              <Image
+                src="/LOGO.png"
+                alt={site.name}
+                width={1392}
+                height={596}
+                className="h-8 w-auto dark:hidden"
+              />
+              <Image
+                src="/LOGO-dark.png"
+                alt={site.name}
+                width={1392}
+                height={596}
+                className="hidden h-8 w-auto dark:block"
+              />
               <p className="mt-4 max-w-[44ch] text-sm leading-[1.65] text-texte2">
                 {dict.footer.description}
               </p>

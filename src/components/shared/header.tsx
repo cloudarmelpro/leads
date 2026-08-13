@@ -1,6 +1,7 @@
 "use client";
 
 import { Menu, Phone, X } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -13,13 +14,25 @@ import type { Dictionary } from "@/lib/i18n/dictionaries";
 
 type Props = { lang: Locale; dict: Dictionary };
 
-function Wordmark() {
-  // Logotype texte façon « MDCC » : gras, sans icône, lettres légèrement espacées.
-  // Couleur héritée du parent.
+function Wordmark({ onDark = false }: { onDark?: boolean }) {
+  // Logo image (public/LOGO.png). L'artwork étant sombre, on sert la variante
+  // inversée `LOGO-dark.png` en mode sombre — et TOUJOURS sur fond foncé (menu
+  // mobile `bg-sapin`), via la prop `onDark`.
+  const size = { width: 1392, height: 596 };
+  if (onDark) {
+    return <Image src="/LOGO-dark.png" alt={site.name} {...size} priority className="h-7 w-auto" />;
+  }
   return (
-    <span className="font-display text-[22px] uppercase tracking-wider">
-      {site.name}
-    </span>
+    <>
+      <Image src="/LOGO.png" alt={site.name} {...size} priority className="h-7 w-auto dark:hidden" />
+      <Image
+        src="/LOGO-dark.png"
+        alt={site.name}
+        {...size}
+        priority
+        className="hidden h-7 w-auto dark:block"
+      />
+    </>
   );
 }
 
@@ -142,7 +155,7 @@ export function Header({ lang, dict }: Props) {
           className="animate-fadein fixed inset-0 z-100 flex flex-col overflow-auto bg-sapin px-[clamp(16px,5vw,28px)] pt-4 pb-[calc(20px+env(safe-area-inset-bottom))] text-white"
         >
           <div className="flex min-h-14 items-center justify-between">
-            <Wordmark />
+            <Wordmark onDark />
             <button
               type="button"
               onClick={() => setMenuOpen(false)}
