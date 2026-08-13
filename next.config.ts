@@ -1,9 +1,30 @@
 import type { NextConfig } from "next";
 
-// En-têtes de sécurité appliqués à toutes les routes. Note : PAS de CSP ici —
-// une CSP stricte casserait les scripts inline (thème/pré-peinture, JSON-LD) et
-// l'embed Cal.com ; elle demande des nonces + une allowlist `*.cal.com` et doit
-// être introduite en `Report-Only` d'abord. À faire séparément.
+/**
+ * CSP en `Report-Only` (n'impose rien, remonte seulement les violations).
+ * Choix STATIQUE volontaire (pas de nonce) : une CSP à nonce forcerait le rendu
+ * dynamique et ferait perdre le SSG de tout le site. `'unsafe-inline'` couvre donc
+ * les scripts/styles inline (thème, JSON-LD, next/font) ; l'anti-clickjacking réel
+ * est déjà assuré par `X-Frame-Options`. Autorise l'embed Cal.com et, pour
+ * l'instant, les images externes d'aperçu (picsum/pravatar via `https:`) — à
+ * resserrer sur `'self'` une fois les vraies photos posées, puis passer la CSP en
+ * `Content-Security-Policy` (enforce) après observation des rapports.
+ */
+const csp = [
+  "default-src 'self'",
+  "script-src 'self' 'unsafe-inline' https://app.cal.com https://cal.com",
+  "style-src 'self' 'unsafe-inline'",
+  "img-src 'self' data: blob: https:",
+  "font-src 'self' data:",
+  "connect-src 'self' https://app.cal.com https://*.cal.com",
+  "frame-src https://app.cal.com https://cal.com",
+  "object-src 'none'",
+  "base-uri 'self'",
+  "form-action 'self'",
+  "frame-ancestors 'self'",
+  "upgrade-insecure-requests",
+].join("; ");
+
 const securityHeaders = [
   { key: "X-Content-Type-Options", value: "nosniff" },
   { key: "X-Frame-Options", value: "SAMEORIGIN" },
@@ -14,6 +35,7 @@ const securityHeaders = [
   },
   { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
   { key: "X-DNS-Prefetch-Control", value: "on" },
+  { key: "Content-Security-Policy-Report-Only", value: csp },
 ];
 
 const nextConfig: NextConfig = {
