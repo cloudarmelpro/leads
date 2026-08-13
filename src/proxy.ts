@@ -20,7 +20,9 @@ export function proxy(request: NextRequest) {
   const url = request.nextUrl.clone();
   url.pathname = `/${defaultLocale}${pathname === "/" ? "" : pathname}`;
 
-  return NextResponse.redirect(url);
+  // 308 (permanent) : le mapping « chemin sans locale → /fr » est stable (français
+  // par défaut, marché québécois) → cacheable navigateur/CDN + signal crawler plus net.
+  return NextResponse.redirect(url, 308);
 }
 
 export const config = {
