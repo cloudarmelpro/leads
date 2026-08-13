@@ -22,7 +22,9 @@ const KICKER: Record<Locale, string> = {
   en: "Web agency · Québec",
 };
 
-export const alt = `${site.name} — ${TAGLINE.fr}`;
+// `alt` est au niveau module (pas d'accès à la langue) → on reste neutre : le nom
+// de marque, valable pour les deux langues. Le visuel, lui, est bien localisé.
+export const alt = site.name;
 
 export default async function OpengraphImage({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;

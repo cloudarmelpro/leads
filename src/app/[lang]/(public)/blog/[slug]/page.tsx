@@ -8,6 +8,7 @@ import { ArticleBody, PostMeta, getAllSlugs, getPost } from "@/features/blog";
 import { isLocale, locales } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { previewBg } from "@/lib/preview-image";
+import { pageMetadata } from "@/lib/seo/metadata";
 import { site } from "@/config/site";
 
 export function generateStaticParams() {
@@ -23,18 +24,12 @@ export async function generateMetadata({
   const post = getPost(lang, slug);
   if (!post) return {};
 
-  return {
+  return pageMetadata({
+    lang,
+    path: `/blog/${slug}`,
     title: `${post.title} — ${site.name}`,
     description: post.excerpt,
-    alternates: {
-      canonical: `/${lang}/blog/${slug}`,
-      languages: {
-        "fr-CA": `/fr/blog/${slug}`,
-        "en-CA": `/en/blog/${slug}`,
-        "x-default": `/fr/blog/${slug}`,
-      },
-    },
-  };
+  });
 }
 
 export default async function ArticlePage({ params }: PageProps<"/[lang]/blog/[slug]">) {

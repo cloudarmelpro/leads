@@ -4,6 +4,7 @@ import { ChevronDown } from "lucide-react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useId, useState, type CSSProperties } from "react";
 
+import { Eyebrow } from "@/components/shared/eyebrow";
 import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 
@@ -22,9 +23,7 @@ export function Faq({ dict }: Props) {
         {/* Colonne gauche : intitulé + titre + intro (comme la Méthode). */}
         <div>
           <p data-reveal="up" className="mb-4">
-            <span className="rounded-full bg-surface px-3.5 py-1.5 text-[13px] font-semibold text-texte2">
-              {t.kicker}
-            </span>
+            <Eyebrow>{t.kicker}</Eyebrow>
           </p>
           <div
             data-reveal-child="right"

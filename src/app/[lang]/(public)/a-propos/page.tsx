@@ -5,6 +5,7 @@ import { CtaBanner } from "@/components/shared/cta-banner";
 import { AboutHero, Principles, Story, Team } from "@/features/about";
 import { isLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
+import { pageMetadata } from "@/lib/seo/metadata";
 
 export async function generateMetadata({
   params,
@@ -14,18 +15,12 @@ export async function generateMetadata({
 
   const dict = await getDictionary(lang);
 
-  return {
+  return pageMetadata({
+    lang,
+    path: "/a-propos",
     title: dict.about.meta.title,
     description: dict.about.meta.description,
-    alternates: {
-      canonical: `/${lang}/a-propos`,
-      languages: {
-        "fr-CA": "/fr/a-propos",
-        "en-CA": "/en/a-propos",
-        "x-default": "/fr/a-propos",
-      },
-    },
-  };
+  });
 }
 
 export default async function AboutPage({ params }: PageProps<"/[lang]/a-propos">) {

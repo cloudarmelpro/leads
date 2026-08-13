@@ -6,6 +6,7 @@ import { site } from "@/config/site";
 import { BookingWidget, CalcomEmbed, ContactForm, ContactHero } from "@/features/contact";
 import { isLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
+import { pageMetadata } from "@/lib/seo/metadata";
 
 export async function generateMetadata({
   params,
@@ -14,14 +15,12 @@ export async function generateMetadata({
   if (!isLocale(lang)) return {};
 
   const dict = await getDictionary(lang);
-  return {
+  return pageMetadata({
+    lang,
+    path: "/contact",
     title: dict.contactPage.meta.title,
     description: dict.contactPage.meta.description,
-    alternates: {
-      canonical: `/${lang}/contact`,
-      languages: { "fr-CA": "/fr/contact", "en-CA": "/en/contact", "x-default": "/fr/contact" },
-    },
-  };
+  });
 }
 
 export default async function ContactPage({ params }: PageProps<"/[lang]/contact">) {

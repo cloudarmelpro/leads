@@ -1,5 +1,6 @@
 import type { CSSProperties } from "react";
 
+import { Eyebrow } from "@/components/shared/eyebrow";
 import { MethodAccordion } from "@/features/home/components/method-accordion";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 
@@ -20,9 +21,7 @@ export function Method({ dict }: Props) {
             aligné à droite. */}
         <div className="order-1 md:order-2 md:text-right">
           <p data-reveal="up" className="mb-4">
-            <span className="rounded-full bg-surface px-3.5 py-1.5 text-[13px] font-semibold text-texte2">
-              {t.kicker}
-            </span>
+            <Eyebrow>{t.kicker}</Eyebrow>
           </p>
           <div
             data-reveal-child="right"

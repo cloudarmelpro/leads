@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { site } from "@/config/site";
 import { getPrivacy } from "@/features/legal";
 import { isLocale, localeHtmlLang } from "@/lib/i18n/config";
+import { pageMetadata } from "@/lib/seo/metadata";
 
 export async function generateMetadata({
   params,
@@ -12,17 +13,12 @@ export async function generateMetadata({
   if (!isLocale(lang)) return {};
 
   const doc = getPrivacy(lang);
-  return {
+  return pageMetadata({
+    lang,
+    path: "/confidentialite",
     title: `${doc.title} — ${site.name}`,
-    alternates: {
-      canonical: `/${lang}/confidentialite`,
-      languages: {
-        "fr-CA": "/fr/confidentialite",
-        "en-CA": "/en/confidentialite",
-        "x-default": "/fr/confidentialite",
-      },
-    },
-  };
+    description: doc.intro,
+  });
 }
 
 export default async function PrivacyPage({ params }: PageProps<"/[lang]/confidentialite">) {

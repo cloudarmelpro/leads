@@ -1,3 +1,4 @@
+import { Eyebrow } from "@/components/shared/eyebrow";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 
 type Props = { dict: Dictionary };
@@ -5,8 +6,8 @@ type Props = { dict: Dictionary };
 /**
  * Section équipe SANS visage ni nom : on n'invente personne. Panneau éditorial
  * clair (statement + note) cohérent avec le reste de la page ; l'accent émeraude
- * fait écho à l'épine du récit. `team.members` est volontairement ignoré tant que
- * la vraie équipe n'est pas fournie.
+ * fait écho à l'épine du récit. Aucun visage ni nom tant que la vraie équipe
+ * n'est pas fournie par le client.
  */
 export function Team({ dict }: Props) {
   const t = dict.about.team;
@@ -26,9 +27,7 @@ export function Team({ dict }: Props) {
 
         <div className="relative max-w-[46ch]">
           <p className="mb-6">
-            <span className="rounded-full bg-fond px-3.5 py-1.5 text-[13px] font-semibold text-texte2">
-              {t.kicker}
-            </span>
+            <Eyebrow>{t.kicker}</Eyebrow>
           </p>
 
           <h2 className="font-display text-[clamp(26px,4vw,46px)] leading-[1.1] tracking-normal text-encre text-balance">

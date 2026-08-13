@@ -13,7 +13,7 @@ export function Hero({ dict }: Props) {
   return (
     <section
       id="accueil"
-      className="px-[clamp(16px,4vw,32px)] pt-[clamp(28px,5vw,100px)] pb-[clamp(40px,6vw,80px)]"
+      className="px-[clamp(16px,4vw,32px)] pt-[clamp(28px,8vw,130px)] pb-[clamp(40px,6vw,80px)]"
     >
       {/* En-tête sur deux colonnes (réf. ieaEnergy) : grand titre à gauche,
           paragraphe d'appui en haut à droite. Empilé en une colonne sur mobile.
@@ -27,7 +27,7 @@ export function Hero({ dict }: Props) {
             "--reveal-dur": "3400ms",
           } as CSSProperties}
         >
-          <h1 className="font-display text-[clamp(32px,4.4vw,54px)] leading-[1.05] tracking-normal antialiased">
+          <h1 className="font-display text-[clamp(32px,4.4vw,50px)] leading-[1.05] tracking-normal antialiased">
             {t.titleA}{" "}
             <span className="text-emeraude dark:text-accent-strong">{t.titleB}</span>
           </h1>

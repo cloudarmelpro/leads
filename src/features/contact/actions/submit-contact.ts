@@ -10,14 +10,29 @@ import {
 import { createContactLead } from "@/features/contact/services/create-lead";
 import { isLocale } from "@/lib/i18n/config";
 
-// Limiteur de débit best-effort (mémoire par instance). Pour un vrai contrôle
-// multi-instance, brancher un store (Upstash/Redis) — voir tache.md T5.2.
+// Limiteur de débit best-effort (mémoire par instance). Deux limites connues :
+// 1) l'IP vient de `x-forwarded-for`, falsifiable si le reverse-proxy d'hébergement
+//    ne le réécrit pas — ne s'y fier qu'en présence d'un proxy de confiance ;
+// 2) mono-instance : pour un vrai contrôle multi-instance, brancher un store
+//    (Upstash/Redis) — voir tache.md T5.2. La purge ci-dessous borne la mémoire.
 const HITS = new Map<string, number[]>();
 const WINDOW_MS = 60 * 60 * 1000; // 1 h
 const MAX_PER_WINDOW = 5;
+let lastSweep = Date.now();
+
+// Purge périodique des IP dont tous les hits ont expiré (évite la croissance non
+// bornée de la Map sous un flot d'IP forgées).
+function sweep(now: number): void {
+  if (now - lastSweep < WINDOW_MS) return;
+  lastSweep = now;
+  for (const [ip, times] of HITS) {
+    if (times.every((t) => now - t >= WINDOW_MS)) HITS.delete(ip);
+  }
+}
 
 function rateLimited(ip: string): boolean {
   const now = Date.now();
+  sweep(now);
   const recent = (HITS.get(ip) ?? []).filter((t) => now - t < WINDOW_MS);
   if (recent.length >= MAX_PER_WINDOW) return true;
   recent.push(now);

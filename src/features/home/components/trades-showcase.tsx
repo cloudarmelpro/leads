@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { CSSProperties } from "react";
 
+import { Eyebrow } from "@/components/shared/eyebrow";
 import { ArrowRight } from "@/components/ui/arrows";
 
 import type { Locale } from "@/lib/i18n/config";
@@ -37,9 +38,7 @@ export function TradesShowcase({ lang, dict }: Props) {
         <div className="grid grid-cols-1 gap-x-10 gap-y-6 md:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] md:items-end">
           <div>
             <p data-reveal="up" className="mb-4">
-              <span className="rounded-full bg-surface px-3.5 py-1.5 text-[13px] font-semibold text-texte2">
-                {t.tradesKicker}
-              </span>
+              <Eyebrow>{t.tradesKicker}</Eyebrow>
             </p>
             <div
               data-reveal-child="right"
