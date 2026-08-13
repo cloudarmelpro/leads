@@ -14,6 +14,7 @@ import { ScrollReveal } from "@/components/shared/scroll-reveal";
 import { site } from "@/config/site";
 import { isLocale, localeHtmlLang, locales } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
+import { pageMetadata } from "@/lib/seo/metadata";
 
 // `next/font` n'accepte que des littéraux statiques : ni variable, ni spread.
 // `latin-ext` couvre les caractères français absents de `latin` (œ, Œ).
@@ -40,22 +41,7 @@ export async function generateMetadata({ params }: LayoutProps<"/[lang]">): Prom
 
   return {
     metadataBase: new URL(`https://${site.domain}`),
-    title: dict.meta.title,
-    description: dict.meta.description,
-    alternates: {
-      canonical: `/${lang}`,
-      languages: {
-        "fr-CA": "/fr",
-        "en-CA": "/en",
-        "x-default": "/fr",
-      },
-    },
-    openGraph: {
-      title: dict.meta.title,
-      description: dict.meta.description,
-      locale: localeHtmlLang[lang],
-      type: "website",
-    },
+    ...pageMetadata({ lang, title: dict.meta.title, description: dict.meta.description }),
   };
 }
 

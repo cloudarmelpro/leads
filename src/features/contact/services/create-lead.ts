@@ -25,11 +25,8 @@ let tableEnsured = false;
 export async function createContactLead(lead: LeadInput): Promise<CreateLeadResult> {
   const sql = getSql();
   if (!sql) {
-    console.error("[contact] DATABASE_URL manquant — lead NON sauvegardé.", {
-      name: lead.name,
-      email: lead.email,
-      phone: lead.phone,
-    });
+    // Ne jamais loguer les données personnelles du lead (Loi 25).
+    console.error("[contact] DATABASE_URL manquant — lead NON sauvegardé.");
     return { ok: false };
   }
 
@@ -58,7 +55,8 @@ export async function createContactLead(lead: LeadInput): Promise<CreateLeadResu
         ${lead.locale}
       )`;
   } catch (error) {
-    console.error("[contact] échec de l'écriture du lead", error);
+    // On logue le message, pas l'objet complet (peut contenir des valeurs PII).
+    console.error("[contact] échec de l'écriture du lead:", (error as Error)?.message);
     return { ok: false };
   }
 
@@ -66,7 +64,10 @@ export async function createContactLead(lead: LeadInput): Promise<CreateLeadResu
   try {
     await sendLeadNotification(lead);
   } catch (error) {
-    console.error("[contact] lead sauvegardé, mais notification courriel échouée", error);
+    console.error(
+      "[contact] lead sauvegardé, mais notification courriel échouée:",
+      (error as Error)?.message,
+    );
   }
 
   return { ok: true };

@@ -2,6 +2,8 @@ import "server-only";
 
 import { Resend } from "resend";
 
+import { env } from "@/lib/env";
+
 // Type local : `lib/` est feuille, il ne dépend pas de `features/`.
 type Payload = {
   name: string;
@@ -17,8 +19,8 @@ type Payload = {
  * de toute façon déjà sauvegardé en base). Peut lever — l'appelant l'attrape.
  */
 export async function sendLeadNotification(lead: Payload): Promise<void> {
-  const apiKey = process.env.RESEND_API_KEY;
-  const to = process.env.LEAD_NOTIFICATION_EMAIL;
+  const apiKey = env.RESEND_API_KEY;
+  const to = env.LEAD_NOTIFICATION_EMAIL;
 
   if (!apiKey || !to) {
     console.warn("[email] RESEND_API_KEY ou LEAD_NOTIFICATION_EMAIL manquant — notification ignorée.");
@@ -26,7 +28,7 @@ export async function sendLeadNotification(lead: Payload): Promise<void> {
   }
 
   const resend = new Resend(apiKey);
-  const from = process.env.LEAD_FROM_EMAIL || "onboarding@resend.dev";
+  const from = env.LEAD_FROM_EMAIL;
 
   await resend.emails.send({
     from,

@@ -3,23 +3,23 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { CSSProperties } from "react";
 
+import { Eyebrow } from "@/components/shared/eyebrow";
 import { BlogFeatured, PostCard, getPosts } from "@/features/blog";
 import { isLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
+import { pageMetadata } from "@/lib/seo/metadata";
 
 export async function generateMetadata({ params }: PageProps<"/[lang]/blog">): Promise<Metadata> {
   const { lang } = await params;
   if (!isLocale(lang)) return {};
 
   const dict = await getDictionary(lang);
-  return {
+  return pageMetadata({
+    lang,
+    path: "/blog",
     title: dict.blog.meta.title,
     description: dict.blog.meta.description,
-    alternates: {
-      canonical: `/${lang}/blog`,
-      languages: { "fr-CA": "/fr/blog", "en-CA": "/en/blog", "x-default": "/fr/blog" },
-    },
-  };
+  });
 }
 
 export default async function BlogPage({ params }: PageProps<"/[lang]/blog">) {
@@ -34,9 +34,7 @@ export default async function BlogPage({ params }: PageProps<"/[lang]/blog">) {
     <div className="px-[clamp(16px,4vw,32px)] pt-[clamp(24px,4vw,48px)] pb-[clamp(48px,7vw,96px)]">
       <div className="mx-auto max-w-290">
         <p data-reveal="up" className="mb-4">
-          <span className="rounded-full bg-surface px-3.75 py-1.75 text-[13px] font-semibold text-texte2">
-            {dict.blog.kicker}
-          </span>
+          <Eyebrow>{dict.blog.kicker}</Eyebrow>
         </p>
         {/* Titre : glisse depuis la droite, comme les titres de l'accueil. */}
         <div

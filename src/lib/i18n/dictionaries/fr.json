@@ -308,12 +308,7 @@
       "kicker": "L’équipe",
       "titleA": "Les personnes derrière",
       "titleB": "vos résultats",
-      "note": "Une équipe aux expertises complémentaires, réunie autour d’un même objectif : réaliser chaque projet avec soin.",
-      "members": [
-        { "name": "Marc Tremblay", "role": "Fondateur & stratégie", "imgLabel": "photo — membre 1" },
-        { "name": "Sophie Gagnon", "role": "Direction artistique", "imgLabel": "photo — membre 2" },
-        { "name": "Alex Roy", "role": "Développement web", "imgLabel": "photo — membre 3" }
-      ]
+      "note": "Une équipe aux expertises complémentaires, réunie autour d’un même objectif : réaliser chaque projet avec soin."
     },
     "cta": {
       "title": "Parlons de votre projet",

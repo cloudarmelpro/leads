@@ -1,6 +1,7 @@
 import { AtSign, Monitor, RefreshCw, Server } from "lucide-react";
 import type { CSSProperties } from "react";
 
+import { Eyebrow } from "@/components/shared/eyebrow";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 
 type Props = { dict: Dictionary };
@@ -22,9 +23,7 @@ export function Services({ dict }: Props) {
         <div className="grid grid-cols-1 gap-x-16 gap-y-5 md:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] md:items-end">
           <div>
             <p data-reveal="up" className="mb-4">
-              <span className="rounded-full bg-surface px-3.5 py-1.5 text-[13px] font-semibold text-texte2">
-                {t.kicker}
-              </span>
+              <Eyebrow>{t.kicker}</Eyebrow>
             </p>
             <div
               data-reveal-child="right"

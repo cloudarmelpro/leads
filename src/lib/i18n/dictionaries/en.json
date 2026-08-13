@@ -308,12 +308,7 @@
       "kicker": "The team",
       "titleA": "The people behind",
       "titleB": "your results",
-      "note": "A team with complementary expertise, united around one goal: to carry out every project with care.",
-      "members": [
-        { "name": "Marc Tremblay", "role": "Founder & strategy", "imgLabel": "photo — member 1" },
-        { "name": "Sophie Gagnon", "role": "Art direction", "imgLabel": "photo — member 2" },
-        { "name": "Alex Roy", "role": "Web development", "imgLabel": "photo — member 3" }
-      ]
+      "note": "A team with complementary expertise, united around one goal: to carry out every project with care."
     },
     "cta": {
       "title": "Let’s talk about your project",
