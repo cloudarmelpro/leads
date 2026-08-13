@@ -19,6 +19,8 @@ export function JsonLd({ lang, dict }: Props) {
     "@id": `${base}/#business`,
     name: site.name,
     url: base,
+    logo: `${base}/LOGO.png`,
+    image: `${base}/LOGO.png`,
     description: dict.meta.description,
     ...(site.email ? { email: site.email } : {}),
     ...(phoneDigits ? { telephone: `+1${phoneDigits}` } : {}),
