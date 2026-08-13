@@ -38,11 +38,16 @@ export function pageMetadata({ lang, path = "", title, description }: Args): Met
       url: canonical,
       locale: localeHtmlLang[lang],
       type: "website",
+      // Sans cette clé, l'`openGraph` défini par page ÉCRASE l'image héritée du
+      // fichier [lang]/opengraph-image.tsx → sous-pages sans aperçu social. On
+      // pointe la route OG par langue (résolue en absolu via metadataBase).
+      images: [`/${lang}/opengraph-image`],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
+      images: [`/${lang}/opengraph-image`],
     },
   };
 }
