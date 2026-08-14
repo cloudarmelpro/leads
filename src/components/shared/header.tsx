@@ -1,7 +1,6 @@
 "use client";
 
 import { Menu, Phone, X } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -15,35 +14,20 @@ import type { Dictionary } from "@/lib/i18n/dictionaries";
 type Props = { lang: Locale; dict: Dictionary };
 
 function Wordmark({ onDark = false }: { onDark?: boolean }) {
-  // Logo image (public/LOGO.png). L'artwork étant sombre, on sert la variante
-  // inversée `LOGO-dark.png` en mode sombre — et TOUJOURS sur fond foncé (menu
-  // mobile `bg-sapin`), via la prop `onDark`.
-  // `unoptimized` : le logo est un wordmark aux bords nets ; l'optimiseur next/image
-  // (WebP q75) l'adoucirait à cette petite taille. Le PNG brut (54 Ko) reste net.
-  // `priority` seulement sur la variante claire (visible par défaut) : évite un
-  // double preload render-blocking (les 2 variantes étaient préchargées alors
-  // qu'une seule est visible selon le thème).
-  const size = { width: 1392, height: 596 };
+  // Logo vectoriel (public/talgasy-logo.svg) : net à toute taille, aucun grain.
+  // Variante `-dark` (texte clair) en mode sombre et TOUJOURS sur fond foncé (menu
+  // mobile `bg-sapin`), via `onDark`. <img> simple : un SVG local de confiance
+  // n'a pas besoin de l'optimiseur next/image.
   if (onDark) {
-    return <Image src="/LOGO-dark.png" alt={site.name} {...size} unoptimized className="h-9 w-auto" />;
+    // eslint-disable-next-line @next/next/no-img-element
+    return <img src="/talgasy-logo-dark.svg" alt={site.name} className="h-9 w-auto" />;
   }
   return (
     <>
-      <Image
-        src="/LOGO.png"
-        alt={site.name}
-        {...size}
-        priority
-        unoptimized
-        className="h-9 w-auto dark:hidden"
-      />
-      <Image
-        src="/LOGO-dark.png"
-        alt={site.name}
-        {...size}
-        unoptimized
-        className="hidden h-9 w-auto dark:block"
-      />
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src="/talgasy-logo.svg" alt={site.name} className="h-9 w-auto dark:hidden" />
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src="/talgasy-logo-dark.svg" alt={site.name} className="hidden h-9 w-auto dark:block" />
     </>
   );
 }

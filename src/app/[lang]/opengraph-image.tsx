@@ -35,7 +35,7 @@ export default async function OpengraphImage({ params }: { params: Promise<{ lan
 
   // Logo (variante claire) chargé en data-URI : Satori/ImageResponse ne résout pas
   // les URLs relatives locales au build.
-  const logo = await readFile(join(process.cwd(), "public/LOGO-dark.png"));
+  const logo = await readFile(join(process.cwd(), "public/talgasy-logo-dark.png"));
   const logoSrc = `data:image/png;base64,${logo.toString("base64")}`;
 
   return new ImageResponse(
@@ -69,7 +69,7 @@ export default async function OpengraphImage({ params }: { params: Promise<{ lan
 
         <div style={{ display: "flex", flexDirection: "column", gap: "28px" }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={logoSrc} width={520} height={223} alt={site.name} />
+          <img src={logoSrc} width={540} height={202} alt={site.name} />
           <span style={{ fontSize: "42px", color: "#cfe6d8" }}>{TAGLINE[l]}</span>
         </div>
 

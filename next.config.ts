@@ -1,17 +1,16 @@
 import type { NextConfig } from "next";
 
 /**
- * CSP APPLIQUÉE (enforce). Choix STATIQUE volontaire (pas de nonce) : une CSP à
- * nonce forcerait le rendu dynamique et ferait perdre le SSG de tout le site.
- * `'unsafe-inline'` couvre donc les scripts/styles inline (thème, JSON-LD,
- * next/font) — protection XSS partielle assumée, mais on gagne le verrouillage des
- * sources (frame-ancestors, object-src none, base-uri, form-action) et la liste
- * blanche des ressources. L'embed Cal.com est autorisé sur tous ses sous-domaines
- * (`*.cal.com`). Les images externes d'aperçu passent via `https:` — à resserrer
- * sur `'self'` une fois les vraies photos client posées.
- * NB : Hostinger (hcdn) ajoute son propre `Content-Security-Policy:
- * upgrade-insecure-requests` — inoffensif et additif (le navigateur applique les
- * deux politiques ; celle de Hostinger ne restreint aucune ressource).
+ * CSP en `Report-Only`. ⚠️ CONTRAINTE HOSTINGER : le CDN (hcdn) ÉCRASE tout
+ * en-tête `Content-Security-Policy` (enforce) de l'origine par le sien
+ * (`upgrade-insecure-requests`). Envoyer notre politique en enforce la fait donc
+ * DISPARAÎTRE. En `Report-Only` (nom d'en-tête différent), Hostinger la laisse
+ * passer : notre politique reste au moins présente/observable, aux côtés du header
+ * minimal de Hostinger. Pour une vraie CSP appliquée, il faudrait désactiver
+ * l'injection d'en-têtes côté hPanel ou le CDN Hostinger (à voir avec le support).
+ * Choix STATIQUE volontaire (pas de nonce → garde le SSG) ; `'unsafe-inline'`
+ * couvre les scripts/styles inline (thème, JSON-LD, next/font). L'embed Cal.com est
+ * autorisé sur `*.cal.com`. Images d'aperçu externes via `https:`.
  */
 const csp = [
   "default-src 'self'",
@@ -38,7 +37,7 @@ const securityHeaders = [
   },
   { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
   { key: "X-DNS-Prefetch-Control", value: "on" },
-  { key: "Content-Security-Policy", value: csp },
+  { key: "Content-Security-Policy-Report-Only", value: csp },
 ];
 
 const nextConfig: NextConfig = {
