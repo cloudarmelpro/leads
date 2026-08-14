@@ -18,18 +18,30 @@ function Wordmark({ onDark = false }: { onDark?: boolean }) {
   // Logo image (public/LOGO.png). L'artwork étant sombre, on sert la variante
   // inversée `LOGO-dark.png` en mode sombre — et TOUJOURS sur fond foncé (menu
   // mobile `bg-sapin`), via la prop `onDark`.
+  // `unoptimized` : le logo est un wordmark aux bords nets ; l'optimiseur next/image
+  // (WebP q75) l'adoucirait à cette petite taille. Le PNG brut (54 Ko) reste net.
   const size = { width: 1392, height: 596 };
   if (onDark) {
-    return <Image src="/LOGO-dark.png" alt={site.name} {...size} priority className="h-9 w-auto" />;
+    return (
+      <Image src="/LOGO-dark.png" alt={site.name} {...size} priority unoptimized className="h-9 w-auto" />
+    );
   }
   return (
     <>
-      <Image src="/LOGO.png" alt={site.name} {...size} priority className="h-9 w-auto dark:hidden" />
+      <Image
+        src="/LOGO.png"
+        alt={site.name}
+        {...size}
+        priority
+        unoptimized
+        className="h-9 w-auto dark:hidden"
+      />
       <Image
         src="/LOGO-dark.png"
         alt={site.name}
         {...size}
         priority
+        unoptimized
         className="hidden h-9 w-auto dark:block"
       />
     </>
