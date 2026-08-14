@@ -14,12 +14,18 @@ export async function generateMetadata({ params }: PageProps<"/[lang]/blog">): P
   if (!isLocale(lang)) return {};
 
   const dict = await getDictionary(lang);
-  return pageMetadata({
+  const meta = pageMetadata({
     lang,
     path: "/blog",
     title: dict.blog.meta.title,
     description: dict.blog.meta.description,
   });
+  // Tant qu'aucun article n'est publié, on n'indexe pas la liste (évite une page
+  // « mince » indexée). L'indexation revient d'elle-même au 1er article.
+  if (getPosts(lang).length === 0) {
+    meta.robots = { index: false, follow: true };
+  }
+  return meta;
 }
 
 export default async function BlogPage({ params }: PageProps<"/[lang]/blog">) {
