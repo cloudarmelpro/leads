@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
+import { BreadcrumbLd } from "@/components/shared/breadcrumb-ld";
 import { CtaBanner } from "@/components/shared/cta-banner";
 import { AboutHero, Principles, Story, Team } from "@/features/about";
 import { isLocale } from "@/lib/i18n/config";
@@ -31,6 +32,13 @@ export default async function AboutPage({ params }: PageProps<"/[lang]/a-propos"
 
   return (
     <>
+      <BreadcrumbLd
+        lang={lang}
+        items={[
+          { name: dict.nav.home, path: "" },
+          { name: dict.about.heroTitle, path: "/a-propos" },
+        ]}
+      />
       <AboutHero dict={dict} />
       <Story dict={dict} />
       <Principles dict={dict} />

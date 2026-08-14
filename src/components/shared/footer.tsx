@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { ManageCookiesButton } from "@/components/shared/manage-cookies-button";
-import { site } from "@/config/site";
+import { mailtoHref, site, telHref } from "@/config/site";
 import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 
@@ -20,8 +20,8 @@ export function Footer({ lang, dict }: Props) {
 
   // Adresse physique retirée : aucun bureau officiel à afficher pour l'instant.
   const coords = [
-    site.phone ?? dict.placeholders.phone,
-    site.email ?? dict.placeholders.email,
+    { label: site.phone ?? dict.placeholders.phone, href: telHref(site.phone) },
+    { label: site.email ?? dict.placeholders.email, href: mailtoHref(site.email) },
   ];
 
   return (
@@ -82,15 +82,26 @@ export function Footer({ lang, dict }: Props) {
               </div>
             </div>
 
-            {/* Coordonnées. */}
+            {/* Coordonnées : liens cliquables (tel:/mailto:) quand la donnée existe,
+                sinon simple texte placeholder. Renforce le signal de contact (NAP). */}
             <div data-reveal="right" data-reveal-dist="80px" data-reveal-delay="240">
               <p className="mb-3.5 text-sm font-bold text-encre">{dict.footer.coordTitle}</p>
               <div className="flex flex-col gap-2.5">
-                {coords.map((line) => (
-                  <span key={line} className="font-mono text-[13px] text-texte2">
-                    {line}
-                  </span>
-                ))}
+                {coords.map(({ label, href }) =>
+                  href ? (
+                    <a
+                      key={label}
+                      href={href}
+                      className="font-mono text-[13px] text-texte2 no-underline transition-colors hover:text-encre"
+                    >
+                      {label}
+                    </a>
+                  ) : (
+                    <span key={label} className="font-mono text-[13px] text-texte2">
+                      {label}
+                    </span>
+                  ),
+                )}
               </div>
             </div>
           </div>

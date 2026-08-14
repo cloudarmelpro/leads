@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
+import { BreadcrumbLd } from "@/components/shared/breadcrumb-ld";
 import { site } from "@/config/site";
 import { getPrivacy } from "@/features/legal";
 import { isLocale, localeHtmlLang } from "@/lib/i18n/config";
+import { getDictionary } from "@/lib/i18n/dictionaries";
 import { pageMetadata } from "@/lib/seo/metadata";
 
 export async function generateMetadata({
@@ -26,12 +28,20 @@ export default async function PrivacyPage({ params }: PageProps<"/[lang]/confide
   if (!isLocale(lang)) notFound();
 
   const doc = getPrivacy(lang);
+  const dict = await getDictionary(lang);
   const updated = new Intl.DateTimeFormat(localeHtmlLang[lang], { dateStyle: "long" }).format(
     new Date(doc.updated),
   );
 
   return (
     <div className="px-[clamp(16px,4vw,32px)] pt-[clamp(24px,4vw,48px)] pb-[clamp(48px,7vw,96px)]">
+      <BreadcrumbLd
+        lang={lang}
+        items={[
+          { name: dict.nav.home, path: "" },
+          { name: doc.title, path: "/confidentialite" },
+        ]}
+      />
       <div className="mx-auto max-w-190">
         <h1
           data-reveal="up"

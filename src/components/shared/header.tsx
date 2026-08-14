@@ -20,11 +20,12 @@ function Wordmark({ onDark = false }: { onDark?: boolean }) {
   // mobile `bg-sapin`), via la prop `onDark`.
   // `unoptimized` : le logo est un wordmark aux bords nets ; l'optimiseur next/image
   // (WebP q75) l'adoucirait à cette petite taille. Le PNG brut (54 Ko) reste net.
+  // `priority` seulement sur la variante claire (visible par défaut) : évite un
+  // double preload render-blocking (les 2 variantes étaient préchargées alors
+  // qu'une seule est visible selon le thème).
   const size = { width: 1392, height: 596 };
   if (onDark) {
-    return (
-      <Image src="/LOGO-dark.png" alt={site.name} {...size} priority unoptimized className="h-9 w-auto" />
-    );
+    return <Image src="/LOGO-dark.png" alt={site.name} {...size} unoptimized className="h-9 w-auto" />;
   }
   return (
     <>
@@ -40,7 +41,6 @@ function Wordmark({ onDark = false }: { onDark?: boolean }) {
         src="/LOGO-dark.png"
         alt={site.name}
         {...size}
-        priority
         unoptimized
         className="hidden h-9 w-auto dark:block"
       />

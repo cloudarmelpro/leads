@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import type { CSSProperties } from "react";
 
+import { BreadcrumbLd } from "@/components/shared/breadcrumb-ld";
 import { site } from "@/config/site";
 import { BookingWidget, CalcomEmbed, ContactForm, ContactHero } from "@/features/contact";
 import { isLocale } from "@/lib/i18n/config";
@@ -32,6 +33,13 @@ export default async function ContactPage({ params }: PageProps<"/[lang]/contact
 
   return (
     <>
+      <BreadcrumbLd
+        lang={lang}
+        items={[
+          { name: dict.nav.home, path: "" },
+          { name: t.heroTitle, path: "/contact" },
+        ]}
+      />
       <ContactHero dict={dict} />
 
       <div className="px-[clamp(16px,4vw,32px)] pb-[clamp(48px,7vw,96px)]">

@@ -9,14 +9,25 @@ import { defaultLocale, locales } from "@/lib/i18n/config";
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  const hasLocale = locales.some(
-    (locale) => pathname === `/${locale}` || pathname.startsWith(`/${locale}/`),
-  );
+  // 1. Canonicalisation de l'hôte : www → apex (avec Location absolue). Évite le
+  //    contenu dupliqué www/apex servi sans redirection.
+  const host = request.nextUrl.hostname;
+  if (host.startsWith("www.")) {
+    const url = request.nextUrl.clone();
+    url.hostname = host.slice(4);
+    return NextResponse.redirect(url, 308);
+  }
+
+  // 2. Locale déjà présente (comparaison insensible à la casse). Une URL en
+  //    majuscules (`/FR`) est ainsi reconnue et laissée à Next, plutôt que
+  //    préfixée en `/fr/FR` → 404.
+  const first = pathname.split("/")[1]?.toLowerCase();
+  const hasLocale = first !== undefined && (locales as readonly string[]).includes(first);
   if (hasLocale) return;
 
-  // Français par défaut (marché québécois) : on ignore volontairement
-  // `Accept-Language` pour ne pas rediriger un visiteur anglophone vers /en
-  // d'entrée. L'utilisateur peut ensuite basculer via le sélecteur de langue.
+  // 3. Français par défaut (marché québécois) : on ignore volontairement
+  //    `Accept-Language` pour ne pas rediriger un visiteur anglophone vers /en
+  //    d'entrée. L'utilisateur peut ensuite basculer via le sélecteur de langue.
   const url = request.nextUrl.clone();
   url.pathname = `/${defaultLocale}${pathname === "/" ? "" : pathname}`;
 
