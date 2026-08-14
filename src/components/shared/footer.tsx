@@ -32,12 +32,14 @@ export function Footer({ lang, dict }: Props) {
           <div className="grid grid-cols-1 gap-[clamp(28px,4vw,48px)] md:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)_minmax(0,1fr)]">
             {/* Marque + description + réseaux. */}
             <div data-reveal="left" data-reveal-dist="80px">
-              {/* Logo (variante inversée en mode sombre). */}
+              {/* Logo (variante inversée en mode sombre). `unoptimized` : wordmark
+                  net, l'optimiseur next/image l'adoucirait à cette taille. */}
               <Image
                 src="/LOGO.png"
                 alt={site.name}
                 width={1392}
                 height={596}
+                unoptimized
                 className="h-11 w-auto dark:hidden"
               />
               <Image
@@ -45,6 +47,7 @@ export function Footer({ lang, dict }: Props) {
                 alt={site.name}
                 width={1392}
                 height={596}
+                unoptimized
                 className="hidden h-11 w-auto dark:block"
               />
               <p className="mt-4 max-w-[44ch] text-sm leading-[1.65] text-texte2">
