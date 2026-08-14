@@ -1,7 +1,8 @@
 import Link from "next/link";
 
 import { ManageCookiesButton } from "@/components/shared/manage-cookies-button";
-import { mailtoHref, site, telHref } from "@/config/site";
+import { ObfuscatedEmail } from "@/components/shared/obfuscated-email";
+import { site, telHref } from "@/config/site";
 import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 
@@ -18,10 +19,10 @@ export function Footer({ lang, dict }: Props) {
   ];
 
   // Adresse physique retirée : aucun bureau officiel à afficher pour l'instant.
-  const coords = [
-    { label: site.phone ?? dict.placeholders.phone, href: telHref(site.phone) },
-    { label: site.email ?? dict.placeholders.email, href: mailtoHref(site.email) },
-  ];
+  const tel = telHref(site.phone);
+  const [emailUser, emailDomain] = (site.email ?? "").split("@");
+  const coordClass =
+    "font-mono text-[13px] text-texte2 no-underline transition-colors hover:text-encre";
 
   return (
     <footer className="px-[clamp(16px,4vw,32px)] pt-[clamp(32px,5vw,56px)] pb-7">
@@ -77,20 +78,17 @@ export function Footer({ lang, dict }: Props) {
             <div data-reveal="right" data-reveal-dist="80px" data-reveal-delay="240">
               <p className="mb-3.5 text-sm font-bold text-encre">{dict.footer.coordTitle}</p>
               <div className="flex flex-col gap-2.5">
-                {coords.map(({ label, href }) =>
-                  href ? (
-                    <a
-                      key={label}
-                      href={href}
-                      className="font-mono text-[13px] text-texte2 no-underline transition-colors hover:text-encre"
-                    >
-                      {label}
-                    </a>
-                  ) : (
-                    <span key={label} className="font-mono text-[13px] text-texte2">
-                      {label}
-                    </span>
-                  ),
+                {tel ? (
+                  <a href={tel} className={coordClass}>
+                    {site.phone}
+                  </a>
+                ) : (
+                  <span className={coordClass}>{dict.placeholders.phone}</span>
+                )}
+                {emailUser && emailDomain ? (
+                  <ObfuscatedEmail user={emailUser} domain={emailDomain} className={coordClass} />
+                ) : (
+                  <span className={coordClass}>{dict.placeholders.email}</span>
                 )}
               </div>
             </div>

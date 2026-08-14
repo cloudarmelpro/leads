@@ -22,7 +22,9 @@ export function JsonLd({ lang, dict }: Props) {
     logo: `${base}/talgasy-logo.png`,
     image: `${base}/talgasy-logo.png`,
     description: dict.meta.description,
-    ...(site.email ? { email: site.email } : {}),
+    // Email volontairement ABSENT du JSON-LD : il serait en clair dans le code
+    // source (scrapable par les robots de spam), ce qui annulerait l'obfuscation du
+    // footer. Faible valeur SEO. Le téléphone reste (un site de leads veut les appels).
     ...(phoneDigits ? { telephone: `+1${phoneDigits}` } : {}),
     areaServed: { "@type": "AdministrativeArea", name: "Québec, Canada" },
     availableLanguage: locales.map((l) => localeHtmlLang[l]),
