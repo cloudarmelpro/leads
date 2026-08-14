@@ -20,17 +20,17 @@ function Wordmark({ onDark = false }: { onDark?: boolean }) {
   // mobile `bg-sapin`), via la prop `onDark`.
   const size = { width: 1392, height: 596 };
   if (onDark) {
-    return <Image src="/LOGO-dark.png" alt={site.name} {...size} priority className="h-7 w-auto" />;
+    return <Image src="/LOGO-dark.png" alt={site.name} {...size} priority className="h-9 w-auto" />;
   }
   return (
     <>
-      <Image src="/LOGO.png" alt={site.name} {...size} priority className="h-7 w-auto dark:hidden" />
+      <Image src="/LOGO.png" alt={site.name} {...size} priority className="h-9 w-auto dark:hidden" />
       <Image
         src="/LOGO-dark.png"
         alt={site.name}
         {...size}
         priority
-        className="hidden h-7 w-auto dark:block"
+        className="hidden h-9 w-auto dark:block"
       />
     </>
   );

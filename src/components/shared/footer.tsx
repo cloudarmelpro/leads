@@ -38,14 +38,14 @@ export function Footer({ lang, dict }: Props) {
                 alt={site.name}
                 width={1392}
                 height={596}
-                className="h-8 w-auto dark:hidden"
+                className="h-11 w-auto dark:hidden"
               />
               <Image
                 src="/LOGO-dark.png"
                 alt={site.name}
                 width={1392}
                 height={596}
-                className="hidden h-8 w-auto dark:block"
+                className="hidden h-11 w-auto dark:block"
               />
               <p className="mt-4 max-w-[44ch] text-sm leading-[1.65] text-texte2">
                 {dict.footer.description}
