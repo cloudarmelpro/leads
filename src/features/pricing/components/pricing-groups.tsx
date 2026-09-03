@@ -22,8 +22,8 @@ const COLS: Record<number, string> = {
 /**
  * Groupes de forfaits : un seul eyebrow au-dessus du premier groupe ; chaque groupe
  * = en-tête de section de l'accueil, puis la grille de cartes. Trois formes de
- * carte selon le groupe : liste simple (site web), panneau imbriqué + inclusions en
- * deux colonnes (logo), carte large à fond plein (hébergement).
+ * carte selon le groupe : liste simple (site web), carte avec bouton et inclusions
+ * une par ligne (logo), carte large à fond plein (hébergement).
  */
 export function PricingGroups({ lang, dict }: Props) {
   const t = dict.pricing;
@@ -38,7 +38,7 @@ export function PricingGroups({ lang, dict }: Props) {
 
             <Reveal as="div" stagger={0.1} className={`mt-12 grid gap-5 ${COLS[group.plans.length] ?? COLS[3]}`}>
               {group.plans.map((plan) => {
-                if (index === 1) return <NestedPriceCard key={plan.name} plan={plan} cta={t.cardCta} href={href} />;
+                if (index === 1) return <LogoPriceCard key={plan.name} plan={plan} cta={t.cardCta} href={href} />;
                 if (index === 2) return <WidePriceCard key={plan.name} plan={plan} cta={t.cardCta} href={href} />;
                 return <PriceCard key={plan.name} plan={plan} />;
               })}
@@ -115,24 +115,27 @@ function CardCta({ href, label, inverse = false }: { href: string; label: string
   );
 }
 
-/** Logo : panneau imbriqué (nom, sous-titre, prix, bouton) puis inclusions en deux colonnes. */
-function NestedPriceCard({ plan, cta, href }: CardProps) {
+/** Logo : carte simple (nom, sous-titre, prix, bouton) puis inclusions une par ligne, tronquées si trop longues. */
+function LogoPriceCard({ plan, cta, href }: CardProps) {
   return (
-    <article className="flex flex-col gap-5 rounded-[20px] border border-ligne bg-surface-2 p-1.5 dark:border-transparent dark:bg-surface dark:shadow-[inset_0_0_0_1px_#0a2a3a]">
-      <div className="rounded-[15px] border border-ligne bg-surface p-5 sm:p-6 dark:border-transparent dark:bg-[linear-gradient(180deg,#01202e_0%,#011a26_100%)] dark:shadow-[inset_0_0_0_1px_#0a2a3a]">
-        <h3 className="text-title-fluid font-medium text-encre">{plan.name}</h3>
-        {plan.tagline && <p className="mt-1 text-[0.8125rem] leading-[1.5] text-texte2">{plan.tagline}</p>}
-        <p className="mt-4 font-display text-[clamp(1.75rem,2.6vw,2.125rem)] leading-none font-semibold tracking-[-0.5px] text-emeraude dark:text-accent-strong">
-          {plan.price}
-        </p>
-        <div className="mt-5">
-          <CardCta href={href} label={cta} />
-        </div>
+    <SurfaceCard as="article" className="p-6 sm:p-7">
+      <h3 className="relative text-title-fluid font-medium text-encre">{plan.name}</h3>
+      {plan.tagline && <p className="relative mt-1 text-[0.8125rem] leading-[1.5] text-texte2">{plan.tagline}</p>}
+      <p className="relative mt-4 font-display text-[clamp(1.75rem,2.6vw,2.125rem)] leading-none font-semibold tracking-[-0.5px] text-emeraude dark:text-accent-strong">
+        {plan.price}
+      </p>
+      <div className="relative mt-5">
+        <CardCta href={href} label={cta} />
       </div>
-      <div className="px-4 pb-4 sm:px-5 sm:pb-5">
-        <FeatureGrid features={plan.features} tone="default" />
-      </div>
-    </article>
+      <ul className="relative mt-6 flex flex-col gap-2.5">
+        {plan.features.map((feature) => (
+          <li key={feature} className="flex min-w-0 items-center gap-2 text-[0.8125rem] leading-[1.45] text-encre">
+            <CircleCheck size={15} strokeWidth={2.2} aria-hidden className="shrink-0 text-emeraude dark:text-accent-strong" />
+            <span className="truncate" title={feature}>{feature}</span>
+          </li>
+        ))}
+      </ul>
+    </SurfaceCard>
   );
 }
 
