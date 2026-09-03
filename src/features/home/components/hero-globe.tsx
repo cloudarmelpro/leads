@@ -7,7 +7,7 @@ import { gsap, reducedMotion, useGSAP } from "@/lib/gsap";
 /**
  * Globe du hero animé. Le POSITIONNEMENT (centrage vertical) est en CSS sur le
  * wrapper → correct dès la première peinture, aucun décalage au chargement. GSAP
- * n'anime QUE l'intérieur : les images (rotation lente + flottement + entrée en
+ * n'anime QUE l'intérieur : les images (balancement lent + flottement + entrée en
  * scale) et un calque intermédiaire qui S'INCLINE en 3D vers le curseur quand on
  * survole le globe (haut → bascule vers le haut, gauche → tourne vers la gauche),
  * amorti, sans quitter sa place. Ses transforms n'écrasent donc pas le centrage. Coupé sous
@@ -26,7 +26,10 @@ export function HeroGlobe() {
 
       gsap.set(els, { transformOrigin: "50% 50%" });
       gsap.from(els, { scale: 0.9, duration: 1.2, ease: "power3.out", delay: 0.15 });
-      gsap.to(els, { rotation: 360, duration: 120, ease: "none", repeat: -1 });
+      // Pas de tour complet : la masse de points de l'image est dans sa moitié haute,
+      // un tour la ferait passer en bas et le globe semblerait « tombé ». Simple
+      // balancement lent de ±6° autour de la position d'origine.
+      gsap.fromTo(els, { rotation: -6 }, { rotation: 6, duration: 18, ease: "sine.inOut", repeat: -1, yoyo: true });
       gsap.to(els, { y: 14, duration: 7, ease: "sine.inOut", repeat: -1, yoyo: true });
 
       // Inclinaison 3D vers le curseur, écoutée sur le DISQUE du globe seulement
