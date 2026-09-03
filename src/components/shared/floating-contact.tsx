@@ -89,7 +89,7 @@ export function FloatingContact({ dict }: Props) {
             role="dialog"
             aria-modal="true"
             aria-label={t.sheetTitle}
-            className="fixed right-4 bottom-[calc(3.75rem+env(safe-area-inset-bottom))] z-95 box-border w-[min(384px,calc(100vw-2rem))] rounded-[20px] border border-ligne bg-surface px-5 pt-5 pb-5 sm:bottom-[calc(5rem+env(safe-area-inset-bottom))] sm:px-6 sm:pt-[1.625rem] sm:pb-6 dark:border-transparent dark:shadow-[inset_0_0_0_1px_#0a2a3a]"
+            className="fixed right-4 bottom-[calc(4.75rem+env(safe-area-inset-bottom))] z-95 box-border w-[min(384px,calc(100vw-2rem))] rounded-[20px] border border-ligne bg-surface px-5 pt-5 pb-5 sm:bottom-[calc(5.25rem+env(safe-area-inset-bottom))] sm:px-6 sm:pt-[1.625rem] sm:pb-6 dark:border-white/8"
           >
             {/* En-tête : eyebrow + titre + sous-titre, croix de fermeture. */}
             <div className="flex items-start justify-between gap-3.5">
