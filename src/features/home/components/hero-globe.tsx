@@ -8,9 +8,9 @@ import { gsap, reducedMotion, useGSAP } from "@/lib/gsap";
  * Globe du hero animé. Le POSITIONNEMENT (centrage vertical) est en CSS sur le
  * wrapper → correct dès la première peinture, aucun décalage au chargement. GSAP
  * n'anime QUE l'intérieur : les images (rotation lente + flottement + entrée en
- * scale) et un calque intermédiaire qui S'INCLINE en 3D vers le curseur (haut →
- * bascule vers le haut, gauche → tourne vers la gauche), amorti, sans quitter sa
- * place. Ses transforms n'écrasent donc pas le centrage. Coupé sous
+ * scale) et un calque intermédiaire qui S'INCLINE en 3D vers le curseur quand on
+ * survole le globe (haut → bascule vers le haut, gauche → tourne vers la gauche),
+ * amorti, sans quitter sa place. Ses transforms n'écrasent donc pas le centrage. Coupé sous
  * `prefers-reduced-motion`. Opacité gérée par CSS (clair/sombre préservé).
  */
 export function HeroGlobe() {
@@ -29,14 +29,14 @@ export function HeroGlobe() {
       gsap.to(els, { rotation: 360, duration: 120, ease: "none", repeat: -1 });
       gsap.to(els, { y: 14, duration: 7, ease: "sine.inOut", repeat: -1, yoyo: true });
 
-      // Inclinaison 3D vers le curseur, écoutée sur toute la <section> du hero :
-      // le pointeur en haut fait basculer le globe vers le haut (rotateX), à gauche
-      // le tourne vers la gauche (rotateY), jusqu'à ±TILT degrés, avec un amorti long.
-      // Retour à plat quand le pointeur quitte le hero. Pointeur fin seulement.
+      // Inclinaison 3D vers le curseur, écoutée sur le DISQUE du globe seulement
+      // (zone circulaire, voir `clip-path` plus bas) : le pointeur en haut fait
+      // basculer le globe vers le haut (rotateX), à gauche le tourne vers la gauche
+      // (rotateY), jusqu'à ±TILT degrés, avec un amorti long. Retour à plat quand le
+      // pointeur quitte le disque. Pointeur fin seulement.
       const layer = tiltRef.current;
-      const hero = ref.current?.closest("section");
       const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-      if (!layer || !hero || !finePointer) return;
+      if (!layer || !finePointer) return;
 
       const TILT = 22;
       gsap.set(layer, { transformPerspective: 900, transformOrigin: "50% 50%" });
@@ -56,11 +56,11 @@ export function HeroGlobe() {
         toRotX(0);
         toRotY(0);
       };
-      hero.addEventListener("pointermove", onMove);
-      hero.addEventListener("pointerleave", onLeave);
+      layer.addEventListener("pointermove", onMove);
+      layer.addEventListener("pointerleave", onLeave);
       return () => {
-        hero.removeEventListener("pointermove", onMove);
-        hero.removeEventListener("pointerleave", onLeave);
+        layer.removeEventListener("pointermove", onMove);
+        layer.removeEventListener("pointerleave", onLeave);
       };
     },
     { scope: ref },
