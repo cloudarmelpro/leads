@@ -39,7 +39,7 @@ export default async function PricingPage({ params }: PageProps<"/[lang]/prix">)
         ]}
       />
       <PricingHero lang={lang} dict={dict} />
-      <PricingGroups lang={lang} dict={dict} />
+      <PricingGroups dict={dict} />
     </>
   );
 }
