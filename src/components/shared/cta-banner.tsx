@@ -37,7 +37,7 @@ export function CtaBanner({ lang, title, body, kicker, eyebrow, phone, ariaLabel
   return (
     <section id={id} className="pb-[clamp(80px,14vw,200px)]">
       <div className={CONTENEUR}>
-        <div className="relative flex w-full flex-col gap-8 overflow-hidden rounded-[20px] border border-ligne bg-surface p-[clamp(32px,4vw,56px)] shadow-soft md:min-h-[240px] md:flex-row md:items-center md:gap-0 dark:border-transparent dark:shadow-[inset_0_0_0_1px_#0a2a3a]">
+        <div className="relative flex w-full flex-col gap-8 overflow-hidden rounded-[20px] border border-ligne bg-surface p-[clamp(32px,4vw,56px)] md:min-h-[240px] md:flex-row md:items-center md:gap-0 dark:border-transparent dark:shadow-[inset_0_0_0_1px_#0a2a3a]">
           {/* Halo vert décoratif (haut-droite), comme la maquette. */}
           <span
             aria-hidden

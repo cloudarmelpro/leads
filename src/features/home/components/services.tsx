@@ -48,7 +48,7 @@ export function Services({ dict }: Props) {
             return (
               <article
                 key={item.name}
-                className={`relative flex flex-col justify-center gap-9 overflow-hidden rounded-[20px] border border-ligne bg-surface px-10 pt-10 pb-11 shadow-soft dark:border-transparent dark:bg-[linear-gradient(180deg,#01202e_0%,#011a26_100%)] dark:shadow-[inset_0_0_0_1px_#0a2a3a] ${SPAN[index]}`}
+                className={`relative flex flex-col justify-center gap-9 overflow-hidden rounded-[20px] border border-ligne bg-surface px-10 pt-10 pb-11 dark:border-transparent dark:bg-[linear-gradient(180deg,#01202e_0%,#011a26_100%)] dark:shadow-[inset_0_0_0_1px_#0a2a3a] ${SPAN[index]}`}
               >
                 {/* Halo vert d'ambiance en haut-droite (design). */}
                 <span
