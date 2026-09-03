@@ -3,7 +3,6 @@ import { CONTENEUR } from "@/components/shared/container";
 import { Eyebrow } from "@/components/shared/eyebrow";
 import { PageHero } from "@/components/shared/page-hero";
 import { Reveal } from "@/components/shared/reveal";
-import { SurfaceCard } from "@/components/shared/surface-card";
 import { getPrivacy } from "@/features/legal/privacy";
 import { formatDate } from "@/lib/format/date";
 import type { Locale } from "@/lib/i18n/config";
@@ -23,8 +22,8 @@ function anchorId(heading: string) {
 
 /**
  * Politique de confidentialité sur l'ossature du site : hero (titre + intro), puis
- * deux colonnes comme la FAQ — sommaire ancré et date à gauche, articles en
- * cartes numérotées à droite. Le contenu vit dans `privacy.ts`.
+ * deux colonnes comme la FAQ — sommaire ancré et date à gauche, articles numérotés
+ * à droite, en texte nu (ni carte ni filet). Le contenu vit dans `privacy.ts`.
  */
 export async function PrivacyPage({ lang }: Props) {
   const doc = getPrivacy(lang);
@@ -76,24 +75,24 @@ export async function PrivacyPage({ lang }: Props) {
             </p>
           </aside>
 
-          {/* Colonne droite : un article par carte, numérotée comme les étapes de la Méthode. */}
-          <Reveal as="div" stagger={0.06} className="flex flex-col gap-5">
+          {/* Colonne droite : articles numérotés comme les étapes de la Méthode. */}
+          <Reveal as="div" stagger={0.06} className="flex flex-col gap-[clamp(36px,4vw,56px)]">
             {entries.map((entry) => (
-              <SurfaceCard key={entry.id} as="article" id={entry.id} className="scroll-mt-8 gap-4 p-7 sm:p-8">
-                <div className="relative flex items-baseline gap-3">
+              <article key={entry.id} id={entry.id} className="flex scroll-mt-8 flex-col gap-4">
+                <div className="flex items-baseline gap-3">
                   <span className="font-mono text-[14px] leading-[25px] text-emeraude dark:text-accent-strong">
                     {entry.n}
                   </span>
                   <h2 className="text-[18px] leading-[1.3] font-medium text-encre">{entry.h}</h2>
                 </div>
-                <div className="relative flex flex-col gap-3">
+                <div className="flex flex-col gap-3">
                   {entry.p.map((para, index) => (
                     <p key={index} className="text-[15px] leading-[24px] text-texte2 text-pretty">
                       {para}
                     </p>
                   ))}
                 </div>
-              </SurfaceCard>
+              </article>
             ))}
           </Reveal>
         </div>
