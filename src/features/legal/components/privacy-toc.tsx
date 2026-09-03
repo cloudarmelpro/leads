@@ -7,8 +7,8 @@ type Props = { label: string; entries: Entry[] };
 
 /**
  * Sommaire ancré de la politique : l'article le plus haut dans la zone de lecture
- * est marqué actif (texte principal, graisse moyenne). Observe les `<article id>`
- * rendus par la page ; sans JavaScript, reste une simple liste de liens.
+ * est marqué actif (pastille émeraude, texte blanc, lisible dans les deux thèmes).
+ * Observe les `<article id>` rendus par la page ; sans JavaScript, simple liste de liens.
  */
 export function PrivacyToc({ label, entries }: Props) {
   const [active, setActive] = useState(entries[0]?.id ?? "");
@@ -44,14 +44,16 @@ export function PrivacyToc({ label, entries }: Props) {
         {entries.map((entry) => {
           const isActive = entry.id === active;
           return (
-            <li key={entry.id} className="flex gap-3 text-[14px] leading-[22px]">
-              <span className="shrink-0 font-mono text-emeraude dark:text-accent-strong">{entry.n}</span>
+            <li key={entry.id} className="flex items-start gap-3 text-[14px] leading-[22px]">
+              <span className="shrink-0 py-0.5 font-mono text-emeraude dark:text-accent-strong">{entry.n}</span>
               <a
                 href={`#${entry.id}`}
                 aria-current={isActive ? "location" : undefined}
                 onClick={() => setActive(entry.id)}
-                className={`no-underline transition-colors hover:text-encre ${
-                  isActive ? "font-medium text-encre" : "font-light text-texte2"
+                className={`-mx-2 rounded-md px-2 py-0.5 no-underline transition-colors ${
+                  isActive
+                    ? "bg-emeraude font-medium text-white"
+                    : "font-light text-texte2 hover:bg-menthe hover:text-encre"
                 }`}
               >
                 {entry.h}
