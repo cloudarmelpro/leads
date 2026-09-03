@@ -143,7 +143,7 @@ export function Header({ lang, dict }: Props) {
             {/* Bouton « Contact » (design). L'appel direct reste porté par le module flottant. */}
             <Link
               href={`/${lang}/contact`}
-              className="hidden shrink-0 items-center rounded-[9px] bg-emeraude px-[18px] py-[9px] text-[14px] font-medium text-white no-underline hover:bg-[#7fefc0] hover:text-fond md:inline-flex dark:bg-accent-strong dark:text-fond dark:hover:bg-[#7fefc0]"
+              className="hidden shrink-0 items-center rounded-[9px] bg-emeraude px-[1.125rem] py-[0.5625rem] text-[0.875rem] font-medium text-white no-underline hover:bg-[#7fefc0] hover:text-fond md:inline-flex dark:bg-accent-strong dark:text-fond dark:hover:bg-[#7fefc0]"
             >
               {dict.nav.contact}
             </Link>
@@ -210,7 +210,7 @@ export function Header({ lang, dict }: Props) {
             <ActionLink
               href={telHref(site.phone)}
               unavailableLabel={`${dict.header.menuCall} — ${phoneLabel}`}
-              className="flex h-10 items-center justify-center gap-2 rounded-[9px] bg-emeraude text-[14px] font-medium text-white no-underline dark:bg-accent-strong dark:text-fond"
+              className="flex h-10 items-center justify-center gap-2 rounded-[9px] bg-emeraude text-[0.875rem] font-medium text-white no-underline dark:bg-accent-strong dark:text-fond"
             >
               {dict.header.menuCall}
             </ActionLink>
@@ -219,20 +219,20 @@ export function Header({ lang, dict }: Props) {
               <ActionLink
                 href={whatsappHref(site.whatsapp)}
                 unavailableLabel={`WhatsApp — ${whatsappLabel}`}
-                className="flex h-10 flex-1 items-center justify-center rounded-[9px] text-[13px] font-medium text-encre no-underline shadow-[inset_0_0_0_1px_var(--color-encre)]"
+                className="flex h-10 flex-1 items-center justify-center rounded-[9px] text-[0.8125rem] font-medium text-encre no-underline shadow-[inset_0_0_0_1px_var(--color-encre)]"
               >
                 WhatsApp
               </ActionLink>
               <Link
                 href={`/${lang}#contact`}
                 onClick={() => setMenuOpen(false)}
-                className="flex h-10 flex-1 items-center justify-center rounded-[9px] text-[13px] font-medium text-encre no-underline shadow-[inset_0_0_0_1px_var(--color-encre)]"
+                className="flex h-10 flex-1 items-center justify-center rounded-[9px] text-[0.8125rem] font-medium text-encre no-underline shadow-[inset_0_0_0_1px_var(--color-encre)]"
               >
                 {dict.header.menuRdv}
               </Link>
             </div>
 
-            <p className="text-center text-[12px] font-medium text-emeraude dark:text-accent-strong">{phoneLabel}</p>
+            <p className="text-center text-[0.75rem] font-medium text-emeraude dark:text-accent-strong">{phoneLabel}</p>
           </div>
         </div>
       )}

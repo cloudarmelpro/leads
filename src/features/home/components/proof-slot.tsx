@@ -23,11 +23,11 @@ export function ProofSlot({ dict }: Props) {
           <span className="mb-4 inline-flex h-11 w-11 -rotate-[5deg] items-center justify-center rounded-xl bg-sapin text-white">
             <MessageCircle size={18} aria-hidden />
           </span>
-          <h2 className="mb-2.5 font-display text-[clamp(19px,2.6vw,24px)]">{t.title}</h2>
-          <p className="font-mono text-[13px] leading-[1.6] text-texte2">{t.note}</p>
+          <h2 className="mb-2.5 font-display text-[clamp(1.1875rem,2.6vw,1.5rem)]">{t.title}</h2>
+          <p className="font-mono text-[0.8125rem] leading-[1.6] text-texte2">{t.note}</p>
         </div>
         <div className="flex aspect-[4/3] items-center justify-center rounded-2xl bg-ink">
-          <span className="rounded-md bg-white/90 px-2.5 py-[5px] font-mono text-xs text-ink">
+          <span className="rounded-md bg-white/90 px-2.5 py-[0.3125rem] font-mono text-xs text-ink">
             {t.img}
           </span>
         </div>

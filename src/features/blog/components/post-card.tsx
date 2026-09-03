@@ -13,7 +13,7 @@ type Props = { post: Post; lang: Locale; dict: Dictionary };
 export function PostCard({ post, lang, dict }: Props) {
   return (
     <SurfaceCard as="article" className="group h-full gap-6 p-7">
-      <p className="relative flex flex-wrap items-center gap-2 text-[14px] leading-[25px] font-light text-texte2">
+      <p className="relative flex flex-wrap items-center gap-2 text-[0.875rem] leading-[1.5625rem] font-light text-texte2">
         <span className="text-emeraude dark:text-accent-strong">{post.category}</span>
         <span aria-hidden>·</span>
         <span>{formatDate(post.date, lang)}</span>

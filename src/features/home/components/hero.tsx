@@ -15,7 +15,7 @@ export function Hero({ lang, dict }: Props) {
   return (
     <section
       id="accueil"
-      className="relative z-0 -mt-[77px] flex min-h-[calc(100svh-140px)] overflow-x-clip pt-[84px] pb-[clamp(20px,3vw,40px)]"
+      className="relative z-0 -mt-[4.8125rem] flex min-h-[calc(100svh-140px)] overflow-x-clip pt-[5.25rem] pb-[clamp(20px,3vw,40px)]"
     >
       {/* Fond repris de la sélection Figma : deux fines ellipses vertes floutées,
           pivotées ~50° — de longs traits de lumière en diagonale depuis le haut.
@@ -37,7 +37,7 @@ export function Hero({ lang, dict }: Props) {
           as="h1"
           scroll={false}
           delay={0.1}
-          className="m-0 max-w-[720px] lg:max-w-[min(720px,60%)] font-display text-[clamp(24px,4vw,38px)] leading-[1.143] font-normal tracking-[-1.2px] text-encre text-pretty uppercase"
+          className="m-0 max-w-[720px] lg:max-w-[min(720px,60%)] font-display text-[clamp(1.5rem,4vw,2.375rem)] leading-[1.143] font-normal tracking-[-1.2px] text-encre text-pretty uppercase"
         >
           {t.titleA}{" "}
           <span className="text-emeraude dark:text-accent-strong">{t.titleB}</span>

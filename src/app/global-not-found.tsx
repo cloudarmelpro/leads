@@ -32,7 +32,7 @@ export default async function GlobalNotFound() {
       <body className="min-h-dvh bg-fond text-encre">
         <main className="mx-auto flex min-h-dvh max-w-[52ch] flex-col justify-center gap-10 px-[clamp(1rem,4vw,3.5rem)] py-16">
           <section>
-            <h1 className="text-[clamp(24px,4vw,36px)] leading-[1.15] font-bold text-balance">
+            <h1 className="text-[clamp(1.5rem,4vw,2.25rem)] leading-[1.15] font-bold text-balance">
               {fr.notFound.title}
             </h1>
             <p className="mt-4 text-base leading-[1.7] text-texte2 text-pretty">{fr.notFound.body}</p>
@@ -48,7 +48,7 @@ export default async function GlobalNotFound() {
           </section>
 
           <section lang="en" className="border-t border-ligne pt-10">
-            <h2 className="text-[clamp(20px,3vw,28px)] leading-[1.2] font-bold text-balance">
+            <h2 className="text-[clamp(1.25rem,3vw,1.75rem)] leading-[1.2] font-bold text-balance">
               {en.notFound.title}
             </h2>
             <p className="mt-4 text-base leading-[1.7] text-texte2 text-pretty">{en.notFound.body}</p>

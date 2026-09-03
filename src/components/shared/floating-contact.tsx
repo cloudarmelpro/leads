@@ -54,7 +54,7 @@ export function FloatingContact({ dict }: Props) {
 
   // Ligne fantôme : pas de cadre, fond au survol, atténuée si indisponible.
   const ghostRow =
-    "flex items-center gap-[15px] rounded-[14px] px-3.5 py-3 text-left text-encre no-underline transition-colors duration-200 motion-reduce:transition-none hover:bg-menthe disabled:cursor-not-allowed disabled:opacity-55";
+    "flex items-center gap-[0.9375rem] rounded-[14px] px-3.5 py-3 text-left text-encre no-underline transition-colors duration-200 motion-reduce:transition-none hover:bg-menthe disabled:cursor-not-allowed disabled:opacity-55";
 
   return (
     <>
@@ -87,18 +87,18 @@ export function FloatingContact({ dict }: Props) {
             role="dialog"
             aria-modal="true"
             aria-label={t.sheetTitle}
-            className="fixed right-4 bottom-[calc(80px+env(safe-area-inset-bottom))] z-95 box-border w-[min(384px,calc(100vw-2rem))] rounded-[20px] bg-surface px-6 pt-[26px] pb-6 shadow-[0_32px_64px_-24px_rgba(15,29,23,.45)]"
+            className="fixed right-4 bottom-[calc(80px+env(safe-area-inset-bottom))] z-95 box-border w-[min(384px,calc(100vw-2rem))] rounded-[20px] bg-surface px-6 pt-[1.625rem] pb-6 shadow-[0_32px_64px_-24px_rgba(15,29,23,.45)]"
           >
             {/* En-tête : eyebrow + titre + sous-titre, croix de fermeture. */}
             <div className="flex items-start justify-between gap-3.5">
-              <div className="flex flex-col gap-[2px]">
-                <span className="text-[10.5px] tracking-[0.12em] text-emeraude dark:text-accent-strong uppercase">
+              <div className="flex flex-col gap-[0.125rem]">
+                <span className="text-[0.6562rem] tracking-[0.12em] text-emeraude dark:text-accent-strong uppercase">
                   {t.eyebrow}
                 </span>
-                <span className="font-display text-[24px] leading-none text-encre">
+                <span className="font-display text-[1.5rem] leading-none text-encre">
                   {t.sheetTitle}
                 </span>
-                <span className="mt-0.5 text-[13px] leading-snug text-texte2">{t.sheetSub}</span>
+                <span className="mt-0.5 text-[0.8125rem] leading-snug text-texte2">{t.sheetSub}</span>
               </div>
               <button
                 type="button"
@@ -111,7 +111,7 @@ export function FloatingContact({ dict }: Props) {
             </div>
 
             {/* Actions secondaires — lignes fantômes. */}
-            <div className="mt-[22px] mb-5 flex flex-col gap-0.5">
+            <div className="mt-[1.375rem] mb-5 flex flex-col gap-0.5">
               <ActionLink
                 href={whatsappHref(site.whatsapp)}
                 unavailableLabel={`WhatsApp — ${whatsappLabel}`}
@@ -121,8 +121,8 @@ export function FloatingContact({ dict }: Props) {
                   <MessageCircle size={22} strokeWidth={2.2} aria-hidden />
                 </span>
                 <span className="flex flex-col gap-px">
-                  <span className="text-[14.5px]">WhatsApp</span>
-                  <span className="text-[12px] leading-[1.2] text-texte2">{t.rowWaSub}</span>
+                  <span className="text-[0.9062rem]">WhatsApp</span>
+                  <span className="text-[0.75rem] leading-[1.2] text-texte2">{t.rowWaSub}</span>
                 </span>
                 <ArrowRight className="ml-auto text-texte2" />
               </ActionLink>
@@ -136,8 +136,8 @@ export function FloatingContact({ dict }: Props) {
                   <Send size={22} strokeWidth={2.2} aria-hidden />
                 </span>
                 <span className="flex flex-col gap-px">
-                  <span className="text-[14.5px]">Messenger</span>
-                  <span className="text-[12px] leading-[1.2] text-texte2">{t.rowMessengerSub}</span>
+                  <span className="text-[0.9062rem]">Messenger</span>
+                  <span className="text-[0.75rem] leading-[1.2] text-texte2">{t.rowMessengerSub}</span>
                 </span>
                 <ArrowRight className="ml-auto text-texte2" />
               </ActionLink>
@@ -152,8 +152,8 @@ export function FloatingContact({ dict }: Props) {
                   <Calendar size={22} strokeWidth={2.2} aria-hidden />
                 </span>
                 <span className="flex flex-col gap-px">
-                  <span className="text-[14.5px]">{t.rowRdv}</span>
-                  <span className="text-[12px] leading-[1.2] text-texte2">{t.rowRdvSub}</span>
+                  <span className="text-[0.9062rem]">{t.rowRdv}</span>
+                  <span className="text-[0.75rem] leading-[1.2] text-texte2">{t.rowRdvSub}</span>
                 </span>
                 <ArrowRight className="ml-auto text-texte2" />
               </ActionLink>
@@ -163,7 +163,7 @@ export function FloatingContact({ dict }: Props) {
             <ActionLink
               href={telHref(site.phone)}
               unavailableLabel={`${t.rowCall} — ${phoneLabel}`}
-              className="flex items-center justify-center gap-2.5 rounded-[18px] bg-emeraude p-[13px] text-[14px] font-medium text-white no-underline transition-colors duration-200 hover:bg-[#136843] active:bg-[#0d4a30] motion-reduce:transition-none disabled:cursor-not-allowed disabled:opacity-55 dark:bg-accent-strong dark:text-fond dark:hover:bg-accent-strong/90 dark:active:bg-accent-strong/80"
+              className="flex items-center justify-center gap-2.5 rounded-[18px] bg-emeraude p-[0.8125rem] text-[0.875rem] font-medium text-white no-underline transition-colors duration-200 hover:bg-[#136843] active:bg-[#0d4a30] motion-reduce:transition-none disabled:cursor-not-allowed disabled:opacity-55 dark:bg-accent-strong dark:text-fond dark:hover:bg-accent-strong/90 dark:active:bg-accent-strong/80"
             >
               <Phone size={19} strokeWidth={2.2} aria-hidden />
               {t.rowCall}

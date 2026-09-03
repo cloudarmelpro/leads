@@ -73,8 +73,8 @@ export function CookieConsent({ lang, dict }: { lang: Locale; dict: Dictionary }
       aria-label={t.title}
       className="animate-fadein fixed right-4 bottom-4 left-4 z-90 rounded-2xl bg-surface p-5 shadow-[0_20px_50px_-20px_rgba(15,29,23,.4)] md:right-auto md:w-[min(380px,calc(100vw-2rem))]"
     >
-      <p className="font-display text-[15px] text-encre">{t.title}</p>
-      <p className="mt-2 text-[13px] leading-[1.6] text-texte2 text-pretty">
+      <p className="font-display text-[0.9375rem] text-encre">{t.title}</p>
+      <p className="mt-2 text-[0.8125rem] leading-[1.6] text-texte2 text-pretty">
         {t.body}{" "}
         <Link
           href={`/${lang}/confidentialite`}

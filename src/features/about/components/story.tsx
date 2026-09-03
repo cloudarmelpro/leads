@@ -23,7 +23,7 @@ export function Story({ dict }: Props) {
         <Reveal as="div" stagger={0.1} className="mt-12 grid grid-cols-1 gap-5 lg:grid-cols-3">
           {movements.map((paragraph, index) => (
             <SurfaceCard key={index} as="article" className="gap-6 p-7 sm:p-8">
-              <span className="relative font-mono text-[14px] leading-[25px] text-emeraude dark:text-accent-strong">
+              <span className="relative font-mono text-[0.875rem] leading-[1.5625rem] text-emeraude dark:text-accent-strong">
                 {String(index + 1).padStart(2, "0")}
               </span>
               <p className="relative text-body-fluid text-encre text-pretty">{paragraph}</p>

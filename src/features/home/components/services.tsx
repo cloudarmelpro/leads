@@ -27,7 +27,7 @@ export function Services({ dict }: Props) {
             <p className="mb-1">
               <Eyebrow>{t.kicker}</Eyebrow>
             </p>
-            <SplitReveal as="h2" className="font-display text-[clamp(24px,4vw,38px)] leading-[1.143] font-normal tracking-[-1.2px] text-balance">
+            <SplitReveal as="h2" className="font-display text-[clamp(1.5rem,4vw,2.375rem)] leading-[1.143] font-normal tracking-[-1.2px] text-balance">
               {t.titleA} {t.titleB}
             </SplitReveal>
           </div>
@@ -84,7 +84,7 @@ export function Services({ dict }: Props) {
                   />
                   <h3 className="text-lead-fluid font-normal text-encre">{item.name}</h3>
                 </div>
-                <p className="relative max-w-[44ch] text-[14px] leading-[24px] font-light text-texte2 text-pretty">
+                <p className="relative max-w-[44ch] text-[0.875rem] leading-[1.5rem] font-light text-texte2 text-pretty">
                   {item.note}
                 </p>
               </article>

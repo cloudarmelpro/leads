@@ -56,7 +56,7 @@ export async function PrivacyPage({ lang }: Props) {
               <Eyebrow>{doc.kicker}</Eyebrow>
             </p>
             <PrivacyToc label={doc.tocLabel} entries={entries.map(({ id, n, h }) => ({ id, n, h }))} />
-            <p className="mt-6 text-[13px] leading-[20px] text-texte2">
+            <p className="mt-6 text-[0.8125rem] leading-[1.25rem] text-texte2">
               {doc.updatedLabel} — {formatDate(doc.updated, lang)}
             </p>
           </aside>
@@ -66,7 +66,7 @@ export async function PrivacyPage({ lang }: Props) {
             {entries.map((entry) => (
               <article key={entry.id} id={entry.id} className="flex scroll-mt-8 flex-col gap-4">
                 <div className="flex items-baseline gap-3">
-                  <span className="font-mono text-[14px] leading-[25px] text-emeraude dark:text-accent-strong">
+                  <span className="font-mono text-[0.875rem] leading-[1.5625rem] text-emeraude dark:text-accent-strong">
                     {entry.n}
                   </span>
                   <h2 className="text-title-fluid font-medium text-encre">{entry.h}</h2>

@@ -29,7 +29,7 @@ export function MethodAccordion({ steps }: Props) {
               aria-expanded={isOpen}
               className="group flex w-full cursor-pointer items-center gap-4 py-5 text-left"
             >
-              <span className="text-[14px] leading-[25px] font-light text-accent-strong">0{step.n}</span>
+              <span className="text-[0.875rem] leading-[1.5625rem] font-light text-accent-strong">0{step.n}</span>
               <span
                 className={`flex-1 text-body-fluid text-encre ${isOpen ? "font-medium" : "font-light"}`}
               >

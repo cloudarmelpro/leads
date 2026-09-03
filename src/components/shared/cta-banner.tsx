@@ -48,7 +48,7 @@ export function CtaBanner({ lang, title, body, kicker, eyebrow, phone, ariaLabel
               tombe à ~42 % de la carte, pas trop à droite). */}
           <div className="relative flex flex-col gap-3.5 md:w-[36%] md:shrink-0">
             {kicker && <Eyebrow>{kicker}</Eyebrow>}
-            <SplitReveal as="h2" className="font-display text-[clamp(24px,4vw,38px)] leading-[1.143] font-normal tracking-[-1.2px] text-balance text-encre">
+            <SplitReveal as="h2" className="font-display text-[clamp(1.5rem,4vw,2.375rem)] leading-[1.143] font-normal tracking-[-1.2px] text-balance text-encre">
               {title}
             </SplitReveal>
           </div>
@@ -59,7 +59,7 @@ export function CtaBanner({ lang, title, body, kicker, eyebrow, phone, ariaLabel
               {eyebrow && (
                 <span className="text-body-fluid font-medium text-encre">{eyebrow}</span>
               )}
-              <p className="text-[14px] leading-[24px] font-light text-texte2 text-pretty">{body}</p>
+              <p className="text-[0.875rem] leading-[1.5rem] font-light text-texte2 text-pretty">{body}</p>
               {tel && (
                 <a
                   href={tel}

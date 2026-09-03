@@ -24,7 +24,7 @@ export function SectionHeader({ kicker, title, intro }: Props) {
         )}
         <SplitReveal
           as="h2"
-          className="font-display text-[clamp(24px,4vw,38px)] leading-[1.143] font-normal tracking-[-1.2px] text-balance"
+          className="font-display text-[clamp(1.5rem,4vw,2.375rem)] leading-[1.143] font-normal tracking-[-1.2px] text-balance"
         >
           {title}
         </SplitReveal>

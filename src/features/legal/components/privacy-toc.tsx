@@ -44,7 +44,7 @@ export function PrivacyToc({ label, entries }: Props) {
         {entries.map((entry) => {
           const isActive = entry.id === active;
           return (
-            <li key={entry.id} className="flex items-start gap-3 text-[14px] leading-[22px]">
+            <li key={entry.id} className="flex items-start gap-3 text-[0.875rem] leading-[1.375rem]">
               <span className="shrink-0 font-mono text-emeraude dark:text-accent-strong">{entry.n}</span>
               <a
                 href={`#${entry.id}`}

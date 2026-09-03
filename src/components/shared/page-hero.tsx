@@ -25,7 +25,7 @@ export function PageHero({ title, subtitle, cta }: Props) {
           as="h1"
           scroll={false}
           delay={0.1}
-          className="m-0 max-w-[720px] lg:max-w-[min(720px,60%)] font-display text-[clamp(24px,4vw,38px)] leading-[1.143] font-normal tracking-[-1.2px] text-encre text-pretty uppercase"
+          className="m-0 max-w-[720px] lg:max-w-[min(720px,60%)] font-display text-[clamp(1.5rem,4vw,2.375rem)] leading-[1.143] font-normal tracking-[-1.2px] text-encre text-pretty uppercase"
         >
           {title}
         </SplitReveal>

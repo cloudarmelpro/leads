@@ -101,6 +101,10 @@
 
 html {
   scroll-behavior: auto;
+  /* Échelle globale FLUIDE : 14px de racine sur mobile → 16px dès ~1000px. Toutes
+     les tailles du site sont en rem (texte, boutons, espacements, clamp() des
+     titres), donc tout suit la largeur d'écran d'un seul tenant. */
+  font-size: clamp(14px, 13px + 0.3vw, 16px);
   /* Ceinture anti-débordement horizontal (en plus de celle du body) : `clip` et non
      `hidden`, qui créerait un conteneur de défilement et casserait `position: sticky`. */
   overflow-x: clip;
@@ -155,31 +159,30 @@ body {
   filter: brightness(0.86) sepia(1) hue-rotate(90deg) saturate(2.2);
 }
 
-/* Typographie fluide des textes courants : les titres utilisent déjà clamp(), les
-   textes de corps, boutons et entrées de menu suivent ici la largeur d'écran
-   (pleine taille dès ~440px, plus compacts sur mobile, jamais sous 14px). */
+/* Rôles typographiques des textes courants, en rem : ils suivent la racine fluide
+   définie sur <html> (14px mobile → 16px ordinateur). */
 @utility text-body-fluid {
-  font-size: clamp(14px, 3.6vw, 16px);
+  font-size: 1rem;
   line-height: 1.5;
 }
 @utility text-small-fluid {
-  font-size: clamp(13.5px, 3.5vw, 15px);
+  font-size: .9375rem;
   line-height: 1.6;
 }
 @utility text-cta-fluid {
-  font-size: clamp(13.5px, 3.6vw, 15px);
+  font-size: .9375rem;
   line-height: 1.35;
 }
 @utility text-title-fluid {
-  font-size: clamp(16px, 4.4vw, 18px);
+  font-size: 1.125rem;
   line-height: 1.3;
 }
 @utility text-lead-fluid {
-  font-size: clamp(17px, 4.8vw, 20px);
+  font-size: 1.25rem;
   line-height: 1.25;
 }
 @utility text-nav-fluid {
-  font-size: clamp(14px, 3.6vw, 15px);
+  font-size: .9375rem;
   line-height: 1.4;
 }
 

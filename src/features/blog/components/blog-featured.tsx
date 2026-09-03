@@ -14,14 +14,14 @@ export function BlogFeatured({ post, lang, dict }: Props) {
   return (
     <SurfaceCard as="article" className="gap-8 px-10 pt-10 pb-11 md:flex-row md:items-end md:justify-between">
       <div className="relative max-w-[56ch]">
-        <p className="flex flex-wrap items-center gap-2 text-[14px] leading-[25px] font-light text-texte2">
+        <p className="flex flex-wrap items-center gap-2 text-[0.875rem] leading-[1.5625rem] font-light text-texte2">
           <span className="text-emeraude dark:text-accent-strong">{dict.blog.featured}</span>
           <span aria-hidden>·</span>
           <span>{post.category}</span>
           <span aria-hidden>·</span>
           <span>{formatDate(post.date, lang)}</span>
         </p>
-        <h2 className="mt-3 font-display text-[clamp(22px,3vw,30px)] leading-[1.143] font-normal tracking-[-0.8px] text-encre text-balance">
+        <h2 className="mt-3 font-display text-[clamp(1.375rem,3vw,1.875rem)] leading-[1.143] font-normal tracking-[-0.8px] text-encre text-balance">
           <Link href={`/${lang}/blog/${post.slug}`} className="text-encre no-underline hover:text-emeraude dark:hover:text-accent-strong">
             {post.title}
           </Link>

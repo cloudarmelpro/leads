@@ -57,7 +57,7 @@ export function FormSubmitButton({
   pendingLabel: string;
 }) {
   return (
-    <Button type="submit" disabled={isPending} className="mt-2 h-11 self-start rounded-xl px-6 text-[15px]">
+    <Button type="submit" disabled={isPending} className="mt-2 h-11 self-start rounded-xl px-6 text-[0.9375rem]">
       {isPending ? (
         <>
           {pendingLabel}
