@@ -119,7 +119,7 @@ function CardCta({ href, label, inverse = false }: { href: string; label: string
 function NestedPriceCard({ plan, cta, href }: CardProps) {
   return (
     <article className="flex flex-col gap-5 rounded-[20px] border border-ligne bg-surface-2 p-1.5 dark:border-transparent dark:shadow-[inset_0_0_0_1px_#0a2a3a]">
-      <div className="rounded-[15px] border border-ligne bg-surface p-5 sm:p-6 dark:border-white/8">
+      <div className="rounded-[15px] border border-ligne bg-surface p-5 sm:p-6 dark:border-transparent dark:shadow-[inset_0_0_0_1px_#0a2a3a]">
         <h3 className="text-title-fluid font-medium text-encre">{plan.name}</h3>
         {plan.tagline && <p className="mt-1 text-[0.8125rem] leading-[1.5] text-texte2">{plan.tagline}</p>}
         <p className="mt-4 font-display text-[clamp(1.75rem,2.6vw,2.125rem)] leading-none font-semibold tracking-[-0.5px] text-emeraude dark:text-accent-strong">
