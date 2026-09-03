@@ -3,6 +3,7 @@ import { CONTENEUR } from "@/components/shared/container";
 import { Eyebrow } from "@/components/shared/eyebrow";
 import { PageHero } from "@/components/shared/page-hero";
 import { Reveal } from "@/components/shared/reveal";
+import { PrivacyToc } from "@/features/legal/components/privacy-toc";
 import { getPrivacy } from "@/features/legal/privacy";
 import { formatDate } from "@/lib/format/date";
 import type { Locale } from "@/lib/i18n/config";
@@ -54,22 +55,7 @@ export async function PrivacyPage({ lang }: Props) {
             <p className="mb-4">
               <Eyebrow>{doc.kicker}</Eyebrow>
             </p>
-            <nav aria-label={doc.tocLabel}>
-              <p className="text-[16px] leading-[25px] font-medium text-encre">{doc.tocLabel}</p>
-              <ol className="mt-3 flex flex-col gap-2">
-                {entries.map((entry) => (
-                  <li key={entry.id} className="flex gap-3 text-[14px] leading-[22px]">
-                    <span className="shrink-0 font-mono text-emeraude dark:text-accent-strong">{entry.n}</span>
-                    <a
-                      href={`#${entry.id}`}
-                      className="font-light text-texte2 no-underline transition-colors hover:text-encre"
-                    >
-                      {entry.h}
-                    </a>
-                  </li>
-                ))}
-              </ol>
-            </nav>
+            <PrivacyToc label={doc.tocLabel} entries={entries.map(({ id, n, h }) => ({ id, n, h }))} />
             <p className="mt-6 text-[13px] leading-[20px] text-texte2">
               {doc.updatedLabel} — {formatDate(doc.updated, lang)}
             </p>
