@@ -9,7 +9,6 @@ import { localeLabels, locales, type Locale } from "@/lib/i18n/config";
 type Props = {
   current: Locale;
   label: string;
-  variant?: "light" | "dark";
   /** Classe d'affichage (défaut `inline-flex`) — permet au header de le masquer sous 380px. */
   className?: string;
 };
@@ -22,7 +21,6 @@ type Props = {
 export function LanguageSwitcher({
   current,
   label,
-  variant = "light",
   className = "inline-flex",
 }: Props) {
   const pathname = usePathname();
@@ -35,10 +33,7 @@ export function LanguageSwitcher({
     return segments.join("/") || `/${locale}`;
   };
 
-  const color =
-    variant === "dark"
-      ? "text-white hover:text-white/80"
-      : "text-encre hover:text-emeraude dark:hover:text-accent-strong";
+  const color = "text-encre hover:text-emeraude dark:hover:text-accent-strong";
 
   return (
     <Link
