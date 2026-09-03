@@ -77,7 +77,12 @@ export function HeroGlobe() {
       ref={ref}
       className="pointer-events-none absolute top-[54%] left-1/2 w-[135%] max-w-[560px] -translate-x-1/2 -translate-y-1/2 select-none lg:top-[57%] lg:right-[calc(clamp(1rem,4vw,3.5rem)-clamp(0px,(100vw-67.5rem)/2,10rem))] lg:left-auto lg:w-[56%] lg:max-w-[680px] lg:translate-x-0"
     >
-            <div ref={tiltRef} className="will-change-transform">
+            {/* Survol : curseur « main » sur le disque du globe seulement (`clip-path`
+          circulaire), les coins du carré restent transparents pour le titre. */}
+      <div
+        ref={tiltRef}
+        className="will-change-transform [clip-path:circle(50%)] lg:pointer-events-auto lg:cursor-pointer"
+      >
         {/* Clair : globe vectoriel émeraude. Sombre : masqué. */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
