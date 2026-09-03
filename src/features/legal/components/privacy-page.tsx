@@ -1,5 +1,9 @@
 import { BreadcrumbLd } from "@/components/shared/breadcrumb-ld";
 import { CONTENEUR } from "@/components/shared/container";
+import { Eyebrow } from "@/components/shared/eyebrow";
+import { PageHero } from "@/components/shared/page-hero";
+import { Reveal } from "@/components/shared/reveal";
+import { SurfaceCard } from "@/components/shared/surface-card";
 import { getPrivacy } from "@/features/legal/privacy";
 import { formatDate } from "@/lib/format/date";
 import type { Locale } from "@/lib/i18n/config";
@@ -7,13 +11,32 @@ import { getDictionary } from "@/lib/i18n/dictionaries";
 
 type Props = { lang: Locale };
 
-/** Corps de la page « Politique de confidentialité » (contenu dans `privacy.ts`). */
+/** Identifiant d'ancre stable à partir d'un intitulé (accents retirés, tirets). */
+function anchorId(heading: string) {
+  return heading
+    .normalize("NFD")
+    .replace(/\p{M}/gu, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
+/**
+ * Politique de confidentialité sur l'ossature du site : hero (titre + intro), puis
+ * deux colonnes comme la FAQ — sommaire ancré et date à gauche, articles en
+ * cartes numérotées à droite. Le contenu vit dans `privacy.ts`.
+ */
 export async function PrivacyPage({ lang }: Props) {
   const doc = getPrivacy(lang);
   const dict = await getDictionary(lang);
+  const entries = doc.sections.map((section, index) => ({
+    ...section,
+    id: anchorId(section.h),
+    n: String(index + 1).padStart(2, "0"),
+  }));
 
   return (
-    <div className="pt-[clamp(24px,4vw,48px)] pb-[clamp(48px,7vw,96px)]">
+    <>
       <BreadcrumbLd
         lang={lang}
         items={[
@@ -21,32 +44,60 @@ export async function PrivacyPage({ lang }: Props) {
           { name: doc.title, path: "/confidentialite" },
         ]}
       />
-      <div className={CONTENEUR}>
-        <div className="mx-auto max-w-190">
-          <h1 className="font-display text-[clamp(22px,3.75vw,36px)] leading-[1.1] tracking-normal text-balance">
-            {doc.title}
-          </h1>
-          <p className="mt-3 text-sm text-texte2">
-            {doc.updatedLabel} — {formatDate(doc.updated, lang)}
-          </p>
-          <p className="mt-6 text-base leading-[1.7] text-texte2 text-pretty">{doc.intro}</p>
+      <PageHero title={doc.title} subtitle={doc.intro} />
 
-          <div className="mt-10 flex flex-col gap-8">
-            {doc.sections.map((section) => (
-              <section key={section.h}>
-                <h2 className="font-display text-xl leading-[1.25]">{section.h}</h2>
-                <div className="mt-3 flex flex-col gap-3">
-                  {section.p.map((para, index) => (
-                    <p key={index} className="text-[15px] leading-[1.7] text-texte2 text-pretty">
+      <section className="pb-[clamp(80px,14vw,200px)]">
+        <div
+          className={`${CONTENEUR} grid grid-cols-1 gap-x-16 gap-y-9 md:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] md:items-start`}
+        >
+          {/* Colonne gauche, collante : eyebrow, sommaire ancré, date de mise à jour. */}
+          <aside className="md:sticky md:top-8">
+            <p className="mb-4">
+              <Eyebrow>{doc.kicker}</Eyebrow>
+            </p>
+            <nav aria-label={doc.tocLabel}>
+              <p className="text-[16px] leading-[25px] font-medium text-encre">{doc.tocLabel}</p>
+              <ol className="mt-3 flex flex-col gap-2">
+                {entries.map((entry) => (
+                  <li key={entry.id} className="flex gap-3 text-[14px] leading-[22px]">
+                    <span className="shrink-0 font-mono text-emeraude dark:text-accent-strong">{entry.n}</span>
+                    <a
+                      href={`#${entry.id}`}
+                      className="font-light text-texte2 no-underline transition-colors hover:text-encre"
+                    >
+                      {entry.h}
+                    </a>
+                  </li>
+                ))}
+              </ol>
+            </nav>
+            <p className="mt-6 text-[13px] leading-[20px] text-texte2">
+              {doc.updatedLabel} — {formatDate(doc.updated, lang)}
+            </p>
+          </aside>
+
+          {/* Colonne droite : un article par carte, numérotée comme les étapes de la Méthode. */}
+          <Reveal as="div" stagger={0.06} className="flex flex-col gap-5">
+            {entries.map((entry) => (
+              <SurfaceCard key={entry.id} as="article" id={entry.id} className="scroll-mt-8 gap-4 p-7 sm:p-8">
+                <div className="relative flex items-baseline gap-3">
+                  <span className="font-mono text-[14px] leading-[25px] text-emeraude dark:text-accent-strong">
+                    {entry.n}
+                  </span>
+                  <h2 className="text-[18px] leading-[1.3] font-medium text-encre">{entry.h}</h2>
+                </div>
+                <div className="relative flex flex-col gap-3">
+                  {entry.p.map((para, index) => (
+                    <p key={index} className="text-[15px] leading-[24px] text-texte2 text-pretty">
                       {para}
                     </p>
                   ))}
                 </div>
-              </section>
+              </SurfaceCard>
             ))}
-          </div>
+          </Reveal>
         </div>
-      </div>
-    </div>
+      </section>
+    </>
   );
 }
