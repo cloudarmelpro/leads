@@ -21,7 +21,7 @@ type Props = {
 
 /**
  * Logo « Talgasy Web » (design refonte) : monogramme « T » (recoloré par thème via
- * masque) + « Talgasy » (Outfit Bold) + « Web » (Geist Mono, gris). Le texte reste
+ * masque) + « Talgasy » (Outfit SemiBold) + « Web » (Geist Mono, gris). Le texte reste
  * du vrai texte (lisible par les lecteurs d'écran) ; seul le monogramme est décoratif.
  */
 export function Wordmark({ hideTextOnMobile = false, className }: Props) {
@@ -36,7 +36,7 @@ export function Wordmark({ hideTextOnMobile = false, className }: Props) {
         className={`items-baseline gap-[0.3125rem] leading-none ${hideTextOnMobile ? "hidden sm:flex" : "flex"}`}
       >
         <span
-          className="font-display text-[1.375rem] font-bold text-encre"
+          className="font-display text-[1.375rem] font-semibold text-encre"
         >
           Talgasy
         </span>
