@@ -2,7 +2,7 @@
 
 **Ce qu'on construit** : un **site vitrine bilingue FR/EN de 6 pages** (Accueil, À propos,
 Services, Contact, Blog, FAQ), avec un **formulaire de contact**, une **prise de rendez-vous
-Calendly**, et un **blog administrable** par le client depuis un espace d'administration maison.
+Cal.com**, et un **blog administrable** par le client depuis un espace d'administration maison.
 
 **Ce qu'on ne construit pas** : pas de SaaS, pas d'API publique pour des tiers, pas
 d'application mobile, pas de multi-tenant. Le seul consommateur du code est ce site.
@@ -30,7 +30,7 @@ leads/
 │   │   ├── (auth)/                   # Connexion admin — hors [lang], FR seulement
 │   │   ├── admin/                    # Administration du blog — hors [lang], role-gated
 │   │   └── api/
-│   │       └── webhooks/             # Webhooks entrants (Calendly…) — serveur-à-serveur
+│   │       └── webhooks/             # Webhooks entrants (Cal.com…) — serveur-à-serveur
 │   │
 │   ├── features/                     # Modules métier (tranches verticales)
 │   │   └── <nom>/                    # contact, blog, auth
@@ -43,7 +43,7 @@ leads/
 │   │       └── server.ts             # Surface publique SERVER-ONLY (services, queries…)
 │   │
 │   ├── lib/                          # Infrastructure transverse (feuille)
-│   │   ├── db/                       # Client Prisma (singleton)
+│   │   ├── db/                       # Client Neon Postgres (SQL brut, @neondatabase/serverless)
 │   │   ├── auth/                     # Session admin (implémentation à trancher)
 │   │   ├── env.ts                    # Variables d'environnement typées via Zod
 │   │   ├── i18n/                     # config.ts (locales) + dictionaries/{fr,en}.json
@@ -57,7 +57,6 @@ leads/
 │   │
 │   └── app/globals.css               # Tailwind v4
 │
-├── prisma/                           # Schéma, migrations, seed
 ├── public/                           # Assets servis PUBLIQUEMENT (images, favicon, og)
 ├── docs/                             # Documents internes (cahier de charges) — JAMAIS public/
 ├── ARCHITECTURE.md / CLAUDE.md / AGENTS.md
@@ -131,7 +130,7 @@ ContactForm (Client Component, features/contact/components/)
   → submitContactAction (features/contact/actions/)
       → valide avec Zod (features/contact/schemas/) + anti-spam
       → appelle createContactLead (features/contact/services/)
-          → écriture Prisma (lib/db/) + notification (lib/email/)
+          → écriture SQL (lib/db/) + notification (lib/email/)
       → retourne un ActionResult { ok } | { error, fields }
   → message de succès, ou erreur affichée (règle 9)
 ```
@@ -148,7 +147,7 @@ app/[lang]/(public)/blog/[slug]/page.tsx
 ```
 app/admin/blog/[id]/page.tsx  → formulaire (features/blog/components/)
   → publishPostAction (features/blog/actions/) → vérifie la session (lib/auth/)
-      → publishPost (features/blog/services/) → Prisma
+      → publishPost (features/blog/services/) → SQL (lib/db/)
       → revalidatePath('/[lang]/blog', 'page')
 ```
 
@@ -160,7 +159,7 @@ app/admin/blog/[id]/page.tsx  → formulaire (features/blog/components/)
 |------------------------------------------------|------------------------------------------------|
 | Une page publique bilingue                     | `src/app/[lang]/(public)/...`                  |
 | Une page d'administration                      | `src/app/admin/...`                            |
-| Un webhook entrant (Calendly…)                 | `src/app/api/webhooks/<fournisseur>/route.ts`  |
+| Un webhook entrant (Cal.com…)                  | `src/app/api/webhooks/<fournisseur>/route.ts`  |
 | De la logique métier (créer, publier…)         | `features/<nom>/services/`                     |
 | Une Server Action (wrapper de formulaire)      | `features/<nom>/actions/`                      |
 | Une requête de lecture                         | `features/<nom>/queries/`                      |
@@ -168,7 +167,7 @@ app/admin/blog/[id]/page.tsx  → formulaire (features/blog/components/)
 | Le composant `<ContactForm>`                   | `features/contact/components/`                 |
 | Un `<Button>` shadcn générique                 | `components/ui/`                               |
 | Le `<Header>`, le sélecteur de langue          | `components/shared/`                           |
-| Le singleton Prisma                            | `lib/db/`                                      |
+| Le client SQL Neon (`getSql`)                  | `lib/db/`                                      |
 | Une clé de traduction                          | `lib/i18n/dictionaries/fr.json` **et** `en.json` |
 | `formatDate(...)`                              | `lib/format/date.ts`                           |
 | Un helper de métadonnées / hreflang / JSON-LD  | `lib/seo/`                                     |
@@ -281,7 +280,7 @@ module.exports = {
 ## Anti-patterns (à refuser en review)
 
 - De la logique métier dans une Server Action — elle appartient à `services/`.
-- Des appels Prisma dans `app/.../page.tsx` ou `route.ts`.
+- Des requêtes SQL dans `app/.../page.tsx` ou `route.ts`.
 - Importer `features/x/services/…` en profondeur depuis une autre feature — passer par
   `index.ts` / `server.ts`.
 - Un `src/lib/utils.ts` qui devient un tiroir fourre-tout.
@@ -294,14 +293,20 @@ module.exports = {
 
 ---
 
+## Décisions tranchées
+
+- **Base de données** : Neon Postgres, SQL brut via `@neondatabase/serverless` (`lib/db/`).
+  Pas d'ORM.
+- **Prise de rendez-vous** : Cal.com (`@calcom/embed-react`, lien dans `site.calLink`).
+- **Nom de l'entreprise et domaine** : Talgasy Web, `talgasyweb.ca` — source unique dans
+  `src/config/site.ts`. Toute donnée encore `null` (adresse, WhatsApp, Messenger…) reste
+  un placeholder traduit : ne jamais inventer coordonnées, témoignages ni chiffres.
+
 ## Décisions encore ouvertes
 
 À trancher avant d'écrire le code concerné — ne rien présumer d'ici là :
 
-- **Base de données** : moteur et hébergement (le déploiement cible est Hostinger, self-host Node).
 - **Authentification admin** : implémentation de `lib/auth/`. Un seul compte administrateur
   change beaucoup la réponse par rapport à plusieurs rôles.
-- **Nom de l'entreprise, domaine, logo, coordonnées** : non arrêtés. Placeholder explicite
-  partout — ne rien inventer.
 - **`output: 'standalone'`** dans `next.config.ts` pour Hostinger : à activer tôt, ça se
   teste mal une fois le site terminé.

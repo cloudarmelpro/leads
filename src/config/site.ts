@@ -1,6 +1,6 @@
 /**
  * Source unique des informations d'entreprise.
- * `null` = donnée non encore confirmée par le client (voir tache.md, phase 0).
+ * `null` = donnée non encore confirmée par le client.
  * Le TEXTE affiché à la place vit dans les dictionnaires (`placeholders.*`) :
  * il est visible par l'utilisateur, donc il doit être traduit comme le reste.
  */
@@ -8,7 +8,7 @@
 export const site = {
   name: "Talgasy Web", // Nom de l'entreprise, affiché dans le header et le footer.
   domain: "talgasyweb.ca",
-  phone: "514-808-6549" as string | null,
+  phone: "438-808-6594" as string | null,
   email: "cedric@talgasyweb.ca" as string | null,
   // Aucun bureau officiel pour l'instant → adresse retirée du site (footer + contact).
   address: null as string | null,
@@ -19,11 +19,9 @@ export const site = {
   // Tant qu'il est null, la page contact affiche la maquette ; dès qu'il est
   // rempli, l'embed Cal.com réel s'affiche automatiquement.
   calLink: "cedric.agence/talgasy-web" as string | null,
-  social: [
-    { key: "facebook", label: "f" },
-    { key: "linkedin", label: "in" },
-    { key: "instagram", label: "ig" },
-  ],
+  // Clés = `footer.social.*` des dictionnaires (libellés a11y). Pas d'URL tant
+  // que les comptes n'existent pas : le footer les rend en placeholder.
+  social: [{ key: "facebook" }, { key: "linkedin" }, { key: "instagram" }],
 } as const;
 
 export function telHref(phone: string | null): string | null {

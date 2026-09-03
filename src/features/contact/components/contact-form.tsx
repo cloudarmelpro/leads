@@ -68,7 +68,7 @@ export function ContactForm({ lang, dict }: Props) {
         aria-hidden
         className="pointer-events-none absolute left-[-9999px] h-0 w-0 overflow-hidden"
       >
-        <label htmlFor="contact-website">Laissez ce champ vide</label>
+        <label htmlFor="contact-website">{t.honeypot}</label>
         <input
           id="contact-website"
           type="text"
@@ -124,7 +124,7 @@ export function ContactForm({ lang, dict }: Props) {
         {...register("message")}
       />
 
-      {/* Consentement — Loi 25 (Québec) : le lien mènera à la vraie page plus tard. */}
+      {/* Consentement — Loi 25 (Québec). */}
       <Controller
         control={control}
         name="consent"

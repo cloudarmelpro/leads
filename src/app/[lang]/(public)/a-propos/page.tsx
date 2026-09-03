@@ -3,7 +3,8 @@ import { notFound } from "next/navigation";
 
 import { BreadcrumbLd } from "@/components/shared/breadcrumb-ld";
 import { CtaBanner } from "@/components/shared/cta-banner";
-import { AboutHero, Principles, Story, Team } from "@/features/about";
+import { PageHero } from "@/components/shared/page-hero";
+import { Principles, Story, Team } from "@/features/about";
 import { isLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { pageMetadata } from "@/lib/seo/metadata";
@@ -39,7 +40,7 @@ export default async function AboutPage({ params }: PageProps<"/[lang]/a-propos"
           { name: dict.about.heroTitle, path: "/a-propos" },
         ]}
       />
-      <AboutHero dict={dict} />
+      <PageHero title={dict.about.heroTitle} subtitle={dict.about.story[0]} />
       <Story dict={dict} />
       <Principles dict={dict} />
       <Team dict={dict} />

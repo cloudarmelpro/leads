@@ -1,5 +1,6 @@
 import { Clock, Globe, Video } from "lucide-react";
 
+import { site } from "@/config/site";
 import { localeHtmlLang, type Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 
@@ -8,9 +9,10 @@ type Props = { lang: Locale; dict: Dictionary };
 const SLOTS = ["09:00", "09:30", "10:00", "10:30", "11:00", "13:30", "14:00", "14:30", "15:00"];
 
 /**
- * ⚠️ MAQUETTE VISUELLE (façon Cal.com) — non fonctionnelle. Le calendrier montre
- * le mois courant en lecture seule. À remplacer par l'embed réel (Cal.com / Calendly)
- * qui apporte les vraies disponibilités et la réservation.
+ * Repli visuel quand `site.calLink` est `null` : maquette non fonctionnelle (mois
+ * courant en lecture seule, créneaux figés) qui tient la mise en page tant qu'aucun
+ * lien Cal.com n'est fourni. Dès que `site.calLink` est renseigné, la page contact
+ * rend `CalcomEmbed` à la place et ce composant n'est plus monté.
  */
 export function BookingWidget({ lang, dict }: Props) {
   const t = dict.contactPage.booking;
@@ -40,8 +42,11 @@ export function BookingWidget({ lang, dict }: Props) {
       <div className="grid gap-px bg-ligne md:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)_minmax(0,0.85fr)]">
         {/* Colonne 1 — informations du rendez-vous. */}
         <div className="bg-surface p-6">
-          <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-ink font-display text-[15px] text-white">
-            L
+          <span
+            aria-hidden
+            className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-ink font-display text-[15px] text-white"
+          >
+            {site.name[0]}
           </span>
           <h3 className="mt-4 font-display text-lg">{t.service}</h3>
 

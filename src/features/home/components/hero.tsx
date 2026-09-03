@@ -1,69 +1,78 @@
-import type { CSSProperties } from "react";
+import Link from "next/link";
 
+import { CONTENEUR } from "@/components/shared/container";
+import { Reveal } from "@/components/shared/reveal";
+import { SplitReveal } from "@/components/shared/split-reveal";
+import { HeroGlobe } from "@/features/home/components/hero-globe";
 import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
-import { previewBg } from "@/lib/preview-image";
 
 type Props = { lang: Locale; dict: Dictionary };
 
-export function Hero({ dict }: Props) {
+export function Hero({ lang, dict }: Props) {
   const t = dict.hero;
-  const pills = [t.strip1, t.strip2, t.strip3];
 
   return (
     <section
       id="accueil"
-      className="px-[clamp(16px,4vw,32px)] pt-[clamp(28px,8vw,130px)] pb-[clamp(40px,6vw,80px)]"
+      className="relative z-0 -mt-[77px] flex min-h-[calc(100svh-140px)] overflow-x-clip pt-[84px] pb-[clamp(20px,3vw,40px)]"
     >
-      {/* En-tête sur deux colonnes (réf. ieaEnergy) : grand titre à gauche,
-          paragraphe d'appui en haut à droite. Empilé en une colonne sur mobile.
-          Même grille que le header et les sections (bord à 1160/2). */}
-      <div className="mx-auto grid max-w-290 grid-cols-1 gap-x-10 gap-y-7 md:grid-cols-[minmax(0,2fr)_minmax(0,1fr)] md:items-end">
-        <div
-          data-reveal-child="right"
-          style={{
-            "--reveal-delay": "90ms",
-            "--reveal-dist": "40vw",
-            "--reveal-dur": "3400ms",
-          } as CSSProperties}
-        >
-          <h1 className="font-display text-[clamp(32px,4.4vw,50px)] leading-[1.05] tracking-normal antialiased">
-            {t.titleA}{" "}
-            <span className="text-emeraude dark:text-accent-strong">{t.titleB}</span>
-          </h1>
-        </div>
+      {/* Fond repris de la sélection Figma : deux fines ellipses vertes floutées,
+          pivotées ~50° — de longs traits de lumière en diagonale depuis le haut.
+          Valeurs exactes du SVG Figma : 99×2009px, #30D98C, blur 50, opacity .05.
+          Couleur via token pour rester correct en clair/sombre. */}
+      {/* Les traits débordent VERS LE BAS dans la page (pas de coupe nette au bas
+          du hero) ; seul l'axe X est clippé (section `overflow-x-clip`) pour éviter
+          un défilement horizontal. */}
+      {/* Ellipse 2 — croise le header entre le logo et « Services ». */}
+      <div aria-hidden className="pointer-events-none absolute top-[-340px] left-[-9%] h-[2009px] w-[99px] rotate-[50deg] rounded-[50%] bg-accent-strong opacity-[0.04] blur-[50px]" />
+      {/* Ellipse 1 — croise le header au niveau du bouton « Contact ». */}
+      <div aria-hidden className="pointer-events-none absolute top-[-340px] left-[30%] h-[2009px] w-[99px] rotate-[50deg] rounded-[50%] bg-accent-strong opacity-[0.04] blur-[50px]" />
 
-        <p
-          data-reveal="left"
-          data-reveal-delay="190"
-          className="max-w-[46ch] text-base leading-[1.6] text-texte2 text-pretty md:justify-self-end md:pb-2 md:text-right"
+      <div className={`${CONTENEUR} relative flex w-full flex-col items-start justify-center gap-6`}>
+        {/* Globe « signature » animé (rotation lente + flottement). */}
+        <HeroGlobe />
+
+        <SplitReveal
+          as="h1"
+          scroll={false}
+          delay={0.1}
+          className="m-0 max-w-[min(720px,60%)] font-display text-[clamp(24px,4vw,38px)] leading-[1.143] font-normal tracking-[-1.2px] text-encre text-pretty uppercase"
+        >
+          {t.titleA}{" "}
+          <span className="text-emeraude dark:text-accent-strong">{t.titleB}</span>
+        </SplitReveal>
+
+        <SplitReveal
+          as="p"
+          scroll={false}
+          delay={0.28}
+          className="m-0 max-w-[min(642px,55%)] text-[16px] leading-[24px] font-normal text-texte2 text-pretty"
         >
           {t.subtitle}
-        </p>
-      </div>
+        </SplitReveal>
 
-      {/* Grande image d'appui pleine largeur (réf. ieaEnergy) : label discret en
-          haut à gauche, marqueurs de confiance en bas à gauche. */}
-      <figure
-        data-reveal="up"
-        data-reveal-delay="280"
-        style={previewBg("talgasy-web-hero", 1680, 900)}
-        className="relative mx-auto mt-10 flex h-[clamp(300px,44vw,560px)] max-w-290 flex-col justify-between overflow-hidden rounded-[28px] bg-menthe p-[clamp(16px,2.4vw,26px)]"
-      >
-        <span className="w-fit rounded-full bg-ink/55 px-3.5 py-1.5 text-[13px] font-medium text-white backdrop-blur-sm">
-          {t.demoTag}
-        </span>
-        <figcaption className="flex flex-wrap gap-2">
-          {pills.map((pill) => (
-            <span
-              key={pill}
-              className="rounded-full bg-white/92 px-3.5 py-1.5 text-[13px] font-semibold text-ink backdrop-blur-sm"
-            >
-              {pill}
-            </span>
-          ))}
-        </figcaption>
-      </figure>
+        <Reveal
+          as="div"
+          scroll={false}
+          delay={0.5}
+          stagger={0.12}
+          className="flex flex-wrap items-center gap-3"
+        >
+          <Link
+            href={`/${lang}/contact`}
+            className="rounded-[9px] bg-emeraude px-4 py-2.5 text-[15px] font-medium text-white no-underline hover:bg-[#7fefc0] hover:text-fond dark:bg-accent-strong dark:text-fond dark:hover:bg-[#7fefc0]"
+          >
+            {t.ctaBook}
+          </Link>
+          <Link
+            href={`/${lang}/a-propos`}
+            className="rounded-[9px] px-4 py-2.5 text-[15px] font-medium text-encre no-underline shadow-[inset_0_0_0_1px_var(--color-encre)] hover:bg-encre/[0.08]"
+          >
+            {dict.nav.about}
+          </Link>
+        </Reveal>
+      </div>
     </section>
   );
 }

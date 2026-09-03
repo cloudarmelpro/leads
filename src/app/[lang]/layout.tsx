@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cal_Sans, Inter } from "next/font/google";
+import { Geist_Mono, Outfit, Plus_Jakarta_Sans } from "next/font/google";
 import { notFound } from "next/navigation";
 
 import "../globals.css";
@@ -10,22 +10,28 @@ import { FloatingContact } from "@/components/shared/floating-contact";
 import { Header } from "@/components/shared/header";
 import { JsonLd } from "@/components/shared/json-ld";
 import { PrePaintScript } from "@/components/shared/pre-paint-script";
-import { ScrollReveal } from "@/components/shared/scroll-reveal";
+import { SmoothScroll } from "@/components/shared/smooth-scroll";
 import { site } from "@/config/site";
 import { isLocale, localeHtmlLang, locales } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { pageMetadata } from "@/lib/seo/metadata";
 
-// `next/font` n'accepte que des littéraux statiques : ni variable, ni spread.
-// `latin-ext` couvre les caractères français absents de `latin` (œ, Œ).
-// Cal Sans n'existe qu'en un seul poids (400) — c'est son poids d'affichage natif.
-const calSans = Cal_Sans({
-  variable: "--font-cal-sans",
-  weight: "400",
+import { setRequestLocale } from "@/lib/i18n/request-locale";
+
+// Typographie de la maquette Figma : Outfit pour les grands titres (h1/h2),
+// Plus Jakarta Sans pour le corps et les titres secondaires. Deux polices
+// variables Google Fonts.
+const outfit = Outfit({
+  variable: "--font-outfit",
   subsets: ["latin", "latin-ext"],
 });
-const inter = Inter({
-  variable: "--font-inter",
+const plusJakarta = Plus_Jakarta_Sans({
+  variable: "--font-jakarta",
+  subsets: ["latin", "latin-ext"],
+});
+// Accent monospace (boutons, coordonnées) — conservé.
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
   subsets: ["latin", "latin-ext"],
 });
 
@@ -48,19 +54,28 @@ export async function generateMetadata({ params }: LayoutProps<"/[lang]">): Prom
 export default async function RootLayout({ children, params }: LayoutProps<"/[lang]">) {
   const { lang } = await params;
   if (!isLocale(lang)) notFound();
+  setRequestLocale(lang);
 
   const dict = await getDictionary(lang);
 
   return (
     <html
       lang={localeHtmlLang[lang]}
-      className={`${calSans.variable} ${inter.variable}`}
-      // Le script inline pose `reveal-ready` sur <html> avant l'hydratation
-      // (comme un script de thème) → on ignore la différence de className.
+      className={`${outfit.variable} ${plusJakarta.variable} ${geistMono.variable}`}
+      // Le script inline pose `.dark` sur <html> avant l'hydratation (script de
+      // thème) → on ignore la différence de className.
       suppressHydrationWarning
     >
+      <head>
+        {/* Les titres animés partent en `opacity-0` et sont révélés par GSAP.
+            Sans JavaScript, ils resteraient invisibles : on les rétablit. */}
+        <noscript>
+          <style>{`.opacity-0{opacity:1}`}</style>
+        </noscript>
+      </head>
       <body className="min-h-dvh bg-fond text-encre">
         <PrePaintScript />
+        <SmoothScroll />
         <JsonLd lang={lang} dict={dict} />
         <a
           href="#contenu"
@@ -73,7 +88,6 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[la
         <Footer lang={lang} dict={dict} />
         <FloatingContact dict={dict} />
         <CookieConsent lang={lang} dict={dict} />
-        <ScrollReveal />
       </body>
     </html>
   );

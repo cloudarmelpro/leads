@@ -7,9 +7,9 @@ Site vitrine **bilingue (FR/EN)**, **haut de gamme**, dont l'objectif premier es
 de ventes. Le site présente l'entreprise, démontre un haut niveau de qualité et crée un
 **fort effet « wow »** qui pousse à l'action.
 
-> ⚠️ Le **nom de l'entreprise n'est pas encore arrêté** (donc pas de nom de domaine ni
-> de logo final). Ne rien inventer : ni nom, ni slogan, ni coordonnées, ni témoignage,
-> ni chiffre. Placeholder explicite tant que l'info n'est pas fournie.
+> ⚠️ L'entreprise est **Talgasy Web** (domaine `talgasyweb.ca`) — source unique :
+> `src/config/site.ts`. Ne rien inventer au-delà : ni slogan, ni coordonnée non confirmée,
+> ni témoignage, ni chiffre. Placeholder explicite (traduit) tant que l'info n'est pas fournie.
 
 ## Contexte
 
@@ -37,7 +37,8 @@ au besoin). Turbopack.
 
 **Référence normative : [`ARCHITECTURE.md`](./ARCHITECTURE.md).** En bref : la logique
 métier vit dans `features/<nom>/services/` ; `app/` ne contient que des routes minces ;
-l'infra transverse est dans `lib/` (feuille, sans dépendance vers `features/`).
+l'infra transverse est dans `lib/` (feuille, sans dépendance vers `features/`). Base : Neon
+Postgres en SQL brut via `@neondatabase/serverless` (`lib/db/`), pas d'ORM.
 
 ```
 src/
@@ -80,7 +81,7 @@ A11y non négociable : contraste ≥ 4.5:1, focus visibles, cibles ≥ 44px, res
 
 ## Fonctionnalités & intégrations
 
-- **Formulaire de contact** et **prise de rendez-vous en ligne via Calendly**.
+- **Formulaire de contact** et **prise de rendez-vous en ligne via Cal.com**.
 - **Blog administrable** (contenu géré dans la durée).
 - **Liens réseaux sociaux** + **accès rapides WhatsApp** (et possiblement Messenger).
 - **Module de contact flottant** envisagé.
@@ -98,7 +99,7 @@ La **gestion des réseaux sociaux ne fait pas partie** du mandat.
 
 - Ne pas coder une API Next.js sans lire la doc dans `node_modules/next/dist/docs/` (voir AGENTS.md).
 - Pas d'emoji comme icônes (utiliser lucide-react). Pas de `middleware.ts`. Pas de `any`.
-- Ne rien inventer sur l'entreprise (nom, coordonnées, prix, témoignages, chiffres, logos clients).
+- Ne rien inventer sur l'entreprise (coordonnées non confirmées, prix, témoignages, chiffres, logos clients).
 - Ne jamais déposer un document interne dans `public/` — tout y est servi publiquement et
   indexable. Les documents de travail vont dans `docs/` à la racine.
 - Ne jamais afficher « message envoyé » si l'enregistrement du lead a échoué (ARCHITECTURE.md, règle 9).

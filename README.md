@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Talgasy Web — site vitrine
 
-## Getting Started
+Site vitrine bilingue (FR/EN) orienté génération de leads pour PME québécoises.
+Domaine : `talgasyweb.ca` (voir `src/config/site.ts`).
 
-First, run the development server:
+## Stack
+
+Next.js 16 (App Router, React Compiler, Turbopack) · React 19 · TypeScript strict ·
+Tailwind CSS v4 · GSAP + Lenis · Neon Postgres (SQL brut via `@neondatabase/serverless`) ·
+Resend (notification des leads) · Cal.com (prise de rendez-vous).
+
+## Commandes
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run dev     # serveur de développement (http://localhost:3000)
+npm run build   # build de production (type-check inclus)
+npm run lint    # ESLint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Documentation
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- [`ARCHITECTURE.md`](./ARCHITECTURE.md) — structure feature-based, règles, flux.
+- [`CLAUDE.md`](./CLAUDE.md) — contexte projet, conventions, design.
+- `docs/` — documents internes (gitignoré, jamais dans `public/`).
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Variables d'environnement
 
-## Learn More
+Toutes optionnelles (le site fonctionne sans, les fonctions concernées se désactivent) ;
+modèle dans `.env.example`, lecture centralisée dans `src/lib/env.ts` :
 
-To learn more about Next.js, take a look at the following resources:
+- `DATABASE_URL` — Neon Postgres (enregistrement des leads).
+- `RESEND_API_KEY` — envoi des notifications e-mail.
+- `LEAD_NOTIFICATION_EMAIL` — destinataire des notifications de lead.
+- `LEAD_FROM_EMAIL` — expéditeur des notifications (défaut : `onboarding@resend.dev`).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Déploiement
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Hébergement Hostinger (Node auto-géré). Le déploiement se déclenche par `git push`
+sur la branche suivie par Hostinger.

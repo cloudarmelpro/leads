@@ -1,60 +1,50 @@
 "use client";
 
-import { Menu, Phone, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { ActionLink } from "@/components/shared/action-link";
+import { CONTENEUR } from "@/components/shared/container";
 import { LanguageSwitcher } from "@/components/shared/language-switcher";
 import { ThemeToggle } from "@/components/shared/theme-toggle";
+import { Wordmark } from "@/components/shared/wordmark";
 import { site, telHref, whatsappHref } from "@/config/site";
 import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 
 type Props = { lang: Locale; dict: Dictionary };
 
-function Wordmark({ onDark = false }: { onDark?: boolean }) {
-  // Logo vectoriel (public/talgasy-logo.svg) : net à toute taille, aucun grain.
-  // Variante `-dark` (texte clair) en mode sombre et TOUJOURS sur fond foncé (menu
-  // mobile `bg-sapin`), via `onDark`. <img> simple : un SVG local de confiance
-  // n'a pas besoin de l'optimiseur next/image.
-  if (onDark) {
-    // eslint-disable-next-line @next/next/no-img-element
-    return <img src="/talgasy-logo-dark.svg" alt={site.name} className="h-9 w-auto" />;
-  }
-  return (
-    <>
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="/talgasy-logo.svg" alt={site.name} className="h-9 w-auto dark:hidden" />
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="/talgasy-logo-dark.svg" alt={site.name} className="hidden h-9 w-auto dark:block" />
-    </>
-  );
-}
-
 export function Header({ lang, dict }: Props) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const burgerRef = useRef<HTMLButtonElement>(null);
+  const closeRef = useRef<HTMLButtonElement>(null);
 
   const phoneLabel = site.phone ?? dict.placeholders.phone;
   const whatsappLabel = site.whatsapp ?? dict.placeholders.whatsapp;
 
-  // D'abord les ancres de l'accueil, puis les pages dédiées (à la fin).
+  // Ordre du design : Services, Secteurs, Méthode, FAQ, Prix, À propos, Blog.
+  // Le Contact est porté par le bouton d'action à droite (pas dans la nav).
   const nav = [
-    { label: dict.nav.sectors, href: `/${lang}#secteurs` },
     { label: dict.nav.services, href: `/${lang}#services` },
+    { label: dict.nav.sectors, href: `/${lang}#secteurs` },
     { label: dict.nav.method, href: `/${lang}#methode` },
     { label: dict.nav.faq, href: `/${lang}#faq` },
+    { label: dict.nav.pricing, href: `/${lang}/prix` },
     { label: dict.nav.about, href: `/${lang}/a-propos` },
     { label: dict.nav.blog, href: `/${lang}/blog` },
-    { label: dict.nav.contact, href: `/${lang}/contact` },
   ];
 
   // Le menu plein écran ne doit pas laisser la page défiler derrière lui.
+  // Focus : à l'ouverture sur « Fermer » ; toute fermeture (croix, Échap, lien)
+  // passe par le cleanup, qui rend le focus au burger.
   useEffect(() => {
     if (!menuOpen) return;
 
     const previous = document.body.style.overflow;
+    const burger = burgerRef.current;
     document.body.style.overflow = "hidden";
+    closeRef.current?.focus();
 
     const onKey = (event: KeyboardEvent) => {
       if (event.key === "Escape") setMenuOpen(false);
@@ -64,6 +54,7 @@ export function Header({ lang, dict }: Props) {
     return () => {
       document.body.style.overflow = previous;
       window.removeEventListener("keydown", onKey);
+      burger?.focus();
     };
   }, [menuOpen]);
 
@@ -73,69 +64,60 @@ export function Header({ lang, dict }: Props) {
           Le module de contact flottant assure l'appel toujours accessible au défilement. */}
       {/* Marge horizontale sur le <header>, pas sur le conteneur max-w : c'est le
           patron des sections. La mettre à l'intérieur décalerait le logo de 32px. */}
-      <header className="w-full px-[clamp(16px,4vw,32px)]">
-        {/* Logo + nav groupés à gauche (alignés au logotype) ; actions à droite. */}
-        <div className="mx-auto flex min-h-17 max-w-290 items-center py-4">
-          <div className="flex items-center gap-4">
+      <header className="relative z-50 w-full">
+        {/* Logo à gauche · nav au centre · actions à droite (design : justify-between). */}
+        <div className={`${CONTENEUR} flex min-h-17 items-center justify-between gap-2 py-4 sm:gap-6`}>
             <Link
               href={`/${lang}`}
-              data-reveal="left"
-              data-reveal-dist="24px"
-              data-reveal-duration="700"
-              className="text-encre no-underline"
+              className="shrink-0 text-encre no-underline"
             >
-              <Wordmark />
+              <Wordmark hideTextOnMobile />
             </Link>
 
+            {/* Logo + 6 liens + contrôles ≈ 910px : sous `lg`, la nav passe dans le
+                tiroir (burger), sinon le logo chevauche « Services » sur tablette. */}
             <nav
-              aria-label={dict.nav.home}
-              className="hidden items-center gap-4 md:flex"
+              aria-label={dict.nav.quickNav}
+              className="hidden items-center gap-2 lg:flex"
             >
-            {nav.map((item, index) => (
+            {nav.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                data-reveal="up"
-                data-reveal-dist="16px"
-                data-reveal-delay={`${100 + index * 70}`}
-                data-reveal-duration="700"
-                className="relative whitespace-nowrap text-sm font-medium text-texte2 no-underline transition-colors hover:text-encre after:absolute after:-bottom-1 after:left-0 after:h-[1.5px] after:w-0 after:rounded-full after:bg-encre after:transition-[width] after:duration-300 motion-reduce:after:transition-none hover:after:w-full"
+                className="px-1 whitespace-nowrap text-sm font-normal text-encre no-underline hover:text-emeraude dark:hover:text-accent-strong"
               >
                 {item.label}
               </Link>
             ))}
             </nav>
-          </div>
 
-          <div
-            data-reveal="right"
-            data-reveal-dist="24px"
-            data-reveal-delay="120"
-            data-reveal-duration="700"
-            className="ml-auto flex items-center gap-3"
-          >
+          <div className="flex shrink-0 items-center gap-1.5 sm:gap-3">
             <ThemeToggle
               label={dict.header.themeAria}
               optionLabels={dict.header.theme}
             />
-            <LanguageSwitcher current={lang} label={dict.header.langAria} />
+            {/* Sous 380px, la langue reste accessible via le tiroir mobile. */}
+            <LanguageSwitcher
+              current={lang}
+              label={dict.header.langAria}
+              className="hidden min-[380px]:inline-flex"
+            />
 
-            {/* Masqué sous md : le module flottant porte déjà l'appel, en zone du pouce. */}
-            <ActionLink
-              href={telHref(site.phone)}
-              unavailableLabel={`${dict.header.call} — ${phoneLabel}`}
-              className="hidden h-10 shrink-0 items-center gap-2 rounded-xl bg-emeraude px-3.5 text-sm text-white no-underline hover:bg-emeraude/90 md:inline-flex"
+            {/* Bouton « Contact » (design). L'appel direct reste porté par le module flottant. */}
+            <Link
+              href={`/${lang}/contact`}
+              className="hidden shrink-0 items-center rounded-[9px] bg-emeraude px-[18px] py-[9px] text-[14px] font-medium text-white no-underline hover:bg-[#7fefc0] hover:text-fond md:inline-flex dark:bg-accent-strong dark:text-fond dark:hover:bg-[#7fefc0]"
             >
-              <Phone size={15} strokeWidth={2.2} aria-hidden />
-              <span>{dict.header.call}</span>
-            </ActionLink>
+              {dict.nav.contact}
+            </Link>
 
             <button
+              ref={burgerRef}
               type="button"
               onClick={() => setMenuOpen(true)}
               aria-label={dict.common.openMenu}
               aria-expanded={menuOpen}
-              className="inline-flex h-8 w-8 items-center justify-center cursor-pointer rounded-xl bg-surface text-encre md:hidden"
+              className="tap-44 inline-flex h-8 w-8 items-center justify-center cursor-pointer rounded-xl bg-surface text-encre lg:hidden"
             >
               <Menu size={16} aria-hidden />
             </button>
@@ -147,12 +129,13 @@ export function Header({ lang, dict }: Props) {
         <div
           role="dialog"
           aria-modal="true"
-          aria-label={dict.nav.home}
-          className="animate-fadein fixed inset-0 z-100 flex flex-col overflow-auto bg-sapin px-[clamp(16px,5vw,28px)] pt-4 pb-[calc(20px+env(safe-area-inset-bottom))] text-white"
+          aria-label={dict.nav.quickNav}
+          className="animate-fadein fixed inset-0 z-100 flex flex-col overflow-auto overscroll-contain bg-sapin px-[clamp(16px,5vw,28px)] pt-4 pb-[calc(20px+env(safe-area-inset-bottom))] text-white"
         >
           <div className="flex min-h-14 items-center justify-between">
             <Wordmark onDark />
             <button
+              ref={closeRef}
               type="button"
               onClick={() => setMenuOpen(false)}
               aria-label={dict.common.close}
@@ -162,20 +145,22 @@ export function Header({ lang, dict }: Props) {
             </button>
           </div>
 
-          <nav aria-label={dict.nav.home} className="mt-5 flex flex-col">
+          {/* Écrans courts (320×568) : entrées compactées pour que les CTA du bas
+              restent visibles sans défilement interne. */}
+          <nav aria-label={dict.nav.quickNav} className="mt-5 flex flex-col short:mt-3">
             {nav.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 onClick={() => setMenuOpen(false)}
-                className="border-b border-white/15 py-3.5 font-display text-xl text-white no-underline"
+                className="border-b border-white/15 py-3.5 font-display text-xl text-white no-underline short:py-2 short:text-lg"
               >
                 {item.label}
               </Link>
             ))}
           </nav>
 
-          <div className="mt-6 flex flex-wrap items-center gap-3">
+          <div className="mt-6 flex flex-wrap items-center gap-3 short:mt-4">
             <LanguageSwitcher current={lang} label={dict.header.langAria} variant="dark" />
             <ThemeToggle
               label={dict.header.themeAria}
@@ -184,7 +169,7 @@ export function Header({ lang, dict }: Props) {
             />
           </div>
 
-          <div className="mt-auto flex flex-col gap-3 pt-7">
+          <div className="mt-auto flex flex-col gap-3 pt-7 short:gap-2 short:pt-4">
             <ActionLink
               href={telHref(site.phone)}
               unavailableLabel={`${dict.header.menuCall} — ${phoneLabel}`}

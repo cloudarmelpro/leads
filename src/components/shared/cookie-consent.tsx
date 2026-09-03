@@ -6,9 +6,23 @@ import { useEffect, useState } from "react";
 import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 
-const STORAGE_KEY = "cookie-consent"; // "accepted" | "declined"
+const STORAGE_KEY = "cookie-consent";
+export type CookieChoice = "accepted" | "declined";
 // Événement global : le lien « Gérer mes témoins » du footer rouvre le bandeau.
 export const OPEN_COOKIE_PREFS = "open-cookie-prefs";
+// Événement global : émis à chaque choix, pour que les embeds tiers (Cal.com)
+// réagissent sans recharger la page.
+export const COOKIE_CHOICE_EVENT = "cookie-choice";
+
+/** Choix mémorisé, ou `null` si l'utilisateur n'a pas encore tranché (client seulement). */
+export function readCookieChoice(): CookieChoice | null {
+  try {
+    const v = localStorage.getItem(STORAGE_KEY);
+    return v === "accepted" || v === "declined" ? v : null;
+  } catch {
+    return null;
+  }
+}
 
 /**
  * Bandeau de consentement (Loi 25), calqué sur la référence. Le site n'utilise
@@ -42,11 +56,12 @@ export function CookieConsent({ lang, dict }: { lang: Locale; dict: Dictionary }
     return () => window.removeEventListener(OPEN_COOKIE_PREFS, reopen);
   }, []);
 
-  function choose(value: "accepted" | "declined") {
+  function choose(value: CookieChoice) {
     try {
       localStorage.setItem(STORAGE_KEY, value);
     } catch {}
     setOpen(false);
+    window.dispatchEvent(new CustomEvent<CookieChoice>(COOKIE_CHOICE_EVENT, { detail: value }));
     // Le jour où une mesure d'audience est ajoutée : l'activer ici si accepté.
   }
 
@@ -63,7 +78,7 @@ export function CookieConsent({ lang, dict }: { lang: Locale; dict: Dictionary }
         {t.body}{" "}
         <Link
           href={`/${lang}/confidentialite`}
-          className="font-medium text-sapin underline underline-offset-2 dark:text-accent-strong"
+          className="tap-44 font-medium text-sapin underline underline-offset-2 dark:text-accent-strong"
         >
           {t.learnMore}
         </Link>
@@ -72,14 +87,14 @@ export function CookieConsent({ lang, dict }: { lang: Locale; dict: Dictionary }
         <button
           type="button"
           onClick={() => choose("declined")}
-          className="h-10 flex-1 cursor-pointer rounded-xl border border-input text-sm font-medium text-encre transition-colors hover:bg-menthe"
+          className="h-11 flex-1 cursor-pointer rounded-xl border border-input text-sm font-medium text-encre transition-colors hover:bg-menthe"
         >
           {t.decline}
         </button>
         <button
           type="button"
           onClick={() => choose("accepted")}
-          className="h-10 flex-1 cursor-pointer rounded-xl bg-emeraude text-sm font-medium text-white transition-colors hover:bg-emeraude/90"
+          className="h-11 flex-1 cursor-pointer rounded-xl bg-emeraude text-sm font-medium text-white transition-colors hover:bg-emeraude/90"
         >
           {t.accept}
         </button>
