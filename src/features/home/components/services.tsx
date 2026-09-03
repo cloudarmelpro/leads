@@ -1,91 +1,96 @@
-import { AtSign, Monitor, RefreshCw, Server } from "lucide-react";
-import type { CSSProperties } from "react";
+import { AtSign, Code2, RefreshCw, Server } from "lucide-react";
 
+import { CONTENEUR } from "@/components/shared/container";
 import { Eyebrow } from "@/components/shared/eyebrow";
+import { Reveal } from "@/components/shared/reveal";
+import { SplitReveal } from "@/components/shared/split-reveal";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 
 type Props = { dict: Dictionary };
 
-// Une icône par service, dans l'ordre : création, refonte, hébergement, courriels.
-const ICONS = [Monitor, RefreshCw, Server, AtSign];
-// Bento (réf.) : étroite + large / large + étroite.
-const SPAN = ["lg:col-span-1", "lg:col-span-2", "lg:col-span-2", "lg:col-span-1"];
-// Première ligne un peu plus haute que la seconde.
-const ROW_H = ["lg:h-88", "lg:h-88", "lg:h-72", "lg:h-72"];
+// Icônes vertes inline (design) : création, refonte, hébergement, courriels.
+const ICONS = [Code2, RefreshCw, Server, AtSign];
+// Bento du design : large + étroite / étroite + large.
+const SPAN = ["lg:col-span-2", "lg:col-span-1", "lg:col-span-1", "lg:col-span-2"];
+// Illustrations décoratives (traits gris subtils) sur les 2 cartes larges.
+const DECOR: (string | null)[] = ["/services-globe.svg", null, null, "/services-mail.svg"];
 
 export function Services({ dict }: Props) {
   const t = dict.services;
 
   return (
-    <section id="services" className="px-[clamp(16px,4vw,32px)] py-[clamp(56px,8vw,110px)]">
-      <div className="mx-auto max-w-290">
-        {/* En-tête deux colonnes : titre à gauche, intro à droite (alignée en bas). */}
+    <section id="services" className="pt-[clamp(16px,2.5vw,32px)] pb-[clamp(80px,14vw,200px)]">
+      <div className={CONTENEUR}>
+        {/* En-tête : eyebrow + titre à gauche, intro à droite (alignée en bas). */}
         <div className="grid grid-cols-1 gap-x-16 gap-y-5 md:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] md:items-end">
           <div>
-            <p data-reveal="up" className="mb-4">
+            <p className="mb-1">
               <Eyebrow>{t.kicker}</Eyebrow>
             </p>
-            <div
-              data-reveal-child="right"
-              style={
-                {
-                  "--reveal-delay": "80ms",
-                  "--reveal-dist": "40vw",
-                  "--reveal-dur": "3400ms",
-                } as CSSProperties
-              }
-              className="w-full"
-            >
-              <h2 className="font-display text-[clamp(30px,5vw,52px)] leading-[1.05] tracking-normal text-balance">
-                {t.titleA} {t.titleB}
-              </h2>
-            </div>
+            <SplitReveal as="h2" className="font-display text-[clamp(24px,4vw,38px)] leading-[1.143] font-normal tracking-[-1.2px] text-balance">
+              {t.titleA} {t.titleB}
+            </SplitReveal>
           </div>
-          <p
-            data-reveal="left"
-            data-reveal-delay="160"
-            className="max-w-[46ch] text-base leading-[1.6] text-texte2 text-pretty md:pb-2"
+          <SplitReveal
+            as="p"
+            delay={0.1}
+            className="text-[16px] leading-[24px] text-texte2 text-pretty md:w-[480px] md:justify-self-end md:pb-2 md:text-right"
           >
             {t.intro}
-          </p>
+          </SplitReveal>
         </div>
 
-        <div className="mt-10 grid grid-cols-1 gap-5 lg:grid-cols-3">
+        <Reveal as="div" stagger={0.1} className="mt-12 grid grid-cols-1 gap-5 lg:grid-cols-3">
           {t.items.map((item, index) => {
             const Icon = ICONS[index % ICONS.length];
-            const wide = index === 1 || index === 2;
+            const decor = DECOR[index];
 
             return (
               <article
                 key={item.name}
-                data-reveal="up"
-                data-reveal-delay={`${index * 90}`}
-                data-reveal-dist="70px"
-                className={`flex min-h-56 ${ROW_H[index]} flex-col justify-between rounded-3xl bg-surface p-7 sm:p-8 ${SPAN[index]}`}
+                className={`relative flex flex-col justify-center gap-9 overflow-hidden rounded-[20px] border border-ligne bg-surface px-10 pt-10 pb-11 shadow-soft dark:border-transparent dark:bg-[linear-gradient(180deg,#01202e_0%,#011a26_100%)] dark:shadow-[inset_0_0_0_1px_#0a2a3a] ${SPAN[index]}`}
               >
-                <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-sapin dark:bg-white/12 dark:text-accent-strong">
-                  <Icon size={22} strokeWidth={1.6} aria-hidden />
-                </span>
+                {/* Halo vert d'ambiance en haut-droite (design). */}
+                <span
+                  aria-hidden
+                  className="pointer-events-none absolute top-[-160px] right-[-140px] h-[420px] w-[420px] rounded-full bg-[radial-gradient(closest-side,rgba(48,217,140,0.1),rgba(48,217,140,0)_72%)]"
+                />
 
-                {wide ? (
-                  <div className="sm:flex sm:items-end sm:justify-between sm:gap-10">
-                    <h3 className="font-display text-[clamp(20px,2.2vw,28px)] leading-[1.15] sm:max-w-[46%]">
-                      {item.name}
-                    </h3>
-                    <p className="mt-3 text-sm leading-[1.6] text-texte2 text-pretty sm:mt-0 sm:max-w-[50%]">
-                      {item.note}
-                    </p>
-                  </div>
-                ) : (
-                  <div>
-                    <h3 className="font-display text-xl leading-[1.2]">{item.name}</h3>
-                    <p className="mt-3 text-sm leading-[1.6] text-texte2 text-pretty">{item.note}</p>
-                  </div>
-                )}
+                {decor ? (
+                  // `loading="lazy"` : sans lui, React 19 émet un <link rel=preload>
+                  // pour chaque <img> rendue côté serveur — décor sous la ligne de
+                  // flottaison, inutile à précharger (avertissement console).
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={decor}
+                    alt=""
+                    aria-hidden
+                    loading="lazy"
+                    decoding="async"
+                    className={`pointer-events-none absolute w-[56%] max-w-[360px] opacity-50 select-none tint-vert dark:opacity-30 dark:[filter:none] ${
+                      index === 3
+                        ? "top-1/2 right-[-10%] -translate-y-1/2" // enveloppe : centrée verticalement, poussée à droite
+                        : "-top-6 right-[-6%]" // sphère : haut-droite
+                    }`}
+                  />
+                ) : null}
+
+                <div className="relative flex items-center gap-3">
+                  <Icon
+                    size={22}
+                    strokeWidth={1.7}
+                    aria-hidden
+                    className="shrink-0 text-emeraude dark:text-accent-strong"
+                  />
+                  <h3 className="text-[20px] leading-[1.25] font-normal text-encre">{item.name}</h3>
+                </div>
+                <p className="relative max-w-[44ch] text-[14px] leading-[24px] font-light text-texte2 text-pretty">
+                  {item.note}
+                </p>
               </article>
             );
           })}
-        </div>
+        </Reveal>
       </div>
     </section>
   );

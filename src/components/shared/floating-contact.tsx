@@ -1,7 +1,6 @@
 "use client";
 
 import { Calendar, MessageCircle, Phone, Send, X } from "lucide-react";
-import { useReducedMotion } from "motion/react";
 import { useEffect, useState } from "react";
 
 import { ActionLink } from "@/components/shared/action-link";
@@ -20,27 +19,13 @@ type Props = { dict: Dictionary };
  */
 export function FloatingContact({ dict }: Props) {
   const [open, setOpen] = useState(false);
-  const [closing, setClosing] = useState(false);
-  const reduce = useReducedMotion();
+  const [footerBarVisible, setFooterBarVisible] = useState(false);
 
   const t = dict.floating;
   const phoneLabel = site.phone ?? dict.placeholders.phone;
   const whatsappLabel = site.whatsapp ?? dict.placeholders.whatsapp;
 
-  // Fermeture animée : on joue l'animation de sortie, puis on démonte. Sous
-  // reduced-motion, on ferme immédiatement. La durée (260ms) reste alignée sur
-  // les keyframes `sheetdown`/`fadeout` (globals.css).
-  const handleClose = () => {
-    if (reduce) {
-      setOpen(false);
-      return;
-    }
-    setClosing(true);
-    window.setTimeout(() => {
-      setOpen(false);
-      setClosing(false);
-    }, 260);
-  };
+  const handleClose = () => setOpen(false);
 
   useEffect(() => {
     if (!open) return;
@@ -50,8 +35,22 @@ export function FloatingContact({ dict }: Props) {
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open]);
+
+  // La bulle recouvrirait « Gérer mes témoins » en bas de page : on la masque tant
+  // que la barre du bas du pied de page (`data-fab-avoid`) est à l'écran.
+  useEffect(() => {
+    const target = document.querySelector("[data-fab-avoid]");
+    if (!target) return;
+
+    const observer = new IntersectionObserver(([entry]) => {
+      setFooterBarVisible(entry.isIntersecting);
+    });
+    observer.observe(target);
+    return () => observer.disconnect();
+  }, []);
+
+  const hidden = footerBarVisible && !open;
 
   // Ligne fantôme : pas de cadre, fond au survol, atténuée si indisponible.
   const ghostRow =
@@ -67,14 +66,11 @@ export function FloatingContact({ dict }: Props) {
         onClick={() => (open ? handleClose() : setOpen(true))}
         aria-label={t.aria}
         aria-expanded={open}
-        className="group animate-sheetup fixed right-4 bottom-[calc(16px+env(safe-area-inset-bottom))] z-95 inline-flex h-12 w-12 cursor-pointer items-center justify-center rounded-xl border-none bg-emeraude text-white transition-[translate,background-color] duration-300 ease-out motion-reduce:transition-none hover:-translate-y-0.5 hover:bg-emeraude/90"
+        className={`fixed right-4 bottom-[calc(16px+env(safe-area-inset-bottom))] z-95 inline-flex h-12 w-12 cursor-pointer items-center justify-center rounded-xl border-none bg-emeraude text-white transition-colors hover:bg-emeraude/90 dark:bg-accent-strong dark:text-fond dark:hover:bg-accent-strong/90 ${
+          hidden ? "pointer-events-none invisible" : ""
+        }`}
       >
-        <Phone
-          size={20}
-          strokeWidth={2.2}
-          aria-hidden
-          className="transition-transform duration-300 ease-out group-hover:scale-110 motion-reduce:transition-none"
-        />
+        <Phone size={20} strokeWidth={2.2} aria-hidden />
       </button>
 
       {open && (
@@ -85,17 +81,13 @@ export function FloatingContact({ dict }: Props) {
             tabIndex={-1}
             aria-hidden
             onClick={handleClose}
-            className={`fixed inset-0 z-90 cursor-default bg-ink/40 ${
-              closing ? "animate-fadeout" : "animate-fadein"
-            }`}
+            className="fixed inset-0 z-90 cursor-default bg-ink/40"
           />
           <div
             role="dialog"
             aria-modal="true"
             aria-label={t.sheetTitle}
-            className={`fixed right-4 bottom-[calc(80px+env(safe-area-inset-bottom))] z-95 box-border w-[min(384px,calc(100vw-2rem))] origin-bottom rounded-[20px] bg-surface px-6 pt-[26px] pb-6 shadow-[0_32px_64px_-24px_rgba(15,29,23,.45)] ${
-              closing ? "animate-sheetdown" : "animate-sheetup"
-            }`}
+            className="fixed right-4 bottom-[calc(80px+env(safe-area-inset-bottom))] z-95 box-border w-[min(384px,calc(100vw-2rem))] rounded-[20px] bg-surface px-6 pt-[26px] pb-6 shadow-[0_32px_64px_-24px_rgba(15,29,23,.45)]"
           >
             {/* En-tête : eyebrow + titre + sous-titre, croix de fermeture. */}
             <div className="flex items-start justify-between gap-3.5">
@@ -145,7 +137,7 @@ export function FloatingContact({ dict }: Props) {
                 </span>
                 <span className="flex flex-col gap-px">
                   <span className="text-[14.5px]">Messenger</span>
-                  <span className="text-[12px] leading-[1.2] text-texte2">{t.rowWaSub}</span>
+                  <span className="text-[12px] leading-[1.2] text-texte2">{t.rowMessengerSub}</span>
                 </span>
                 <ArrowRight className="ml-auto text-texte2" />
               </ActionLink>
@@ -171,7 +163,7 @@ export function FloatingContact({ dict }: Props) {
             <ActionLink
               href={telHref(site.phone)}
               unavailableLabel={`${t.rowCall} — ${phoneLabel}`}
-              className="flex items-center justify-center gap-2.5 rounded-[18px] bg-emeraude p-[13px] text-[14px] font-medium text-white no-underline transition-colors duration-200 hover:bg-[#136843] active:bg-[#0d4a30] motion-reduce:transition-none disabled:cursor-not-allowed disabled:opacity-55"
+              className="flex items-center justify-center gap-2.5 rounded-[18px] bg-emeraude p-[13px] text-[14px] font-medium text-white no-underline transition-colors duration-200 hover:bg-[#136843] active:bg-[#0d4a30] motion-reduce:transition-none disabled:cursor-not-allowed disabled:opacity-55 dark:bg-accent-strong dark:text-fond dark:hover:bg-accent-strong/90 dark:active:bg-accent-strong/80"
             >
               <Phone size={19} strokeWidth={2.2} aria-hidden />
               {t.rowCall}

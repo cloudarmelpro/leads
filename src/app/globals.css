@@ -5,23 +5,27 @@
    bascule 3 états (Système / Clair / Sombre). */
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* Écrans courts (iPhone SE 568px, paysage) : compacter les tiroirs plein écran. */
+@custom-variant short (@media (max-height: 640px));
+
 /*
  * Système de design — issu de la maquette « Accueil v2 » (Claude Design).
  * Les noms de couleurs sont volontairement en français : ils viennent de la
  * direction artistique et servent de vocabulaire commun avec le client.
  */
 @theme {
-  --color-encre: #0f1d17;
+  --color-encre: #1e1e1e;
   --color-sapin: #14402f;
   --color-sapin-fonce: #0e2f22;
   --color-emeraude: #177e4f;
   --color-lueur: #9be8c0;
   --color-menthe: #e7f2eb;
-  /* Fond de page = blanc pur ; les cartes/surfaces prennent l'ancien gris-vert
-     (#f3f5f2) via --color-surface ci-dessous : figure-fond inversé (choix client). */
-  --color-fond: #ffffff;
-  --color-ligne: #e3ebe4;
-  --color-texte2: #4a5f54;
+  /* Mode clair = cadre Figma « Light » : fond #fdfdfd presque blanc, cartes
+     blanches détachées par une ombre douce (shadow-soft) plutôt que par le fond,
+     texte neutre #1e1e1e / #646468, filets #f2f2f3. */
+  --color-fond: #fdfdfd;
+  --color-ligne: #f2f2f3;
+  --color-texte2: #646468;
   --color-sapin-doux: #c9dad1;
 
   /* Tokens sémantiques ajoutés pour le mode sombre (voir bloc `.dark` plus bas).
@@ -29,22 +33,23 @@
      - ink : surface volontairement SOMBRE et FIXE dans les deux thèmes
        (badges numérotés, fonds d'image de hero) — découplée du texte `encre`.
      - accent-strong : émeraude en TEXTE/icône (plus lumineuse en sombre). */
-  --color-surface: #f3f5f2;
-  --color-surface-2: #ffffff;
+  --color-surface: #ffffff;
+  --color-surface-2: #f5f5f6;
   --color-ink: #0f1d17;
   --color-accent-strong: #177e4f;
 
-  --font-display: var(--font-cal-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  /* Titres (h1/h2) : Outfit. Corps + titres secondaires : Plus Jakarta Sans. */
+  --font-display: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
   --font-serif: ui-serif, Georgia, serif;
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
   /*
    * Tokens shadcn/ui mappés sur la marque (site clair uniquement, pas de mode
    * sombre). Les composants ui/ (base-ui) lisent ces variables — jamais de
    * couleur codée en dur dans un composant.
    */
-  --color-background: #ffffff;
+  --color-background: #fdfdfd;
   --color-foreground: var(--color-encre);
   --color-primary: var(--color-emeraude);
   --color-primary-foreground: #ffffff;
@@ -63,88 +68,41 @@
 }
 
 /*
- * Mode sombre — palette « gris-vert neutre ». On ne redéfinit QUE les tokens
- * sémantiques : `sapin`, `ink`, `lueur` et l'émeraude des boutons pleins restent
- * fixes (surfaces sombres volontaires). Contrastes vérifiés ≥ 4.5:1 (texte).
+ * Mode sombre — palette « bleu-sarcelle » du designer (tokens Figma). On ne
+ * redéfinit QUE les tokens sémantiques ; `emeraude` (boutons pleins) reste fixe à
+ * ce stade — le traitement bouton vert vif (#30d98c) se fait section par section.
+ * Fond #011823 · cartes #011b28 · bordures #012232 · texte #fff/#bfbfbf · accent #30d98c.
  */
 .dark {
-  --color-fond: #0c110f;
-  --color-surface: #18211d;
-  --color-surface-2: #212b26;
-  --color-encre: #e9f0ea;
-  --color-texte2: #9fb2a8;
-  --color-ligne: #27342d;
-  --color-menthe: #183327;
-  --color-accent-strong: #35c489;
+  --color-fond: #011823;
+  --color-surface: #011b28;
+  --color-surface-2: #012232;
+  --color-encre: #ffffff;
+  --color-texte2: #bfbfbf;
+  --color-ligne: #012232;
+  --color-menthe: #04283a;
+  --color-accent-strong: #30d98c;
 
   /* Alias shadcn */
-  --color-background: #16221d;
+  --color-background: #011823;
   --color-foreground: var(--color-encre);
   --color-secondary: var(--color-menthe);
-  --color-secondary-foreground: #a7e0c0;
+  --color-secondary-foreground: #bfe9d4;
   --color-accent: var(--color-menthe);
-  --color-accent-foreground: #a7e0c0;
-  --color-muted: #16221d;
+  --color-accent-foreground: #bfe9d4;
+  --color-muted: #011b28;
   --color-muted-foreground: var(--color-texte2);
   --color-border: var(--color-ligne);
-  --color-input: oklch(0.48 0.01 160);
+  --color-input: oklch(0.5 0.03 220);
   --color-destructive: #e5675c;
-  --color-ring: #4fd39a;
-}
-
-@keyframes rise {
-  from {
-    opacity: 0;
-    transform: translateY(26px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-@keyframes fadein {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes sheetup {
-  from {
-    opacity: 0;
-    transform: translateY(32px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-@keyframes sheetdown {
-  from {
-    opacity: 1;
-    transform: none;
-  }
-  to {
-    opacity: 0;
-    transform: translateY(24px) scale(0.98);
-  }
-}
-
-@keyframes fadeout {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
+  --color-ring: #30d98c;
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
+  /* Ceinture anti-débordement horizontal (en plus de celle du body) : `clip` et non
+     `hidden`, qui créerait un conteneur de défilement et casserait `position: sticky`. */
+  overflow-x: clip;
 }
 
 /* L'en-tête n'est PAS collant (il défile avec la page) : pas besoin de réserver sa
@@ -190,118 +148,62 @@ body {
   border-radius: 6px;
 }
 
-/* Ombre douce des cartes (FAQ, aside contact). Auparavant utilisée mais jamais
-   définie → aucune ombre. Version sombre : ink presque invisible, on passe au noir. */
+/* Ombre douce des cartes en mode clair (Figma « Light ») : c'est elle qui détache
+   les cartes blanches du fond #fdfdfd. Les cartes la remplacent par une bordure
+   interne en sombre (`dark:shadow-[inset…]`). */
 @utility shadow-soft {
   box-shadow:
-    0 1px 2px rgb(15 29 23 / 0.06),
-    0 10px 28px -8px rgb(15 29 23 / 0.12);
-}
-.dark .shadow-soft {
-  box-shadow:
-    0 1px 2px rgb(0 0 0 / 0.4),
-    0 12px 32px -8px rgb(0 0 0 / 0.55);
+    0 1px 2px rgb(30 30 30 / 0.04),
+    0 12px 32px -12px rgb(30 30 30 / 0.12);
 }
 
-/*
- * Révélation au défilement, pilotée par `animation-timeline: view()`.
- * Là où la propriété n'est pas supportée (Safari, Firefox), l'animation se joue
- * une fois au chargement : le contenu reste visible, jamais bloqué à opacity 0.
- */
-.reveal {
-  animation: rise 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
-  animation-timeline: view();
-  animation-range: entry 0% entry 30%;
+/* Décors SVG à traits blancs (globe, enveloppe, labyrinthe) : en clair, on les
+   teinte en vert pâle comme la maquette ; en sombre ils restent blancs. */
+@utility tint-vert {
+  filter: brightness(0.86) sepia(1) hue-rotate(90deg) saturate(2.2);
 }
 
-.animate-fadein {
-  animation: fadein 0.25s ease both;
-}
-
-.animate-sheetup {
-  animation: sheetup 0.32s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
-.animate-sheetdown {
-  animation: sheetdown 0.26s cubic-bezier(0.4, 0, 1, 1) both;
-}
-
-.animate-fadeout {
-  animation: fadeout 0.26s ease both;
-}
-
-/*
- * Révélation au scroll par IntersectionObserver (voir `ScrollReveal`).
- * L'état masqué n'est appliqué QUE si `html.reveal-ready` est posé (script inline
- * du layout, seulement si JS actif et hors reduced-motion) → sinon tout est visible.
- * `--reveal-delay` (posé en inline sur l'élément) crée l'effet cascade.
- */
-html.reveal-ready [data-reveal] {
-  opacity: 0;
-  transition:
-    opacity var(--reveal-dur, 1.1s) cubic-bezier(0.22, 1, 0.36, 1),
-    transform var(--reveal-dur, 1.1s) cubic-bezier(0.22, 1, 0.36, 1);
-  transition-delay: var(--reveal-delay, 0ms);
-  will-change: opacity, transform;
-}
-html.reveal-ready [data-reveal="up"] {
-  transform: translate3d(0, var(--reveal-dist, 42px), 0);
-}
-html.reveal-ready [data-reveal="down"] {
-  transform: translate3d(0, calc(-1 * var(--reveal-dist, 42px)), 0);
-}
-html.reveal-ready [data-reveal="left"] {
-  transform: translate3d(calc(-1 * var(--reveal-dist, 48px)), 0, 0);
-}
-html.reveal-ready [data-reveal="right"] {
-  transform: translate3d(var(--reveal-dist, 48px), 0, 0);
-}
-html.reveal-ready [data-reveal].is-visible {
-  opacity: 1;
-  transform: none;
-  /* Révélation finie : on relâche la couche GPU, sinon le texte reste rasterisé
-     sur un calque composite et paraît légèrement flou (surtout sur grandes cartes). */
-  will-change: auto;
-}
-
-/*
- * Variante « conteneur » : pour un grand décalage (ex. depuis le bord de l'écran),
- * on OBSERVE le conteneur (jamais transformé → toujours détecté, même hors-champ)
- * et c'est l'ENFANT qui glisse. Sans ça, un élément qui sort du champ n'est plus
- * re-détecté par l'observateur et resterait bloqué invisible. `overflow-x: clip`
- * empêche le décalage de créer une barre de défilement horizontale.
- */
-html.reveal-ready [data-reveal-child] {
-  overflow-x: clip;
-}
-html.reveal-ready [data-reveal-child] > * {
-  opacity: 0;
-  transition:
-    opacity var(--reveal-dur, 1.1s) cubic-bezier(0.22, 1, 0.36, 1),
-    transform var(--reveal-dur, 1.1s) cubic-bezier(0.22, 1, 0.36, 1);
-  transition-delay: var(--reveal-delay, 0ms);
-  will-change: opacity, transform;
-}
-html.reveal-ready [data-reveal-child="right"] > * {
-  transform: translate3d(var(--reveal-dist, 60vw), 0, 0);
-}
-html.reveal-ready [data-reveal-child="left"] > * {
-  transform: translate3d(calc(-1 * var(--reveal-dist, 60vw)), 0, 0);
-}
-html.reveal-ready [data-reveal-child].is-visible > * {
-  opacity: 1;
-  transform: none;
-  will-change: auto;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
+/* Zone tactile de 44px (Apple HIG / WCAG 2.5.8) sans changer la place occupée :
+   le pseudo-élément déborde du contrôle et capte le toucher. Ne pas poser sur un
+   élément qui utilise déjà `::after`. */
+@utility tap-44 {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 44px;
+    height: 44px;
+    min-width: 100%;
+    min-height: 100%;
+    transform: translate(-50%, -50%);
   }
+}
+
+/* Fondu d'apparition des surfaces qui s'ouvrent (menu mobile, bandeau témoins). */
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@utility animate-fadein {
+  animation: fadein 180ms ease-out both;
+}
+
+/* Le mouvement fait partie du produit, mais jamais imposé : sous
+   `prefers-reduced-motion`, toute animation/transition CSS devient instantanée
+   (les animations GSAP vérifient `reducedMotion()` de leur côté). */
+@media (prefers-reduced-motion: reduce) {
   *,
   *::before,
   *::after {
-    animation: none !important;
-    transition: none !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

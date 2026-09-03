@@ -3,6 +3,10 @@
     "title": "Talgasy Web — Sites web professionnels qui convertissent",
     "description": "Talgasy Web conçoit des sites web professionnels, structurés pour convertir. Un seul objectif : que vos clients vous appellent, pas votre compétiteur."
   },
+  "og": {
+    "kicker": "Agence web · Québec",
+    "tagline": "Sites web professionnels qui convertissent"
+  },
   "common": {
     "close": "Fermer",
     "soon": "à venir",
@@ -10,10 +14,15 @@
     "openMenu": "Ouvrir le menu",
     "skipToContent": "Aller au contenu"
   },
+  "notFound": {
+    "title": "Page introuvable",
+    "body": "Cette page n’existe pas ou a été déplacée. Vérifiez l’adresse, ou revenez à l’accueil.",
+    "cta": "Retour à l’accueil",
+    "contact": "Nous écrire"
+  },
   "placeholders": {
     "phone": "[TÉLÉPHONE — à confirmer]",
     "email": "[COURRIEL — à confirmer]",
-    "address": "[ADRESSE — ou « sur rendez-vous »]",
     "whatsapp": "[NUMÉRO À CONFIRMER]"
   },
   "nav": {
@@ -23,12 +32,12 @@
     "method": "Méthode",
     "about": "À propos",
     "faq": "FAQ",
+    "pricing": "Prix",
     "blog": "Blog",
     "contact": "Contact",
     "quickNav": "Navigation rapide"
   },
   "header": {
-    "call": "Appeler",
     "menuCall": "Appeler maintenant",
     "menuRdv": "Rendez-vous",
     "langAria": "Choisir la langue",
@@ -40,7 +49,6 @@
     }
   },
   "hero": {
-    "badge": "Agence web — PME du Québec",
     "titleA": "Votre prochain contrat commence par un clic.",
     "titleB": "Assurez-vous qu’il se termine par un appel.",
     "subtitle": "Talgasy Web conçoit des sites web professionnels, structurés pour convertir — pour que vos clients vous appellent, pas votre compétiteur.",
@@ -48,55 +56,35 @@
     "tradesLabel": "Dans quel secteur d’activité êtes-vous ?",
     "tradesCta": "Discutons de votre projet",
     "tradesCardTitle": "Votre secteur n’est pas listé ? On s’adapte à votre métier.",
-    "ctaCall": "Appeler maintenant",
-    "ctaRdv": "réserver un créneau",
-    "strip1": "Rapide",
-    "strip2": "Structuré",
-    "strip3": "Optimisé",
-    "demoTag": "Aperçu — votre secteur",
-    "demoHandle": "@votre-entreprise",
+    "ctaBook": "Réserver un appel gratuit",
     "demoCaption": "Cet aperçu change selon votre métier. Votre site parlera à vos clients — dans leurs mots.",
     "demos": [
       {
         "trade": "Paysagement",
-        "title": "Aménagement paysager résidentiel et commercial",
-        "cta": "Demander une soumission",
         "imgLabel": "photo chantier — paysagement"
       },
       {
         "trade": "Excavation",
-        "title": "Excavation et terrassement, sans retard",
-        "cta": "Appeler pour une soumission",
         "imgLabel": "photo chantier — excavation"
       },
       {
         "trade": "Construction",
-        "title": "Entrepreneur général — projets menés au propre",
-        "cta": "Planifier une visite",
         "imgLabel": "photo chantier — construction"
       },
       {
         "trade": "Rénovation",
-        "title": "Rénovation intérieure et extérieure",
-        "cta": "Obtenir une soumission",
         "imgLabel": "photo avant / après — rénovation"
       },
       {
         "trade": "Commerce local",
-        "title": "Visible dans le quartier, joignable en un clic",
-        "cta": "Nous joindre",
         "imgLabel": "photo commerce — vitrine"
       },
       {
         "trade": "Déneigement",
-        "title": "Contrats de déneigement résidentiel et commercial",
-        "cta": "Réserver ma saison",
         "imgLabel": "photo chantier — déneigement"
       },
       {
         "trade": "Arboriculture",
-        "title": "Élagage, abattage et entretien des arbres",
-        "cta": "Demander une soumission",
         "imgLabel": "photo chantier — arboriculture"
       }
     ]
@@ -106,7 +94,6 @@
     "titleA": "Ce qu’on fait,",
     "titleB": "concrètement",
     "intro": "Quatre services clairs, pensés pour les entreprises et commerces du Québec.",
-    "cardCta": "Discutons-en",
     "items": [
       {
         "name": "Création de site web",
@@ -131,7 +118,6 @@
     "titleA": "Comment on",
     "titleB": "travaille",
     "intro": "Pas de boîte noire : vous savez toujours où en est votre projet, et ce qu’il vous reste à décider.",
-    "stepLabel": "Étape",
     "steps": [
       {
         "n": "1",
@@ -178,7 +164,7 @@
     "items": [
       {
         "q": "Combien ça coûte ?",
-        "a": "Chaque projet est différent. On commence par une consultation pour bien cerner vos besoins, puis on vous propose un prix clair. Un site web commence à partir de 499 $, et l’hébergement à partir de 299 $."
+        "a": "Chaque projet est différent. On commence par une consultation pour bien cerner vos besoins, puis on vous propose un prix clair. Un site web commence à 1 000 $, un logo à 200 $, et l’hébergement est à 25 $ par mois. Tous les forfaits sont détaillés sur notre page Prix."
       },
       {
         "q": "Combien de temps prend la conception d’un site ?",
@@ -215,22 +201,17 @@
     "titleA": "Prêt à",
     "titleB": "commencer",
     "subtitle": "Une consultation suffit pour déterminer votre besoin et débuter votre projet.",
-    "call": "Appeler",
-    "rdv": "Réserver votre consultation",
-    "bookingNote": "Réservation en ligne — créneaux en temps réel.",
-    "form": "ou passez par le formulaire de contact",
-    "gallery": [
-      "photo chantier — paysagement",
-      "photo chantier — excavation",
-      "photo chantier — construction"
-    ]
+    "rdv": "Réserver votre consultation"
   },
   "footer": {
-    "tagA": "Des sites pour les entreprises",
-    "tagB": "de terrain.",
     "description": "Talgasy Web conçoit des sites web professionnels et bilingues au Québec — structurés pour transformer vos visiteurs en appels.",
-    "navTitle": "Plan du site",
+    "navTitle": "Navigation",
     "coordTitle": "Coordonnées",
+    "social": {
+      "facebook": "Facebook",
+      "instagram": "Instagram",
+      "linkedin": "LinkedIn"
+    },
     "legal2": "Confidentialité (Loi 25)",
     "rights": "Tous droits réservés"
   },
@@ -243,25 +224,25 @@
     "manage": "Gérer mes témoins"
   },
   "floating": {
-    "label": "Parlez-nous",
     "aria": "Ouvrir le module de contact",
     "eyebrow": "Contact · FR / EN",
     "sheetTitle": "Parlez-nous",
     "sheetSub": "Une vraie personne vous répond.",
     "rowCall": "Appeler maintenant",
     "rowWaSub": "Réponse rapide",
+    "rowMessengerSub": "Messagerie Facebook",
     "rowRdv": "Prendre rendez-vous",
     "rowRdvSub": "Cal.com — choisissez votre créneau"
   },
   "blog": {
     "meta": {
       "title": "Blog — Talgasy Web",
-      "description": "Idées et conseils pour aider les PME du Québec à attirer plus de clients avec leur site web."
+      "description": "Idées et conseils concrets pour aider les PME du Québec à attirer plus de clients avec leur site web : conversion, référencement local et bonnes pratiques."
     },
-    "kicker": "Blog",
     "title": "Idées & conseils",
     "subtitle": "Des articles concrets pour attirer plus de clients avec votre site web.",
     "featured": "À la une",
+    "emptyKicker": "À venir",
     "readArticle": "Lire l’article",
     "minRead": "min de lecture",
     "writtenBy": "Écrit par",
@@ -277,6 +258,8 @@
       "description": "L’agence derrière les sites qui font sonner le téléphone des PME du Québec. Notre approche : qualité, professionnalisme, confiance."
     },
     "heroTitle": "À propos",
+    "storyKicker": "Notre histoire",
+    "storyTitle": "Aider les entrepreneurs à avancer",
     "story": [
       "Talgasy Web est né d’une idée simple : aider les entrepreneurs à avancer.",
       "On sait qu’un bon départ peut faire toute la différence. C’est pourquoi on accompagne les nouvelles entreprises et les jeunes entrepreneurs en leur donnant des bases solides pour présenter leur travail, gagner en crédibilité et commencer à développer leur clientèle.",
@@ -312,28 +295,155 @@
     },
     "cta": {
       "title": "Parlons de votre projet",
-      "body": "Vous avez un projet en tête? Discutons de vos besoins et voyons comment nous pouvons vous accompagner."
+      "body": "Vous avez un projet en tête ? Discutons de vos besoins et voyons comment nous pouvons vous accompagner."
     }
+  },
+  "pricing": {
+    "meta": {
+      "title": "Prix — Talgasy Web",
+      "description": "Des prix clairs, sans surprise : forfaits de site web, de logo et d’hébergement pour les PME du Québec. Chaque projet commence par une consultation gratuite."
+    },
+    "heroTitleA": "Des prix ",
+    "heroHighlight": "clairs",
+    "heroTitleB": ", sans surprise.",
+    "heroSubtitle": "Chaque projet est unique. Découvrez nos forfaits pour sites web, logos et hébergement.",
+    "cta": "Réserver un appel gratuit",
+    "kicker": "Prix",
+    "breadcrumb": "Prix",
+    "groups": [
+      {
+        "title": "Site web",
+        "intro": "Chaque projet est différent. Nous commençons par une consultation pour bien cerner vos besoins, puis nous vous proposons un prix clair.",
+        "plans": [
+          {
+            "name": "Lancement",
+            "price": "1 000 $",
+            "tagline": "Votre présence en ligne — 3 pages",
+            "includes": "",
+            "features": [
+              "Adaptation des couleurs, logo, texte, image",
+              "Traduction française et anglaise",
+              "Version téléphone, tablette et ordinateur",
+              "Formulaire de contact simple",
+              "Protection antipourriel",
+              "Sécurité SSL",
+              "SEO technique essentiel",
+              "Métadonnées essentielles",
+              "Connexion au domaine",
+              "Mise en ligne",
+              "Plan du site",
+              "1 ronde de corrections",
+              "Garantie corrective de 30 jours"
+            ]
+          },
+          {
+            "name": "Sur-mesure Essentiel",
+            "price": "2 000 $",
+            "tagline": "Un site professionnel — 5 pages",
+            "includes": "Tout le forfait Lancement, plus :",
+            "features": [
+              "Design UX/UI original",
+              "Architecture adaptée à l’entreprise",
+              "Navigation entièrement personnalisée",
+              "Sections conçues selon les services du client",
+              "SEO on-page",
+              "Google Analytics",
+              "Google Search Console",
+              "Formulaire avec protection antipourriel",
+              "2 rondes de corrections",
+              "Transfert de 30 minutes",
+              "Garantie corrective de 60 jours"
+            ]
+          },
+          {
+            "name": "Croissance",
+            "price": "3 500 $",
+            "tagline": "Votre site qui génère des clients — 10 pages",
+            "includes": "Tout le forfait Sur-mesure Essentiel, plus :",
+            "features": [
+              "Architecture orientée vers la conversion",
+              "Sections avancées pour présenter les services",
+              "SEO local",
+              "Formulaire avancé",
+              "1 intégration standard",
+              "Suivi des appels, formulaires et demandes de soumission",
+              "Optimisation des principaux appels à l’action",
+              "3 rondes de corrections",
+              "Formation de 45 minutes",
+              "Garantie corrective de 90 jours"
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Logo",
+        "intro": "Nous créons des logos professionnels adaptés à votre image de marque, avec des options adaptées à vos besoins.",
+        "plans": [
+          {
+            "name": "Logo Express",
+            "price": "200 $",
+            "tagline": "",
+            "includes": "",
+            "features": [
+              "Maximum de 3 heures de production",
+              "1 direction créative",
+              "1 ronde de corrections",
+              "Version couleur",
+              "Version monochrome",
+              "Fichiers PNG, JPG et SVG"
+            ]
+          },
+          {
+            "name": "Logo Professionnel",
+            "price": "650 $",
+            "tagline": "",
+            "includes": "",
+            "features": [
+              "3 directions créatives",
+              "Versions horizontale, verticale et icône",
+              "Palette de couleurs",
+              "Sélection typographique",
+              "Versions pour fond clair et foncé",
+              "Fichiers sources",
+              "2 rondes de corrections"
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Hébergement",
+        "intro": "Une solution d’hébergement simple et fiable pour assurer la mise en ligne et le maintien de votre site web.",
+        "plans": [
+          {
+            "name": "Hébergement",
+            "price": "25 $/mois",
+            "tagline": "",
+            "includes": "",
+            "features": [
+              "Hébergement du site",
+              "Certificat SSL",
+              "Déploiement",
+              "Versionnement",
+              "Connexion au domaine",
+              "Maintien de l’infrastructure d’hébergement"
+            ]
+          }
+        ]
+      }
+    ]
   },
   "contactPage": {
     "meta": {
       "title": "Contact — Talgasy Web",
-      "description": "Parlons de votre projet. Réservez un appel gratuit ou écrivez-nous — on vous revient vite."
+      "description": "Parlons de votre projet de site web. Réservez un appel découverte gratuit ou écrivez-nous : une vraie personne vous répond rapidement, partout au Québec."
     },
-    "kicker": "Contact",
     "title": "Parlons de votre projet",
     "heroTitle": "Contact",
-    "heroImgLabel": "photo — bureau / équipe",
     "subtitle": "Un appel suffit pour savoir si on peut vous aider. Pas de pression, pas de jargon.",
-    "aside": {
-      "title": "Coordonnées",
-      "email": "Courriel",
-      "phone": "Téléphone",
-      "address": "Adresse",
-      "follow": "Suivez-nous"
-    },
     "booking": {
       "title": "Réservez un appel gratuit",
+      "kicker": "Rendez-vous",
+      "intro": "Un appel découverte de 45 minutes, par téléphone ou en visio : vos objectifs, un premier regard sur votre présence en ligne et les prochaines étapes — sans engagement.",
       "service": "Appel découverte",
       "duration": "45 min",
       "channel": "Téléphone ou visio",
@@ -345,16 +455,14 @@
       ],
       "timezone": "Heure de l’Est (Québec)",
       "pickSlot": "Créneaux disponibles",
-      "book": "Réserver ce créneau",
-      "pickDatePrompt": "Choisissez une date dans le calendrier pour voir les créneaux disponibles.",
-      "viewSlots": "Voir les créneaux disponibles",
-      "realtimeNote": "Disponibilités en temps réel, confirmées dans Cal.com.",
-      "prevMonth": "Mois précédent",
-      "nextMonth": "Mois suivant",
+      "loadTitle": "Calendrier fourni par Cal.com",
+      "loadBody": "Le calendrier de réservation est un service tiers (Cal.com). En l’affichant, vous acceptez que votre adresse IP lui soit transmise. Vous pouvez aussi nous écrire avec le formulaire ci-dessous.",
+      "loadCta": "Afficher le calendrier",
       "embedNote": "Aperçu du design — le vrai calendrier Cal.com s’affichera ici dès que l’URL sera fournie."
     },
     "form": {
       "title": "Ou écrivez-nous",
+      "kicker": "Formulaire",
       "name": "Nom",
       "email": "Courriel",
       "phone": "Téléphone",
@@ -363,20 +471,20 @@
       "messageHint": "Type d’entreprise, ce que vous cherchez, échéance approximative.",
       "consent": "J’accepte d’être recontacté au sujet de ma demande.",
       "consentLink": "Politique de confidentialité",
+      "honeypot": "Laissez ce champ vide",
       "send": "Envoyer ma demande",
       "sending": "Envoi…",
       "successTitle": "Message bien reçu !",
       "successBody": "On vous revient très vite. Merci de votre confiance.",
       "errorTitle": "Un souci est survenu",
       "errorBody": "Votre message n’a pas pu être envoyé. Réessayez, ou appelez-nous directement.",
-      "requiredNote": "Indiquez au moins un téléphone ou un courriel pour qu’on puisse vous répondre.",
-      "quickTitle": "Ou joignez-nous directement",
       "errors": {
         "name": "Indiquez votre nom (2 caractères minimum).",
         "nameMax": "Ce nom est trop long.",
         "email": "Ce courriel est invalide.",
         "emailMax": "Ce courriel est trop long.",
         "phoneMax": "Ce numéro est trop long.",
+        "phone": "Ce numéro de téléphone est invalide.",
         "message": "Écrivez votre message.",
         "messageMax": "Ce message est trop long.",
         "consent": "Vous devez accepter pour envoyer.",

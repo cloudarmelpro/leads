@@ -6,8 +6,10 @@ import { defaultLocale, localeHtmlLang, locales } from "@/lib/i18n/config";
 
 const BASE = `https://${site.domain}`;
 
-// Pages publiques, sans préfixe de langue. "" = accueil. (Les articles de blog
-// seront ajoutés ici quand il y en aura — la liste est vide pour l'instant.)
+// Les slugs et les dates sont communs aux deux langues : une seule lecture suffit.
+const posts = getPosts(defaultLocale);
+
+// Pages publiques, sans préfixe de langue. "" = accueil.
 // `lastmod` = date de dernière modif RÉELLE du contenu (à bumper à la main lors
 // d'une vraie mise à jour). Jamais `new Date()` : une date qui change à chaque
 // build est un signal trompeur que Google finit par ignorer.
@@ -16,13 +18,19 @@ const PATHS = [
   { path: "", lastmod: "2026-08-13" },
   { path: "/a-propos", lastmod: "2026-08-13" },
   { path: "/contact", lastmod: "2026-08-13" },
+  { path: "/prix", lastmod: "2026-09-03" },
   // Le blog n'est listé que s'il a au moins un article (sinon il est `noindex` :
-  // ne pas soumettre une URL noindex au sitemap).
-  ...(getPosts(defaultLocale).length > 0
-    ? [{ path: "/blog", lastmod: "2026-08-13" }]
-    : []),
+  // ne pas soumettre une URL noindex au sitemap). `lastmod` de la liste = date du
+  // plus récent article, puisque c'est ce qui la fait changer.
+  ...(posts.length > 0 ? [{ path: "/blog", lastmod: isoDay(posts[0].date) }] : []),
+  ...posts.map((post) => ({ path: `/blog/${post.slug}`, lastmod: isoDay(post.date) })),
   { path: "/confidentialite", lastmod: "2026-08-12" },
 ];
+
+/** `lastmod` au format date seule (YYYY-MM-DD), même si l'article porte une heure. */
+function isoDay(iso: string): string {
+  return iso.slice(0, 10);
+}
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return PATHS.flatMap(({ path, lastmod }) => {

@@ -1,68 +1,54 @@
 "use client";
 
-import { ChevronDown } from "lucide-react";
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { useId, useState, type CSSProperties } from "react";
+import { useId, useState } from "react";
 
+import { Collapse, Rotate } from "@/components/shared/collapse";
+import { CONTENEUR } from "@/components/shared/container";
+import { ArrowRight } from "@/components/ui/arrows";
 import { Eyebrow } from "@/components/shared/eyebrow";
-import type { Locale } from "@/lib/i18n/config";
+import { Reveal } from "@/components/shared/reveal";
+import { SplitReveal } from "@/components/shared/split-reveal";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 
-type Props = { lang: Locale; dict: Dictionary };
+type Props = { dict: Dictionary };
 
 export function Faq({ dict }: Props) {
   // La question 2 (index 1) est ouverte par défaut.
   const [openIndex, setOpenIndex] = useState(1);
   const baseId = useId();
-  const reduce = useReducedMotion();
   const t = dict.faq;
 
   return (
-    <section id="faq" className="px-[clamp(16px,4vw,32px)] py-[clamp(56px,8vw,110px)]">
-      <div className="mx-auto grid max-w-290 grid-cols-1 gap-x-16 gap-y-9 md:grid-cols-[minmax(0,1fr)_minmax(0,1.25fr)] md:items-start">
-        {/* Colonne gauche : intitulé + titre + intro (comme la Méthode). */}
+    <section id="faq" className="pb-[clamp(80px,14vw,200px)]">
+      <div className={`${CONTENEUR} grid grid-cols-1 gap-x-16 gap-y-9 md:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] md:items-start`}>
+        {/* Colonne gauche : intitulé + titre + intro. */}
         <div>
-          <p data-reveal="up" className="mb-4">
+          <p className="mb-1">
             <Eyebrow>{t.kicker}</Eyebrow>
           </p>
-          <div
-            data-reveal-child="right"
-            style={
-              {
-                "--reveal-delay": "80ms",
-                "--reveal-dist": "40vw",
-                "--reveal-dur": "3400ms",
-              } as CSSProperties
-            }
-            className="w-full"
-          >
-            <h2 className="font-display text-[clamp(30px,5vw,52px)] leading-[1.05] tracking-normal text-balance">
-              {t.titleA} {t.titleB}
-            </h2>
-          </div>
-          <p
-            data-reveal="left"
-            data-reveal-delay="160"
-            className="mt-5 max-w-[42ch] text-base leading-[1.6] text-texte2 text-pretty"
+          <SplitReveal as="h2" className="font-display text-[clamp(24px,4vw,38px)] leading-[1.143] font-normal tracking-[-1.2px] text-balance">
+            {t.titleA} {t.titleB}
+          </SplitReveal>
+          <SplitReveal
+            as="p"
+            delay={0.1}
+            className="mt-5 max-w-[42ch] text-[16px] leading-[24px] text-texte2 text-pretty"
           >
             {t.intro}
-          </p>
+          </SplitReveal>
         </div>
 
-        {/* Colonne droite : les questions (accordéon). */}
-        <div className="flex flex-col gap-4">
+        {/* Colonne droite : les questions (accordéon). Lignes soulignées ; seule la
+            question ouverte révèle sa réponse dans une carte arrondie (design).
+            Lignes révélées au scroll ; dépliage et flèche animés par GSAP. */}
+        <Reveal as="div" stagger={0.06} className="flex flex-col gap-3 dark:gap-0">
           {t.items.map((item, index) => {
             const open = openIndex === index;
             const panelId = `${baseId}-panel-${index}`;
             const buttonId = `${baseId}-button-${index}`;
 
             return (
-              <div
-                key={item.q}
-                data-reveal="up"
-                data-reveal-delay={`${index * 80}`}
-                className="rounded-2xl bg-surface"
-              >
+              <div key={item.q} className="flex flex-col rounded-2xl bg-surface shadow-soft dark:rounded-none dark:border-b dark:border-ligne dark:bg-transparent dark:shadow-none">
                 <h3>
                   <button
                     type="button"
@@ -70,44 +56,31 @@ export function Faq({ dict }: Props) {
                     aria-expanded={open}
                     aria-controls={panelId}
                     onClick={() => setOpenIndex(open ? -1 : index)}
-                    className="flex min-h-16 cursor-pointer w-full items-center gap-4 border-none bg-transparent px-6 py-5 text-left"
+                    className="group flex w-full cursor-pointer items-center gap-4 border-none bg-transparent px-6 py-5 text-left"
                   >
-                    <span className="flex-1 text-[15px] font-normal text-encre leading-[1.65]">{item.q}</span>
-                    {/* Chevron discret (fermé : pointe à droite ; ouvert : pointe en bas). */}
-                    <ChevronDown
-                      size={20}
-                      strokeWidth={2.2}
-                      aria-hidden
-                      className={`shrink-0 text-texte2 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none ${
-                        open ? "rotate-0" : "-rotate-90"
-                      }`}
-                    />
+                    <span
+                      className={`flex-1 text-[16px] leading-[1.55] text-encre text-pretty ${open ? "font-medium" : "font-light"}`}
+                    >
+                      {item.q}
+                    </span>
+                    {/* Flèche vers la droite quand fermé ; masquée quand ouvert. */}
+                    {!open && (
+                      <Rotate deg={0} className="text-texte2 group-hover:text-encre">
+                        <ArrowRight className="w-[18px]" />
+                      </Rotate>
+                    )}
                   </button>
                 </h3>
 
-                <AnimatePresence initial={false}>
-                  {open && (
-                    <motion.div
-                      key="panel"
-                      id={panelId}
-                      role="region"
-                      aria-labelledby={buttonId}
-                      initial={reduce ? false : { height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={reduce ? { opacity: 0 } : { height: 0, opacity: 0 }}
-                      transition={{ duration: reduce ? 0 : 0.5, ease: [0.22, 1, 0.36, 1] }}
-                      className="overflow-hidden"
-                    >
-                      <p className="px-6 pb-6 text-[14px] leading-[1.65] text-texte2 text-pretty">
-                        {item.a}
-                      </p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                <Collapse open={open} id={panelId} role="region" aria-labelledby={buttonId}>
+                  <div className="mb-5 px-6 dark:rounded-2xl dark:bg-surface dark:py-5">
+                    <p className="text-[15px] leading-[1.65] font-light text-texte2 text-pretty">{item.a}</p>
+                  </div>
+                </Collapse>
               </div>
             );
           })}
-        </div>
+        </Reveal>
       </div>
     </section>
   );

@@ -1,4 +1,5 @@
 import { CtaBanner } from "@/components/shared/cta-banner";
+import { site } from "@/config/site";
 
 import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
@@ -13,9 +14,11 @@ export function FinalCta({ lang, dict }: Props) {
     <CtaBanner
       lang={lang}
       id="contact"
+      kicker={t.kicker}
       title={`${t.titleA} ${t.titleB}`}
       eyebrow={t.rdv}
       body={t.subtitle}
+      phone={site.phone}
       ariaLabel={t.rdv}
     />
   );

@@ -53,6 +53,7 @@ __pycache__/
 
 # documents internes (cahier de charges, notes client) — jamais versionnés
 /docs
+/tache.md
 
 # sorties d'inspection navigateur
 /.playwright-mcp

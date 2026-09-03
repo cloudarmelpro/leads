@@ -19,11 +19,11 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
   return (
     <>
       <Hero lang={lang} dict={dict} />
-      <TradesShowcase lang={lang} dict={dict} />
       <Services dict={dict} />
+      <TradesShowcase lang={lang} dict={dict} />
       <Method dict={dict} />
       {SHOW_SOCIAL_PROOF && <ProofSlot dict={dict} />}
-      <Faq lang={lang} dict={dict} />
+      <Faq dict={dict} />
       <FinalCta lang={lang} dict={dict} />
     </>
   );

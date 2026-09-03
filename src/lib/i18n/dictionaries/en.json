@@ -3,6 +3,10 @@
     "title": "Talgasy Web — Professional websites that convert",
     "description": "Talgasy Web builds professional websites, structured to convert. One goal: getting your customers to call you, not your competitor."
   },
+  "og": {
+    "kicker": "Web agency · Québec",
+    "tagline": "Professional websites that convert"
+  },
   "common": {
     "close": "Close",
     "soon": "soon",
@@ -10,10 +14,15 @@
     "openMenu": "Open menu",
     "skipToContent": "Skip to content"
   },
+  "notFound": {
+    "title": "Page not found",
+    "body": "This page doesn’t exist or has been moved. Check the address, or go back to the home page.",
+    "cta": "Back to home",
+    "contact": "Write to us"
+  },
   "placeholders": {
     "phone": "[PHONE — to be confirmed]",
     "email": "[EMAIL — to be confirmed]",
-    "address": "[ADDRESS — or “by appointment”]",
     "whatsapp": "[NUMBER TBC]"
   },
   "nav": {
@@ -23,12 +32,12 @@
     "method": "Method",
     "about": "About",
     "faq": "FAQ",
+    "pricing": "Pricing",
     "blog": "Blog",
     "contact": "Contact",
     "quickNav": "Quick navigation"
   },
   "header": {
-    "call": "Call",
     "menuCall": "Call now",
     "menuRdv": "Book a call",
     "langAria": "Choose language",
@@ -40,7 +49,6 @@
     }
   },
   "hero": {
-    "badge": "Web agency — Québec small business",
     "titleA": "Your next contract starts with a click.",
     "titleB": "Make sure it ends with a phone call.",
     "subtitle": "Talgasy Web builds professional websites, structured to convert — so your customers call you, not your competitor.",
@@ -48,55 +56,35 @@
     "tradesLabel": "What sector are you in?",
     "tradesCta": "Let’s talk about your project",
     "tradesCardTitle": "Don’t see your trade? We adapt to your field.",
-    "ctaCall": "Call now",
-    "ctaRdv": "book a time slot",
-    "strip1": "Fast",
-    "strip2": "Structured",
-    "strip3": "Optimized",
-    "demoTag": "Preview — your trade",
-    "demoHandle": "@your-business",
+    "ctaBook": "Book a free call",
     "demoCaption": "This preview changes with your trade. Your site will speak to your customers — in their words.",
     "demos": [
       {
         "trade": "Landscaping",
-        "title": "Residential and commercial landscaping",
-        "cta": "Request a quote",
         "imgLabel": "job-site photo — landscaping"
       },
       {
         "trade": "Excavation",
-        "title": "Excavation and grading, on schedule",
-        "cta": "Call for a quote",
         "imgLabel": "job-site photo — excavation"
       },
       {
         "trade": "Construction",
-        "title": "General contractor — projects done right",
-        "cta": "Book a site visit",
         "imgLabel": "job-site photo — construction"
       },
       {
         "trade": "Renovation",
-        "title": "Interior and exterior renovation",
-        "cta": "Get a quote",
         "imgLabel": "before / after photo — renovation"
       },
       {
         "trade": "Local shop",
-        "title": "Visible in the neighbourhood, one tap away",
-        "cta": "Reach us",
         "imgLabel": "storefront photo — local shop"
       },
       {
         "trade": "Snow removal",
-        "title": "Residential and commercial snow-removal contracts",
-        "cta": "Book my season",
         "imgLabel": "job-site photo — snow removal"
       },
       {
         "trade": "Arboriculture",
-        "title": "Pruning, felling and tree care",
-        "cta": "Request a quote",
         "imgLabel": "job-site photo — arboriculture"
       }
     ]
@@ -106,7 +94,6 @@
     "titleA": "What we do,",
     "titleB": "concretely",
     "intro": "Four clear services, built for Québec businesses and shops.",
-    "cardCta": "Let’s talk",
     "items": [
       {
         "name": "Website creation",
@@ -131,7 +118,6 @@
     "titleA": "How we",
     "titleB": "work",
     "intro": "No black box: you always know where your project stands, and what’s left for you to decide.",
-    "stepLabel": "Step",
     "steps": [
       {
         "n": "1",
@@ -178,7 +164,7 @@
     "items": [
       {
         "q": "How much does it cost?",
-        "a": "Every project is different. We start with a consultation to pin down your needs, then give you a clear price. A website starts at $499, and hosting at $299."
+        "a": "Every project is different. We start with a consultation to pin down your needs, then give you a clear price. A website starts at $1,000, a logo at $200, and hosting is $25 per month. All packages are detailed on our Pricing page."
       },
       {
         "q": "How long does it take to build a site?",
@@ -215,22 +201,17 @@
     "titleA": "Ready to",
     "titleB": "get started",
     "subtitle": "One consultation is enough to define your need and get your project started.",
-    "call": "Call",
-    "rdv": "Book your consultation",
-    "bookingNote": "Online booking — real-time slots.",
-    "form": "or use the contact form",
-    "gallery": [
-      "job-site photo — landscaping",
-      "job-site photo — excavation",
-      "job-site photo — construction"
-    ]
+    "rdv": "Book your consultation"
   },
   "footer": {
-    "tagA": "Websites for",
-    "tagB": "hands-on businesses.",
     "description": "Talgasy Web builds professional, bilingual websites in Québec — structured to turn your visitors into calls.",
-    "navTitle": "Sitemap",
+    "navTitle": "Navigation",
     "coordTitle": "Contact details",
+    "social": {
+      "facebook": "Facebook",
+      "instagram": "Instagram",
+      "linkedin": "LinkedIn"
+    },
     "legal2": "Privacy (Law 25)",
     "rights": "All rights reserved"
   },
@@ -243,25 +224,25 @@
     "manage": "Manage my cookies"
   },
   "floating": {
-    "label": "Talk to us",
     "aria": "Open the contact module",
     "eyebrow": "Contact · FR / EN",
     "sheetTitle": "Talk to us",
     "sheetSub": "A real person replies.",
     "rowCall": "Call now",
     "rowWaSub": "Fast reply",
+    "rowMessengerSub": "Facebook messaging",
     "rowRdv": "Book an appointment",
     "rowRdvSub": "Cal.com — pick your slot"
   },
   "blog": {
     "meta": {
       "title": "Blog — Talgasy Web",
-      "description": "Ideas and advice to help Québec small businesses attract more customers with their website."
+      "description": "Practical ideas and advice to help Québec small businesses attract more customers with their website: conversion, local SEO and best practices."
     },
-    "kicker": "Blog",
     "title": "Ideas & advice",
     "subtitle": "Practical articles to attract more customers with your website.",
     "featured": "Featured",
+    "emptyKicker": "Coming soon",
     "readArticle": "Read the article",
     "minRead": "min read",
     "writtenBy": "Written by",
@@ -277,6 +258,8 @@
       "description": "The agency behind websites that make Québec small businesses’ phones ring. Our approach: quality, professionalism, trust."
     },
     "heroTitle": "About",
+    "storyKicker": "Our story",
+    "storyTitle": "Helping entrepreneurs move forward",
     "story": [
       "Talgasy Web was born from a simple idea: helping entrepreneurs move forward.",
       "We know a strong start can make all the difference. That’s why we support new businesses and young entrepreneurs, giving them solid foundations to showcase their work, build credibility and start growing their client base.",
@@ -315,25 +298,152 @@
       "body": "Have a project in mind? Let’s discuss your needs and see how we can support you."
     }
   },
+  "pricing": {
+    "meta": {
+      "title": "Pricing — Talgasy Web",
+      "description": "Clear pricing, no surprises: website, logo and hosting packages for Québec small businesses. Every project starts with a free consultation."
+    },
+    "heroTitleA": "Clear ",
+    "heroHighlight": "pricing",
+    "heroTitleB": ", no surprises.",
+    "heroSubtitle": "Every project is unique. Discover our packages for websites, logos and hosting.",
+    "cta": "Book a free call",
+    "kicker": "Pricing",
+    "breadcrumb": "Pricing",
+    "groups": [
+      {
+        "title": "Website",
+        "intro": "Every project is different. We start with a consultation to pin down your needs, then give you a clear price.",
+        "plans": [
+          {
+            "name": "Launch",
+            "price": "$1,000",
+            "tagline": "Your online presence — 3 pages",
+            "includes": "",
+            "features": [
+              "Colours, logo, copy and images adapted",
+              "French and English translation",
+              "Phone, tablet and desktop versions",
+              "Simple contact form",
+              "Anti-spam protection",
+              "SSL security",
+              "Essential technical SEO",
+              "Essential metadata",
+              "Domain connection",
+              "Go-live",
+              "Sitemap",
+              "1 round of revisions",
+              "30-day corrective warranty"
+            ]
+          },
+          {
+            "name": "Essential Custom",
+            "price": "$2,000",
+            "tagline": "A professional site — 5 pages",
+            "includes": "Everything in Launch, plus:",
+            "features": [
+              "Original UX/UI design",
+              "Architecture tailored to the business",
+              "Fully custom navigation",
+              "Sections built around the client’s services",
+              "On-page SEO",
+              "Google Analytics",
+              "Google Search Console",
+              "Form with anti-spam protection",
+              "2 rounds of revisions",
+              "30-minute handover",
+              "60-day corrective warranty"
+            ]
+          },
+          {
+            "name": "Growth",
+            "price": "$3,500",
+            "tagline": "A site that brings in clients — 10 pages",
+            "includes": "Everything in Essential Custom, plus:",
+            "features": [
+              "Conversion-oriented architecture",
+              "Advanced sections to present your services",
+              "Local SEO",
+              "Advanced form",
+              "1 standard integration",
+              "Tracking of calls, forms and quote requests",
+              "Optimization of the main calls to action",
+              "3 rounds of revisions",
+              "45-minute training",
+              "90-day corrective warranty"
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Logo",
+        "intro": "We create professional logos tailored to your brand, with options that fit your needs.",
+        "plans": [
+          {
+            "name": "Logo Express",
+            "price": "$200",
+            "tagline": "",
+            "includes": "",
+            "features": [
+              "Up to 3 hours of production",
+              "1 creative direction",
+              "1 round of revisions",
+              "Colour version",
+              "Monochrome version",
+              "PNG, JPG and SVG files"
+            ]
+          },
+          {
+            "name": "Professional Logo",
+            "price": "$650",
+            "tagline": "",
+            "includes": "",
+            "features": [
+              "3 creative directions",
+              "Horizontal, vertical and icon versions",
+              "Colour palette",
+              "Typography selection",
+              "Light and dark background versions",
+              "Source files",
+              "2 rounds of revisions"
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Hosting",
+        "intro": "A simple, reliable hosting solution to get your website online and keep it running.",
+        "plans": [
+          {
+            "name": "Hosting",
+            "price": "$25/month",
+            "tagline": "",
+            "includes": "",
+            "features": [
+              "Site hosting",
+              "SSL certificate",
+              "Deployment",
+              "Versioning",
+              "Domain connection",
+              "Hosting infrastructure maintenance"
+            ]
+          }
+        ]
+      }
+    ]
+  },
   "contactPage": {
     "meta": {
       "title": "Contact — Talgasy Web",
-      "description": "Let’s talk about your project. Book a free call or write to us — we’ll get back to you fast."
+      "description": "Let’s talk about your website project. Book a free discovery call or write to us: a real person gets back to you quickly, anywhere in Québec."
     },
-    "kicker": "Contact",
     "title": "Let’s talk about your project",
     "heroTitle": "Contact",
-    "heroImgLabel": "photo — office / team",
     "subtitle": "One call is enough to know whether we can help. No pressure, no jargon.",
-    "aside": {
-      "title": "Contact details",
-      "email": "Email",
-      "phone": "Phone",
-      "address": "Address",
-      "follow": "Follow us"
-    },
     "booking": {
       "title": "Book a free call",
+      "kicker": "Booking",
+      "intro": "A 45-minute discovery call, by phone or video: your goals, a first look at your online presence and the next steps — no commitment.",
       "service": "Discovery call",
       "duration": "45 min",
       "channel": "Phone or video",
@@ -345,16 +455,14 @@
       ],
       "timezone": "Eastern Time (Québec)",
       "pickSlot": "Available slots",
-      "book": "Book this slot",
-      "pickDatePrompt": "Pick a date on the calendar to see available times.",
-      "viewSlots": "See available times",
-      "realtimeNote": "Real-time availability, confirmed in Cal.com.",
-      "prevMonth": "Previous month",
-      "nextMonth": "Next month",
+      "loadTitle": "Calendar provided by Cal.com",
+      "loadBody": "The booking calendar is a third-party service (Cal.com). By displaying it, you agree that your IP address is sent to it. You can also write to us with the form below.",
+      "loadCta": "Show the calendar",
       "embedNote": "Design preview — the real Cal.com calendar will appear here once the URL is provided."
     },
     "form": {
       "title": "Or write to us",
+      "kicker": "Form",
       "name": "Name",
       "email": "Email",
       "phone": "Phone",
@@ -363,20 +471,20 @@
       "messageHint": "Type of business, what you’re looking for, rough timeline.",
       "consent": "I agree to be contacted about my request.",
       "consentLink": "Privacy policy",
+      "honeypot": "Leave this field empty",
       "send": "Send my request",
       "sending": "Sending…",
       "successTitle": "Message received!",
       "successBody": "We’ll get back to you very soon. Thank you.",
       "errorTitle": "Something went wrong",
       "errorBody": "Your message couldn’t be sent. Please try again, or call us directly.",
-      "requiredNote": "Add at least a phone or an email so we can reply.",
-      "quickTitle": "Or reach us directly",
       "errors": {
         "name": "Enter your name (2 characters minimum).",
         "nameMax": "This name is too long.",
         "email": "This email is invalid.",
         "emailMax": "This email is too long.",
         "phoneMax": "This phone number is too long.",
+        "phone": "This phone number is invalid.",
         "message": "Write your message.",
         "messageMax": "This message is too long.",
         "consent": "You must agree in order to send.",

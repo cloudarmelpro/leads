@@ -1,5 +1,6 @@
 "use client";
 
+import { ChevronDown, Globe } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -9,15 +10,23 @@ type Props = {
   current: Locale;
   label: string;
   variant?: "light" | "dark";
+  /** Classe d'affichage (défaut `inline-flex`) — permet au header de le masquer sous 380px. */
+  className?: string;
 };
 
 /**
- * Bascule de langue par CHEMIN (`/fr/...` ↔ `/en/...`), pas par état client :
- * chaque langue garde son URL, ses canonical et ses hreflang — exigence SEO.
- * La page courante est conservée lors du changement.
+ * Sélecteur de langue (design refonte) : 🌐 + langue courante + chevron. Bascule
+ * par CHEMIN (`/fr/...` ↔ `/en/...`) — chaque langue garde son URL / canonical /
+ * hreflang (exigence SEO). Le site étant bilingue, un clic bascule vers l'autre langue.
  */
-export function LanguageSwitcher({ current, label, variant = "light" }: Props) {
+export function LanguageSwitcher({
+  current,
+  label,
+  variant = "light",
+  className = "inline-flex",
+}: Props) {
   const pathname = usePathname();
+  const other = locales.find((locale) => locale !== current) ?? current;
 
   const pathFor = (locale: Locale) => {
     const segments = pathname.split("/");
@@ -26,57 +35,21 @@ export function LanguageSwitcher({ current, label, variant = "light" }: Props) {
     return segments.join("/") || `/${locale}`;
   };
 
-  if (variant === "dark") {
-    // Même contrôle segmenté que la variante claire, adapté au fond vert :
-    // segment actif en pastille blanche, texte vert.
-    return (
-      <div
-        aria-label={label}
-        className="inline-flex items-center gap-0.5 rounded-[12px] border border-white/25 bg-white/10 p-[3px]"
-      >
-        {locales.map((locale) => {
-          const active = locale === current;
-          return (
-            <Link
-              key={locale}
-              href={pathFor(locale)}
-              hrefLang={locale}
-              aria-current={active ? "true" : undefined}
-              className={`inline-flex h-9 min-w-12 items-center justify-center rounded-[9px] text-sm font-semibold transition-colors ${
-                active ? "bg-white text-sapin" : "text-white/70 hover:text-white"
-              }`}
-            >
-              {localeLabels[locale]}
-            </Link>
-          );
-        })}
-      </div>
-    );
-  }
+  const color =
+    variant === "dark"
+      ? "text-white hover:text-white/80"
+      : "text-encre hover:text-emeraude dark:hover:text-accent-strong";
 
-  // Variante claire — contrôle segmenté : la langue active est une pastille
-  // intérieure arrondie sur ses 4 coins (rounded-[9px]), comme le badge « L ».
   return (
-    <div
-      aria-label={label}
-      className="inline-flex items-center gap-0.5 rounded-[11px] border border-surface bg-surface p-[3px]"
+    <Link
+      href={pathFor(other)}
+      hrefLang={other}
+      aria-label={`${label} — ${localeLabels[other]}`}
+      className={`tap-44 ${className} items-center gap-1.5 text-sm font-medium no-underline transition-colors ${color}`}
     >
-      {locales.map((locale) => {
-        const active = locale === current;
-        return (
-          <Link
-            key={locale}
-            href={pathFor(locale)}
-            hrefLang={locale}
-            aria-current={active ? "true" : undefined}
-            className={`inline-flex h-[26px] min-w-9 items-center justify-center rounded-[9px] text-xs font-bold transition-colors ${
-              active ? "bg-emeraude text-white" : "text-texte2 hover:text-encre"
-            }`}
-          >
-            {localeLabels[locale]}
-          </Link>
-        );
-      })}
-    </div>
+      <Globe size={16} strokeWidth={2} aria-hidden />
+      <span>{localeLabels[current]}</span>
+      <ChevronDown size={14} strokeWidth={2} aria-hidden />
+    </Link>
   );
 }

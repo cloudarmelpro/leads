@@ -3,15 +3,14 @@ import type { ReactNode } from "react";
 type Props = { children: ReactNode };
 
 /**
- * Eyebrow de section (style premium) : un point émeraude + le libellé en
- * majuscules espacées. Remplace l'ancienne pastille badge. À placer dans un
- * conteneur porteur de la marge / de l'animation (ex. `<p data-reveal className="mb-4">`).
+ * Eyebrow de section : un point vert + le libellé. Ne porte aucune marge : le
+ * conteneur parent (ex. `<p className="mb-1">`) gère l'espacement.
  */
 export function Eyebrow({ children }: Props) {
   return (
     <span className="inline-flex items-center gap-2">
-      <span aria-hidden className="h-2.5 w-2.5 rounded-full bg-emeraude dark:bg-accent-strong" />
-      <span className="text-[12px] font-semibold tracking-[0.2em] text-texte2 uppercase">
+      <span aria-hidden className="h-2 w-2 rounded-full bg-emeraude dark:bg-accent-strong" />
+      <span className="text-[13px] leading-[20px] font-light tracking-[0.06em] text-texte2 uppercase sm:text-[12px]">
         {children}
       </span>
     </span>

@@ -5,6 +5,7 @@ import { ImageResponse } from "next/og";
 
 import { site } from "@/config/site";
 import { isLocale, locales, type Locale } from "@/lib/i18n/config";
+import { getDictionary } from "@/lib/i18n/dictionaries";
 
 // Une image OG par langue (prérendue), sous [lang] pour être rattachée aux pages
 // et ne pas être redirigée par le proxy.
@@ -15,16 +16,6 @@ export function generateStaticParams() {
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-// Copie de marque existante (nom + positionnement) — aucune donnée inventée.
-const TAGLINE: Record<Locale, string> = {
-  fr: "Sites web professionnels qui convertissent",
-  en: "Professional websites that convert",
-};
-const KICKER: Record<Locale, string> = {
-  fr: "Agence web · Québec",
-  en: "Web agency · Québec",
-};
-
 // `alt` est au niveau module (pas d'accès à la langue) → on reste neutre : le nom
 // de marque, valable pour les deux langues. Le visuel, lui, est bien localisé.
 export const alt = site.name;
@@ -32,9 +23,10 @@ export const alt = site.name;
 export default async function OpengraphImage({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;
   const l: Locale = isLocale(lang) ? lang : "fr";
+  const dict = await getDictionary(l);
 
-  // Logo (variante claire) chargé en data-URI : Satori/ImageResponse ne résout pas
-  // les URLs relatives locales au build.
+  // Logo final « Talgasy Web » (variante sur fond sombre) chargé en data-URI :
+  // Satori/ImageResponse ne résout pas les URLs relatives locales au build.
   const logo = await readFile(join(process.cwd(), "public/talgasy-logo-dark.png"));
   const logoSrc = `data:image/png;base64,${logo.toString("base64")}`;
 
@@ -63,14 +55,14 @@ export default async function OpengraphImage({ params }: { params: Promise<{ lan
               color: "#a7e0c0",
             }}
           >
-            {KICKER[l]}
+            {dict.og.kicker}
           </span>
         </div>
 
         <div style={{ display: "flex", flexDirection: "column", gap: "28px" }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={logoSrc} width={540} height={202} alt={site.name} />
-          <span style={{ fontSize: "42px", color: "#cfe6d8" }}>{TAGLINE[l]}</span>
+          <img src={logoSrc} width={540} height={142} alt={site.name} />
+          <span style={{ fontSize: "42px", color: "#cfe6d8" }}>{dict.og.tagline}</span>
         </div>
 
         <span style={{ fontSize: "32px", color: "#a7e0c0" }}>{site.domain}</span>
