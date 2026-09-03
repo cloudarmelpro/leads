@@ -206,11 +206,11 @@ export function Header({ lang, dict }: Props) {
             />
           </div>
 
-          <div className="mt-auto flex flex-col gap-3 pt-7 short:gap-2 short:pt-4">
+          <div className="mt-auto flex flex-col gap-2.5 pt-6 short:gap-2 short:pt-4">
             <ActionLink
               href={telHref(site.phone)}
               unavailableLabel={`${dict.header.menuCall} — ${phoneLabel}`}
-              className="flex h-12 items-center justify-center gap-2 rounded-[9px] bg-emeraude text-cta-fluid font-medium text-white no-underline dark:bg-accent-strong dark:text-fond"
+              className="flex h-10 items-center justify-center gap-2 rounded-[9px] bg-emeraude text-[14px] font-medium text-white no-underline dark:bg-accent-strong dark:text-fond"
             >
               {dict.header.menuCall}
             </ActionLink>
@@ -219,20 +219,20 @@ export function Header({ lang, dict }: Props) {
               <ActionLink
                 href={whatsappHref(site.whatsapp)}
                 unavailableLabel={`WhatsApp — ${whatsappLabel}`}
-                className="flex h-11 flex-1 items-center justify-center rounded-[9px] text-sm font-medium text-encre no-underline shadow-[inset_0_0_0_1px_var(--color-encre)]"
+                className="flex h-10 flex-1 items-center justify-center rounded-[9px] text-[13px] font-medium text-encre no-underline shadow-[inset_0_0_0_1px_var(--color-encre)]"
               >
                 WhatsApp
               </ActionLink>
               <Link
                 href={`/${lang}#contact`}
                 onClick={() => setMenuOpen(false)}
-                className="flex h-11 flex-1 items-center justify-center rounded-[9px] text-sm font-medium text-encre no-underline shadow-[inset_0_0_0_1px_var(--color-encre)]"
+                className="flex h-10 flex-1 items-center justify-center rounded-[9px] text-[13px] font-medium text-encre no-underline shadow-[inset_0_0_0_1px_var(--color-encre)]"
               >
                 {dict.header.menuRdv}
               </Link>
             </div>
 
-            <p className="mt-1 text-center text-[13px] font-medium text-emeraude dark:text-accent-strong">{phoneLabel}</p>
+            <p className="text-center text-[12px] font-medium text-emeraude dark:text-accent-strong">{phoneLabel}</p>
           </div>
         </div>
       )}
