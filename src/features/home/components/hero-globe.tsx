@@ -2,19 +2,20 @@
 
 import { useRef } from "react";
 
-import { gsap, reducedMotion, useGSAP } from "@/lib/gsap";
+import { Draggable, gsap, reducedMotion, useGSAP } from "@/lib/gsap";
 
 /**
  * Globe du hero animé. Le POSITIONNEMENT (centrage vertical) est en CSS sur le
  * wrapper → correct dès la première peinture, aucun décalage au chargement. GSAP
  * n'anime QUE l'intérieur : les images (rotation lente + flottement + entrée en
- * scale) et un calque intermédiaire qui suit le curseur sur le hero (parallaxe
- * amortie, pointeur fin seulement). Ses transforms n'écrasent donc pas le centrage.
- * Coupé sous `prefers-reduced-motion`. Opacité gérée par CSS (clair/sombre préservé).
+ * scale) et un calque intermédiaire que l'on fait TOURNER à la souris (saisir et
+ * glisser, inertie au relâchement) — le globe reste à sa place. Ses transforms
+ * n'écrasent donc pas le centrage. Coupé sous `prefers-reduced-motion`. Opacité
+ * gérée par CSS (clair/sombre préservé).
  */
 export function HeroGlobe() {
   const ref = useRef<HTMLDivElement>(null);
-  const parallaxRef = useRef<HTMLDivElement>(null);
+  const spinRef = useRef<HTMLDivElement>(null);
 
   useGSAP(
     () => {
@@ -28,36 +29,23 @@ export function HeroGlobe() {
       gsap.to(els, { rotation: 360, duration: 120, ease: "none", repeat: -1 });
       gsap.to(els, { y: 14, duration: 7, ease: "sine.inOut", repeat: -1, yoyo: true });
 
-      // Parallaxe au curseur : le globe glisse vers le pointeur (±32px) avec un
-      // amorti long ; retour au centre quand le pointeur quitte le hero. Écouté sur
-      // la <section> du hero (le globe lui-même est `pointer-events-none`).
-      const layer = parallaxRef.current;
-      const hero = ref.current?.closest("section");
+      // Rotation à la souris : Draggable en mode « rotation » sur le calque
+      // intermédiaire — on saisit le globe et on le fait tourner dans le sens du geste,
+      // l'inertie prolonge le mouvement au relâchement. Pointeur fin seulement ; sous
+      // `lg` le globe est un fond derrière le texte et reste inerte.
+      const layer = spinRef.current;
       const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-      if (!layer || !hero || !finePointer) return;
+      if (!layer || !finePointer) return;
 
-      const AMPLITUDE = 32;
-      const glide = { duration: 1.1, ease: "power3.out" };
-      const toX = gsap.quickTo(layer, "x", glide);
-      const toY = gsap.quickTo(layer, "y", glide);
-
-      const onMove = (event: PointerEvent) => {
-        const rect = hero.getBoundingClientRect();
-        const nx = ((event.clientX - rect.left) / rect.width) * 2 - 1;
-        const ny = ((event.clientY - rect.top) / rect.height) * 2 - 1;
-        toX(nx * AMPLITUDE);
-        toY(ny * AMPLITUDE);
-      };
-      const onLeave = () => {
-        toX(0);
-        toY(0);
-      };
-      hero.addEventListener("pointermove", onMove);
-      hero.addEventListener("pointerleave", onLeave);
-      return () => {
-        hero.removeEventListener("pointermove", onMove);
-        hero.removeEventListener("pointerleave", onLeave);
-      };
+      const [drag] = Draggable.create(layer, {
+        type: "rotation",
+        inertia: true,
+        throwResistance: 1500,
+        cursor: "grab",
+        activeCursor: "grabbing",
+        zIndexBoost: false,
+      });
+      return () => drag.kill();
     },
     { scope: ref },
   );
@@ -73,7 +61,9 @@ export function HeroGlobe() {
       ref={ref}
       className="pointer-events-none absolute top-[54%] left-1/2 w-[135%] max-w-[560px] -translate-x-1/2 -translate-y-1/2 select-none lg:top-[57%] lg:right-[calc(clamp(1rem,4vw,3.5rem)-clamp(0px,(100vw-67.5rem)/2,10rem))] lg:left-auto lg:w-[56%] lg:max-w-[680px] lg:translate-x-0"
     >
-      <div ref={parallaxRef} className="will-change-transform">
+      {/* `clip-path: circle` : la zone de saisie épouse le globe, pas les coins du carré
+          (sinon on attraperait le globe en cliquant la fin du titre). */}
+      <div ref={spinRef} className="will-change-transform [clip-path:circle(50%)] lg:pointer-events-auto">
         {/* Clair : globe vectoriel émeraude. Sombre : masqué. */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
