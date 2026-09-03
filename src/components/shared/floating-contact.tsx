@@ -54,7 +54,7 @@ export function FloatingContact({ dict }: Props) {
 
   // Ligne fantôme : pas de cadre, fond au survol, atténuée si indisponible.
   const ghostRow =
-    "flex items-center gap-[0.9375rem] rounded-[14px] px-3.5 py-3 text-left text-encre no-underline transition-colors duration-200 motion-reduce:transition-none hover:bg-menthe disabled:cursor-not-allowed disabled:opacity-55";
+    "flex items-center gap-[0.9375rem] rounded-[14px] px-3.5 py-2.5 text-left text-encre no-underline transition-colors duration-200 motion-reduce:transition-none hover:bg-menthe disabled:cursor-not-allowed disabled:opacity-55";
 
   return (
     <>
@@ -66,11 +66,11 @@ export function FloatingContact({ dict }: Props) {
         onClick={() => (open ? handleClose() : setOpen(true))}
         aria-label={t.aria}
         aria-expanded={open}
-        className={`fixed right-4 bottom-[calc(16px+env(safe-area-inset-bottom))] z-95 inline-flex h-12 w-12 cursor-pointer items-center justify-center rounded-xl border-none bg-emeraude text-white transition-colors hover:bg-emeraude/90 dark:bg-accent-strong dark:text-fond dark:hover:bg-accent-strong/90 ${
+        className={`fixed right-4 bottom-[calc(1rem+env(safe-area-inset-bottom))] z-95 inline-flex h-10 w-10 cursor-pointer sm:h-12 sm:w-12 items-center justify-center rounded-xl border-none bg-emeraude text-white transition-colors hover:bg-emeraude/90 dark:bg-accent-strong dark:text-fond dark:hover:bg-accent-strong/90 ${
           hidden ? "pointer-events-none invisible" : ""
         }`}
       >
-        <Phone size={20} strokeWidth={2.2} aria-hidden />
+        <Phone size={18} strokeWidth={2.2} aria-hidden className="sm:size-5" />
       </button>
 
       {open && (
@@ -87,7 +87,7 @@ export function FloatingContact({ dict }: Props) {
             role="dialog"
             aria-modal="true"
             aria-label={t.sheetTitle}
-            className="fixed right-4 bottom-[calc(80px+env(safe-area-inset-bottom))] z-95 box-border w-[min(384px,calc(100vw-2rem))] rounded-[20px] bg-surface px-6 pt-[1.625rem] pb-6 shadow-[0_32px_64px_-24px_rgba(15,29,23,.45)]"
+            className="fixed right-4 bottom-[calc(3.75rem+env(safe-area-inset-bottom))] z-95 box-border w-[min(384px,calc(100vw-2rem))] rounded-[20px] bg-surface px-5 pt-5 pb-5 sm:bottom-[calc(5rem+env(safe-area-inset-bottom))] sm:px-6 sm:pt-[1.625rem] sm:pb-6 shadow-[0_32px_64px_-24px_rgba(15,29,23,.45)]"
           >
             {/* En-tête : eyebrow + titre + sous-titre, croix de fermeture. */}
             <div className="flex items-start justify-between gap-3.5">
