@@ -20,11 +20,12 @@
   --color-emeraude: #177e4f;
   --color-lueur: #9be8c0;
   --color-menthe: #e7f2eb;
-  /* Mode clair = cadre Figma « Light » : fond #fdfdfd presque blanc, cartes
-     blanches détachées par une ombre douce (shadow-soft) plutôt que par le fond,
-     texte neutre #1e1e1e / #646468, filets #f2f2f3. */
+  /* Mode clair = couleurs du cadre Figma « Light » (fond #fdfdfd, cartes blanches,
+     texte neutre #1e1e1e / #646468) mais MÊME mise en forme que le sombre : cartes
+     plates délimitées par un filet, jamais par une ombre portée. Le filet est un
+     cran plus foncé que le « Stroke » Figma (#f2f2f3) pour rester visible sans ombre. */
   --color-fond: #fdfdfd;
-  --color-ligne: #f2f2f3;
+  --color-ligne: #e8e8ea;
   --color-texte2: #646468;
   --color-sapin-doux: #c9dad1;
 
@@ -146,15 +147,6 @@ body {
   outline: 3px solid var(--color-ring);
   outline-offset: 2px;
   border-radius: 6px;
-}
-
-/* Ombre douce des cartes en mode clair (Figma « Light ») : c'est elle qui détache
-   les cartes blanches du fond #fdfdfd. Les cartes la remplacent par une bordure
-   interne en sombre (`dark:shadow-[inset…]`). */
-@utility shadow-soft {
-  box-shadow:
-    0 1px 2px rgb(30 30 30 / 0.04),
-    0 12px 32px -12px rgb(30 30 30 / 0.12);
 }
 
 /* Décors SVG à traits blancs (globe, enveloppe, labyrinthe) : en clair, on les

@@ -60,7 +60,7 @@ export function TradesShowcase({ lang, dict }: Props) {
           {t.demos.map((demo, i) => (
             <figure
               key={demo.trade}
-              className="relative flex aspect-[373/392] max-h-[392px] items-end overflow-hidden rounded-[20px] bg-menthe shadow-soft [clip-path:inset(0_round_20px)] dark:shadow-[inset_0_0_0_1px_#0a2a3a]"
+              className="relative flex aspect-[373/392] max-h-[392px] items-end overflow-hidden rounded-[20px] bg-menthe shadow-[inset_0_0_0_1px_var(--color-ligne)] [clip-path:inset(0_round_20px)] dark:shadow-[inset_0_0_0_1px_#0a2a3a]"
             >
               <Image
                 src={TRADE_IMAGES[i % TRADE_IMAGES.length]}
@@ -85,7 +85,7 @@ export function TradesShowcase({ lang, dict }: Props) {
 
           {/* Carte « secteur non listé » : bordée, illustration labyrinthe, CTA vert plein. */}
           <div
-            className="relative flex flex-col justify-between overflow-hidden rounded-[20px] border border-ligne bg-surface p-8 shadow-soft sm:col-span-2 sm:p-10 dark:border-transparent dark:shadow-[inset_0_0_0_1px_#0a2a3a]"
+            className="relative flex flex-col justify-between overflow-hidden rounded-[20px] border border-ligne bg-surface p-8 sm:col-span-2 sm:p-10 dark:border-transparent dark:shadow-[inset_0_0_0_1px_#0a2a3a]"
           >
             {/* Labyrinthe décoratif (design) : grand carré débordant en haut/droite,
                 clippé par la carte. Traits blancs dans le SVG : teintés vert pâle en

@@ -22,7 +22,7 @@ export function SurfaceCard<T extends ElementType = "div">({
 
   return (
     <Tag
-      className={`relative flex flex-col overflow-hidden rounded-[20px] border border-ligne bg-surface ${padding} shadow-soft dark:border-transparent dark:bg-[linear-gradient(180deg,#01202e_0%,#011a26_100%)] dark:shadow-[inset_0_0_0_1px_#0a2a3a] ${className}`}
+      className={`relative flex flex-col overflow-hidden rounded-[20px] border border-ligne bg-surface ${padding} dark:border-transparent dark:bg-[linear-gradient(180deg,#01202e_0%,#011a26_100%)] dark:shadow-[inset_0_0_0_1px_#0a2a3a] ${className}`}
       {...rest}
     >
       <span
