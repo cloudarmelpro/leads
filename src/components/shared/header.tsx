@@ -191,7 +191,7 @@ export function Header({ lang, dict }: Props) {
                 key={item.href}
                 href={item.href}
                 onClick={() => setMenuOpen(false)}
-                className="py-3 text-nav-fluid font-medium text-encre no-underline short:py-2"
+                className="py-2.5 text-nav-fluid font-medium text-encre no-underline short:py-2"
               >
                 {item.label}
               </Link>

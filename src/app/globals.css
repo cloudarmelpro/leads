@@ -179,7 +179,7 @@ body {
   line-height: 1.25;
 }
 @utility text-nav-fluid {
-  font-size: clamp(17px, 5vw, 20px);
+  font-size: clamp(15px, 4vw, 17px);
   line-height: 1.4;
 }
 
