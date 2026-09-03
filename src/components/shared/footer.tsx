@@ -88,7 +88,7 @@ export function Footer({ lang, dict }: Props) {
 
             {/* Plan du site. */}
             <div>
-              <p className="mb-2.5 text-[16px] leading-[25px] font-medium text-encre">
+              <p className="mb-2.5 text-body-fluid font-medium text-encre">
                 {dict.footer.navTitle}
               </p>
               <div className="flex flex-col gap-2.5">
@@ -107,7 +107,7 @@ export function Footer({ lang, dict }: Props) {
             {/* Coordonnées : liens cliquables (tel:/mailto:) quand la donnée existe,
                 sinon simple texte placeholder. Renforce le signal de contact (NAP). */}
             <div>
-              <p className="mb-2.5 text-[16px] leading-[25px] font-medium text-encre">
+              <p className="mb-2.5 text-body-fluid font-medium text-encre">
                 {dict.footer.coordTitle}
               </p>
               <div className="flex flex-col gap-2.5">

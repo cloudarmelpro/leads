@@ -57,13 +57,13 @@ export function CtaBanner({ lang, title, body, kicker, eyebrow, phone, ariaLabel
           <div className="relative flex flex-col gap-8 md:flex-1 md:flex-row md:items-center md:gap-10 md:border-l md:border-ligne md:pl-10 dark:md:border-[#0a2a3a]">
             <div className="flex flex-col gap-1.5 md:flex-1">
               {eyebrow && (
-                <span className="text-[16px] leading-[25px] font-medium text-encre">{eyebrow}</span>
+                <span className="text-body-fluid font-medium text-encre">{eyebrow}</span>
               )}
               <p className="text-[14px] leading-[24px] font-light text-texte2 text-pretty">{body}</p>
               {tel && (
                 <a
                   href={tel}
-                  className="mt-1.5 text-[15px] leading-[24px] font-medium text-emeraude no-underline transition-colors hover:text-[#7fefc0] motion-reduce:transition-none dark:text-accent-strong dark:hover:text-[#7fefc0]"
+                  className="mt-1.5 text-small-fluid font-medium text-emeraude no-underline transition-colors hover:text-[#7fefc0] motion-reduce:transition-none dark:text-accent-strong dark:hover:text-[#7fefc0]"
                 >
                   {phone}
                 </a>

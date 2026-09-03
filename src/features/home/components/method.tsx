@@ -29,7 +29,7 @@ export function Method({ dict }: Props) {
           <SplitReveal
             as="p"
             delay={0.1}
-            className="mt-5 max-w-[42ch] text-[16px] leading-[24px] text-texte2 text-pretty"
+            className="mt-5 max-w-[42ch] text-body-fluid text-texte2 text-pretty"
           >
             {t.intro}
           </SplitReveal>

@@ -33,7 +33,7 @@ export function SectionHeader({ kicker, title, intro }: Props) {
         <SplitReveal
           as="p"
           delay={0.1}
-          className="text-[16px] leading-[24px] text-texte2 text-pretty md:w-[480px] md:justify-self-end md:pb-2 md:text-right"
+          className="text-body-fluid text-texte2 text-pretty md:w-[480px] md:justify-self-end md:pb-2 md:text-right"
         >
           {intro}
         </SplitReveal>

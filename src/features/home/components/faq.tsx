@@ -32,7 +32,7 @@ export function Faq({ dict }: Props) {
           <SplitReveal
             as="p"
             delay={0.1}
-            className="mt-5 max-w-[42ch] text-[16px] leading-[24px] text-texte2 text-pretty"
+            className="mt-5 max-w-[42ch] text-body-fluid text-texte2 text-pretty"
           >
             {t.intro}
           </SplitReveal>
@@ -59,7 +59,7 @@ export function Faq({ dict }: Props) {
                     className="group flex w-full cursor-pointer items-center gap-4 border-none bg-transparent px-6 py-5 text-left"
                   >
                     <span
-                      className={`flex-1 text-[16px] leading-[1.55] text-encre text-pretty ${open ? "font-medium" : "font-light"}`}
+                      className={`flex-1 text-body-fluid text-encre text-pretty ${open ? "font-medium" : "font-light"}`}
                     >
                       {item.q}
                     </span>
@@ -74,7 +74,7 @@ export function Faq({ dict }: Props) {
 
                 <Collapse open={open} id={panelId} role="region" aria-labelledby={buttonId}>
                   <div className="mb-5 rounded-2xl border border-ligne bg-surface px-6 py-5 dark:border-transparent">
-                    <p className="text-[15px] leading-[1.65] font-light text-texte2 text-pretty">{item.a}</p>
+                    <p className="text-small-fluid font-light text-texte2 text-pretty">{item.a}</p>
                   </div>
                 </Collapse>
               </div>

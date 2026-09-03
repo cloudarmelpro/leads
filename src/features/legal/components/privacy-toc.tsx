@@ -39,7 +39,7 @@ export function PrivacyToc({ label, entries }: Props) {
 
   return (
     <nav aria-label={label}>
-      <p className="text-[16px] leading-[25px] font-medium text-encre">{label}</p>
+      <p className="text-body-fluid font-medium text-encre">{label}</p>
       <ol className="mt-3 flex flex-col gap-2">
         {entries.map((entry) => {
           const isActive = entry.id === active;

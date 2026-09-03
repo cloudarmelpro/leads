@@ -53,7 +53,7 @@ export function CalcomEmbed({ calLink, dict }: Props) {
       <button
         type="button"
         onClick={() => setLoaded(true)}
-        className="tap-44 mt-6 cursor-pointer rounded-[9px] bg-emeraude px-4 py-2.5 text-[15px] font-medium text-white transition-colors hover:bg-emeraude/90 dark:bg-accent-strong dark:text-fond"
+        className="tap-44 mt-6 cursor-pointer rounded-[9px] bg-emeraude px-3.5 py-2 sm:px-4 sm:py-2.5 text-cta-fluid font-medium text-white transition-colors hover:bg-emeraude/90 dark:bg-accent-strong dark:text-fond"
       >
         {t.loadCta}
       </button>

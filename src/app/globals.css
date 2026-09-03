@@ -155,6 +155,34 @@ body {
   filter: brightness(0.86) sepia(1) hue-rotate(90deg) saturate(2.2);
 }
 
+/* Typographie fluide des textes courants : les titres utilisent déjà clamp(), les
+   textes de corps, boutons et entrées de menu suivent ici la largeur d'écran
+   (pleine taille dès ~440px, plus compacts sur mobile, jamais sous 14px). */
+@utility text-body-fluid {
+  font-size: clamp(14px, 3.6vw, 16px);
+  line-height: 1.5;
+}
+@utility text-small-fluid {
+  font-size: clamp(13.5px, 3.5vw, 15px);
+  line-height: 1.6;
+}
+@utility text-cta-fluid {
+  font-size: clamp(13.5px, 3.6vw, 15px);
+  line-height: 1.35;
+}
+@utility text-title-fluid {
+  font-size: clamp(16px, 4.4vw, 18px);
+  line-height: 1.3;
+}
+@utility text-lead-fluid {
+  font-size: clamp(17px, 4.8vw, 20px);
+  line-height: 1.25;
+}
+@utility text-nav-fluid {
+  font-size: clamp(17px, 5vw, 20px);
+  line-height: 1.4;
+}
+
 /* Zone tactile de 44px (Apple HIG / WCAG 2.5.8) sans changer la place occupée :
    le pseudo-élément déborde du contrôle et capte le toucher. Ne pas poser sur un
    élément qui utilise déjà `::after`. */

@@ -31,7 +31,7 @@ export function MethodAccordion({ steps }: Props) {
             >
               <span className="text-[14px] leading-[25px] font-light text-accent-strong">0{step.n}</span>
               <span
-                className={`flex-1 text-[16px] leading-[1.55] text-encre ${isOpen ? "font-medium" : "font-light"}`}
+                className={`flex-1 text-body-fluid text-encre ${isOpen ? "font-medium" : "font-light"}`}
               >
                 {step.title}
               </span>
@@ -42,7 +42,7 @@ export function MethodAccordion({ steps }: Props) {
             </button>
 
             <Collapse open={isOpen}>
-              <p className="max-w-[60ch] pr-8 pb-6 text-[15px] leading-[1.65] font-light text-texte2 text-pretty">
+              <p className="max-w-[60ch] pr-8 pb-6 text-small-fluid font-light text-texte2 text-pretty">
                 {step.desc}
               </p>
             </Collapse>

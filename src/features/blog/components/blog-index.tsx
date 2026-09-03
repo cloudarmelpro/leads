@@ -45,11 +45,11 @@ export async function BlogIndex({ lang }: Props) {
                   <h2 className="mt-2 font-display text-[clamp(22px,3vw,30px)] leading-[1.143] font-normal tracking-[-0.8px] text-encre text-balance">
                     {dict.blog.emptyTitle}
                   </h2>
-                  <p className="mt-3 text-[15px] leading-[24px] text-texte2 text-pretty">{dict.blog.emptyBody}</p>
+                  <p className="mt-3 text-small-fluid text-texte2 text-pretty">{dict.blog.emptyBody}</p>
                 </div>
                 <Link
                   href={`/${lang}/contact`}
-                  className="relative w-fit shrink-0 rounded-[9px] bg-emeraude px-4 py-2.5 text-[15px] font-medium text-white no-underline hover:bg-[#7fefc0] hover:text-fond dark:bg-accent-strong dark:text-fond dark:hover:bg-[#7fefc0]"
+                  className="relative w-fit shrink-0 rounded-[9px] bg-emeraude px-3.5 py-2 sm:px-4 sm:py-2.5 text-cta-fluid font-medium text-white no-underline hover:bg-[#7fefc0] hover:text-fond dark:bg-accent-strong dark:text-fond dark:hover:bg-[#7fefc0]"
                 >
                   {dict.nav.contact}
                 </Link>

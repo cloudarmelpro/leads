@@ -191,7 +191,7 @@ export function Header({ lang, dict }: Props) {
                 key={item.href}
                 href={item.href}
                 onClick={() => setMenuOpen(false)}
-                className="py-3 text-[20px] font-medium text-encre no-underline short:py-2 short:text-[18px]"
+                className="py-3 text-nav-fluid font-medium text-encre no-underline short:py-2"
               >
                 {item.label}
               </Link>
@@ -210,7 +210,7 @@ export function Header({ lang, dict }: Props) {
             <ActionLink
               href={telHref(site.phone)}
               unavailableLabel={`${dict.header.menuCall} — ${phoneLabel}`}
-              className="flex h-12 items-center justify-center gap-2 rounded-[9px] bg-emeraude text-[15px] font-medium text-white no-underline dark:bg-accent-strong dark:text-fond"
+              className="flex h-12 items-center justify-center gap-2 rounded-[9px] bg-emeraude text-cta-fluid font-medium text-white no-underline dark:bg-accent-strong dark:text-fond"
             >
               {dict.header.menuCall}
             </ActionLink>

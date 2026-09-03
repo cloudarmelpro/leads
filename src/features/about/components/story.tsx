@@ -26,7 +26,7 @@ export function Story({ dict }: Props) {
               <span className="relative font-mono text-[14px] leading-[25px] text-emeraude dark:text-accent-strong">
                 {String(index + 1).padStart(2, "0")}
               </span>
-              <p className="relative text-[16px] leading-[26px] text-encre text-pretty">{paragraph}</p>
+              <p className="relative text-body-fluid text-encre text-pretty">{paragraph}</p>
             </SurfaceCard>
           ))}
         </Reveal>

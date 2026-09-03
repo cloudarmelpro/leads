@@ -19,7 +19,7 @@ export function PostCard({ post, lang, dict }: Props) {
         <span>{formatDate(post.date, lang)}</span>
       </p>
       <div className="relative">
-        <h3 className="text-[18px] leading-[1.3] font-medium text-encre">
+        <h3 className="text-title-fluid font-medium text-encre">
           <Link
             href={`/${lang}/blog/${post.slug}`}
             className="text-encre no-underline after:absolute after:inset-0 hover:text-emeraude dark:hover:text-accent-strong"
@@ -27,9 +27,9 @@ export function PostCard({ post, lang, dict }: Props) {
             {post.title}
           </Link>
         </h3>
-        <p className="mt-3 line-clamp-3 text-[15px] leading-[24px] text-texte2 text-pretty">{post.excerpt}</p>
+        <p className="mt-3 line-clamp-3 text-small-fluid text-texte2 text-pretty">{post.excerpt}</p>
       </div>
-      <span className="relative mt-auto inline-flex items-center gap-2 text-[15px] font-medium text-emeraude dark:text-accent-strong">
+      <span className="relative mt-auto inline-flex items-center gap-2 text-cta-fluid font-medium text-emeraude dark:text-accent-strong">
         {dict.blog.readArticle}
         <ArrowRight className="w-[19px]" />
       </span>

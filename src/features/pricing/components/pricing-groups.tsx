@@ -45,7 +45,7 @@ export function PricingGroups({ dict }: Props) {
 function PriceCard({ plan }: { plan: Plan }) {
   return (
     <SurfaceCard as="article" className="p-6 sm:p-7">
-      <h3 className="relative text-[16px] leading-[1.4] font-medium text-emeraude dark:text-accent-strong">
+      <h3 className="relative text-body-fluid font-medium text-emeraude dark:text-accent-strong">
         {plan.name}
       </h3>
       <p className="relative mt-2 font-display text-[clamp(28px,2.6vw,34px)] leading-none font-semibold tracking-[-0.5px] text-emeraude dark:text-accent-strong">
