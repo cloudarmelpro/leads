@@ -48,7 +48,7 @@ export function Services({ dict }: Props) {
             return (
               <article
                 key={item.name}
-                className={`relative flex flex-col justify-center gap-9 overflow-hidden rounded-[20px] border border-ligne bg-surface px-10 pt-10 pb-11 dark:border-transparent dark:bg-[linear-gradient(180deg,#01202e_0%,#011a26_100%)] dark:shadow-[inset_0_0_0_1px_#0a2a3a] ${SPAN[index]}`}
+                className={`relative flex flex-col justify-center gap-9 overflow-hidden rounded-[20px] border border-ligne bg-surface px-10 pt-10 pb-11 shadow-soft dark:border-transparent dark:bg-[linear-gradient(180deg,#01202e_0%,#011a26_100%)] dark:shadow-[inset_0_0_0_1px_#0a2a3a] ${SPAN[index]}`}
               >
                 {/* Halo vert d'ambiance en haut-droite (design). */}
                 <span
@@ -67,7 +67,7 @@ export function Services({ dict }: Props) {
                     aria-hidden
                     loading="lazy"
                     decoding="async"
-                    className={`pointer-events-none absolute w-[56%] max-w-[360px] opacity-20 select-none ${
+                    className={`pointer-events-none absolute w-[56%] max-w-[360px] opacity-50 select-none tint-vert dark:opacity-30 dark:[filter:none] ${
                       index === 3
                         ? "top-1/2 right-[-10%] -translate-y-1/2" // enveloppe : centrée verticalement, poussée à droite
                         : "-top-6 right-[-6%]" // sphère : haut-droite

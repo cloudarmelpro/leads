@@ -41,14 +41,14 @@ export function Faq({ dict }: Props) {
         {/* Colonne droite : les questions (accordéon). Lignes soulignées ; seule la
             question ouverte révèle sa réponse dans une carte arrondie (design).
             Lignes révélées au scroll ; dépliage et flèche animés par GSAP. */}
-        <Reveal as="div" stagger={0.06} className="flex flex-col">
+        <Reveal as="div" stagger={0.06} className="flex flex-col gap-3 dark:gap-0">
           {t.items.map((item, index) => {
             const open = openIndex === index;
             const panelId = `${baseId}-panel-${index}`;
             const buttonId = `${baseId}-button-${index}`;
 
             return (
-              <div key={item.q} className="flex flex-col border-b border-ligne">
+              <div key={item.q} className="flex flex-col rounded-2xl bg-surface shadow-soft dark:rounded-none dark:border-b dark:border-ligne dark:bg-transparent dark:shadow-none">
                 <h3>
                   <button
                     type="button"
@@ -73,7 +73,7 @@ export function Faq({ dict }: Props) {
                 </h3>
 
                 <Collapse open={open} id={panelId} role="region" aria-labelledby={buttonId}>
-                  <div className="mb-5 rounded-2xl bg-surface px-6 py-5">
+                  <div className="mb-5 px-6 dark:rounded-2xl dark:bg-surface dark:py-5">
                     <p className="text-[15px] leading-[1.65] font-light text-texte2 text-pretty">{item.a}</p>
                   </div>
                 </Collapse>

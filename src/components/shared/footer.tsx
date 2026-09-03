@@ -56,7 +56,7 @@ export function Footer({ lang, dict }: Props) {
     "tap-44 text-[14px] leading-[22px] text-texte2 no-underline transition-colors hover:text-emeraude dark:hover:text-accent-strong";
 
   return (
-    <footer className="relative overflow-hidden border-t border-ligne pt-[clamp(48px,7vw,72px)] pb-7">
+    <footer className="relative mx-4 overflow-hidden rounded-t-[28px] bg-surface pt-[clamp(48px,7vw,72px)] pb-7 shadow-soft lg:mx-8 dark:mx-0 dark:rounded-none dark:border-t dark:border-ligne dark:bg-transparent dark:shadow-none">
       <div className={`${CONTENEUR} relative`}>
         {/* Contenu au-dessus du filigrane. */}
         <div className="relative z-10">

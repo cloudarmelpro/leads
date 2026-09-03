@@ -60,7 +60,7 @@ export function TradesShowcase({ lang, dict }: Props) {
           {t.demos.map((demo, i) => (
             <figure
               key={demo.trade}
-              className="relative flex aspect-[373/392] max-h-[392px] items-end overflow-hidden rounded-[20px] bg-menthe shadow-[inset_0_0_0_1px_#0a2a3a] [clip-path:inset(0_round_20px)]"
+              className="relative flex aspect-[373/392] max-h-[392px] items-end overflow-hidden rounded-[20px] bg-menthe shadow-soft [clip-path:inset(0_round_20px)] dark:shadow-[inset_0_0_0_1px_#0a2a3a]"
             >
               <Image
                 src={TRADE_IMAGES[i % TRADE_IMAGES.length]}
@@ -69,10 +69,10 @@ export function TradesShowcase({ lang, dict }: Props) {
                 sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 340px"
                 className="object-cover"
               />
-              {/* Dégradé plein cadre (design) : transparent en haut → sarcelle sombre en bas. */}
+              {/* Dégradé plein cadre (design) : transparent en haut → émeraude en clair, sarcelle sombre en sombre. */}
               <span
                 aria-hidden
-                className="absolute inset-0 bg-[linear-gradient(180deg,rgba(4,96,142,0)_0%,rgba(1,27,40,0.9)_83.65%)]"
+                className="absolute inset-0 bg-[linear-gradient(180deg,rgba(23,126,79,0)_0%,rgba(23,126,79,0.92)_85%)] dark:bg-[linear-gradient(180deg,rgba(4,96,142,0)_0%,rgba(1,27,40,0.9)_83.65%)]"
               />
               <figcaption className="relative flex w-full items-center justify-between gap-2 px-4 pb-4 sm:gap-3 sm:px-7 sm:pb-6">
                 <span className="text-[15px] leading-[22px] font-normal tracking-[-0.01em] text-white text-balance sm:text-[18px] sm:leading-[26px]">
@@ -85,11 +85,11 @@ export function TradesShowcase({ lang, dict }: Props) {
 
           {/* Carte « secteur non listé » : bordée, illustration labyrinthe, CTA vert plein. */}
           <div
-            className="relative flex flex-col justify-between overflow-hidden rounded-[20px] bg-surface p-8 shadow-[inset_0_0_0_1px_var(--color-ligne)] sm:col-span-2 sm:p-10"
+            className="relative flex flex-col justify-between overflow-hidden rounded-[20px] border border-ligne bg-surface p-8 shadow-soft sm:col-span-2 sm:p-10 dark:border-transparent dark:shadow-[inset_0_0_0_1px_#0a2a3a]"
           >
             {/* Labyrinthe décoratif (design) : grand carré débordant en haut/droite,
-                clippé par la carte. Le SVG porte déjà stroke blanc + opacity 0.15 ;
-                inversé en clair pour des traits sombres sur fond clair.
+                clippé par la carte. Traits blancs dans le SVG : teintés vert pâle en
+                clair (`tint-vert`), laissés blancs et discrets en sombre.
                 `loading="lazy"` : évite le <link rel=preload> que React 19 émet
                 pour toute <img> rendue côté serveur (décor sous la ligne de flottaison). */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -99,7 +99,7 @@ export function TradesShowcase({ lang, dict }: Props) {
               aria-hidden
               loading="lazy"
               decoding="async"
-              className="pointer-events-none absolute top-[-22.74%] left-[28.5%] w-[102.65%] select-none [filter:invert(1)] dark:[filter:none]"
+              className="pointer-events-none absolute top-[-22.74%] left-[28.5%] w-[102.65%] opacity-60 select-none tint-vert dark:opacity-15 dark:[filter:none]"
             />
             <p className="relative max-w-[26ch] text-[clamp(20px,2.2vw,24px)] leading-[1.45] font-medium text-encre text-balance">
               {t.tradesCardTitle}
