@@ -7,7 +7,6 @@ import { useTheme } from "@/lib/use-theme";
 type Props = {
   label: string;
   optionLabels: { system: string; light: string; dark: string };
-  variant?: "light" | "dark";
 };
 
 /**
