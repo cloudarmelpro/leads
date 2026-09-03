@@ -4,7 +4,7 @@ import { useState } from "react";
 
 import { Collapse, Rotate } from "@/components/shared/collapse";
 import { Reveal } from "@/components/shared/reveal";
-import { ArrowDown } from "@/components/ui/arrows";
+import { ChevronDown } from "lucide-react";
 
 type Step = { n: string; title: string; desc: string };
 type Props = { steps: Step[] };
@@ -27,22 +27,22 @@ export function MethodAccordion({ steps }: Props) {
               type="button"
               onClick={() => setOpen(isOpen ? -1 : index)}
               aria-expanded={isOpen}
-              className="group flex w-full cursor-pointer items-center gap-4 py-5 text-left"
+              className="group flex w-full cursor-pointer items-center gap-3 py-4 text-left sm:gap-4 sm:py-5"
             >
               <span className="text-[0.875rem] leading-[1.5625rem] font-light text-accent-strong">0{step.n}</span>
               <span
-                className={`flex-1 text-body-fluid text-encre ${isOpen ? "font-medium" : "font-light"}`}
+                className={`flex-1 text-small-fluid text-encre sm:text-body-fluid ${isOpen ? "font-medium" : "font-light"}`}
               >
                 {step.title}
               </span>
-              {/* Flèche bas pivotée de 180° = flèche haut (même tracé). */}
+              {/* Chevron bas, pivoté de 180° à l'ouverture. */}
               <Rotate deg={isOpen ? 180 : 0} className="text-texte2 group-hover:text-encre">
-                <ArrowDown className="h-[18px]" />
+                <ChevronDown size={18} strokeWidth={2} aria-hidden className="shrink-0" />
               </Rotate>
             </button>
 
             <Collapse open={isOpen}>
-              <p className="max-w-[60ch] pr-8 pb-6 text-small-fluid font-light text-texte2 text-pretty">
+              <p className="max-w-[60ch] pr-8 pb-5 text-[0.875rem] leading-[1.6] font-light text-texte2 text-pretty sm:pb-6 sm:text-small-fluid">
                 {step.desc}
               </p>
             </Collapse>

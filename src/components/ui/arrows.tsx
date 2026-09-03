@@ -34,32 +34,3 @@ export function ArrowLeft({ className }: Props) {
     </svg>
   );
 }
-
-/* Flèches verticales. Étroites et hautes : hauteur en className, la largeur suit
-   le ratio (`w-auto`). */
-
-export function ArrowUp({ className }: Props) {
-  return (
-    <svg
-      viewBox="0 0 8.706 15.698"
-      fill="currentColor"
-      aria-hidden
-      className={cn("h-4 w-auto shrink-0", className)}
-    >
-      <polygon points="0,4.344 0.706,5.052 3.853,1.912 3.853,15.698 4.853,15.698 4.853,1.912 8,5.052 8.706,4.344 4.353,0 " />
-    </svg>
-  );
-}
-
-export function ArrowDown({ className }: Props) {
-  return (
-    <svg
-      viewBox="0 0 8.706 15.698"
-      fill="currentColor"
-      aria-hidden
-      className={cn("h-4 w-auto shrink-0", className)}
-    >
-      <polygon points="0,11.354 0.706,10.646 3.853,13.786 3.853,0 4.853,0 4.853,13.786 8,10.646 8.706,11.354 4.353,15.698 " />
-    </svg>
-  );
-}
