@@ -237,7 +237,7 @@
   },
   "blog": {
     "meta": {
-      "title": "Blog — Talgasy Web",
+      "title": "Blog — Conseils web pour les PME du Québec | Talgasy Web",
       "description": "Idées et conseils concrets pour aider les PME du Québec à attirer plus de clients avec leur site web : conversion, référencement local et bonnes pratiques."
     },
     "title": "Idées & conseils",
@@ -255,7 +255,7 @@
   },
   "about": {
     "meta": {
-      "title": "À propos — Talgasy Web",
+      "title": "À propos de Talgasy Web — L’agence derrière votre site",
       "description": "L’agence derrière les sites qui font sonner le téléphone des PME du Québec. Notre approche : qualité, professionnalisme, confiance."
     },
     "heroTitle": "À propos",
@@ -301,7 +301,7 @@
   },
   "pricing": {
     "meta": {
-      "title": "Prix — Talgasy Web",
+      "title": "Prix — Sites web, logos et hébergement | Talgasy Web",
       "description": "Des prix clairs, sans surprise : forfaits de site web, de logo et d’hébergement pour les PME du Québec. Chaque projet commence par une consultation gratuite."
     },
     "heroTitleA": "Des prix ",
@@ -435,7 +435,7 @@
   },
   "contactPage": {
     "meta": {
-      "title": "Contact — Talgasy Web",
+      "title": "Contact — Réservez un appel gratuit | Talgasy Web",
       "description": "Parlons de votre projet de site web. Réservez un appel découverte gratuit ou écrivez-nous : une vraie personne vous répond rapidement, partout au Québec."
     },
     "title": "Parlons de votre projet",

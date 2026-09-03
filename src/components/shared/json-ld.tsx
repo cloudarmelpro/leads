@@ -35,6 +35,9 @@ export function JsonLd({ lang, dict }: Props) {
     "@id": `${base}/#website`,
     url: base,
     name: site.name,
+    // Variantes du nom (sans espace, domaine) : aide Google à afficher « Talgasy Web »
+    // comme nom de site plutôt que l'URL dans les résultats.
+    alternateName: ["TalgasyWeb", site.domain],
     inLanguage: localeHtmlLang[lang],
     publisher: { "@id": `${base}/#business` },
   };
