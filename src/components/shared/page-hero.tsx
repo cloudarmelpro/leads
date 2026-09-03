@@ -25,7 +25,7 @@ export function PageHero({ title, subtitle, cta }: Props) {
           as="h1"
           scroll={false}
           delay={0.1}
-          className="m-0 max-w-[min(720px,60%)] font-display text-[clamp(24px,4vw,38px)] leading-[1.143] font-normal tracking-[-1.2px] text-encre text-pretty uppercase"
+          className="m-0 max-w-[720px] lg:max-w-[min(720px,60%)] font-display text-[clamp(1.5rem,4vw,2.375rem)] leading-[1.143] font-normal tracking-[-1.2px] text-encre text-pretty uppercase"
         >
           {title}
         </SplitReveal>
@@ -35,7 +35,7 @@ export function PageHero({ title, subtitle, cta }: Props) {
             as="p"
             scroll={false}
             delay={0.28}
-            className="m-0 max-w-[min(642px,55%)] text-[16px] leading-[24px] font-normal text-texte2 text-pretty"
+            className="m-0 max-w-[642px] lg:max-w-[min(642px,55%)] text-body-fluid font-normal text-texte2 text-pretty"
           >
             {subtitle}
           </SplitReveal>
@@ -45,7 +45,7 @@ export function PageHero({ title, subtitle, cta }: Props) {
           <Reveal as="div" scroll={false} delay={0.5} className="flex flex-wrap items-center gap-3">
             <Link
               href={cta.href}
-              className="rounded-[9px] bg-emeraude px-4 py-2.5 text-[15px] font-medium text-white no-underline hover:bg-[#7fefc0] hover:text-fond dark:bg-accent-strong dark:text-fond dark:hover:bg-[#7fefc0]"
+              className="rounded-[9px] bg-emeraude px-3.5 py-2 sm:px-4 sm:py-2.5 text-cta-fluid font-medium text-white no-underline hover:bg-[#7fefc0] hover:text-fond dark:bg-accent-strong dark:text-fond dark:hover:bg-[#7fefc0]"
             >
               {cta.label}
             </Link>

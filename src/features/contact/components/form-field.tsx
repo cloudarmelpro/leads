@@ -6,8 +6,11 @@ import { cn } from "@/lib/utils";
    gris (repos) → encre (focus) → rouge (erreur). Le compound focus:aria-invalid
    garantit que l'erreur l'emporte sur le focus (spécificité supérieure). Pas
    d'ombre interne ni de hover séparé : ça évitait un double trait clair/foncé. */
+// `max(1rem,16px)` : la racine fluide descend à 14px sur mobile, mais un champ sous
+// 16px déclenche le zoom automatique d'iOS au focus — on garde le plancher.
+const fieldText = "text-[max(1rem,16px)]";
 const controlBase =
-  "peer w-full rounded-lg border border-input bg-transparent text-base text-encre outline-none " +
+  `peer w-full rounded-lg border border-input bg-transparent ${fieldText} text-encre outline-none ` +
   "transition-colors duration-200 motion-reduce:transition-none " +
   "focus:border-encre " +
   "aria-invalid:border-destructive aria-invalid:text-destructive " +
@@ -43,9 +46,9 @@ function FieldShell({
   return (
     <div className="flex flex-col gap-1.5">
       <div className="relative">{children}</div>
-      {hint && !error && <p className="text-[13px] text-texte2">{hint}</p>}
+      {hint && !error && <p className="text-[0.8125rem] text-texte2">{hint}</p>}
       {error && (
-        <p id={`${id}-error`} className="text-[13px] text-destructive">
+        <p id={`${id}-error`} className="text-[0.8125rem] text-destructive">
           {error}
         </p>
       )}

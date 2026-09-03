@@ -44,7 +44,7 @@ export function BookingWidget({ lang, dict }: Props) {
         <div className="bg-surface p-6">
           <span
             aria-hidden
-            className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-ink font-display text-[15px] text-white"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-ink font-display text-[0.9375rem] text-white"
           >
             {site.name[0]}
           </span>
@@ -84,7 +84,7 @@ export function BookingWidget({ lang, dict }: Props) {
             {weekdays.map((d) => (
               <span
                 key={d}
-                className="py-1 text-[11px] font-semibold tracking-wide text-texte2 uppercase"
+                className="py-1 text-[0.6875rem] font-semibold tracking-wide text-texte2 uppercase"
               >
                 {d}
               </span>
@@ -117,7 +117,7 @@ export function BookingWidget({ lang, dict }: Props) {
         {/* Colonne 3 — créneaux (statiques). */}
         <div className="bg-surface p-6">
           <p className="mb-1 font-display text-base capitalize">{selectedLabel}</p>
-          <p className="mb-4 text-[13px] text-texte2">{t.pickSlot}</p>
+          <p className="mb-4 text-[0.8125rem] text-texte2">{t.pickSlot}</p>
           <div className="flex max-h-[300px] flex-col gap-2 overflow-y-auto pr-1">
             {SLOTS.map((slot) => (
               <span
@@ -132,7 +132,7 @@ export function BookingWidget({ lang, dict }: Props) {
       </div>
 
       {/* Rappel : maquette à remplacer par l'embed réel. */}
-      <p className="border-t border-ligne bg-fond px-6 py-3 font-mono text-[12px] text-texte2">
+      <p className="border-t border-ligne bg-fond px-6 py-3 font-mono text-[0.75rem] text-texte2">
         {t.embedNote}
       </p>
     </div>

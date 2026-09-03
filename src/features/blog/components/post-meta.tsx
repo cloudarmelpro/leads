@@ -14,7 +14,7 @@ export function PostMeta({ post, lang, dict }: Props) {
       <div className="flex items-center gap-3">
         <span
           aria-hidden
-          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-menthe font-display text-[16px] font-medium text-sapin dark:text-accent-strong"
+          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-menthe font-display text-[1rem] font-medium text-sapin dark:text-accent-strong"
         >
           {post.author.name.charAt(0)}
         </span>
@@ -23,7 +23,7 @@ export function PostMeta({ post, lang, dict }: Props) {
           <span className="block text-sm font-semibold text-encre">{post.author.name}</span>
         </span>
       </div>
-      <div className="flex flex-wrap items-center gap-2 text-[13px] text-texte2">
+      <div className="flex flex-wrap items-center gap-2 text-[0.8125rem] text-texte2">
         <span className={`${pill} font-medium`}>{post.category}</span>
         <span className={pill}>{formatDate(post.date, lang)}</span>
         <span className={pill}>

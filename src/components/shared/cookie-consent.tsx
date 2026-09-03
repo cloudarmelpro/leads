@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
+import { Eyebrow } from "@/components/shared/eyebrow";
 import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 
@@ -71,30 +72,33 @@ export function CookieConsent({ lang, dict }: { lang: Locale; dict: Dictionary }
     <div
       role="dialog"
       aria-label={t.title}
-      className="animate-fadein fixed right-4 bottom-4 left-4 z-90 rounded-2xl bg-surface p-5 shadow-[0_20px_50px_-20px_rgba(15,29,23,.4)] md:right-auto md:w-[min(380px,calc(100vw-2rem))]"
+      className="animate-fadein fixed right-4 bottom-4 left-4 z-90 rounded-[20px] border border-ligne bg-surface p-5 sm:p-6 md:right-auto md:w-[min(400px,calc(100vw-2rem))] dark:border-transparent dark:shadow-[inset_0_0_0_1px_#0a2a3a]"
     >
-      <p className="font-display text-[15px] text-encre">{t.title}</p>
-      <p className="mt-2 text-[13px] leading-[1.6] text-texte2 text-pretty">
+      <p className="mb-2">
+        <Eyebrow>{t.kicker}</Eyebrow>
+      </p>
+      <p className="text-title-fluid font-medium text-encre">{t.title}</p>
+      <p className="mt-2 text-small-fluid text-texte2 text-pretty">
         {t.body}{" "}
         <Link
           href={`/${lang}/confidentialite`}
-          className="tap-44 font-medium text-sapin underline underline-offset-2 dark:text-accent-strong"
+          className="tap-44 font-medium text-emeraude underline underline-offset-2 dark:text-accent-strong"
         >
           {t.learnMore}
         </Link>
       </p>
-      <div className="mt-4 flex gap-2.5">
+      <div className="mt-5 flex gap-2.5">
         <button
           type="button"
           onClick={() => choose("declined")}
-          className="h-11 flex-1 cursor-pointer rounded-xl border border-input text-sm font-medium text-encre transition-colors hover:bg-menthe"
+          className="flex-1 min-h-10 cursor-pointer rounded-[9px] px-3.5 py-2 text-cta-fluid font-medium text-encre shadow-[inset_0_0_0_1px_var(--color-encre)] transition-colors hover:bg-encre/[0.08] sm:px-4 sm:py-2.5"
         >
           {t.decline}
         </button>
         <button
           type="button"
           onClick={() => choose("accepted")}
-          className="h-11 flex-1 cursor-pointer rounded-xl bg-emeraude text-sm font-medium text-white transition-colors hover:bg-emeraude/90"
+          className="flex-1 min-h-10 cursor-pointer rounded-[9px] bg-emeraude px-3.5 py-2 text-cta-fluid font-medium text-white transition-colors hover:bg-[#7fefc0] hover:text-fond sm:px-4 sm:py-2.5 dark:bg-accent-strong dark:text-fond dark:hover:bg-[#7fefc0]"
         >
           {t.accept}
         </button>

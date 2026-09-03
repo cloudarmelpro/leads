@@ -53,7 +53,7 @@ export function Footer({ lang, dict }: Props) {
   const tel = telHref(site.phone);
   const [emailUser, emailDomain] = (site.email ?? "").split("@");
   const coordClass =
-    "tap-44 text-[14px] leading-[22px] text-texte2 no-underline transition-colors hover:text-emeraude dark:hover:text-accent-strong";
+    "tap-44 text-[0.875rem] leading-[1.375rem] text-texte2 no-underline transition-colors hover:text-emeraude dark:hover:text-accent-strong";
 
   return (
     <footer className="relative overflow-hidden border-t border-ligne pt-[clamp(48px,7vw,72px)] pb-7">
@@ -65,7 +65,7 @@ export function Footer({ lang, dict }: Props) {
             <div>
               {/* Logo « Talgasy Web » du design (monogramme + wordmark). */}
               <Wordmark />
-              <p className="mt-4 max-w-[340px] text-[14px] leading-[24px] font-light text-texte2">
+              <p className="mt-4 max-w-[340px] text-[0.875rem] leading-[1.5rem] font-light text-texte2">
                 {dict.footer.description}
               </p>
               <div className="mt-6 flex items-center gap-3">
@@ -88,7 +88,7 @@ export function Footer({ lang, dict }: Props) {
 
             {/* Plan du site. */}
             <div>
-              <p className="mb-2.5 text-[16px] leading-[25px] font-medium text-encre">
+              <p className="mb-2.5 text-body-fluid font-medium text-encre">
                 {dict.footer.navTitle}
               </p>
               <div className="flex flex-col gap-2.5">
@@ -96,7 +96,7 @@ export function Footer({ lang, dict }: Props) {
                   <Link
                     key={item.label}
                     href={item.href}
-                    className="tap-44 text-[14px] leading-[22px] font-light text-texte2 no-underline transition-colors hover:text-encre"
+                    className="tap-44 text-[0.875rem] leading-[1.375rem] font-light text-texte2 no-underline transition-colors hover:text-encre"
                   >
                     {item.label}
                   </Link>
@@ -107,7 +107,7 @@ export function Footer({ lang, dict }: Props) {
             {/* Coordonnées : liens cliquables (tel:/mailto:) quand la donnée existe,
                 sinon simple texte placeholder. Renforce le signal de contact (NAP). */}
             <div>
-              <p className="mb-2.5 text-[16px] leading-[25px] font-medium text-encre">
+              <p className="mb-2.5 text-body-fluid font-medium text-encre">
                 {dict.footer.coordTitle}
               </p>
               <div className="flex flex-col gap-2.5">
@@ -134,19 +134,19 @@ export function Footer({ lang, dict }: Props) {
             data-fab-avoid
             className="mt-[clamp(48px,8vw,88px)] flex flex-wrap items-center justify-between gap-x-6 gap-y-2 border-t border-ligne pt-6"
           >
-            <span className="text-[14px] leading-[25px] font-light text-texte2">
+            <span className="text-[0.875rem] leading-[1.5625rem] font-light text-texte2">
               © {new Date().getFullYear()} {site.name} — {dict.footer.rights}
             </span>
             <div className="flex flex-wrap gap-x-6 gap-y-1">
               <Link
                 href={`/${lang}/confidentialite`}
-                className="tap-44 text-[14px] leading-[22px] font-light text-texte2 no-underline transition-colors hover:text-encre"
+                className="tap-44 text-[0.875rem] leading-[1.375rem] font-light text-texte2 no-underline transition-colors hover:text-encre"
               >
                 {dict.footer.legal2}
               </Link>
               <ManageCookiesButton
                 label={dict.cookies.manage}
-                className="tap-44 cursor-pointer text-[14px] leading-[22px] font-light text-texte2 transition-colors hover:text-encre"
+                className="tap-44 cursor-pointer text-[0.875rem] leading-[1.375rem] font-light text-texte2 transition-colors hover:text-encre"
               />
             </div>
           </div>
@@ -157,7 +157,7 @@ export function Footer({ lang, dict }: Props) {
             seule ligne, sinon il se casse en deux et remplit tout le footer. */}
         <span
           aria-hidden
-          className="pointer-events-none absolute bottom-[-0.3em] left-1/2 -translate-x-1/2 select-none whitespace-nowrap text-[clamp(56px,14.4vw,168px)] leading-none font-light tracking-[-0.02em] text-encre/[0.03]"
+          className="pointer-events-none absolute bottom-[-0.3em] left-1/2 -translate-x-1/2 select-none whitespace-nowrap text-[clamp(3.5rem,14.4vw,10.5rem)] leading-none font-light tracking-[-0.02em] text-encre/[0.03]"
         >
           {site.name}
         </span>

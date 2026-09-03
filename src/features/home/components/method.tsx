@@ -23,13 +23,13 @@ export function Method({ dict }: Props) {
           <p className="mb-1">
             <Eyebrow>{t.kicker}</Eyebrow>
           </p>
-          <SplitReveal as="h2" className="font-display text-[clamp(24px,4vw,38px)] leading-[1.143] font-normal tracking-[-1.2px] text-balance">
+          <SplitReveal as="h2" className="font-display text-[clamp(1.5rem,4vw,2.375rem)] leading-[1.143] font-normal tracking-[-1.2px] text-balance">
             {t.titleA} {t.titleB}
           </SplitReveal>
           <SplitReveal
             as="p"
             delay={0.1}
-            className="mt-5 max-w-[42ch] text-[16px] leading-[24px] text-texte2 text-pretty"
+            className="mt-5 max-w-[42ch] text-body-fluid text-texte2 text-pretty"
           >
             {t.intro}
           </SplitReveal>

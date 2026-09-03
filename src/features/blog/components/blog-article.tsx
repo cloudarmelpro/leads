@@ -37,7 +37,7 @@ export async function BlogArticle({ post, lang }: Props) {
             {dict.blog.backToBlog}
           </Link>
 
-          <h1 className="mt-6 font-display text-[clamp(24px,4vw,38px)] leading-[1.143] font-normal tracking-[-1.2px] text-balance">
+          <h1 className="mt-6 font-display text-[clamp(1.5rem,4vw,2.375rem)] leading-[1.143] font-normal tracking-[-1.2px] text-balance">
             {post.title}
           </h1>
           <p className="mt-4 max-w-[60ch] text-base leading-[1.6] text-texte2 text-pretty">

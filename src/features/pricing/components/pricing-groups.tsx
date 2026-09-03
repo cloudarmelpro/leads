@@ -45,19 +45,19 @@ export function PricingGroups({ dict }: Props) {
 function PriceCard({ plan }: { plan: Plan }) {
   return (
     <SurfaceCard as="article" className="p-6 sm:p-7">
-      <h3 className="relative text-[16px] leading-[1.4] font-medium text-emeraude dark:text-accent-strong">
+      <h3 className="relative text-body-fluid font-medium text-emeraude dark:text-accent-strong">
         {plan.name}
       </h3>
-      <p className="relative mt-2 font-display text-[clamp(28px,2.6vw,34px)] leading-none font-semibold tracking-[-0.5px] text-emeraude dark:text-accent-strong">
+      <p className="relative mt-2 font-display text-[clamp(1.75rem,2.6vw,2.125rem)] leading-none font-semibold tracking-[-0.5px] text-emeraude dark:text-accent-strong">
         {plan.price}
       </p>
       {plan.tagline && (
-        <p className="relative mt-3 text-[13px] leading-[1.5] text-texte2">{plan.tagline}</p>
+        <p className="relative mt-3 text-[0.8125rem] leading-[1.5] text-texte2">{plan.tagline}</p>
       )}
 
       <ul className="relative mt-6 flex flex-col gap-3">
         {plan.includes && (
-          <li className="flex items-start gap-2.5 text-[13px] leading-[1.45] text-encre">
+          <li className="flex items-start gap-2.5 text-[0.8125rem] leading-[1.45] text-encre">
             <CircleCheck
               size={16}
               strokeWidth={2.2}
@@ -68,12 +68,12 @@ function PriceCard({ plan }: { plan: Plan }) {
           </li>
         )}
         {plan.features.map((feature) => (
-          <li key={feature} className="flex items-start gap-2.5 text-[13px] leading-[1.45] text-texte2">
+          <li key={feature} className="flex items-start gap-2.5 text-[0.8125rem] leading-[1.45] text-texte2">
             <Check
               size={14}
               strokeWidth={2.6}
               aria-hidden
-              className="mt-[3px] shrink-0 text-emeraude dark:text-accent-strong"
+              className="mt-[0.1875rem] shrink-0 text-emeraude dark:text-accent-strong"
             />
             <span>{feature}</span>
           </li>

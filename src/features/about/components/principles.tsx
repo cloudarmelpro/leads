@@ -27,9 +27,9 @@ export function Principles({ dict }: Props) {
               <SurfaceCard key={item.title} as="article" className="gap-9 px-10 pt-10 pb-11">
                 <div className="relative flex items-center gap-3">
                   <Icon size={22} strokeWidth={1.8} aria-hidden className="shrink-0 text-emeraude dark:text-accent-strong" />
-                  <h3 className="text-[18px] leading-[1.3] font-medium text-encre">{item.title}</h3>
+                  <h3 className="text-title-fluid font-medium text-encre">{item.title}</h3>
                 </div>
-                <p className="relative text-[15px] leading-[24px] text-texte2 text-pretty">{item.desc}</p>
+                <p className="relative text-small-fluid text-texte2 text-pretty">{item.desc}</p>
               </SurfaceCard>
             );
           })}

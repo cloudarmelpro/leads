@@ -24,7 +24,7 @@ export function SectionHeader({ kicker, title, intro }: Props) {
         )}
         <SplitReveal
           as="h2"
-          className="font-display text-[clamp(24px,4vw,38px)] leading-[1.143] font-normal tracking-[-1.2px] text-balance"
+          className="font-display text-[clamp(1.5rem,4vw,2.375rem)] leading-[1.143] font-normal tracking-[-1.2px] text-balance"
         >
           {title}
         </SplitReveal>
@@ -33,7 +33,7 @@ export function SectionHeader({ kicker, title, intro }: Props) {
         <SplitReveal
           as="p"
           delay={0.1}
-          className="text-[16px] leading-[24px] text-texte2 text-pretty md:w-[480px] md:justify-self-end md:pb-2 md:text-right"
+          className="text-body-fluid text-texte2 text-pretty md:w-[480px] md:justify-self-end md:pb-2 md:text-right"
         >
           {intro}
         </SplitReveal>

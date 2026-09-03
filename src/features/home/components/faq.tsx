@@ -4,7 +4,7 @@ import { useId, useState } from "react";
 
 import { Collapse, Rotate } from "@/components/shared/collapse";
 import { CONTENEUR } from "@/components/shared/container";
-import { ArrowRight } from "@/components/ui/arrows";
+import { ChevronRight } from "lucide-react";
 import { Eyebrow } from "@/components/shared/eyebrow";
 import { Reveal } from "@/components/shared/reveal";
 import { SplitReveal } from "@/components/shared/split-reveal";
@@ -26,13 +26,13 @@ export function Faq({ dict }: Props) {
           <p className="mb-1">
             <Eyebrow>{t.kicker}</Eyebrow>
           </p>
-          <SplitReveal as="h2" className="font-display text-[clamp(24px,4vw,38px)] leading-[1.143] font-normal tracking-[-1.2px] text-balance">
+          <SplitReveal as="h2" className="font-display text-[clamp(1.5rem,4vw,2.375rem)] leading-[1.143] font-normal tracking-[-1.2px] text-balance">
             {t.titleA} {t.titleB}
           </SplitReveal>
           <SplitReveal
             as="p"
             delay={0.1}
-            className="mt-5 max-w-[42ch] text-[16px] leading-[24px] text-texte2 text-pretty"
+            className="mt-5 max-w-[42ch] text-body-fluid text-texte2 text-pretty"
           >
             {t.intro}
           </SplitReveal>
@@ -56,25 +56,25 @@ export function Faq({ dict }: Props) {
                     aria-expanded={open}
                     aria-controls={panelId}
                     onClick={() => setOpenIndex(open ? -1 : index)}
-                    className="group flex w-full cursor-pointer items-center gap-4 border-none bg-transparent px-6 py-5 text-left"
+                    className="group flex w-full cursor-pointer items-center gap-4 border-none bg-transparent px-4 py-4 text-left sm:px-6 sm:py-5"
                   >
                     <span
-                      className={`flex-1 text-[16px] leading-[1.55] text-encre text-pretty ${open ? "font-medium" : "font-light"}`}
+                      className={`flex-1 text-small-fluid text-encre text-pretty sm:text-body-fluid ${open ? "font-medium" : "font-light"}`}
                     >
                       {item.q}
                     </span>
                     {/* Flèche vers la droite quand fermé ; masquée quand ouvert. */}
                     {!open && (
                       <Rotate deg={0} className="text-texte2 group-hover:text-encre">
-                        <ArrowRight className="w-[18px]" />
+                        <ChevronRight size={18} strokeWidth={2} aria-hidden className="shrink-0" />
                       </Rotate>
                     )}
                   </button>
                 </h3>
 
                 <Collapse open={open} id={panelId} role="region" aria-labelledby={buttonId}>
-                  <div className="mb-5 rounded-2xl border border-ligne bg-surface px-6 py-5 dark:border-transparent">
-                    <p className="text-[15px] leading-[1.65] font-light text-texte2 text-pretty">{item.a}</p>
+                  <div className="mb-5 rounded-2xl border border-ligne bg-surface px-4 py-4 sm:px-6 sm:py-5 dark:border-transparent">
+                    <p className="text-[0.875rem] leading-[1.6] font-light text-texte2 text-pretty sm:text-small-fluid">{item.a}</p>
                   </div>
                 </Collapse>
               </div>

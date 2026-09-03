@@ -13,6 +13,9 @@ import type { Locale } from "@/lib/i18n/config";
 export type PrivacySection = { h: string; p: string[] };
 export type PrivacyDoc = {
   title: string;
+  /** Eyebrow de la section (« Loi 25 ») et intitulé du sommaire ancré. */
+  kicker: string;
+  tocLabel: string;
   updatedLabel: string;
   updated: string;
   /** Description SEO (120-160 caractères) : l'intro est trop longue pour un <meta>. */
@@ -37,6 +40,8 @@ function fr(): PrivacyDoc {
     : `${site.name}`;
   return {
     title: "Politique de confidentialité",
+    kicker: "Loi 25",
+    tocLabel: "Sommaire",
     updatedLabel: "Dernière mise à jour",
     updated: UPDATED,
     metaDescription: `Politique de confidentialité de ${site.name} : ce que le formulaire de contact recueille, pourquoi, où c'est conservé et vos droits sous la Loi 25 (Québec).`,
@@ -123,6 +128,8 @@ function en(): PrivacyDoc {
     : `${site.name}`;
   return {
     title: "Privacy Policy",
+    kicker: "Law 25",
+    tocLabel: "Contents",
     updatedLabel: "Last updated",
     updated: UPDATED,
     metaDescription: `${site.name} privacy policy: what the contact form collects, why, where it is stored, and the rights you have under Quebec's Law 25.`,

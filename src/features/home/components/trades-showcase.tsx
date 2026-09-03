@@ -41,14 +41,14 @@ export function TradesShowcase({ lang, dict }: Props) {
             <p className="mb-1">
               <Eyebrow>{t.tradesKicker}</Eyebrow>
             </p>
-            <SplitReveal as="h2" className="font-display text-[clamp(24px,4vw,38px)] leading-[1.143] font-normal tracking-[-1.2px] text-balance">
+            <SplitReveal as="h2" className="font-display text-[clamp(1.5rem,4vw,2.375rem)] leading-[1.143] font-normal tracking-[-1.2px] text-balance">
               {t.tradesLabel}
             </SplitReveal>
           </div>
           <SplitReveal
             as="p"
             delay={0.1}
-            className="text-[16px] leading-[24px] text-texte2 text-pretty md:w-[480px] md:justify-self-end md:pb-2 md:text-right"
+            className="text-body-fluid text-texte2 text-pretty md:w-[480px] md:justify-self-end md:pb-2 md:text-right"
           >
             {t.demoCaption}
           </SplitReveal>
@@ -75,7 +75,7 @@ export function TradesShowcase({ lang, dict }: Props) {
                 className="absolute inset-0 bg-[linear-gradient(180deg,rgba(23,126,79,0)_0%,rgba(23,126,79,0.92)_85%)] dark:bg-[linear-gradient(180deg,rgba(4,96,142,0)_0%,rgba(1,27,40,0.9)_83.65%)]"
               />
               <figcaption className="relative flex w-full items-center justify-between gap-2 px-4 pb-4 sm:gap-3 sm:px-7 sm:pb-6">
-                <span className="text-[15px] leading-[22px] font-normal tracking-[-0.01em] text-white text-balance sm:text-[18px] sm:leading-[26px]">
+                <span className="text-[0.9375rem] leading-[1.375rem] font-normal tracking-[-0.01em] text-white text-balance sm:text-[1.125rem] sm:leading-[1.625rem]">
                   {demo.trade}
                 </span>
                 <Info size={15} strokeWidth={1.6} aria-hidden className="shrink-0 text-white/80" />
@@ -101,12 +101,12 @@ export function TradesShowcase({ lang, dict }: Props) {
               decoding="async"
               className="pointer-events-none absolute top-[-22.74%] left-[28.5%] w-[102.65%] opacity-60 select-none tint-vert dark:opacity-15 dark:[filter:none]"
             />
-            <p className="relative max-w-[26ch] text-[clamp(20px,2.2vw,24px)] leading-[1.45] font-medium text-encre text-balance">
+            <p className="relative max-w-[26ch] text-[clamp(1.25rem,2.2vw,1.5rem)] leading-[1.45] font-medium text-encre text-balance">
               {t.tradesCardTitle}
             </p>
             <Link
               href={`/${lang}/contact`}
-              className="relative mt-6 inline-flex w-fit items-center gap-2.5 rounded-[9px] bg-emeraude px-4 py-2.5 text-[15px] leading-[20px] font-medium text-white no-underline transition-colors hover:bg-[#7fefc0] hover:text-fond motion-reduce:transition-none dark:bg-accent-strong dark:text-fond dark:hover:bg-[#7fefc0]"
+              className="relative mt-6 inline-flex w-fit items-center gap-2.5 rounded-[9px] bg-emeraude px-3.5 py-2 sm:px-4 sm:py-2.5 text-cta-fluid font-medium text-white no-underline transition-colors hover:bg-[#7fefc0] hover:text-fond motion-reduce:transition-none dark:bg-accent-strong dark:text-fond dark:hover:bg-[#7fefc0]"
             >
               {t.tradesCta}
               <ArrowRight className="w-[19px]" />

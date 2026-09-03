@@ -22,7 +22,7 @@ export default async function NotFound() {
           <p className="flex justify-center">
             <Eyebrow>404</Eyebrow>
           </p>
-          <h1 className="mt-4 font-display text-[clamp(26px,4.4vw,44px)] leading-[1.1] tracking-normal text-balance">
+          <h1 className="mt-4 font-display text-[clamp(1.625rem,4.4vw,2.75rem)] leading-[1.1] tracking-normal text-balance">
             {dict.notFound.title}
           </h1>
           <p className="mx-auto mt-5 max-w-[46ch] text-base leading-[1.7] text-texte2 text-pretty">
