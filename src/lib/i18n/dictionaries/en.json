@@ -293,10 +293,6 @@
       "titleA": "The people behind",
       "titleB": "your results",
       "note": "A team with complementary expertise, united around one goal: to carry out every project with care."
-    },
-    "cta": {
-      "title": "Let’s talk about your project",
-      "body": "Have a project in mind? Let’s discuss your needs and see how we can support you."
     }
   },
   "pricing": {
@@ -309,129 +305,444 @@
     "heroTitleB": ", no surprises.",
     "heroSubtitle": "Every project is unique. Discover our packages for websites, logos and hosting.",
     "cta": "Book a free call",
+    "viewPlans": "See the packages",
     "kicker": "Pricing",
     "breadcrumb": "Pricing",
-    "groups": [
-      {
-        "title": "Website",
-        "intro": "Every project is different. We start with a consultation to pin down your needs, then give you a clear price.",
-        "plans": [
-          {
-            "name": "Launch",
-            "price": "$1,000",
-            "tagline": "Your online presence — 3 pages",
-            "includes": "",
-            "features": [
-              "Colours, logo, copy and images adapted",
-              "French and English translation",
-              "Phone, tablet and desktop versions",
-              "Simple contact form",
-              "Anti-spam protection",
-              "SSL security",
-              "Essential technical SEO",
-              "Essential metadata",
-              "Domain connection",
-              "Go-live",
-              "Sitemap",
-              "1 round of revisions",
-              "30-day corrective warranty"
-            ]
-          },
-          {
-            "name": "Essential Custom",
-            "price": "$2,000",
-            "tagline": "A professional site — 5 pages",
-            "includes": "Everything in Launch, plus:",
-            "features": [
-              "Original UX/UI design",
-              "Architecture tailored to the business",
-              "Fully custom navigation",
-              "Sections built around the client’s services",
-              "On-page SEO",
-              "Google Analytics",
-              "Google Search Console",
-              "Form with anti-spam protection",
-              "2 rounds of revisions",
-              "30-minute handover",
-              "60-day corrective warranty"
-            ]
-          },
-          {
-            "name": "Growth",
-            "price": "$3,500",
-            "tagline": "A site that brings in clients — 10 pages",
-            "includes": "Everything in Essential Custom, plus:",
-            "features": [
-              "Conversion-oriented architecture",
-              "Advanced sections to present your services",
-              "Local SEO",
-              "Advanced form",
-              "1 standard integration",
-              "Tracking of calls, forms and quote requests",
-              "Optimization of the main calls to action",
-              "3 rounds of revisions",
-              "45-minute training",
-              "90-day corrective warranty"
-            ]
-          }
-        ]
-      },
-      {
-        "title": "Logo",
-        "intro": "We create professional logos tailored to your brand, with options that fit your needs.",
-        "plans": [
-          {
-            "name": "Logo Express",
-            "price": "$200",
-            "tagline": "",
-            "includes": "",
-            "features": [
-              "Up to 3 hours of production",
-              "1 creative direction",
-              "1 round of revisions",
-              "Colour version",
-              "Monochrome version",
-              "PNG, JPG and SVG files"
-            ]
-          },
-          {
-            "name": "Professional Logo",
-            "price": "$650",
-            "tagline": "",
-            "includes": "",
-            "features": [
-              "3 creative directions",
-              "Horizontal, vertical and icon versions",
-              "Colour palette",
-              "Typography selection",
-              "Light and dark background versions",
-              "Source files",
-              "2 rounds of revisions"
-            ]
-          }
-        ]
-      },
-      {
-        "title": "Hosting",
-        "intro": "A simple, reliable hosting solution to get your website online and keep it running.",
-        "plans": [
-          {
-            "name": "Hosting",
-            "price": "$25/month",
-            "tagline": "",
-            "includes": "",
-            "features": [
-              "Site hosting",
-              "SSL certificate",
-              "Deployment",
-              "Versioning",
-              "Domain connection",
-              "Hosting infrastructure maintenance"
-            ]
-          }
-        ]
-      }
-    ]
+    "labels": {
+      "compare": "Compare the packages",
+      "compareNote": "Each package includes everything in the previous one.",
+      "recommended": "Recommended",
+      "book": "Book a call",
+      "included": "Included",
+      "notIncluded": "Not included",
+      "pickPlan": "Choose a package"
+    },
+    "site": {
+      "title": "Website",
+      "intro": "Every project is different. We start with a consultation to pin down your needs, then give you a clear price.",
+      "plans": [
+        {
+          "name": "Launch",
+          "short": "Launch",
+          "price": "$1,000",
+          "blurb": "Your online presence — 3 pages",
+          "featured": false
+        },
+        {
+          "name": "Essential Custom",
+          "short": "Custom",
+          "price": "$2,000",
+          "blurb": "A professional site — 5 pages",
+          "featured": true
+        },
+        {
+          "name": "Growth",
+          "short": "Growth",
+          "price": "$3,500",
+          "blurb": "A site that brings in clients — 10 pages",
+          "featured": false
+        }
+      ],
+      "groups": [
+        {
+          "title": "Site and content",
+          "rows": [
+            {
+              "label": "Pages included",
+              "cells": [
+                "3 pages",
+                "5 pages",
+                "10 pages"
+              ]
+            },
+            {
+              "label": "Colours, logo, copy and images adapted",
+              "cells": [
+                "y",
+                "y",
+                "y"
+              ]
+            },
+            {
+              "label": "French and English translation",
+              "cells": [
+                "y",
+                "y",
+                "y"
+              ]
+            },
+            {
+              "label": "Phone, tablet and desktop versions",
+              "cells": [
+                "y",
+                "y",
+                "y"
+              ]
+            },
+            {
+              "label": "Sitemap",
+              "cells": [
+                "y",
+                "y",
+                "y"
+              ]
+            },
+            {
+              "label": "Original UX/UI design",
+              "cells": [
+                "-",
+                "y",
+                "y"
+              ]
+            },
+            {
+              "label": "Architecture tailored to the business",
+              "cells": [
+                "-",
+                "y",
+                "y"
+              ]
+            },
+            {
+              "label": "Fully custom navigation",
+              "cells": [
+                "-",
+                "y",
+                "y"
+              ]
+            },
+            {
+              "label": "Sections built around the client’s services",
+              "cells": [
+                "-",
+                "y",
+                "y"
+              ]
+            },
+            {
+              "label": "Conversion-oriented architecture",
+              "cells": [
+                "-",
+                "-",
+                "y"
+              ]
+            },
+            {
+              "label": "Advanced sections to present your services",
+              "cells": [
+                "-",
+                "-",
+                "y"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Forms and security",
+          "rows": [
+            {
+              "label": "Contact form",
+              "cells": [
+                "Simple",
+                "With anti-spam protection",
+                "Advanced"
+              ]
+            },
+            {
+              "label": "Anti-spam protection",
+              "cells": [
+                "y",
+                "y",
+                "y"
+              ]
+            },
+            {
+              "label": "SSL security",
+              "cells": [
+                "y",
+                "y",
+                "y"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "SEO and tracking",
+          "rows": [
+            {
+              "label": "Essential technical SEO",
+              "cells": [
+                "y",
+                "y",
+                "y"
+              ]
+            },
+            {
+              "label": "Essential metadata",
+              "cells": [
+                "y",
+                "y",
+                "y"
+              ]
+            },
+            {
+              "label": "On-page SEO",
+              "cells": [
+                "-",
+                "y",
+                "y"
+              ]
+            },
+            {
+              "label": "Google Analytics",
+              "cells": [
+                "-",
+                "y",
+                "y"
+              ]
+            },
+            {
+              "label": "Google Search Console",
+              "cells": [
+                "-",
+                "y",
+                "y"
+              ]
+            },
+            {
+              "label": "Local SEO",
+              "cells": [
+                "-",
+                "-",
+                "y"
+              ]
+            },
+            {
+              "label": "1 standard integration",
+              "cells": [
+                "-",
+                "-",
+                "y"
+              ]
+            },
+            {
+              "label": "Tracking of calls, forms and quote requests",
+              "cells": [
+                "-",
+                "-",
+                "y"
+              ]
+            },
+            {
+              "label": "Optimization of the main calls to action",
+              "cells": [
+                "-",
+                "-",
+                "y"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Delivery and support",
+          "rows": [
+            {
+              "label": "Domain connection",
+              "cells": [
+                "y",
+                "y",
+                "y"
+              ]
+            },
+            {
+              "label": "Go-live",
+              "cells": [
+                "y",
+                "y",
+                "y"
+              ]
+            },
+            {
+              "label": "Rounds of revisions",
+              "cells": [
+                "1",
+                "2",
+                "3"
+              ]
+            },
+            {
+              "label": "Handover and training",
+              "cells": [
+                "-",
+                "30 minutes",
+                "45 minutes"
+              ]
+            },
+            {
+              "label": "Corrective warranty",
+              "cells": [
+                "30 days",
+                "60 days",
+                "90 days"
+              ]
+            },
+            {
+              "label": "Delivery time",
+              "cells": [
+                "[TIMELINE — to be confirmed]",
+                "[TIMELINE — to be confirmed]",
+                "[TIMELINE — to be confirmed]"
+              ]
+            },
+            {
+              "label": "Payment terms",
+              "cells": [
+                "[PAYMENT — to be confirmed]",
+                "[PAYMENT — to be confirmed]",
+                "[PAYMENT — to be confirmed]"
+              ]
+            },
+            {
+              "label": "After go-live",
+              "cells": [
+                "[FOLLOW-UP — to be confirmed]",
+                "[FOLLOW-UP — to be confirmed]",
+                "[FOLLOW-UP — to be confirmed]"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "logo": {
+      "title": "Logo",
+      "intro": "We create professional logos tailored to your brand, with options that fit your needs.",
+      "plans": [
+        {
+          "name": "Logo Express",
+          "short": "Express",
+          "price": "$200",
+          "blurb": "",
+          "featured": false
+        },
+        {
+          "name": "Professional Logo",
+          "short": "Professional",
+          "price": "$650",
+          "blurb": "",
+          "featured": true
+        }
+      ],
+      "groups": [
+        {
+          "title": "Creation",
+          "rows": [
+            {
+              "label": "Production hours",
+              "cells": [
+                "Up to 3 hours",
+                "-"
+              ]
+            },
+            {
+              "label": "Creative directions",
+              "cells": [
+                "1",
+                "3"
+              ]
+            },
+            {
+              "label": "Colour palette",
+              "cells": [
+                "-",
+                "y"
+              ]
+            },
+            {
+              "label": "Typography selection",
+              "cells": [
+                "-",
+                "y"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Variations",
+          "rows": [
+            {
+              "label": "Colour version",
+              "cells": [
+                "y",
+                "-"
+              ]
+            },
+            {
+              "label": "Monochrome version",
+              "cells": [
+                "y",
+                "-"
+              ]
+            },
+            {
+              "label": "Horizontal, vertical and icon versions",
+              "cells": [
+                "-",
+                "y"
+              ]
+            },
+            {
+              "label": "Light and dark background versions",
+              "cells": [
+                "-",
+                "y"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Deliverables and revisions",
+          "rows": [
+            {
+              "label": "PNG, JPG and SVG files",
+              "cells": [
+                "y",
+                "-"
+              ]
+            },
+            {
+              "label": "Source files",
+              "cells": [
+                "-",
+                "y"
+              ]
+            },
+            {
+              "label": "Rounds of revisions",
+              "cells": [
+                "1",
+                "2"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "hosting": {
+      "title": "Hosting",
+      "intro": "A simple, reliable hosting solution to get your website online and keep it running.",
+      "name": "Hosting",
+      "blurb": "A simple, reliable solution to get your website online and keep it running.",
+      "price": "$25/month",
+      "features": [
+        "Site hosting",
+        "SSL certificate",
+        "Deployment",
+        "Versioning",
+        "Domain connection",
+        "Hosting infrastructure maintenance"
+      ]
+    }
   },
   "contactPage": {
     "meta": {

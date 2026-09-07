@@ -21,6 +21,7 @@ export function JsonLd({ lang, dict }: Props) {
     url: base,
     logo: `${base}/talgasy-logo.png`,
     image: `${base}/talgasy-logo.png`,
+    sameAs: site.social.map((network) => network.url),
     description: dict.meta.description,
     // Email volontairement ABSENT du JSON-LD : il serait en clair dans le code
     // source (scrapable par les robots de spam), ce qui annulerait l'obfuscation du

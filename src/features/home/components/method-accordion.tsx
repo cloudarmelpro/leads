@@ -31,7 +31,7 @@ export function MethodAccordion({ steps }: Props) {
             >
               <span className="text-[0.875rem] leading-[1.5625rem] font-light text-accent-strong">0{step.n}</span>
               <span
-                className={`flex-1 text-small-fluid text-encre sm:text-body-fluid ${isOpen ? "font-medium" : "font-light"}`}
+                className="flex-1 text-small-fluid font-light text-encre sm:text-body-fluid"
               >
                 {step.title}
               </span>

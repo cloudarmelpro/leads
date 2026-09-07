@@ -59,7 +59,7 @@ export function Faq({ dict }: Props) {
                     className="group flex w-full cursor-pointer items-center gap-4 border-none bg-transparent px-4 py-4 text-left sm:px-6 sm:py-5"
                   >
                     <span
-                      className={`flex-1 text-small-fluid text-encre text-pretty sm:text-body-fluid ${open ? "font-medium" : "font-light"}`}
+                      className="flex-1 text-small-fluid font-light text-encre text-pretty sm:text-body-fluid"
                     >
                       {item.q}
                     </span>

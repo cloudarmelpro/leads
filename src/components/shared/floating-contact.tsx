@@ -89,7 +89,7 @@ export function FloatingContact({ dict }: Props) {
             role="dialog"
             aria-modal="true"
             aria-label={t.sheetTitle}
-            className="fixed right-4 bottom-[calc(4.75rem+env(safe-area-inset-bottom))] z-95 box-border w-[min(384px,calc(100vw-2rem))] rounded-[20px] border border-ligne bg-surface px-5 pt-5 pb-5 sm:bottom-[calc(5.25rem+env(safe-area-inset-bottom))] sm:px-6 sm:pt-[1.625rem] sm:pb-6 dark:border-white/8"
+            className="fixed right-4 bottom-[calc(4.75rem+env(safe-area-inset-bottom))] z-95 box-border w-[min(384px,calc(100vw-2rem))] rounded-[20px] bg-surface px-5 pt-5 pb-5 sm:bottom-[calc(5.25rem+env(safe-area-inset-bottom))] sm:px-6 sm:pt-[1.625rem] sm:pb-6"
           >
             {/* En-tête : eyebrow + titre + sous-titre, croix de fermeture. */}
             <div className="flex items-start justify-between gap-3.5">
@@ -125,20 +125,23 @@ export function FloatingContact({ dict }: Props) {
                 <ArrowRight className="ml-auto text-texte2" />
               </ActionLink>
 
-              <ActionLink
-                href={messengerHref(site.messenger)}
-                unavailableLabel={`Messenger — ${dict.common.soon}`}
-                className={ghostRow}
-              >
-                <span className="flex-none text-emeraude dark:text-accent-strong">
-                  <Send size={22} strokeWidth={2.2} aria-hidden />
-                </span>
-                <span className="flex flex-col gap-px">
-                  <span className="text-small-fluid font-medium">Messenger</span>
-                  <span className="text-[0.75rem] leading-[1.2] text-texte2">{t.rowMessengerSub}</span>
-                </span>
-                <ArrowRight className="ml-auto text-texte2" />
-              </ActionLink>
+              {/* Pas de ligne « bientôt » : une action n'apparaît que si elle fonctionne. */}
+              {site.messenger && (
+                <ActionLink
+                  href={messengerHref(site.messenger)}
+                  unavailableLabel={`Messenger — ${dict.common.soon}`}
+                  className={ghostRow}
+                >
+                  <span className="flex-none text-emeraude dark:text-accent-strong">
+                    <Send size={22} strokeWidth={2.2} aria-hidden />
+                  </span>
+                  <span className="flex flex-col gap-px">
+                    <span className="text-small-fluid font-medium">Messenger</span>
+                    <span className="text-[0.75rem] leading-[1.2] text-texte2">{t.rowMessengerSub}</span>
+                  </span>
+                  <ArrowRight className="ml-auto text-texte2" />
+                </ActionLink>
+              )}
 
               <ActionLink
                 href={calcomHref(site.calLink)}
@@ -161,7 +164,7 @@ export function FloatingContact({ dict }: Props) {
             <ActionLink
               href={telHref(site.phone)}
               unavailableLabel={`${t.rowCall} — ${phoneLabel}`}
-              className="flex items-center justify-center gap-2.5 rounded-[9px] bg-emeraude px-3.5 py-2 sm:px-4 sm:py-2.5 text-cta-fluid font-medium text-white no-underline transition-colors duration-200 hover:bg-[#7fefc0] hover:text-fond motion-reduce:transition-none disabled:cursor-not-allowed disabled:opacity-55 dark:bg-accent-strong dark:text-fond dark:hover:bg-[#7fefc0]"
+              className="flex items-center justify-center gap-2.5 rounded-[9px] bg-emeraude px-3.5 py-2 sm:px-4 sm:py-2.5 text-cta-fluid font-medium text-white no-underline transition-colors duration-200 hover:bg-sapin motion-reduce:transition-none disabled:cursor-not-allowed disabled:opacity-55 dark:bg-accent-strong dark:text-fond dark:hover:bg-[#7fefc0]"
             >
               <Phone size={19} strokeWidth={2.2} aria-hidden />
               {t.rowCall}

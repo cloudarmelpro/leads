@@ -74,7 +74,7 @@ export function CtaBanner({ lang, title, body, kicker, eyebrow, phone, ariaLabel
             <Link
               href={href ?? `/${lang}/contact`}
               aria-label={ariaLabel}
-              className="relative inline-flex h-[clamp(68px,8vw,84px)] w-[clamp(92px,11vw,112px)] shrink-0 items-center justify-center rounded-[16px] bg-emeraude text-white transition-colors duration-300 ease-out hover:bg-[#7fefc0] hover:text-fond motion-reduce:transition-none dark:bg-accent-strong dark:text-fond dark:hover:bg-[#7fefc0]"
+              className="relative inline-flex h-[clamp(68px,8vw,84px)] w-[clamp(92px,11vw,112px)] shrink-0 items-center justify-center rounded-[16px] bg-emeraude text-white transition-colors duration-300 ease-out hover:bg-sapin motion-reduce:transition-none dark:bg-accent-strong dark:text-fond dark:hover:bg-[#7fefc0]"
             >
               <ArrowRight className="w-10" />
             </Link>

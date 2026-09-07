@@ -13,8 +13,7 @@ type Props = { lang: Locale; dict: Dictionary };
 
 // Glyphes de marque du design (lucide-react n'expose plus les icônes de marque).
 // Tracés repris tels quels de « Talgasy Web - Dark.dc.html ». `currentColor` pour
-// hériter du survol (blanc → vert). Les comptes n'existent pas encore → rendus en
-// placeholder (span, pas de lien) tant que `site.social` n'a pas d'URL.
+// hériter du survol (blanc → vert).
 const FacebookIcon = () => (
   <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
     <path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.51 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.45 2.89h-2.33v6.99A10 10 0 0 0 22 12" />
@@ -72,15 +71,16 @@ export function Footer({ lang, dict }: Props) {
                 {site.social.map((network) => {
                   const Icon = SOCIAL_ICONS[network.key];
                   return (
-                    <span
+                    <a
                       key={network.key}
-                      role="img"
-                      title={dict.common.soon}
+                      href={network.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       aria-label={dict.footer.social[network.key]}
                       className="tap-44 inline-flex text-encre transition-colors hover:text-emeraude dark:hover:text-accent-strong"
                     >
                       <Icon />
-                    </span>
+                    </a>
                   );
                 })}
               </div>

@@ -115,7 +115,7 @@ export function Header({ lang, dict }: Props) {
                 tiroir (burger), sinon le logo chevauche « Services » sur tablette. */}
             <nav
               aria-label={dict.nav.quickNav}
-              className="hidden items-center gap-2 lg:flex"
+              className="hidden items-center gap-3 lg:flex"
             >
             {nav.map((item) => (
               <Link
@@ -143,7 +143,7 @@ export function Header({ lang, dict }: Props) {
             {/* Bouton « Contact » (design). L'appel direct reste porté par le module flottant. */}
             <Link
               href={`/${lang}/contact`}
-              className="hidden shrink-0 items-center rounded-[9px] bg-emeraude px-[1.125rem] py-[0.5625rem] text-[0.875rem] font-medium text-white no-underline hover:bg-[#7fefc0] hover:text-fond md:inline-flex dark:bg-accent-strong dark:text-fond dark:hover:bg-[#7fefc0]"
+              className="hidden shrink-0 items-center rounded-[9px] bg-emeraude px-[1.125rem] py-[0.5625rem] text-[0.875rem] font-medium text-white no-underline hover:bg-sapin md:inline-flex dark:bg-accent-strong dark:text-fond dark:hover:bg-[#7fefc0]"
             >
               {dict.nav.contact}
             </Link>
