@@ -47,6 +47,9 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   reactCompiler: true,
+  // Avec `revalidate = 60` (layout [lang]) → `Cache-Control: s-maxage=60,
+  // stale-while-revalidate=240` : le CDN ne sert jamais un HTML de plus de 5 min.
+  expireTime: 300,
   // N'annonce pas la techno du serveur (`x-powered-by: Next.js`).
   poweredByHeader: false,
   // Requis par `src/app/global-not-found.tsx` : la racine des routes est le segment

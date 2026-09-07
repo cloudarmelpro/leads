@@ -35,6 +35,13 @@ const geistMono = Geist_Mono({
   subsets: ["latin", "latin-ext"],
 });
 
+// ISR courte sur TOUT le site public. Sans `revalidate`, Next annonce
+// `s-maxage=31536000` : le CDN Hostinger (hcdn) gardait alors le HTML un an, sans
+// purge fiable à chaque déploiement → HTML périmé pointant vers des chunks JS
+// disparus (« This page couldn’t load »). Avec 60 s (+ `expireTime` dans
+// next.config.ts), le CDN se rafraîchit seul après chaque mise en production.
+export const revalidate = 60;
+
 export function generateStaticParams() {
   return locales.map((lang) => ({ lang }));
 }
