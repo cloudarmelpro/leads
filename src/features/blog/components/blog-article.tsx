@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import { BreadcrumbLd } from "@/components/shared/breadcrumb-ld";
 import { CONTENEUR } from "@/components/shared/container";
+import { HeroStreaks } from "@/components/shared/hero-streaks";
 import { ArrowLeft } from "@/components/ui/arrows";
 import { ArticleBody } from "@/features/blog/components/article-body";
 import { ArticleLd } from "@/features/blog/components/article-ld";
@@ -17,7 +18,9 @@ export async function BlogArticle({ post, lang }: Props) {
   const dict = await getDictionary(lang);
 
   return (
-    <article className="pt-[clamp(20px,3vw,40px)] pb-[clamp(48px,7vw,96px)]">
+    <article className="relative z-0 -mt-[4.8125rem] overflow-x-clip pt-[calc(4.8125rem+clamp(20px,3vw,40px))] pb-[clamp(48px,7vw,96px)]">
+      {/* Mêmes traits de lumière que les heros, remontés sous l'en-tête. */}
+      <HeroStreaks />
       <ArticleLd post={post} lang={lang} />
       <BreadcrumbLd
         lang={lang}
@@ -27,7 +30,7 @@ export async function BlogArticle({ post, lang }: Props) {
           { name: post.title, path: `/blog/${post.slug}` },
         ]}
       />
-      <div className={CONTENEUR}>
+      <div className={`${CONTENEUR} relative`}>
         <div className="mx-auto max-w-[760px]">
           <Link
             href={`/${lang}/blog`}

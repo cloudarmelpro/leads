@@ -3,6 +3,7 @@ import Link from "next/link";
 import { CONTENEUR } from "@/components/shared/container";
 import { Reveal } from "@/components/shared/reveal";
 import { SplitReveal } from "@/components/shared/split-reveal";
+import { HeroStreaks } from "@/components/shared/hero-streaks";
 import { HeroMap } from "@/features/home/components/hero-map";
 import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
@@ -17,17 +18,7 @@ export function Hero({ lang, dict }: Props) {
       id="accueil"
       className="relative z-0 -mt-[4.8125rem] flex min-h-[calc(100svh-140px)] overflow-x-clip pt-[5.25rem] pb-[clamp(20px,3vw,40px)]"
     >
-      {/* Fond repris de la sélection Figma : deux fines ellipses vertes floutées,
-          pivotées ~50° — de longs traits de lumière en diagonale depuis le haut.
-          Valeurs exactes du SVG Figma : 99×2009px, #30D98C, blur 50, opacity .05.
-          Couleur via token pour rester correct en clair/sombre. */}
-      {/* Les traits débordent VERS LE BAS dans la page (pas de coupe nette au bas
-          du hero) ; seul l'axe X est clippé (section `overflow-x-clip`) pour éviter
-          un défilement horizontal. */}
-      {/* Ellipse 2 — croise le header entre le logo et « Services ». */}
-      <div aria-hidden className="pointer-events-none absolute top-[-340px] left-[-9%] h-[2009px] w-[99px] rotate-[50deg] rounded-[50%] bg-accent-strong opacity-[0.04] blur-[50px]" />
-      {/* Ellipse 1 — croise le header au niveau du bouton « Contact ». */}
-      <div aria-hidden className="pointer-events-none absolute top-[-340px] left-[30%] h-[2009px] w-[99px] rotate-[50deg] rounded-[50%] bg-accent-strong opacity-[0.04] blur-[50px]" />
+      <HeroStreaks />
 
       <div className={`${CONTENEUR} relative flex w-full flex-col items-start justify-center gap-6`}>
         {/* Carte du monde en points, « signature » du hero (nœud Québec, arcs animés). */}

@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 
 import { CONTENEUR } from "@/components/shared/container";
+import { HeroStreaks } from "@/components/shared/hero-streaks";
 import { Reveal } from "@/components/shared/reveal";
 import { SplitReveal } from "@/components/shared/split-reveal";
 import { ArrowRight } from "@/components/ui/arrows";
@@ -18,13 +19,16 @@ type Props = {
 
 /**
  * En-tête des pages intérieures (Prix, À propos, Contact, Blog) : reprend le titre,
- * le sous-titre et le bouton du hero de l'accueil, sans visuel plein écran. Pas
+ * le sous-titre, le bouton et le fond (traits de lumière) du hero de l'accueil, sans
+ * visuel plein écran. Pas
  * d'eyebrow : le hero de l'accueil n'en a pas, les pages non plus.
  */
 export function PageHero({ title, subtitle, cta, secondary }: Props) {
   return (
-    <section className="pt-[clamp(40px,7vw,96px)] pb-[clamp(48px,7vw,88px)]">
-      <div className={`${CONTENEUR} flex flex-col items-start gap-6`}>
+    <section className="relative z-0 -mt-[4.8125rem] overflow-x-clip pt-[calc(4.8125rem+clamp(40px,7vw,96px))] pb-[clamp(48px,7vw,88px)]">
+      {/* Mêmes traits de lumière que le hero de l'accueil, remontés sous l'en-tête. */}
+      <HeroStreaks />
+      <div className={`${CONTENEUR} relative flex flex-col items-start gap-6`}>
         <SplitReveal
           as="h1"
           scroll={false}
