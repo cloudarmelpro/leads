@@ -7,8 +7,8 @@ const MASK =
   "linear-gradient(90deg, transparent 0%, black 14%, black 96%, transparent 100%), linear-gradient(180deg, transparent 0%, black 18%, black 90%, transparent 100%)";
 
 /**
- * Dès `lg`, la carte occupe la partie droite du hero, calée sur le bord droit du
- * conteneur (même largeur que le header et les sections) ; le texte garde la gauche.
+ * Dès `lg`, la carte occupe la partie droite du hero et déborde du conteneur vers la
+ * droite (la section clippe l'axe X) ; le texte garde la gauche.
  * Sous `lg`, elle passe en fond centré et atténué derrière le texte.
  */
 export function HeroMap() {
@@ -16,7 +16,7 @@ export function HeroMap() {
     <div className="pointer-events-none absolute inset-x-0 top-[56%] -translate-y-1/2 select-none">
       <div className={CONTENEUR}>
         <div
-          className="w-full opacity-55 lg:ml-auto lg:w-[64%] lg:opacity-100"
+          className="w-full opacity-55 lg:mr-[-10%] lg:ml-auto lg:w-[70%] lg:opacity-100"
           style={{ maskImage: MASK, maskComposite: "intersect", WebkitMaskImage: MASK, WebkitMaskComposite: "source-in" }}
         >
           <WorldMap className="w-full" />
