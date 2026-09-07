@@ -34,17 +34,6 @@ export function PageHero({ title, subtitle, cta, secondary }: Props) {
           {title}
         </SplitReveal>
 
-        {subtitle && (
-          <SplitReveal
-            as="p"
-            scroll={false}
-            delay={0.28}
-            className="m-0 max-w-[642px] lg:max-w-[min(642px,55%)] text-body-fluid font-normal text-texte2 text-pretty"
-          >
-            {subtitle}
-          </SplitReveal>
-        )}
-
         {cta && (
           <Reveal as="div" scroll={false} delay={0.5} className="flex flex-wrap items-center gap-3">
             <Link

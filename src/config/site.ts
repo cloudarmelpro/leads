@@ -19,9 +19,13 @@ export const site = {
   // Tant qu'il est null, la page contact affiche la maquette ; dès qu'il est
   // rempli, l'embed Cal.com réel s'affiche automatiquement.
   calLink: "cedric.agence/talgasy-web" as string | null,
-  // Clés = `footer.social.*` des dictionnaires (libellés a11y). Pas d'URL tant
-  // que les comptes n'existent pas : le footer les rend en placeholder.
-  social: [{ key: "facebook" }, { key: "linkedin" }, { key: "instagram" }],
+  // Clés = `footer.social.*` des dictionnaires (libellés a11y). Ordre d'affichage
+  // voulu par le client : Facebook, Instagram, LinkedIn.
+  social: [
+    { key: "facebook", url: "https://www.facebook.com/share/1Bv6L6KQkK/?mibextid=wwXIfr" },
+    { key: "instagram", url: "https://www.instagram.com/talgasyweb?stkn=MTF1b2Vob2x3YzdrZg==" },
+    { key: "linkedin", url: "https://www.linkedin.com/company/talgasy-web/" },
+  ],
 } as const;
 
 export function telHref(phone: string | null): string | null {

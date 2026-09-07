@@ -11,3 +11,8 @@
 // Plancher à 1rem (et non 1.25rem) : à 320px, les 8px récupérés font la différence
 // entre un burger atteignable et un en-tête qui déborde du viewport.
 export const CONTENEUR = "mx-auto w-full max-w-[67.5rem] px-[clamp(1rem,4vw,3.5rem)]";
+
+// Variante large (1240px) pour les sections denses — grilles comparatives des
+// Prix, vitrine des Secteurs — qui laissaient trop de vide sur grand écran.
+// Même gouttière : l'en-tête de la section suit la même largeur que son contenu.
+export const CONTENEUR_LARGE = "mx-auto w-full max-w-[77.5rem] px-[clamp(1rem,4vw,3.5rem)]";

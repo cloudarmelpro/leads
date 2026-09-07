@@ -2,7 +2,7 @@ import { Info } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { CONTENEUR } from "@/components/shared/container";
+import { CONTENEUR_LARGE } from "@/components/shared/container";
 import { ArrowRight } from "@/components/ui/arrows";
 import { Eyebrow } from "@/components/shared/eyebrow";
 import { Reveal } from "@/components/shared/reveal";
@@ -35,7 +35,7 @@ export function TradesShowcase({ lang, dict }: Props) {
 
   return (
     <section id="secteurs" className="pb-[clamp(80px,14vw,200px)]">
-      <div className={CONTENEUR}>
+      <div className={CONTENEUR_LARGE}>
         <div className="grid grid-cols-1 gap-x-16 gap-y-5 md:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] md:items-end">
           <div>
             <p className="mb-1">
