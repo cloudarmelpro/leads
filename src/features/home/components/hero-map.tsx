@@ -1,10 +1,10 @@
 import { CONTENEUR } from "@/components/shared/container";
 import { WorldMap } from "@/features/home/components/world-map";
 
-// Fondu des bords de la carte : le flanc gauche (vers le titre) et le haut s'estompent
-// franchement, la droite et le bas restent nets — la carte « sort » du côté du texte.
+// Fondu des bords de la carte : le flanc gauche (vers le titre) et le bas s'estompent
+// doucement, le haut (Grand Nord, Groenland, Sibérie) et la droite restent nets — la carte « sort » du côté du texte.
 const MASK =
-  "linear-gradient(90deg, transparent 0%, black 14%, black 96%, transparent 100%), linear-gradient(180deg, transparent 0%, black 18%, black 90%, transparent 100%)";
+  "linear-gradient(90deg, transparent 0%, black 14%, black 96%, transparent 100%), linear-gradient(180deg, black 0%, black 90%, transparent 100%)";
 
 /**
  * Dès `lg`, la carte occupe la partie droite du hero et déborde du conteneur vers la
