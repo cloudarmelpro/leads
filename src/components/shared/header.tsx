@@ -115,7 +115,7 @@ export function Header({ lang, dict }: Props) {
                 tiroir (burger), sinon le logo chevauche « Services » sur tablette. */}
             <nav
               aria-label={dict.nav.quickNav}
-              className="hidden items-center gap-2 lg:flex"
+              className="hidden items-center gap-3 lg:flex"
             >
             {nav.map((item) => (
               <Link

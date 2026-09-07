@@ -12,7 +12,8 @@ export const site = {
   email: "cedric@talgasyweb.ca" as string | null,
   // Aucun bureau officiel pour l'instant → adresse retirée du site (footer + contact).
   address: null as string | null,
-  whatsapp: null as string | null,
+  // Même numéro que le téléphone, avec l indicatif +1 exigé par wa.me (à confirmer par le client).
+  whatsapp: "+1 438-808-6594" as string | null,
   // Nom d'utilisateur Messenger (m.me/<nom>). null tant que le compte n'existe pas.
   messenger: null as string | null,
   // Lien Cal.com au format "compte/evenement" (ex. "cloudarmelpro-jj7yjv/leads").
