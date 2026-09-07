@@ -1,6 +1,6 @@
 "use client";
 
-import createGlobe, { type COBEOptions, type Globe } from "cobe";
+import createGlobe, { type Globe } from "cobe";
 import { useEffect, useRef } from "react";
 
 import { reducedMotion } from "@/lib/gsap";
@@ -10,8 +10,6 @@ type Props = {
   /** Diamètre rendu (px CSS). Le canvas est dessiné en 2× pour rester net. */
   size?: number;
   className?: string;
-  /** Surcharge de palette (réglages fins, page labo). */
-  palette?: Partial<COBEOptions>;
 };
 
 type Rgb = [number, number, number];
@@ -22,7 +20,7 @@ const rgb = (hex: string): Rgb => {
 
 // Palette : points, halo (= fond de page, pour fondre le bord), repères (émeraude).
 const DARK = { dark: 1, baseColor: rgb("#d6e2e6"), glowColor: rgb("#011823"), markerColor: rgb("#30d98c"), mapBrightness: 6 };
-// Clair : sphère menthe, points sombres (variante retenue parmi trois essais, page labo).
+// Clair : sphère menthe, points sombres (variante retenue parmi trois essais).
 const LIGHT = { dark: 0, baseColor: rgb("#d6ede0"), glowColor: rgb("#fdfdfd"), markerColor: rgb("#30d98c"), mapBrightness: 2.2, diffuse: 1.6 };
 
 // Repères : Québec (siège de la clientèle), Montréal.
@@ -43,7 +41,7 @@ const DRAG_SENSITIVITY = 0.006;
  * la souris avec inertie, couleurs qui suivent le thème. Immobile sous
  * `prefers-reduced-motion`. Purement décoratif : `aria-hidden`.
  */
-export function Globe3D({ size = 600, className = "", palette: override }: Props) {
+export function Globe3D({ size = 600, className = "" }: Props) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const { isDark } = useTheme();
 
@@ -68,7 +66,6 @@ export function Globe3D({ size = 600, className = "", palette: override }: Props
       mapSamples: 16000,
       markers: MARKERS,
       ...palette,
-      ...override,
     });
 
     // Boucle d'animation : rotation continue + inertie après un glissement.
@@ -112,7 +109,7 @@ export function Globe3D({ size = 600, className = "", palette: override }: Props
       cancelAnimationFrame(frame);
       globe?.destroy();
     };
-  }, [isDark, size, override]);
+  }, [isDark, size]);
 
   return (
     <canvas
