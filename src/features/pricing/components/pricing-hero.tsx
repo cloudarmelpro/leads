@@ -19,6 +19,7 @@ export function PricingHero({ lang, dict }: Props) {
       }
       subtitle={t.heroSubtitle}
       cta={{ label: t.cta, href: `/${lang}/contact` }}
+      secondary={{ label: t.viewPlans, href: "#prix" }}
     />
   );
 }

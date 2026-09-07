@@ -4,12 +4,15 @@ import type { ReactNode } from "react";
 import { CONTENEUR } from "@/components/shared/container";
 import { Reveal } from "@/components/shared/reveal";
 import { SplitReveal } from "@/components/shared/split-reveal";
+import { ArrowRight } from "@/components/ui/arrows";
 
 type Props = {
   /** Titre h1 — mêmes classes que le hero de l'accueil (majuscules, 38px max). */
   title: ReactNode;
   subtitle?: string;
   cta?: { label: string; href: string };
+  /** Lien texte secondaire à côté du bouton (ex. « Voir les forfaits »). */
+  secondary?: { label: string; href: string };
 };
 
 /**
@@ -17,7 +20,7 @@ type Props = {
  * le sous-titre et le bouton du hero de l'accueil, sans visuel plein écran. Pas
  * d'eyebrow : le hero de l'accueil n'en a pas, les pages non plus.
  */
-export function PageHero({ title, subtitle, cta }: Props) {
+export function PageHero({ title, subtitle, cta, secondary }: Props) {
   return (
     <section className="pt-[clamp(40px,7vw,96px)] pb-[clamp(48px,7vw,88px)]">
       <div className={`${CONTENEUR} flex flex-col items-start gap-6`}>
@@ -49,6 +52,15 @@ export function PageHero({ title, subtitle, cta }: Props) {
             >
               {cta.label}
             </Link>
+            {secondary && (
+              <Link
+                href={secondary.href}
+                className="inline-flex items-center gap-2.5 px-1 text-cta-fluid font-normal text-texte2 no-underline transition-colors hover:text-encre"
+              >
+                {secondary.label}
+                <ArrowRight className="w-[19px]" />
+              </Link>
+            )}
           </Reveal>
         )}
       </div>

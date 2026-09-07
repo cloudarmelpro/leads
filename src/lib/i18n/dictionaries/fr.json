@@ -309,129 +309,444 @@
     "heroTitleB": ", sans surprise.",
     "heroSubtitle": "Chaque projet est unique. Découvrez nos forfaits pour sites web, logos et hébergement.",
     "cta": "Réserver un appel gratuit",
+    "viewPlans": "Voir les forfaits",
     "kicker": "Prix",
     "breadcrumb": "Prix",
-    "groups": [
-      {
-        "title": "Site web",
-        "intro": "Chaque projet est différent. Nous commençons par une consultation pour bien cerner vos besoins, puis nous vous proposons un prix clair.",
-        "plans": [
-          {
-            "name": "Lancement",
-            "price": "1 000 $",
-            "tagline": "Votre présence en ligne — 3 pages",
-            "includes": "",
-            "features": [
-              "Adaptation des couleurs, logo, texte, image",
-              "Traduction française et anglaise",
-              "Version téléphone, tablette et ordinateur",
-              "Formulaire de contact simple",
-              "Protection antipourriel",
-              "Sécurité SSL",
-              "SEO technique essentiel",
-              "Métadonnées essentielles",
-              "Connexion au domaine",
-              "Mise en ligne",
-              "Plan du site",
-              "1 ronde de corrections",
-              "Garantie corrective de 30 jours"
-            ]
-          },
-          {
-            "name": "Sur-mesure Essentiel",
-            "price": "2 000 $",
-            "tagline": "Un site professionnel — 5 pages",
-            "includes": "Tout le forfait Lancement, plus :",
-            "features": [
-              "Design UX/UI original",
-              "Architecture adaptée à l’entreprise",
-              "Navigation entièrement personnalisée",
-              "Sections conçues selon les services du client",
-              "SEO on-page",
-              "Google Analytics",
-              "Google Search Console",
-              "Formulaire avec protection antipourriel",
-              "2 rondes de corrections",
-              "Transfert de 30 minutes",
-              "Garantie corrective de 60 jours"
-            ]
-          },
-          {
-            "name": "Croissance",
-            "price": "3 500 $",
-            "tagline": "Votre site qui génère des clients — 10 pages",
-            "includes": "Tout le forfait Sur-mesure Essentiel, plus :",
-            "features": [
-              "Architecture orientée vers la conversion",
-              "Sections avancées pour présenter les services",
-              "SEO local",
-              "Formulaire avancé",
-              "1 intégration standard",
-              "Suivi des appels, formulaires et demandes de soumission",
-              "Optimisation des principaux appels à l’action",
-              "3 rondes de corrections",
-              "Formation de 45 minutes",
-              "Garantie corrective de 90 jours"
-            ]
-          }
-        ]
-      },
-      {
-        "title": "Logo",
-        "intro": "Nous créons des logos professionnels adaptés à votre image de marque, avec des options adaptées à vos besoins.",
-        "plans": [
-          {
-            "name": "Logo Express",
-            "price": "200 $",
-            "tagline": "",
-            "includes": "",
-            "features": [
-              "Maximum de 3 heures de production",
-              "1 direction créative",
-              "1 ronde de corrections",
-              "Version couleur",
-              "Version monochrome",
-              "Fichiers PNG, JPG et SVG"
-            ]
-          },
-          {
-            "name": "Logo Professionnel",
-            "price": "650 $",
-            "tagline": "",
-            "includes": "",
-            "features": [
-              "3 directions créatives",
-              "Versions horizontale, verticale et icône",
-              "Palette de couleurs",
-              "Sélection typographique",
-              "Versions pour fond clair et foncé",
-              "Fichiers sources",
-              "2 rondes de corrections"
-            ]
-          }
-        ]
-      },
-      {
-        "title": "Hébergement",
-        "intro": "Une solution d’hébergement simple et fiable pour assurer la mise en ligne et le maintien de votre site web.",
-        "plans": [
-          {
-            "name": "Hébergement",
-            "price": "25 $/mois",
-            "tagline": "",
-            "includes": "",
-            "features": [
-              "Hébergement du site",
-              "Certificat SSL",
-              "Déploiement",
-              "Versionnement",
-              "Connexion au domaine",
-              "Maintien de l’infrastructure d’hébergement"
-            ]
-          }
-        ]
-      }
-    ]
+    "labels": {
+      "compare": "Comparer les forfaits",
+      "compareNote": "Chaque forfait reprend tout le précédent.",
+      "recommended": "Recommandé",
+      "book": "Réserver un appel",
+      "included": "Inclus",
+      "notIncluded": "Non inclus",
+      "pickPlan": "Choisir un forfait"
+    },
+    "site": {
+      "title": "Site web",
+      "intro": "Chaque projet est différent. Nous commençons par une consultation pour bien cerner vos besoins, puis nous vous proposons un prix clair.",
+      "plans": [
+        {
+          "name": "Lancement",
+          "short": "Lancement",
+          "price": "1 000 $",
+          "blurb": "Votre présence en ligne — 3 pages",
+          "featured": false
+        },
+        {
+          "name": "Sur-mesure Essentiel",
+          "short": "Sur-mesure",
+          "price": "2 000 $",
+          "blurb": "Un site professionnel — 5 pages",
+          "featured": true
+        },
+        {
+          "name": "Croissance",
+          "short": "Croissance",
+          "price": "3 500 $",
+          "blurb": "Votre site qui génère des clients — 10 pages",
+          "featured": false
+        }
+      ],
+      "groups": [
+        {
+          "title": "Site et contenu",
+          "rows": [
+            {
+              "label": "Pages incluses",
+              "cells": [
+                "3 pages",
+                "5 pages",
+                "10 pages"
+              ]
+            },
+            {
+              "label": "Adaptation des couleurs, logo, texte, image",
+              "cells": [
+                "y",
+                "y",
+                "y"
+              ]
+            },
+            {
+              "label": "Traduction française et anglaise",
+              "cells": [
+                "y",
+                "y",
+                "y"
+              ]
+            },
+            {
+              "label": "Version téléphone, tablette et ordinateur",
+              "cells": [
+                "y",
+                "y",
+                "y"
+              ]
+            },
+            {
+              "label": "Plan du site",
+              "cells": [
+                "y",
+                "y",
+                "y"
+              ]
+            },
+            {
+              "label": "Design UX/UI original",
+              "cells": [
+                "-",
+                "y",
+                "y"
+              ]
+            },
+            {
+              "label": "Architecture adaptée à l’entreprise",
+              "cells": [
+                "-",
+                "y",
+                "y"
+              ]
+            },
+            {
+              "label": "Navigation entièrement personnalisée",
+              "cells": [
+                "-",
+                "y",
+                "y"
+              ]
+            },
+            {
+              "label": "Sections conçues selon les services du client",
+              "cells": [
+                "-",
+                "y",
+                "y"
+              ]
+            },
+            {
+              "label": "Architecture orientée vers la conversion",
+              "cells": [
+                "-",
+                "-",
+                "y"
+              ]
+            },
+            {
+              "label": "Sections avancées pour présenter les services",
+              "cells": [
+                "-",
+                "-",
+                "y"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Formulaires et sécurité",
+          "rows": [
+            {
+              "label": "Formulaire de contact",
+              "cells": [
+                "Simple",
+                "Avec protection antipourriel",
+                "Avancé"
+              ]
+            },
+            {
+              "label": "Protection antipourriel",
+              "cells": [
+                "y",
+                "y",
+                "y"
+              ]
+            },
+            {
+              "label": "Sécurité SSL",
+              "cells": [
+                "y",
+                "y",
+                "y"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Référencement et suivi",
+          "rows": [
+            {
+              "label": "SEO technique essentiel",
+              "cells": [
+                "y",
+                "y",
+                "y"
+              ]
+            },
+            {
+              "label": "Métadonnées essentielles",
+              "cells": [
+                "y",
+                "y",
+                "y"
+              ]
+            },
+            {
+              "label": "SEO on-page",
+              "cells": [
+                "-",
+                "y",
+                "y"
+              ]
+            },
+            {
+              "label": "Google Analytics",
+              "cells": [
+                "-",
+                "y",
+                "y"
+              ]
+            },
+            {
+              "label": "Google Search Console",
+              "cells": [
+                "-",
+                "y",
+                "y"
+              ]
+            },
+            {
+              "label": "SEO local",
+              "cells": [
+                "-",
+                "-",
+                "y"
+              ]
+            },
+            {
+              "label": "1 intégration standard",
+              "cells": [
+                "-",
+                "-",
+                "y"
+              ]
+            },
+            {
+              "label": "Suivi des appels, formulaires et demandes de soumission",
+              "cells": [
+                "-",
+                "-",
+                "y"
+              ]
+            },
+            {
+              "label": "Optimisation des principaux appels à l’action",
+              "cells": [
+                "-",
+                "-",
+                "y"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Livraison et accompagnement",
+          "rows": [
+            {
+              "label": "Connexion au domaine",
+              "cells": [
+                "y",
+                "y",
+                "y"
+              ]
+            },
+            {
+              "label": "Mise en ligne",
+              "cells": [
+                "y",
+                "y",
+                "y"
+              ]
+            },
+            {
+              "label": "Rondes de corrections",
+              "cells": [
+                "1",
+                "2",
+                "3"
+              ]
+            },
+            {
+              "label": "Transfert et formation",
+              "cells": [
+                "-",
+                "30 minutes",
+                "45 minutes"
+              ]
+            },
+            {
+              "label": "Garantie corrective",
+              "cells": [
+                "30 jours",
+                "60 jours",
+                "90 jours"
+              ]
+            },
+            {
+              "label": "Délai de livraison",
+              "cells": [
+                "[DÉLAI — à confirmer]",
+                "[DÉLAI — à confirmer]",
+                "[DÉLAI — à confirmer]"
+              ]
+            },
+            {
+              "label": "Modalités de paiement",
+              "cells": [
+                "[PAIEMENT — à confirmer]",
+                "[PAIEMENT — à confirmer]",
+                "[PAIEMENT — à confirmer]"
+              ]
+            },
+            {
+              "label": "Après la mise en ligne",
+              "cells": [
+                "[SUIVI — à confirmer]",
+                "[SUIVI — à confirmer]",
+                "[SUIVI — à confirmer]"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "logo": {
+      "title": "Logo",
+      "intro": "Nous créons des logos professionnels adaptés à votre image de marque, avec des options adaptées à vos besoins.",
+      "plans": [
+        {
+          "name": "Logo Express",
+          "short": "Express",
+          "price": "200 $",
+          "blurb": "",
+          "featured": false
+        },
+        {
+          "name": "Logo Professionnel",
+          "short": "Professionnel",
+          "price": "650 $",
+          "blurb": "",
+          "featured": true
+        }
+      ],
+      "groups": [
+        {
+          "title": "Création",
+          "rows": [
+            {
+              "label": "Heures de production",
+              "cells": [
+                "Maximum de 3 heures",
+                "-"
+              ]
+            },
+            {
+              "label": "Directions créatives",
+              "cells": [
+                "1",
+                "3"
+              ]
+            },
+            {
+              "label": "Palette de couleurs",
+              "cells": [
+                "-",
+                "y"
+              ]
+            },
+            {
+              "label": "Sélection typographique",
+              "cells": [
+                "-",
+                "y"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Déclinaisons",
+          "rows": [
+            {
+              "label": "Version couleur",
+              "cells": [
+                "y",
+                "-"
+              ]
+            },
+            {
+              "label": "Version monochrome",
+              "cells": [
+                "y",
+                "-"
+              ]
+            },
+            {
+              "label": "Versions horizontale, verticale et icône",
+              "cells": [
+                "-",
+                "y"
+              ]
+            },
+            {
+              "label": "Versions pour fond clair et foncé",
+              "cells": [
+                "-",
+                "y"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Livrables et révisions",
+          "rows": [
+            {
+              "label": "Fichiers PNG, JPG et SVG",
+              "cells": [
+                "y",
+                "-"
+              ]
+            },
+            {
+              "label": "Fichiers sources",
+              "cells": [
+                "-",
+                "y"
+              ]
+            },
+            {
+              "label": "Rondes de corrections",
+              "cells": [
+                "1",
+                "2"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "hosting": {
+      "title": "Hébergement",
+      "intro": "Une solution d’hébergement simple et fiable pour assurer la mise en ligne et le maintien de votre site web.",
+      "name": "Hébergement",
+      "blurb": "Une solution simple et fiable pour assurer la mise en ligne et le maintien de votre site web.",
+      "price": "25 $/mois",
+      "features": [
+        "Hébergement du site",
+        "Certificat SSL",
+        "Déploiement",
+        "Versionnement",
+        "Connexion au domaine",
+        "Maintien de l’infrastructure d’hébergement"
+      ]
+    }
   },
   "contactPage": {
     "meta": {
