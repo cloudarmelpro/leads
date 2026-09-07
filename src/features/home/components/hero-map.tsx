@@ -17,7 +17,7 @@ export function HeroMap() {
       style={{ maskImage: MASK, maskComposite: "intersect", WebkitMaskImage: MASK, WebkitMaskComposite: "source-in" }}
     >
       <div className={CONTENEUR}>
-        <WorldMap className="w-[122%] -ml-[11%]" />
+        <WorldMap className="w-[114%] -ml-[16%]" />
       </div>
     </div>
   );
