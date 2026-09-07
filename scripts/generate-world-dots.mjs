@@ -40,8 +40,9 @@ const NODES = {
   sydney: { lat: -33.87, lng: 151.21 },
 };
 
-// Monde sans l'Antarctique : cadre 80°N → 56°S, comme les cartes de tableau de bord.
-const GRID = { width: 230, grid: "diagonal", region: { lat: { min: -56, max: 80 }, lng: { min: -180, max: 180 } } };
+// Monde sans l Antarctique : cadre 84°N → 56°S — assez haut pour ne couper ni le
+// Groenland ni l archipel arctique canadien (le haut de la carte est visible, sans fondu).
+const GRID = { width: 230, grid: "diagonal", region: { lat: { min: -56, max: 84 }, lng: { min: -180, max: 180 } } };
 
 const withPins = new DottedMap(GRID);
 for (const [key, { lat, lng }] of Object.entries(NODES)) withPins.addPin({ lat, lng, data: { key } });
