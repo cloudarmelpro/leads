@@ -73,12 +73,12 @@ export function HeroGlobe() {
   // contenu du hero est centré verticalement ; top-[54%] pose le globe sur ce centre,
   // un peu plus bas, car la masse visuelle de l'image est dans sa moitié haute.
   // Dès `lg`, ancré à DROITE du conteneur. Le décalage = gouttière − débordement,
-  // où le débordement croît avec l'espace libre hors conteneur (0 sous 1080px,
+  // où le débordement croît avec l'espace libre hors conteneur (0 sous 1240px,
   // plafonné à 10rem) : jamais coupé par le viewport, mais respire sur grand écran.
   return (
     <div
       ref={ref}
-      className="pointer-events-none absolute top-[54%] left-1/2 w-[135%] max-w-[560px] -translate-x-1/2 -translate-y-1/2 select-none lg:top-[57%] lg:right-[calc(clamp(1rem,4vw,3.5rem)-clamp(0px,(100vw-67.5rem)/2,10rem))] lg:left-auto lg:w-[56%] lg:max-w-[680px] lg:translate-x-0"
+      className="pointer-events-none absolute top-[54%] left-1/2 w-[135%] max-w-[560px] -translate-x-1/2 -translate-y-1/2 select-none lg:top-[57%] lg:right-[calc(clamp(1rem,4vw,3.5rem)-clamp(0px,(100vw-77.5rem)/2,10rem))] lg:left-auto lg:w-[56%] lg:max-w-[680px] lg:translate-x-0"
     >
             {/* Survol : curseur « main » sur le disque du globe seulement (`clip-path`
           circulaire), les coins du carré restent transparents pour le titre. */}
