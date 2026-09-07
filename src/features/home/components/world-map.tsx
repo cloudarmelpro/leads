@@ -16,7 +16,7 @@ const SPOKES: NodeKey[] = ["montreal", "toronto", "newyork", "vancouver", "paris
 function arcPath([x1, y1]: number[], [x2, y2]: number[]) {
   const dx = x2 - x1;
   const dy = y2 - y1;
-  const lift = Math.min(14, Math.hypot(dx, dy) * 0.35);
+  const lift = Math.min(19, Math.hypot(dx, dy) * 0.35);
   const cx = (x1 + x2) / 2;
   const cy = Math.min(y1, y2) - lift;
   return `M ${x1} ${y1} Q ${cx} ${cy} ${x2} ${y2}`;
@@ -78,7 +78,7 @@ export function WorldMap({ className = "" }: { className?: string }) {
   return (
     <div className={`relative ${className}`} style={{ aspectRatio: `${W} / ${H}` }} aria-hidden>
       {/* Points de terre : couleur = fond courant via le masque. */}
-      <div className="absolute inset-0 bg-emeraude/30 dark:bg-[#bfd0d6]/28" style={dotsMask} />
+      <div className="absolute inset-0 bg-emeraude/60 dark:bg-[#bfd0d6]/32" style={dotsMask} />
 
       {/* Nœuds et arcs, dans les mêmes unités de grille que les points. */}
       <svg ref={ref} viewBox={`0 0 ${W} ${H}`} className="absolute inset-0 h-full w-full overflow-visible">
@@ -88,7 +88,7 @@ export function WorldMap({ className = "" }: { className?: string }) {
             data-arc
             d={arcPath(hub, nodes[key])}
             fill="none"
-            strokeWidth={0.32}
+            strokeWidth={0.42}
             strokeLinecap="round"
             className="stroke-emeraude dark:stroke-accent-strong"
           />
@@ -98,15 +98,15 @@ export function WorldMap({ className = "" }: { className?: string }) {
           const [x, y] = nodes[key];
           return (
             <g key={key}>
-              <circle data-halo data-r={1.3} cx={x} cy={y} r={1.3} className="fill-emeraude/40 dark:fill-accent-strong/40" />
-              <circle cx={x} cy={y} r={0.7} className="fill-emeraude dark:fill-accent-strong" />
+              <circle data-halo data-r={1.75} cx={x} cy={y} r={1.75} className="fill-emeraude/40 dark:fill-accent-strong/40" />
+              <circle cx={x} cy={y} r={0.95} className="fill-emeraude dark:fill-accent-strong" />
             </g>
           );
         })}
 
-        <circle data-halo data-r={2.4} cx={hub[0]} cy={hub[1]} r={2.4} className="fill-emeraude/45 dark:fill-accent-strong/45" />
-        <circle cx={hub[0]} cy={hub[1]} r={1.5} className="fill-fond" />
-        <circle cx={hub[0]} cy={hub[1]} r={1.05} className="fill-emeraude dark:fill-accent-strong" />
+        <circle data-halo data-r={3.2} cx={hub[0]} cy={hub[1]} r={3.2} className="fill-emeraude/45 dark:fill-accent-strong/45" />
+        <circle cx={hub[0]} cy={hub[1]} r={2} className="fill-fond" />
+        <circle cx={hub[0]} cy={hub[1]} r={1.4} className="fill-emeraude dark:fill-accent-strong" />
       </svg>
     </div>
   );

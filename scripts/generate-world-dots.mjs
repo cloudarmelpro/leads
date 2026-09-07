@@ -18,7 +18,7 @@ const NODES = {
 };
 
 // Monde sans l'Antarctique : cadre 80°N → 56°S, comme les cartes de tableau de bord.
-const GRID = { width: 170, grid: "diagonal", region: { lat: { min: -56, max: 80 }, lng: { min: -180, max: 180 } } };
+const GRID = { width: 230, grid: "diagonal", region: { lat: { min: -56, max: 80 }, lng: { min: -180, max: 180 } } };
 
 const withPins = new DottedMap(GRID);
 for (const [key, { lat, lng }] of Object.entries(NODES)) withPins.addPin({ lat, lng, data: { key } });
@@ -30,7 +30,7 @@ for (const p of raw) if (p.data?.key) nodes[p.data.key] = [Math.round(p.x * 100)
 // SVG des points seuls (sans épingles : elles vivent dans l'overlay React).
 const land = new DottedMap(GRID);
 // Compactage : un seul `fill` sur le groupe, cercles sans attributs répétés (≈ ÷5).
-const verbose = land.getSVG({ radius: 0.26, color: "#000000", shape: "circle" });
+const verbose = land.getSVG({ radius: 0.27, color: "#000000", shape: "circle" });
 const viewBox = verbose.match(/viewBox="([^"]+)"/)[1];
 const circles = [...verbose.matchAll(/<circle cx="([^"]+)" cy="([^"]+)" r="([^"]+)"/g)]
   .map(([, cx, cy, r]) => `<circle cx="${cx}" cy="${cy}" r="${r}"/>`)
