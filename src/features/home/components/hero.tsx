@@ -3,7 +3,7 @@ import Link from "next/link";
 import { CONTENEUR } from "@/components/shared/container";
 import { Reveal } from "@/components/shared/reveal";
 import { SplitReveal } from "@/components/shared/split-reveal";
-import { HeroGlobe } from "@/features/home/components/hero-globe";
+import { HeroMap } from "@/features/home/components/hero-map";
 import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 
@@ -30,8 +30,8 @@ export function Hero({ lang, dict }: Props) {
       <div aria-hidden className="pointer-events-none absolute top-[-340px] left-[30%] h-[2009px] w-[99px] rotate-[50deg] rounded-[50%] bg-accent-strong opacity-[0.04] blur-[50px]" />
 
       <div className={`${CONTENEUR} relative flex w-full flex-col items-start justify-center gap-6`}>
-        {/* Globe « signature » animé (rotation lente + flottement). */}
-        <HeroGlobe />
+        {/* Carte du monde en points, « signature » du hero (nœud Québec, arcs animés). */}
+        <HeroMap />
 
         <SplitReveal
           as="h1"
