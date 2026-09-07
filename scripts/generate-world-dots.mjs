@@ -9,12 +9,35 @@ import fs from "node:fs";
 import DottedMap from "dotted-map";
 
 const NODES = {
+  // Hub
   quebec: { lat: 46.81, lng: -71.21 },
+  // Canada
   montreal: { lat: 45.5, lng: -73.57 },
   toronto: { lat: 43.65, lng: -79.38 },
-  newyork: { lat: 40.71, lng: -74.0 },
+  calgary: { lat: 51.05, lng: -114.07 },
   vancouver: { lat: 49.28, lng: -123.12 },
+  // États-Unis
+  newyork: { lat: 40.71, lng: -74.0 },
+  chicago: { lat: 41.88, lng: -87.63 },
+  losangeles: { lat: 34.05, lng: -118.24 },
+  miami: { lat: 25.76, lng: -80.19 },
+  // Amérique latine
+  mexico: { lat: 19.43, lng: -99.13 },
+  saopaulo: { lat: -23.55, lng: -46.63 },
+  // Europe
   paris: { lat: 48.86, lng: 2.35 },
+  london: { lat: 51.51, lng: -0.13 },
+  bruxelles: { lat: 50.85, lng: 4.35 },
+  berlin: { lat: 52.52, lng: 13.4 },
+  madrid: { lat: 40.42, lng: -3.7 },
+  // Afrique · Moyen-Orient · Asie · Océanie
+  casablanca: { lat: 33.57, lng: -7.59 },
+  antananarivo: { lat: -18.88, lng: 47.51 },
+  dubai: { lat: 25.2, lng: 55.27 },
+  mumbai: { lat: 19.08, lng: 72.88 },
+  singapore: { lat: 1.35, lng: 103.82 },
+  tokyo: { lat: 35.68, lng: 139.69 },
+  sydney: { lat: -33.87, lng: 151.21 },
 };
 
 // Monde sans l'Antarctique : cadre 80°N → 56°S, comme les cartes de tableau de bord.
