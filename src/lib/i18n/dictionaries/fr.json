@@ -585,30 +585,6 @@
                 "60 jours",
                 "90 jours"
               ]
-            },
-            {
-              "label": "Délai de livraison",
-              "cells": [
-                "[DÉLAI — à confirmer]",
-                "[DÉLAI — à confirmer]",
-                "[DÉLAI — à confirmer]"
-              ]
-            },
-            {
-              "label": "Modalités de paiement",
-              "cells": [
-                "[PAIEMENT — à confirmer]",
-                "[PAIEMENT — à confirmer]",
-                "[PAIEMENT — à confirmer]"
-              ]
-            },
-            {
-              "label": "Après la mise en ligne",
-              "cells": [
-                "[SUIVI — à confirmer]",
-                "[SUIVI — à confirmer]",
-                "[SUIVI — à confirmer]"
-              ]
             }
           ]
         }
