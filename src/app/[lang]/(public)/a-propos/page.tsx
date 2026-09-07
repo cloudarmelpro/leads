@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { BreadcrumbLd } from "@/components/shared/breadcrumb-ld";
-import { CtaBanner } from "@/components/shared/cta-banner";
 import { PageHero } from "@/components/shared/page-hero";
 import { Principles, Story, Team } from "@/features/about";
+import { FinalCta } from "@/features/home";
 import { isLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { pageMetadata } from "@/lib/seo/metadata";
@@ -44,12 +44,8 @@ export default async function AboutPage({ params }: PageProps<"/[lang]/a-propos"
       <Story dict={dict} />
       <Principles dict={dict} />
       <Team dict={dict} />
-      <CtaBanner
-        lang={lang}
-        title={dict.about.cta.title}
-        body={dict.about.cta.body}
-        ariaLabel={dict.about.cta.title}
-      />
+      {/* Même bandeau d'appel à l'action que l'accueil (dictionnaire `final`). */}
+      <FinalCta lang={lang} dict={dict} />
     </>
   );
 }
