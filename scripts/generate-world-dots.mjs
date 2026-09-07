@@ -53,13 +53,17 @@ for (const p of raw) if (p.data?.key) nodes[p.data.key] = [Math.round(p.x * 100)
 
 // SVG des points seuls (sans épingles : elles vivent dans l'overlay React).
 const land = new DottedMap(GRID);
-// Compactage : un seul `fill` sur le groupe, cercles sans attributs répétés (≈ ÷5).
-const verbose = land.getSVG({ radius: 0.27, color: "#000000", shape: "circle" });
+// Compactage : UN SEUL <path> — chaque point est un segment de longueur nulle
+// (`M x y h0`) tracé avec des bouts ronds, dont le diamètre vaut `stroke-width`.
+// 12 000 éléments <circle> → 1 élément : fichier ≈ ÷2, parsing et rendu du masque
+// bien plus légers. Coordonnées à 1 décimale (0,1 unité ≈ 0,3 px à l'écran).
+const RADIUS = 0.27;
+const verbose = land.getSVG({ radius: RADIUS, color: "#000000", shape: "circle" });
 const viewBox = verbose.match(/viewBox="([^"]+)"/)[1];
-const circles = [...verbose.matchAll(/<circle cx="([^"]+)" cy="([^"]+)" r="([^"]+)"/g)]
-  .map(([, cx, cy, r]) => `<circle cx="${cx}" cy="${cy}" r="${r}"/>`)
+const d = [...verbose.matchAll(/<circle cx="([^"]+)" cy="([^"]+)"/g)]
+  .map(([, cx, cy]) => `M${(+cx).toFixed(1)} ${(+cy).toFixed(1)}h0`)
   .join("");
-const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${viewBox}"><g fill="#000">${circles}</g></svg>`;
+const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${viewBox}"><path fill="none" stroke="#000" stroke-width="${RADIUS * 2}" stroke-linecap="round" d="${d}"/></svg>`;
 fs.writeFileSync("public/world-dots.svg", svg);
 
 // Le cadre de l'overlay = le viewBox du SVG (mêmes unités de grille).

@@ -52,8 +52,23 @@ const nextConfig: NextConfig = {
   // Requis par `src/app/global-not-found.tsx` : la racine des routes est le segment
   // dynamique `[lang]`, donc aucun layout unique ne peut composer le 404 global.
   experimental: { globalNotFound: true },
+  // Images optimisées : AVIF d'abord (≈ 30 % plus léger que WebP), WebP en repli ;
+  // les originaux de public/ ne changent pas → cache des variantes 31 jours.
+  images: {
+    formats: ["image/avif", "image/webp"],
+    minimumCacheTTL: 2678400,
+  },
   async headers() {
-    return [{ source: "/:path*", headers: securityHeaders }];
+    // Fichiers statiques de public/ (carte en points, décors SVG, photos) : non
+    // « hashés » par Next, donc pas `immutable` — un jour de cache CDN/navigateur,
+    // puis revalidation en arrière-plan (stale-while-revalidate) pendant une semaine.
+    const staticCache = { key: "Cache-Control", value: "public, max-age=86400, stale-while-revalidate=604800" };
+    return [
+      { source: "/:path*", headers: securityHeaders },
+      { source: "/images/:path*", headers: [staticCache] },
+      { source: "/:file*.svg", headers: [staticCache] },
+      { source: "/:file*.png", headers: [staticCache] },
+    ];
   },
 };
 
