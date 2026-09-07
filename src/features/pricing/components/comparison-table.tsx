@@ -78,10 +78,12 @@ export function ComparisonTable({ plans, groups, labels, note, href }: Props) {
           <GroupRows key={group.title} group={group} plans={plans} labels={labels} />
         ))}
 
-        {/* Arrondi bas de la colonne recommandée. */}
-        {plans.map((plan) => [
-          <div key={`${plan.name}-cap`} className={plan.featured ? `h-7 rounded-b-2xl ${FEATURED_BG}` : ""} />,
-        ])}
+        {/* Dernière rangée : cellule vide sous les critères, puis l'arrondi bas de la
+            colonne recommandée (une cellule par forfait pour rester dans la grille). */}
+        <div />
+        {plans.map((plan) => (
+          <div key={`${plan.name}-cap`} className={plan.featured ? `h-7 rounded-b-2xl ${FEATURED_BG}` : ""} />
+        ))}
       </div>
 
       {/* Étroit : pastilles + lignes empilées du forfait choisi. */}

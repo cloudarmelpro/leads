@@ -11,7 +11,8 @@ type Props = {
   title: ReactNode;
   subtitle?: string;
   cta?: { label: string; href: string };
-  /** Lien texte secondaire à côté du bouton (ex. « Voir les forfaits »). */
+  /** Lien texte secondaire à côté du bouton (ex. « Voir les forfaits »). Une ancre
+   *  (`#…`) est rendue en `<a>` natif pour que Lenis anime le défilement. */
   secondary?: { label: string; href: string };
 };
 
@@ -53,13 +54,13 @@ export function PageHero({ title, subtitle, cta, secondary }: Props) {
               {cta.label}
             </Link>
             {secondary && (
-              <Link
+              <a
                 href={secondary.href}
                 className="inline-flex items-center gap-2.5 px-1 text-cta-fluid font-normal text-texte2 no-underline transition-colors hover:text-encre"
               >
                 {secondary.label}
                 <ArrowRight className="w-[19px]" />
-              </Link>
+              </a>
             )}
           </Reveal>
         )}
