@@ -30,7 +30,7 @@ export function BlogFeatured({ post, lang, dict }: Props) {
       </div>
       <Link
         href={`/${lang}/blog/${post.slug}`}
-        className="relative inline-flex w-fit shrink-0 items-center gap-2.5 rounded-[9px] bg-emeraude px-3.5 py-2 sm:px-4 sm:py-2.5 text-cta-fluid font-medium text-white no-underline hover:bg-[#7fefc0] hover:text-fond dark:bg-accent-strong dark:text-fond dark:hover:bg-[#7fefc0]"
+        className="relative inline-flex w-fit shrink-0 items-center gap-2.5 rounded-[9px] bg-emeraude px-3.5 py-2 sm:px-4 sm:py-2.5 text-cta-fluid font-medium text-white no-underline hover:bg-sapin dark:bg-accent-strong dark:text-fond dark:hover:bg-[#7fefc0]"
       >
         {dict.blog.readArticle}
         <ArrowRight className="w-[19px]" />

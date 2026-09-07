@@ -106,7 +106,7 @@ export function TradesShowcase({ lang, dict }: Props) {
             </p>
             <Link
               href={`/${lang}/contact`}
-              className="relative mt-6 inline-flex w-fit items-center gap-2.5 rounded-[9px] bg-emeraude px-3.5 py-2 sm:px-4 sm:py-2.5 text-cta-fluid font-medium text-white no-underline transition-colors hover:bg-[#7fefc0] hover:text-fond motion-reduce:transition-none dark:bg-accent-strong dark:text-fond dark:hover:bg-[#7fefc0]"
+              className="relative mt-6 inline-flex w-fit items-center gap-2.5 rounded-[9px] bg-emeraude px-3.5 py-2 sm:px-4 sm:py-2.5 text-cta-fluid font-medium text-white no-underline transition-colors hover:bg-sapin motion-reduce:transition-none dark:bg-accent-strong dark:text-fond dark:hover:bg-[#7fefc0]"
             >
               {t.tradesCta}
               <ArrowRight className="w-[19px]" />

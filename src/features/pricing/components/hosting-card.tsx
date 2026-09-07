@@ -19,7 +19,7 @@ export function HostingCard({ hosting, bookLabel, href }: Props) {
         </span>
         <Link
           href={href}
-          className="mt-2 inline-flex h-[45px] items-center justify-center rounded-[9px] bg-emeraude px-6 text-[0.9375rem] leading-[1.3125rem] font-medium text-white no-underline transition-colors hover:bg-[#7fefc0] hover:text-fond dark:bg-accent-strong dark:text-fond dark:hover:bg-[#7fefc0]"
+          className="mt-2 inline-flex h-[45px] items-center justify-center rounded-[9px] bg-emeraude px-6 text-[0.9375rem] leading-[1.3125rem] font-medium text-white no-underline transition-colors hover:bg-sapin dark:bg-accent-strong dark:text-fond dark:hover:bg-[#7fefc0]"
         >
           {bookLabel}
         </Link>

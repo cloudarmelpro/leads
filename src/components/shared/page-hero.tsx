@@ -53,7 +53,7 @@ export function PageHero({ title, subtitle, cta, secondary }: Props) {
           <Reveal as="div" scroll={false} delay={0.5} className="flex flex-wrap items-center gap-3">
             <Link
               href={cta.href}
-              className="rounded-[9px] bg-emeraude px-3.5 py-2 sm:px-4 sm:py-2.5 text-cta-fluid font-medium text-white no-underline hover:bg-[#7fefc0] hover:text-fond dark:bg-accent-strong dark:text-fond dark:hover:bg-[#7fefc0]"
+              className="rounded-[9px] bg-emeraude px-3.5 py-2 sm:px-4 sm:py-2.5 text-cta-fluid font-medium text-white no-underline hover:bg-sapin dark:bg-accent-strong dark:text-fond dark:hover:bg-[#7fefc0]"
             >
               {cta.label}
             </Link>

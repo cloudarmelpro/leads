@@ -164,7 +164,7 @@ export function FloatingContact({ dict }: Props) {
             <ActionLink
               href={telHref(site.phone)}
               unavailableLabel={`${t.rowCall} — ${phoneLabel}`}
-              className="flex items-center justify-center gap-2.5 rounded-[9px] bg-emeraude px-3.5 py-2 sm:px-4 sm:py-2.5 text-cta-fluid font-medium text-white no-underline transition-colors duration-200 hover:bg-[#7fefc0] hover:text-fond motion-reduce:transition-none disabled:cursor-not-allowed disabled:opacity-55 dark:bg-accent-strong dark:text-fond dark:hover:bg-[#7fefc0]"
+              className="flex items-center justify-center gap-2.5 rounded-[9px] bg-emeraude px-3.5 py-2 sm:px-4 sm:py-2.5 text-cta-fluid font-medium text-white no-underline transition-colors duration-200 hover:bg-sapin motion-reduce:transition-none disabled:cursor-not-allowed disabled:opacity-55 dark:bg-accent-strong dark:text-fond dark:hover:bg-[#7fefc0]"
             >
               <Phone size={19} strokeWidth={2.2} aria-hidden />
               {t.rowCall}

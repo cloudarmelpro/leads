@@ -27,7 +27,7 @@ const FEATURED_BG = "bg-menthe dark:bg-[#01293c]";
 const PRICE =
   "font-mono text-[1.75rem] leading-[2.125rem] font-bold tracking-[-0.02em] tabular-nums whitespace-nowrap text-emeraude dark:text-accent-strong";
 const BUTTON =
-  "inline-flex w-full items-center justify-center rounded-[9px] bg-emeraude text-[0.875rem] leading-5 font-medium text-white no-underline transition-colors hover:bg-[#7fefc0] hover:text-fond dark:bg-accent-strong dark:text-fond dark:hover:bg-[#7fefc0]";
+  "inline-flex w-full items-center justify-center rounded-[9px] bg-emeraude text-[0.875rem] leading-5 font-medium text-white no-underline transition-colors hover:bg-sapin dark:bg-accent-strong dark:text-fond dark:hover:bg-[#7fefc0]";
 
 /**
  * Grille comparative des forfaits (design « Pricing v2 »). Dès `lg` : une colonne
