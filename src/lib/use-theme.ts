@@ -1,6 +1,7 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
+import { useCallback, useEffect, useLayoutEffect, useState } from "react";
 
 export type ThemeChoice = "system" | "light" | "dark";
 
@@ -36,12 +37,21 @@ function applyClass(next?: ThemeChoice) {
 export function useTheme() {
   const [choice, setChoice] = useState<ThemeChoice>("system");
   const [isDark, setIsDark] = useState(false);
+  const pathname = usePathname();
 
   const sync = useCallback(() => {
     const c = readChoice();
     setChoice(c);
     setIsDark(isEffectiveDark(c));
   }, []);
+
+  // À chaque navigation client (ex. bascule fr ↔ en), le layout racine re-rend <html>
+  // et React réécrit son attribut `class` avec la valeur serveur : la classe `.dark`,
+  // posée hors React, disparaît et le site repasse en clair. On la remet avant la
+  // peinture, à chaque changement de route.
+  useLayoutEffect(() => {
+    applyClass();
+  }, [pathname]);
 
   useEffect(() => {
     // Lecture initiale du choix réel (localStorage/matchMedia, absents au SSR) :
