@@ -9,7 +9,7 @@ import { CONTENEUR } from "@/components/shared/container";
 import { LanguageSwitcher } from "@/components/shared/language-switcher";
 import { ThemeToggle } from "@/components/shared/theme-toggle";
 import { Wordmark } from "@/components/shared/wordmark";
-import { site, telHref, whatsappHref } from "@/config/site";
+import { features, site, telHref, whatsappHref } from "@/config/site";
 import type { Locale } from "@/lib/i18n/config";
 import { gsap, reducedMotion, useGSAP } from "@/lib/gsap";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
@@ -67,7 +67,7 @@ export function Header({ lang, dict }: Props) {
     { label: dict.nav.sectors, href: `/${lang}#secteurs` },
     { label: dict.nav.method, href: `/${lang}#methode` },
     { label: dict.nav.faq, href: `/${lang}#faq` },
-    { label: dict.nav.pricing, href: `/${lang}/prix` },
+    ...(features.pricing ? [{ label: dict.nav.pricing, href: `/${lang}/prix` }] : []),
     { label: dict.nav.about, href: `/${lang}/a-propos` },
     { label: dict.nav.blog, href: `/${lang}/blog` },
   ];

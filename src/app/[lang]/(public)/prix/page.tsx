@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { BreadcrumbLd } from "@/components/shared/breadcrumb-ld";
+import { features } from "@/config/site";
 import { PricingGroups, PricingHero } from "@/features/pricing";
 import { isLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
@@ -11,7 +12,7 @@ export async function generateMetadata({
   params,
 }: PageProps<"/[lang]/prix">): Promise<Metadata> {
   const { lang } = await params;
-  if (!isLocale(lang)) return {};
+  if (!isLocale(lang) || !features.pricing) return {};
 
   const dict = await getDictionary(lang);
 
@@ -25,7 +26,8 @@ export async function generateMetadata({
 
 export default async function PricingPage({ params }: PageProps<"/[lang]/prix">) {
   const { lang } = await params;
-  if (!isLocale(lang)) notFound();
+  // Page masquée tant que l offre n est pas arrêtée (voir `features` dans config/site).
+  if (!isLocale(lang) || !features.pricing) notFound();
 
   const dict = await getDictionary(lang);
 

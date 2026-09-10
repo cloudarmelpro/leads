@@ -48,3 +48,11 @@ export function messengerHref(username: string | null): string | null {
 export function calcomHref(calLink: string | null): string | null {
   return calLink ? `https://cal.com/${calLink}` : null;
 }
+
+/**
+ * Interrupteurs de pages. `pricing: false` masque la page Prix (404, hors nav et
+ * sitemap) tant que l offre et les tarifs ne sont pas arrêtés — le code reste en place.
+ */
+export const features = {
+  pricing: false,
+} as const;
