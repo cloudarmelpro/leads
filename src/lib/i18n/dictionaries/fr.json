@@ -248,8 +248,17 @@
       "title": "Blog — Conseils web pour les PME du Québec | Talgasy Web",
       "description": "Idées et conseils concrets pour aider les PME du Québec à attirer plus de clients avec leur site web : conversion, référencement local et bonnes pratiques."
     },
-    "title": "Idées & conseils",
+    "title": "Idées &",
+    "titleHighlight": "conseils",
     "subtitle": "Des articles concrets pour attirer plus de clients avec votre site web.",
+    "heroIntro": "Des articles concrets pour attirer plus de clients avec votre site web. Conversion, référencement local, contenu : ce qu’on applique chez nos clients, expliqué sans jargon.",
+    "topics": [
+      "Conversion",
+      "Référencement local",
+      "Contenu",
+      "Refonte"
+    ],
+    "filterAll": "Tous",
     "featured": "À la une",
     "emptyKicker": "À venir",
     "readArticle": "Lire l’article",

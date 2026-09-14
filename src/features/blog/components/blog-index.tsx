@@ -1,22 +1,29 @@
 import Link from "next/link";
 
 import { BreadcrumbLd } from "@/components/shared/breadcrumb-ld";
-import { CONTENEUR } from "@/components/shared/container";
-import { PageHero } from "@/components/shared/page-hero";
-import { Reveal } from "@/components/shared/reveal";
-import { SectionHeader } from "@/components/shared/section-header";
-import { SurfaceCard } from "@/components/shared/surface-card";
-import { BlogFeatured } from "@/features/blog/components/blog-featured";
-import { PostCard } from "@/features/blog/components/post-card";
+import { GOUTTIERE } from "@/components/shared/container";
+import { HeroGrid } from "@/components/shared/hero-grid";
+import { SectionHead } from "@/components/shared/section-head";
+import { FeaturedCard } from "@/features/blog/components/featured-card";
+import { PostGrid } from "@/features/blog/components/post-grid";
 import { getPosts } from "@/features/blog/mock-posts";
+import { Cta } from "@/features/home";
 import type { Locale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 
 type Props = { lang: Locale };
 
-/** Liste du blog, sur la structure de l'accueil : hero, à la une, puis grille. */
+const PILL = "flex min-h-[34px] items-center rounded-[9px] bg-surface px-[14px] py-[7px] text-[13px] leading-[18px] font-medium text-texte-bascule ring-1 ring-ligne ring-inset dark:ring-0";
+
+/**
+ * Index du blog (maquette Blog) : hero à deux colonnes — masthead à gauche, article à
+ * la une à droite — puis filtres et grille des autres articles, bandeau d'appel partagé.
+ * Sans article, le hero tient seul (colonne de droite masquée) et l'état « à venir »
+ * existant reste affiché sous lui.
+ */
 export async function BlogIndex({ lang }: Props) {
   const dict = await getDictionary(lang);
+  const t = dict.blog;
   const posts = getPosts(lang);
   const [featured, ...rest] = posts;
 
@@ -29,52 +36,56 @@ export async function BlogIndex({ lang }: Props) {
           { name: dict.nav.blog, path: "/blog" },
         ]}
       />
-      <PageHero title={dict.blog.title} subtitle={dict.blog.subtitle} />
 
-      <section className="pb-[clamp(80px,14vw,200px)]">
-        <div className={CONTENEUR}>
-          {/* Aucun article publié : état « à venir » dans une carte, comme les
-              cartes Services. Dès qu'un article existe, à la une + liste reprennent. */}
-          {posts.length === 0 && (
-            <Reveal as="div">
-              <SurfaceCard className="gap-6 px-10 pt-10 pb-11 md:flex-row md:items-end md:justify-between">
-                <div className="relative max-w-[46ch]">
-                  <p className="text-[0.875rem] leading-[1.5625rem] font-light text-emeraude dark:text-accent-strong">
-                    {dict.blog.emptyKicker}
-                  </p>
-                  <h2 className="mt-2 font-display text-[clamp(1.375rem,3vw,1.875rem)] leading-[1.143] font-normal tracking-[-0.8px] text-encre text-balance">
-                    {dict.blog.emptyTitle}
-                  </h2>
-                  <p className="mt-3 text-small-fluid text-texte2 text-pretty">{dict.blog.emptyBody}</p>
-                </div>
-                <Link
-                  href={`/${lang}/contact`}
-                  className="relative w-fit shrink-0 rounded-[9px] bg-emeraude px-3.5 py-2 sm:px-4 sm:py-2.5 text-cta-fluid font-medium text-white no-underline hover:bg-sapin dark:bg-accent-strong dark:text-fond dark:hover:bg-[#7fefc0]"
-                >
-                  {dict.nav.contact}
-                </Link>
-              </SurfaceCard>
-            </Reveal>
-          )}
-
-          {featured && (
-            <Reveal as="div">
-              <BlogFeatured post={featured} lang={lang} dict={dict} />
-            </Reveal>
-          )}
-
-          {rest.length > 0 && (
-            <div className="mt-[clamp(56px,8vw,96px)]">
-              <SectionHeader title={dict.blog.moreArticles} intro={dict.blog.listSubtitle} />
-              <Reveal as="div" stagger={0.1} className="mt-12 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
-                {rest.map((post) => (
-                  <PostCard key={post.slug} post={post} lang={lang} dict={dict} />
-                ))}
-              </Reveal>
+      <section className={`relative flex justify-center overflow-x-clip pt-[96px] pb-[80px] min-[620px]:pt-[64px] min-[620px]:pb-[104px] min-[900px]:pt-[120px] min-[900px]:pb-[clamp(112px,16vw,160px)] ${GOUTTIERE}`}>
+        <HeroGrid top={30} />
+        <div className={`relative z-[1] grid w-full max-w-[1100px] grid-cols-[minmax(0,1fr)] items-end gap-[36px] min-[900px]:gap-[48px] ${featured ? "min-[900px]:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]" : ""}`}>
+          <div className="flex flex-col items-start gap-[20px]">
+            <span className="text-[13px] leading-[20px] font-medium tracking-[0.08em] text-vert uppercase">{dict.nav.blog}</span>
+            <h1 className="m-[0px] max-w-[520px] text-[clamp(26px,3.2vw,36px)] leading-[1.12] font-normal tracking-[-0.7px] text-encre text-balance">
+              {t.title} <span className="text-vert">{t.titleHighlight}</span>
+            </h1>
+            <p className="m-[0px] max-w-[460px] text-[15px] leading-[26px] font-normal text-texte2 text-pretty">{t.heroIntro}</p>
+            <div className="mt-[4px] flex flex-wrap gap-[8px]">
+              {t.topics.map((topic) => (
+                <span key={topic} className={PILL}>
+                  {topic}
+                </span>
+              ))}
             </div>
-          )}
+          </div>
+          {featured && <FeaturedCard post={featured} lang={lang} dict={dict} />}
         </div>
       </section>
+
+      {posts.length === 0 && (
+        <section className={`relative flex justify-center pb-[clamp(112px,16vw,240px)] ${GOUTTIERE}`}>
+          <div className="flex w-full max-w-[1100px] flex-col gap-[24px] rounded-[24px] bg-surface p-[28px] ring-1 ring-ligne ring-inset min-[860px]:flex-row min-[860px]:items-end min-[860px]:justify-between dark:ring-0">
+            <div className="flex max-w-[560px] flex-col gap-[6px]">
+              <span className="text-[13px] leading-[20px] font-medium tracking-[0.08em] text-vert uppercase">{t.emptyKicker}</span>
+              <h2 className="m-[0px] text-[clamp(22px,2.6vw,30px)] leading-[1.15] font-medium tracking-[-0.4px] text-encre text-pretty">{t.emptyTitle}</h2>
+              <p className="m-[0px] pt-[6px] text-[15px] leading-[26px] font-normal text-texte2 text-pretty">{t.emptyBody}</p>
+            </div>
+            <Link
+              href={`/${lang}/contact`}
+              className="flex h-[38px] w-fit shrink-0 items-center rounded-[9px] bg-vert px-[22px] text-[14px] leading-[20px] font-medium text-sur-vert no-underline transition-colors hover:bg-vert-clair"
+            >
+              {dict.nav.contact}
+            </Link>
+          </div>
+        </section>
+      )}
+
+      {rest.length > 0 && (
+        <section className={`relative flex justify-center pb-[clamp(112px,16vw,240px)] ${GOUTTIERE}`}>
+          <div className="flex w-full max-w-[1100px] flex-col gap-[48px]">
+            <SectionHead id="articles" label={dict.nav.blog} title={t.moreArticles} intro={t.listSubtitle} introMax={420} />
+            <PostGrid posts={rest} lang={lang} allLabel={t.filterAll} minRead={t.minRead} />
+          </div>
+        </section>
+      )}
+
+      <Cta dict={dict} />
     </>
   );
 }

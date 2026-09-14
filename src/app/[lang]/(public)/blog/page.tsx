@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
+import { PageHalos } from "@/components/shared/page-halos";
 import { BlogIndex, getPosts } from "@/features/blog";
 import { isLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
@@ -29,5 +30,11 @@ export default async function Page({ params }: PageProps<"/[lang]/blog">) {
   const { lang } = await params;
   if (!isLocale(lang)) notFound();
 
-  return <BlogIndex lang={lang} />;
+  return (
+    // Pas de `relative` : les halos se calent sur <body> et passent sous l'en-tête.
+    <div>
+      <PageHalos />
+      <BlogIndex lang={lang} />
+    </div>
+  );
 }

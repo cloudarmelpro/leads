@@ -21,6 +21,7 @@ type RawPost = {
   date: string; // ISO
   readMinutes: number;
   author: { name: string; role: string; avatar: number };
+  /** Nom de fichier de la couverture 16:9 dans `public/images/blog/` (sans extension). */
   coverSeed: string;
   fr: PostContent;
   en: PostContent;
@@ -45,6 +46,11 @@ export function getPosts(lang: Locale): Post[] {
 export function getPost(lang: Locale, slug: string): Post | null {
   const post = POSTS.find((p) => p.slug === slug);
   return post ? localize(post, lang) : null;
+}
+
+/** Chemin public de la couverture d'un article (16:9, `public/images/blog/<coverSeed>.jpg`). */
+export function coverSrc(post: Pick<Post, "coverSeed">): string {
+  return `/images/blog/${post.coverSeed}.jpg`;
 }
 
 /** Slugs de tous les articles — pour `generateStaticParams`. */

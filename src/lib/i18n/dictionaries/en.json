@@ -248,8 +248,17 @@
       "title": "Blog — Web advice for Québec small businesses | Talgasy Web",
       "description": "Practical ideas and advice to help Québec small businesses attract more customers with their website: conversion, local SEO and best practices."
     },
-    "title": "Ideas & advice",
+    "title": "Ideas &",
+    "titleHighlight": "advice",
     "subtitle": "Practical articles to attract more customers with your website.",
+    "heroIntro": "Practical articles to win more customers with your website. Conversion, local SEO, content: what we apply for our clients, explained without jargon.",
+    "topics": [
+      "Conversion",
+      "Local SEO",
+      "Content",
+      "Redesign"
+    ],
+    "filterAll": "All",
     "featured": "Featured",
     "emptyKicker": "Coming soon",
     "readArticle": "Read the article",
