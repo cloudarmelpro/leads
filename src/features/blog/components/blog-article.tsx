@@ -52,7 +52,7 @@ export async function BlogArticle({ post, lang }: Props) {
         <HeroGrid top={0} />
         <div className="relative z-[1] flex w-full max-w-[760px] flex-col items-start gap-[18px]">
           {back}
-          <h1 className="m-[0px] text-[clamp(26px,3.6vw,40px)] leading-[1.1] font-normal tracking-[-1px] text-encre text-balance">{post.title}</h1>
+          <h1 className="m-[0px] text-[clamp(26px,3.2vw,36px)] leading-[1.12] font-normal tracking-[-0.7px] text-encre text-balance">{post.title}</h1>
           <p className="m-[0px] max-w-[60ch] text-[16px] leading-[27px] font-normal text-texte2 text-pretty">{post.excerpt}</p>
           <PostMeta post={post} lang={lang} dict={dict} />
         </div>
