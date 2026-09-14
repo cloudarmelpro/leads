@@ -1,6 +1,7 @@
 /**
- * Halos du haut de page (maquette Accueil) : calque absolu de 1300px, halo vert en
- * haut au centre, halo bleu en haut à gauche. Réservés au thème sombre — sur fond
+ * Halos du haut de page (maquette Accueil) : calque absolu de 1300px calé sur <body>
+ * (l'en-tête transparent passe dessus), halo vert en haut au centre, halo bleu en haut
+ * à gauche. Réservés au thème sombre — sur fond
  * clair, ces voiles colorés n'ont pas d'équivalent dans la maquette.
  */
 export function PageHalos() {

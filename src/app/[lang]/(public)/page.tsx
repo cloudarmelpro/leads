@@ -11,7 +11,9 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
   const dict = await getDictionary(lang);
 
   return (
-    <div className="relative">
+    // Pas de `relative` ici : les halos se calent sur <body> et passent sous l'en-tête
+    // (transparent), comme dans la maquette où le calque part du haut de la page.
+    <div>
       <PageHalos />
       <Hero lang={lang} dict={dict} />
       <Services dict={dict} />

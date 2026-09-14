@@ -76,7 +76,7 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[la
           <style>{`.opacity-0{opacity:1}`}</style>
         </noscript>
       </head>
-      <body className="min-h-dvh bg-fond text-encre">
+      <body className="relative min-h-dvh bg-fond text-encre">
         <PrePaintScript />
         <WelcomeSplash before={dict.common.welcomeBefore} after={dict.common.welcomeAfter} />
         <SmoothScroll />
