@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
 import { ActionLink } from "@/components/shared/action-link";
@@ -33,6 +34,7 @@ const CloseIcon = () => (
  */
 export function Header({ lang, dict }: Props) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
   const burgerRef = useRef<HTMLButtonElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
 
@@ -73,6 +75,8 @@ export function Header({ lang, dict }: Props) {
   }, [menuOpen]);
 
   const close = () => setMenuOpen(false);
+  // Page courante en vert (maquette) : les ancres de l'accueil ne comptent pas.
+  const isCurrent = (href: string) => !href.includes("#") && pathname === href;
 
   const outlined =
     "flex min-h-[48px] items-center justify-center rounded-[12px] border border-contour text-[15px] leading-[20px] font-medium text-encre no-underline transition-colors hover:border-vert hover:text-vert";
@@ -93,7 +97,10 @@ export function Header({ lang, dict }: Props) {
               <Link
                 key={item.href}
                 href={item.href}
-                className="px-[4px] text-[14px] leading-[20px] font-normal whitespace-nowrap text-encre no-underline transition-colors hover:text-vert"
+                aria-current={isCurrent(item.href) ? "page" : undefined}
+                className={`px-[4px] text-[14px] leading-[20px] font-normal whitespace-nowrap no-underline transition-colors hover:text-vert ${
+                  isCurrent(item.href) ? "text-vert" : "text-encre"
+                }`}
               >
                 {item.label}
               </Link>
@@ -149,7 +156,10 @@ export function Header({ lang, dict }: Props) {
                 key={item.href}
                 href={item.href}
                 onClick={close}
-                className="flex min-h-[36px] items-center text-[16px] leading-[24px] font-normal text-encre no-underline transition-colors hover:text-vert"
+                aria-current={isCurrent(item.href) ? "page" : undefined}
+                className={`flex min-h-[36px] items-center text-[16px] leading-[24px] font-normal no-underline transition-colors hover:text-vert ${
+                  isCurrent(item.href) ? "text-vert" : "text-encre"
+                }`}
               >
                 {item.label}
               </Link>
