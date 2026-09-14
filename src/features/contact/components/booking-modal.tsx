@@ -15,8 +15,9 @@ type Props = {
 const FOCUSABLE = 'a[href], button:not([disabled]), input, select, textarea, iframe, [tabindex]:not([tabindex="-1"])';
 
 /**
- * Modale du calendrier (maquette Contact) : voile flouté, panneau de 720px qui remonte
- * en 300ms. Contenu : l'embed Cal.com quand `calLink` existe ; sinon la grille de
+ * Modale du calendrier (maquette Contact) : voile flouté, panneau qui remonte en 300ms
+ * (720px avec la grille factice, 1100px avec Cal.com pour une disposition horizontale)
+ * Contenu : l'embed Cal.com quand `calLink` existe ; sinon la grille de
  * créneaux de la maquette, purement visuelle. Fermeture par le voile, la croix ou Échap ;
  * défilement du corps verrouillé, focus piégé dans le panneau, rendu au déclencheur par
  * l'appelant au démontage.
@@ -70,7 +71,7 @@ export function BookingModal({ dict, calLink, onClose }: Props) {
         aria-modal="true"
         aria-labelledby="booking-modal-title"
         onClick={(event) => event.stopPropagation()}
-        className="relative flex max-h-[86vh] w-full max-w-[720px] flex-col gap-[20px] overflow-y-auto rounded-[24px] border border-ligne bg-surface p-[clamp(22px,3vw,32px)] shadow-[0_30px_80px_rgba(1,10,16,0.55)] motion-safe:[animation:tw-dialog-in_300ms_cubic-bezier(0.22,1,0.36,1)_both]"
+        className={`relative flex max-h-[86vh] w-full flex-col gap-[20px] overflow-y-auto rounded-[24px] ${calLink ? "max-w-[1100px]" : "max-w-[720px]"} border border-ligne bg-surface p-[clamp(22px,3vw,32px)] shadow-[0_30px_80px_rgba(1,10,16,0.55)] motion-safe:[animation:tw-dialog-in_300ms_cubic-bezier(0.22,1,0.36,1)_both]`}
       >
         <div className="flex items-start justify-between gap-[16px]">
           <div className="flex min-w-[0px] flex-col gap-[4px]">
@@ -92,7 +93,9 @@ export function BookingModal({ dict, calLink, onClose }: Props) {
 
         {calLink ? (
           // Le visiteur vient de lire l'avis et de cliquer : l'embed se charge d'emblée.
-          <div className="min-h-[min(640px,60vh)]">
+          // Panneau élargi à 1100px et hauteur bornée : Cal.com se déploie à l'horizontale
+          // (mois à gauche, créneaux à droite) sans défilement interne.
+          <div className="h-[min(620px,calc(86vh-170px))] min-h-[420px]">
             <CalcomEmbed calLink={calLink} dict={dict} initiallyLoaded />
           </div>
         ) : (
