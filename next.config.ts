@@ -13,7 +13,8 @@ import type { NextConfig } from "next";
  * autorisé sur `*.cal.com`. Aucune origine d'image externe : toutes les images du
  * site sont servies depuis `public/` (celles de l'iframe Cal.com relèvent de la CSP
  * de cal.com, pas de la nôtre) — réintroduire une origine ici exigerait de l'ajouter
- * à `img-src`.
+ * à `img-src`. Pas d'`upgrade-insecure-requests` : ignoré en Report-Only, il ne
+ * produisait qu'une erreur console sur chaque page.
  */
 const csp = [
   "default-src 'self'",
@@ -27,7 +28,6 @@ const csp = [
   "base-uri 'self'",
   "form-action 'self'",
   "frame-ancestors 'self'",
-  "upgrade-insecure-requests",
 ].join("; ");
 
 const securityHeaders = [

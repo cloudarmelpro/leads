@@ -23,6 +23,7 @@ export function FeaturedCard({ post, lang, dict }: Props) {
           src={post.cover}
           alt={post.title}
           fill
+          priority
           sizes="(max-width: 620px) 100vw, 560px"
           className="object-cover opacity-90 transition-[opacity,transform] duration-[220ms] ease-[cubic-bezier(0.2,0.7,0.2,1)] group-hover:scale-[1.03] group-hover:opacity-100"
         />

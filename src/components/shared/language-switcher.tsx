@@ -39,7 +39,8 @@ export function LanguageSwitcher({ current, label, variant = "pill", className =
     <Link
       href={pathFor(other)}
       hrefLang={other}
-      aria-label={`${label} — ${localeLabels[other]}`}
+      // Le nom accessible doit contenir le texte visible (« FR ») : « FR — Choisir la langue : EN ».
+      aria-label={`${localeLabels[current]} — ${label} : ${localeLabels[other]}`}
       className={`tap-44 inline-flex h-[34px] items-center gap-[6px] text-[13px] leading-[20px] font-medium whitespace-nowrap no-underline transition-colors duration-200 ease-[cubic-bezier(0.2,0.7,0.2,1)] ${look} ${className}`}
     >
       <Globe size={16} strokeWidth={1.8} aria-hidden />
