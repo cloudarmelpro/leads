@@ -41,7 +41,7 @@ export async function BlogIndex({ lang }: Props) {
         <HeroGrid top={30} />
         <div className={`relative z-[1] grid w-full max-w-[1100px] grid-cols-[minmax(0,1fr)] items-end gap-[36px] min-[900px]:gap-[48px] ${featured ? "min-[900px]:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]" : ""}`}>
           <div className="flex flex-col items-start gap-[20px]">
-            <span className="text-[13px] leading-[20px] font-medium tracking-[0.08em] text-vert uppercase">{dict.nav.blog}</span>
+            {/* Pas de label au-dessus du H1 : la maquette n'en a pas (le brief en mentionnait un). */}
             <h1 className="m-[0px] max-w-[520px] text-[clamp(26px,3.2vw,36px)] leading-[1.12] font-normal tracking-[-0.7px] text-encre text-balance">
               {t.title} <span className="text-vert">{t.titleHighlight}</span>
             </h1>
