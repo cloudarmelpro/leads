@@ -50,6 +50,10 @@
   --color-texte3: #646468;
   --color-texte-note: #6b7f79;
   --color-contour: #d9d9dc;
+  /* Page Prix : libellé de la bascule, croix « non inclus », piste de l'interrupteur. */
+  --color-texte-bascule: #3a3a3f;
+  --color-croix: #9a9aa0;
+  --color-piste: #c9c9ce;
 
   /* Une seule police (maquette Accueil) : DM Sans, graisses 400 / 500 / 700. */
   --font-display: var(--font-dm-sans), -apple-system, "Segoe UI", sans-serif;
@@ -103,6 +107,9 @@
   --color-texte3: #bfbfbf;
   --color-texte-note: #7e9a93;
   --color-contour: #0a3247;
+  --color-texte-bascule: #d6e2e6;
+  --color-croix: #54707d;
+  --color-piste: #3b5764;
 
   /* Alias shadcn */
   --color-background: #011823;

@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { GOUTTIERE } from "@/components/shared/container";
+import { HeroGrid } from "@/components/shared/hero-grid";
 import { WorldPings } from "@/features/home/components/world-pings";
 import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
@@ -10,7 +11,6 @@ type Props = { lang: Locale; dict: Dictionary };
 // Fondu des bords de la carte : le flanc gauche (vers le titre) et le bas s'estompent.
 const MAP_MASK =
   "linear-gradient(90deg, transparent 0%, #000 18%, #000 100%), linear-gradient(180deg, #000 0%, #000 90%, transparent 100%)";
-const GRID_MASK = "radial-gradient(48% 62% at 50% 38%, #000 0%, rgba(0,0,0,0.42) 54%, transparent 86%)";
 
 /**
  * Hero de la maquette Accueil : carte du monde en points ancrée à droite avec ses
@@ -25,12 +25,7 @@ export function Hero({ lang, dict }: Props) {
       id="accueil"
       className={`relative flex justify-center overflow-x-clip pt-[80px] pb-[72px] min-[620px]:min-h-[440px] min-[620px]:pt-[48px] min-[620px]:pb-[88px] min-[900px]:pt-[168px] min-[900px]:pb-[clamp(112px,16vw,240px)] ${GOUTTIERE}`}
     >
-      {/* Grille de fond, moitié basse, sous masque radial (sombre seulement : traits blancs). */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-x-[0px] top-[45%] bottom-[0px] z-0 hidden bg-[linear-gradient(rgba(255,255,255,0.028)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.028)_1px,transparent_1px)] bg-[size:40px_40px] bg-[position:center_top] dark:block"
-        style={{ maskImage: GRID_MASK, WebkitMaskImage: GRID_MASK }}
-      />
+      <HeroGrid />
 
       {/* Carte en points + points pulsés : 62 % du rail dès 860px (100 % atténué en dessous). */}
       <div aria-hidden className={`pointer-events-none absolute inset-[0px] hidden select-none min-[620px]:block ${GOUTTIERE}`}>
