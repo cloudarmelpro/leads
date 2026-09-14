@@ -1,7 +1,7 @@
 "use client";
 
 import Cal, { getCalApi } from "@calcom/embed-react";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 import { useTheme } from "@/lib/use-theme";
 
@@ -68,6 +68,23 @@ const CAL_VARS = {
  */
 export function CalcomInline({ calLink }: Props) {
   const { isDark } = useTheme();
+  const host = useRef<HTMLDivElement>(null);
+
+  // Le document Cal.com déborde de quelques pixels de son iframe (1040 pour 1034 de
+  // large) : Chromium affiche alors deux barres de défilement dans le calendrier.
+  // `scrolling="no"` sur l'iframe les supprime ; le débordement (un filet) est invisible.
+  useEffect(() => {
+    const root = host.current;
+    if (!root) return;
+    const quiet = () =>
+      root
+        .querySelectorAll("iframe")
+        .forEach((f) => f.setAttribute("scrolling", "no"));
+    quiet();
+    const observer = new MutationObserver(quiet);
+    observer.observe(root, { childList: true, subtree: true });
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     (async () => {
@@ -84,12 +101,14 @@ export function CalcomInline({ calLink }: Props) {
     // `config.theme` n'est lu qu'au chargement de l'iframe (l'API `ui` ne rebascule
     // pas le thème) : la clé force un remontage si l'utilisateur change de thème
     // pendant que le calendrier est affiché.
-    <Cal
-      key={isDark ? "dark" : "light"}
-      namespace={NAMESPACE}
-      calLink={calLink}
-      style={{ width: "100%", overflow: "hidden" }}
-      config={{ layout: "month_view", theme: isDark ? "dark" : "light" }}
-    />
+    <div ref={host}>
+      <Cal
+        key={isDark ? "dark" : "light"}
+        namespace={NAMESPACE}
+        calLink={calLink}
+        style={{ width: "100%", overflow: "hidden" }}
+        config={{ layout: "month_view", theme: isDark ? "dark" : "light" }}
+      />
+    </div>
   );
 }
