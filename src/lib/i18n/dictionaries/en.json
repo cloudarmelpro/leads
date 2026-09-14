@@ -12,7 +12,9 @@
     "soon": "soon",
     "tbd": "to confirm",
     "openMenu": "Open menu",
-    "skipToContent": "Skip to content"
+    "skipToContent": "Skip to content",
+    "welcomeBefore": "Welcome to",
+    "welcomeAfter": "Web"
   },
   "notFound": {
     "title": "Page not found",
@@ -164,7 +166,7 @@
     "items": [
       {
         "q": "How much does it cost?",
-        "a": "Every project is different. We start with a consultation to pin down your needs, then give you a clear price. A website starts at $1,000, a logo at $200, and hosting is $25 per month. All packages are detailed on our Pricing page."
+        "a": "Every project is different. We start with a consultation to understand your needs, then give you a clear price. A website starts at $499, a logo at $200, and hosting is $35 per month. Every plan is detailed on our Pricing page."
       },
       {
         "q": "How long does it take to build a site?",
@@ -297,428 +299,1858 @@
   },
   "pricing": {
     "meta": {
-      "title": "Pricing — Websites, logos and hosting | Talgasy Web",
-      "description": "Clear pricing, no surprises: website, logo and hosting packages for Québec small businesses. Every project starts with a free consultation."
+      "title": "Pricing — Website, logo, hosting and server plans | Talgasy Web",
+      "description": "Clear plans, from a first site to fully custom builds: websites, logo and brand, hosting and VPS servers. Compare line by line and book a free call."
     },
-    "heroTitleA": "Clear ",
-    "heroHighlight": "pricing",
-    "heroTitleB": ", no surprises.",
-    "heroSubtitle": "Every project is unique. Discover our packages for websites, logos and hosting.",
-    "cta": "Book a free call",
-    "viewPlans": "See the packages",
-    "kicker": "Pricing",
     "breadcrumb": "Pricing",
+    "heroTitleA": "Clear ",
+    "heroHighlight": "plans",
+    "heroTitleB": ", from your first site to fully custom.",
+    "heroSubtitle": "Websites, logo and brand, hosting and servers. Pick a family, then compare line by line.",
+    "cta": "Book a free call",
+    "viewPlans": "See the plans",
+    "kicker": "Plans",
     "labels": {
-      "compare": "Compare the packages",
-      "compareNote": "Each package includes everything in the previous one.",
-      "recommended": "Recommended",
+      "families": "Plan families",
+      "plansCount": "{n} plans",
+      "plansCountOne": "1 plan",
+      "rangesLabel": "Ranges",
+      "shownInTable": "Shown in the table",
+      "compareRange": "Compare this range",
+      "detailed": "Detailed comparison",
+      "diffOnly": "Show differences only",
+      "compare": "Compare the plans",
+      "allRows": "All rows are shown.",
+      "diffRows": "Only rows that differ are shown.",
+      "lines": "{n} rows",
+      "lineOne": "1 row",
       "book": "Book a call",
+      "bookShort": "Book",
       "included": "Included",
       "notIncluded": "Not included",
-      "pickPlan": "Choose a package"
+      "pickPlan": "Pick a plan",
+      "collapse": "Collapse",
+      "expand": "Expand"
     },
-    "site": {
-      "title": "Website",
-      "intro": "Every project is different. We start with a consultation to pin down your needs, then give you a clear price.",
-      "plans": [
-        {
-          "name": "Launch",
-          "short": "Launch",
-          "price": "$1,000",
-          "blurb": "Your online presence — 3 pages",
-          "featured": false
-        },
-        {
-          "name": "Essential Custom",
-          "short": "Custom",
-          "price": "$2,000",
-          "blurb": "A professional site — 5 pages",
-          "featured": true
-        },
-        {
-          "name": "Growth",
-          "short": "Growth",
-          "price": "$3,500",
-          "blurb": "A site that brings in clients — 10 pages",
-          "featured": false
-        }
-      ],
-      "groups": [
-        {
-          "title": "Site and content",
-          "rows": [
-            {
-              "label": "Pages included",
-              "cells": [
-                "3 pages",
-                "5 pages",
-                "10 pages"
-              ]
-            },
-            {
-              "label": "Colours, logo, copy and images adapted",
-              "cells": [
-                "y",
-                "y",
-                "y"
-              ]
-            },
-            {
-              "label": "French and English translation",
-              "cells": [
-                "y",
-                "y",
-                "y"
-              ]
-            },
-            {
-              "label": "Phone, tablet and desktop versions",
-              "cells": [
-                "y",
-                "y",
-                "y"
-              ]
-            },
-            {
-              "label": "Sitemap",
-              "cells": [
-                "y",
-                "y",
-                "y"
-              ]
-            },
-            {
-              "label": "Original UX/UI design",
-              "cells": [
-                "-",
-                "y",
-                "y"
-              ]
-            },
-            {
-              "label": "Architecture tailored to the business",
-              "cells": [
-                "-",
-                "y",
-                "y"
-              ]
-            },
-            {
-              "label": "Fully custom navigation",
-              "cells": [
-                "-",
-                "y",
-                "y"
-              ]
-            },
-            {
-              "label": "Sections built around the client’s services",
-              "cells": [
-                "-",
-                "y",
-                "y"
-              ]
-            },
-            {
-              "label": "Conversion-oriented architecture",
-              "cells": [
-                "-",
-                "-",
-                "y"
-              ]
-            },
-            {
-              "label": "Advanced sections to present your services",
-              "cells": [
-                "-",
-                "-",
-                "y"
-              ]
-            }
-          ]
-        },
-        {
-          "title": "Forms and security",
-          "rows": [
-            {
-              "label": "Contact form",
-              "cells": [
-                "Simple",
-                "With anti-spam protection",
-                "Advanced"
-              ]
-            },
-            {
-              "label": "Anti-spam protection",
-              "cells": [
-                "y",
-                "y",
-                "y"
-              ]
-            },
-            {
-              "label": "SSL security",
-              "cells": [
-                "y",
-                "y",
-                "y"
-              ]
-            }
-          ]
-        },
-        {
-          "title": "SEO and tracking",
-          "rows": [
-            {
-              "label": "Essential technical SEO",
-              "cells": [
-                "y",
-                "y",
-                "y"
-              ]
-            },
-            {
-              "label": "Essential metadata",
-              "cells": [
-                "y",
-                "y",
-                "y"
-              ]
-            },
-            {
-              "label": "On-page SEO",
-              "cells": [
-                "-",
-                "y",
-                "y"
-              ]
-            },
-            {
-              "label": "Google Analytics",
-              "cells": [
-                "-",
-                "y",
-                "y"
-              ]
-            },
-            {
-              "label": "Google Search Console",
-              "cells": [
-                "-",
-                "y",
-                "y"
-              ]
-            },
-            {
-              "label": "Local SEO",
-              "cells": [
-                "-",
-                "-",
-                "y"
-              ]
-            },
-            {
-              "label": "1 standard integration",
-              "cells": [
-                "-",
-                "-",
-                "y"
-              ]
-            },
-            {
-              "label": "Tracking of calls, forms and quote requests",
-              "cells": [
-                "-",
-                "-",
-                "y"
-              ]
-            },
-            {
-              "label": "Optimization of the main calls to action",
-              "cells": [
-                "-",
-                "-",
-                "y"
-              ]
-            }
-          ]
-        },
-        {
-          "title": "Delivery and support",
-          "rows": [
-            {
-              "label": "Domain connection",
-              "cells": [
-                "y",
-                "y",
-                "y"
-              ]
-            },
-            {
-              "label": "Go-live",
-              "cells": [
-                "y",
-                "y",
-                "y"
-              ]
-            },
-            {
-              "label": "Rounds of revisions",
-              "cells": [
-                "1",
-                "2",
-                "3"
-              ]
-            },
-            {
-              "label": "Handover and training",
-              "cells": [
-                "-",
-                "30 minutes",
-                "45 minutes"
-              ]
-            },
-            {
-              "label": "Corrective warranty",
-              "cells": [
-                "30 days",
-                "60 days",
-                "90 days"
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    "logo": {
-      "title": "Logo",
-      "intro": "We create professional logos tailored to your brand, with options that fit your needs.",
-      "plans": [
-        {
-          "name": "Logo Express",
-          "short": "Express",
-          "price": "$200",
-          "blurb": "",
-          "featured": false
-        },
-        {
-          "name": "Professional Logo",
-          "short": "Professional",
-          "price": "$650",
-          "blurb": "",
-          "featured": true
-        }
-      ],
-      "groups": [
-        {
-          "title": "Creation",
-          "rows": [
-            {
-              "label": "Production hours",
-              "cells": [
-                "Up to 3 hours",
-                "-"
-              ]
-            },
-            {
-              "label": "Creative directions",
-              "cells": [
-                "1",
-                "3"
-              ]
-            },
-            {
-              "label": "Colour palette",
-              "cells": [
-                "-",
-                "y"
-              ]
-            },
-            {
-              "label": "Typography selection",
-              "cells": [
-                "-",
-                "y"
-              ]
-            }
-          ]
-        },
-        {
-          "title": "Variations",
-          "rows": [
-            {
-              "label": "Colour version",
-              "cells": [
-                "y",
-                "-"
-              ]
-            },
-            {
-              "label": "Monochrome version",
-              "cells": [
-                "y",
-                "-"
-              ]
-            },
-            {
-              "label": "Horizontal, vertical and icon versions",
-              "cells": [
-                "-",
-                "y"
-              ]
-            },
-            {
-              "label": "Light and dark background versions",
-              "cells": [
-                "-",
-                "y"
-              ]
-            }
-          ]
-        },
-        {
-          "title": "Deliverables and revisions",
-          "rows": [
-            {
-              "label": "PNG, JPG and SVG files",
-              "cells": [
-                "y",
-                "-"
-              ]
-            },
-            {
-              "label": "Source files",
-              "cells": [
-                "-",
-                "y"
-              ]
-            },
-            {
-              "label": "Rounds of revisions",
-              "cells": [
-                "1",
-                "2"
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    "hosting": {
-      "title": "Hosting",
-      "intro": "A simple, reliable hosting solution to get your website online and keep it running.",
-      "name": "Hosting",
-      "blurb": "A simple, reliable solution to get your website online and keep it running.",
-      "price": "$25/month",
-      "features": [
-        "Site hosting",
-        "SSL certificate",
-        "Deployment",
-        "Versioning",
-        "Domain connection",
-        "Hosting infrastructure maintenance"
-      ]
-    }
+    "families": [
+      {
+        "key": "site",
+        "label": "Website",
+        "title": "Website",
+        "desc": "Every project is different. We start with a consultation, then give you a clear price.",
+        "plans": [
+          {
+            "name": "Express",
+            "price": "$499",
+            "meta": "3 pages"
+          },
+          {
+            "name": "Launch",
+            "price": "$999",
+            "meta": "3 pages"
+          },
+          {
+            "name": "Essential",
+            "price": "$1,999",
+            "meta": "Up to 5 pages"
+          },
+          {
+            "name": "Custom",
+            "price": "$3,999",
+            "meta": "Up to 7 pages"
+          },
+          {
+            "name": "Growth",
+            "price": "$5,500",
+            "meta": "Up to 10 pages"
+          },
+          {
+            "name": "Professional",
+            "price": "$7,500",
+            "meta": "Up to 15 pages"
+          },
+          {
+            "name": "Performance",
+            "price": "$10,000",
+            "meta": "Up to 20 pages"
+          },
+          {
+            "name": "Signature",
+            "price": "$15,000",
+            "meta": "Up to 30 pages"
+          },
+          {
+            "name": "Prestige",
+            "price": "$20,000",
+            "meta": "Up to 30 pages"
+          }
+        ],
+        "ranges": [
+          {
+            "title": "Starter",
+            "line": "A clean site, online fast.",
+            "range": "$499 – $1,999",
+            "plans": [
+              0,
+              1,
+              2
+            ]
+          },
+          {
+            "title": "Growth",
+            "line": "Custom build, CRM and content.",
+            "range": "$3,999 – $7,500",
+            "plans": [
+              3,
+              4,
+              5
+            ]
+          },
+          {
+            "title": "Enterprise",
+            "line": "Identity, automations, infrastructure.",
+            "range": "$10,000 – $20,000",
+            "plans": [
+              6,
+              7,
+              8
+            ]
+          }
+        ],
+        "groups": [
+          {
+            "title": "Design and build",
+            "rows": [
+              {
+                "label": "Pages included",
+                "cells": [
+                  "3",
+                  "3",
+                  "5",
+                  "7",
+                  "10",
+                  "15",
+                  "20",
+                  "30",
+                  "30"
+                ]
+              },
+              {
+                "label": "Design built from proven professional components",
+                "cells": [
+                  "-",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y"
+                ]
+              },
+              {
+                "label": "Advanced design customization",
+                "cells": [
+                  "-",
+                  "-",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y"
+                ]
+              },
+              {
+                "label": "Original UX/UI design",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "Premium"
+                ]
+              },
+              {
+                "label": "Fully custom design",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y"
+                ]
+              },
+              {
+                "label": "Custom development",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y"
+                ]
+              },
+              {
+                "label": "Responsive",
+                "cells": [
+                  "-",
+                  "Mobile and tablet",
+                  "Mobile, tablet and desktop",
+                  "Full",
+                  "Full",
+                  "Full",
+                  "Full",
+                  "Full",
+                  "Full"
+                ]
+              },
+              {
+                "label": "Conversion-oriented architecture",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y"
+                ]
+              }
+            ]
+          },
+          {
+            "title": "Brand and identity",
+            "rows": [
+              {
+                "label": "Professional logo included",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y"
+                ]
+              },
+              {
+                "label": "3 creative directions",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y"
+                ],
+                "sub": true
+              },
+              {
+                "label": "Horizontal, vertical and icon variants",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y"
+                ],
+                "sub": true
+              },
+              {
+                "label": "Colours and typefaces",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y"
+                ],
+                "sub": true
+              },
+              {
+                "label": "Logo source files",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y"
+                ],
+                "sub": true
+              },
+              {
+                "label": "Logo revision rounds",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "2",
+                  "2",
+                  "2",
+                  "2",
+                  "2"
+                ],
+                "sub": true
+              },
+              {
+                "label": "Full visual identity included",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "y",
+                  "y",
+                  "y"
+                ]
+              },
+              {
+                "label": "Mood board",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "y",
+                  "y",
+                  "y"
+                ],
+                "sub": true
+              },
+              {
+                "label": "Colour palette",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "y",
+                  "y",
+                  "y"
+                ],
+                "sub": true
+              },
+              {
+                "label": "Typefaces",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "y",
+                  "y",
+                  "y"
+                ],
+                "sub": true
+              },
+              {
+                "label": "Graphic elements",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "y",
+                  "y",
+                  "y"
+                ],
+                "sub": true
+              },
+              {
+                "label": "Iconography",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "y",
+                  "y",
+                  "y"
+                ],
+                "sub": true
+              },
+              {
+                "label": "Mini brand guide",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "y",
+                  "y",
+                  "y"
+                ],
+                "sub": true
+              },
+              {
+                "label": "Collateral templates",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "5",
+                  "5",
+                  "Corporate"
+                ],
+                "sub": true
+              },
+              {
+                "label": "Full rebranding included",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "y"
+                ]
+              },
+              {
+                "label": "Analysis of the existing brand",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "y"
+                ],
+                "sub": true
+              },
+              {
+                "label": "Strategy workshop",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "y"
+                ],
+                "sub": true
+              },
+              {
+                "label": "Brand positioning",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "y"
+                ],
+                "sub": true
+              },
+              {
+                "label": "Brand messaging",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "y"
+                ],
+                "sub": true
+              },
+              {
+                "label": "Complete logo redesign",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "y"
+                ],
+                "sub": true
+              },
+              {
+                "label": "New visual universe",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "y"
+                ],
+                "sub": true
+              },
+              {
+                "label": "Full brand guide",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "y"
+                ],
+                "sub": true
+              },
+              {
+                "label": "Launch preparation",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "y"
+                ],
+                "sub": true
+              }
+            ]
+          },
+          {
+            "title": "Features",
+            "rows": [
+              {
+                "label": "Contact form",
+                "cells": [
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y"
+                ]
+              },
+              {
+                "label": "Advanced anti-spam form",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y"
+                ]
+              },
+              {
+                "label": "Built-in Cal.com booking",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y"
+                ]
+              },
+              {
+                "label": "Integrations with external software",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "3",
+                  "5",
+                  "7",
+                  "10"
+                ]
+              },
+              {
+                "label": "Client or member area",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "y",
+                  "y"
+                ]
+              },
+              {
+                "label": "Custom workflows",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "y",
+                  "y"
+                ]
+              },
+              {
+                "label": "Automations between the site, the CRM and external software",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "y",
+                  "y",
+                  "y"
+                ]
+              },
+              {
+                "label": "Advanced automations",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "y",
+                  "y"
+                ]
+              },
+              {
+                "label": "Custom business features",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "y",
+                  "y"
+                ]
+              }
+            ]
+          },
+          {
+            "title": "CRM",
+            "rows": [
+              {
+                "label": "Custom CRM",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "y",
+                  "y",
+                  "y",
+                  "y"
+                ]
+              },
+              {
+                "label": "CRM users",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "1",
+                  "Up to 3",
+                  "Up to 5",
+                  "Up to 10"
+                ]
+              },
+              {
+                "label": "Lead and client management",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "y",
+                  "y",
+                  "y",
+                  "y"
+                ]
+              },
+              {
+                "label": "Custom sales pipeline",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "y",
+                  "y",
+                  "y",
+                  "y"
+                ]
+              },
+              {
+                "label": "CRM dashboard",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "y",
+                  "y",
+                  "y",
+                  "y"
+                ]
+              },
+              {
+                "label": "Forms connected to the CRM",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "y",
+                  "y",
+                  "y",
+                  "y"
+                ]
+              },
+              {
+                "label": "Custom dashboards",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "y",
+                  "y"
+                ]
+              },
+              {
+                "label": "CRM backups",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "y",
+                  "y",
+                  "y",
+                  "y"
+                ]
+              }
+            ]
+          },
+          {
+            "title": "Content",
+            "rows": [
+              {
+                "label": "Content integration",
+                "cells": [
+                  "Text, photos and logo supplied by the client",
+                  "Text, photos and logo",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y"
+                ]
+              },
+              {
+                "label": "CMS / blog",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "y",
+                  "y",
+                  "y",
+                  "y"
+                ]
+              },
+              {
+                "label": "Blog articles",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "24",
+                  "48",
+                  "48",
+                  "48"
+                ]
+              },
+              {
+                "label": "Publishing",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "2 / month · 12 months",
+                  "2 / month · 24 months",
+                  "2 / month · 24 months",
+                  "2 / month · 24 months"
+                ]
+              },
+              {
+                "label": "Preparation and review with the client",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "y",
+                  "y",
+                  "y",
+                  "y"
+                ]
+              },
+              {
+                "label": "Copywriting and optimization of the main pages",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "In-depth",
+                  "y"
+                ]
+              }
+            ]
+          },
+          {
+            "title": "SEO",
+            "rows": [
+              {
+                "label": "Basic SEO",
+                "cells": [
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y"
+                ]
+              },
+              {
+                "label": "Essential technical SEO",
+                "cells": [
+                  "-",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y"
+                ]
+              },
+              {
+                "label": "Technical SEO",
+                "cells": [
+                  "-",
+                  "-",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y"
+                ]
+              },
+              {
+                "label": "On-page SEO",
+                "cells": [
+                  "-",
+                  "-",
+                  "y",
+                  "Full",
+                  "Full",
+                  "Full",
+                  "Full",
+                  "Full",
+                  "Full"
+                ]
+              },
+              {
+                "label": "Advanced local SEO",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y"
+                ]
+              },
+              {
+                "label": "In-depth SEO architecture",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y"
+                ]
+              },
+              {
+                "label": "Advanced structured data",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "y",
+                  "y",
+                  "y",
+                  "y"
+                ]
+              }
+            ]
+          },
+          {
+            "title": "Tracking and measurement",
+            "rows": [
+              {
+                "label": "Google Analytics",
+                "cells": [
+                  "-",
+                  "-",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y"
+                ]
+              },
+              {
+                "label": "Google Search Console",
+                "cells": [
+                  "-",
+                  "-",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y"
+                ]
+              },
+              {
+                "label": "Google Tag Manager",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y"
+                ]
+              },
+              {
+                "label": "Conversion tracking",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "System",
+                  "y",
+                  "y",
+                  "y",
+                  "Full system"
+                ]
+              },
+              {
+                "label": "Form tracking",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y"
+                ],
+                "sub": true
+              },
+              {
+                "label": "Quote request tracking",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y"
+                ],
+                "sub": true
+              },
+              {
+                "label": "Booking tracking",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y"
+                ],
+                "sub": true
+              },
+              {
+                "label": "Phone interaction tracking",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y"
+                ],
+                "sub": true
+              },
+              {
+                "label": "Performance dashboard",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y"
+                ]
+              }
+            ]
+          },
+          {
+            "title": "Infrastructure",
+            "rows": [
+              {
+                "label": "SSL",
+                "cells": [
+                  "-",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y"
+                ]
+              },
+              {
+                "label": "Sitemap",
+                "cells": [
+                  "-",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y"
+                ]
+              },
+              {
+                "label": "Go-live",
+                "cells": [
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y"
+                ]
+              },
+              {
+                "label": "Site hosting",
+                "cells": [
+                  "12 months",
+                  "12 months",
+                  "12 months",
+                  "12 months",
+                  "12 months",
+                  "24 months",
+                  "24 months",
+                  "24 months",
+                  "24 months"
+                ]
+              },
+              {
+                "label": "KVM VPS included",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "KVM 1 · 24 months",
+                  "KVM 2 · 24 months",
+                  "KVM 4 · 24 months",
+                  "KVM 8 · 24 months"
+                ]
+              },
+              {
+                "label": "vCPU",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "1",
+                  "2",
+                  "4",
+                  "8"
+                ],
+                "sub": true
+              },
+              {
+                "label": "RAM",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "4 GB",
+                  "8 GB",
+                  "16 GB",
+                  "32 GB"
+                ],
+                "sub": true
+              },
+              {
+                "label": "NVMe storage",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "50 GB",
+                  "100 GB",
+                  "200 GB",
+                  "400 GB"
+                ],
+                "sub": true
+              }
+            ]
+          },
+          {
+            "title": "Delivery and support",
+            "rows": [
+              {
+                "label": "Revision rounds",
+                "cells": [
+                  "1",
+                  "2",
+                  "3",
+                  "3",
+                  "3",
+                  "4",
+                  "4",
+                  "4",
+                  "4"
+                ]
+              },
+              {
+                "label": "Training",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "45 minutes",
+                  "1 hour",
+                  "2 hours",
+                  "4 hours",
+                  "Full, for the team"
+                ]
+              },
+              {
+                "label": "Priority support",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "y",
+                  "y"
+                ]
+              },
+              {
+                "label": "Post-launch support",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "-",
+                  "y"
+                ]
+              },
+              {
+                "label": "Warranty",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "60 days",
+                  "90 days",
+                  "120 days",
+                  "180 days",
+                  "365 days",
+                  "365 days"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "logo",
+        "label": "Logo and brand",
+        "title": "Logo and brand",
+        "desc": "From a simple logo to a complete brand overhaul, with source files in every case.",
+        "plans": [
+          {
+            "name": "Express logo",
+            "price": "$200",
+            "meta": "1 proposal"
+          },
+          {
+            "name": "Professional logo",
+            "price": "$650",
+            "meta": "3 creative directions"
+          },
+          {
+            "name": "Visual identity",
+            "price": "$1,800",
+            "meta": "Brand system"
+          },
+          {
+            "name": "Full rebranding",
+            "price": "$5,500",
+            "meta": "Brand rethought"
+          }
+        ],
+        "ranges": [],
+        "groups": [
+          {
+            "title": "Creation",
+            "rows": [
+              {
+                "label": "Creative directions",
+                "cells": [
+                  "1 proposal",
+                  "3",
+                  "3",
+                  "Full redesign"
+                ]
+              },
+              {
+                "label": "Created from a clear idea or direction",
+                "cells": [
+                  "y",
+                  "y",
+                  "y",
+                  "y"
+                ]
+              },
+              {
+                "label": "Development of the chosen direction",
+                "cells": [
+                  "-",
+                  "y",
+                  "y",
+                  "y"
+                ]
+              },
+              {
+                "label": "Mood board",
+                "cells": [
+                  "-",
+                  "-",
+                  "y",
+                  "y"
+                ]
+              },
+              {
+                "label": "Art direction",
+                "cells": [
+                  "-",
+                  "-",
+                  "y",
+                  "Full"
+                ]
+              },
+              {
+                "label": "Analysis of the current brand",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "y"
+                ]
+              },
+              {
+                "label": "Audit of the existing identity",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "y"
+                ]
+              },
+              {
+                "label": "Strategy workshop with the client",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "y"
+                ]
+              },
+              {
+                "label": "Positioning work",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "y"
+                ]
+              },
+              {
+                "label": "Brand messaging work",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "y"
+                ]
+              }
+            ]
+          },
+          {
+            "title": "Logo and variants",
+            "rows": [
+              {
+                "label": "Primary logo",
+                "cells": [
+                  "-",
+                  "y",
+                  "y",
+                  "y"
+                ]
+              },
+              {
+                "label": "Horizontal, vertical and icon variants",
+                "cells": [
+                  "-",
+                  "y",
+                  "y",
+                  "y"
+                ]
+              },
+              {
+                "label": "Colour and black-and-white versions",
+                "cells": [
+                  "y",
+                  "y",
+                  "y",
+                  "y"
+                ]
+              },
+              {
+                "label": "New visual universe",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "y"
+                ]
+              }
+            ]
+          },
+          {
+            "title": "Brand system",
+            "rows": [
+              {
+                "label": "Colour palette",
+                "cells": [
+                  "-",
+                  "y",
+                  "Full",
+                  "Full"
+                ]
+              },
+              {
+                "label": "Typefaces",
+                "cells": [
+                  "-",
+                  "y",
+                  "Primary and secondary",
+                  "y"
+                ]
+              },
+              {
+                "label": "Graphic elements",
+                "cells": [
+                  "-",
+                  "-",
+                  "y",
+                  "y"
+                ]
+              },
+              {
+                "label": "Iconography",
+                "cells": [
+                  "-",
+                  "-",
+                  "y",
+                  "y"
+                ]
+              },
+              {
+                "label": "Mini brand usage guide",
+                "cells": [
+                  "-",
+                  "-",
+                  "y",
+                  "y"
+                ]
+              },
+              {
+                "label": "Full brand guide",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "y"
+                ]
+              },
+              {
+                "label": "Collateral templates",
+                "cells": [
+                  "-",
+                  "-",
+                  "5 of your choice",
+                  "Corporate"
+                ]
+              },
+              {
+                "label": "Adaptation of the main existing collateral",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "y"
+                ]
+              }
+            ]
+          },
+          {
+            "title": "Deliverables and revisions",
+            "rows": [
+              {
+                "label": "PNG, JPG and SVG files",
+                "cells": [
+                  "y",
+                  "y",
+                  "y",
+                  "y"
+                ]
+              },
+              {
+                "label": "Source files",
+                "cells": [
+                  "-",
+                  "y",
+                  "y",
+                  "Complete"
+                ]
+              },
+              {
+                "label": "Preparation of the new brand rollout",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "y"
+                ]
+              },
+              {
+                "label": "Launch support",
+                "cells": [
+                  "-",
+                  "-",
+                  "-",
+                  "y"
+                ]
+              },
+              {
+                "label": "Revision rounds",
+                "cells": [
+                  "1",
+                  "2",
+                  "3",
+                  "4"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "host",
+        "label": "Hosting",
+        "title": "Hosting",
+        "desc": "A simple, reliable way to get your website online and keep it running.",
+        "plans": [
+          {
+            "name": "Simple hosting",
+            "price": "$35 / month",
+            "meta": "No maintenance"
+          },
+          {
+            "name": "Hosting + maintenance",
+            "price": "$79 / month",
+            "meta": "Monitoring and fixes"
+          }
+        ],
+        "ranges": [],
+        "groups": [
+          {
+            "title": "What’s included",
+            "rows": [
+              {
+                "label": "Website hosting",
+                "cells": [
+                  "y",
+                  "y"
+                ]
+              },
+              {
+                "label": "SSL",
+                "cells": [
+                  "y",
+                  "y"
+                ]
+              },
+              {
+                "label": "Go-live",
+                "cells": [
+                  "y",
+                  "y"
+                ]
+              },
+              {
+                "label": "Standard infrastructure",
+                "cells": [
+                  "y",
+                  "y"
+                ]
+              },
+              {
+                "label": "Backups",
+                "cells": [
+                  "-",
+                  "y"
+                ]
+              },
+              {
+                "label": "Technical monitoring",
+                "cells": [
+                  "-",
+                  "y"
+                ]
+              },
+              {
+                "label": "Site maintenance",
+                "cells": [
+                  "-",
+                  "y"
+                ]
+              },
+              {
+                "label": "Technical fixes",
+                "cells": [
+                  "-",
+                  "y"
+                ]
+              },
+              {
+                "label": "Assistance when something breaks",
+                "cells": [
+                  "-",
+                  "y"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "vps",
+        "label": "VPS servers",
+        "title": "VPS servers",
+        "desc": "Dedicated servers to host an application or a CRM, managed end to end.",
+        "plans": [
+          {
+            "name": "VPS KVM 1",
+            "price": "$45 / month",
+            "meta": "1 vCPU · 4 GB"
+          },
+          {
+            "name": "VPS KVM 2",
+            "price": "$65 / month",
+            "meta": "2 vCPU · 8 GB"
+          },
+          {
+            "name": "VPS KVM 4",
+            "price": "$100 / month",
+            "meta": "4 vCPU · 16 GB"
+          },
+          {
+            "name": "VPS KVM 8",
+            "price": "$150 / month",
+            "meta": "8 vCPU · 32 GB"
+          }
+        ],
+        "ranges": [],
+        "groups": [
+          {
+            "title": "Resources",
+            "rows": [
+              {
+                "label": "Dedicated VPS server",
+                "cells": [
+                  "Dedicated",
+                  "Dedicated",
+                  "High performance",
+                  "High capacity"
+                ]
+              },
+              {
+                "label": "vCPU",
+                "cells": [
+                  "1",
+                  "2",
+                  "4",
+                  "8"
+                ]
+              },
+              {
+                "label": "RAM",
+                "cells": [
+                  "4 GB",
+                  "8 GB",
+                  "16 GB",
+                  "32 GB"
+                ]
+              },
+              {
+                "label": "NVMe storage",
+                "cells": [
+                  "50 GB",
+                  "100 GB",
+                  "200 GB",
+                  "400 GB"
+                ]
+              }
+            ]
+          },
+          {
+            "title": "Services",
+            "rows": [
+              {
+                "label": "Application / CRM hosting",
+                "cells": [
+                  "y",
+                  "y",
+                  "y",
+                  "y"
+                ]
+              },
+              {
+                "label": "SSL",
+                "cells": [
+                  "y",
+                  "y",
+                  "y",
+                  "y"
+                ]
+              },
+              {
+                "label": "Backups",
+                "cells": [
+                  "y",
+                  "y",
+                  "y",
+                  "y"
+                ]
+              },
+              {
+                "label": "Infrastructure management",
+                "cells": [
+                  "y",
+                  "y",
+                  "y",
+                  "y"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
   },
   "contactPage": {
     "meta": {

@@ -217,6 +217,27 @@ body {
   animation: fadein 180ms ease-out both;
 }
 
+/* Écran de bienvenue : balayage vert de gauche à droite sur le texte (clip-path)
+   et sur le monogramme (rectangle de découpe qui s'étire puis glisse). */
+@keyframes tw-wave-rect {
+  0% { transform: translateX(0) scaleX(0); }
+  38% { transform: translateX(0) scaleX(1); }
+  76%, 100% { transform: translateX(169px) scaleX(0); }
+}
+@keyframes tw-wave-text {
+  0% { clip-path: inset(0 100% 0 0); }
+  38% { clip-path: inset(0 0 0 0); }
+  76%, 100% { clip-path: inset(0 0 0 100%); }
+}
+@keyframes tw-lockup-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+/* Sortie du voile : fondu puis retrait du rendu, sans attendre JavaScript. */
+@keyframes tw-splash-out {
+  to { opacity: 0; visibility: hidden; }
+}
+
 /* Le mouvement fait partie du produit, mais jamais imposé : sous
    `prefers-reduced-motion`, toute animation/transition CSS devient instantanée
    (les animations GSAP vérifient `reducedMotion()` de leur côté). */

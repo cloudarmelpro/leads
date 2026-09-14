@@ -3,7 +3,8 @@ import { notFound } from "next/navigation";
 
 import { BreadcrumbLd } from "@/components/shared/breadcrumb-ld";
 import { features } from "@/config/site";
-import { PricingGroups, PricingHero } from "@/features/pricing";
+import { Faq } from "@/features/home";
+import { PricingExplorer, PricingHero } from "@/features/pricing";
 import { isLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { pageMetadata } from "@/lib/seo/metadata";
@@ -41,7 +42,8 @@ export default async function PricingPage({ params }: PageProps<"/[lang]/prix">)
         ]}
       />
       <PricingHero lang={lang} dict={dict} />
-      <PricingGroups lang={lang} dict={dict} />
+      <PricingExplorer lang={lang} dict={dict} />
+      <Faq dict={dict} />
     </>
   );
 }
