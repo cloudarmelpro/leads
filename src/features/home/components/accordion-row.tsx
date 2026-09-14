@@ -2,6 +2,8 @@
 
 import type { ReactNode } from "react";
 
+import { Collapsible } from "@/components/shared/collapsible";
+
 type Props = {
   id: string;
   open: boolean;
@@ -17,7 +19,8 @@ type Props = {
 /**
  * Ligne d'accordéon de la maquette (Méthode et FAQ) : carte à 16px de rayon, bouton
  * de 64px minimum, titre sur une ligne coupé par points de suspension quand fermé,
- * indicateur plus/moins (deux barres, celle du dessus pivote de 90° à 0° sur 300ms).
+ * indicateur plus/moins (deux barres, celle du dessus pivote de 90° à 0° sur 300ms) ;
+ * la réponse glisse à l'ouverture et à la fermeture sur la même durée.
  */
 export function AccordionRow({ id, open, onToggle, number, title, children, bodyIndent }: Props) {
   const panelId = `${id}-panel`;
@@ -54,17 +57,15 @@ export function AccordionRow({ id, open, onToggle, number, title, children, body
           </span>
         </button>
       </h3>
-      {open && (
-        <div id={panelId} role="region" aria-labelledby={buttonId}>
-          <p
-            className={`m-[0px] max-w-[760px] pr-[24px] pb-[22px] text-[15px] leading-[26px] font-normal text-texte2 text-pretty ${
-              bodyIndent === 60 ? "pl-[60px]" : "pl-[24px]"
-            }`}
-          >
-            {children}
-          </p>
-        </div>
-      )}
+      <Collapsible id={panelId} open={open} labelledBy={buttonId}>
+        <p
+          className={`m-[0px] max-w-[760px] pr-[24px] pb-[22px] text-[15px] leading-[26px] font-normal text-texte2 text-pretty ${
+            bodyIndent === 60 ? "pl-[60px]" : "pl-[24px]"
+          }`}
+        >
+          {children}
+        </p>
+      </Collapsible>
     </div>
   );
 }

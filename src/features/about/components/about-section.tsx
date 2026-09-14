@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useId, useState } from "react";
 
+import { Collapsible } from "@/components/shared/collapsible";
 import { GOUTTIERE } from "@/components/shared/container";
 import { SectionHead } from "@/components/shared/section-head";
 
@@ -26,7 +27,8 @@ const PHOTO_SHADE = "linear-gradient(180deg, rgba(1,24,35,0.12) 0%, rgba(1,24,35
  * Section « cartes + photo » de la page À propos : en-tête partagé, puis deux colonnes
  * égales (24px d'écart) — trois cartes en accordéon d'un côté, photo couvrante de
  * l'autre. Une seule carte ouverte à la fois, la première par défaut ; la carte entière
- * est cliquable, le titre est un bouton pour le clavier. Sous 620px : une colonne, la
+ * est cliquable, le titre est un bouton pour le clavier ; le texte glisse à l'ouverture
+ * et à la fermeture (300ms). Sous 620px : une colonne, la
  * photo passe après les cartes dans les deux sens.
  */
 export function AboutSection({ id, kicker, title, intro, introMax, items, photo, photoAlt, photoFirst = false }: Props) {
@@ -43,15 +45,17 @@ export function AboutSection({ id, kicker, title, intro, introMax, items, photo,
             {items.map((item, index) => {
               const isOpen = open === index;
               const panelId = `${baseId}-${index}`;
+              const buttonId = `${panelId}-button`;
               return (
                 <div
                   key={item.title}
                   onClick={() => setOpen(index)}
-                  className={`flex cursor-pointer flex-col gap-[10px] rounded-[16px] bg-surface pt-[22px] pr-[24px] pb-[22px] pl-[20px] transition-colors duration-[220ms] ease-[cubic-bezier(0.2,0.7,0.2,1)] ring-1 ring-ligne ring-inset dark:ring-0`}
+                  className={`flex cursor-pointer flex-col rounded-[16px] bg-surface pt-[22px] pr-[24px] pb-[22px] pl-[20px] transition-colors duration-[220ms] ease-[cubic-bezier(0.2,0.7,0.2,1)] ring-1 ring-ligne ring-inset dark:ring-0`}
                 >
                   <h3 className="m-[0px]">
                     <button
                       type="button"
+                      id={buttonId}
                       aria-expanded={isOpen}
                       aria-controls={panelId}
                       onClick={() => setOpen(index)}
@@ -66,11 +70,9 @@ export function AboutSection({ id, kicker, title, intro, introMax, items, photo,
                       <span className="text-[17px] leading-[24px] font-medium text-encre">{item.title}</span>
                     </button>
                   </h3>
-                  {isOpen && (
-                    <p id={panelId} className="m-[0px] pl-[14px] text-[15px] leading-[26px] font-normal text-texte2 text-pretty">
-                      {item.body}
-                    </p>
-                  )}
+                  <Collapsible id={panelId} open={isOpen} labelledBy={buttonId}>
+                    <p className="m-[0px] pt-[10px] pl-[14px] text-[15px] leading-[26px] font-normal text-texte2 text-pretty">{item.body}</p>
+                  </Collapsible>
                 </div>
               );
             })}
