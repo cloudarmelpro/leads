@@ -10,12 +10,12 @@ type Props = {
 
 /**
  * En-tête de section de la maquette : label vert + H2 à gauche (écart 2px),
- * paragraphe d'appui aligné à droite dès 860px, sous le titre et aligné à gauche
+ * paragraphe d'appui aligné à droite dès 620px, sous le titre et aligné à gauche
  * en dessous.
  */
 export function SectionHead({ id, label, title, intro, introMax = 380 }: Props) {
   return (
-    <div className="grid grid-cols-[minmax(0,1fr)] items-end gap-[24px] min-[860px]:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
+    <div className="grid grid-cols-[minmax(0,1fr)] items-end gap-[24px] min-[620px]:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
       <div className="flex flex-col gap-[2px]">
         <span
           id={id}
@@ -29,7 +29,7 @@ export function SectionHead({ id, label, title, intro, introMax = 380 }: Props) 
       </div>
       {intro && (
         <p
-          className="m-[0px] ml-auto text-[15px] leading-[26px] font-normal text-texte2 text-pretty min-[860px]:text-right"
+          className="m-[0px] ml-auto text-[15px] leading-[26px] font-normal text-texte2 text-pretty min-[620px]:text-right"
           style={{ maxWidth: introMax }}
         >
           {intro}

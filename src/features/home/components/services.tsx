@@ -10,14 +10,14 @@ type Props = { dict: Dictionary };
 // Une entrée par service, dans l'ordre du dictionnaire : glyphe, motif de fond et
 // place dans la grille de 10 colonnes (5 · 5 / 3 · 3 · 4 / 4 · 3 · 3).
 const CARDS = [
-  { Icon: Globe, motif: "svc-globe", span: "min-[1000px]:col-span-5" },
-  { Icon: RefreshCw, motif: "svc-rings", span: "min-[1000px]:col-span-5" },
-  { Icon: Layers, motif: "svc-stack", span: "min-[1000px]:col-span-3" },
-  { Icon: Mail, motif: "svc-mail", span: "min-[1000px]:col-span-3" },
-  { Icon: Blend, motif: "svc-identity", span: "min-[1000px]:col-span-4" },
-  { Icon: Box, motif: "svc-cube", span: "min-[1000px]:col-span-4" },
-  { Icon: Share2, motif: "svc-network", span: "min-[1000px]:col-span-3" },
-  { Icon: TrendingUp, motif: "svc-growth", span: "min-[1000px]:col-span-3" },
+  { Icon: Globe, motif: "svc-globe", span: "min-[760px]:col-span-5" },
+  { Icon: RefreshCw, motif: "svc-rings", span: "min-[760px]:col-span-5" },
+  { Icon: Layers, motif: "svc-stack", span: "min-[760px]:col-span-3" },
+  { Icon: Mail, motif: "svc-mail", span: "min-[760px]:col-span-3" },
+  { Icon: Blend, motif: "svc-identity", span: "min-[760px]:col-span-4" },
+  { Icon: Box, motif: "svc-cube", span: "min-[760px]:col-span-4" },
+  { Icon: Share2, motif: "svc-network", span: "min-[760px]:col-span-3" },
+  { Icon: TrendingUp, motif: "svc-growth", span: "min-[760px]:col-span-3" },
 ];
 
 const MOTIF_MASK = "linear-gradient(135deg, transparent 0%, rgba(0,0,0,0.35) 45%, #000 100%)";
@@ -35,7 +35,7 @@ export function Services({ dict }: Props) {
       <div className="flex w-full max-w-[1100px] flex-col gap-[48px]">
         <SectionHead id="services" label={t.kicker} title={`${t.titleA} ${t.titleB}`} intro={t.intro} />
 
-        <div className="grid grid-cols-[minmax(0,1fr)] items-stretch gap-[14px] min-[700px]:grid-cols-[repeat(2,minmax(0,1fr))] min-[1000px]:grid-cols-[repeat(10,minmax(0,1fr))]">
+        <div className="grid grid-cols-[minmax(0,1fr)] items-stretch gap-[14px] min-[700px]:grid-cols-[repeat(2,minmax(0,1fr))] min-[760px]:grid-cols-[repeat(10,minmax(0,1fr))]">
           {t.items.map((item, index) => {
             const card = CARDS[index];
             if (!card) return null;
@@ -51,7 +51,7 @@ export function Services({ dict }: Props) {
                   alt=""
                   aria-hidden
                   fill
-                  sizes="(max-width: 700px) 100vw, (max-width: 1000px) 50vw, 540px"
+                  sizes="(max-width: 700px) 100vw, (max-width: 760px) 50vw, 540px"
                   className="pointer-events-none object-cover object-right-bottom opacity-[0.42] mix-blend-screen transition-[opacity,filter] duration-[260ms] ease-[cubic-bezier(0.2,0.7,0.2,1)] select-none group-hover:opacity-85 group-hover:blur-[0.3px] motion-safe:will-change-[opacity,filter]"
                   style={{ maskImage: MOTIF_MASK, WebkitMaskImage: MOTIF_MASK }}
                 />

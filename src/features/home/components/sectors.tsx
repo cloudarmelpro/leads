@@ -21,7 +21,7 @@ const CARDS = [
 ];
 
 /**
- * Secteurs : sept cartes photo sur une grille de 4 colonnes (3 sous 900px, 2 sous
+ * Secteurs : sept cartes photo sur une grille de 4 colonnes (3 sous 760px, 2 sous
  * 620px), photo couvrante qui grossit au survol, dégradé de protection et libellé
  * en bas à gauche.
  */
@@ -33,7 +33,7 @@ export function Sectors({ dict }: Props) {
       <div className="flex w-full max-w-[1100px] flex-col gap-[48px]">
         <SectionHead id="secteurs" label={t.tradesKicker} title={t.tradesLabel} intro={t.demoCaption} />
 
-        <div className="grid auto-rows-[minmax(150px,auto)] grid-cols-[repeat(2,minmax(0,1fr))] gap-[14px] min-[620px]:auto-rows-[minmax(180px,auto)] min-[620px]:grid-cols-[repeat(3,minmax(0,1fr))] min-[900px]:auto-rows-[minmax(200px,auto)] min-[900px]:grid-cols-[repeat(4,minmax(0,1fr))]">
+        <div className="grid auto-rows-[minmax(150px,auto)] grid-cols-[repeat(2,minmax(0,1fr))] gap-[14px] min-[620px]:auto-rows-[minmax(180px,auto)] min-[620px]:grid-cols-[repeat(3,minmax(0,1fr))] min-[760px]:auto-rows-[minmax(200px,auto)] min-[760px]:grid-cols-[repeat(4,minmax(0,1fr))]">
           {t.demos.map((demo, index) => {
             const card = CARDS[index];
             if (!card) return null;
@@ -47,7 +47,7 @@ export function Sectors({ dict }: Props) {
                   src={`/images/home/${card.photo}.jpg`}
                   alt={demo.imgLabel}
                   fill
-                  sizes="(max-width: 620px) 50vw, (max-width: 900px) 33vw, 540px"
+                  sizes="(max-width: 620px) 50vw, (max-width: 760px) 33vw, 540px"
                   className="object-cover transition-transform duration-[600ms] ease-[cubic-bezier(0.2,0.7,0.2,1)] group-hover:scale-[1.04]"
                 />
                 <span aria-hidden className="absolute inset-[0px] block bg-[linear-gradient(180deg,rgba(1,24,35,0)_40%,rgba(1,24,35,0.88)_100%)]" />

@@ -43,7 +43,7 @@ const COORD = "text-[14px] leading-[26px] font-normal text-texte3 no-underline t
 /**
  * Pied de page de la maquette Accueil : filet haut, logo + description + réseaux à
  * gauche, puis trois colonnes (Plan du site, Ressources, Coordonnées). Deux colonnes
- * sous 1020px, une seule sous 620px. Barre du bas : copyright et liens légaux.
+ * sous 760px, une seule sous 620px. Barre du bas : copyright et liens légaux.
  */
 export function Footer({ lang, dict }: Props) {
   const plan = [
@@ -68,7 +68,7 @@ export function Footer({ lang, dict }: Props) {
       className={`relative flex justify-center overflow-hidden border-t border-ligne pt-[clamp(40px,6vw,80px)] pb-[32px] ${GOUTTIERE}`}
     >
       <div className="relative w-full max-w-[1100px]">
-        <div className="grid grid-cols-[minmax(0,1fr)] items-start gap-[28px] min-[620px]:grid-cols-[repeat(2,minmax(0,1fr))] min-[1020px]:grid-cols-[minmax(0,1fr)_130px_130px_max-content]">
+        <div className="grid grid-cols-[minmax(0,1fr)] items-start gap-[28px] min-[620px]:grid-cols-[repeat(2,minmax(0,1fr))] min-[760px]:grid-cols-[minmax(0,1fr)_130px_130px_max-content]">
           <div className="flex flex-col gap-[26px]">
             <Logo height={30} />
             <p className="m-[0px] max-w-[280px] text-[14px] leading-[24px] font-normal text-texte2 text-pretty">

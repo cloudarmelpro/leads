@@ -24,7 +24,7 @@ export function Cta({ dict }: Props) {
     <section className={`relative flex justify-center pb-[clamp(112px,16vw,240px)] ${GOUTTIERE}`}>
       <div
         id="contact"
-        className="relative grid w-full max-w-[1100px] grid-cols-[minmax(0,1fr)] items-center gap-[40px] overflow-hidden rounded-[32px] bg-surface ring-1 ring-ligne ring-inset dark:ring-0 px-[clamp(28px,5vw,72px)] py-[clamp(40px,5vw,72px)] min-[860px]:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]"
+        className="relative grid w-full max-w-[1100px] grid-cols-[minmax(0,1fr)] items-center gap-[40px] overflow-hidden rounded-[32px] bg-surface ring-1 ring-ligne ring-inset dark:ring-0 px-[clamp(28px,5vw,72px)] py-[clamp(40px,5vw,72px)] min-[620px]:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]"
       >
         <Image
           src="/images/home/cta-bg-v2.jpg"
@@ -52,7 +52,7 @@ export function Cta({ dict }: Props) {
           <p className="m-[0px] max-w-[440px] text-[15px] leading-[26px] font-normal text-texte2 text-pretty">{t.body}</p>
         </div>
 
-        <div className="relative flex w-full max-w-[360px] flex-col items-start gap-[18px] min-[860px]:justify-self-end">
+        <div className="relative flex w-full max-w-[360px] flex-col items-start gap-[18px] min-[620px]:justify-self-end">
           <ActionLink
             href={telHref(site.phone)}
             unavailableLabel={`${t.callLabel} — ${phone}`}

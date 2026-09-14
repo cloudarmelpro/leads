@@ -23,15 +23,15 @@ export function Hero({ lang, dict }: Props) {
   return (
     <section
       id="accueil"
-      className={`relative flex justify-center overflow-x-clip pt-[80px] pb-[72px] min-[620px]:min-h-[440px] min-[620px]:pt-[48px] min-[620px]:pb-[88px] min-[900px]:pt-[168px] min-[900px]:pb-[clamp(112px,16vw,240px)] ${GOUTTIERE}`}
+      className={`relative flex justify-center overflow-x-clip pt-[168px] pb-[clamp(112px,16vw,240px)] min-[620px]:min-h-[440px] ${GOUTTIERE}`}
     >
       <HeroGrid />
 
-      {/* Carte en points + points pulsés : 62 % du rail dès 860px (100 % atténué en dessous). */}
+      {/* Carte en points + points pulsés : 62 % du rail dès 620px (100 % atténué en dessous). */}
       <div aria-hidden className={`pointer-events-none absolute inset-[0px] hidden select-none min-[620px]:block ${GOUTTIERE}`}>
         <div className="mx-auto h-full w-full max-w-[1100px]">
           <div
-            className="relative ml-auto mr-[-4.5%] h-full w-full opacity-50 min-[860px]:w-[62%] min-[860px]:opacity-100"
+            className="relative ml-auto mr-[-4.5%] h-full w-full opacity-50 min-[620px]:w-[62%] min-[620px]:opacity-100"
             style={{ maskImage: MAP_MASK, maskComposite: "intersect", WebkitMaskImage: MAP_MASK, WebkitMaskComposite: "source-in" }}
           >
             {/* Le SVG sert de masque : la couleur des points suit le thème. */}
@@ -44,10 +44,10 @@ export function Hero({ lang, dict }: Props) {
       </div>
 
       <div className="relative z-[1] flex w-full max-w-[1100px] flex-col items-start gap-[24px]">
-        <h1 className="m-[0px] max-w-[720px] text-[clamp(24px,3.2vw,34px)] leading-[1.15] font-normal tracking-[-1px] text-encre uppercase text-pretty min-[860px]:max-w-[min(720px,54%)]">
+        <h1 className="m-[0px] max-w-[720px] text-[clamp(24px,3.2vw,34px)] leading-[1.15] font-normal tracking-[-1px] text-encre uppercase text-pretty min-[620px]:max-w-[min(720px,54%)]">
           {t.titleA} <span className="text-vert">{t.titleB}</span>
         </h1>
-        <p className="m-[0px] max-w-[560px] text-[15px] leading-[26px] font-normal text-texte2 text-pretty min-[860px]:max-w-[min(560px,46%)]">
+        <p className="m-[0px] max-w-[560px] text-[15px] leading-[26px] font-normal text-texte2 text-pretty min-[620px]:max-w-[min(560px,46%)]">
           {t.subtitle}
         </p>
         <div className="flex flex-wrap items-center gap-[12px]">

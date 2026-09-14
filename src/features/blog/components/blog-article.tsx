@@ -48,7 +48,7 @@ export async function BlogArticle({ post, lang }: Props) {
         ]}
       />
 
-      <section className={`relative flex justify-center overflow-x-clip pt-[64px] min-[620px]:pt-[56px] min-[900px]:pt-[72px] ${GOUTTIERE}`}>
+      <section className={`relative flex justify-center overflow-x-clip pt-[72px] ${GOUTTIERE}`}>
         <HeroGrid />
         <div className="relative z-[1] flex w-full max-w-[760px] flex-col items-start gap-[18px]">
           {back}

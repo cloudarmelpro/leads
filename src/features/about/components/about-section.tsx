@@ -16,7 +16,7 @@ type Props = {
   items: Item[];
   photo: string;
   photoAlt: string;
-  /** Photo à gauche dès 860px (Principes) ; sinon cartes à gauche (Notre histoire). */
+  /** Photo à gauche dès 620px (Principes) ; sinon cartes à gauche (Notre histoire). */
   photoFirst?: boolean;
 };
 
@@ -26,7 +26,7 @@ const PHOTO_SHADE = "linear-gradient(180deg, rgba(1,24,35,0.12) 0%, rgba(1,24,35
  * Section « cartes + photo » de la page À propos : en-tête partagé, puis deux colonnes
  * égales (24px d'écart) — trois cartes en accordéon d'un côté, photo couvrante de
  * l'autre. Une seule carte ouverte à la fois, la première par défaut ; la carte entière
- * est cliquable, le titre est un bouton pour le clavier. Sous 860px : une colonne, la
+ * est cliquable, le titre est un bouton pour le clavier. Sous 620px : une colonne, la
  * photo passe après les cartes dans les deux sens.
  */
 export function AboutSection({ id, kicker, title, intro, introMax, items, photo, photoAlt, photoFirst = false }: Props) {
@@ -38,7 +38,7 @@ export function AboutSection({ id, kicker, title, intro, introMax, items, photo,
       <div className="flex w-full max-w-[1100px] flex-col gap-[48px]">
         <SectionHead id={id} label={kicker} title={title} intro={intro} introMax={introMax} />
 
-        <div className="grid grid-cols-[minmax(0,1fr)] items-stretch gap-[24px] min-[860px]:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+        <div className="grid grid-cols-[minmax(0,1fr)] items-stretch gap-[24px] min-[620px]:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
           <div className="flex flex-col gap-[12px]">
             {items.map((item, index) => {
               const isOpen = open === index;
@@ -77,9 +77,9 @@ export function AboutSection({ id, kicker, title, intro, introMax, items, photo,
           </div>
 
           <div
-            className={`relative min-h-[320px] overflow-hidden rounded-[24px] bg-surface ${photoFirst ? "order-last min-[860px]:order-first" : ""}`}
+            className={`relative min-h-[320px] overflow-hidden rounded-[24px] bg-surface ${photoFirst ? "order-last min-[620px]:order-first" : ""}`}
           >
-            <Image src={photo} alt={photoAlt} fill sizes="(max-width: 860px) 100vw, 540px" className="object-cover" />
+            <Image src={photo} alt={photoAlt} fill sizes="(max-width: 620px) 100vw, 540px" className="object-cover" />
             <span aria-hidden className="absolute inset-[0px] block" style={{ background: PHOTO_SHADE }} />
           </div>
         </div>
