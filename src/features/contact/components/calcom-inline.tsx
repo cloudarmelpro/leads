@@ -88,7 +88,7 @@ export function CalcomInline({ calLink }: Props) {
       key={isDark ? "dark" : "light"}
       namespace={NAMESPACE}
       calLink={calLink}
-      style={{ width: "100%", height: "100%", overflow: "auto" }}
+      style={{ width: "100%", overflow: "hidden" }}
       config={{ layout: "month_view", theme: isDark ? "dark" : "light" }}
     />
   );

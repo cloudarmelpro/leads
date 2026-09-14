@@ -63,7 +63,7 @@ export function BookingModal({ dict, calLink, onClose }: Props) {
   return (
     <div
       onClick={onClose}
-      className="fixed inset-[0px] z-[92] flex items-center justify-center bg-fond/72 p-[clamp(16px,4vw,40px)] backdrop-blur-[6px] motion-safe:[animation:tw-veil-in_220ms_cubic-bezier(0.2,0.7,0.2,1)_both]"
+      className="fixed inset-[0px] z-[92] flex items-center justify-center bg-fond/72 p-[clamp(16px,4vw,40px)] motion-safe:[animation:tw-veil-in_220ms_cubic-bezier(0.2,0.7,0.2,1)_both]"
     >
       <div
         ref={panel}
@@ -93,9 +93,10 @@ export function BookingModal({ dict, calLink, onClose }: Props) {
 
         {calLink ? (
           // Le visiteur vient de lire l'avis et de cliquer : l'embed se charge d'emblée.
-          // Panneau élargi à 1100px et hauteur bornée : Cal.com se déploie à l'horizontale
-          // (mois à gauche, créneaux à droite) sans défilement interne.
-          <div className="h-[min(620px,calc(86vh-170px))] min-h-[420px]">
+          // Panneau élargi à 1100px : Cal.com se déploie à l'horizontale (mois à gauche,
+          // créneaux à droite). L'iframe prend la hauteur de son contenu, le conteneur ne
+          // défile jamais : aucune barre interne, le panneau seul défile si l'écran est bas.
+          <div className="overflow-hidden">
             <CalcomEmbed calLink={calLink} dict={dict} initiallyLoaded />
           </div>
         ) : (
