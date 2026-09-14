@@ -1,68 +1,74 @@
 import Link from "next/link";
 
-import { CONTENEUR } from "@/components/shared/container";
-import { Reveal } from "@/components/shared/reveal";
-import { SplitReveal } from "@/components/shared/split-reveal";
-import { HeroStreaks } from "@/components/shared/hero-streaks";
-import { HeroMap } from "@/features/home/components/hero-map";
+import { GOUTTIERE } from "@/components/shared/container";
+import { WorldPings } from "@/features/home/components/world-pings";
 import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 
 type Props = { lang: Locale; dict: Dictionary };
 
+// Fondu des bords de la carte : le flanc gauche (vers le titre) et le bas s'estompent.
+const MAP_MASK =
+  "linear-gradient(90deg, transparent 0%, #000 18%, #000 100%), linear-gradient(180deg, #000 0%, #000 90%, transparent 100%)";
+const GRID_MASK = "radial-gradient(48% 62% at 50% 38%, #000 0%, rgba(0,0,0,0.42) 54%, transparent 86%)";
+
+/**
+ * Hero de la maquette Accueil : carte du monde en points ancrée à droite avec ses
+ * points pulsés, grille fine dans la moitié basse, H1 en majuscules (seconde phrase
+ * en vert), paragraphe d'appui et deux boutons. La carte est masquée sous 620px.
+ */
 export function Hero({ lang, dict }: Props) {
   const t = dict.hero;
 
   return (
     <section
       id="accueil"
-      className="relative z-0 -mt-[4.8125rem] flex min-h-[calc(100svh-140px)] overflow-x-clip pt-[5.25rem] pb-[clamp(20px,3vw,40px)]"
+      className={`relative flex justify-center overflow-x-clip pt-[80px] pb-[72px] min-[620px]:min-h-[440px] min-[620px]:pt-[48px] min-[620px]:pb-[88px] min-[900px]:pt-[168px] min-[900px]:pb-[clamp(112px,16vw,240px)] ${GOUTTIERE}`}
     >
-      <HeroStreaks />
+      {/* Grille de fond, moitié basse, sous masque radial (sombre seulement : traits blancs). */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-[0px] top-[45%] bottom-[0px] z-0 hidden bg-[linear-gradient(rgba(255,255,255,0.028)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.028)_1px,transparent_1px)] bg-[size:40px_40px] bg-[position:center_top] dark:block"
+        style={{ maskImage: GRID_MASK, WebkitMaskImage: GRID_MASK }}
+      />
 
-      <div className={`${CONTENEUR} relative flex w-full flex-col items-start justify-center gap-6`}>
-        {/* Carte du monde en points, « signature » du hero (nœud Québec, arcs animés). */}
-        <HeroMap />
+      {/* Carte en points + points pulsés : 62 % du rail dès 860px (100 % atténué en dessous). */}
+      <div aria-hidden className={`pointer-events-none absolute inset-[0px] hidden select-none min-[620px]:block ${GOUTTIERE}`}>
+        <div className="mx-auto h-full w-full max-w-[1100px]">
+          <div
+            className="relative ml-auto mr-[-4.5%] h-full w-full opacity-50 min-[860px]:w-[62%] min-[860px]:opacity-100"
+            style={{ maskImage: MAP_MASK, maskComposite: "intersect", WebkitMaskImage: MAP_MASK, WebkitMaskComposite: "source-in" }}
+          >
+            {/* Le SVG sert de masque : la couleur des points suit le thème. */}
+            <div
+              className="absolute inset-[0px] bg-[#3a4a52] opacity-[0.34] dark:bg-[#bfd0d6] [mask-image:url(/world-dots.svg)] [mask-position:right_center] [mask-repeat:no-repeat] [mask-size:contain]"
+            />
+            <WorldPings />
+          </div>
+        </div>
+      </div>
 
-        <SplitReveal
-          as="h1"
-          scroll={false}
-          delay={0.1}
-          className="m-0 max-w-[720px] lg:max-w-[min(720px,60%)] font-display text-[clamp(1.5rem,4vw,2.375rem)] leading-[1.143] font-normal tracking-[-1.2px] text-encre text-pretty uppercase"
-        >
-          {t.titleA}{" "}
-          <span className="text-emeraude dark:text-accent-strong">{t.titleB}</span>
-        </SplitReveal>
-
-        <SplitReveal
-          as="p"
-          scroll={false}
-          delay={0.28}
-          className="m-0 max-w-[642px] lg:max-w-[min(642px,55%)] text-body-fluid font-normal text-texte2 text-pretty"
-        >
+      <div className="relative z-[1] flex w-full max-w-[1100px] flex-col items-start gap-[24px]">
+        <h1 className="m-[0px] max-w-[720px] text-[clamp(24px,3.2vw,34px)] leading-[1.15] font-normal tracking-[-1px] text-encre uppercase text-pretty min-[860px]:max-w-[min(720px,54%)]">
+          {t.titleA} <span className="text-vert">{t.titleB}</span>
+        </h1>
+        <p className="m-[0px] max-w-[560px] text-[15px] leading-[26px] font-normal text-texte2 text-pretty min-[860px]:max-w-[min(560px,46%)]">
           {t.subtitle}
-        </SplitReveal>
-
-        <Reveal
-          as="div"
-          scroll={false}
-          delay={0.5}
-          stagger={0.12}
-          className="flex flex-wrap items-center gap-3"
-        >
+        </p>
+        <div className="flex flex-wrap items-center gap-[12px]">
           <Link
             href={`/${lang}/contact`}
-            className="rounded-[9px] bg-emeraude px-3.5 py-2 sm:px-4 sm:py-2.5 text-cta-fluid font-medium text-white no-underline hover:bg-sapin dark:bg-accent-strong dark:text-fond dark:hover:bg-[#7fefc0]"
+            className="rounded-[9px] bg-vert px-[16px] py-[10px] text-[14px] leading-[20px] font-medium whitespace-nowrap text-sur-vert no-underline transition-colors hover:bg-vert-clair"
           >
             {t.ctaBook}
           </Link>
           <Link
             href={`/${lang}/a-propos`}
-            className="rounded-[9px] px-3.5 py-2 sm:px-4 sm:py-2.5 text-cta-fluid font-medium text-encre no-underline shadow-[inset_0_0_0_1px_var(--color-encre)] hover:bg-encre/[0.08]"
+            className="rounded-[9px] bg-surface-2 px-[16px] py-[10px] text-[14px] leading-[20px] font-medium whitespace-nowrap text-encre no-underline transition-colors hover:bg-surface-3"
           >
             {dict.nav.about}
           </Link>
-        </Reveal>
+        </div>
       </div>
     </section>
   );

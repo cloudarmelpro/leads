@@ -56,8 +56,6 @@
     "subtitle": "Talgasy Web builds professional websites, structured to convert — so your customers call you, not your competitor.",
     "tradesKicker": "Sectors",
     "tradesLabel": "What sector are you in?",
-    "tradesCta": "Let’s talk about your project",
-    "tradesCardTitle": "Don’t see your trade? We adapt to your field.",
     "ctaBook": "Book a free call",
     "demoCaption": "This preview changes with your trade. Your site will speak to your customers — in their words.",
     "demos": [
@@ -95,7 +93,7 @@
     "kicker": "Services",
     "titleA": "What we do,",
     "titleB": "concretely",
-    "intro": "Four clear services, built for Québec businesses and shops.",
+    "intro": "Eight clear services, built for Québec businesses and shops.",
     "items": [
       {
         "name": "Website creation",
@@ -112,6 +110,22 @@
       {
         "name": "Professional email addresses",
         "note": "An email on your own domain changes everything — instead of a generic Gmail, your customers see an established, serious business that earns trust from the very first exchange."
+      },
+      {
+        "name": "Logo and brand identity",
+        "note": "From a standalone logo to a full identity: creative directions, variants, palette, typefaces and source files. A complete rebrand is possible, with a brand guide and launch preparation."
+      },
+      {
+        "name": "VPS servers",
+        "note": "For an application or a CRM that needs more than a showcase site: 1 to 8 vCPUs, 4 to 32 GB of RAM and NVMe storage, managed and monitored on our side."
+      },
+      {
+        "name": "CRM and automations",
+        "note": "A CRM in your image: leads, sales pipeline, dashboard and connected forms. Automations link the site, the CRM and your external software."
+      },
+      {
+        "name": "Blog and SEO content",
+        "note": "Built-in CMS, articles written and published on a regular cadence, reviewed with you. Content is structured for local search from day one."
       }
     ]
   },
@@ -162,7 +176,7 @@
     "kicker": "FAQ",
     "titleA": "Your questions,",
     "titleB": "straight up",
-    "intro": "Have questions before starting your project? Here are the answers to the most common ones. If yours isn’t here, contact us — we reply fast.",
+    "intro": "Have questions before starting your project?",
     "items": [
       {
         "q": "How much does it cost?",
@@ -199,15 +213,14 @@
     ]
   },
   "final": {
-    "kicker": "Contact",
-    "titleA": "Ready to",
-    "titleB": "get started",
-    "subtitle": "One consultation is enough to define your need and get your project started.",
-    "rdv": "Book your consultation"
+    "title": "Your next contract starts with a phone call.",
+    "body": "One consultation is enough to pin down your need. No commitment.",
+    "callLabel": "Call us",
+    "note": "Reply within 24 hours, Monday to Friday."
   },
   "footer": {
-    "description": "Talgasy Web builds professional, bilingual websites in Québec — structured to turn your visitors into calls.",
-    "navTitle": "Navigation",
+    "description": "Talgasy Web builds professional, bilingual websites in Québec — built to turn your visitors into calls.",
+    "navTitle": "Site map",
     "coordTitle": "Contact details",
     "social": {
       "facebook": "Facebook",
@@ -215,7 +228,8 @@
       "linkedin": "LinkedIn"
     },
     "legal2": "Privacy (Law 25)",
-    "rights": "All rights reserved"
+    "rights": "All rights reserved",
+    "resourcesTitle": "Resources"
   },
   "cookies": {
     "kicker": "Cookies",
@@ -227,15 +241,7 @@
     "manage": "Manage my cookies"
   },
   "floating": {
-    "aria": "Open the contact module",
-    "eyebrow": "Contact · FR / EN",
-    "sheetTitle": "Talk to us",
-    "sheetSub": "A real person replies.",
-    "rowCall": "Call now",
-    "rowWaSub": "Fast reply",
-    "rowMessengerSub": "Facebook messaging",
-    "rowRdv": "Book an appointment",
-    "rowRdvSub": "Cal.com — pick your slot"
+    "aria": "Call Talgasy Web"
   },
   "blog": {
     "meta": {

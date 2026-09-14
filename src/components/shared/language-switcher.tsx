@@ -9,20 +9,17 @@ import { localeLabels, locales, type Locale } from "@/lib/i18n/config";
 type Props = {
   current: Locale;
   label: string;
-  /** Classe d'affichage (défaut `inline-flex`) — permet au header de le masquer sous 380px. */
+  /** `pill` (en-tête : fond surélevé, rayon 9px) ou `plain` (menu mobile : texte seul). */
+  variant?: "pill" | "plain";
   className?: string;
 };
 
 /**
- * Sélecteur de langue (design refonte) : 🌐 + langue courante + chevron. Bascule
+ * Sélecteur de langue (maquette Accueil) : globe + langue courante + chevron. Bascule
  * par CHEMIN (`/fr/...` ↔ `/en/...`) — chaque langue garde son URL / canonical /
  * hreflang (exigence SEO). Le site étant bilingue, un clic bascule vers l'autre langue.
  */
-export function LanguageSwitcher({
-  current,
-  label,
-  className = "inline-flex",
-}: Props) {
+export function LanguageSwitcher({ current, label, variant = "pill", className = "" }: Props) {
   const pathname = usePathname();
   const other = locales.find((locale) => locale !== current) ?? current;
 
@@ -33,18 +30,21 @@ export function LanguageSwitcher({
     return segments.join("/") || `/${locale}`;
   };
 
-  const color = "text-encre hover:text-emeraude dark:hover:text-accent-strong";
+  const look =
+    variant === "pill"
+      ? "rounded-[9px] bg-surface-2 px-[10px] text-encre hover:bg-surface-3"
+      : "text-encre hover:text-vert";
 
   return (
     <Link
       href={pathFor(other)}
       hrefLang={other}
       aria-label={`${label} — ${localeLabels[other]}`}
-      className={`tap-44 ${className} items-center gap-1.5 text-sm font-medium no-underline transition-colors ${color}`}
+      className={`tap-44 inline-flex h-[34px] items-center gap-[6px] text-[13px] leading-[20px] font-medium whitespace-nowrap no-underline transition-colors duration-200 ease-[cubic-bezier(0.2,0.7,0.2,1)] ${look} ${className}`}
     >
-      <Globe size={16} strokeWidth={2} aria-hidden />
+      <Globe size={16} strokeWidth={1.8} aria-hidden />
       <span>{localeLabels[current]}</span>
-      <ChevronDown size={14} strokeWidth={2} aria-hidden />
+      <ChevronDown size={13} strokeWidth={2.4} aria-hidden />
     </Link>
   );
 }

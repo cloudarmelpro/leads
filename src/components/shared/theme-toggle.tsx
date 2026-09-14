@@ -7,14 +7,16 @@ import { useTheme } from "@/lib/use-theme";
 type Props = {
   label: string;
   optionLabels: { system: string; light: string; dark: string };
+  /** `square` (en-tête, rayon 9px) ou `round` (menu mobile, pastille). */
+  shape?: "square" | "round";
 };
 
 /**
- * Bascule de thème (design refonte) : un seul bouton rond vert. Affiche le soleil
- * en mode sombre (clic → clair) et la lune en mode clair (clic → sombre). Bascule
- * clair ↔ sombre à 2 états (l'option « système » n'est pas exposée, conforme au design).
+ * Bascule de thème (maquette Accueil) : bouton vert 34×34, soleil en sombre
+ * (clic → clair), lune en clair (clic → sombre). Deux états ; « système » n'est pas
+ * exposé, conformément à la maquette.
  */
-export function ThemeToggle({ label, optionLabels }: Props) {
+export function ThemeToggle({ label, optionLabels, shape = "square" }: Props) {
   const { isDark, setTheme } = useTheme();
   const next = isDark ? "light" : "dark";
   const Icon = isDark ? Sun : Moon;
@@ -25,9 +27,11 @@ export function ThemeToggle({ label, optionLabels }: Props) {
       onClick={() => setTheme(next)}
       aria-label={`${label} — ${optionLabels[next]}`}
       title={optionLabels[next]}
-      className="tap-44 inline-flex size-7 cursor-pointer items-center justify-center rounded-full bg-emeraude text-white transition-colors hover:bg-emeraude/90 dark:bg-accent-strong dark:text-fond dark:hover:bg-accent-strong/90"
+      className={`tap-44 inline-flex h-[34px] w-[34px] shrink-0 cursor-pointer items-center justify-center bg-vert text-sur-vert transition-colors duration-200 ease-[cubic-bezier(0.2,0.7,0.2,1)] hover:bg-vert-clair ${
+        shape === "round" ? "rounded-full" : "rounded-[9px]"
+      }`}
     >
-      <Icon size={16} strokeWidth={2} aria-hidden />
+      <Icon size={17} strokeWidth={2} aria-hidden />
     </button>
   );
 }

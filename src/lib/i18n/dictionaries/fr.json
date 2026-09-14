@@ -56,8 +56,6 @@
     "subtitle": "Talgasy Web conçoit des sites web professionnels, structurés pour convertir — pour que vos clients vous appellent, pas votre compétiteur.",
     "tradesKicker": "Secteurs",
     "tradesLabel": "Dans quel secteur d’activité êtes-vous ?",
-    "tradesCta": "Discutons de votre projet",
-    "tradesCardTitle": "Votre secteur n’est pas listé ? On s’adapte à votre métier.",
     "ctaBook": "Réserver un appel gratuit",
     "demoCaption": "Cet aperçu change selon votre métier. Votre site parlera à vos clients — dans leurs mots.",
     "demos": [
@@ -95,7 +93,7 @@
     "kicker": "Services",
     "titleA": "Ce qu’on fait,",
     "titleB": "concrètement",
-    "intro": "Quatre services clairs, pensés pour les entreprises et commerces du Québec.",
+    "intro": "Huit services clairs, pensés pour les entreprises et commerces du Québec.",
     "items": [
       {
         "name": "Création de site web",
@@ -112,6 +110,22 @@
       {
         "name": "Adresses courriel professionnelles",
         "note": "Un courriel à votre nom de domaine, ça change tout — au lieu d’un Gmail générique, vos clients voient une entreprise établie, sérieuse, qui inspire confiance dès le premier échange."
+      },
+      {
+        "name": "Logo et identité de marque",
+        "note": "Du logo seul à l’identité complète : pistes créatives, variantes, palette, typographies et fichiers sources. Une refonte de marque au complet est possible, avec guide et préparation du lancement."
+      },
+      {
+        "name": "Serveurs VPS",
+        "note": "Pour une application ou un CRM qui demande plus qu’un site vitrine : de 1 à 8 vCPU, 4 à 32 Go de RAM et du stockage NVMe, gérés et surveillés de notre côté."
+      },
+      {
+        "name": "CRM et automatisations",
+        "note": "Un CRM à votre image : prospects, pipeline de vente, tableau de bord et formulaires connectés. Les automatisations relient le site, le CRM et vos logiciels externes."
+      },
+      {
+        "name": "Blogue et contenu SEO",
+        "note": "CMS intégré, articles rédigés et publiés à cadence régulière, révisés avec vous. Le contenu est structuré pour le référencement local dès la mise en ligne."
       }
     ]
   },
@@ -162,7 +176,7 @@
     "kicker": "FAQ",
     "titleA": "Vos questions,",
     "titleB": "sans détour",
-    "intro": "Vous avez des questions avant de démarrer votre projet ? Voici les réponses aux plus fréquentes. Si la vôtre n’y figure pas, contactez-nous — nous répondons rapidement.",
+    "intro": "Vous avez des questions avant de démarrer votre projet ?",
     "items": [
       {
         "q": "Combien ça coûte ?",
@@ -199,15 +213,14 @@
     ]
   },
   "final": {
-    "kicker": "Contact",
-    "titleA": "Prêt à",
-    "titleB": "commencer",
-    "subtitle": "Une consultation suffit pour déterminer votre besoin et débuter votre projet.",
-    "rdv": "Réserver votre consultation"
+    "title": "Votre prochain contrat commence par un appel.",
+    "body": "Une consultation suffit pour cerner votre besoin. Sans engagement.",
+    "callLabel": "Appelez-nous",
+    "note": "Réponse en moins de 24 h, du lundi au vendredi."
   },
   "footer": {
-    "description": "Talgasy Web conçoit des sites web professionnels et bilingues au Québec — structurés pour transformer vos visiteurs en appels.",
-    "navTitle": "Navigation",
+    "description": "Talgasy Web conçoit des sites web professionnels et bilingues au Québec — construits pour transformer vos visiteurs en appels.",
+    "navTitle": "Plan du site",
     "coordTitle": "Coordonnées",
     "social": {
       "facebook": "Facebook",
@@ -215,7 +228,8 @@
       "linkedin": "LinkedIn"
     },
     "legal2": "Confidentialité (Loi 25)",
-    "rights": "Tous droits réservés"
+    "rights": "Tous droits réservés",
+    "resourcesTitle": "Ressources"
   },
   "cookies": {
     "kicker": "Témoins",
@@ -227,15 +241,7 @@
     "manage": "Gérer mes témoins"
   },
   "floating": {
-    "aria": "Ouvrir le module de contact",
-    "eyebrow": "Contact · FR / EN",
-    "sheetTitle": "Parlez-nous",
-    "sheetSub": "Une vraie personne vous répond.",
-    "rowCall": "Appeler maintenant",
-    "rowWaSub": "Réponse rapide",
-    "rowMessengerSub": "Messagerie Facebook",
-    "rowRdv": "Prendre rendez-vous",
-    "rowRdvSub": "Cal.com — choisissez votre créneau"
+    "aria": "Appeler Talgasy Web"
   },
   "blog": {
     "meta": {

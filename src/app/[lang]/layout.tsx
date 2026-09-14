@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist_Mono, Outfit, Plus_Jakarta_Sans } from "next/font/google";
+import { DM_Sans, Geist_Mono } from "next/font/google";
 import { notFound } from "next/navigation";
 
 import "../globals.css";
@@ -19,16 +19,11 @@ import { pageMetadata } from "@/lib/seo/metadata";
 
 import { setRequestLocale } from "@/lib/i18n/request-locale";
 
-// Typographie de la maquette Figma : Outfit pour les grands titres (h1/h2),
-// Plus Jakarta Sans pour le corps et les titres secondaires. Deux polices
-// variables Google Fonts.
-const outfit = Outfit({
-  variable: "--font-outfit",
+// Police unique de la maquette « Accueil » : DM Sans (400 / 500 / 600 / 700).
+const dmSans = DM_Sans({
+  variable: "--font-dm-sans",
   subsets: ["latin", "latin-ext"],
-});
-const plusJakarta = Plus_Jakarta_Sans({
-  variable: "--font-jakarta",
-  subsets: ["latin", "latin-ext"],
+  weight: ["400", "500", "600", "700"],
 });
 // Accent monospace (boutons, coordonnées) — conservé.
 const geistMono = Geist_Mono({
@@ -69,7 +64,7 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[la
   return (
     <html
       lang={localeHtmlLang[lang]}
-      className={`${outfit.variable} ${plusJakarta.variable} ${geistMono.variable}`}
+      className={`${dmSans.variable} ${geistMono.variable}`}
       // Le script inline pose `.dark` sur <html> avant l'hydratation (script de
       // thème) → on ignore la différence de className.
       suppressHydrationWarning

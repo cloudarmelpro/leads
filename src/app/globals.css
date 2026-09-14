@@ -36,12 +36,24 @@
      - accent-strong : émeraude en TEXTE/icône (plus lumineuse en sombre). */
   --color-surface: #ffffff;
   --color-surface-2: #f5f5f6;
+  --color-surface-3: #e8e8ea;
   --color-ink: #0f1d17;
   --color-accent-strong: #177e4f;
 
-  /* Titres (h1/h2) : Outfit. Corps + titres secondaires : Plus Jakarta Sans. */
-  --font-display: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
-  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+  /* Jetons de la maquette « Accueil » (valeurs sombres littérales dans `.dark`) :
+     - vert / vert-clair : bouton plein et son survol ; sur-vert : texte posé dessus.
+     - texte3 : liens du pied de page ; texte-note : mention sous le bouton d'appel.
+     - contour : bordure des boutons contournés du menu mobile. */
+  --color-vert: #177e4f;
+  --color-vert-clair: #14402f;
+  --color-sur-vert: #ffffff;
+  --color-texte3: #646468;
+  --color-texte-note: #6b7f79;
+  --color-contour: #d9d9dc;
+
+  /* Une seule police (maquette Accueil) : DM Sans, graisses 400 / 500 / 700. */
+  --font-display: var(--font-dm-sans), -apple-system, "Segoe UI", sans-serif;
+  --font-sans: var(--font-dm-sans), -apple-system, "Segoe UI", sans-serif;
   --font-serif: ui-serif, Georgia, serif;
   --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
@@ -77,12 +89,20 @@
 .dark {
   --color-fond: #011823;
   --color-surface: #011b28;
-  --color-surface-2: #012232;
+  --color-surface-2: #01293c;
   --color-encre: #ffffff;
-  --color-texte2: #bfbfbf;
+  --color-texte2: #a9bcc4;
   --color-ligne: #012232;
   --color-menthe: #04283a;
   --color-accent-strong: #30d98c;
+  --color-surface-3: #083d53;
+
+  --color-vert: #30d98c;
+  --color-vert-clair: #7fefc0;
+  --color-sur-vert: #011823;
+  --color-texte3: #bfbfbf;
+  --color-texte-note: #7e9a93;
+  --color-contour: #0a3247;
 
   /* Alias shadcn */
   --color-background: #011823;
@@ -113,8 +133,14 @@ html {
 /* L'en-tête n'est PAS collant (il défile avec la page) : pas besoin de réserver sa
    hauteur. La section a déjà un généreux padding haut ; on ajoute juste un petit
    décalage pour un cadrage propre près du haut (le carrousel précédent ne dépasse pas). */
-section[id] {
-  scroll-margin-top: 40px;
+/* Ancres de la page (sections et libellés de section) : 72px sous le haut. */
+section[id],
+[id="services"],
+[id="secteurs"],
+[id="methode"],
+[id="faq"],
+[id="contact"] {
+  scroll-margin-top: 72px;
 }
 
 /* Sur mobile, le bandeau témoins est une barre pleine largeur en bas : on masque
@@ -215,6 +241,16 @@ body {
 }
 @utility animate-fadein {
   animation: fadein 180ms ease-out both;
+}
+
+/* Carte du hero : halo des villes (1,6 → 5,1 px) et du nœud de Québec (3,2 → 7,7 px). */
+@keyframes tw-ping {
+  from { r: 1.6px; opacity: 0.65; }
+  to { r: 5.1px; opacity: 0; }
+}
+@keyframes tw-hub {
+  from { r: 3.2px; opacity: 0.5; }
+  to { r: 7.7px; opacity: 0; }
 }
 
 /* Écran de bienvenue : balayage vert de gauche à droite sur le texte (clip-path)

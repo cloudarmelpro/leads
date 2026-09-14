@@ -1,13 +1,12 @@
 /**
- * Le conteneur de page — récupéré du site maldia (site-web), valeurs exactes.
- *
- * La gouttière est POSÉE DANS la boîte, pas autour : `max-width` ET `padding` sur
- * le MÊME élément. Poser la gouttière sur la section puis plafonner l'intérieur
- * décalerait la colonne sur très grand écran. Un seul endroit : header, sections
- * et pied partagent cette largeur (1240px) et cette gouttière (16 → 56px).
+ * Le rail de page de la maquette « Accueil » : 1100px centrés, gouttière
+ * `clamp(16px, 4vw, 56px)` posée sur le MÊME élément que le `max-width`
+ * (la poser sur la section puis plafonner l'intérieur décalerait la colonne sur
+ * très grand écran). Header, sections et pied partagent cette largeur.
  *
  * Les sections ne portent donc QUE le rythme vertical ; jamais de `px-*`.
  */
-// Plancher à 1rem (et non 1.25rem) : à 320px, les 8px récupérés font la différence
-// entre un burger atteignable et un en-tête qui déborde du viewport.
-export const CONTENEUR = "mx-auto w-full max-w-[77.5rem] px-[clamp(1rem,4vw,3.5rem)]";
+export const CONTENEUR = "mx-auto w-full max-w-[1100px] px-[clamp(16px,4vw,56px)]";
+
+/** Gouttière seule, pour les rares éléments qui la posent sur la section (en-tête). */
+export const GOUTTIERE = "px-[clamp(16px,4vw,56px)]";

@@ -1,43 +1,52 @@
+"use client";
 
-import { CONTENEUR } from "@/components/shared/container";
-import { Eyebrow } from "@/components/shared/eyebrow";
-import { SplitReveal } from "@/components/shared/split-reveal";
-import { MethodAccordion } from "@/features/home/components/method-accordion";
+import { useId, useState } from "react";
+
+import { GOUTTIERE } from "@/components/shared/container";
+import { AccordionRow } from "@/features/home/components/accordion-row";
+import { SectionHead } from "@/features/home/components/section-head";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 
 type Props = { dict: Dictionary };
 
 /**
- * Section « Comment on travaille » (design refonte) : titre + intro à GAUCHE,
- * accordéon des étapes à DROITE (numéros verts).
- * Ouverture/fermeture et flèches animées (GSAP) dans `MethodAccordion`.
+ * Méthode : six étapes numérotées en accordéon, quatre dans la colonne de gauche et
+ * deux à droite (une seule colonne sous 760px). Une seule étape ouverte à la fois,
+ * la première par défaut ; chaque colonne garde sa hauteur propre.
  */
 export function Method({ dict }: Props) {
+  const [open, setOpen] = useState(0);
+  const baseId = useId();
   const t = dict.method;
 
-  return (
-    <section id="methode" className="pb-[clamp(80px,14vw,200px)]">
-      <div className={`${CONTENEUR} grid grid-cols-1 gap-x-16 gap-y-9 md:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] md:items-start`}>
-        {/* Titre + intro à gauche. */}
-        <div>
-          <p className="mb-1">
-            <Eyebrow>{t.kicker}</Eyebrow>
-          </p>
-          <SplitReveal as="h2" className="font-display text-[clamp(1.5rem,4vw,2.375rem)] leading-[1.143] font-normal tracking-[-1.2px] text-balance">
-            {t.titleA} {t.titleB}
-          </SplitReveal>
-          <SplitReveal
-            as="p"
-            delay={0.1}
-            className="mt-5 max-w-[42ch] text-body-fluid text-texte2 text-pretty"
-          >
-            {t.intro}
-          </SplitReveal>
-        </div>
+  const columns = [t.steps.slice(0, 4), t.steps.slice(4)];
 
-        {/* Accordéon des étapes à droite. */}
-        <div>
-          <MethodAccordion steps={t.steps} />
+  return (
+    <section className={`relative flex justify-center pb-[clamp(112px,16vw,240px)] ${GOUTTIERE}`}>
+      <div className="flex w-full max-w-[1100px] flex-col gap-[48px]">
+        <SectionHead id="methode" label={t.kicker} title={`${t.titleA} ${t.titleB}`} intro={t.intro} introMax={420} />
+
+        <div className="grid grid-cols-[minmax(0,1fr)] items-start gap-[10px] min-[760px]:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+          {columns.map((steps, col) => (
+            <div key={col} className="flex flex-col gap-[10px]">
+              {steps.map((step) => {
+                const index = t.steps.indexOf(step);
+                return (
+                  <AccordionRow
+                    key={step.n}
+                    id={`${baseId}-step-${index}`}
+                    open={open === index}
+                    onToggle={() => setOpen(open === index ? -1 : index)}
+                    number={step.n.padStart(2, "0")}
+                    title={step.title}
+                    bodyIndent={60}
+                  >
+                    {step.desc}
+                  </AccordionRow>
+                );
+              })}
+            </div>
+          ))}
         </div>
       </div>
     </section>

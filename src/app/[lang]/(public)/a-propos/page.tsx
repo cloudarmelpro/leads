@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { BreadcrumbLd } from "@/components/shared/breadcrumb-ld";
 import { PageHero } from "@/components/shared/page-hero";
 import { Principles, Story, Team } from "@/features/about";
-import { FinalCta } from "@/features/home";
+import { Cta } from "@/features/home";
 import { isLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { pageMetadata } from "@/lib/seo/metadata";
@@ -45,7 +45,7 @@ export default async function AboutPage({ params }: PageProps<"/[lang]/a-propos"
       <Principles dict={dict} />
       <Team dict={dict} />
       {/* Même bandeau d'appel à l'action que l'accueil (dictionnaire `final`). */}
-      <FinalCta lang={lang} dict={dict} />
+      <Cta dict={dict} />
     </>
   );
 }
