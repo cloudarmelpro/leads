@@ -1,4 +1,5 @@
 import { GOUTTIERE } from "@/components/shared/container";
+import { HeroGrid } from "@/components/shared/hero-grid";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 
 type Props = { dict: Dictionary };
@@ -6,15 +7,16 @@ type Props = { dict: Dictionary };
 /**
  * Hero de la page À propos (maquette) : titre en casse normale avec coupure de ligne
  * forcée et mot-clé en vert, paragraphe, bouton de 38px vers le bandeau d'appel de la
- * page. Aucun fond propre : seuls les halos de page partagés. Padding haut
+ * page. Fond = référence Accueil (halos de page + grille du hero). Padding haut
  * 120 / 64 / 96px selon la largeur, bas 140 / 96 / 72px.
  */
 export function AboutHero({ dict }: Props) {
   const t = dict.about;
 
   return (
-    <section className={`relative flex justify-center pt-[96px] pb-[72px] min-[620px]:pt-[64px] min-[620px]:pb-[96px] min-[900px]:pt-[120px] min-[900px]:pb-[140px] ${GOUTTIERE}`}>
-      <div className="relative flex w-full max-w-[1100px] flex-col items-start gap-[22px]">
+    <section className={`relative flex justify-center overflow-x-clip pt-[96px] pb-[72px] min-[620px]:pt-[64px] min-[620px]:pb-[96px] min-[900px]:pt-[120px] min-[900px]:pb-[140px] ${GOUTTIERE}`}>
+      <HeroGrid />
+      <div className="relative z-[1] flex w-full max-w-[1100px] flex-col items-start gap-[22px]">
         <h1 className="m-[0px] max-w-[680px] text-[clamp(26px,3.2vw,36px)] leading-[1.12] font-normal tracking-[-0.7px] text-encre text-pretty">
           {t.heroTitleA}
           <br />

@@ -30,7 +30,7 @@ export function ContactPageContent({ lang, dict }: Props) {
   return (
     <>
       <section className={`relative flex justify-center overflow-x-clip pt-[96px] pb-[72px] min-[620px]:pt-[64px] min-[620px]:pb-[96px] min-[900px]:pt-[120px] min-[900px]:pb-[140px] ${GOUTTIERE}`}>
-        <HeroGrid top={40} />
+        <HeroGrid />
         <div className="relative z-[1] flex w-full max-w-[1100px] flex-col items-start gap-[22px]">
           <h1 className="m-[0px] max-w-[680px] text-[clamp(26px,3.2vw,36px)] leading-[1.12] font-normal tracking-[-0.7px] text-encre text-pretty">
             {t.title} <span className="text-vert">{t.titleHighlight}</span>

@@ -35,7 +35,7 @@ export async function BlogIndex({ lang }: Props) {
       />
 
       <section className={`relative flex justify-center overflow-x-clip pt-[96px] pb-[80px] min-[620px]:pt-[64px] min-[620px]:pb-[104px] min-[900px]:pt-[120px] min-[900px]:pb-[clamp(112px,16vw,160px)] ${GOUTTIERE}`}>
-        <HeroGrid top={30} />
+        <HeroGrid />
         <div className={`relative z-[1] grid w-full max-w-[1100px] grid-cols-[minmax(0,1fr)] items-end gap-[36px] min-[900px]:gap-[48px] ${featured ? "min-[900px]:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]" : ""}`}>
           <div className="flex flex-col items-start gap-[20px]">
             <span className="text-[13px] leading-[20px] font-medium tracking-[0.08em] text-vert uppercase">{dict.nav.blog}</span>
