@@ -250,7 +250,6 @@
     },
     "title": "Idées &",
     "titleHighlight": "conseils",
-    "subtitle": "Des articles concrets pour attirer plus de clients avec votre site web.",
     "heroIntro": "Des articles concrets pour attirer plus de clients avec votre site web. Conversion, référencement local, contenu : ce qu’on applique chez nos clients, expliqué sans jargon.",
     "topics": [
       "Conversion",
@@ -260,15 +259,14 @@
     ],
     "filterAll": "Tous",
     "featured": "À la une",
-    "emptyKicker": "À venir",
-    "readArticle": "Lire l’article",
     "minRead": "min de lecture",
     "writtenBy": "Écrit par",
     "backToBlog": "Retour au blog",
     "moreArticles": "Autres articles",
     "listSubtitle": "D’autres lectures pour tirer le meilleur de votre site web.",
-    "emptyTitle": "Les premiers articles arrivent bientôt.",
-    "emptyBody": "On prépare des conseils concrets pour attirer plus de clients avec votre site web. Revenez bientôt — ou écrivez-nous en attendant."
+    "relatedKicker": "À lire ensuite",
+    "relatedTitle": "Dans la même idée",
+    "articleCta": "Faire regarder mon site"
   },
   "about": {
     "meta": {

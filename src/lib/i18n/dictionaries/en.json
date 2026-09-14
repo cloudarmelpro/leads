@@ -250,7 +250,6 @@
     },
     "title": "Ideas &",
     "titleHighlight": "advice",
-    "subtitle": "Practical articles to attract more customers with your website.",
     "heroIntro": "Practical articles to win more customers with your website. Conversion, local SEO, content: what we apply for our clients, explained without jargon.",
     "topics": [
       "Conversion",
@@ -260,15 +259,14 @@
     ],
     "filterAll": "All",
     "featured": "Featured",
-    "emptyKicker": "Coming soon",
-    "readArticle": "Read the article",
     "minRead": "min read",
     "writtenBy": "Written by",
     "backToBlog": "Back to the blog",
     "moreArticles": "More articles",
     "listSubtitle": "More reads to get the most out of your website.",
-    "emptyTitle": "The first articles are coming soon.",
-    "emptyBody": "We’re preparing practical tips to attract more customers with your website. Check back soon — or reach out in the meantime."
+    "relatedKicker": "Read next",
+    "relatedTitle": "Along the same lines",
+    "articleCta": "Have my site reviewed"
   },
   "about": {
     "meta": {

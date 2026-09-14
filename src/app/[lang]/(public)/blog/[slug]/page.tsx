@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
+import { PageHalos } from "@/components/shared/page-halos";
 import { site } from "@/config/site";
 import { BlogArticle, getAllSlugs, getPost } from "@/features/blog";
 import { isLocale, locales } from "@/lib/i18n/config";
@@ -41,5 +42,11 @@ export default async function Page({ params }: PageProps<"/[lang]/blog/[slug]">)
   const post = getPost(lang, slug);
   if (!post) notFound();
 
-  return <BlogArticle post={post} lang={lang} />;
+  return (
+    // Pas de `relative` : les halos se calent sur <body> et passent sous l'en-tête.
+    <div>
+      <PageHalos />
+      <BlogArticle post={post} lang={lang} />
+    </div>
+  );
 }

@@ -1,14 +1,15 @@
 // Masques radiaux des maquettes : Accueil, Prix et Contact partagent le même ; le Blog,
-// dont la grille part plus haut (30 %), a le sien.
+// dont la grille part plus haut (30 %), a le sien ; l'article la fait courir sur tout le hero.
 const MASKS = {
+  0: "radial-gradient(60% 70% at 50% 20%, #000 0%, rgba(0,0,0,0.35) 55%, transparent 88%)",
   30: "radial-gradient(52% 64% at 50% 34%, #000 0%, rgba(0,0,0,0.42) 54%, transparent 86%)",
   40: "radial-gradient(48% 62% at 50% 38%, #000 0%, rgba(0,0,0,0.42) 54%, transparent 86%)",
   45: "radial-gradient(48% 62% at 50% 38%, #000 0%, rgba(0,0,0,0.42) 54%, transparent 86%)",
 } as const;
-const TOP = { 30: "top-[30%]", 40: "top-[40%]", 45: "top-[45%]" } as const;
+const TOP = { 0: "top-[0px]", 30: "top-[30%]", 40: "top-[40%]", 45: "top-[45%]" } as const;
 
 type Props = {
-  /** Départ de la grille, en pourcentage de la hauteur de la section (45 par défaut ; 40 Contact, 30 Blog). */
+  /** Départ de la grille, en pourcentage de la hauteur de la section (45 par défaut ; 40 Contact, 30 Blog, 0 article). */
   top?: keyof typeof MASKS;
 };
 

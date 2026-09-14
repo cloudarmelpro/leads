@@ -2,7 +2,8 @@ type Props = {
   id?: string;
   label: string;
   title: string;
-  intro: string;
+  /** Paragraphe d'appui à droite ; absent sur le bloc « À lire ensuite » de l'article. */
+  intro?: string;
   /** Largeur maximale du paragraphe d'appui en px (380 par défaut ; 420 Méthode/FAQ, 460 À propos). */
   introMax?: number;
 };
@@ -26,12 +27,14 @@ export function SectionHead({ id, label, title, intro, introMax = 380 }: Props) 
           {title}
         </h2>
       </div>
-      <p
-        className="m-[0px] ml-auto text-[15px] leading-[26px] font-normal text-texte2 text-pretty min-[860px]:text-right"
-        style={{ maxWidth: introMax }}
-      >
-        {intro}
-      </p>
+      {intro && (
+        <p
+          className="m-[0px] ml-auto text-[15px] leading-[26px] font-normal text-texte2 text-pretty min-[860px]:text-right"
+          style={{ maxWidth: introMax }}
+        >
+          {intro}
+        </p>
+      )}
     </div>
   );
 }

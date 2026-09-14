@@ -56,6 +56,8 @@
   --color-piste: #c9c9ce;
   /* Page Contact : contour et texte d'erreur des champs (rouge doux, contraste 4,5:1 en sombre). */
   --color-erreur: #c0362c;
+  /* Corps des articles de blog (17px/30px) : gris encre en clair, #c6d5db en sombre. */
+  --color-prose: #4a5560;
 
   /* Une seule police (maquette Accueil) : DM Sans, graisses 400 / 500 / 700. */
   --font-display: var(--font-dm-sans), -apple-system, "Segoe UI", sans-serif;
@@ -113,6 +115,7 @@
   --color-croix: #54707d;
   --color-piste: #3b5764;
   --color-erreur: #ff8f7a;
+  --color-prose: #c6d5db;
 
   /* Alias shadcn */
   --color-background: #011823;

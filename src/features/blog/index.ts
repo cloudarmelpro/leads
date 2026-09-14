@@ -1,6 +1,6 @@
 /** Surface publique de la feature `blog`. */
 
-export { getPosts, getPost, getAllSlugs, coverSrc } from "./mock-posts";
+export { getPosts, getPost, getAllSlugs, getRelatedPosts } from "./mock-posts";
 export type { Post, Block } from "./mock-posts";
 
 export { PostMeta } from "./components/post-meta";

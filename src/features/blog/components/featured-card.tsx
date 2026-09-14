@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { coverSrc, type Post } from "@/features/blog/mock-posts";
+import type { Post } from "@/features/blog/mock-posts";
 import { formatDate } from "@/lib/format/date";
 import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
@@ -20,7 +20,7 @@ export function FeaturedCard({ post, lang, dict }: Props) {
     <Link href={`/${lang}/blog/${post.slug}`} className="group flex flex-col no-underline">
       <span className="relative block aspect-[16/10] overflow-hidden rounded-[24px] bg-surface">
         <Image
-          src={coverSrc(post)}
+          src={post.cover}
           alt={post.title}
           fill
           sizes="(max-width: 900px) 100vw, 560px"
