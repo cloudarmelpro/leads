@@ -54,6 +54,8 @@
   --color-texte-bascule: #3a3a3f;
   --color-croix: #9a9aa0;
   --color-piste: #c9c9ce;
+  /* Page Contact : contour et texte d'erreur des champs (rouge doux, contraste 4,5:1 en sombre). */
+  --color-erreur: #c0362c;
 
   /* Une seule police (maquette Accueil) : DM Sans, graisses 400 / 500 / 700. */
   --font-display: var(--font-dm-sans), -apple-system, "Segoe UI", sans-serif;
@@ -110,6 +112,7 @@
   --color-texte-bascule: #d6e2e6;
   --color-croix: #54707d;
   --color-piste: #3b5764;
+  --color-erreur: #ff8f7a;
 
   /* Alias shadcn */
   --color-background: #011823;
@@ -258,6 +261,16 @@ body {
 @keyframes tw-hub {
   from { r: 3.2px; opacity: 0.5; }
   to { r: 7.7px; opacity: 0; }
+}
+
+/* Modale du calendrier (page Contact) : voile en fondu, panneau qui remonte. */
+@keyframes tw-veil-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes tw-dialog-in {
+  from { opacity: 0; transform: translateY(14px) scale(0.985); }
+  to { opacity: 1; transform: none; }
 }
 
 /* Écran de bienvenue : balayage vert de gauche à droite sur le texte (clip-path)

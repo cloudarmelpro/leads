@@ -2172,7 +2172,8 @@
       "title": "Contact — Réservez un appel gratuit | Talgasy Web",
       "description": "Parlons de votre projet de site web. Réservez un appel découverte gratuit ou écrivez-nous : une vraie personne vous répond rapidement, partout au Québec."
     },
-    "title": "Parlons de votre projet",
+    "title": "Parlons de votre",
+    "titleHighlight": "projet",
     "heroTitle": "Contact",
     "subtitle": "Un appel suffit pour savoir si on peut vous aider. Pas de pression, pas de jargon.",
     "booking": {
@@ -2191,9 +2192,41 @@
       "timezone": "Heure de l’Est (Québec)",
       "pickSlot": "Créneaux disponibles",
       "loadTitle": "Calendrier fourni par Cal.com",
-      "loadBody": "Le calendrier de réservation est un service tiers (Cal.com). En l’affichant, vous acceptez que votre adresse IP lui soit transmise. Vous pouvez aussi nous écrire avec le formulaire ci-dessous.",
+      "loadBody": "Le calendrier de réservation est un service tiers. En l’affichant, vous acceptez que votre adresse IP lui soit transmise. Vous pouvez aussi nous écrire avec le formulaire ci-dessous.",
       "loadCta": "Afficher le calendrier",
-      "embedNote": "Aperçu du design — le vrai calendrier Cal.com s’affichera ici dès que l’URL sera fournie."
+      "embedNote": "Aperçu du design — le vrai calendrier Cal.com s’affichera dans cette fenêtre dès que l’URL sera branchée.",
+      "free": "Gratuit",
+      "modalTitle": "Réserver un appel découverte",
+      "modalMeta": "45 min · téléphone ou visio · heure de l’Est (Québec)",
+      "pickPrompt": "Choisissez un créneau",
+      "confirm": "Confirmer {day} à {time}",
+      "close": "Fermer",
+      "slots": [
+        {
+          "day": "Lun 22 sept",
+          "time": "9:00"
+        },
+        {
+          "day": "Lun 22 sept",
+          "time": "13:30"
+        },
+        {
+          "day": "Mar 23 sept",
+          "time": "10:00"
+        },
+        {
+          "day": "Mar 23 sept",
+          "time": "15:00"
+        },
+        {
+          "day": "Mer 24 sept",
+          "time": "8:30"
+        },
+        {
+          "day": "Jeu 25 sept",
+          "time": "11:00"
+        }
+      ]
     },
     "form": {
       "title": "Ou écrivez-nous",
@@ -2203,7 +2236,6 @@
       "phone": "Téléphone",
       "message": "Votre message",
       "intro": "Dites-nous ce dont vous avez besoin, on vous revient rapidement.",
-      "messageHint": "Type d’entreprise, ce que vous cherchez, échéance approximative.",
       "consent": "J’accepte d’être recontacté au sujet de ma demande.",
       "consentLink": "Politique de confidentialité",
       "honeypot": "Laissez ce champ vide",
@@ -2224,7 +2256,16 @@
         "messageMax": "Ce message est trop long.",
         "consent": "Vous devez accepter pour envoyer.",
         "contactRequired": "Indiquez au moins un courriel ou un téléphone."
-      }
+      },
+      "namePlaceholder": "Jean Tremblay",
+      "emailPlaceholder": "jean@exemple.ca",
+      "phonePlaceholder": "438-808-6594",
+      "another": "Écrire un autre message",
+      "messagePlaceholder": "Type d’entreprise, ce que vous cherchez, échéance approximative."
+    },
+    "aside": {
+      "zone": "Québec, partout au Québec",
+      "zoneBody": "On travaille à distance avec des entreprises de toutes les régions. Réponse en moins de 24 h les jours ouvrables."
     }
   }
 }

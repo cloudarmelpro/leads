@@ -18,16 +18,21 @@ const CalcomInline = dynamic(
   { ssr: false },
 );
 
-type Props = { calLink: string; dict: Dictionary };
+type Props = {
+  calLink: string;
+  dict: Dictionary;
+  /** Vrai quand le visiteur vient de cliquer « Afficher le calendrier » (avis lu) : pas de seconde porte. */
+  initiallyLoaded?: boolean;
+};
 
 /**
  * Porte de consentement devant l'embed Cal.com (Loi 25) : afficher le calendrier
  * transmet l'adresse IP du visiteur à un tiers. Tant que le choix mémorisé n'est pas
  * « accepté », on rend une carte de remplacement et RIEN de Cal.com n'est chargé.
  */
-export function CalcomEmbed({ calLink, dict }: Props) {
+export function CalcomEmbed({ calLink, dict, initiallyLoaded = false }: Props) {
   const t = dict.contactPage.booking;
-  const [loaded, setLoaded] = useState(false);
+  const [loaded, setLoaded] = useState(initiallyLoaded);
 
   useEffect(() => {
     // localStorage est indisponible au SSR : la synchronisation ne peut avoir lieu

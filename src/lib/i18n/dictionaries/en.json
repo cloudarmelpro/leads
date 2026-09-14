@@ -2172,7 +2172,8 @@
       "title": "Contact — Book a free call | Talgasy Web",
       "description": "Let’s talk about your website project. Book a free discovery call or write to us: a real person gets back to you quickly, anywhere in Québec."
     },
-    "title": "Let’s talk about your project",
+    "title": "Let’s talk about your",
+    "titleHighlight": "project",
     "heroTitle": "Contact",
     "subtitle": "One call is enough to know whether we can help. No pressure, no jargon.",
     "booking": {
@@ -2191,9 +2192,41 @@
       "timezone": "Eastern Time (Québec)",
       "pickSlot": "Available slots",
       "loadTitle": "Calendar provided by Cal.com",
-      "loadBody": "The booking calendar is a third-party service (Cal.com). By displaying it, you agree that your IP address is sent to it. You can also write to us with the form below.",
+      "loadBody": "The booking calendar is a third-party service. By displaying it, you agree that your IP address is sent to it. You can also write to us with the form below.",
       "loadCta": "Show the calendar",
-      "embedNote": "Design preview — the real Cal.com calendar will appear here once the URL is provided."
+      "embedNote": "Design preview — the real Cal.com calendar will appear in this window once the URL is connected.",
+      "free": "Free",
+      "modalTitle": "Book a discovery call",
+      "modalMeta": "45 min · phone or video · Eastern Time (Québec)",
+      "pickPrompt": "Pick a time slot",
+      "confirm": "Confirm {day} at {time}",
+      "close": "Close",
+      "slots": [
+        {
+          "day": "Mon Sep 22",
+          "time": "9:00"
+        },
+        {
+          "day": "Mon Sep 22",
+          "time": "13:30"
+        },
+        {
+          "day": "Tue Sep 23",
+          "time": "10:00"
+        },
+        {
+          "day": "Tue Sep 23",
+          "time": "15:00"
+        },
+        {
+          "day": "Wed Sep 24",
+          "time": "8:30"
+        },
+        {
+          "day": "Thu Sep 25",
+          "time": "11:00"
+        }
+      ]
     },
     "form": {
       "title": "Or write to us",
@@ -2203,7 +2236,6 @@
       "phone": "Phone",
       "message": "Your message",
       "intro": "Tell us what you need — we’ll get back to you shortly.",
-      "messageHint": "Type of business, what you’re looking for, rough timeline.",
       "consent": "I agree to be contacted about my request.",
       "consentLink": "Privacy policy",
       "honeypot": "Leave this field empty",
@@ -2224,7 +2256,16 @@
         "messageMax": "This message is too long.",
         "consent": "You must agree in order to send.",
         "contactRequired": "Add at least an email or a phone number."
-      }
+      },
+      "namePlaceholder": "Jean Tremblay",
+      "emailPlaceholder": "jean@example.ca",
+      "phonePlaceholder": "438-808-6594",
+      "another": "Write another message",
+      "messagePlaceholder": "Type of business, what you’re looking for, rough timeline."
+    },
+    "aside": {
+      "zone": "Québec City, all across Québec",
+      "zoneBody": "We work remotely with businesses from every region. Reply within 24 hours on business days."
     }
   }
 }
