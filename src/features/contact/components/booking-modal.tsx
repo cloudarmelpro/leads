@@ -15,7 +15,7 @@ type Props = {
 const FOCUSABLE = 'a[href], button:not([disabled]), input, select, textarea, iframe, [tabindex]:not([tabindex="-1"])';
 
 /**
- * Modale du calendrier (maquette Contact) : voile dépoli (la page reste visible, floutée), panneau qui remonte en 300ms
+ * Modale du calendrier (maquette Contact) : voile assombri sans flou (la page reste visible), panneau qui remonte en 300ms
  * (720px avec la grille factice, 1100px avec Cal.com pour une disposition horizontale)
  * Contenu : l'embed Cal.com quand `calLink` existe ; sinon la grille de
  * créneaux de la maquette, purement visuelle. Fermeture par le voile, la croix ou Échap ;
@@ -63,7 +63,7 @@ export function BookingModal({ dict, calLink, onClose }: Props) {
   return (
     <div
       onClick={onClose}
-      className="fixed inset-[0px] z-[92] flex items-center justify-center bg-fond/55 p-[clamp(16px,4vw,40px)] backdrop-blur-[10px] motion-safe:[animation:tw-veil-in_220ms_cubic-bezier(0.2,0.7,0.2,1)_both]"
+      className="fixed inset-[0px] z-[92] flex items-center justify-center bg-fond/72 p-[clamp(16px,4vw,40px)] motion-safe:[animation:tw-veil-in_220ms_cubic-bezier(0.2,0.7,0.2,1)_both]"
     >
       <div
         ref={panel}
