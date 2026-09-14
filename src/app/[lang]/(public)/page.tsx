@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 
-import { Cta, Faq, Hero, Method, PageHalos, Sectors, Services } from "@/features/home";
+import { PageHalos } from "@/components/shared/page-halos";
+import { Cta, Faq, Hero, Method, Sectors, Services } from "@/features/home";
 import { isLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 

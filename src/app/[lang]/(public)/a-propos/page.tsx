@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { BreadcrumbLd } from "@/components/shared/breadcrumb-ld";
-import { PageHero } from "@/components/shared/page-hero";
-import { Principles, Story, Team } from "@/features/about";
+import { PageHalos } from "@/components/shared/page-halos";
+import { AboutHero, Principles, Story } from "@/features/about";
 import { Cta } from "@/features/home";
 import { isLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
@@ -32,20 +32,21 @@ export default async function AboutPage({ params }: PageProps<"/[lang]/a-propos"
   const dict = await getDictionary(lang);
 
   return (
-    <>
+    // Pas de `relative` : les halos se calent sur <body> et passent sous l'en-tête.
+    <div>
       <BreadcrumbLd
         lang={lang}
         items={[
           { name: dict.nav.home, path: "" },
-          { name: dict.about.heroTitle, path: "/a-propos" },
+          { name: dict.about.breadcrumb, path: "/a-propos" },
         ]}
       />
-      <PageHero title={dict.about.heroTitle} subtitle={dict.about.story[0]} />
+      <PageHalos />
+      <AboutHero dict={dict} />
       <Story dict={dict} />
       <Principles dict={dict} />
-      <Team dict={dict} />
-      {/* Même bandeau d'appel à l'action que l'accueil (dictionnaire `final`). */}
+      {/* Même bandeau d'appel que l'accueil (dictionnaire `final`), ancre #contact. */}
       <Cta dict={dict} />
-    </>
+    </div>
   );
 }

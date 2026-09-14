@@ -1,6 +1,5 @@
 /** Surface publique de la feature `home` — seule porte d'entrée depuis l'extérieur. */
 
-export { PageHalos } from "./components/page-halos";
 export { Hero } from "./components/hero";
 export { Services } from "./components/services";
 export { Sectors } from "./components/sectors";

@@ -3,8 +3,8 @@ type Props = {
   label: string;
   title: string;
   intro: string;
-  /** Largeur maximale du paragraphe d'appui (380px par défaut, 420px Méthode/FAQ). */
-  introMax?: 380 | 420;
+  /** Largeur maximale du paragraphe d'appui en px (380 par défaut ; 420 Méthode/FAQ, 460 À propos). */
+  introMax?: number;
 };
 
 /**
@@ -27,9 +27,8 @@ export function SectionHead({ id, label, title, intro, introMax = 380 }: Props) 
         </h2>
       </div>
       <p
-        className={`m-[0px] ml-auto text-[15px] leading-[26px] font-normal text-texte2 text-pretty min-[860px]:text-right ${
-          introMax === 420 ? "max-w-[420px]" : "max-w-[380px]"
-        }`}
+        className="m-[0px] ml-auto text-[15px] leading-[26px] font-normal text-texte2 text-pretty min-[860px]:text-right"
+        style={{ maxWidth: introMax }}
       >
         {intro}
       </p>

@@ -2,7 +2,7 @@ import { Blend, Box, Globe, Layers, Mail, RefreshCw, Share2, TrendingUp } from "
 import Image from "next/image";
 
 import { GOUTTIERE } from "@/components/shared/container";
-import { SectionHead } from "@/features/home/components/section-head";
+import { SectionHead } from "@/components/shared/section-head";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 
 type Props = { dict: Dictionary };

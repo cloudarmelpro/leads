@@ -266,41 +266,50 @@
       "title": "About Talgasy Web — The agency behind your website",
       "description": "The agency behind websites that make Québec small businesses’ phones ring. Our approach: quality, professionalism, trust."
     },
-    "heroTitle": "About",
-    "storyKicker": "Our story",
-    "storyTitle": "Helping entrepreneurs move forward",
-    "story": [
-      "Talgasy Web was born from a simple idea: helping entrepreneurs move forward.",
-      "We know a strong start can make all the difference. That’s why we support new businesses and young entrepreneurs, giving them solid foundations to showcase their work, build credibility and start growing their client base.",
-      "But we also work with well-established entrepreneurs who want to modernize their online presence and finally have a website worthy of the business they’ve built.",
-      "To us, a website isn’t just a presence on the Internet. It’s a tool that has to serve the business: clearly present what it does, inspire trust and help clients take action.",
-      "Whether it’s to launch your business, support its growth or improve what already exists, Talgasy Web wants to make a real contribution to the success of local entrepreneurs."
-    ],
-    "principles": {
-      "kicker": "Principles",
-      "titleA": "We build",
-      "titleB": "for results",
-      "note": "Talgasy Web is built on a simple idea: your website should bring you customers, not just look good.",
+    "breadcrumb": "About",
+    "heroTitleA": "Talgasy Web was born from a",
+    "heroHighlight": "simple",
+    "heroTitleB": " idea: helping entrepreneurs move forward.",
+    "heroSubtitle": "A Québec web agency that builds clear websites for local businesses. No jargon, no black box: a website that makes the phone ring.",
+    "story": {
+      "kicker": "Our story",
+      "title": "For those starting out, and those growing",
+      "intro": "A strong start makes all the difference. We give new businesses solid foundations to showcase their work and win their first clients.",
+      "photoAlt": "Meeting between an entrepreneur and the Talgasy Web team",
       "items": [
         {
-          "title": "Quality",
-          "desc": "We make no compromise on quality. Every detail is refined to deliver a professional, credible result worthy of your business."
+          "title": "Well-established businesses",
+          "body": "But we also work with well-established entrepreneurs who want to modernize their online presence and finally have a website worthy of the business they’ve built."
         },
         {
-          "title": "Professionalism",
-          "desc": "We work with seriousness, rigor and transparency at every step. From the first conversation to delivery, you can count on a professional, reliable team committed to your project’s success."
+          "title": "A tool, not a showcase",
+          "body": "To us, a website isn’t just a presence on the Internet. It’s a tool that has to serve the business: clearly present what it does, inspire trust and help clients take action."
         },
         {
-          "title": "Trust",
-          "desc": "Honest exchanges, commitments kept and clear follow-up from start to finish."
+          "title": "Contributing to local success",
+          "body": "Whether it’s to launch your business, support its growth or improve what already exists, Talgasy Web wants to make a real contribution to the success of local entrepreneurs."
         }
       ]
     },
-    "team": {
-      "kicker": "The team",
-      "titleA": "The people behind",
-      "titleB": "your results",
-      "note": "A team with complementary expertise, united around one goal: to carry out every project with care."
+    "principles": {
+      "kicker": "Principles",
+      "title": "We build for results",
+      "intro": "Talgasy Web is built on a simple idea: your website should bring you customers, not just look good.",
+      "photoAlt": "The Talgasy Web team at work",
+      "items": [
+        {
+          "title": "Quality",
+          "body": "We make no compromise on quality. Every detail is refined to deliver a professional, credible result worthy of your business."
+        },
+        {
+          "title": "Professionalism",
+          "body": "We work with seriousness, rigor and transparency at every step. From the first conversation to delivery, you can count on a professional, reliable team committed to your project’s success."
+        },
+        {
+          "title": "Trust",
+          "body": "Honest exchanges, commitments kept and clear follow-up from start to finish."
+        }
+      ]
     }
   },
   "pricing": {

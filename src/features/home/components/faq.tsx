@@ -4,7 +4,7 @@ import { useId, useState } from "react";
 
 import { GOUTTIERE } from "@/components/shared/container";
 import { AccordionRow } from "@/features/home/components/accordion-row";
-import { SectionHead } from "@/features/home/components/section-head";
+import { SectionHead } from "@/components/shared/section-head";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 
 type Props = { dict: Dictionary };
