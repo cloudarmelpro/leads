@@ -23,7 +23,7 @@ export function Hero({ lang, dict }: Props) {
   return (
     <section
       id="accueil"
-      className={`relative flex justify-center overflow-x-clip pt-[168px] pb-[clamp(112px,16vw,240px)] min-[620px]:min-h-[440px] ${GOUTTIERE}`}
+      className={`relative flex justify-center overflow-x-clip pt-[192px] pb-[clamp(112px,16vw,240px)] min-[620px]:min-h-[440px] ${GOUTTIERE}`}
     >
       <HeroGrid />
 
