@@ -39,7 +39,7 @@ SITE_PLANS_FR = [
     # 4e valeur (A4) : « pour qui », tirée des lignes qui distinguent le forfait du précédent
     # dans l'« Offre de services » de Cedric (PDF du 2026-09-10) — rien qui n'y figure pas.
     ("Express", 499, "3 pages", "Pour être en ligne vite, avec vos contenus prêts."),
-    ("Lancement", 999, "3 pages", "Trois pages sur un de nos modèles, sécurisé et optimisé pour Google."),
+    ("Lancement", 999, "3 pages", "Trois pages sur un de nos modèles, avec le référencement local et de chaque page."),
     ("Essentiel", 1999, "5 pages", "Jusqu’à cinq pages à votre image, avec le suivi Google inclus."),
     ("Sur-mesure", 3999, "7 pages", "Un site conçu de zéro pour votre entreprise, pensé pour convertir."),
     ("Croissance", 5500, "10 pages", "Site, logo et prise de rendez-vous, avec le suivi de vos conversions."),
@@ -50,7 +50,7 @@ SITE_PLANS_FR = [
 ]
 SITE_PLANS_EN = [
     ("Express", 499, "3 pages", "To get online fast, with your content ready."),
-    ("Launch", 999, "3 pages", "Three pages on one of our templates, secured and optimized for Google."),
+    ("Launch", 999, "3 pages", "Three pages on one of our templates, with local and on-page SEO included."),
     ("Essential", 1999, "5 pages", "Up to five pages in your image, with Google tracking included."),
     ("Custom", 3999, "7 pages", "A site designed from scratch for your business, built to convert."),
     ("Growth", 5500, "10 pages", "Site, logo and online booking, with conversion tracking."),
@@ -143,10 +143,12 @@ SITE_GROUPS_FR = [
         ("Rédaction et optimisation des pages principales", [N, N, N, N, N, N, N, "Approfondie", "y"]),
     ]),
     ("Référencement", [
+        # Décision client du 2026-09-15 : Lancement inclut le SEO on-page et le SEO local avancé
+        # (au-delà du PDF « Offre de services », qui ne les donne qu'à partir d'Essentiel / Croissance).
         ("Référencement de base (titres, descriptions, structure des pages)", Y9),
         ("Optimisation technique (vitesse, mobile, indexation)", [N, "y", "y", "y", "y", "y", "y", "y", "y"]),
-        ("Optimisation du contenu de chaque page (SEO on-page)", [N, N, "y", "Complet", "Complet", "Complet", "Complet", "Complet", "Complet"]),
-        ("SEO local avancé", [N, N, N, N, "y", "y", "y", "y", "y"]),
+        ("Optimisation du contenu de chaque page (SEO on-page)", [N, "y", "y", "Complet", "Complet", "Complet", "Complet", "Complet", "Complet"]),
+        ("SEO local avancé", [N, "y", N, N, "y", "y", "y", "y", "y"]),
         ("Architecture SEO approfondie", [N, N, N, N, "y", "y", "y", "y", "y"]),
         ("Données structurées avancées", [N, N, N, N, N, "y", "y", "y", "y"]),
     ]),

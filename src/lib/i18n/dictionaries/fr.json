@@ -374,7 +374,7 @@
             "name": "Lancement",
             "price": "999 $",
             "meta": "3 pages",
-            "who": "Trois pages sur un de nos modèles, sécurisé et optimisé pour Google."
+            "who": "Trois pages sur un de nos modèles, avec le référencement local et de chaque page."
           },
           {
             "name": "Essentiel",
@@ -1305,7 +1305,7 @@
                 "label": "Optimisation du contenu de chaque page (SEO on-page)",
                 "cells": [
                   "-",
-                  "-",
+                  "y",
                   "y",
                   "Complet",
                   "Complet",
@@ -1319,7 +1319,7 @@
                 "label": "SEO local avancé",
                 "cells": [
                   "-",
-                  "-",
+                  "y",
                   "-",
                   "-",
                   "y",

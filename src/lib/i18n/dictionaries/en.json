@@ -374,7 +374,7 @@
             "name": "Launch",
             "price": "$999",
             "meta": "3 pages",
-            "who": "Three pages on one of our templates, secured and optimized for Google."
+            "who": "Three pages on one of our templates, with local and on-page SEO included."
           },
           {
             "name": "Essential",
@@ -1305,7 +1305,7 @@
                 "label": "Content optimization of every page (on-page SEO)",
                 "cells": [
                   "-",
-                  "-",
+                  "y",
                   "y",
                   "Full",
                   "Full",
@@ -1319,7 +1319,7 @@
                 "label": "Advanced local SEO",
                 "cells": [
                   "-",
-                  "-",
+                  "y",
                   "-",
                   "-",
                   "y",

@@ -59,7 +59,7 @@ rep('''        ("SEO de base", Y9),
         ("SEO on-page", [N, N, "y", "Complet", "Complet", "Complet", "Complet", "Complet", "Complet"]),''',
     '''        ("Référencement de base (titres, descriptions, structure des pages)", Y9),
         ("Optimisation technique (vitesse, mobile, indexation)", [N, "y", "y", "y", "y", "y", "y", "y", "y"]),
-        ("Optimisation du contenu de chaque page (SEO on-page)", [N, N, "y", "Complet", "Complet", "Complet", "Complet", "Complet", "Complet"]),''')
+        ("Optimisation du contenu de chaque page (SEO on-page)", [N, "y", "y", "Complet", "Complet", "Complet", "Complet", "Complet", "Complet"]),''')
 
 # T10 — SSL / Sitemap (site, hébergement, VPS)
 if '("SSL", ' in s:
