@@ -98,7 +98,8 @@
     "items": [
       {
         "name": "Website creation",
-        "note": "A clear structure, smooth navigation, content that gets straight to the point: a premium web experience that reflects how serious your business is — and makes people want to call."
+        "note": "A clear structure, smooth navigation, content that gets straight to the point: a premium web experience that reflects how serious your business is — and makes people want to call.",
+        "pricing": "From $499"
       },
       {
         "name": "Existing site rebuild",
@@ -106,7 +107,8 @@
       },
       {
         "name": "Hosting",
-        "note": "We handle everything: a fast server, a security certificate, regular backups and continuous monitoring. Your site stays online, fast and protected — at all times."
+        "note": "We handle everything: a fast server, a security certificate, regular backups and continuous monitoring. Your site stays online, fast and protected — at all times.",
+        "pricing": "From $35 per month"
       },
       {
         "name": "Professional email addresses",
@@ -114,19 +116,23 @@
       },
       {
         "name": "Logo and brand identity",
-        "note": "From a standalone logo to a full identity: creative directions, variants, palette, typefaces and source files. A complete rebrand is possible, with a brand guide and launch preparation."
+        "note": "From a standalone logo to a full identity: creative directions, variants, palette, typefaces and source files. A complete rebrand is possible, with a brand guide and launch preparation.",
+        "pricing": "From $200"
       },
       {
         "name": "VPS servers",
-        "note": "For an application or a CRM that needs more than a showcase site: 1 to 8 vCPUs, 4 to 32 GB of RAM and NVMe storage, managed and monitored on our side."
+        "note": "For an application or a CRM that needs more than a showcase site: 1 to 8 vCPUs, 4 to 32 GB of RAM and NVMe storage, managed and monitored on our side.",
+        "pricing": "From $45 to $150 per month"
       },
       {
         "name": "CRM and automations",
-        "note": "A CRM in your image: leads, sales pipeline, dashboard and connected forms. Automations link the site, the CRM and your external software."
+        "note": "A CRM in your image: leads, sales pipeline, dashboard and connected forms. Automations link the site, the CRM and your external software.",
+        "pricing": "Included from the Professional plan"
       },
       {
         "name": "Blog and SEO content",
-        "note": "Built-in CMS, articles written and published on a regular cadence, reviewed with you. Content is structured for local search from day one."
+        "note": "Built-in CMS, articles written and published on a regular cadence, reviewed with you. Content is structured for local search from day one.",
+        "pricing": "Included from the Professional plan"
       }
     ]
   },
@@ -187,7 +193,7 @@
       },
       {
         "q": "How long does it take to build a site?",
-        "a": "For simple projects, count on 3 to 5 days, especially if you already have your photos and copy ready. For more complex projects, it can take a few weeks."
+        "a": "A Starter plan is online in 3 to 5 business days if your text and photos are ready. Growth and Enterprise plans take a few weeks, depending on the scope of the project."
       },
       {
         "q": "I have no copy or photos.",
@@ -203,11 +209,11 @@
       },
       {
         "q": "How will my customers reach me or book a meeting?",
-        "a": "They have several easy ways to reach you: a request right on the site, an email, a phone call, or even a message on social media. From there, you schedule the consultation with them, however suits you."
+        "a": "Your site offers several ways to reach you: form, email, phone and links to your social networks. Online booking is included from the Growth plan."
       },
       {
         "q": "Will I be able to manage my blog myself?",
-        "a": "Yes, you’re free to manage your blog yourself. And if you’re short on time or would rather not, we can handle it for you too."
+        "a": "Yes. The blog is designed so you can publish yourself, with no technical knowledge. It’s included from the Professional plan, with articles written for you for 12 or 24 months. If you prefer, we handle it."
       },
       {
         "q": "Will the site rank well on Google?",
@@ -361,47 +367,56 @@
           {
             "name": "Express",
             "price": "$499",
-            "meta": "3 pages"
+            "meta": "3 pages",
+            "who": "To get online fast, with your content ready."
           },
           {
             "name": "Launch",
             "price": "$999",
-            "meta": "3 pages"
+            "meta": "3 pages",
+            "who": "Three pages on one of our templates, secured and optimized for Google."
           },
           {
             "name": "Essential",
             "price": "$1,999",
-            "meta": "5 pages"
+            "meta": "5 pages",
+            "who": "Up to five pages in your image, with Google tracking included."
           },
           {
             "name": "Custom",
             "price": "$3,999",
-            "meta": "7 pages"
+            "meta": "7 pages",
+            "who": "A site designed from scratch for your business, built to convert."
           },
           {
             "name": "Growth",
             "price": "$5,500",
-            "meta": "10 pages"
+            "meta": "10 pages",
+            "who": "Site, logo and online booking, with conversion tracking."
           },
           {
             "name": "Professional",
             "price": "$7,500",
-            "meta": "15 pages"
+            "meta": "15 pages",
+            "who": "Site, CRM and a blog fed for a year, on your own server."
           },
           {
             "name": "Performance",
             "price": "$10,000",
-            "meta": "20 pages"
+            "meta": "20 pages",
+            "who": "Full visual identity and your tools connected, from site to CRM."
           },
           {
             "name": "Signature",
             "price": "$15,000",
-            "meta": "30 pages"
+            "meta": "30 pages",
+            "who": "Content written for you, priority support, one-year warranty."
           },
           {
             "name": "Prestige",
             "price": "$20,000",
-            "meta": "30 pages"
+            "meta": "30 pages",
+            "who": "Full rebranding and support before and after launch, for the whole team."
           }
         ],
         "ranges": [
@@ -430,7 +445,7 @@
           {
             "key": "entreprise",
             "title": "Enterprise",
-            "line": "Identity, automations, infrastructure.",
+            "line": "Full brand identity, logo included, automations and infrastructure.",
             "range": "$10,000 – $20,000",
             "plans": [
               6,

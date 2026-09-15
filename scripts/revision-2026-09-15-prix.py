@@ -17,7 +17,7 @@ done = 0
 
 def rep(a, b):
     global s, done
-    if b in s and a not in s:
+    if b in s:
         return
     assert a in s, a[:90]
     s = s.replace(a, b, 1)

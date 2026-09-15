@@ -70,6 +70,42 @@ def apply(path: Path, lang: str) -> None:
         else "Every site is built to SEO best practices: speed, mobile, page structure and local content. Google decides the final ranking, but your site starts on solid ground."
     )
 
+    # T12, T14, T15 (validés le 2026-09-15) — réponses alignées sur l'« Offre de services » de
+    # Cedric (PDF) : Cal.com dès Croissance, CMS/blogue et articles dès Professionnel.
+    d["faq"]["items"][1]["a"] = (
+        "Un forfait Démarrage est en ligne en 3 à 5 jours ouvrables si vos textes et vos photos sont prêts. Les forfaits Croissance et Entreprise prennent quelques semaines, selon l’ampleur du projet."
+        if fr
+        else "A Starter plan is online in 3 to 5 business days if your text and photos are ready. Growth and Enterprise plans take a few weeks, depending on the scope of the project."
+    )
+    d["faq"]["items"][5]["a"] = (
+        "Votre site offre plusieurs façons de vous joindre : formulaire, courriel, téléphone et liens vers vos réseaux sociaux. La prise de rendez-vous en ligne est incluse à partir du forfait Croissance."
+        if fr
+        else "Your site offers several ways to reach you: form, email, phone and links to your social networks. Online booking is included from the Growth plan."
+    )
+    d["faq"]["items"][6]["a"] = (
+        "Oui. Le blogue est conçu pour que vous publiiez vous-même, sans connaissances techniques. Il est inclus à partir du forfait Professionnel, avec des articles rédigés pour vous pendant 12 ou 24 mois. Si vous préférez, on s’en charge."
+        if fr
+        else "Yes. The blog is designed so you can publish yourself, with no technical knowledge. It’s included from the Professional plan, with articles written for you for 12 or 24 months. If you prefer, we handle it."
+    )
+
+    # A5 (validé le 2026-09-15) — repère de prix sous les cartes de services de l'Accueil, tiré du
+    # PDF. Refonte et Adresses courriel : rien dans l'offre, donc pas de ligne tant que Cedric ne
+    # tranche pas. Les liens vers la page Prix sont dans le composant (paramètres identiques FR/EN).
+    NNB = " "
+    pricing_lines = {
+        0: f"À partir de 499{NNB}$" if fr else "From $499",
+        2: f"À partir de 35{NNB}$ par mois" if fr else "From $35 per month",
+        4: f"À partir de 200{NNB}$" if fr else "From $200",
+        5: f"De 45{NNB}$ à 150{NNB}$ par mois" if fr else "From $45 to $150 per month",
+        6: "Inclus à partir du forfait Professionnel" if fr else "Included from the Professional plan",
+        7: "Inclus à partir du forfait Professionnel" if fr else "Included from the Professional plan",
+    }
+    for i, item in enumerate(d["services"]["items"]):
+        if i in pricing_lines:
+            item["pricing"] = pricing_lines[i]
+        else:
+            item.pop("pricing", None)
+
     # T18 + E19 (durée confirmée par Cedric le 2026-09-15 : 45 minutes) — bloc final et Méthode 01
     d["final"]["body"] = "Un appel gratuit de 45 minutes suffit pour cerner votre besoin. Sans engagement." if fr else "One free 45-minute call is enough to pin down your need. No commitment."
     steps[0]["desc"] = (

@@ -36,25 +36,40 @@ def rows(spec):
 
 # --------------------------------------------------------------------------- FR
 SITE_PLANS_FR = [
-    ("Express", 499, "3 pages"), ("Lancement", 999, "3 pages"), ("Essentiel", 1999, "5 pages"),
-    ("Sur-mesure", 3999, "7 pages"), ("Croissance", 5500, "10 pages"), ("Professionnel", 7500, "15 pages"),
-    ("Performance", 10000, "20 pages"), ("Signature", 15000, "30 pages"), ("Prestige", 20000, "30 pages"),
+    # 4e valeur (A4) : « pour qui », tirée des lignes qui distinguent le forfait du précédent
+    # dans l'« Offre de services » de Cedric (PDF du 2026-09-10) — rien qui n'y figure pas.
+    ("Express", 499, "3 pages", "Pour être en ligne vite, avec vos contenus prêts."),
+    ("Lancement", 999, "3 pages", "Trois pages sur un de nos modèles, sécurisé et optimisé pour Google."),
+    ("Essentiel", 1999, "5 pages", "Jusqu’à cinq pages à votre image, avec le suivi Google inclus."),
+    ("Sur-mesure", 3999, "7 pages", "Un site conçu de zéro pour votre entreprise, pensé pour convertir."),
+    ("Croissance", 5500, "10 pages", "Site, logo et prise de rendez-vous, avec le suivi de vos conversions."),
+    ("Professionnel", 7500, "15 pages", "Site, CRM et blogue alimenté pendant un an, sur votre propre serveur."),
+    ("Performance", 10000, "20 pages", "Identité visuelle complète et vos outils connectés, du site au CRM."),
+    ("Signature", 15000, "30 pages", "Contenu rédigé pour vous, support prioritaire, garantie d’un an."),
+    ("Prestige", 20000, "30 pages", "Rebranding complet et accompagnement avant et après le lancement, pour toute l’équipe."),
 ]
 SITE_PLANS_EN = [
-    ("Express", 499, "3 pages"), ("Launch", 999, "3 pages"), ("Essential", 1999, "5 pages"),
-    ("Custom", 3999, "7 pages"), ("Growth", 5500, "10 pages"), ("Professional", 7500, "15 pages"),
-    ("Performance", 10000, "20 pages"), ("Signature", 15000, "30 pages"), ("Prestige", 20000, "30 pages"),
+    ("Express", 499, "3 pages", "To get online fast, with your content ready."),
+    ("Launch", 999, "3 pages", "Three pages on one of our templates, secured and optimized for Google."),
+    ("Essential", 1999, "5 pages", "Up to five pages in your image, with Google tracking included."),
+    ("Custom", 3999, "7 pages", "A site designed from scratch for your business, built to convert."),
+    ("Growth", 5500, "10 pages", "Site, logo and online booking, with conversion tracking."),
+    ("Professional", 7500, "15 pages", "Site, CRM and a blog fed for a year, on your own server."),
+    ("Performance", 10000, "20 pages", "Full visual identity and your tools connected, from site to CRM."),
+    ("Signature", 15000, "30 pages", "Content written for you, priority support, one-year warranty."),
+    ("Prestige", 20000, "30 pages", "Full rebranding and support before and after launch, for the whole team."),
 ]
 
 RANGES_FR = [
     ("Démarrage", "Un site professionnel, en ligne en quelques jours.", f"499 – 1{NB}999{NNB}$", [0, 1, 2]),
     ("Croissance", "Sur mesure, CRM et contenu.", f"3{NB}999 – 7{NB}500{NNB}$", [3, 4, 5]),
-    ("Entreprise", "Identité, automatisations, infrastructure.", f"10{NB}000 – 20{NB}000{NNB}$", [6, 7, 8]),
+    # T6 : phrase du rapport de révision, exacte pour Performance, Signature et Prestige (PDF).
+    ("Entreprise", "Identité de marque complète, logo inclus, automatisations et infrastructure.", f"10{NB}000 – 20{NB}000{NNB}$", [6, 7, 8]),
 ]
 RANGES_EN = [
     ("Starter", "A professional site, online within days.", "$499 – $1,999", [0, 1, 2]),
     ("Growth", "Custom build, CRM and content.", "$3,999 – $7,500", [3, 4, 5]),
-    ("Enterprise", "Identity, automations, infrastructure.", "$10,000 – $20,000", [6, 7, 8]),
+    ("Enterprise", "Full brand identity, logo included, automations and infrastructure.", "$10,000 – $20,000", [6, 7, 8]),
 ]
 
 Y9 = ["y"] * 9
@@ -172,13 +187,13 @@ T = {
     "Textes, photos et logo fournis par le client": "Text, photos and logo supplied by the client",
     "Textes, photos et logo": "Text, photos and logo", "Jusqu’à 3": "Up to 3", "Jusqu’à 5": "Up to 5", "Jusqu’à 10": "Up to 10",
     "2 / mois · 12 mois": "2 / month · 12 months", "2 / mois · 24 mois": "2 / month · 24 months", "Approfondie": "In-depth",
-    "Système": "System", "Système complet": "Full system", "Inclus": "Included", "12 mois": "12 months", "24 mois": "24 months",
+    "Système": "System", "Système complet": "Full system", "Inclus": "Included", "Inclus": "Included", "12 mois": "12 months", "24 mois": "24 months",
     "KVM 1 · 24 mois": "KVM 1 · 24 months", "KVM 2 · 24 mois": "KVM 2 · 24 months", "KVM 4 · 24 mois": "KVM 4 · 24 months", "KVM 8 · 24 mois": "KVM 8 · 24 months",
     "4 Go": "4 GB", "8 Go": "8 GB", "16 Go": "16 GB", "32 Go": "32 GB", "50 Go": "50 GB", "100 Go": "100 GB", "200 Go": "200 GB", "400 Go": "400 GB",
     "45 minutes": "45 minutes", "1 heure": "1 hour", "2 heures": "2 hours", "4 heures": "4 hours",
     "60 jours": "60 days", "90 jours": "90 days", "120 jours": "120 days", "180 jours": "180 days", "365 jours": "365 days",
     "1 proposition": "1 proposal", "Refonte complète": "Full redesign", "Complète": "Full", "Principales et secondaires": "Primary and secondary",
-    "5 au choix": "5 of your choice", OPT_LOGO: "Not included — option from $200", "Complets": "Complete", "Dédié": "Dedicated", "Haute performance": "High performance", "Haute capacité": "High capacity",
+    "5 au choix": "5 of your choice", OPT_LOGO: "Not included — option from $200", OPT_LOGO: "Not included — option from $200", "Complets": "Complete", "Dédié": "Dedicated", "Haute performance": "High performance", "Haute capacité": "High capacity",
 }
 GROUP_TITLES_EN = {
     "Design et conception": "Design and build", "Marque et identité": "Brand and identity", "Fonctionnalités": "Features", "CRM": "CRM",
@@ -199,7 +214,7 @@ LABELS_EN = {
     "Modèles de supports": "Collateral templates", "Rebranding complet inclus": "Full rebranding included", "Analyse de la marque existante": "Analysis of the existing brand",
     "Atelier stratégique": "Strategy workshop", "Positionnement de marque": "Brand positioning", "Messages de marque": "Brand messaging",
     "Refonte complète du logo": "Complete logo redesign", "Nouvel univers visuel": "New visual universe", "Guide de marque complet": "Full brand guide",
-    "Préparation du lancement": "Launch preparation", "Site bilingue FR / EN": "Bilingual site FR / EN", "Formulaire de contact": "Contact form", "Formulaire avancé anti-pourriel": "Advanced anti-spam form",
+    "Préparation du lancement": "Launch preparation", "Site bilingue FR / EN": "Bilingual site FR / EN", "Site bilingue FR / EN": "Bilingual site FR / EN", "Formulaire de contact": "Contact form", "Formulaire avancé anti-pourriel": "Advanced anti-spam form",
     "Réservation Cal.com intégrée": "Built-in Cal.com booking", "Intégrations avec des logiciels externes": "Integrations with external software",
     "Espace client ou espace membre": "Client or member area", "Workflows personnalisés": "Custom workflows",
     "Automatisations entre le site, le CRM et les logiciels externes": "Automations between the site, the CRM and external software",
@@ -314,7 +329,13 @@ VPS_GROUPS_FR = [
 
 
 def plans(spec, price_fn, monthly=False):
-    return [OrderedDict(name=n, price=price_fn(a, monthly), meta=m) for n, a, m in spec]
+    out = []
+    for n, a, m, *who in spec:
+        p = OrderedDict(name=n, price=price_fn(a, monthly), meta=m)
+        if who:
+            p["who"] = who[0]
+        out.append(p)
+    return out
 
 
 def groups(spec):

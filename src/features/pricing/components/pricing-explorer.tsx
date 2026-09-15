@@ -8,9 +8,14 @@ import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 
 type Pricing = Dictionary["pricing"];
-type Family = Pricing["families"][number];
-type Plan = Family["plans"][number];
 type Labels = Pricing["labels"];
+// Forme commune aux quatre catégories. Le JSON n'a `who` que sur les forfaits Site web et
+// `sub` que sur certaines lignes : typé depuis le JSON, chaque catégorie serait une union
+// distincte et ces deux champs deviendraient inaccessibles.
+type Plan = { name: string; price: string; meta: string; who?: string };
+type Row = { label: string; cells: string[]; sub?: boolean };
+type Range = { key: string; title: string; line: string; range: string; plans: number[] };
+type Family = { key: string; label: string; title: string; desc: string; plans: Plan[]; ranges: Range[]; groups: { title: string; rows: Row[] }[] };
 
 // Valeur d'une cellule : "y" = inclus, "-" = non inclus, sinon texte affiché tel quel.
 const INCLUDED = "y";
@@ -83,16 +88,17 @@ export function PricingExplorer({ lang, dict }: Props) {
   const t = dict.pricing;
   const labels = t.labels;
   const href = `/${lang}/contact`;
+  const families: Family[] = t.families;
 
   // Sélection lue dans l'URL (pas de `useSearchParams` : il retirerait le composant du
   // HTML statique, ce qui est justement ce qu'on veut éviter). Côté serveur : défaut.
   const search = useSyncExternalStore(subscribeNothing, readSearch, () => "");
   const urlSel = useMemo(() => {
     const params = new URLSearchParams(search);
-    const fam = t.families.find((f) => f.key === params.get(PARAM_FAMILY)) ?? t.families[0];
+    const fam = families.find((f) => f.key === params.get(PARAM_FAMILY)) ?? families[0];
     const ri = fam.ranges.findIndex((r) => r.key === params.get(PARAM_RANGE));
     return { famKey: fam.key, range: Math.max(0, ri) };
-  }, [search, t.families]);
+  }, [search, families]);
   // Choix de l'utilisateur ; tant qu'il n'a rien cliqué, l'URL fait foi.
   const [sel, setSel] = useState<{ famKey: string; range: number } | null>(null);
   const famKey = sel?.famKey ?? urlSel.famKey;
@@ -107,9 +113,9 @@ export function PricingExplorer({ lang, dict }: Props) {
 
   useEffect(() => {
     if (!sel) return;
-    const fam = t.families.find((f) => f.key === famKey) ?? t.families[0];
+    const fam = families.find((f) => f.key === famKey) ?? families[0];
     const url = new URL(window.location.href);
-    if (fam.key === t.families[0].key && range === 0) {
+    if (fam.key === families[0].key && range === 0) {
       url.searchParams.delete(PARAM_FAMILY);
       url.searchParams.delete(PARAM_RANGE);
     } else {
@@ -118,9 +124,9 @@ export function PricingExplorer({ lang, dict }: Props) {
       else url.searchParams.delete(PARAM_RANGE);
     }
     window.history.replaceState(window.history.state, "", url);
-  }, [sel, famKey, range, t.families]);
+  }, [sel, famKey, range, families]);
 
-  const family = t.families.find((f) => f.key === famKey) ?? t.families[0];
+  const family = families.find((f) => f.key === famKey) ?? families[0];
 
   /** Comparaison d'une catégorie pour un jeu de forfaits (une gamme, ou tous les forfaits). */
   const comparison = (fam: Family, idx: number[], lead: string, active: boolean) => {
@@ -259,7 +265,7 @@ export function PricingExplorer({ lang, dict }: Props) {
       <div id="prix" className={`sticky top-0 z-30 flex justify-center bg-fond/94 py-[12px] backdrop-blur-[14px] ${GOUTTIERE}`}>
         <div className="flex w-full max-w-[1100px] flex-wrap items-center justify-between gap-[20px]">
           <div role="tablist" aria-label={labels.families} className="flex flex-wrap gap-[4px] rounded-[12px] bg-surface-2 p-[4px]">
-            {t.families.map((f) => {
+            {families.map((f) => {
               const active = f.key === family.key;
               return (
                 <button
@@ -288,7 +294,7 @@ export function PricingExplorer({ lang, dict }: Props) {
 
       <section className={`flex justify-center pt-[64px] pb-[clamp(112px,16vw,240px)] ${GOUTTIERE}`}>
         <div className="w-full max-w-[1100px]">
-          {t.families.map((fam) => {
+          {families.map((fam) => {
             const activeFam = fam.key === family.key;
             const hasRanges = fam.ranges.length > 0;
             return (
@@ -361,6 +367,7 @@ export function PricingExplorer({ lang, dict }: Props) {
                           >
                             <span className={`text-[26px] leading-[32px] font-normal tracking-[-0.02em] ${lit ? "text-white" : "text-encre"}`}>{plan.name}</span>
                             <span className={`text-[14px] leading-[21px] font-normal ${lit ? "text-white/78" : "text-texte2"}`}>{plan.meta}</span>
+                            {plan.who && <span className={`text-[13px] leading-[19px] font-normal text-pretty ${lit ? "text-white/78" : "text-texte2"}`}>{plan.who}</span>}
                             <span className="mt-auto flex items-baseline gap-[7px]">
                               <span className={`text-[28px] leading-[34px] ${PRICE} ${lit ? "text-white" : "text-encre"}`}>
                                 {amount}
@@ -426,6 +433,7 @@ function PlanHead({ plan, labels, href }: { plan: Plan; labels: Labels; href: st
         {suffix && <span className="text-[15px]">{suffix}</span>}
       </span>
       <span className="text-[12px] leading-[18px] font-normal text-texte2">{plan.meta}</span>
+      {plan.who && <span className="text-[12px] leading-[18px] font-normal text-texte2 text-pretty">{plan.who}</span>}
       <Link href={href} aria-label={`${labels.book} — ${plan.name}`} className={`mt-[4px] h-[38px] bg-vert text-sur-vert hover:bg-vert-clair ${BOOK_FULL}`}>
         {labels.bookShort}
       </Link>
@@ -445,6 +453,7 @@ function PlanSummary({ plan, labels, href }: { plan: Plan; labels: Labels; href:
         {suffix && <span className="text-[16px]">{suffix}</span>}
       </span>
       <span className="text-[14px] leading-[22px] font-normal text-texte2">{plan.meta}</span>
+      {plan.who && <span className="text-[14px] leading-[22px] font-normal text-texte2 text-pretty">{plan.who}</span>}
       <Link href={href} aria-label={`${labels.book} — ${plan.name}`} className={`mt-[8px] h-[38px] bg-vert text-sur-vert hover:bg-vert-clair ${BOOK_FULL}`}>
         {labels.book}
       </Link>

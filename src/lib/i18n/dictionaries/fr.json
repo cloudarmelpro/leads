@@ -98,7 +98,8 @@
     "items": [
       {
         "name": "Création de site web",
-        "note": "Structure claire, navigation fluide, contenu qui va droit au but : une expérience web premium qui reflète le sérieux de votre entreprise — et qui donne envie d’appeler."
+        "note": "Structure claire, navigation fluide, contenu qui va droit au but : une expérience web premium qui reflète le sérieux de votre entreprise — et qui donne envie d’appeler.",
+        "pricing": "À partir de 499 $"
       },
       {
         "name": "Refonte de site existant",
@@ -106,7 +107,8 @@
       },
       {
         "name": "Hébergement",
-        "note": "On s’occupe de tout : serveur performant, certificat de sécurité, sauvegardes régulières et surveillance continue. Le site reste en ligne, rapide et protégé — en tout temps."
+        "note": "On s’occupe de tout : serveur performant, certificat de sécurité, sauvegardes régulières et surveillance continue. Le site reste en ligne, rapide et protégé — en tout temps.",
+        "pricing": "À partir de 35 $ par mois"
       },
       {
         "name": "Adresses courriel professionnelles",
@@ -114,19 +116,23 @@
       },
       {
         "name": "Logo et identité de marque",
-        "note": "Du logo seul à l’identité complète : pistes créatives, variantes, palette, typographies et fichiers sources. Une refonte de marque au complet est possible, avec guide et préparation du lancement."
+        "note": "Du logo seul à l’identité complète : pistes créatives, variantes, palette, typographies et fichiers sources. Une refonte de marque au complet est possible, avec guide et préparation du lancement.",
+        "pricing": "À partir de 200 $"
       },
       {
         "name": "Serveurs VPS",
-        "note": "Pour une application ou un CRM qui demande plus qu’un site vitrine : de 1 à 8 vCPU, 4 à 32 Go de RAM et du stockage NVMe, gérés et surveillés de notre côté."
+        "note": "Pour une application ou un CRM qui demande plus qu’un site vitrine : de 1 à 8 vCPU, 4 à 32 Go de RAM et du stockage NVMe, gérés et surveillés de notre côté.",
+        "pricing": "De 45 $ à 150 $ par mois"
       },
       {
         "name": "CRM et automatisations",
-        "note": "Un CRM à votre image : prospects, pipeline de vente, tableau de bord et formulaires connectés. Les automatisations relient le site, le CRM et vos logiciels externes."
+        "note": "Un CRM à votre image : prospects, pipeline de vente, tableau de bord et formulaires connectés. Les automatisations relient le site, le CRM et vos logiciels externes.",
+        "pricing": "Inclus à partir du forfait Professionnel"
       },
       {
         "name": "Blogue et contenu SEO",
-        "note": "CMS intégré, articles rédigés et publiés à cadence régulière, révisés avec vous. Le contenu est structuré pour le référencement local dès la mise en ligne."
+        "note": "CMS intégré, articles rédigés et publiés à cadence régulière, révisés avec vous. Le contenu est structuré pour le référencement local dès la mise en ligne.",
+        "pricing": "Inclus à partir du forfait Professionnel"
       }
     ]
   },
@@ -187,7 +193,7 @@
       },
       {
         "q": "Combien de temps prend la conception d’un site ?",
-        "a": "Pour les projets simples, comptez 3 à 5 jours, surtout si vous avez déjà vos photos et vos textes prêts. Pour les projets plus complexes, ça peut prendre quelques semaines."
+        "a": "Un forfait Démarrage est en ligne en 3 à 5 jours ouvrables si vos textes et vos photos sont prêts. Les forfaits Croissance et Entreprise prennent quelques semaines, selon l’ampleur du projet."
       },
       {
         "q": "Je n’ai ni textes, ni photos.",
@@ -203,11 +209,11 @@
       },
       {
         "q": "Comment mes clients pourront-ils me joindre ou prendre rendez-vous ?",
-        "a": "Ils ont plusieurs façons simples de vous rejoindre : une demande directement sur le site, un courriel, un appel, ou même un message sur les réseaux sociaux. De là, vous planifiez la consultation avec eux, comme ça vous arrange."
+        "a": "Votre site offre plusieurs façons de vous joindre : formulaire, courriel, téléphone et liens vers vos réseaux sociaux. La prise de rendez-vous en ligne est incluse à partir du forfait Croissance."
       },
       {
         "q": "Vais-je pouvoir gérer mon blogue moi-même ?",
-        "a": "Oui, vous êtes libre de gérer votre blogue vous-même. Et si vous manquez de temps ou n’avez pas envie de vous en occuper, on peut aussi s’en charger pour vous."
+        "a": "Oui. Le blogue est conçu pour que vous publiiez vous-même, sans connaissances techniques. Il est inclus à partir du forfait Professionnel, avec des articles rédigés pour vous pendant 12 ou 24 mois. Si vous préférez, on s’en charge."
       },
       {
         "q": "Le site sera-t-il bien référencé sur Google ?",
@@ -361,47 +367,56 @@
           {
             "name": "Express",
             "price": "499 $",
-            "meta": "3 pages"
+            "meta": "3 pages",
+            "who": "Pour être en ligne vite, avec vos contenus prêts."
           },
           {
             "name": "Lancement",
             "price": "999 $",
-            "meta": "3 pages"
+            "meta": "3 pages",
+            "who": "Trois pages sur un de nos modèles, sécurisé et optimisé pour Google."
           },
           {
             "name": "Essentiel",
             "price": "1 999 $",
-            "meta": "5 pages"
+            "meta": "5 pages",
+            "who": "Jusqu’à cinq pages à votre image, avec le suivi Google inclus."
           },
           {
             "name": "Sur-mesure",
             "price": "3 999 $",
-            "meta": "7 pages"
+            "meta": "7 pages",
+            "who": "Un site conçu de zéro pour votre entreprise, pensé pour convertir."
           },
           {
             "name": "Croissance",
             "price": "5 500 $",
-            "meta": "10 pages"
+            "meta": "10 pages",
+            "who": "Site, logo et prise de rendez-vous, avec le suivi de vos conversions."
           },
           {
             "name": "Professionnel",
             "price": "7 500 $",
-            "meta": "15 pages"
+            "meta": "15 pages",
+            "who": "Site, CRM et blogue alimenté pendant un an, sur votre propre serveur."
           },
           {
             "name": "Performance",
             "price": "10 000 $",
-            "meta": "20 pages"
+            "meta": "20 pages",
+            "who": "Identité visuelle complète et vos outils connectés, du site au CRM."
           },
           {
             "name": "Signature",
             "price": "15 000 $",
-            "meta": "30 pages"
+            "meta": "30 pages",
+            "who": "Contenu rédigé pour vous, support prioritaire, garantie d’un an."
           },
           {
             "name": "Prestige",
             "price": "20 000 $",
-            "meta": "30 pages"
+            "meta": "30 pages",
+            "who": "Rebranding complet et accompagnement avant et après le lancement, pour toute l’équipe."
           }
         ],
         "ranges": [
@@ -430,7 +445,7 @@
           {
             "key": "entreprise",
             "title": "Entreprise",
-            "line": "Identité, automatisations, infrastructure.",
+            "line": "Identité de marque complète, logo inclus, automatisations et infrastructure.",
             "range": "10 000 – 20 000 $",
             "plans": [
               6,
