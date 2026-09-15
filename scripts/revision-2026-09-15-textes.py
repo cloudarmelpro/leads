@@ -77,6 +77,12 @@ def apply(path: Path, lang: str) -> None:
         if fr
         else "A Starter plan is online in 3 to 5 business days if your text and photos are ready. Growth and Enterprise plans take a few weeks, depending on the scope of the project."
     )
+    # T13 (validé le 2026-09-15) : rédaction incluse dès Signature seulement, sur devis ailleurs.
+    d["faq"]["items"][2]["a"] = (
+        "C’est la situation la plus courante. On vous guide pour préparer vos textes et vos photos, quel que soit le forfait. La rédaction de vos pages est incluse à partir du forfait Signature et disponible sur devis pour les autres."
+        if fr
+        else "It’s the most common situation. We guide you in preparing your text and photos, whatever the plan. Copywriting for your pages is included from the Signature plan and available on quote for the others."
+    )
     d["faq"]["items"][5]["a"] = (
         "Votre site offre plusieurs façons de vous joindre : formulaire, courriel, téléphone et liens vers vos réseaux sociaux. La prise de rendez-vous en ligne est incluse à partir du forfait Croissance."
         if fr
@@ -89,12 +95,14 @@ def apply(path: Path, lang: str) -> None:
     )
 
     # A5 (validé le 2026-09-15) — repère de prix sous les cartes de services de l'Accueil, tiré du
-    # PDF. Refonte et Adresses courriel : rien dans l'offre, donc pas de ligne tant que Cedric ne
-    # tranche pas. Les liens vers la page Prix sont dans le composant (paramètres identiques FR/EN).
+    # PDF, complété par les décisions du 2026-09-15 (refonte = forfaits de création ; courriel = avec
+    # l'hébergement). Les liens vers la page Prix sont dans le composant (paramètres identiques FR/EN).
     NNB = " "
     pricing_lines = {
         0: f"À partir de 499{NNB}$" if fr else "From $499",
+        1: f"Mêmes forfaits que la création, à partir de 499{NNB}$" if fr else "Same plans as a new site, from $499",
         2: f"À partir de 35{NNB}$ par mois" if fr else "From $35 per month",
+        3: "Inclus avec l’hébergement" if fr else "Included with hosting",
         4: f"À partir de 200{NNB}$" if fr else "From $200",
         5: f"De 45{NNB}$ à 150{NNB}$ par mois" if fr else "From $45 to $150 per month",
         6: "Inclus à partir du forfait Professionnel" if fr else "Included from the Professional plan",
@@ -148,10 +156,16 @@ def apply(path: Path, lang: str) -> None:
         if fr
         else "Every site is tested before launch: speed, mobile display, forms, basic SEO."
     )
+    # Professionnalisme et Confiance (validés le 2026-09-15) : promesses vérifiables.
     a["principles"]["items"][1]["body"] = (
-        "On travaille avec sérieux, rigueur et transparence à chaque étape. De la première discussion jusqu’à la livraison, vous pouvez compter sur une équipe fiable et engagée dans la réussite de votre projet."
+        "Des délais annoncés et tenus, un point d’avancement à chaque étape, et une seule personne responsable de votre projet du début à la fin."
         if fr
-        else "We work with seriousness, rigor and transparency at every step. From the first conversation to delivery, you can count on a reliable team committed to your project’s success."
+        else "Deadlines announced and kept, a progress update at every step, and a single person responsible for your project from start to finish."
+    )
+    a["principles"]["items"][2]["body"] = (
+        "Des prix affichés, des engagements écrits, et un site dont vous gardez tous les accès."
+        if fr
+        else "Prices displayed, commitments in writing, and a website you keep full access to."
     )
     a["story"]["photoAlt"] = "Deux personnes travaillent ensemble sur un ordinateur portable dans un atelier" if fr else "Two people working together on a laptop in a workshop"
     a["principles"]["photoAlt"] = "Poste de travail avec deux écrans dans une pièce sombre" if fr else "Dual-screen workstation in a dim room"

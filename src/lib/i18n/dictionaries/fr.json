@@ -103,7 +103,8 @@
       },
       {
         "name": "Refonte de site existant",
-        "note": "On analyse ce qui existe, on identifie ce qui bloque la conversion, puis on retravaille chaque élément — structure, vitesse, contenu — pour un site qui pousse le visiteur à vous contacter."
+        "note": "On analyse ce qui existe, on identifie ce qui bloque la conversion, puis on retravaille chaque élément — structure, vitesse, contenu — pour un site qui pousse le visiteur à vous contacter.",
+        "pricing": "Mêmes forfaits que la création, à partir de 499 $"
       },
       {
         "name": "Hébergement",
@@ -112,7 +113,8 @@
       },
       {
         "name": "Adresses courriel professionnelles",
-        "note": "Un courriel à votre nom de domaine, ça change tout — au lieu d’un Gmail générique, vos clients voient une entreprise établie, sérieuse, qui inspire confiance dès le premier échange."
+        "note": "Un courriel à votre nom de domaine, ça change tout — au lieu d’un Gmail générique, vos clients voient une entreprise établie, sérieuse, qui inspire confiance dès le premier échange.",
+        "pricing": "Inclus avec l’hébergement"
       },
       {
         "name": "Logo et identité de marque",
@@ -197,7 +199,7 @@
       },
       {
         "q": "Je n’ai ni textes, ni photos.",
-        "a": "Pas de problème, c’est la situation la plus courante. On vous accompagne pour les textes, et on trouve ou on crée les photos qui conviennent."
+        "a": "C’est la situation la plus courante. On vous guide pour préparer vos textes et vos photos, quel que soit le forfait. La rédaction de vos pages est incluse à partir du forfait Signature et disponible sur devis pour les autres."
       },
       {
         "q": "J’ai déjà un site, mais il est faible. Vous le refaites ?",
@@ -313,11 +315,11 @@
         },
         {
           "title": "Professionnalisme",
-          "body": "On travaille avec sérieux, rigueur et transparence à chaque étape. De la première discussion jusqu’à la livraison, vous pouvez compter sur une équipe fiable et engagée dans la réussite de votre projet."
+          "body": "Des délais annoncés et tenus, un point d’avancement à chaque étape, et une seule personne responsable de votre projet du début à la fin."
         },
         {
           "title": "Confiance",
-          "body": "Des échanges honnêtes, des engagements respectés et un suivi clair du début à la fin."
+          "body": "Des prix affichés, des engagements écrits, et un site dont vous gardez tous les accès."
         }
       ]
     }
@@ -374,7 +376,7 @@
             "name": "Lancement",
             "price": "999 $",
             "meta": "3 pages",
-            "who": "Trois pages sur un de nos modèles, avec le référencement local et de chaque page."
+            "who": "Trois pages sur un de nos modèles, avec le contenu de chaque page optimisé pour Google."
           },
           {
             "name": "Essentiel",
@@ -434,7 +436,7 @@
           {
             "key": "croissance",
             "title": "Croissance",
-            "line": "Sur mesure, CRM et contenu.",
+            "line": "Sur mesure et pensé pour convertir, du site seul jusqu’au CRM et au blogue.",
             "range": "3 999 – 7 500 $",
             "plans": [
               3,
@@ -1500,7 +1502,7 @@
               {
                 "label": "Certificat SSL (site sécurisé HTTPS)",
                 "cells": [
-                  "-",
+                  "y",
                   "y",
                   "y",
                   "y",
@@ -1514,7 +1516,7 @@
               {
                 "label": "Plan du site (sitemap) pour Google",
                 "cells": [
-                  "-",
+                  "y",
                   "y",
                   "y",
                   "y",
@@ -1542,15 +1544,15 @@
               {
                 "label": "Hébergement du site",
                 "cells": [
-                  "12 mois",
-                  "12 mois",
-                  "12 mois",
-                  "12 mois",
-                  "12 mois",
-                  "24 mois",
-                  "24 mois",
-                  "24 mois",
-                  "24 mois"
+                  "Inclus 12 mois, ensuite à partir de 35 $/mois",
+                  "Inclus 12 mois, ensuite à partir de 35 $/mois",
+                  "Inclus 12 mois, ensuite à partir de 35 $/mois",
+                  "Inclus 12 mois, ensuite à partir de 35 $/mois",
+                  "Inclus 12 mois, ensuite à partir de 35 $/mois",
+                  "Inclus 24 mois, ensuite à partir de 35 $/mois",
+                  "Inclus 24 mois, ensuite à partir de 35 $/mois",
+                  "Inclus 24 mois, ensuite à partir de 35 $/mois",
+                  "Inclus 24 mois, ensuite à partir de 35 $/mois"
                 ]
               },
               {
@@ -1617,6 +1619,20 @@
           {
             "title": "Livraison et accompagnement",
             "rows": [
+              {
+                "label": "Délai de mise en ligne",
+                "cells": [
+                  "3 à 5 jours ouvrables, contenus fournis",
+                  "3 à 5 jours ouvrables, contenus fournis",
+                  "3 à 5 jours ouvrables, contenus fournis",
+                  "Fixé à la soumission",
+                  "Fixé à la soumission",
+                  "Fixé à la soumission",
+                  "Fixé à la soumission",
+                  "Fixé à la soumission",
+                  "Fixé à la soumission"
+                ]
+              },
               {
                 "label": "Rondes de corrections",
                 "cells": [
@@ -2030,6 +2046,13 @@
               },
               {
                 "label": "Infrastructure standard",
+                "cells": [
+                  "y",
+                  "y"
+                ]
+              },
+              {
+                "label": "Adresses courriel professionnelles",
                 "cells": [
                   "y",
                   "y"

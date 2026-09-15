@@ -103,7 +103,8 @@
       },
       {
         "name": "Existing site rebuild",
-        "note": "We analyze what’s there, pinpoint what’s blocking conversion, then rework every element — structure, speed, content — for a site that pushes the visitor to contact you."
+        "note": "We analyze what’s there, pinpoint what’s blocking conversion, then rework every element — structure, speed, content — for a site that pushes the visitor to contact you.",
+        "pricing": "Same plans as a new site, from $499"
       },
       {
         "name": "Hosting",
@@ -112,7 +113,8 @@
       },
       {
         "name": "Professional email addresses",
-        "note": "An email on your own domain changes everything — instead of a generic Gmail, your customers see an established, serious business that earns trust from the very first exchange."
+        "note": "An email on your own domain changes everything — instead of a generic Gmail, your customers see an established, serious business that earns trust from the very first exchange.",
+        "pricing": "Included with hosting"
       },
       {
         "name": "Logo and brand identity",
@@ -197,7 +199,7 @@
       },
       {
         "q": "I have no copy or photos.",
-        "a": "No problem — it’s the most common situation. We guide you with the copy, and we find or create the photos that fit."
+        "a": "It’s the most common situation. We guide you in preparing your text and photos, whatever the plan. Copywriting for your pages is included from the Signature plan and available on quote for the others."
       },
       {
         "q": "I already have a website, but it’s weak. Do you rebuild it?",
@@ -313,11 +315,11 @@
         },
         {
           "title": "Professionalism",
-          "body": "We work with seriousness, rigor and transparency at every step. From the first conversation to delivery, you can count on a reliable team committed to your project’s success."
+          "body": "Deadlines announced and kept, a progress update at every step, and a single person responsible for your project from start to finish."
         },
         {
           "title": "Trust",
-          "body": "Honest exchanges, commitments kept and clear follow-up from start to finish."
+          "body": "Prices displayed, commitments in writing, and a website you keep full access to."
         }
       ]
     }
@@ -374,7 +376,7 @@
             "name": "Launch",
             "price": "$999",
             "meta": "3 pages",
-            "who": "Three pages on one of our templates, with local and on-page SEO included."
+            "who": "Three pages on one of our templates, with every page’s content optimized for Google."
           },
           {
             "name": "Essential",
@@ -434,7 +436,7 @@
           {
             "key": "croissance",
             "title": "Growth",
-            "line": "Custom build, CRM and content.",
+            "line": "Custom-built and designed to convert, from the site alone up to CRM and blog.",
             "range": "$3,999 – $7,500",
             "plans": [
               3,
@@ -1500,7 +1502,7 @@
               {
                 "label": "SSL certificate (secure HTTPS site)",
                 "cells": [
-                  "-",
+                  "y",
                   "y",
                   "y",
                   "y",
@@ -1514,7 +1516,7 @@
               {
                 "label": "Sitemap for Google",
                 "cells": [
-                  "-",
+                  "y",
                   "y",
                   "y",
                   "y",
@@ -1542,15 +1544,15 @@
               {
                 "label": "Site hosting",
                 "cells": [
-                  "12 months",
-                  "12 months",
-                  "12 months",
-                  "12 months",
-                  "12 months",
-                  "24 months",
-                  "24 months",
-                  "24 months",
-                  "24 months"
+                  "Included 12 months, then from $35/month",
+                  "Included 12 months, then from $35/month",
+                  "Included 12 months, then from $35/month",
+                  "Included 12 months, then from $35/month",
+                  "Included 12 months, then from $35/month",
+                  "Included 24 months, then from $35/month",
+                  "Included 24 months, then from $35/month",
+                  "Included 24 months, then from $35/month",
+                  "Included 24 months, then from $35/month"
                 ]
               },
               {
@@ -1617,6 +1619,20 @@
           {
             "title": "Delivery and support",
             "rows": [
+              {
+                "label": "Time to go live",
+                "cells": [
+                  "3 to 5 business days, content supplied",
+                  "3 to 5 business days, content supplied",
+                  "3 to 5 business days, content supplied",
+                  "Set in the quote",
+                  "Set in the quote",
+                  "Set in the quote",
+                  "Set in the quote",
+                  "Set in the quote",
+                  "Set in the quote"
+                ]
+              },
               {
                 "label": "Revision rounds",
                 "cells": [
@@ -2030,6 +2046,13 @@
               },
               {
                 "label": "Standard infrastructure",
+                "cells": [
+                  "y",
+                  "y"
+                ]
+              },
+              {
+                "label": "Professional email addresses",
                 "cells": [
                   "y",
                   "y"

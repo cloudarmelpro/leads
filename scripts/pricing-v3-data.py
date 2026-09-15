@@ -39,7 +39,7 @@ SITE_PLANS_FR = [
     # 4e valeur (A4) : « pour qui », tirée des lignes qui distinguent le forfait du précédent
     # dans l'« Offre de services » de Cedric (PDF du 2026-09-10) — rien qui n'y figure pas.
     ("Express", 499, "3 pages", "Pour être en ligne vite, avec vos contenus prêts."),
-    ("Lancement", 999, "3 pages", "Trois pages sur un de nos modèles, avec le référencement local et de chaque page."),
+    ("Lancement", 999, "3 pages", "Trois pages sur un de nos modèles, avec le contenu de chaque page optimisé pour Google."),
     ("Essentiel", 1999, "5 pages", "Jusqu’à cinq pages à votre image, avec le suivi Google inclus."),
     ("Sur-mesure", 3999, "7 pages", "Un site conçu de zéro pour votre entreprise, pensé pour convertir."),
     ("Croissance", 5500, "10 pages", "Site, logo et prise de rendez-vous, avec le suivi de vos conversions."),
@@ -50,7 +50,7 @@ SITE_PLANS_FR = [
 ]
 SITE_PLANS_EN = [
     ("Express", 499, "3 pages", "To get online fast, with your content ready."),
-    ("Launch", 999, "3 pages", "Three pages on one of our templates, with local and on-page SEO included."),
+    ("Launch", 999, "3 pages", "Three pages on one of our templates, with every page’s content optimized for Google."),
     ("Essential", 1999, "5 pages", "Up to five pages in your image, with Google tracking included."),
     ("Custom", 3999, "7 pages", "A site designed from scratch for your business, built to convert."),
     ("Growth", 5500, "10 pages", "Site, logo and online booking, with conversion tracking."),
@@ -62,19 +62,22 @@ SITE_PLANS_EN = [
 
 RANGES_FR = [
     ("Démarrage", "Un site professionnel, en ligne en quelques jours.", f"499 – 1{NB}999{NNB}$", [0, 1, 2]),
-    ("Croissance", "Sur mesure, CRM et contenu.", f"3{NB}999 – 7{NB}500{NNB}$", [3, 4, 5]),
+    # T5 (décision du 2026-09-15) : vraie pour les trois forfaits — Sur-mesure n'a ni CRM ni blogue.
+    ("Croissance", "Sur mesure et pensé pour convertir, du site seul jusqu’au CRM et au blogue.", f"3{NB}999 – 7{NB}500{NNB}$", [3, 4, 5]),
     # T6 : phrase du rapport de révision, exacte pour Performance, Signature et Prestige (PDF).
     ("Entreprise", "Identité de marque complète, logo inclus, automatisations et infrastructure.", f"10{NB}000 – 20{NB}000{NNB}$", [6, 7, 8]),
 ]
 RANGES_EN = [
     ("Starter", "A professional site, online within days.", "$499 – $1,999", [0, 1, 2]),
-    ("Growth", "Custom build, CRM and content.", "$3,999 – $7,500", [3, 4, 5]),
+    ("Growth", "Custom-built and designed to convert, from the site alone up to CRM and blog.", "$3,999 – $7,500", [3, 4, 5]),
     ("Enterprise", "Full brand identity, logo included, automations and infrastructure.", "$10,000 – $20,000", [6, 7, 8]),
 ]
 
 Y9 = ["y"] * 9
 # A1 (rapport de révision 2026-09-14) : statut du logo écrit noir sur blanc dans chaque colonne.
 OPT_LOGO = f"Non inclus — option à partir de 200{NNB}$"
+HOST_12 = f"Inclus 12 mois, ensuite à partir de 35{NNB}$/mois"
+HOST_24 = f"Inclus 24 mois, ensuite à partir de 35{NNB}$/mois"
 
 SITE_GROUPS_FR = [
     ("Design et conception", [
@@ -164,16 +167,20 @@ SITE_GROUPS_FR = [
         ("Tableau de bord de performance", [N, N, N, N, "y", "y", "y", "y", "y"]),
     ]),
     ("Infrastructure", [
-        ("Certificat SSL (site sécurisé HTTPS)", [N, "y", "y", "y", "y", "y", "y", "y", "y"]),
-        ("Plan du site (sitemap) pour Google", [N, "y", "y", "y", "y", "y", "y", "y", "y"]),
+        # Décision du 2026-09-15 : SSL et plan du site aussi pour Express (le PDF les omettait).
+        ("Certificat SSL (site sécurisé HTTPS)", Y9),
+        ("Plan du site (sitemap) pour Google", Y9),
         ("Mise en ligne", Y9),
-        ("Hébergement du site", ["12 mois", "12 mois", "12 mois", "12 mois", "12 mois", "24 mois", "24 mois", "24 mois", "24 mois"]),
+        # T10 (décision du 2026-09-15) : le tarif qui suit est celui du forfait Hébergement simple.
+        ("Hébergement du site", [HOST_12] * 5 + [HOST_24] * 4),
         ("VPS KVM inclus", [N, N, N, N, N, "KVM 1 · 24 mois", "KVM 2 · 24 mois", "KVM 4 · 24 mois", "KVM 8 · 24 mois"]),
         ("vCPU", [N, N, N, N, N, "1", "2", "4", "8"], 1),
         ("RAM", [N, N, N, N, N, "4 Go", "8 Go", "16 Go", "32 Go"], 1),
         ("Stockage NVMe", [N, N, N, N, N, "50 Go", "100 Go", "200 Go", "400 Go"], 1),
     ]),
     ("Livraison et accompagnement", [
+        # A3 (décision du 2026-09-15) : délai promis par la FAQ pour Démarrage ; aucun chiffre au-delà.
+        ("Délai de mise en ligne", ["3 à 5 jours ouvrables, contenus fournis"] * 3 + ["Fixé à la soumission"] * 6),
         ("Rondes de corrections", ["1", "2", "3", "3", "3", "4", "4", "4", "4"]),
         ("Formation", [N, N, N, N, "45 minutes", "1 heure", "2 heures", "4 heures", "Complète, pour l’équipe"]),
         ("Support prioritaire", [N, N, N, N, N, N, N, "y", "y"]),
@@ -190,6 +197,8 @@ T = {
     "Textes, photos et logo": "Text, photos and logo", "Jusqu’à 3": "Up to 3", "Jusqu’à 5": "Up to 5", "Jusqu’à 10": "Up to 10",
     "2 / mois · 12 mois": "2 / month · 12 months", "2 / mois · 24 mois": "2 / month · 24 months", "Approfondie": "In-depth",
     "Système": "System", "Système complet": "Full system", "Inclus": "Included", "Inclus": "Included", "12 mois": "12 months", "24 mois": "24 months",
+    HOST_12: "Included 12 months, then from $35/month", HOST_24: "Included 24 months, then from $35/month",
+    "3 à 5 jours ouvrables, contenus fournis": "3 to 5 business days, content supplied", "Fixé à la soumission": "Set in the quote",
     "KVM 1 · 24 mois": "KVM 1 · 24 months", "KVM 2 · 24 mois": "KVM 2 · 24 months", "KVM 4 · 24 mois": "KVM 4 · 24 months", "KVM 8 · 24 mois": "KVM 8 · 24 months",
     "4 Go": "4 GB", "8 Go": "8 GB", "16 Go": "16 GB", "32 Go": "32 GB", "50 Go": "50 GB", "100 Go": "100 GB", "200 Go": "200 GB", "400 Go": "400 GB",
     "45 minutes": "45 minutes", "1 heure": "1 hour", "2 heures": "2 hours", "4 heures": "4 hours",
@@ -234,6 +243,7 @@ LABELS_EN = {
     "Suivi des réservations": "Booking tracking", "Suivi des interactions téléphoniques": "Phone interaction tracking", "Tableau de bord de performance": "Performance dashboard",
     "Certificat SSL (site sécurisé HTTPS)": "SSL certificate (secure HTTPS site)", "Plan du site (sitemap) pour Google": "Sitemap for Google", "Mise en ligne": "Go-live", "Hébergement du site": "Site hosting", "VPS KVM inclus": "KVM VPS included",
     "vCPU": "vCPU", "RAM": "RAM", "Stockage NVMe": "NVMe storage", "Rondes de corrections": "Revision rounds", "Formation": "Training",
+    "Délai de mise en ligne": "Time to go live", "Adresses courriel professionnelles": "Professional email addresses",
     "Support prioritaire": "Priority support", "Accompagnement après lancement": "Post-launch support", "Garantie": "Warranty",
     # Logo
     "Pistes créatives": "Creative directions", "Création à partir d’une idée ou direction claire": "Created from a clear idea or direction",
@@ -311,6 +321,8 @@ HOST_PLANS_EN = [("Simple hosting", 35, "No maintenance"), ("Hosting + maintenan
 HOST_GROUPS_FR = [
     ("Ce qui est inclus", [
         ("Hébergement du site web", ["y", "y"]), ("Certificat SSL (site sécurisé HTTPS)", ["y", "y"]), ("Mise en ligne", ["y", "y"]), ("Infrastructure standard", ["y", "y"]),
+        # A5 (décision du 2026-09-15) : les adresses courriel sont vendues avec l'hébergement.
+        ("Adresses courriel professionnelles", ["y", "y"]),
         ("Sauvegardes", [N, "y"]), ("Surveillance technique", [N, "y"]), ("Maintenance du site", [N, "y"]),
         ("Correctifs techniques", [N, "y"]), ("Assistance en cas de problème", [N, "y"]),
     ]),

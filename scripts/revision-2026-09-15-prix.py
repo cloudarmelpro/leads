@@ -65,7 +65,9 @@ rep('''        ("SEO de base", Y9),
 if '("SSL", ' in s:
     s = s.replace('("SSL", ', '("Certificat SSL (site sécurisé HTTPS)", ')
     done += 1
-rep('("Sitemap", [N, "y"', '("Plan du site (sitemap) pour Google", [N, "y"')
+# Le 2026-09-15 la ligne est passée à Y9 (Express compris) : déjà appliqué si le nouveau libellé existe.
+if '("Plan du site (sitemap) pour Google", ' not in s:
+    rep('("Sitemap", [N, "y"', '("Plan du site (sitemap) pour Google", [N, "y"')
 
 # Traductions EN des nouveaux libellés et cellules
 rep('"Système": "System", "Système complet": "Full system",', '"Système": "System", "Système complet": "Full system", "Inclus": "Included",')

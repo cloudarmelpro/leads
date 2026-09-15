@@ -16,9 +16,9 @@ type Props = { lang: Locale; dict: Dictionary };
 // Le texte du repère de prix vient du dictionnaire (`services.items[].pricing`).
 const CARDS = [
   { Icon: Globe, motif: "svc-globe", span: "min-[760px]:col-span-5", pricing: "categorie=site" },
-  { Icon: RefreshCw, motif: "svc-rings", span: "min-[760px]:col-span-5" },
+  { Icon: RefreshCw, motif: "svc-rings", span: "min-[760px]:col-span-5", pricing: "categorie=site" },
   { Icon: Layers, motif: "svc-stack", span: "min-[760px]:col-span-3", pricing: "categorie=host" },
-  { Icon: Mail, motif: "svc-mail", span: "min-[760px]:col-span-3" },
+  { Icon: Mail, motif: "svc-mail", span: "min-[760px]:col-span-3", pricing: "categorie=host" },
   { Icon: Blend, motif: "svc-identity", span: "min-[760px]:col-span-4", pricing: "categorie=logo" },
   { Icon: Box, motif: "svc-cube", span: "min-[760px]:col-span-4", pricing: "categorie=vps" },
   { Icon: Share2, motif: "svc-network", span: "min-[760px]:col-span-3", pricing: "categorie=site&gamme=croissance" },
