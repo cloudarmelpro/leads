@@ -24,7 +24,7 @@ export const site = {
   // voulu par le client : Facebook, Instagram, LinkedIn.
   social: [
     { key: "facebook", url: "https://www.facebook.com/share/1Bv6L6KQkK/?mibextid=wwXIfr" },
-    { key: "instagram", url: "https://www.instagram.com/talgasyweb?stkn=MTF1b2Vob2x3YzdrZg==" },
+    { key: "instagram", url: "https://www.instagram.com/talgasyweb/" },
     { key: "linkedin", url: "https://www.linkedin.com/company/talgasy-web/" },
   ],
 } as const;

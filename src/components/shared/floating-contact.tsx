@@ -35,7 +35,7 @@ export function FloatingContact({ dict }: Props) {
     <a
       href={tel}
       data-floating-contact
-      aria-label={dict.floating.aria}
+      aria-label={dict.floating.aria.replace("{phone}", site.phone ?? "")}
       className={`fixed right-[calc(16px+env(safe-area-inset-right))] bottom-[calc(16px+env(safe-area-inset-bottom))] z-40 flex h-[52px] w-[52px] items-center justify-center rounded-[14px] bg-vert text-sur-vert no-underline shadow-[0_8px_24px_rgba(1,24,35,0.5)] transition-[background-color,transform,opacity] duration-200 ease-[cubic-bezier(0.2,0.7,0.2,1)] hover:-translate-y-[2px] hover:bg-vert-clair ${
         footerBarVisible ? "pointer-events-none opacity-0" : ""
       }`}

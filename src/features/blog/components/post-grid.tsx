@@ -7,20 +7,23 @@ import type { Post } from "@/features/blog/mock-posts";
 import type { Locale } from "@/lib/i18n/config";
 
 type Props = {
+  /** Tous les articles, à la une comprise : elle est masquée sans filtre, affichée si sa catégorie est choisie. */
   posts: Post[];
+  featuredSlug?: string;
+  categories: string[];
   lang: Locale;
   allLabel: string;
   minRead: string;
 };
 
 /**
- * Filtres par catégorie (dérivés des articles, « Tous » en tête) et grille de cartes.
+ * Filtres par catégorie (la même liste que les pastilles du hero, « Tous » en tête) et
+ * grille de cartes.
  * Filtres à 40px, portés à 44px sur écran tactile.
  */
-export function PostGrid({ posts, lang, allLabel, minRead }: Props) {
-  const categories = Array.from(new Set(posts.map((post) => post.category)));
+export function PostGrid({ posts, featuredSlug, categories, lang, allLabel, minRead }: Props) {
   const [active, setActive] = useState<string | null>(null);
-  const shown = active ? posts.filter((post) => post.category === active) : posts;
+  const shown = active ? posts.filter((post) => post.category === active) : posts.filter((post) => post.slug !== featuredSlug);
 
   const filter = (label: string, value: string | null) => {
     const on = active === value;

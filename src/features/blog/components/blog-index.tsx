@@ -23,6 +23,8 @@ export async function BlogIndex({ lang }: Props) {
   const t = dict.blog;
   const posts = getPosts(lang);
   const [featured, ...rest] = posts;
+  // Une seule liste de catégories pour les pastilles du hero et les filtres (rapport E29).
+  const categories = Array.from(new Set(posts.map((post) => post.category)));
 
   return (
     <>
@@ -44,7 +46,7 @@ export async function BlogIndex({ lang }: Props) {
             </h1>
             <p className="m-[0px] max-w-[460px] text-[15px] leading-[26px] font-normal text-texte2 text-pretty">{t.heroIntro}</p>
             <div className="mt-[4px] flex flex-wrap gap-[8px]">
-              {t.topics.map((topic) => (
+              {categories.map((topic) => (
                 <span key={topic} className={PILL}>
                   {topic}
                 </span>
@@ -59,7 +61,7 @@ export async function BlogIndex({ lang }: Props) {
         <section className={`relative flex justify-center pb-[clamp(112px,16vw,240px)] ${GOUTTIERE}`}>
           <div className="flex w-full max-w-[1100px] flex-col gap-[48px]">
             <SectionHead id="articles" label={dict.nav.blog} title={t.moreArticles} intro={t.listSubtitle} introMax={420} />
-            <PostGrid posts={rest} lang={lang} allLabel={t.filterAll} minRead={t.minRead} />
+            <PostGrid posts={posts} featuredSlug={featured?.slug} categories={categories} lang={lang} allLabel={t.filterAll} minRead={t.minRead} />
           </div>
         </section>
       )}

@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronDown, Globe } from "lucide-react";
+import { Globe } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -15,7 +15,8 @@ type Props = {
 };
 
 /**
- * Sélecteur de langue (maquette Accueil) : globe + langue courante + chevron. Bascule
+ * Sélecteur de langue : globe + langue de DESTINATION (« EN » sur les pages françaises,
+ * rapport de révision 2026-09-14 — un anglophone cherche « EN »). Bascule
  * par CHEMIN (`/fr/...` ↔ `/en/...`) — chaque langue garde son URL / canonical /
  * hreflang (exigence SEO). Le site étant bilingue, un clic bascule vers l'autre langue.
  */
@@ -39,13 +40,12 @@ export function LanguageSwitcher({ current, label, variant = "pill", className =
     <Link
       href={pathFor(other)}
       hrefLang={other}
-      // Le nom accessible doit contenir le texte visible (« FR ») : « FR — Choisir la langue : EN ».
-      aria-label={`${localeLabels[current]} — ${label} : ${localeLabels[other]}`}
+      // Le nom accessible doit contenir le texte visible (« EN ») : « Choisir la langue : EN ».
+      aria-label={`${label} : ${localeLabels[other]}`}
       className={`tap-44 inline-flex h-[34px] items-center gap-[6px] text-[13px] leading-[20px] font-medium whitespace-nowrap no-underline transition-colors duration-200 ease-[cubic-bezier(0.2,0.7,0.2,1)] ${look} ${className}`}
     >
       <Globe size={16} strokeWidth={1.8} aria-hidden />
-      <span>{localeLabels[current]}</span>
-      <ChevronDown size={13} strokeWidth={2.4} aria-hidden />
+      <span>{localeLabels[other]}</span>
     </Link>
   );
 }

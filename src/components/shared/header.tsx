@@ -85,7 +85,7 @@ export function Header({ lang, dict }: Props) {
     <>
       <header className={`relative z-[2] flex justify-center bg-transparent pt-[10px] ${GOUTTIERE}`}>
         <div className="relative flex w-full max-w-[1100px] min-h-[44px] flex-wrap items-center gap-[8px] py-[2px]">
-          <Link href={`/${lang}`} className="flex min-w-[0px] flex-1 items-center no-underline">
+          <Link href={`/${lang}`} aria-label={`${site.name} — ${dict.nav.home}`} className="flex min-w-[0px] flex-1 items-center no-underline">
             <Logo height={26} className="relative -top-[2px]" />
           </Link>
 

@@ -57,37 +57,38 @@
     "tradesKicker": "Sectors",
     "tradesLabel": "What sector are you in?",
     "ctaBook": "Book a free call",
-    "demoCaption": "This preview changes with your trade. Your site will speak to your customers — in their words.",
+    "demoCaption": "Landscaping, excavation, construction, renovation, snow removal, local retail: we know your customers, and your site will speak their language.",
     "demos": [
       {
         "trade": "Landscaping",
-        "imgLabel": "job-site photo — landscaping"
+        "imgLabel": "Residential landscaping job site"
       },
       {
         "trade": "Excavation",
-        "imgLabel": "job-site photo — excavation"
+        "imgLabel": "Excavation site with a digger"
       },
       {
         "trade": "Construction",
-        "imgLabel": "job-site photo — construction"
+        "imgLabel": "Wood-frame construction site"
       },
       {
         "trade": "Renovation",
-        "imgLabel": "before / after photo — renovation"
+        "imgLabel": "Renovated bathroom"
       },
       {
         "trade": "Local shop",
-        "imgLabel": "storefront photo — local shop"
+        "imgLabel": "Local shop storefront"
       },
       {
         "trade": "Snow removal",
-        "imgLabel": "job-site photo — snow removal"
+        "imgLabel": "Snow removal on a residential driveway"
       },
       {
         "trade": "Arboriculture",
-        "imgLabel": "job-site photo — arboriculture"
+        "imgLabel": "Arborist pruning a tree"
       }
-    ]
+    ],
+    "ctaPricing": "See plans and pricing"
   },
   "services": {
     "kicker": "Services",
@@ -101,7 +102,7 @@
       },
       {
         "name": "Existing site rebuild",
-        "note": "We analyze what’s there, pinpoint what’s blocking conversion, then optimize and improve every element — structure, speed, content — to rebuild a site that pushes the visitor to contact you."
+        "note": "We analyze what’s there, pinpoint what’s blocking conversion, then rework every element — structure, speed, content — for a site that pushes the visitor to contact you."
       },
       {
         "name": "Hosting",
@@ -143,12 +144,12 @@
       {
         "n": "2",
         "title": "We analyze",
-        "desc": "We look at your current site and your market — an honest read of what works and what’s missing, and we figure out the best way to improve your site."
+        "desc": "We look at your current site and your market: an honest read of what works, what’s missing and what would pay off the most."
       },
       {
         "n": "3",
-        "title": "A strategy, not just a site",
-        "desc": "A plan built for your trade: which pages, which calls to action, which structure to bring in qualified leads."
+        "title": "We plan a strategy, not just a site",
+        "desc": "A plan built for your trade: which pages, which calls to action, which structure to bring in qualified requests."
       },
       {
         "n": "4",
@@ -176,11 +177,13 @@
     "kicker": "FAQ",
     "titleA": "Your questions,",
     "titleB": "straight up",
-    "intro": "Have questions before starting your project?",
+    "intro": "The questions we get before every project, and our answers.",
     "items": [
       {
         "q": "How much does it cost?",
-        "a": "Every project is different. We start with a consultation to understand your needs, then give you a clear price. A website starts at $499, a logo at $200, and hosting is $35 per month. Every plan is detailed on our Pricing page."
+        "a": "A website starts at $499, a logo at $200 and hosting at $35 per month. Every plan and what it includes is detailed on the {link}. If your project falls outside these plans, we give you a firm price after a free call.",
+        "aLink": "Pricing page",
+        "aPricing": "A website starts at $499, a logo at $200 and hosting at $35 per month. The exact inclusions of every plan are in the tables above. If your project falls outside these plans, we give you a firm price after a free consultation call."
       },
       {
         "q": "How long does it take to build a site?",
@@ -208,13 +211,13 @@
       },
       {
         "q": "Will the site rank well on Google?",
-        "a": "We structure every site to SEO best practices — speed, mobile and local content — to optimize its Google ranking. Google controls the final ranking, but we put every chance on your side with a strong foundation to maximize your visibility and returns."
+        "a": "Every site is built to SEO best practices: speed, mobile, page structure and local content. Google decides the final ranking, but your site starts on solid ground."
       }
     ]
   },
   "final": {
     "title": "Your next contract starts with a phone call.",
-    "body": "One consultation is enough to pin down your need. No commitment.",
+    "body": "One free call is enough to pin down your need. No commitment.",
     "callLabel": "Call us",
     "note": "Reply within 24 hours, Monday to Friday."
   },
@@ -241,7 +244,7 @@
     "manage": "Manage my cookies"
   },
   "floating": {
-    "aria": "Call Talgasy Web"
+    "aria": "Call Talgasy Web at {phone}"
   },
   "blog": {
     "meta": {
@@ -251,12 +254,6 @@
     "title": "Ideas &",
     "titleHighlight": "advice",
     "heroIntro": "Practical articles to win more customers with your website. Conversion, local SEO, content: what we apply for our clients, explained without jargon.",
-    "topics": [
-      "Conversion",
-      "Local SEO",
-      "Content",
-      "Redesign"
-    ],
     "filterAll": "All",
     "featured": "Featured",
     "minRead": "min read",
@@ -282,15 +279,15 @@
       "kicker": "Our story",
       "title": "For those starting out, and those growing",
       "intro": "A strong start makes all the difference. We give new businesses solid foundations to showcase their work and win their first clients.",
-      "photoAlt": "Meeting between an entrepreneur and the Talgasy Web team",
+      "photoAlt": "Two people working together on a laptop in a workshop",
       "items": [
         {
           "title": "Well-established businesses",
-          "body": "But we also work with well-established entrepreneurs who want to modernize their online presence and finally have a website worthy of the business they’ve built."
+          "body": "We also work with established entrepreneurs who want to modernize their online presence and finally have a website worthy of the business they’ve built."
         },
         {
           "title": "A tool, not a showcase",
-          "body": "To us, a website isn’t just a presence on the Internet. It’s a tool that has to serve the business: clearly present what it does, inspire trust and help clients take action."
+          "body": "A website isn’t just a presence on the Internet. It’s a tool that has to serve the business: clearly present what it does, inspire trust and help clients take action."
         },
         {
           "title": "Contributing to local success",
@@ -301,8 +298,8 @@
     "principles": {
       "kicker": "Principles",
       "title": "We build for results",
-      "intro": "Talgasy Web is built on a simple idea: your website should bring you customers, not just look good.",
-      "photoAlt": "The Talgasy Web team at work",
+      "intro": "A website should bring you customers, not just look good.",
+      "photoAlt": "Dual-screen workstation in a dim room",
       "items": [
         {
           "title": "Quality",
@@ -310,7 +307,7 @@
         },
         {
           "title": "Professionalism",
-          "body": "We work with seriousness, rigor and transparency at every step. From the first conversation to delivery, you can count on a professional, reliable team committed to your project’s success."
+          "body": "We work with seriousness, rigor and transparency at every step. From the first conversation to delivery, you can count on a reliable team committed to your project’s success."
         },
         {
           "title": "Trust",
@@ -322,22 +319,22 @@
   "pricing": {
     "meta": {
       "title": "Pricing — Website, logo, hosting and server plans | Talgasy Web",
-      "description": "Clear plans, from a first site to fully custom builds: websites, logo and brand, hosting and VPS servers. Compare line by line and book a free call."
+      "description": "Clear plans, from a first site to fully custom builds: websites, logo and brand identity, hosting and VPS servers. Compare line by line and book a free call."
     },
     "breadcrumb": "Pricing",
     "heroTitleA": "Clear ",
     "heroHighlight": "plans",
     "heroTitleB": ", from your first site to fully custom.",
-    "heroSubtitle": "Websites, logo and brand, hosting and servers. Pick a family, then compare line by line.",
+    "heroSubtitle": "Websites, logo and brand identity, hosting and servers. Pick a category, then compare the plans line by line.",
     "cta": "Book a free call",
     "viewPlans": "See the plans",
     "kicker": "Plans",
     "labels": {
-      "families": "Plan families",
+      "families": "Plan categories",
       "plansCount": "{n} plans",
       "plansCountOne": "1 plan",
       "rangesLabel": "Ranges",
-      "shownInTable": "Shown in the table",
+      "shownInTable": "Range shown",
       "compareRange": "Compare this range",
       "detailed": "Detailed comparison",
       "diffOnly": "Show differences only",
@@ -347,7 +344,7 @@
       "lines": "{n} rows",
       "lineOne": "1 row",
       "book": "Book a call",
-      "bookShort": "Book",
+      "bookShort": "Book a call",
       "included": "Included",
       "notIncluded": "Not included",
       "pickPlan": "Pick a plan",
@@ -359,7 +356,7 @@
         "key": "site",
         "label": "Website",
         "title": "Website",
-        "desc": "Every project is different. We start with a consultation, then give you a clear price.",
+        "desc": "Three ranges, nine plans, prices shown. Torn between two? One free call is enough to point you in the right direction.",
         "plans": [
           {
             "name": "Express",
@@ -374,43 +371,43 @@
           {
             "name": "Essential",
             "price": "$1,999",
-            "meta": "Up to 5 pages"
+            "meta": "5 pages"
           },
           {
             "name": "Custom",
             "price": "$3,999",
-            "meta": "Up to 7 pages"
+            "meta": "7 pages"
           },
           {
             "name": "Growth",
             "price": "$5,500",
-            "meta": "Up to 10 pages"
+            "meta": "10 pages"
           },
           {
             "name": "Professional",
             "price": "$7,500",
-            "meta": "Up to 15 pages"
+            "meta": "15 pages"
           },
           {
             "name": "Performance",
             "price": "$10,000",
-            "meta": "Up to 20 pages"
+            "meta": "20 pages"
           },
           {
             "name": "Signature",
             "price": "$15,000",
-            "meta": "Up to 30 pages"
+            "meta": "30 pages"
           },
           {
             "name": "Prestige",
             "price": "$20,000",
-            "meta": "Up to 30 pages"
+            "meta": "30 pages"
           }
         ],
         "ranges": [
           {
             "title": "Starter",
-            "line": "A clean site, online fast.",
+            "line": "A professional site, online within days.",
             "range": "$499 – $1,999",
             "plans": [
               0,
@@ -458,7 +455,7 @@
                 ]
               },
               {
-                "label": "Design built from proven professional components",
+                "label": "Design built from our professional templates",
                 "cells": [
                   "-",
                   "y",
@@ -472,7 +469,7 @@
                 ]
               },
               {
-                "label": "Advanced design customization",
+                "label": "Design adapted to your brand image",
                 "cells": [
                   "-",
                   "-",
@@ -528,17 +525,17 @@
                 ]
               },
               {
-                "label": "Responsive",
+                "label": "Works on every screen (mobile, tablet, desktop)",
                 "cells": [
-                  "-",
-                  "Mobile and tablet",
-                  "Mobile, tablet and desktop",
-                  "Full",
-                  "Full",
-                  "Full",
-                  "Full",
-                  "Full",
-                  "Full"
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y"
                 ]
               },
               {
@@ -561,17 +558,17 @@
             "title": "Brand and identity",
             "rows": [
               {
-                "label": "Professional logo included",
+                "label": "Logo and visual identity",
                 "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y"
+                  "Not included — option from $200",
+                  "Not included — option from $200",
+                  "Not included — option from $200",
+                  "Not included — option from $200",
+                  "Included",
+                  "Included",
+                  "Included",
+                  "Included",
+                  "Included"
                 ]
               },
               {
@@ -908,6 +905,20 @@
             "title": "Features",
             "rows": [
               {
+                "label": "Bilingual site FR / EN",
+                "cells": [
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y"
+                ]
+              },
+              {
                 "label": "Contact form",
                 "cells": [
                   "y",
@@ -1156,10 +1167,10 @@
             "title": "Content",
             "rows": [
               {
-                "label": "Content integration",
+                "label": "Integration of your text, photos and logo",
                 "cells": [
-                  "Text, photos and logo supplied by the client",
-                  "Text, photos and logo",
+                  "y",
+                  "y",
                   "y",
                   "y",
                   "y",
@@ -1245,7 +1256,7 @@
             "title": "SEO",
             "rows": [
               {
-                "label": "Basic SEO",
+                "label": "Basic SEO (titles, descriptions, page structure)",
                 "cells": [
                   "y",
                   "y",
@@ -1259,7 +1270,7 @@
                 ]
               },
               {
-                "label": "Essential technical SEO",
+                "label": "Technical optimization (speed, mobile, indexing)",
                 "cells": [
                   "-",
                   "y",
@@ -1273,21 +1284,7 @@
                 ]
               },
               {
-                "label": "Technical SEO",
-                "cells": [
-                  "-",
-                  "-",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y"
-                ]
-              },
-              {
-                "label": "On-page SEO",
+                "label": "Content optimization of every page (on-page SEO)",
                 "cells": [
                   "-",
                   "-",
@@ -1483,7 +1480,7 @@
             "title": "Infrastructure",
             "rows": [
               {
-                "label": "SSL",
+                "label": "SSL certificate (secure HTTPS site)",
                 "cells": [
                   "-",
                   "y",
@@ -1497,7 +1494,7 @@
                 ]
               },
               {
-                "label": "Sitemap",
+                "label": "Sitemap for Google",
                 "cells": [
                   "-",
                   "y",
@@ -1678,8 +1675,8 @@
       },
       {
         "key": "logo",
-        "label": "Logo and brand",
-        "title": "Logo and brand",
+        "label": "Logo and brand identity",
+        "title": "Logo and brand identity",
         "desc": "From a simple logo to a complete brand overhaul, with source files in every case.",
         "plans": [
           {
@@ -2000,7 +1997,7 @@
                 ]
               },
               {
-                "label": "SSL",
+                "label": "SSL certificate (secure HTTPS site)",
                 "cells": [
                   "y",
                   "y"
@@ -2142,7 +2139,7 @@
                 ]
               },
               {
-                "label": "SSL",
+                "label": "SSL certificate (secure HTTPS site)",
                 "cells": [
                   "y",
                   "y",
@@ -2186,7 +2183,7 @@
     "booking": {
       "title": "Book a free call",
       "kicker": "Booking",
-      "intro": "A 45-minute discovery call, by phone or video: your goals, a first look at your online presence and the next steps — no commitment.",
+      "intro": "A 45-minute discovery call, by phone or video, no commitment.",
       "service": "Discovery call",
       "duration": "45 min",
       "channel": "Phone or video",
@@ -2200,7 +2197,7 @@
       "pickSlot": "Available slots",
       "loadTitle": "Calendar provided by Cal.com",
       "loadBody": "The booking calendar is a third-party service. By displaying it, you agree that your IP address is sent to it. You can also write to us with the form below.",
-      "loadCta": "Show the calendar",
+      "loadCta": "Show the booking calendar",
       "embedNote": "Design preview — the real Cal.com calendar will appear in this window once the URL is connected.",
       "free": "Free",
       "modalTitle": "Book a discovery call",
@@ -2249,7 +2246,7 @@
       "send": "Send my request",
       "sending": "Sending…",
       "successTitle": "Message received!",
-      "successBody": "We’ll get back to you very soon. Thank you.",
+      "successBody": "Thank you. We reply within 24 hours, Monday to Friday.",
       "errorTitle": "Something went wrong",
       "errorBody": "Your message couldn’t be sent. Please try again, or call us directly.",
       "errors": {
@@ -2271,8 +2268,8 @@
       "messagePlaceholder": "Type of business, what you’re looking for, rough timeline."
     },
     "aside": {
-      "zone": "Québec City, all across Québec",
-      "zoneBody": "We work remotely with businesses from every region. Reply within 24 hours on business days."
+      "zone": "Based in Québec City, we work all across Québec.",
+      "zoneBody": "We work remotely with businesses from every region. Reply within 24 hours, Monday to Friday."
     }
   }
 }

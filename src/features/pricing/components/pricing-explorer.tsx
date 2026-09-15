@@ -26,13 +26,17 @@ const EASE = "ease-[cubic-bezier(0.2,0.7,0.2,1)]";
 const PRICE = "font-bold tracking-[-0.02em] tabular-nums whitespace-nowrap";
 const BOOK_FULL = `flex w-full items-center justify-center rounded-[9px] text-[14px] leading-[20px] font-medium no-underline transition-colors duration-[220ms] ${EASE}`;
 
-/** « 1 999 $ » → « 1 999 » + « $ » ; « 35 $ / mois » → « 35 » + « $ / mois » ; « $499 » reste entier, « $35 / month » → « $35 » + « / month ». */
+/**
+ * « 1 999 $ » → « 1 999 » + « $ » ; « 35 $ / mois » → « 35 » + « $ / mois » ; « $499 » reste entier,
+ * « $35 / month » → « $35 » + « / month ». L'espace qui précède le suffixe (fine insécable en FR)
+ * est conservée dans `sep` et rendue telle quelle : « 499$ » collé serait fautif.
+ */
 function splitPrice(price: string) {
-  const fr = /^([\d\s  ]+?)\s*([^\d\s  ].*)$/.exec(price);
-  if (fr) return { amount: fr[1], suffix: fr[2] };
+  const fr = /^([\d\s\u00a0\u202f]+?)([\s\u00a0\u202f]*)([^\d\s\u00a0\u202f].*)$/.exec(price);
+  if (fr) return { amount: fr[1], sep: fr[2] || "\u202f", suffix: fr[3] };
   const en = price.indexOf(" /");
-  if (en > 0) return { amount: price.slice(0, en), suffix: price.slice(en + 1) };
-  return { amount: price, suffix: "" };
+  if (en > 0) return { amount: price.slice(0, en), sep: " ", suffix: price.slice(en + 1) };
+  return { amount: price, sep: "", suffix: "" };
 }
 
 function count(n: number, one: string, many: string) {
@@ -189,7 +193,7 @@ export function PricingExplorer({ lang, dict }: Props) {
           ) : (
             <div className="grid grid-cols-[repeat(auto-fit,minmax(230px,1fr))] gap-[16px]">
               {family.plans.map((plan, i) => {
-                const { amount, suffix } = splitPrice(plan.price);
+                const { amount, sep, suffix } = splitPrice(plan.price);
                 const lit = hover === `p${i}`;
                 return (
                   <div key={plan.name} className="flex flex-col gap-[10px]">
@@ -202,11 +206,11 @@ export function PricingExplorer({ lang, dict }: Props) {
                       <span className={`text-[26px] leading-[32px] font-normal tracking-[-0.02em] ${lit ? "text-white" : "text-encre"}`}>{plan.name}</span>
                       <span className={`text-[14px] leading-[21px] font-normal ${lit ? "text-white/78" : "text-texte2"}`}>{plan.meta}</span>
                       <span className="mt-auto flex items-baseline gap-[7px]">
-                        <span className={`text-[28px] leading-[34px] ${PRICE} ${lit ? "text-white" : "text-encre"}`}>{amount}</span>
+                        <span className={`text-[28px] leading-[34px] ${PRICE} ${lit ? "text-white" : "text-encre"}`}>{amount}{sep}</span>
                         {suffix && <span className={`text-[14px] leading-[21px] font-normal whitespace-nowrap ${lit ? "text-white/78" : "text-texte2"}`}>{suffix}</span>}
                       </span>
                     </div>
-                    <Link href={href} className={`min-h-[38px] bg-surface-2 text-encre hover:bg-vert hover:text-sur-vert ${BOOK_FULL}`}>
+                    <Link href={href} aria-label={`${labels.book} — ${plan.name}`} className={`min-h-[38px] bg-surface-2 text-encre hover:bg-vert hover:text-sur-vert ${BOOK_FULL}`}>
                       {labels.book}
                     </Link>
                   </div>
@@ -346,16 +350,17 @@ export function PricingExplorer({ lang, dict }: Props) {
 
 /** En-tête de colonne (tableau) : nom, prix vert, précision, bouton « Réserver ». */
 function PlanHead({ plan, labels, href }: { plan: Plan; labels: Labels; href: string }) {
-  const { amount, suffix } = splitPrice(plan.price);
+  const { amount, sep, suffix } = splitPrice(plan.price);
   return (
     <div className="flex flex-col items-center justify-end gap-[10px] px-[14px] py-[20px] text-center">
       <span className="text-[20px] leading-[26px] font-normal text-encre">{plan.name}</span>
       <span className={`text-[26px] leading-[32px] text-vert ${PRICE}`}>
         {amount}
-        {suffix && <span className="ml-[0.28em] text-[15px]">{suffix}</span>}
+        {sep}
+        {suffix && <span className="text-[15px]">{suffix}</span>}
       </span>
       <span className="text-[12px] leading-[18px] font-normal text-texte2">{plan.meta}</span>
-      <Link href={href} className={`mt-[4px] h-[38px] bg-vert text-sur-vert hover:bg-vert-clair ${BOOK_FULL}`}>
+      <Link href={href} aria-label={`${labels.book} — ${plan.name}`} className={`mt-[4px] h-[38px] bg-vert text-sur-vert hover:bg-vert-clair ${BOOK_FULL}`}>
         {labels.bookShort}
       </Link>
     </div>
@@ -364,16 +369,17 @@ function PlanHead({ plan, labels, href }: { plan: Plan; labels: Labels; href: st
 
 /** Forfait choisi (vue étroite) : nom, prix vert, précision, bouton « Réserver un appel ». */
 function PlanSummary({ plan, labels, href }: { plan: Plan; labels: Labels; href: string }) {
-  const { amount, suffix } = splitPrice(plan.price);
+  const { amount, sep, suffix } = splitPrice(plan.price);
   return (
     <div className="flex flex-col items-start gap-[8px] px-[6px]">
       <span className="text-[24px] leading-[30px] font-normal text-encre">{plan.name}</span>
       <span className={`text-[28px] leading-[34px] text-vert ${PRICE}`}>
         {amount}
-        {suffix && <span className="ml-[0.28em] text-[16px]">{suffix}</span>}
+        {sep}
+        {suffix && <span className="text-[16px]">{suffix}</span>}
       </span>
       <span className="text-[14px] leading-[22px] font-normal text-texte2">{plan.meta}</span>
-      <Link href={href} className={`mt-[8px] h-[38px] bg-vert text-sur-vert hover:bg-vert-clair ${BOOK_FULL}`}>
+      <Link href={href} aria-label={`${labels.book} — ${plan.name}`} className={`mt-[8px] h-[38px] bg-vert text-sur-vert hover:bg-vert-clair ${BOOK_FULL}`}>
         {labels.book}
       </Link>
     </div>

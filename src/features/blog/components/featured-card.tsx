@@ -13,7 +13,7 @@ const SHADE = "linear-gradient(180deg, rgba(1,24,35,0.1) 0%, rgba(1,24,35,0) 45%
 /**
  * Article à la une, dans la colonne droite du hero (maquette Blog) : bloc 16:10
  * cliquable en entier, couverture à 90 %, dégradé de protection, pastille « À la une »,
- * catégorie, titre et méta posés en bas.
+ * catégorie, titre, extrait (rapport E30) et méta posés en bas.
  */
 export function FeaturedCard({ post, lang, dict }: Props) {
   return (
@@ -34,6 +34,7 @@ export function FeaturedCard({ post, lang, dict }: Props) {
         <span className="absolute inset-x-[0px] bottom-[0px] flex flex-col gap-[9px] p-[22px]">
           <span className="text-[12px] leading-[16px] font-medium tracking-[0.08em] text-vert uppercase">{post.category}</span>
           <span className="text-[clamp(18px,2.1vw,23px)] leading-[1.22] font-medium tracking-[-0.4px] text-white text-pretty">{post.title}</span>
+          <span className="line-clamp-2 text-[14px] leading-[22px] font-normal text-white/78 text-pretty">{post.excerpt}</span>
           <span className="flex flex-wrap items-center gap-[8px] text-[13px] leading-[20px] font-normal text-texte2">
             <span>{formatDate(post.date, lang)}</span>
             <span aria-hidden className="text-white/28">·</span>

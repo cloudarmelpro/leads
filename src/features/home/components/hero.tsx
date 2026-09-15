@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import { GOUTTIERE } from "@/components/shared/container";
 import { HeroGrid } from "@/components/shared/hero-grid";
+import { features } from "@/config/site";
 import { WorldPings } from "@/features/home/components/world-pings";
 import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
@@ -58,10 +59,10 @@ export function Hero({ lang, dict }: Props) {
             {t.ctaBook}
           </Link>
           <Link
-            href={`/${lang}/a-propos`}
+            href={features.pricing ? `/${lang}/prix` : `/${lang}/a-propos`}
             className="rounded-[9px] bg-surface-2 px-[16px] py-[10px] text-[14px] leading-[20px] font-medium whitespace-nowrap text-encre no-underline transition-colors hover:bg-surface-3"
           >
-            {dict.nav.about}
+            {features.pricing ? t.ctaPricing : dict.nav.about}
           </Link>
         </div>
       </div>

@@ -20,7 +20,7 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
       <Services dict={dict} />
       <Sectors dict={dict} />
       <Method dict={dict} />
-      <Faq dict={dict} />
+      <Faq dict={dict} lang={lang} />
       <Cta dict={dict} />
     </div>
   );

@@ -42,7 +42,7 @@ export default async function AboutPage({ params }: PageProps<"/[lang]/a-propos"
         ]}
       />
       <PageHalos />
-      <AboutHero dict={dict} />
+      <AboutHero dict={dict} lang={lang} />
       <Story dict={dict} />
       <Principles dict={dict} />
       {/* Même bandeau d'appel que l'accueil (dictionnaire `final`), ancre #contact. */}

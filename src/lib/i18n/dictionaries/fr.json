@@ -35,7 +35,7 @@
     "about": "À propos",
     "faq": "FAQ",
     "pricing": "Prix",
-    "blog": "Blog",
+    "blog": "Blogue",
     "contact": "Contact",
     "quickNav": "Navigation rapide"
   },
@@ -57,37 +57,38 @@
     "tradesKicker": "Secteurs",
     "tradesLabel": "Dans quel secteur d’activité êtes-vous ?",
     "ctaBook": "Réserver un appel gratuit",
-    "demoCaption": "Cet aperçu change selon votre métier. Votre site parlera à vos clients — dans leurs mots.",
+    "demoCaption": "Paysagement, excavation, construction, rénovation, déneigement, commerce local : on connaît vos clients, et votre site leur parlera dans leurs mots.",
     "demos": [
       {
         "trade": "Paysagement",
-        "imgLabel": "photo chantier — paysagement"
+        "imgLabel": "Chantier de paysagement résidentiel"
       },
       {
         "trade": "Excavation",
-        "imgLabel": "photo chantier — excavation"
+        "imgLabel": "Chantier d’excavation avec pelle mécanique"
       },
       {
         "trade": "Construction",
-        "imgLabel": "photo chantier — construction"
+        "imgLabel": "Chantier de construction en bois"
       },
       {
         "trade": "Rénovation",
-        "imgLabel": "photo avant / après — rénovation"
+        "imgLabel": "Salle de bain rénovée"
       },
       {
         "trade": "Commerce local",
-        "imgLabel": "photo commerce — vitrine"
+        "imgLabel": "Vitrine d’un commerce local"
       },
       {
         "trade": "Déneigement",
-        "imgLabel": "photo chantier — déneigement"
+        "imgLabel": "Déneigement d’une entrée résidentielle"
       },
       {
         "trade": "Arboriculture",
-        "imgLabel": "photo chantier — arboriculture"
+        "imgLabel": "Élagage d’un arbre par un arboriculteur"
       }
-    ]
+    ],
+    "ctaPricing": "Voir les forfaits et les prix"
   },
   "services": {
     "kicker": "Services",
@@ -101,7 +102,7 @@
       },
       {
         "name": "Refonte de site existant",
-        "note": "On analyse ce qui existe, on identifie ce qui bloque la conversion, puis on optimise et améliore chaque élément — structure, vitesse, contenu — pour rebâtir un site qui pousse le visiteur à vous contacter."
+        "note": "On analyse ce qui existe, on identifie ce qui bloque la conversion, puis on retravaille chaque élément — structure, vitesse, contenu — pour un site qui pousse le visiteur à vous contacter."
       },
       {
         "name": "Hébergement",
@@ -143,12 +144,12 @@
       {
         "n": "2",
         "title": "On analyse",
-        "desc": "On regarde votre site actuel pis votre marché — un constat honnête de ce qui fonctionne et ce qui manque, et on analyse la meilleure façon d’optimiser votre site."
+        "desc": "On regarde votre site actuel et votre marché : un constat honnête de ce qui fonctionne, de ce qui manque et de ce qui rapporterait le plus."
       },
       {
         "n": "3",
-        "title": "Une stratégie, pas juste un site",
-        "desc": "Un plan pensé pour votre métier : quelles pages, quels appels à l’action, quelle structure pour amener des leads qualifiés."
+        "title": "On planifie une stratégie, pas juste un site",
+        "desc": "Un plan pensé pour votre métier : quelles pages, quels appels à l’action, quelle structure pour amener des demandes qualifiées."
       },
       {
         "n": "4",
@@ -176,11 +177,13 @@
     "kicker": "FAQ",
     "titleA": "Vos questions,",
     "titleB": "sans détour",
-    "intro": "Vous avez des questions avant de démarrer votre projet ?",
+    "intro": "Les questions qu’on nous pose avant chaque projet, et nos réponses.",
     "items": [
       {
         "q": "Combien ça coûte ?",
-        "a": "Chaque projet est différent. On commence par une consultation pour bien cerner vos besoins, puis on vous propose un prix clair. Un site web commence à 499 $, un logo à 200 $, et l’hébergement est à 35 $ par mois. Tous les forfaits sont détaillés sur notre page Prix."
+        "a": "Un site web commence à 499 $, un logo à 200 $ et l’hébergement à 35 $ par mois. Chaque forfait et ses inclusions sont détaillés sur la {link}. Si votre projet sort du cadre, on vous donne un prix ferme après un appel gratuit.",
+        "aLink": "page Prix",
+        "aPricing": "Un site web commence à 499 $, un logo à 200 $ et l’hébergement à 35 $ par mois. Les inclusions exactes de chaque forfait sont dans les tableaux ci-dessus. Si votre projet sort du cadre, on vous donne un prix ferme après un appel de consultation gratuit."
       },
       {
         "q": "Combien de temps prend la conception d’un site ?",
@@ -208,13 +211,13 @@
       },
       {
         "q": "Le site sera-t-il bien référencé sur Google ?",
-        "a": "On structure chaque site selon les bonnes pratiques SEO — vitesse, mobile et contenu local — pour optimiser son référencement sur Google. C’est Google qui contrôle le classement final, mais on met toutes les chances de votre côté avec de bonnes bases pour maximiser votre visibilité et votre rendement."
+        "a": "Chaque site est construit selon les bonnes pratiques SEO : vitesse, mobile, structure des pages et contenu local. Google décide du classement final, mais votre site part avec les bonnes bases."
       }
     ]
   },
   "final": {
     "title": "Votre prochain contrat commence par un appel.",
-    "body": "Une consultation suffit pour cerner votre besoin. Sans engagement.",
+    "body": "Un appel gratuit suffit pour cerner votre besoin. Sans engagement.",
     "callLabel": "Appelez-nous",
     "note": "Réponse en moins de 24 h, du lundi au vendredi."
   },
@@ -241,22 +244,16 @@
     "manage": "Gérer mes témoins"
   },
   "floating": {
-    "aria": "Appeler Talgasy Web"
+    "aria": "Appeler Talgasy Web au {phone}"
   },
   "blog": {
     "meta": {
-      "title": "Blog — Conseils web pour les PME du Québec | Talgasy Web",
+      "title": "Blogue — Conseils web pour les PME du Québec | Talgasy Web",
       "description": "Idées et conseils concrets pour aider les PME du Québec à attirer plus de clients avec leur site web : conversion, référencement local et bonnes pratiques."
     },
-    "title": "Idées &",
+    "title": "Idées et",
     "titleHighlight": "conseils",
     "heroIntro": "Des articles concrets pour attirer plus de clients avec votre site web. Conversion, référencement local, contenu : ce qu’on applique chez nos clients, expliqué sans jargon.",
-    "topics": [
-      "Conversion",
-      "Référencement local",
-      "Contenu",
-      "Refonte"
-    ],
     "filterAll": "Tous",
     "featured": "À la une",
     "minRead": "min de lecture",
@@ -282,15 +279,15 @@
       "kicker": "Notre histoire",
       "title": "Pour ceux qui démarrent, et ceux qui grandissent",
       "intro": "Un bon départ fait toute la différence. On donne aux nouvelles entreprises des bases solides pour présenter leur travail et gagner leurs premiers clients.",
-      "photoAlt": "Rencontre entre un entrepreneur et l’équipe Talgasy Web",
+      "photoAlt": "Deux personnes travaillent ensemble sur un ordinateur portable dans un atelier",
       "items": [
         {
           "title": "Des entreprises déjà établies",
-          "body": "Mais on travaille aussi avec des entrepreneurs déjà bien établis qui veulent moderniser leur présence en ligne et enfin avoir un site à la hauteur de l’entreprise qu’ils ont bâtie."
+          "body": "On travaille aussi avec des entrepreneurs établis qui veulent moderniser leur présence en ligne et avoir enfin un site à la hauteur de l’entreprise qu’ils ont bâtie."
         },
         {
           "title": "Un outil, pas une vitrine",
-          "body": "Pour nous, un site web n’est pas juste une présence sur Internet. C’est un outil qui doit servir l’entreprise : présenter clairement ce qu’elle fait, inspirer confiance et aider les clients à passer à l’action."
+          "body": "Un site web n’est pas juste une présence sur Internet. C’est un outil qui doit servir l’entreprise : présenter clairement ce qu’elle fait, inspirer confiance et aider les clients à passer à l’action."
         },
         {
           "title": "Contribuer à la réussite d’ici",
@@ -301,16 +298,16 @@
     "principles": {
       "kicker": "Principes",
       "title": "On construit pour le résultat",
-      "intro": "Talgasy Web repose sur une idée simple : un site doit vous amener des clients, pas seulement être beau.",
-      "photoAlt": "L’équipe Talgasy Web au travail",
+      "intro": "Un site doit vous amener des clients, pas seulement être beau.",
+      "photoAlt": "Poste de travail avec deux écrans dans une pièce sombre",
       "items": [
         {
           "title": "Qualité",
-          "body": "Nous ne faisons aucun compromis sur la qualité. Chaque détail est soigné afin d’offrir un résultat professionnel, crédible et à la hauteur de votre entreprise."
+          "body": "On ne fait aucun compromis sur la qualité. Chaque détail est soigné afin d’offrir un résultat professionnel, crédible et à la hauteur de votre entreprise."
         },
         {
           "title": "Professionnalisme",
-          "body": "Nous travaillons avec sérieux, rigueur et transparence à chaque étape. De la première discussion jusqu’à la livraison, vous pouvez compter sur une équipe professionnelle, fiable et engagée dans la réussite de votre projet."
+          "body": "On travaille avec sérieux, rigueur et transparence à chaque étape. De la première discussion jusqu’à la livraison, vous pouvez compter sur une équipe fiable et engagée dans la réussite de votre projet."
         },
         {
           "title": "Confiance",
@@ -322,22 +319,22 @@
   "pricing": {
     "meta": {
       "title": "Prix — Forfaits de site web, logo, hébergement et serveurs | Talgasy Web",
-      "description": "Des forfaits clairs, du premier site au sur-mesure : sites web, logo et marque, hébergement et serveurs VPS. Comparez ligne par ligne et réservez un appel gratuit."
+      "description": "Des forfaits clairs, du premier site au sur-mesure : sites web, logo et identité de marque, hébergement et serveurs VPS. Comparez ligne par ligne et réservez un appel gratuit."
     },
     "breadcrumb": "Prix",
     "heroTitleA": "Des forfaits ",
     "heroHighlight": "clairs",
     "heroTitleB": ", du premier site au sur-mesure.",
-    "heroSubtitle": "Sites web, logo et marque, hébergement et serveurs. Choisissez une famille, puis comparez ligne par ligne.",
+    "heroSubtitle": "Sites web, logo et identité de marque, hébergement et serveurs. Choisissez une catégorie, puis comparez les forfaits ligne par ligne.",
     "cta": "Réserver un appel gratuit",
     "viewPlans": "Voir les forfaits",
     "kicker": "Forfaits",
     "labels": {
-      "families": "Familles de forfaits",
+      "families": "Catégories de forfaits",
       "plansCount": "{n} forfaits",
       "plansCountOne": "1 forfait",
       "rangesLabel": "Gammes",
-      "shownInTable": "Affiché dans le tableau",
+      "shownInTable": "Gamme affichée",
       "compareRange": "Comparer cette gamme",
       "detailed": "Comparaison détaillée",
       "diffOnly": "Afficher seulement les différences",
@@ -347,7 +344,7 @@
       "lines": "{n} lignes",
       "lineOne": "1 ligne",
       "book": "Réserver un appel",
-      "bookShort": "Réserver",
+      "bookShort": "Réserver un appel",
       "included": "Inclus",
       "notIncluded": "Non inclus",
       "pickPlan": "Choisir un forfait",
@@ -359,7 +356,7 @@
         "key": "site",
         "label": "Site web",
         "title": "Site web",
-        "desc": "Chaque projet est différent. On commence par une consultation, puis on vous propose un prix clair.",
+        "desc": "Trois gammes, neuf forfaits, des prix affichés. Vous hésitez entre deux ? Un appel gratuit suffit pour vous orienter.",
         "plans": [
           {
             "name": "Express",
@@ -374,43 +371,43 @@
           {
             "name": "Essentiel",
             "price": "1 999 $",
-            "meta": "Jusqu’à 5 pages"
+            "meta": "5 pages"
           },
           {
             "name": "Sur-mesure",
             "price": "3 999 $",
-            "meta": "Jusqu’à 7 pages"
+            "meta": "7 pages"
           },
           {
             "name": "Croissance",
             "price": "5 500 $",
-            "meta": "Jusqu’à 10 pages"
+            "meta": "10 pages"
           },
           {
             "name": "Professionnel",
             "price": "7 500 $",
-            "meta": "Jusqu’à 15 pages"
+            "meta": "15 pages"
           },
           {
             "name": "Performance",
             "price": "10 000 $",
-            "meta": "Jusqu’à 20 pages"
+            "meta": "20 pages"
           },
           {
             "name": "Signature",
             "price": "15 000 $",
-            "meta": "Jusqu’à 30 pages"
+            "meta": "30 pages"
           },
           {
             "name": "Prestige",
             "price": "20 000 $",
-            "meta": "Jusqu’à 30 pages"
+            "meta": "30 pages"
           }
         ],
         "ranges": [
           {
             "title": "Démarrage",
-            "line": "Un site propre, en ligne rapidement.",
+            "line": "Un site professionnel, en ligne en quelques jours.",
             "range": "499 – 1 999 $",
             "plans": [
               0,
@@ -458,7 +455,7 @@
                 ]
               },
               {
-                "label": "Design à partir de composants professionnels éprouvés",
+                "label": "Design à partir de nos modèles professionnels",
                 "cells": [
                   "-",
                   "y",
@@ -472,7 +469,7 @@
                 ]
               },
               {
-                "label": "Personnalisation avancée du design",
+                "label": "Design adapté à votre image de marque",
                 "cells": [
                   "-",
                   "-",
@@ -528,17 +525,17 @@
                 ]
               },
               {
-                "label": "Responsive",
+                "label": "Adapté à tous les écrans (mobile, tablette, ordinateur)",
                 "cells": [
-                  "-",
-                  "Mobile et tablette",
-                  "Mobile, tablette et ordinateur",
-                  "Complet",
-                  "Complet",
-                  "Complet",
-                  "Complet",
-                  "Complet",
-                  "Complet"
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y"
                 ]
               },
               {
@@ -561,17 +558,17 @@
             "title": "Marque et identité",
             "rows": [
               {
-                "label": "Logo professionnel inclus",
+                "label": "Logo et identité visuelle",
                 "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y"
+                  "Non inclus — option à partir de 200 $",
+                  "Non inclus — option à partir de 200 $",
+                  "Non inclus — option à partir de 200 $",
+                  "Non inclus — option à partir de 200 $",
+                  "Inclus",
+                  "Inclus",
+                  "Inclus",
+                  "Inclus",
+                  "Inclus"
                 ]
               },
               {
@@ -908,6 +905,20 @@
             "title": "Fonctionnalités",
             "rows": [
               {
+                "label": "Site bilingue FR / EN",
+                "cells": [
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y",
+                  "y"
+                ]
+              },
+              {
                 "label": "Formulaire de contact",
                 "cells": [
                   "y",
@@ -1156,10 +1167,10 @@
             "title": "Contenu",
             "rows": [
               {
-                "label": "Intégration des contenus",
+                "label": "Intégration de vos textes, photos et logo",
                 "cells": [
-                  "Textes, photos et logo fournis par le client",
-                  "Textes, photos et logo",
+                  "y",
+                  "y",
                   "y",
                   "y",
                   "y",
@@ -1245,7 +1256,7 @@
             "title": "Référencement",
             "rows": [
               {
-                "label": "SEO de base",
+                "label": "Référencement de base (titres, descriptions, structure des pages)",
                 "cells": [
                   "y",
                   "y",
@@ -1259,7 +1270,7 @@
                 ]
               },
               {
-                "label": "SEO technique essentiel",
+                "label": "Optimisation technique (vitesse, mobile, indexation)",
                 "cells": [
                   "-",
                   "y",
@@ -1273,21 +1284,7 @@
                 ]
               },
               {
-                "label": "SEO technique",
-                "cells": [
-                  "-",
-                  "-",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y"
-                ]
-              },
-              {
-                "label": "SEO on-page",
+                "label": "Optimisation du contenu de chaque page (SEO on-page)",
                 "cells": [
                   "-",
                   "-",
@@ -1483,7 +1480,7 @@
             "title": "Infrastructure",
             "rows": [
               {
-                "label": "SSL",
+                "label": "Certificat SSL (site sécurisé HTTPS)",
                 "cells": [
                   "-",
                   "y",
@@ -1497,7 +1494,7 @@
                 ]
               },
               {
-                "label": "Sitemap",
+                "label": "Plan du site (sitemap) pour Google",
                 "cells": [
                   "-",
                   "y",
@@ -1678,8 +1675,8 @@
       },
       {
         "key": "logo",
-        "label": "Logo et marque",
-        "title": "Logo et marque",
+        "label": "Logo et identité de marque",
+        "title": "Logo et identité de marque",
         "desc": "Du logo simple à la refonte complète de la marque, avec les fichiers sources dans tous les cas.",
         "plans": [
           {
@@ -2000,7 +1997,7 @@
                 ]
               },
               {
-                "label": "SSL",
+                "label": "Certificat SSL (site sécurisé HTTPS)",
                 "cells": [
                   "y",
                   "y"
@@ -2142,7 +2139,7 @@
                 ]
               },
               {
-                "label": "SSL",
+                "label": "Certificat SSL (site sécurisé HTTPS)",
                 "cells": [
                   "y",
                   "y",
@@ -2186,7 +2183,7 @@
     "booking": {
       "title": "Réservez un appel gratuit",
       "kicker": "Rendez-vous",
-      "intro": "Un appel découverte de 45 minutes, par téléphone ou en visio : vos objectifs, un premier regard sur votre présence en ligne et les prochaines étapes — sans engagement.",
+      "intro": "Un appel découverte de 45 minutes, par téléphone ou en visio, sans engagement.",
       "service": "Appel découverte",
       "duration": "45 min",
       "channel": "Téléphone ou visio",
@@ -2200,7 +2197,7 @@
       "pickSlot": "Créneaux disponibles",
       "loadTitle": "Calendrier fourni par Cal.com",
       "loadBody": "Le calendrier de réservation est un service tiers. En l’affichant, vous acceptez que votre adresse IP lui soit transmise. Vous pouvez aussi nous écrire avec le formulaire ci-dessous.",
-      "loadCta": "Afficher le calendrier",
+      "loadCta": "Afficher le calendrier de réservation",
       "embedNote": "Aperçu du design — le vrai calendrier Cal.com s’affichera dans cette fenêtre dès que l’URL sera branchée.",
       "free": "Gratuit",
       "modalTitle": "Réserver un appel découverte",
@@ -2249,7 +2246,7 @@
       "send": "Envoyer ma demande",
       "sending": "Envoi…",
       "successTitle": "Message bien reçu !",
-      "successBody": "On vous revient très vite. Merci de votre confiance.",
+      "successBody": "Merci, on vous répond en moins de 24 h, du lundi au vendredi.",
       "errorTitle": "Un souci est survenu",
       "errorBody": "Votre message n’a pas pu être envoyé. Réessayez, ou appelez-nous directement.",
       "errors": {
@@ -2271,8 +2268,8 @@
       "messagePlaceholder": "Type d’entreprise, ce que vous cherchez, échéance approximative."
     },
     "aside": {
-      "zone": "Québec, partout au Québec",
-      "zoneBody": "On travaille à distance avec des entreprises de toutes les régions. Réponse en moins de 24 h les jours ouvrables."
+      "zone": "Basés à Québec, on travaille partout au Québec.",
+      "zoneBody": "On travaille à distance avec des entreprises de toutes les régions. Réponse en moins de 24 h, du lundi au vendredi."
     }
   }
 }

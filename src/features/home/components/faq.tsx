@@ -1,22 +1,47 @@
 "use client";
 
+import Link from "next/link";
 import { useId, useState } from "react";
 
 import { GOUTTIERE } from "@/components/shared/container";
 import { AccordionRow } from "@/features/home/components/accordion-row";
 import { SectionHead } from "@/components/shared/section-head";
+import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 
-type Props = { dict: Dictionary };
+type Props = {
+  dict: Dictionary;
+  lang: Locale;
+  /** Sur la page Prix, « Combien ça coûte ? » renvoie aux tableaux ci-dessus au lieu de la page. */
+  variant?: "home" | "pricing";
+};
+
+type Item = Dictionary["faq"]["items"][number] & { aLink?: string; aPricing?: string };
 
 /**
  * FAQ : huit questions en accordéon, réparties également en deux colonnes (une
- * seule sous 760px). Aucune ouverte par défaut, une seule à la fois.
+ * seule sous 760px). Aucune ouverte par défaut, une seule à la fois. Une réponse peut
+ * contenir « {link} », remplacé par un lien vers la page Prix libellé `aLink`.
  */
-export function Faq({ dict }: Props) {
+export function Faq({ dict, lang, variant = "home" }: Props) {
   const [open, setOpen] = useState(-1);
   const baseId = useId();
   const t = dict.faq;
+
+  const answer = (item: Item) => {
+    if (variant === "pricing" && item.aPricing) return item.aPricing;
+    const [before, after] = item.a.split("{link}");
+    if (after === undefined || !item.aLink) return item.a;
+    return (
+      <>
+        {before}
+        <Link href={`/${lang}/prix`} className="text-vert underline underline-offset-[3px] hover:text-vert-clair">
+          {item.aLink}
+        </Link>
+        {after}
+      </>
+    );
+  };
 
   const half = Math.ceil(t.items.length / 2);
   const columns = [t.items.slice(0, half), t.items.slice(half)];
@@ -40,7 +65,7 @@ export function Faq({ dict }: Props) {
                     title={item.q}
                     bodyIndent={24}
                   >
-                    {item.a}
+                    {answer(item)}
                   </AccordionRow>
                 );
               })}
