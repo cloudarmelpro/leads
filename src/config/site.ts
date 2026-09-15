@@ -23,7 +23,9 @@ export const site = {
   // Clés = `footer.social.*` des dictionnaires (libellés a11y). Ordre d'affichage
   // voulu par le client : Facebook, Instagram, LinkedIn.
   social: [
-    { key: "facebook", url: "https://www.facebook.com/share/1Bv6L6KQkK/?mibextid=wwXIfr" },
+    // La page n'a pas de nom d'utilisateur : son URL canonique est celle vers laquelle
+    // redirige l'ancien lien de partage (vérifié le 2026-09-15).
+    { key: "facebook", url: "https://www.facebook.com/profile.php?id=61593633508724" },
     { key: "instagram", url: "https://www.instagram.com/talgasyweb/" },
     { key: "linkedin", url: "https://www.linkedin.com/company/talgasy-web/" },
   ],

@@ -70,8 +70,13 @@ def apply(path: Path, lang: str) -> None:
         else "Every site is built to SEO best practices: speed, mobile, page structure and local content. Google decides the final ranking, but your site starts on solid ground."
     )
 
-    # T18 — bloc final
-    d["final"]["body"] = "Un appel gratuit suffit pour cerner votre besoin. Sans engagement." if fr else "One free call is enough to pin down your need. No commitment."
+    # T18 + E19 (durée confirmée par Cedric le 2026-09-15 : 45 minutes) — bloc final et Méthode 01
+    d["final"]["body"] = "Un appel gratuit de 45 minutes suffit pour cerner votre besoin. Sans engagement." if fr else "One free 45-minute call is enough to pin down your need. No commitment."
+    steps[0]["desc"] = (
+        "Un appel de 45 minutes. Vous parlez métier, on prend en note ce qui compte vraiment pour vos clients."
+        if fr
+        else "A 45-minute call. You talk trade, we note down what really matters to your customers."
+    )
 
     # E14 — libellé du bouton d'appel flottant ({phone} remplacé par le numéro de config/site.ts)
     d["floating"]["aria"] = "Appeler Talgasy Web au {phone}" if fr else "Call Talgasy Web at {phone}"

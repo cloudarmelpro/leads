@@ -139,7 +139,7 @@
       {
         "n": "1",
         "title": "On écoute",
-        "desc": "Un appel court. Vous parlez métier, on prend en note ce qui compte vraiment pour vos clients."
+        "desc": "Un appel de 45 minutes. Vous parlez métier, on prend en note ce qui compte vraiment pour vos clients."
       },
       {
         "n": "2",
@@ -217,7 +217,7 @@
   },
   "final": {
     "title": "Votre prochain contrat commence par un appel.",
-    "body": "Un appel gratuit suffit pour cerner votre besoin. Sans engagement.",
+    "body": "Un appel gratuit de 45 minutes suffit pour cerner votre besoin. Sans engagement.",
     "callLabel": "Appelez-nous",
     "note": "Réponse en moins de 24 h, du lundi au vendredi."
   },
