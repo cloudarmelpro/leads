@@ -78,6 +78,14 @@ def apply(path: Path, lang: str) -> None:
         else "A 45-minute call. You talk trade, we note down what really matters to your customers."
     )
 
+    # T22 (validé le 2026-09-15) — Méthode 06 : concret et vrai pour tous les forfaits
+    # (analytics et hébergement varient selon le forfait, donc pas cités).
+    steps[5]["desc"] = (
+        "Mise en ligne sur votre domaine, avec la période d’hébergement de votre forfait. Vous recevez tous vos accès et le récapitulatif de ce qui a été livré."
+        if fr
+        else "Launch on your domain, with the hosting period included in your plan. You receive all your access credentials and a summary of what was delivered."
+    )
+
     # E14 — libellé du bouton d'appel flottant ({phone} remplacé par le numéro de config/site.ts)
     d["floating"]["aria"] = "Appeler Talgasy Web au {phone}" if fr else "Call Talgasy Web at {phone}"
 
@@ -93,11 +101,16 @@ def apply(path: Path, lang: str) -> None:
         if fr
         else "A website isn’t just a presence on the Internet. It’s a tool that has to serve the business: clearly present what it does, inspire trust and help clients take action."
     )
+    # T23 (validé le 2026-09-15) — la section ne raconte pas une histoire : surtitre honnête.
+    # Une vraie « Notre histoire » viendra si Cedric fournit fondateur, année, raison.
+    a["story"]["kicker"] = "Pour qui on travaille" if fr else "Who we work for"
     a["principles"]["intro"] = "Un site doit vous amener des clients, pas seulement être beau." if fr else "A website should bring you customers, not just look good."
+    # T25 (validé le 2026-09-15) — Qualité : promesse vérifiable plutôt qu'un adjectif.
+    # Professionnalisme et Confiance attendent la confirmation de Cedric.
     a["principles"]["items"][0]["body"] = (
-        "On ne fait aucun compromis sur la qualité. Chaque détail est soigné afin d’offrir un résultat professionnel, crédible et à la hauteur de votre entreprise."
+        "Chaque site est testé avant la mise en ligne : vitesse, affichage mobile, formulaires, référencement de base."
         if fr
-        else "We make no compromise on quality. Every detail is refined to deliver a professional, credible result worthy of your business."
+        else "Every site is tested before launch: speed, mobile display, forms, basic SEO."
     )
     a["principles"]["items"][1]["body"] = (
         "On travaille avec sérieux, rigueur et transparence à chaque étape. De la première discussion jusqu’à la livraison, vous pouvez compter sur une équipe fiable et engagée dans la réussite de votre projet."

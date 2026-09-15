@@ -164,7 +164,7 @@
       {
         "n": "6",
         "title": "On met le site en ligne",
-        "desc": "Le site est déployé et prêt à recevoir des visiteurs."
+        "desc": "Mise en ligne sur votre domaine, avec la période d’hébergement de votre forfait. Vous recevez tous vos accès et le récapitulatif de ce qui a été livré."
       }
     ]
   },
@@ -276,7 +276,7 @@
     "heroTitleB": " : aider les entrepreneurs à avancer.",
     "heroSubtitle": "Une agence web de Québec qui bâtit des sites clairs pour les entreprises d’ici. Pas de jargon, pas de boîte noire : un site qui fait sonner le téléphone.",
     "story": {
-      "kicker": "Notre histoire",
+      "kicker": "Pour qui on travaille",
       "title": "Pour ceux qui démarrent, et ceux qui grandissent",
       "intro": "Un bon départ fait toute la différence. On donne aux nouvelles entreprises des bases solides pour présenter leur travail et gagner leurs premiers clients.",
       "photoAlt": "Deux personnes travaillent ensemble sur un ordinateur portable dans un atelier",
@@ -303,7 +303,7 @@
       "items": [
         {
           "title": "Qualité",
-          "body": "On ne fait aucun compromis sur la qualité. Chaque détail est soigné afin d’offrir un résultat professionnel, crédible et à la hauteur de votre entreprise."
+          "body": "Chaque site est testé avant la mise en ligne : vitesse, affichage mobile, formulaires, référencement de base."
         },
         {
           "title": "Professionnalisme",

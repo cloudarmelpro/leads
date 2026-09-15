@@ -164,7 +164,7 @@
       {
         "n": "6",
         "title": "We put the site live",
-        "desc": "The site is deployed and ready to receive visitors."
+        "desc": "Launch on your domain, with the hosting period included in your plan. You receive all your access credentials and a summary of what was delivered."
       }
     ]
   },
@@ -276,7 +276,7 @@
     "heroTitleB": " idea: helping entrepreneurs move forward.",
     "heroSubtitle": "A Québec web agency that builds clear websites for local businesses. No jargon, no black box: a website that makes the phone ring.",
     "story": {
-      "kicker": "Our story",
+      "kicker": "Who we work for",
       "title": "For those starting out, and those growing",
       "intro": "A strong start makes all the difference. We give new businesses solid foundations to showcase their work and win their first clients.",
       "photoAlt": "Two people working together on a laptop in a workshop",
@@ -303,7 +303,7 @@
       "items": [
         {
           "title": "Quality",
-          "body": "We make no compromise on quality. Every detail is refined to deliver a professional, credible result worthy of your business."
+          "body": "Every site is tested before launch: speed, mobile display, forms, basic SEO."
         },
         {
           "title": "Professionalism",
