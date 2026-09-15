@@ -406,6 +406,7 @@
         ],
         "ranges": [
           {
+            "key": "demarrage",
             "title": "Démarrage",
             "line": "Un site professionnel, en ligne en quelques jours.",
             "range": "499 – 1 999 $",
@@ -416,6 +417,7 @@
             ]
           },
           {
+            "key": "croissance",
             "title": "Croissance",
             "line": "Sur mesure, CRM et contenu.",
             "range": "3 999 – 7 500 $",
@@ -426,6 +428,7 @@
             ]
           },
           {
+            "key": "entreprise",
             "title": "Entreprise",
             "line": "Identité, automatisations, infrastructure.",
             "range": "10 000 – 20 000 $",

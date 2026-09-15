@@ -321,8 +321,11 @@ def groups(spec):
     return [OrderedDict(title=t, rows=rows(r)) for t, r in spec]
 
 
+RANGE_KEYS = ["demarrage", "croissance", "entreprise"]  # parametre d URL `gamme=`, identique FR/EN
+
+
 def ranges(spec):
-    return [OrderedDict(title=t, line=l, range=r, plans=p) for t, l, r, p in spec]
+    return [OrderedDict(key=RANGE_KEYS[i], title=t, line=l, range=r, plans=p) for i, (t, l, r, p) in enumerate(spec)]
 
 
 FR = OrderedDict([
