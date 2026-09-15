@@ -144,11 +144,11 @@ SITE_GROUPS_FR = [
     ]),
     ("Référencement", [
         # Décision client du 2026-09-15 : Lancement inclut le SEO on-page et le SEO local avancé
-        # et le SEO local avancé s'étend à Essentiel et Sur-mesure (au-delà du PDF « Offre de services »).
+        # et le SEO local avancé est inclus dans les neuf forfaits (au-delà du PDF « Offre de services »).
         ("Référencement de base (titres, descriptions, structure des pages)", Y9),
         ("Optimisation technique (vitesse, mobile, indexation)", [N, "y", "y", "y", "y", "y", "y", "y", "y"]),
         ("Optimisation du contenu de chaque page (SEO on-page)", [N, "y", "y", "Complet", "Complet", "Complet", "Complet", "Complet", "Complet"]),
-        ("SEO local avancé", [N, "y", "y", "y", "y", "y", "y", "y", "y"]),
+        ("SEO local avancé", Y9),
         ("Architecture SEO approfondie", [N, N, N, N, "y", "y", "y", "y", "y"]),
         ("Données structurées avancées", [N, N, N, N, N, "y", "y", "y", "y"]),
     ]),
