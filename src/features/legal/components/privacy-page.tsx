@@ -2,7 +2,6 @@ import { BreadcrumbLd } from "@/components/shared/breadcrumb-ld";
 import { CONTENEUR } from "@/components/shared/container";
 import { Eyebrow } from "@/components/shared/eyebrow";
 import { PageHero } from "@/components/shared/page-hero";
-import { Reveal } from "@/components/shared/reveal";
 import { PrivacyToc } from "@/features/legal/components/privacy-toc";
 import { getPrivacy } from "@/features/legal/privacy";
 import { formatDate } from "@/lib/format/date";
@@ -62,7 +61,7 @@ export async function PrivacyPage({ lang }: Props) {
           </aside>
 
           {/* Colonne droite : articles numérotés comme les étapes de la Méthode. */}
-          <Reveal as="div" stagger={0.06} className="flex flex-col gap-[clamp(36px,4vw,56px)]">
+          <div className="flex flex-col gap-[clamp(36px,4vw,56px)]">
             {entries.map((entry) => (
               <article key={entry.id} id={entry.id} className="flex scroll-mt-8 flex-col gap-4">
                 <div className="flex items-baseline gap-3">
@@ -80,7 +79,7 @@ export async function PrivacyPage({ lang }: Props) {
                 </div>
               </article>
             ))}
-          </Reveal>
+          </div>
         </div>
       </section>
     </>

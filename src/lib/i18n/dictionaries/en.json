@@ -12,9 +12,7 @@
     "soon": "soon",
     "tbd": "to confirm",
     "openMenu": "Open menu",
-    "skipToContent": "Skip to content",
-    "welcomeBefore": "Welcome to",
-    "welcomeAfter": "Web"
+    "skipToContent": "Skip to content"
   },
   "notFound": {
     "title": "Page not found",

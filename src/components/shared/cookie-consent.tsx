@@ -72,7 +72,7 @@ export function CookieConsent({ lang, dict }: { lang: Locale; dict: Dictionary }
     <div
       role="dialog"
       aria-label={t.title}
-      className="animate-fadein fixed right-4 bottom-4 left-4 z-90 rounded-[20px] border border-ligne bg-surface p-5 sm:p-6 md:right-auto md:w-[min(400px,calc(100vw-2rem))] dark:border-transparent dark:shadow-[inset_0_0_0_1px_#0a2a3a]"
+      className="fixed right-4 bottom-4 left-4 z-90 rounded-[20px] border border-ligne bg-surface p-5 sm:p-6 md:right-auto md:w-[min(400px,calc(100vw-2rem))] dark:border-transparent dark:shadow-[inset_0_0_0_1px_#0a2a3a]"
     >
       <p className="mb-2">
         <Eyebrow>{t.kicker}</Eyebrow>

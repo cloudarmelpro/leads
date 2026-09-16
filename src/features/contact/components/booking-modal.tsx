@@ -63,7 +63,7 @@ export function BookingModal({ dict, calLink, onClose }: Props) {
   return (
     <div
       onClick={onClose}
-      className="fixed inset-[0px] z-[92] flex items-center justify-center bg-fond/40 p-[clamp(16px,4vw,40px)] motion-safe:[animation:tw-veil-in_220ms_cubic-bezier(0.2,0.7,0.2,1)_both]"
+      className="fixed inset-[0px] z-[92] flex items-center justify-center bg-fond/40 p-[clamp(16px,4vw,40px)]"
     >
       <div
         ref={panel}
@@ -71,7 +71,7 @@ export function BookingModal({ dict, calLink, onClose }: Props) {
         aria-modal="true"
         aria-labelledby="booking-modal-title"
         onClick={(event) => event.stopPropagation()}
-        className={`relative flex max-h-[86vh] w-full flex-col gap-[20px] overflow-y-auto rounded-[24px] ${calLink ? "max-w-[1100px]" : "max-w-[720px]"} border border-ligne bg-surface p-[clamp(22px,3vw,32px)] shadow-[0_30px_80px_rgba(1,10,16,0.55)] motion-safe:[animation:tw-dialog-in_300ms_cubic-bezier(0.22,1,0.36,1)_both]`}
+        className={`relative flex max-h-[86vh] w-full flex-col gap-[20px] overflow-y-auto rounded-[24px] ${calLink ? "max-w-[1100px]" : "max-w-[720px]"} border border-ligne bg-surface p-[clamp(22px,3vw,32px)] shadow-[0_30px_80px_rgba(1,10,16,0.55)]`}
       >
         <div className="flex items-start justify-between gap-[16px]">
           <div className="flex min-w-[0px] flex-col gap-[4px]">

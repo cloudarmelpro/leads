@@ -10,8 +10,6 @@ import { FloatingContact } from "@/components/shared/floating-contact";
 import { Header } from "@/components/shared/header";
 import { JsonLd } from "@/components/shared/json-ld";
 import { PrePaintScript } from "@/components/shared/pre-paint-script";
-import { SmoothScroll } from "@/components/shared/smooth-scroll";
-import { WelcomeSplash } from "@/components/shared/welcome-splash";
 import { site } from "@/config/site";
 import { isLocale, localeHtmlLang, locales } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
@@ -69,17 +67,8 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[la
       // thème) → on ignore la différence de className.
       suppressHydrationWarning
     >
-      <head>
-        {/* Les titres animés partent en `opacity-0` et sont révélés par GSAP.
-            Sans JavaScript, ils resteraient invisibles : on les rétablit. */}
-        <noscript>
-          <style>{`.opacity-0{opacity:1}`}</style>
-        </noscript>
-      </head>
       <body className="relative min-h-dvh bg-fond text-encre">
         <PrePaintScript />
-        <WelcomeSplash before={dict.common.welcomeBefore} after={dict.common.welcomeAfter} />
-        <SmoothScroll />
         <JsonLd lang={lang} dict={dict} />
         <a
           href="#contenu"

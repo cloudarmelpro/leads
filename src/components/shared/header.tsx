@@ -135,7 +135,7 @@ export function Header({ lang, dict }: Props) {
           role="dialog"
           aria-modal="true"
           aria-label={dict.nav.quickNav}
-          className="fixed inset-[0px] z-[90] flex flex-col overflow-y-auto overscroll-contain bg-fond px-[clamp(16px,5vw,24px)] pt-[18px] pb-[calc(26px+env(safe-area-inset-bottom))] animate-fadein min-[900px]:hidden"
+          className="fixed inset-[0px] z-[90] flex flex-col overflow-y-auto overscroll-contain bg-fond px-[clamp(16px,5vw,24px)] pt-[18px] pb-[calc(26px+env(safe-area-inset-bottom))] min-[900px]:hidden"
         >
           <div className="flex min-h-[44px] items-center justify-between gap-[12px]">
             <Logo height={26} />
