@@ -4,15 +4,10 @@ import { useEffect, useState } from "react";
 
 type Props = { names: string[]; aria: string };
 
-// Rétrécissement maximal d'une carte quand la suivante la recouvre entièrement.
-const SHRINK = 0.06;
-
 /**
- * Étapes numérotées de la section Secteurs (référence : « 1 — 2 — 3 ») et effet
- * d'empilement : l'étape active suit la carte qui occupe le haut de l'écran
- * (IntersectionObserver), et chaque carte se rétrécit légèrement, depuis son bord haut,
- * à mesure que la suivante glisse par-dessus (lecture de la position au défilement,
- * une frame à la fois, `transform` seulement). Rien sous `prefers-reduced-motion`.
+ * Étapes numérotées de la section Secteurs (référence : « 1 — 2 — 3 »). L'étape active
+ * suit la carte empilée qui occupe le haut de l'écran : un IntersectionObserver sur les
+ * cartes (`[data-sector-card]` de la même section), aucun écouteur de défilement.
  */
 export function SectorSteps({ names, aria }: Props) {
   const [active, setActive] = useState(0);
@@ -20,8 +15,8 @@ export function SectorSteps({ names, aria }: Props) {
   useEffect(() => {
     const cards = Array.from(document.querySelectorAll<HTMLElement>("[data-sector-card]"));
     if (cards.length === 0) return;
-
-    // Les cartes empilées restent toutes sous la dernière arrivée : la plus haute dans
+    // Bande de détection : la ligne située juste sous l'en-tête collant de la section.
+    // Les cartes empilees restent toutes sous la derniere arrivee : la plus haute dans
     // l'ordre parmi celles qui croisent la bande est celle que le visiteur voit.
     const inBand = new Set<number>();
     const observer = new IntersectionObserver(
@@ -36,35 +31,7 @@ export function SectorSteps({ names, aria }: Props) {
       { rootMargin: "-40% 0px -45% 0px", threshold: 0 },
     );
     cards.forEach((card) => observer.observe(card));
-
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduced) return () => observer.disconnect();
-
-    let frame = 0;
-    const paint = () => {
-      frame = 0;
-      const viewport = window.innerHeight;
-      for (let i = 0; i < cards.length - 1; i++) {
-        const next = cards[i + 1];
-        const stuckTop = parseFloat(getComputedStyle(next).top) || 0;
-        // 0 quand la carte suivante entre par le bas, 1 quand elle est collée à sa place.
-        const progress = Math.min(1, Math.max(0, (viewport - next.getBoundingClientRect().top) / (viewport - stuckTop)));
-        cards[i].style.transform = progress > 0 ? `scale(${1 - SHRINK * progress})` : "";
-      }
-    };
-    const onScroll = () => {
-      if (!frame) frame = requestAnimationFrame(paint);
-    };
-    paint();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-    return () => {
-      observer.disconnect();
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-      if (frame) cancelAnimationFrame(frame);
-      cards.forEach((card) => (card.style.transform = ""));
-    };
+    return () => observer.disconnect();
   }, []);
 
   return (
