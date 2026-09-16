@@ -42,8 +42,8 @@ const SOCIAL_HOVER: Record<SocialKey, string> = {
   linkedin: "hover:bg-[#0a66c2] hover:text-white",
 };
 
-// Le grand mot-symbole s'estompe vers le bas de la page (référence du 2026-09-17).
-const WORDMARK_FADE = "linear-gradient(180deg, #000 0%, rgba(0,0,0,0.55) 45%, transparent 82%)";
+// Masque du voile flou posé sur le bas du grand mot-symbole : invisible en haut, plein en bas.
+const WORDMARK_FADE = "linear-gradient(180deg, transparent 0%, #000 55%)";
 
 const TITLE = "mb-[12px] text-[13px] leading-[20px] font-medium tracking-[0.08em] text-encre uppercase";
 const LINK = "text-[14px] leading-[26px] font-normal text-texte3 no-underline transition-colors hover:text-encre";
@@ -151,18 +151,20 @@ export function Footer({ lang, dict }: Props) {
         </div>
 
         {/* Grand mot-symbole décoratif en SVG : `textLength` l'étire exactement sur la
-            largeur du rail à toute taille d'écran ; masque en fondu vers le bas et marge
-            négative (en % de la largeur) pour le couper par le bas de la page. */}
-        <svg
-          aria-hidden
-          viewBox="0 0 1000 150"
-          className="pointer-events-none mt-[clamp(16px,3vw,40px)] -mb-[5.5%] block h-auto w-full text-encre/[0.22] select-none"
-          style={{ maskImage: WORDMARK_FADE, WebkitMaskImage: WORDMARK_FADE }}
-        >
-          <text x="0" y="142" textLength="1000" lengthAdjust="spacingAndGlyphs" fontSize="176" fontWeight="500" letterSpacing="-6" fill="currentColor">
-            {site.name}
-          </text>
-        </svg>
+            largeur du rail à toute taille d'écran. Le mot reste lisible ; un voile flou,
+            dégradé vers le fond de page, couvre sa moitié basse (décision du 2026-09-17). */}
+        <div className="relative mt-[clamp(16px,3vw,40px)] -mb-[1.5%]">
+          <svg aria-hidden viewBox="0 0 1000 150" className="pointer-events-none block h-auto w-full text-encre/[0.26] select-none">
+            <text x="0" y="142" textLength="1000" lengthAdjust="spacingAndGlyphs" fontSize="176" fontWeight="500" letterSpacing="-6" fill="currentColor">
+              {site.name}
+            </text>
+          </svg>
+          <span
+            aria-hidden
+            className="pointer-events-none absolute inset-x-[0px] bottom-[0px] h-[62%] bg-[linear-gradient(180deg,transparent_0%,var(--color-fond)_100%)] backdrop-blur-[6px]"
+            style={{ maskImage: WORDMARK_FADE, WebkitMaskImage: WORDMARK_FADE }}
+          />
+        </div>
       </div>
     </footer>
   );
