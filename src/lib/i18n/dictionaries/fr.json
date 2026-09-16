@@ -153,7 +153,13 @@
         "note": "CMS intégré, articles rédigés et publiés à cadence régulière, révisés avec vous. Le contenu est structuré pour le référencement local dès la mise en ligne.",
         "pricing": "Inclus à partir du forfait Professionnel"
       }
-    ]
+    ],
+    "controls": {
+      "prev": "Services précédents",
+      "next": "Services suivants",
+      "pause": "Mettre le défilement en pause",
+      "play": "Reprendre le défilement"
+    }
   },
   "method": {
     "kicker": "Méthode",

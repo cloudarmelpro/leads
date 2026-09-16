@@ -1,88 +1,53 @@
-import { Blend, ChevronRight, Box, Globe, Layers, Mail, RefreshCw, Share2, TrendingUp } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 
 import { GOUTTIERE } from "@/components/shared/container";
-import { SectionHead } from "@/components/shared/section-head";
 import { features } from "@/config/site";
+import { ServicesShowcase } from "@/features/home/components/services-showcase";
 import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 
 type Props = { lang: Locale; dict: Dictionary };
 
-// Une entrée par service, dans l'ordre du dictionnaire : glyphe, motif de fond, place dans
-// la grille de 10 colonnes (5 · 5 / 3 · 3 · 4 / 4 · 3 · 3) et, pour les services vendus sur
-// la page Prix, la requête `categorie`/`gamme` qui ouvre le bon tableau (identique FR/EN).
-// Le texte du repère de prix vient du dictionnaire (`services.items[].pricing`).
-const CARDS = [
-  { Icon: Globe, motif: "svc-globe", span: "min-[760px]:col-span-5", pricing: "categorie=site" },
-  { Icon: RefreshCw, motif: "svc-rings", span: "min-[760px]:col-span-5", pricing: "categorie=site" },
-  { Icon: Layers, motif: "svc-stack", span: "min-[760px]:col-span-3", pricing: "categorie=host" },
-  { Icon: Mail, motif: "svc-mail", span: "min-[760px]:col-span-3", pricing: "categorie=host" },
-  { Icon: Blend, motif: "svc-identity", span: "min-[760px]:col-span-4", pricing: "categorie=logo" },
-  { Icon: Box, motif: "svc-cube", span: "min-[760px]:col-span-4", pricing: "categorie=vps" },
-  { Icon: Share2, motif: "svc-network", span: "min-[760px]:col-span-3", pricing: "categorie=site&gamme=croissance" },
-  { Icon: TrendingUp, motif: "svc-growth", span: "min-[760px]:col-span-3", pricing: "categorie=site&gamme=croissance" },
-];
-
-const MOTIF_MASK = "linear-gradient(135deg, transparent 0%, rgba(0,0,0,0.35) 45%, #000 100%)";
-
 /**
- * Services : huit cartes en bento. Chaque carte porte un motif généré en fond
- * (couvrant, ancré en bas à droite, fondu vers le haut à gauche) qui se renforce au
- * survol, une plaque d'icône, un titre et un paragraphe.
+ * Services (direction du 2026-09-17, d'après une vidéo de référence) : à gauche la
+ * mosaïque défilante des huit services, à droite le label, le titre, l'intro et les deux
+ * appels à l'action du hero. Une colonne sous 900px, texte d'abord. Rail de 1400px comme
+ * l'en-tête.
  */
 export function Services({ lang, dict }: Props) {
   const t = dict.services;
 
   return (
     <section className={`relative flex justify-center pb-[clamp(112px,16vw,240px)] ${GOUTTIERE}`}>
-      {/* Rail de 1400px comme l'en-tête : la grille de huit cartes a besoin de largeur (décision du 2026-09-17). */}
-      <div className="flex w-full max-w-[1400px] flex-col gap-[48px]">
-        <SectionHead id="services" label={t.kicker} title={`${t.titleA} ${t.titleB}`} intro={t.intro} />
-
-        <div className="grid grid-cols-[minmax(0,1fr)] items-stretch gap-[14px] min-[700px]:grid-cols-[repeat(2,minmax(0,1fr))] min-[760px]:grid-cols-[repeat(10,minmax(0,1fr))]">
-          {t.items.map((item, index) => {
-            const card = CARDS[index];
-            if (!card) return null;
-            const { Icon, motif, span, pricing } = card;
-            const priceLine = features.pricing && pricing && item.pricing ? item.pricing : null;
-
-            return (
-              <article
-                key={item.name}
-                className={`group relative flex flex-col gap-[16px] overflow-hidden rounded-[24px] bg-surface p-[28px] ring-1 ring-ligne ring-inset dark:ring-0 transition-colors duration-[220ms] ease-[cubic-bezier(0.2,0.7,0.2,1)] hover:bg-surface-2 ${span}`}
+      <div className="grid w-full max-w-[1400px] grid-cols-[minmax(0,1fr)] items-center gap-[clamp(32px,5vw,96px)] min-[900px]:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]">
+        <div className="flex flex-col items-start gap-[18px] min-[900px]:order-2 min-[900px]:pl-[clamp(0px,2vw,32px)]">
+          <span id="services" className="text-[13px] leading-[20px] font-medium tracking-[0.08em] text-vert uppercase">
+            {t.kicker}
+          </span>
+          <h2 className="m-[0px] text-[clamp(26px,3vw,38px)] leading-[1.12] font-medium tracking-[-0.5px] text-encre text-balance">
+            {t.titleA} {t.titleB}
+          </h2>
+          <p className="m-[0px] max-w-[440px] text-[15px] leading-[26px] font-normal text-texte2 text-pretty">{t.intro}</p>
+          <div className="mt-[10px] flex flex-wrap items-center gap-[10px]">
+            {features.pricing && (
+              <Link
+                href={`/${lang}/prix`}
+                className="inline-flex min-h-[40px] items-center rounded-[8px] bg-vert px-[16px] text-[14px] leading-[20px] font-medium whitespace-nowrap text-sur-vert no-underline transition-colors hover:bg-vert-clair"
               >
-                <Image
-                  src={`/images/home/${motif}.jpg`}
-                  alt=""
-                  aria-hidden
-                  fill
-                  sizes="(max-width: 700px) 100vw, (max-width: 760px) 50vw, 540px"
-                  className="pointer-events-none object-cover object-right-bottom opacity-[0.42] mix-blend-screen transition-[opacity,filter] duration-[260ms] ease-[cubic-bezier(0.2,0.7,0.2,1)] select-none group-hover:opacity-85 group-hover:blur-[0.3px] motion-safe:will-change-[opacity,filter]"
-                  style={{ maskImage: MOTIF_MASK, WebkitMaskImage: MOTIF_MASK }}
-                />
-                <span className="relative flex h-[48px] w-[48px] shrink-0 items-center justify-center rounded-[16px] bg-surface-2 text-vert">
-                  <Icon size={22} strokeWidth={1.6} aria-hidden />
-                </span>
-                <h3 className="relative m-[0px] text-[17px] leading-[24px] font-medium text-encre">{item.name}</h3>
-                <p className="relative m-[0px] text-[14px] leading-[24px] font-normal text-texte2 text-pretty">{item.note}</p>
-                {priceLine && (
-                  <Link
-                    href={`/${lang}/prix?${pricing}`}
-                    aria-label={`${priceLine} — ${item.name}`}
-                    className="relative mt-auto flex min-h-[44px] w-fit items-center text-[14px] leading-[20px] font-medium text-vert no-underline transition-colors duration-200 ease-[cubic-bezier(0.2,0.7,0.2,1)] hover:text-vert-clair"
-                  >
-                    <span className="text-pretty">
-                      {priceLine}
-                      {/* Chevron dans le même bloc de texte : elle suit le dernier mot même sur deux lignes. */}
-                      <ChevronRight size={16} strokeWidth={2} aria-hidden className="ml-[4px] inline-block align-[-3px] transition-transform duration-200 ease-[cubic-bezier(0.2,0.7,0.2,1)] group-hover:translate-x-[3px]" />
-                    </span>
-                  </Link>
-                )}
-              </article>
-            );
-          })}
+                {dict.hero.ctaPricing}
+              </Link>
+            )}
+            <Link
+              href={`/${lang}/contact`}
+              className="inline-flex min-h-[40px] items-center rounded-[8px] bg-surface-2 px-[16px] text-[14px] leading-[20px] font-medium whitespace-nowrap text-encre no-underline ring-1 ring-contour ring-inset transition-colors hover:bg-surface-3"
+            >
+              {dict.hero.ctaBook}
+            </Link>
+          </div>
+        </div>
+
+        <div className="min-[900px]:order-1">
+          <ServicesShowcase lang={lang} items={t.items} controls={t.controls} />
         </div>
       </div>
     </section>

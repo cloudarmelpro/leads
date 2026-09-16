@@ -153,7 +153,13 @@
         "note": "Built-in CMS, articles written and published on a regular cadence, reviewed with you. Content is structured for local search from day one.",
         "pricing": "Included from the Professional plan"
       }
-    ]
+    ],
+    "controls": {
+      "prev": "Previous services",
+      "next": "Next services",
+      "pause": "Pause the rotation",
+      "play": "Resume the rotation"
+    }
   },
   "method": {
     "kicker": "Method",
