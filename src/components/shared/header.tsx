@@ -1,5 +1,6 @@
 "use client";
 
+import { ChevronDown } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
@@ -20,6 +21,13 @@ const BurgerIcon = () => (
     <path d="M3 9h18M3 15h18" />
   </svg>
 );
+// Ancres des sections de l'accueil, par clé du dictionnaire (`nav.homeMenu[].key`).
+type SectionKey = "services" | "sectors" | "method" | "faq";
+const SECTION_IDS: Record<SectionKey, string> = { services: "services", sectors: "secteurs", method: "methode", faq: "faq" };
+
+const linkClass = (current: boolean) =>
+  `text-[14px] leading-[20px] font-normal whitespace-nowrap no-underline transition-colors hover:text-vert ${current ? "text-vert" : "text-encre"}`;
+
 const CloseIcon = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" aria-hidden>
     <path d="M5 5l14 14M19 5L5 19" />
@@ -42,12 +50,14 @@ export function Header({ lang, dict }: Props) {
   const phoneLabel = site.phone ?? dict.placeholders.phone;
   const whatsappLabel = site.whatsapp ?? dict.placeholders.whatsapp;
 
-  // Ordre de la maquette : Services, Secteurs, Méthode, FAQ, À propos, Prix, Blog.
+  // Barre (décision du 2026-09-16) : Accueil avec menu déroulant des quatre sections,
+  // puis À propos, Prix, Blogue.
+  const home = `/${lang}`;
+  const sections = dict.nav.homeMenu.map((item) => {
+    const key = item.key as SectionKey;
+    return { label: dict.nav[key], desc: item.desc, href: `${home}#${SECTION_IDS[key]}` };
+  });
   const nav = [
-    { label: dict.nav.services, href: `/${lang}#services` },
-    { label: dict.nav.sectors, href: `/${lang}#secteurs` },
-    { label: dict.nav.method, href: `/${lang}#methode` },
-    { label: dict.nav.faq, href: `/${lang}#faq` },
     { label: dict.nav.about, href: `/${lang}/a-propos` },
     ...(features.pricing ? [{ label: dict.nav.pricing, href: `/${lang}/prix` }] : []),
     { label: dict.nav.blog, href: `/${lang}/blog` },
@@ -93,15 +103,31 @@ export function Header({ lang, dict }: Props) {
 
           {/* Navigation à gauche, à la suite du logo (même 14 px qu entre les liens : 8 de gap + 6), liens blancs, page courante en vert. */}
           <nav aria-label={dict.nav.quickNav} className="relative top-[2px] hidden items-center gap-[14px] min-[900px]:ml-[6px] min-[900px]:flex">
+            <div className="group relative">
+              <Link href={home} aria-current={pathname === home ? "page" : undefined} className={`inline-flex items-center justify-center gap-[4px] text-center ${linkClass(pathname === home)}`}>
+                {dict.nav.home}
+                <ChevronDown size={14} strokeWidth={2} aria-hidden className="relative top-[1px] transition-transform duration-200 group-hover:rotate-180 group-focus-within:rotate-180" />
+              </Link>
+              {/* Panneau au survol ou au focus clavier. Le `pt` remplace une marge : le
+                  survol ne se perd pas entre le lien et le panneau. */}
+              <div className="invisible absolute top-full left-[-18px] z-[50] pt-[14px] opacity-0 transition-[opacity,visibility] duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+                <ul
+                  aria-label={dict.nav.homeMenuAria}
+                  className="m-[0px] grid w-[540px] list-none grid-cols-2 gap-[4px] rounded-[16px] bg-surface p-[10px] shadow-[0_24px_60px_rgba(0,0,0,0.35)] ring-1 ring-ligne dark:ring-contour"
+                >
+                  {sections.map((item) => (
+                    <li key={item.href}>
+                      <Link href={item.href} className="flex flex-col gap-[3px] rounded-[10px] px-[14px] py-[12px] no-underline transition-colors hover:bg-surface-2">
+                        <span className="text-[15px] leading-[22px] font-medium text-encre">{item.label}</span>
+                        <span className="text-[13px] leading-[19px] font-normal text-texte2 text-pretty">{item.desc}</span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
             {nav.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                aria-current={isCurrent(item.href) ? "page" : undefined}
-                className={`text-[14px] leading-[20px] font-normal whitespace-nowrap no-underline transition-colors hover:text-vert ${
-                  isCurrent(item.href) ? "text-vert" : "text-encre"
-                }`}
-              >
+              <Link key={item.href} href={item.href} aria-current={isCurrent(item.href) ? "page" : undefined} className={linkClass(isCurrent(item.href))}>
                 {item.label}
               </Link>
             ))}
@@ -151,6 +177,20 @@ export function Header({ lang, dict }: Props) {
           </div>
 
           <nav aria-label={dict.nav.quickNav} className="mt-[30px] flex flex-col items-start gap-[8px]">
+            <Link
+              href={home}
+              onClick={close}
+              aria-current={pathname === home ? "page" : undefined}
+              className={`flex min-h-[36px] items-center text-[16px] leading-[24px] font-normal no-underline transition-colors hover:text-vert ${pathname === home ? "text-vert" : "text-encre"}`}
+            >
+              {dict.nav.home}
+            </Link>
+            {/* Sections de l'accueil, en retrait sous Accueil. */}
+            {sections.map((item) => (
+              <Link key={item.href} href={item.href} onClick={close} className="flex min-h-[32px] items-center pl-[16px] text-[15px] leading-[22px] font-normal text-texte2 no-underline transition-colors hover:text-vert">
+                {item.label}
+              </Link>
+            ))}
             {nav.map((item) => (
               <Link
                 key={item.href}

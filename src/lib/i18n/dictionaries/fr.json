@@ -35,7 +35,26 @@
     "pricing": "Prix",
     "blog": "Blogue",
     "contact": "Contact",
-    "quickNav": "Navigation rapide"
+    "quickNav": "Navigation rapide",
+    "homeMenu": [
+      {
+        "key": "services",
+        "desc": "Huit services, du site web au CRM."
+      },
+      {
+        "key": "sectors",
+        "desc": "Paysagement, excavation, construction, commerce local…"
+      },
+      {
+        "key": "method",
+        "desc": "Six étapes, de l’appel à la mise en ligne."
+      },
+      {
+        "key": "faq",
+        "desc": "Les questions qu’on nous pose avant chaque projet."
+      }
+    ],
+    "homeMenuAria": "Sections de l’accueil"
   },
   "header": {
     "menuCall": "Appeler maintenant",

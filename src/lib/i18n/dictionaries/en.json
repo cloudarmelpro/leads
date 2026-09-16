@@ -35,7 +35,26 @@
     "pricing": "Pricing",
     "blog": "Blog",
     "contact": "Contact",
-    "quickNav": "Quick navigation"
+    "quickNav": "Quick navigation",
+    "homeMenu": [
+      {
+        "key": "services",
+        "desc": "Eight services, from website to CRM."
+      },
+      {
+        "key": "sectors",
+        "desc": "Landscaping, excavation, construction, local retail…"
+      },
+      {
+        "key": "method",
+        "desc": "Six steps, from the call to launch."
+      },
+      {
+        "key": "faq",
+        "desc": "The questions we get before every project."
+      }
+    ],
+    "homeMenuAria": "Home page sections"
   },
   "header": {
     "menuCall": "Call now",
