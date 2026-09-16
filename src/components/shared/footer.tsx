@@ -41,9 +41,11 @@ const LINK = "text-[14px] leading-[26px] font-normal text-texte3 no-underline tr
 const COORD = "text-[14px] leading-[26px] font-normal text-texte3 no-underline transition-colors hover:text-vert";
 
 /**
- * Pied de page de la maquette Accueil : filet haut, logo + description + réseaux à
- * gauche, puis trois colonnes (Plan du site, Ressources, Coordonnées). Deux colonnes
- * sous 760px, une seule sous 620px. Barre du bas : copyright et liens légaux.
+ * Pied de page (direction du 2026-09-17) : quatre colonnes réparties sur le rail de
+ * l'en-tête — logo + description, Plan du site, Ressources, Coordonnées — puis une barre
+ * basse avec copyright et liens légaux à gauche, réseaux sociaux à droite, et un grand
+ * mot-symbole « Talgasy Web » très atténué, coupé par le bas de la page. Deux colonnes
+ * sous 760px, une seule sous 620px.
  */
 export function Footer({ lang, dict }: Props) {
   const plan = [
@@ -63,35 +65,13 @@ export function Footer({ lang, dict }: Props) {
   const [emailUser, emailDomain] = (site.email ?? "").split("@");
 
   return (
-    <footer
-      id="footer"
-      className={`relative flex justify-center overflow-hidden border-t border-ligne pt-[clamp(40px,6vw,80px)] pb-[32px] ${GOUTTIERE}`}
-    >
-      {/* Même rail de 1400px que l'en-tête (décision du 2026-09-17), plus large que les sections. */}
-      <div className="relative w-full max-w-[1400px]">
-        <div className="grid grid-cols-[minmax(0,1fr)] items-start gap-[28px] min-[620px]:grid-cols-[repeat(2,minmax(0,1fr))] min-[760px]:grid-cols-[minmax(0,1fr)_130px_130px_max-content]">
-          <div className="flex flex-col gap-[26px]">
+    <footer id="footer" className={`relative flex justify-center overflow-hidden border-t border-ligne pt-[clamp(40px,6vw,80px)] ${GOUTTIERE}`}>
+      {/* Même rail de 1400px que l'en-tête, plus large que les sections. */}
+      <div className="relative flex w-full max-w-[1400px] flex-col">
+        <div className="grid grid-cols-[minmax(0,1fr)] items-start gap-x-[32px] gap-y-[28px] min-[620px]:grid-cols-[repeat(2,minmax(0,1fr))] min-[760px]:grid-cols-[minmax(0,1.6fr)_repeat(3,minmax(0,1fr))]">
+          <div className="flex flex-col gap-[22px]">
             <Logo height={30} />
-            <p className="m-[0px] max-w-[280px] text-[14px] leading-[24px] font-normal text-texte2 text-pretty">
-              {dict.footer.description}
-            </p>
-            <div className="flex items-center gap-[10px]">
-              {site.social.map((network) => {
-                const Icon = SOCIAL_ICONS[network.key];
-                return (
-                  <a
-                    key={network.key}
-                    href={network.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={dict.footer.social[network.key]}
-                    className="tap-44 flex h-[34px] w-[34px] items-center justify-center rounded-[9px] bg-surface text-encre ring-1 ring-ligne ring-inset dark:ring-0 transition-colors hover:bg-vert hover:text-sur-vert"
-                  >
-                    <Icon />
-                  </a>
-                );
-              })}
-            </div>
+            <p className="m-[0px] max-w-[300px] text-[14px] leading-[24px] font-normal text-texte2 text-pretty">{dict.footer.description}</p>
           </div>
 
           <div className="flex flex-col">
@@ -132,26 +112,43 @@ export function Footer({ lang, dict }: Props) {
 
         {/* `data-fab-avoid` : la bulle d'appel flottante se masque quand cette barre est
             visible, sinon elle recouvre « Gérer mes témoins » (voir floating-contact). */}
-        <div
-          data-fab-avoid
-          className="relative mt-[56px] flex flex-wrap items-center justify-between gap-[24px] border-t border-ligne pt-[24px]"
-        >
-          <span className="text-[14px] leading-[25px] font-normal text-texte3">
-            © {new Date().getFullYear()} {site.name} — {dict.footer.rights}
-          </span>
-          <div className="flex items-center gap-[24px]">
-            <Link
-              href={`/${lang}/confidentialite`}
-              className="text-[14px] leading-[22px] font-normal text-texte3 no-underline transition-colors hover:text-encre"
-            >
+        <div data-fab-avoid className="relative mt-[48px] flex flex-wrap items-center justify-between gap-x-[32px] gap-y-[18px] border-t border-ligne pt-[24px]">
+          <div className="flex flex-wrap items-center gap-x-[24px] gap-y-[6px]">
+            <span className="text-[14px] leading-[25px] font-normal text-texte3">
+              © {new Date().getFullYear()} {site.name} — {dict.footer.rights}
+            </span>
+            <Link href={`/${lang}/confidentialite`} className="text-[14px] leading-[22px] font-normal text-texte3 no-underline transition-colors hover:text-encre">
               {dict.footer.legal2}
             </Link>
-            <ManageCookiesButton
-              label={dict.cookies.manage}
-              className="cursor-pointer text-[14px] leading-[22px] font-normal text-texte3 transition-colors hover:text-encre"
-            />
+            <ManageCookiesButton label={dict.cookies.manage} className="cursor-pointer text-[14px] leading-[22px] font-normal text-texte3 transition-colors hover:text-encre" />
+          </div>
+          <div className="flex items-center gap-[10px]">
+            {site.social.map((network) => {
+              const Icon = SOCIAL_ICONS[network.key];
+              return (
+                <a
+                  key={network.key}
+                  href={network.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={dict.footer.social[network.key]}
+                  className="tap-44 flex h-[34px] w-[34px] items-center justify-center rounded-[9px] bg-surface text-encre ring-1 ring-ligne ring-inset dark:ring-0 transition-colors hover:bg-vert hover:text-sur-vert"
+                >
+                  <Icon />
+                </a>
+              );
+            })}
           </div>
         </div>
+
+        {/* Grand mot-symbole décoratif, très atténué, coupé par le bas de la page :
+            interligne 0,8 et marge négative pour n'occuper qu'une partie de sa hauteur. */}
+        <p
+          aria-hidden
+          className="pointer-events-none m-[0px] mt-[clamp(24px,4vw,48px)] -mb-[0.24em] overflow-hidden text-[clamp(64px,14.5vw,210px)] leading-[0.8] font-medium tracking-[-0.045em] whitespace-nowrap text-encre/[0.06] select-none"
+        >
+          {site.name}
+        </p>
       </div>
     </footer>
   );
