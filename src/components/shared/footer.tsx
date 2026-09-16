@@ -151,7 +151,7 @@ export function Footer({ lang, dict }: Props) {
             interligne 0,8 et marge négative pour n'occuper qu'une partie de sa hauteur. */}
         <p
           aria-hidden
-          className="pointer-events-none m-[0px] mt-[clamp(24px,4vw,48px)] -mb-[0.24em] overflow-hidden text-center text-[clamp(64px,14.5vw,210px)] leading-[0.8] font-medium tracking-[-0.045em] whitespace-nowrap text-encre/[0.06] select-none"
+          className="pointer-events-none m-[0px] mt-[clamp(24px,4vw,48px)] -mb-[0.24em] overflow-hidden text-center text-[clamp(64px,14.5vw,210px)] leading-[0.8] font-medium tracking-[-0.045em] whitespace-nowrap text-encre/[0.1] select-none"
         >
           {site.name}
         </p>
