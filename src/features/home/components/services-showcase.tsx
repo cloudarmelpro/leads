@@ -1,16 +1,13 @@
-"use client";
-
-import { Blend, Box, ChevronRight, Globe, Layers, Mail, Pause, Play, RefreshCw, Share2, TrendingUp, type LucideIcon } from "lucide-react";
+import { Blend, Box, ChevronRight, Globe, Layers, Mail, RefreshCw, Share2, TrendingUp, type LucideIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
 
 import { features } from "@/config/site";
 import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 
 type Item = Dictionary["services"]["items"][number];
-type Props = { lang: Locale; items: Item[]; controls: Dictionary["services"]["controls"] };
+type Props = { lang: Locale; items: Item[] };
 
 // Une entrée par service, dans l'ordre du dictionnaire : glyphe, motif de fond et, pour
 // les services vendus sur la page Prix, la requête `categorie`/`gamme` (identique FR/EN).
@@ -33,13 +30,11 @@ const MOTIF_MASK = "linear-gradient(135deg, transparent 0%, rgba(0,0,0,0.35) 45%
 /**
  * Vitrine des services : piste horizontale de six colonnes de vignettes qui défile en
  * continu vers la gauche et boucle (deux copies de la piste, translation de -50 %,
- * animation CSS `tw-marquee` sur `transform` seulement). Pause au survol, par le bouton,
- * et à l'arrêt sous `prefers-reduced-motion`. Les huit services sont dans le HTML une
+ * animation CSS `tw-marquee` sur `transform` seulement). Pause au survol, arrêt sous
+ * `prefers-reduced-motion`. Les huit services sont dans le HTML une
  * seule fois pour le référencement : la seconde copie est `aria-hidden` et non focusable.
  */
-export function ServicesShowcase({ lang, items, controls }: Props) {
-  const [paused, setPaused] = useState(false);
-
+export function ServicesShowcase({ lang, items }: Props) {
   const tile = (index: number, tall: boolean, clone: boolean) => {
     const item = items[index];
     const card = CARDS[index];
@@ -98,25 +93,13 @@ export function ServicesShowcase({ lang, items, controls }: Props) {
   );
 
   return (
-    <div className="group flex flex-col gap-[14px]">
+    <div className="group">
       <div className="relative h-[clamp(380px,40vw,560px)] overflow-hidden">
-        <div
-          className="flex h-full w-max [animation:tw-marquee_52s_linear_infinite] group-hover:[animation-play-state:paused] motion-reduce:[animation:none]"
-          style={paused ? { animationPlayState: "paused" } : undefined}
-        >
+        <div className="flex h-full w-max [animation:tw-marquee_52s_linear_infinite] group-hover:[animation-play-state:paused] motion-reduce:[animation:none]">
           {copy(false)}
           {copy(true)}
         </div>
       </div>
-      <button
-        type="button"
-        onClick={() => setPaused((p) => !p)}
-        aria-pressed={paused}
-        aria-label={paused ? controls.play : controls.pause}
-        className="flex h-[38px] w-[38px] cursor-pointer items-center justify-center rounded-[8px] bg-surface-2 text-encre ring-1 ring-contour ring-inset transition-colors hover:bg-surface-3"
-      >
-        {paused ? <Play size={16} strokeWidth={2} aria-hidden /> : <Pause size={16} strokeWidth={2} aria-hidden />}
-      </button>
     </div>
   );
 }
