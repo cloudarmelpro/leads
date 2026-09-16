@@ -42,9 +42,6 @@ const SOCIAL_HOVER: Record<SocialKey, string> = {
   linkedin: "hover:bg-[#0a66c2] hover:text-white",
 };
 
-// Masque du voile flou posé sur le bas du grand mot-symbole : invisible en haut, plein en bas.
-const WORDMARK_FADE = "linear-gradient(180deg, transparent 0%, #000 55%)";
-
 const TITLE = "mb-[12px] text-[13px] leading-[20px] font-medium tracking-[0.08em] text-encre uppercase";
 const LINK = "text-[14px] leading-[26px] font-normal text-texte3 no-underline transition-colors hover:text-encre";
 const COORD = "text-[14px] leading-[26px] font-normal text-texte3 no-underline transition-colors hover:text-vert";
@@ -151,8 +148,8 @@ export function Footer({ lang, dict }: Props) {
         </div>
 
         {/* Grand mot-symbole décoratif en SVG : `textLength` l'étire exactement sur la
-            largeur du rail à toute taille d'écran. Le mot reste lisible ; un voile flou,
-            légèrement noir, couvre seulement son bas (décision du 2026-09-17). */}
+            largeur du rail à toute taille d'écran. Le mot reste lisible ; son bas se fond
+            dans la couleur de page par un simple dégradé, sans flou (décision du 2026-09-17). */}
         <div className="relative mt-[clamp(16px,3vw,40px)] -mb-[1.5%]">
           <svg aria-hidden viewBox="0 0 1000 150" className="pointer-events-none block h-auto w-full text-encre/[0.26] select-none">
             <text x="0" y="142" textLength="1000" lengthAdjust="spacingAndGlyphs" fontSize="176" fontWeight="500" letterSpacing="-6" fill="currentColor">
@@ -161,8 +158,7 @@ export function Footer({ lang, dict }: Props) {
           </svg>
           <span
             aria-hidden
-            className="pointer-events-none absolute inset-x-[0px] bottom-[0px] h-[42%] bg-[linear-gradient(180deg,transparent_0%,rgba(0,0,0,0.55)_100%)] backdrop-blur-[6px]"
-            style={{ maskImage: WORDMARK_FADE, WebkitMaskImage: WORDMARK_FADE }}
+            className="pointer-events-none absolute inset-x-[0px] bottom-[0px] h-[58%] bg-[linear-gradient(180deg,transparent_0%,var(--color-fond)_92%)]"
           />
         </div>
       </div>
