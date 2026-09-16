@@ -36,7 +36,7 @@ const CloseIcon = () => (
 
 /**
  * En-tête collant (reste visible au défilement, décision du 2026-09-16) : fond de page
- * translucide, sans filet, sur un rail de 1400px plus large que les sections.
+ * opaque, ni transparence ni flou, sans filet, sur un rail de 1400px plus large que les sections.
  * Logo puis navigation à gauche, à droite langue · thème · Contact. Sous 900px,
  * navigation et Contact laissent place au bouton menu (44×44) qui ouvre un menu
  * plein écran.
@@ -94,7 +94,7 @@ export function Header({ lang, dict }: Props) {
 
   return (
     <>
-      <header className={`sticky top-[0px] z-[60] flex justify-center bg-fond/90 py-[12px] backdrop-blur-[10px] ${GOUTTIERE}`}>
+      <header className={`sticky top-[0px] z-[60] flex justify-center bg-fond py-[12px] ${GOUTTIERE}`}>
         {/* Rail plus large que les sections (1100px) : l'en-tête s'étire vers les bords, décision du 2026-09-16. */}
         <div className="relative flex w-full max-w-[1400px] min-h-[44px] items-center gap-[8px]">
           <Link href={`/${lang}`} aria-label={`${site.name} — ${dict.nav.home}`} className="flex min-w-[0px] shrink-0 items-center no-underline">
