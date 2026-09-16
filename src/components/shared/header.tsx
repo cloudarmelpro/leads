@@ -98,7 +98,7 @@ export function Header({ lang, dict }: Props) {
                 key={item.href}
                 href={item.href}
                 aria-current={isCurrent(item.href) ? "page" : undefined}
-                className={`text-[15px] leading-[20px] font-normal whitespace-nowrap no-underline transition-colors hover:text-vert ${
+                className={`text-[14px] leading-[20px] font-normal whitespace-nowrap no-underline transition-colors hover:text-vert ${
                   isCurrent(item.href) ? "text-vert" : "text-encre"
                 }`}
               >
