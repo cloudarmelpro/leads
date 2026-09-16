@@ -48,7 +48,8 @@ const COORD = "text-[14px] leading-[26px] font-normal text-texte3 no-underline t
 
 /**
  * Pied de page (direction du 2026-09-17) : quatre colonnes réparties sur le rail de
- * l'en-tête — logo + description, Plan du site, Ressources, Coordonnées — puis une barre
+ * l'en-tête — logo + description à gauche, Plan du site, Ressources et Coordonnées
+ * serrées à droite — puis une barre
  * basse avec copyright et liens légaux à gauche, réseaux sociaux à droite, et un grand
  * mot-symbole « Talgasy Web » très atténué, coupé par le bas de la page. Deux colonnes
  * sous 760px, une seule sous 620px.
@@ -74,7 +75,7 @@ export function Footer({ lang, dict }: Props) {
     <footer id="footer" className={`relative flex justify-center overflow-hidden border-t border-ligne pt-[clamp(40px,6vw,80px)] ${GOUTTIERE}`}>
       {/* Même rail de 1400px que l'en-tête, plus large que les sections. */}
       <div className="relative flex w-full max-w-[1400px] flex-col">
-        <div className="grid grid-cols-[minmax(0,1fr)] items-start gap-x-[32px] gap-y-[28px] min-[620px]:grid-cols-[repeat(2,minmax(0,1fr))] min-[760px]:grid-cols-[minmax(0,1.6fr)_repeat(3,minmax(0,1fr))]">
+        <div className="grid grid-cols-[minmax(0,1fr)] items-start gap-x-[32px] gap-y-[28px] min-[620px]:grid-cols-[repeat(2,minmax(0,1fr))] min-[760px]:grid-cols-[minmax(0,1fr)_repeat(3,max-content)] min-[760px]:gap-x-[clamp(40px,6vw,96px)]">
           <div className="flex flex-col gap-[22px]">
             <Logo height={30} />
             <p className="m-[0px] max-w-[300px] text-[14px] leading-[24px] font-normal text-texte2 text-pretty">{dict.footer.description}</p>
