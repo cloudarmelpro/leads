@@ -29,7 +29,7 @@ const CloseIcon = () => (
 /**
  * En-tête : non collant, fond transparent, sans filet, sur un rail de 1400px plus large
  * que les sections.
- * Logo à gauche, navigation centrée, à droite langue · thème · Contact. Sous 900px,
+ * Logo puis navigation à gauche, à droite langue · thème · Contact. Sous 900px,
  * navigation et Contact laissent place au bouton menu (44×44) qui ouvre un menu
  * plein écran.
  */
@@ -87,18 +87,18 @@ export function Header({ lang, dict }: Props) {
       <header className={`relative z-[2] flex justify-center bg-transparent pt-[22px] ${GOUTTIERE}`}>
         {/* Rail plus large que les sections (1100px) : l'en-tête s'étire vers les bords, décision du 2026-09-16. */}
         <div className="relative flex w-full max-w-[1400px] min-h-[44px] items-center gap-[8px]">
-          <Link href={`/${lang}`} aria-label={`${site.name} — ${dict.nav.home}`} className="flex min-w-[0px] flex-1 items-center no-underline">
+          <Link href={`/${lang}`} aria-label={`${site.name} — ${dict.nav.home}`} className="flex min-w-[0px] shrink-0 items-center no-underline">
             <Logo height={24} className="relative -top-[1px]" />
           </Link>
 
-          {/* Navigation centrée sur le rail : liens discrets, page courante en encre pleine. */}
-          <nav aria-label={dict.nav.quickNav} className="hidden items-center justify-center gap-[18px] min-[900px]:flex">
+          {/* Navigation à gauche, à la suite du logo : liens discrets, page courante en encre pleine. */}
+          <nav aria-label={dict.nav.quickNav} className="hidden items-center gap-[22px] min-[900px]:ml-[40px] min-[900px]:flex">
             {nav.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 aria-current={isCurrent(item.href) ? "page" : undefined}
-                className={`text-[13px] leading-[20px] font-normal whitespace-nowrap no-underline transition-colors hover:text-encre ${
+                className={`text-[15px] leading-[20px] font-normal whitespace-nowrap no-underline transition-colors hover:text-encre ${
                   isCurrent(item.href) ? "text-encre" : "text-texte2"
                 }`}
               >
@@ -107,12 +107,12 @@ export function Header({ lang, dict }: Props) {
             ))}
           </nav>
 
-          <div className="flex min-w-[0px] flex-1 items-center justify-end gap-[8px]">
+          <div className="ml-auto flex shrink-0 items-center justify-end gap-[8px]">
             <LanguageSwitcher current={lang} label={dict.header.langAria} />
             <ThemeToggle label={dict.header.themeAria} optionLabels={dict.header.theme} />
             <Link
               href={`/${lang}/contact`}
-              className="hidden min-h-[38px] items-center rounded-[8px] bg-surface-2 px-[16px] text-[13px] leading-[20px] font-medium whitespace-nowrap text-encre no-underline ring-1 ring-contour ring-inset transition-colors hover:bg-surface-3 min-[900px]:inline-flex"
+              className="hidden min-h-[38px] items-center rounded-[8px] bg-vert px-[16px] text-[13px] leading-[20px] font-medium whitespace-nowrap text-sur-vert no-underline transition-colors hover:bg-vert-clair min-[900px]:inline-flex"
             >
               {dict.nav.contact}
             </Link>

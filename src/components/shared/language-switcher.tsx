@@ -33,8 +33,8 @@ export function LanguageSwitcher({ current, label, variant = "pill", className =
 
   const look =
     variant === "pill"
-      ? "rounded-[9px] bg-surface-2 px-[10px] text-encre hover:bg-surface-3"
-      : "text-encre hover:text-vert";
+      ? "h-[38px] rounded-[8px] bg-surface-2 px-[12px] text-encre ring-1 ring-contour ring-inset hover:bg-surface-3"
+      : "h-[34px] text-encre hover:text-vert";
 
   return (
     <Link
@@ -42,7 +42,7 @@ export function LanguageSwitcher({ current, label, variant = "pill", className =
       hrefLang={other}
       // Le nom accessible doit contenir le texte visible (« EN ») : « Choisir la langue : EN ».
       aria-label={`${label} : ${localeLabels[other]}`}
-      className={`tap-44 inline-flex h-[34px] items-center gap-[6px] text-[13px] leading-[20px] font-medium whitespace-nowrap no-underline transition-colors duration-200 ease-[cubic-bezier(0.2,0.7,0.2,1)] ${look} ${className}`}
+      className={`tap-44 inline-flex items-center gap-[6px] text-[13px] leading-[20px] font-medium whitespace-nowrap no-underline transition-colors duration-200 ease-[cubic-bezier(0.2,0.7,0.2,1)] ${look} ${className}`}
     >
       <Globe size={16} strokeWidth={1.8} aria-hidden />
       <span>{localeLabels[other]}</span>

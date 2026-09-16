@@ -27,8 +27,8 @@ export function ThemeToggle({ label, optionLabels, shape = "square" }: Props) {
       onClick={() => setTheme(next)}
       aria-label={`${label} — ${optionLabels[next]}`}
       title={optionLabels[next]}
-      className={`tap-44 inline-flex h-[34px] w-[34px] shrink-0 cursor-pointer items-center justify-center bg-vert text-sur-vert transition-colors duration-200 ease-[cubic-bezier(0.2,0.7,0.2,1)] hover:bg-vert-clair ${
-        shape === "round" ? "rounded-full" : "rounded-[9px]"
+      className={`tap-44 inline-flex h-[38px] w-[38px] shrink-0 cursor-pointer items-center justify-center bg-surface-2 text-encre ring-1 ring-contour ring-inset transition-colors duration-200 ease-[cubic-bezier(0.2,0.7,0.2,1)] hover:bg-surface-3 ${
+        shape === "round" ? "rounded-full" : "rounded-[8px]"
       }`}
     >
       <Icon size={17} strokeWidth={2} aria-hidden />
