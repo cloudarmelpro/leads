@@ -43,7 +43,7 @@ const SOCIAL_HOVER: Record<SocialKey, string> = {
 };
 
 // Le grand mot-symbole s'estompe vers le bas de la page (référence du 2026-09-17).
-const WORDMARK_FADE = "linear-gradient(180deg, #000 20%, rgba(0,0,0,0.35) 70%, transparent 100%)";
+const WORDMARK_FADE = "linear-gradient(180deg, #000 0%, rgba(0,0,0,0.55) 45%, transparent 82%)";
 
 const TITLE = "mb-[12px] text-[13px] leading-[20px] font-medium tracking-[0.08em] text-encre uppercase";
 const LINK = "text-[14px] leading-[26px] font-normal text-texte3 no-underline transition-colors hover:text-encre";
@@ -150,15 +150,19 @@ export function Footer({ lang, dict }: Props) {
           </div>
         </div>
 
-        {/* Grand mot-symbole décoratif, très atténué, coupé par le bas de la page :
-            interligne 0,8 et marge négative pour n'occuper qu'une partie de sa hauteur. */}
-        <p
+        {/* Grand mot-symbole décoratif en SVG : `textLength` l'étire exactement sur la
+            largeur du rail à toute taille d'écran ; masque en fondu vers le bas et marge
+            négative (en % de la largeur) pour le couper par le bas de la page. */}
+        <svg
           aria-hidden
-          className="pointer-events-none m-[0px] mt-[clamp(24px,4vw,48px)] -mb-[0.24em] overflow-hidden text-center text-[clamp(64px,14.5vw,210px)] leading-[0.8] font-medium tracking-[-0.045em] whitespace-nowrap text-encre/[0.18] select-none"
+          viewBox="0 0 1000 150"
+          className="pointer-events-none mt-[clamp(16px,3vw,40px)] -mb-[5.5%] block h-auto w-full text-encre/[0.22] select-none"
           style={{ maskImage: WORDMARK_FADE, WebkitMaskImage: WORDMARK_FADE }}
         >
-          {site.name}
-        </p>
+          <text x="0" y="142" textLength="1000" lengthAdjust="spacingAndGlyphs" fontSize="176" fontWeight="500" letterSpacing="-6" fill="currentColor">
+            {site.name}
+          </text>
+        </svg>
       </div>
     </footer>
   );
