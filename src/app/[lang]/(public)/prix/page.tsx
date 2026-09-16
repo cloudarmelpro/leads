@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { BreadcrumbLd } from "@/components/shared/breadcrumb-ld";
-import { PageHalos } from "@/components/shared/page-halos";
 import { features } from "@/config/site";
 import { Cta, Faq } from "@/features/home";
 import { PricingExplorer, PricingHero } from "@/features/pricing";
@@ -34,9 +33,7 @@ export default async function PricingPage({ params }: PageProps<"/[lang]/prix">)
   const dict = await getDictionary(lang);
 
   return (
-    // Pas de `relative` : les halos se calent sur <body> et passent sous l'en-tête.
     <div>
-      <PageHalos />
       <BreadcrumbLd
         lang={lang}
         items={[

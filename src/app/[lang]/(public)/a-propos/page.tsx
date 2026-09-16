@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { BreadcrumbLd } from "@/components/shared/breadcrumb-ld";
-import { PageHalos } from "@/components/shared/page-halos";
 import { AboutHero, Principles, Story } from "@/features/about";
 import { Cta } from "@/features/home";
 import { isLocale } from "@/lib/i18n/config";
@@ -32,7 +31,6 @@ export default async function AboutPage({ params }: PageProps<"/[lang]/a-propos"
   const dict = await getDictionary(lang);
 
   return (
-    // Pas de `relative` : les halos se calent sur <body> et passent sous l'en-tête.
     <div>
       <BreadcrumbLd
         lang={lang}
@@ -41,7 +39,6 @@ export default async function AboutPage({ params }: PageProps<"/[lang]/a-propos"
           { name: dict.about.breadcrumb, path: "/a-propos" },
         ]}
       />
-      <PageHalos />
       <AboutHero dict={dict} lang={lang} />
       <Story dict={dict} />
       <Principles dict={dict} />

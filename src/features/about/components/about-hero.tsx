@@ -8,7 +8,7 @@ type Props = { dict: Dictionary; lang: Locale };
 /**
  * Hero de la page À propos (maquette) : titre en casse normale avec coupure de ligne
  * forcée et mot-clé en vert, paragraphe, bouton de 38px vers la page Contact (comme
- * tous les « Réserver un appel gratuit » du site). Fond = référence Accueil (halos de page + grille du hero). Padding haut
+ * tous les « Réserver un appel gratuit » du site). Fond = référence Accueil (grille du hero). Padding haut
  * 120 / 64 / 96px selon la largeur, bas 140 / 96 / 72px.
  */
 export function AboutHero({ dict, lang }: Props) {

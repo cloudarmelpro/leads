@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { BreadcrumbLd } from "@/components/shared/breadcrumb-ld";
-import { PageHalos } from "@/components/shared/page-halos";
 import { ContactPageContent } from "@/features/contact";
 import { isLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
@@ -30,7 +29,6 @@ export default async function ContactPage({ params }: PageProps<"/[lang]/contact
   const dict = await getDictionary(lang);
 
   return (
-    // Pas de `relative` : les halos se calent sur <body> et passent sous l'en-tête.
     <div>
       <BreadcrumbLd
         lang={lang}
@@ -39,7 +37,6 @@ export default async function ContactPage({ params }: PageProps<"/[lang]/contact
           { name: dict.contactPage.heroTitle, path: "/contact" },
         ]}
       />
-      <PageHalos />
       <ContactPageContent lang={lang} dict={dict} />
     </div>
   );
