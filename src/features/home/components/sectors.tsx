@@ -31,7 +31,7 @@ const CARD_TOP = "top-[80px] min-[900px]:top-[calc(68px+var(--sectors-head)+16px
  * Secteurs (direction du 2026-09-17, d'après une vidéo de référence) : un en-tête collant
  * — titre à gauche, étapes numérotées à droite — puis sept grandes cartes empilées.
  * Chaque carte est `sticky` sous l'en-tête : en défilant, la suivante glisse par-dessus.
- * La photo couvre la carte et se fond dans sa couleur, sans filet ; secteur en surtitre,
+ * La photo couvre toute la carte, sans fondu ni filet, texte en blanc ; secteur en surtitre,
  * argument en grand et bouton d'appel à droite.
  * Sous 900px, texte en bas de la photo. Pas de JavaScript pour l'empilement ; seul
  * l'indicateur d'étape observe les cartes.
@@ -62,15 +62,13 @@ export function Sectors({ lang, dict }: Props) {
                 data-sector-card={index}
                 className={`sticky ${CARD_TOP} grid h-[560px] grid-cols-[minmax(0,1fr)] min-[900px]:h-[clamp(440px,64vh,620px)] overflow-hidden rounded-[24px] bg-surface min-[900px]:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]`}
               >
-                {/* La photo couvre la carte et se fond dans la couleur de carte par son propre
-                    masque (vers la droite des 900px, vers le bas en dessous). Elle n'atteint pas
-                    l'angle du texte : les bords lisses des cartes empilees ne s'additionnent plus. */}
-                <div className="absolute inset-x-[0px] top-[0px] h-[82%] [mask-image:linear-gradient(180deg,#000_38%,transparent_100%)] min-[900px]:inset-y-[0px] min-[900px]:right-auto min-[900px]:h-auto min-[900px]:w-[90%] min-[900px]:[mask-image:linear-gradient(90deg,#000_46%,rgba(0,0,0,0.55)_66%,transparent_100%)]">
-                  <Image src={`/images/home/${photo}.jpg`} alt={demo.imgLabel} fill sizes="(max-width: 900px) 100vw, 1000px" className="object-cover object-left" />
-                </div>
+                {/* La photo couvre toute la carte, sans fondu (demande du client) ; un leger
+                    assombrissement uniforme et le texte en blanc gardent l'argument lisible. */}
+                <Image src={`/images/home/${photo}.jpg`} alt={demo.imgLabel} fill sizes="(max-width: 900px) 100vw, 1400px" className="object-cover" />
+                <span aria-hidden className="absolute inset-[0px] bg-black/25" />
                 <div className="relative flex flex-col justify-end gap-[18px] p-[clamp(24px,3.2vw,56px)] min-[900px]:col-start-2 min-[900px]:justify-center">
-                  <span className="text-[13px] leading-[20px] font-medium tracking-[0.14em] text-texte2 uppercase">{demo.trade}</span>
-                  <p className="m-[0px] max-w-[560px] text-[clamp(19px,1.9vw,27px)] leading-[1.35] font-normal tracking-[-0.2px] text-encre text-pretty">{demo.pitch}</p>
+                  <span className="text-[13px] leading-[20px] font-medium tracking-[0.14em] text-white/80 uppercase [text-shadow:0_1px_2px_rgba(0,0,0,0.5)]">{demo.trade}</span>
+                  <p className="m-[0px] max-w-[560px] text-[clamp(19px,1.9vw,27px)] leading-[1.35] font-normal tracking-[-0.2px] text-white text-pretty [text-shadow:0_1px_3px_rgba(0,0,0,0.55)]">{demo.pitch}</p>
                   <Link
                     href={`/${lang}/contact`}
                     className="mt-[6px] inline-flex min-h-[44px] w-fit items-center rounded-[10px] bg-vert px-[20px] text-[14px] leading-[20px] font-medium whitespace-nowrap text-sur-vert no-underline transition-colors hover:bg-vert-clair"
