@@ -92,7 +92,7 @@ export function Header({ lang, dict }: Props) {
           </Link>
 
           {/* Navigation à gauche, à la suite du logo : liens discrets, page courante en encre pleine. */}
-          <nav aria-label={dict.nav.quickNav} className="hidden items-center gap-[22px] min-[900px]:ml-[40px] min-[900px]:flex">
+          <nav aria-label={dict.nav.quickNav} className="hidden items-center gap-[14px] min-[900px]:ml-[28px] min-[900px]:flex">
             {nav.map((item) => (
               <Link
                 key={item.href}
