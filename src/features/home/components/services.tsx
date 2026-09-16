@@ -1,4 +1,4 @@
-import { ArrowRight, Blend, Box, Globe, Layers, Mail, RefreshCw, Share2, TrendingUp } from "lucide-react";
+import { ArrowUpRight, Blend, Box, Globe, Layers, Mail, RefreshCw, Share2, TrendingUp } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -37,7 +37,8 @@ export function Services({ lang, dict }: Props) {
 
   return (
     <section className={`relative flex justify-center pb-[clamp(112px,16vw,240px)] ${GOUTTIERE}`}>
-      <div className="flex w-full max-w-[1100px] flex-col gap-[48px]">
+      {/* Rail de 1400px comme l'en-tête : la grille de huit cartes a besoin de largeur (décision du 2026-09-17). */}
+      <div className="flex w-full max-w-[1400px] flex-col gap-[48px]">
         <SectionHead id="services" label={t.kicker} title={`${t.titleA} ${t.titleB}`} intro={t.intro} />
 
         <div className="grid grid-cols-[minmax(0,1fr)] items-stretch gap-[14px] min-[700px]:grid-cols-[repeat(2,minmax(0,1fr))] min-[760px]:grid-cols-[repeat(10,minmax(0,1fr))]">
@@ -75,7 +76,7 @@ export function Services({ lang, dict }: Props) {
                     <span className="text-pretty">
                       {priceLine}
                       {/* Flèche dans le même bloc de texte : elle suit le dernier mot même sur deux lignes. */}
-                      <ArrowRight size={16} strokeWidth={1.8} aria-hidden className="ml-[6px] inline-block align-[-3px] transition-transform duration-200 ease-[cubic-bezier(0.2,0.7,0.2,1)] group-hover:translate-x-[3px]" />
+                      <ArrowUpRight size={16} strokeWidth={1.8} aria-hidden className="ml-[6px] inline-block align-[-3px] transition-transform duration-200 ease-[cubic-bezier(0.2,0.7,0.2,1)] group-hover:translate-x-[2px] group-hover:-translate-y-[2px]" />
                     </span>
                   </Link>
                 )}
