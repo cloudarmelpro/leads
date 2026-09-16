@@ -42,6 +42,9 @@ const SOCIAL_HOVER: Record<SocialKey, string> = {
   linkedin: "hover:bg-[#0a66c2] hover:text-white",
 };
 
+// Le grand mot-symbole s'estompe vers le bas de la page (référence du 2026-09-17).
+const WORDMARK_FADE = "linear-gradient(180deg, #000 20%, rgba(0,0,0,0.35) 70%, transparent 100%)";
+
 const TITLE = "mb-[12px] text-[13px] leading-[20px] font-medium tracking-[0.08em] text-encre uppercase";
 const LINK = "text-[14px] leading-[26px] font-normal text-texte3 no-underline transition-colors hover:text-encre";
 const COORD = "text-[14px] leading-[26px] font-normal text-texte3 no-underline transition-colors hover:text-vert";
@@ -151,7 +154,8 @@ export function Footer({ lang, dict }: Props) {
             interligne 0,8 et marge négative pour n'occuper qu'une partie de sa hauteur. */}
         <p
           aria-hidden
-          className="pointer-events-none m-[0px] mt-[clamp(24px,4vw,48px)] -mb-[0.24em] overflow-hidden text-center text-[clamp(64px,14.5vw,210px)] leading-[0.8] font-medium tracking-[-0.045em] whitespace-nowrap text-encre/[0.1] select-none"
+          className="pointer-events-none m-[0px] mt-[clamp(24px,4vw,48px)] -mb-[0.24em] overflow-hidden text-center text-[clamp(64px,14.5vw,210px)] leading-[0.8] font-medium tracking-[-0.045em] whitespace-nowrap text-encre/[0.18] select-none"
+          style={{ maskImage: WORDMARK_FADE, WebkitMaskImage: WORDMARK_FADE }}
         >
           {site.name}
         </p>
