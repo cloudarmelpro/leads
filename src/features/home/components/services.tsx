@@ -1,4 +1,4 @@
-import { ArrowUpRight, Blend, Box, Globe, Layers, Mail, RefreshCw, Share2, TrendingUp } from "lucide-react";
+import { Blend, ChevronRight, Box, Globe, Layers, Mail, RefreshCw, Share2, TrendingUp } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -75,8 +75,8 @@ export function Services({ lang, dict }: Props) {
                   >
                     <span className="text-pretty">
                       {priceLine}
-                      {/* Flèche dans le même bloc de texte : elle suit le dernier mot même sur deux lignes. */}
-                      <ArrowUpRight size={16} strokeWidth={1.8} aria-hidden className="ml-[6px] inline-block align-[-3px] transition-transform duration-200 ease-[cubic-bezier(0.2,0.7,0.2,1)] group-hover:translate-x-[2px] group-hover:-translate-y-[2px]" />
+                      {/* Chevron dans le même bloc de texte : elle suit le dernier mot même sur deux lignes. */}
+                      <ChevronRight size={16} strokeWidth={2} aria-hidden className="ml-[4px] inline-block align-[-3px] transition-transform duration-200 ease-[cubic-bezier(0.2,0.7,0.2,1)] group-hover:translate-x-[3px]" />
                     </span>
                   </Link>
                 )}
