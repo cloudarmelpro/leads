@@ -149,7 +149,8 @@ export function Footer({ lang, dict }: Props) {
 
         {/* Grand mot-symbole décoratif en SVG : `textLength` l'étire exactement sur la
             largeur du rail à toute taille d'écran. Le mot reste lisible ; son bas se fond
-            dans la couleur de page par un simple dégradé, sans flou (décision du 2026-09-17). */}
+            par un simple dégradé, sans flou : vers le noir en sombre, vers la couleur de page
+            en clair (décision du 2026-09-17). */}
         <div className="relative mt-[clamp(16px,3vw,40px)] -mb-[1.5%]">
           <svg aria-hidden viewBox="0 0 1000 150" className="pointer-events-none block h-auto w-full text-encre/[0.26] select-none">
             <text x="0" y="142" textLength="1000" lengthAdjust="spacingAndGlyphs" fontSize="176" fontWeight="500" letterSpacing="-6" fill="currentColor">
@@ -158,7 +159,7 @@ export function Footer({ lang, dict }: Props) {
           </svg>
           <span
             aria-hidden
-            className="pointer-events-none absolute inset-x-[0px] bottom-[0px] h-[58%] bg-[linear-gradient(180deg,transparent_0%,var(--color-fond)_92%)]"
+            className="pointer-events-none absolute inset-x-[0px] bottom-[0px] h-[66%] bg-[linear-gradient(180deg,transparent_0%,var(--color-fond)_92%)] dark:bg-[linear-gradient(180deg,transparent_0%,rgba(0,0,0,0.82)_100%)]"
           />
         </div>
       </div>
