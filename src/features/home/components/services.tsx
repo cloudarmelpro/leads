@@ -19,12 +19,13 @@ export function Services({ lang, dict }: Props) {
 
   return (
     <section className={`relative flex justify-center pb-[clamp(112px,16vw,240px)] ${GOUTTIERE}`}>
-      <div className="grid w-full max-w-[1400px] grid-cols-[minmax(0,1fr)] items-center gap-[clamp(32px,5vw,96px)] min-[900px]:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]">
-        <div className="flex flex-col items-start gap-[18px] min-[900px]:order-2 min-[900px]:pl-[clamp(0px,2vw,32px)]">
+      {/* Trois quarts pour la piste de vignettes, un quart pour le texte (décision du 2026-09-17). */}
+      <div className="grid w-full max-w-[1400px] grid-cols-[minmax(0,1fr)] items-center gap-[clamp(32px,4vw,64px)] min-[900px]:grid-cols-[minmax(0,3fr)_minmax(0,1fr)]">
+        <div className="flex flex-col items-start gap-[18px] min-[900px]:order-2">
           <span id="services" className="text-[13px] leading-[20px] font-medium tracking-[0.08em] text-vert uppercase">
             {t.kicker}
           </span>
-          <h2 className="m-[0px] text-[clamp(26px,3vw,38px)] leading-[1.12] font-medium tracking-[-0.5px] text-encre text-balance">
+          <h2 className="m-[0px] text-[clamp(26px,2.5vw,34px)] leading-[1.12] font-medium tracking-[-0.5px] text-encre text-balance">
             {t.titleA} {t.titleB}
           </h2>
           <p className="m-[0px] max-w-[440px] text-[15px] leading-[26px] font-normal text-texte2 text-pretty">{t.intro}</p>
@@ -46,7 +47,7 @@ export function Services({ lang, dict }: Props) {
           </div>
         </div>
 
-        <div className="min-[900px]:order-1">
+        <div className="min-w-[0px] min-[900px]:order-1">
           <ServicesShowcase lang={lang} items={t.items} controls={t.controls} />
         </div>
       </div>

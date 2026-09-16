@@ -155,8 +155,6 @@
       }
     ],
     "controls": {
-      "prev": "Services précédents",
-      "next": "Services suivants",
       "pause": "Mettre le défilement en pause",
       "play": "Reprendre le défilement"
     }

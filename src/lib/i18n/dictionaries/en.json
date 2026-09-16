@@ -155,10 +155,8 @@
       }
     ],
     "controls": {
-      "prev": "Previous services",
-      "next": "Next services",
-      "pause": "Pause the rotation",
-      "play": "Resume the rotation"
+      "pause": "Pause the scrolling",
+      "play": "Resume the scrolling"
     }
   },
   "method": {

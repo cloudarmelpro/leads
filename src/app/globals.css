@@ -243,9 +243,18 @@ body {
   }
 }
 
+/* Vitrine des services (accueil) : la piste, faite de deux copies identiques, glisse en
+   continu vers la gauche ; à -50 % la seconde copie est exactement à la place de la
+   première, la boucle est invisible. Sur `transform` seulement : rien à repeindre. */
+@keyframes tw-marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 /* Sous `prefers-reduced-motion`, les transitions CSS restantes (survols, accordéons)
-   deviennent instantanées. Aucune animation JavaScript ni @keyframes sur le site
-   (retirées le 2026-09-16 pour la vitesse ; à repenser plus tard). */
+   deviennent instantanées et la vitrine se fige. Les animations JavaScript ont été
+   retirées le 2026-09-16 pour la vitesse ; seule cette piste CSS a été réintroduite. */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
