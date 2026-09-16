@@ -243,12 +243,25 @@ body {
   }
 }
 
-/* Vitrine des services (accueil) : la piste, faite de deux copies identiques, glisse en
-   continu vers la gauche ; à -50 % la seconde copie est exactement à la place de la
-   première, la boucle est invisible. Sur `transform` seulement : rien à repeindre. */
-@keyframes tw-marquee {
-  to {
-    transform: translateX(-50%);
+/* Vitrine des services (accueil) : trois tableaux puis une copie du premier sur une piste
+   large de quatre écrans. Chaque tiers du cycle = un temps d'arrêt (~78 %) puis une poussée
+   d'un écran vers la gauche (~22 %) ; à -300 % la copie est à la place du premier, la
+   boucle est invisible. Sur `transform` seulement : rien à repeindre. */
+@keyframes tw-vitrine {
+  0%,
+  26% {
+    transform: translateX(0);
+  }
+  33.333%,
+  59.333% {
+    transform: translateX(-100%);
+  }
+  66.667%,
+  92.667% {
+    transform: translateX(-200%);
+  }
+  100% {
+    transform: translateX(-300%);
   }
 }
 

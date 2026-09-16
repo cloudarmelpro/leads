@@ -22,17 +22,24 @@ const CARDS: { Icon: LucideIcon; motif: string; pricing?: string }[] = [
   { Icon: TrendingUp, motif: "svc-growth", pricing: "categorie=site&gamme=croissance" },
 ];
 
-// Colonnes de la piste, comme la référence : une vignette haute, puis deux empilées, en alternance.
-const COLUMNS: number[][] = [[0], [1, 2], [3], [4, 5], [6], [7]];
+// Trois tableaux, comme la référence : chacun deux colonnes, une vignette haute ou deux
+// empilées. Les indices renvoient à `items` / `CARDS`. `tw-vitrine` (globals.css) est
+// écrite pour exactement trois tableaux.
+const SCENES: { left: number[]; right: number[] }[] = [
+  { left: [0], right: [1, 2] },
+  { left: [3, 4], right: [5] },
+  { left: [6], right: [7] },
+];
 
 const MOTIF_MASK = "linear-gradient(135deg, transparent 0%, rgba(0,0,0,0.35) 45%, #000 100%)";
 
 /**
- * Vitrine des services : piste horizontale de six colonnes de vignettes qui défile en
- * continu vers la gauche et boucle (deux copies de la piste, translation de -50 %,
- * animation CSS `tw-marquee` sur `transform` seulement). Pause au survol, arrêt sous
- * `prefers-reduced-motion`. Les huit services sont dans le HTML une
- * seule fois pour le référencement : la seconde copie est `aria-hidden` et non focusable.
+ * Vitrine des services : trois tableaux de vignettes se succèdent, poussés vers la
+ * gauche tous les ~3 s avec un léger décalage entre la colonne gauche et la droite,
+ * comme la référence. Chaque colonne est une piste (les trois tableaux + une copie du
+ * premier pour boucler) animée par `tw-vitrine` sur `transform` seulement. Pause au
+ * survol, arrêt sous `prefers-reduced-motion`. Les huit services sont une fois dans le
+ * HTML ; la copie de bouclage est `aria-hidden` et non focusable.
  */
 export function ServicesShowcase({ lang, items }: Props) {
   const tile = (index: number, tall: boolean, clone: boolean) => {
@@ -54,14 +61,14 @@ export function ServicesShowcase({ lang, items }: Props) {
           alt=""
           aria-hidden
           fill
-          sizes="340px"
+          sizes="(max-width: 900px) 50vw, 520px"
           className="pointer-events-none object-cover object-right-bottom opacity-[0.55] mix-blend-screen select-none"
           style={{ maskImage: MOTIF_MASK, WebkitMaskImage: MOTIF_MASK }}
         />
         <span className="relative flex h-[40px] w-[40px] shrink-0 items-center justify-center rounded-[12px] bg-surface-2 text-vert">
           <Icon size={19} strokeWidth={1.6} aria-hidden />
         </span>
-        <h3 className="relative m-[0px] text-[clamp(15px,1.2vw,17px)] leading-[1.3] font-medium text-encre">{item.name}</h3>
+        <h3 className="relative m-[0px] text-[clamp(15px,1.2vw,18px)] leading-[1.3] font-medium text-encre">{item.name}</h3>
         <p className={`relative m-[0px] text-[clamp(12.5px,0.95vw,14px)] leading-[1.55] font-normal text-texte2 text-pretty ${tall ? "line-clamp-6" : "line-clamp-3"}`}>{item.note}</p>
         {priceLine && (
           <Link
@@ -80,26 +87,35 @@ export function ServicesShowcase({ lang, items }: Props) {
     );
   };
 
-  // Chaque copie porte à droite le même écart qu'entre ses colonnes : la piste fait alors
-  // exactement deux longueurs identiques et -50 % boucle sans à-coup.
-  const copy = (clone: boolean) => (
-    <div aria-hidden={clone || undefined} className="flex h-full shrink-0 gap-[14px] pr-[14px]">
-      {COLUMNS.map((column, c) => (
-        <div key={`${c}-${clone ? "b" : "a"}`} className={`flex h-full shrink-0 flex-col gap-[14px] ${column.length === 1 ? "w-[clamp(240px,23vw,340px)]" : "w-[clamp(220px,21vw,300px)]"}`}>
-          {column.map((index) => tile(index, column.length === 1, clone))}
-        </div>
-      ))}
-    </div>
-  );
-
-  return (
-    <div className="group">
-      <div className="relative h-[clamp(380px,40vw,560px)] overflow-hidden">
-        <div className="flex h-full w-max [animation:tw-marquee_52s_linear_infinite] group-hover:[animation-play-state:paused] motion-reduce:[animation:none]">
-          {copy(false)}
-          {copy(true)}
+  // Une piste par colonne : les trois tableaux puis la copie du premier. Le décalage de
+  // 140 ms sur la colonne droite donne le glissement en deux temps de la référence.
+  const track = (side: "left" | "right") => {
+    const slides = [...SCENES, SCENES[0]];
+    return (
+      <div className="h-full overflow-hidden">
+        <div
+          className={`flex h-full w-full [animation:tw-vitrine_12.6s_cubic-bezier(0.65,0,0.35,1)_infinite] group-hover:[animation-play-state:paused] motion-reduce:[animation:none] ${
+            side === "right" ? "[animation-delay:140ms]" : ""
+          }`}
+        >
+          {slides.map((scene, s) => {
+            const clone = s === SCENES.length;
+            const column = scene[side];
+            return (
+              <div key={`${side}-${s}`} aria-hidden={clone || undefined} className="flex h-full w-full shrink-0 flex-col gap-[14px] pr-[14px]">
+                {column.map((index) => tile(index, column.length === 1, clone))}
+              </div>
+            );
+          })}
         </div>
       </div>
+    );
+  };
+
+  return (
+    <div className="group grid h-[clamp(380px,40vw,560px)] grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+      {track("left")}
+      {track("right")}
     </div>
   );
 }
