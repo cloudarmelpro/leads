@@ -264,6 +264,24 @@ body {
     transform: translateX(-300%);
   }
 }
+/* Même cadence, vers le haut : la colonne droite de la vitrine. */
+@keyframes tw-vitrine-y {
+  0%,
+  26% {
+    transform: translateY(0);
+  }
+  33.333%,
+  59.333% {
+    transform: translateY(-100%);
+  }
+  66.667%,
+  92.667% {
+    transform: translateY(-200%);
+  }
+  100% {
+    transform: translateY(-300%);
+  }
+}
 
 /* Sous `prefers-reduced-motion`, les transitions CSS restantes (survols, accordéons)
    deviennent instantanées et la vitrine se fige. Les animations JavaScript ont été

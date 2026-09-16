@@ -34,10 +34,11 @@ const SCENES: { left: number[]; right: number[] }[] = [
 const MOTIF_MASK = "linear-gradient(135deg, transparent 0%, rgba(0,0,0,0.35) 45%, #000 100%)";
 
 /**
- * Vitrine des services : trois tableaux de vignettes se succèdent, poussés vers la
- * gauche tous les ~3 s avec un léger décalage entre la colonne gauche et la droite,
- * comme la référence. Chaque colonne est une piste (les trois tableaux + une copie du
- * premier pour boucler) animée par `tw-vitrine` sur `transform` seulement. Pause au
+ * Vitrine des services : trois tableaux de vignettes se succèdent toutes les ~3 s, comme
+ * la référence. Colonne gauche : les cartes arrivent de la droite et poussent les
+ * précédentes vers la gauche (`tw-vitrine`). Colonne droite : elles arrivent du bas et
+ * poussent vers le haut (`tw-vitrine-y`), un temps après. Chaque colonne est une piste
+ * (les trois tableaux + une copie du premier pour boucler), sur `transform` seulement. Pause au
  * survol, arrêt sous `prefers-reduced-motion`. Les huit services sont une fois dans le
  * HTML ; la copie de bouclage est `aria-hidden` et non focusable.
  */
@@ -87,22 +88,30 @@ export function ServicesShowcase({ lang, items }: Props) {
     );
   };
 
-  // Une piste par colonne : les trois tableaux puis la copie du premier. Le décalage de
-  // 140 ms sur la colonne droite donne le glissement en deux temps de la référence.
+  // Une piste par colonne, avec les trois tableaux puis la copie du premier pour boucler.
+  // Colonne gauche : les cartes arrivent de la droite et poussent vers la gauche.
+  // Colonne droite : elles arrivent du bas et poussent vers le haut, un temps après.
   const track = (side: "left" | "right") => {
     const slides = [...SCENES, SCENES[0]];
+    const horizontal = side === "left";
     return (
       <div className="h-full overflow-hidden">
         <div
-          className={`flex h-full w-full [animation:tw-vitrine_12.6s_cubic-bezier(0.65,0,0.35,1)_infinite] group-hover:[animation-play-state:paused] motion-reduce:[animation:none] ${
-            side === "right" ? "[animation-delay:140ms]" : ""
+          className={`h-full w-full motion-reduce:[animation:none] group-hover:[animation-play-state:paused] ${
+            horizontal
+              ? "flex [animation:tw-vitrine_12.6s_cubic-bezier(0.65,0,0.35,1)_infinite]"
+              : "flex flex-col [animation:tw-vitrine-y_12.6s_cubic-bezier(0.65,0,0.35,1)_infinite] [animation-delay:160ms]"
           }`}
         >
           {slides.map((scene, s) => {
             const clone = s === SCENES.length;
             const column = scene[side];
             return (
-              <div key={`${side}-${s}`} aria-hidden={clone || undefined} className="flex h-full w-full shrink-0 flex-col gap-[14px] pr-[14px]">
+              <div
+                key={`${side}-${s}`}
+                aria-hidden={clone || undefined}
+                className={`flex h-full w-full shrink-0 flex-col gap-[14px] ${horizontal ? "" : "pb-[14px]"}`}
+              >
                 {column.map((index) => tile(index, column.length === 1, clone))}
               </div>
             );
@@ -113,7 +122,7 @@ export function ServicesShowcase({ lang, items }: Props) {
   };
 
   return (
-    <div className="group grid h-[clamp(380px,40vw,560px)] grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+    <div className="group grid h-[clamp(380px,40vw,560px)] grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-[14px]">
       {track("left")}
       {track("right")}
     </div>
