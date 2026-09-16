@@ -35,6 +35,12 @@ const SOCIAL_ICONS: Record<SocialKey, ComponentType> = {
   instagram: InstagramIcon,
   linkedin: LinkedinIcon,
 };
+// Au survol, chaque bouton prend la couleur officielle de son réseau (décision du 2026-09-17).
+const SOCIAL_HOVER: Record<SocialKey, string> = {
+  facebook: "hover:bg-[#1877f2] hover:text-white",
+  instagram: "hover:bg-[linear-gradient(45deg,#f9ce34_0%,#ee2a7b_50%,#6228d7_100%)] hover:text-white",
+  linkedin: "hover:bg-[#0a66c2] hover:text-white",
+};
 
 const TITLE = "mb-[12px] text-[13px] leading-[20px] font-medium tracking-[0.08em] text-encre uppercase";
 const LINK = "text-[14px] leading-[26px] font-normal text-texte3 no-underline transition-colors hover:text-encre";
@@ -132,7 +138,7 @@ export function Footer({ lang, dict }: Props) {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={dict.footer.social[network.key]}
-                  className="tap-44 flex h-[34px] w-[34px] items-center justify-center rounded-[9px] bg-surface text-encre ring-1 ring-ligne ring-inset dark:ring-0 transition-colors hover:bg-vert hover:text-sur-vert"
+                  className={`tap-44 flex h-[36px] w-[36px] items-center justify-center rounded-[9px] bg-surface-2 text-encre ring-1 ring-contour ring-inset transition-colors hover:ring-0 ${SOCIAL_HOVER[network.key]}`}
                 >
                   <Icon />
                 </a>
