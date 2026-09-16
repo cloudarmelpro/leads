@@ -83,23 +83,21 @@ export function Header({ lang, dict }: Props) {
 
   return (
     <>
-      <header className={`relative z-[2] flex justify-center bg-transparent pt-[10px] ${GOUTTIERE}`}>
-        <div className="relative flex w-full max-w-[1100px] min-h-[44px] flex-wrap items-center gap-[8px] py-[2px]">
+      <header className={`relative z-[2] flex justify-center bg-transparent pt-[22px] ${GOUTTIERE}`}>
+        <div className="relative flex w-full max-w-[1100px] min-h-[44px] items-center gap-[8px]">
           <Link href={`/${lang}`} aria-label={`${site.name} — ${dict.nav.home}`} className="flex min-w-[0px] flex-1 items-center no-underline">
-            <Logo height={26} className="relative -top-[2px]" />
+            <Logo height={24} className="relative -top-[1px]" />
           </Link>
 
-          <nav
-            aria-label={dict.nav.quickNav}
-            className="relative top-px -left-[34px] hidden flex-wrap items-center justify-center gap-[4px] min-[900px]:flex"
-          >
+          {/* Navigation centrée sur le rail : liens discrets, page courante en encre pleine. */}
+          <nav aria-label={dict.nav.quickNav} className="hidden items-center justify-center gap-[18px] min-[900px]:flex">
             {nav.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 aria-current={isCurrent(item.href) ? "page" : undefined}
-                className={`px-[4px] text-[14px] leading-[20px] font-normal whitespace-nowrap no-underline transition-colors hover:text-vert ${
-                  isCurrent(item.href) ? "text-vert" : "text-encre"
+                className={`text-[13px] leading-[20px] font-normal whitespace-nowrap no-underline transition-colors hover:text-encre ${
+                  isCurrent(item.href) ? "text-encre" : "text-texte2"
                 }`}
               >
                 {item.label}
@@ -112,7 +110,7 @@ export function Header({ lang, dict }: Props) {
             <ThemeToggle label={dict.header.themeAria} optionLabels={dict.header.theme} />
             <Link
               href={`/${lang}/contact`}
-              className="hidden rounded-[9px] bg-vert px-[22px] py-[11px] text-[14px] leading-none font-medium whitespace-nowrap text-sur-vert no-underline transition-colors hover:bg-vert-clair min-[900px]:inline-flex"
+              className="hidden min-h-[38px] items-center rounded-[8px] bg-surface-2 px-[16px] text-[13px] leading-[20px] font-medium whitespace-nowrap text-encre no-underline ring-1 ring-contour ring-inset transition-colors hover:bg-surface-3 min-[900px]:inline-flex"
             >
               {dict.nav.contact}
             </Link>
