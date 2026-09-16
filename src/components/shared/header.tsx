@@ -91,15 +91,15 @@ export function Header({ lang, dict }: Props) {
             <Logo height={24} className="relative -top-[1px]" />
           </Link>
 
-          {/* Navigation à gauche, à la suite du logo : liens discrets, page courante en encre pleine. */}
-          <nav aria-label={dict.nav.quickNav} className="hidden items-center gap-[14px] min-[900px]:ml-[28px] min-[900px]:flex">
+          {/* Navigation à gauche, à la suite du logo (même 14 px qu entre les liens : 8 de gap + 6), liens blancs, page courante en vert. */}
+          <nav aria-label={dict.nav.quickNav} className="relative top-[2px] hidden items-center gap-[14px] min-[900px]:ml-[6px] min-[900px]:flex">
             {nav.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 aria-current={isCurrent(item.href) ? "page" : undefined}
-                className={`text-[15px] leading-[20px] font-normal whitespace-nowrap no-underline transition-colors hover:text-encre ${
-                  isCurrent(item.href) ? "text-encre" : "text-texte2"
+                className={`text-[15px] leading-[20px] font-normal whitespace-nowrap no-underline transition-colors hover:text-vert ${
+                  isCurrent(item.href) ? "text-vert" : "text-encre"
                 }`}
               >
                 {item.label}
