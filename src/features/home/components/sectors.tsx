@@ -31,9 +31,9 @@ const CARD_TOP = "top-[80px] min-[900px]:top-[calc(68px+var(--sectors-head)+16px
  * Secteurs (direction du 2026-09-17, d'après une vidéo de référence) : un en-tête collant
  * — titre à gauche, étapes numérotées à droite — puis sept grandes cartes empilées.
  * Chaque carte est `sticky` sous l'en-tête : en défilant, la suivante glisse par-dessus.
- * Photo bord à bord à gauche, sans filet ; secteur en surtitre, argument en grand et
- * bouton d'appel à droite.
- * Sous 900px, photo au-dessus du texte. Pas de JavaScript pour l'empilement ; seul
+ * La photo couvre toute la carte, sans filet, sous un voile dégradé ; secteur en surtitre,
+ * argument en grand et bouton d'appel à droite.
+ * Sous 900px, texte en bas de la photo. Pas de JavaScript pour l'empilement ; seul
  * l'indicateur d'étape observe les cartes.
  */
 export function Sectors({ lang, dict }: Props) {
@@ -60,19 +60,22 @@ export function Sectors({ lang, dict }: Props) {
               <li
                 key={demo.trade}
                 data-sector-card={index}
-                className={`sticky ${CARD_TOP} grid min-h-[clamp(440px,64vh,620px)] grid-cols-[minmax(0,1fr)] overflow-hidden rounded-[24px] bg-surface min-[900px]:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]`}
+                className={`sticky ${CARD_TOP} grid h-[560px] grid-cols-[minmax(0,1fr)] min-[900px]:h-[clamp(440px,64vh,620px)] overflow-hidden rounded-[24px] bg-surface min-[900px]:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]`}
               >
-                {/* La photo couvre toute la moitie gauche de la carte, bord a bord. */}
-                <div className="relative min-h-[260px] min-[900px]:min-h-[0px]">
-                  <Image
-                    src={`/images/home/${photo}.jpg`}
-                    alt={demo.imgLabel}
-                    fill
-                    sizes="(max-width: 900px) 100vw, 720px"
-                    className="object-cover"
-                  />
-                </div>
-                <div className="flex flex-col justify-center gap-[18px] p-[clamp(24px,3.2vw,56px)]">
+                {/* La photo couvre TOUTE la carte (reference) ; un voile degrade vers la couleur
+                    de carte protege le texte : depuis la droite des 900px, depuis le bas en dessous. */}
+                <Image
+                  src={`/images/home/${photo}.jpg`}
+                  alt={demo.imgLabel}
+                  fill
+                  sizes="(max-width: 900px) 100vw, 1400px"
+                  className="object-cover object-left"
+                />
+                <span
+                  aria-hidden
+                  className="absolute inset-[0px] bg-[linear-gradient(180deg,transparent_28%,color-mix(in_srgb,var(--color-surface)_72%,transparent)_56%,var(--color-surface)_76%)] min-[900px]:bg-[linear-gradient(90deg,transparent_30%,color-mix(in_srgb,var(--color-surface)_72%,transparent)_50%,var(--color-surface)_66%)]"
+                />
+                <div className="relative flex flex-col justify-end gap-[18px] p-[clamp(24px,3.2vw,56px)] min-[900px]:col-start-2 min-[900px]:justify-center">
                   <span className="text-[13px] leading-[20px] font-medium tracking-[0.14em] text-texte2 uppercase">{demo.trade}</span>
                   <p className="m-[0px] max-w-[560px] text-[clamp(20px,2.1vw,30px)] leading-[1.3] font-medium tracking-[-0.3px] text-encre text-pretty">{demo.pitch}</p>
                   <Link
