@@ -113,7 +113,7 @@ export function Header({ lang, dict }: Props) {
               <div className="invisible absolute top-full left-[-18px] z-[50] pt-[14px] opacity-0 transition-[opacity,visibility] duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
                 <ul
                   aria-label={dict.nav.homeMenuAria}
-                  className="m-[0px] grid w-[540px] list-none grid-cols-2 gap-[4px] rounded-[16px] bg-surface p-[10px] shadow-[0_24px_60px_rgba(0,0,0,0.35)]"
+                  className="m-[0px] grid w-[540px] list-none grid-cols-2 gap-[4px] rounded-[16px] border border-ligne bg-surface p-[10px] dark:border-contour"
                 >
                   {sections.map((item) => (
                     <li key={item.href}>
