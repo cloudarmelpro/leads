@@ -99,8 +99,8 @@ export function ServicesShowcase({ lang, items }: Props) {
         <div
           className={`h-full w-full motion-reduce:[animation:none] group-hover:[animation-play-state:paused] ${
             horizontal
-              ? "flex [animation:tw-vitrine_12.6s_cubic-bezier(0.65,0,0.35,1)_infinite]"
-              : "flex flex-col [animation:tw-vitrine-y_12.6s_cubic-bezier(0.65,0,0.35,1)_infinite] [animation-delay:160ms]"
+              ? "flex gap-[14px] [animation:tw-vitrine_12.6s_cubic-bezier(0.65,0,0.35,1)_infinite]"
+              : "flex flex-col gap-[14px] [animation:tw-vitrine-y_12.6s_cubic-bezier(0.65,0,0.35,1)_infinite] [animation-delay:160ms]"
           }`}
         >
           {slides.map((scene, s) => {
@@ -110,7 +110,7 @@ export function ServicesShowcase({ lang, items }: Props) {
               <div
                 key={`${side}-${s}`}
                 aria-hidden={clone || undefined}
-                className={`flex h-full w-full shrink-0 flex-col gap-[14px] ${horizontal ? "" : "pb-[14px]"}`}
+                className="flex h-full w-full shrink-0 flex-col gap-[14px]"
               >
                 {column.map((index) => tile(index, column.length === 1, clone))}
               </div>

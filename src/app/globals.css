@@ -246,7 +246,8 @@ body {
 /* Vitrine des services (accueil) : trois tableaux puis une copie du premier sur une piste
    large de quatre écrans. Chaque tiers du cycle = un temps d'arrêt (~78 %) puis une poussée
    d'un écran vers la gauche (~22 %) ; à -300 % la copie est à la place du premier, la
-   boucle est invisible. Sur `transform` seulement : rien à repeindre. */
+   boucle est invisible. Chaque pas = un écran + l'écart de 14px entre tableaux, pour que
+   les cartes gardent leur gouttière en glissant. Sur `transform` seulement. */
 @keyframes tw-vitrine {
   0%,
   26% {
@@ -254,14 +255,14 @@ body {
   }
   33.333%,
   59.333% {
-    transform: translateX(-100%);
+    transform: translateX(calc(-100% - 14px));
   }
   66.667%,
   92.667% {
-    transform: translateX(-200%);
+    transform: translateX(calc(-200% - 28px));
   }
   100% {
-    transform: translateX(-300%);
+    transform: translateX(calc(-300% - 42px));
   }
 }
 /* Même cadence, vers le haut : la colonne droite de la vitrine. */
@@ -272,14 +273,14 @@ body {
   }
   33.333%,
   59.333% {
-    transform: translateY(-100%);
+    transform: translateY(calc(-100% - 14px));
   }
   66.667%,
   92.667% {
-    transform: translateY(-200%);
+    transform: translateY(calc(-200% - 28px));
   }
   100% {
-    transform: translateY(-300%);
+    transform: translateY(calc(-300% - 42px));
   }
 }
 
