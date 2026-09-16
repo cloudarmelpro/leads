@@ -78,34 +78,42 @@
     "demos": [
       {
         "trade": "Landscaping",
-        "imgLabel": "Residential landscaping job site"
+        "imgLabel": "Residential landscaping job site",
+        "pitch": "Your landscapes deserve to be seen. A site that showcases your work and gets homeowners asking for a quote."
       },
       {
         "trade": "Excavation",
-        "imgLabel": "Excavation site with a digger"
+        "imgLabel": "Excavation site with a digger",
+        "pitch": "Foundations, drainage, grading: your clients want a reliable crew, fast. A clear site that reassures and makes the phone ring."
       },
       {
         "trade": "Construction",
-        "imgLabel": "Wood-frame construction site"
+        "imgLabel": "Wood-frame construction site",
+        "pitch": "A site worthy of your job sites: your projects, your specialties, your service area, and a quote request in one click."
       },
       {
         "trade": "Renovation",
-        "imgLabel": "Renovated bathroom"
+        "imgLabel": "Renovated bathroom",
+        "pitch": "Before, after, and trust in between. A site that shows the quality of your work and makes getting in touch easy."
       },
       {
         "trade": "Local shop",
-        "imgLabel": "Local shop storefront"
+        "imgLabel": "Local shop storefront",
+        "pitch": "Hours, address, products, reviews: everything a customer checks before walking in, found on Google in seconds."
       },
       {
         "trade": "Snow removal",
-        "imgLabel": "Snow removal on a residential driveway"
+        "imgLabel": "Snow removal on a residential driveway",
+        "pitch": "The season sells out in a few weeks. A site that lays out your plans clearly and takes sign-ups before the first snow."
       },
       {
         "trade": "Arboriculture",
-        "imgLabel": "Arborist pruning a tree"
+        "imgLabel": "Arborist pruning a tree",
+        "pitch": "Pruning, removal, storm emergencies: a site that shows your expertise and answers clients before your competitors do."
       }
     ],
-    "ctaPricing": "See plans and pricing"
+    "ctaPricing": "See plans and pricing",
+    "stepAria": "Sector {n} of {total}: {name}"
   },
   "services": {
     "kicker": "Services",

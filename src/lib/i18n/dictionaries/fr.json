@@ -78,34 +78,42 @@
     "demos": [
       {
         "trade": "Paysagement",
-        "imgLabel": "Chantier de paysagement résidentiel"
+        "imgLabel": "Chantier de paysagement résidentiel",
+        "pitch": "Vos aménagements méritent d’être vus. Un site qui met vos réalisations en avant et amène les propriétaires à demander une soumission."
       },
       {
         "trade": "Excavation",
-        "imgLabel": "Chantier d’excavation avec pelle mécanique"
+        "imgLabel": "Chantier d’excavation avec pelle mécanique",
+        "pitch": "Fondations, drainage, terrassement : vos clients cherchent une équipe fiable, vite. Un site clair qui rassure et fait décrocher le téléphone."
       },
       {
         "trade": "Construction",
-        "imgLabel": "Chantier de construction en bois"
+        "imgLabel": "Chantier de construction en bois",
+        "pitch": "Un site à la hauteur de vos chantiers : vos projets, vos spécialités, votre zone desservie, et une demande de soumission en un clic."
       },
       {
         "trade": "Rénovation",
-        "imgLabel": "Salle de bain rénovée"
+        "imgLabel": "Salle de bain rénovée",
+        "pitch": "Avant, après, et la confiance entre les deux. Un site qui montre la qualité de votre travail et simplifie la prise de contact."
       },
       {
         "trade": "Commerce local",
-        "imgLabel": "Vitrine d’un commerce local"
+        "imgLabel": "Vitrine d’un commerce local",
+        "pitch": "Heures, adresse, produits, avis : tout ce qu’un client cherche avant de passer la porte, trouvé en quelques secondes sur Google."
       },
       {
         "trade": "Déneigement",
-        "imgLabel": "Déneigement d’une entrée résidentielle"
+        "imgLabel": "Déneigement d’une entrée résidentielle",
+        "pitch": "La saison se vend en quelques semaines. Un site qui présente vos forfaits clairement et prend les inscriptions avant la première neige."
       },
       {
         "trade": "Arboriculture",
-        "imgLabel": "Élagage d’un arbre par un arboriculteur"
+        "imgLabel": "Élagage d’un arbre par un arboriculteur",
+        "pitch": "Élagage, abattage, urgences après tempête : un site qui montre votre expertise et répond aux clients avant vos concurrents."
       }
     ],
-    "ctaPricing": "Voir les forfaits et les prix"
+    "ctaPricing": "Voir les forfaits et les prix",
+    "stepAria": "Secteur {n} sur {total} : {name}"
   },
   "services": {
     "kicker": "Services",

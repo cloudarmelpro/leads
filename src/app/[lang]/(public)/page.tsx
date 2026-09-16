@@ -14,7 +14,7 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
     <div>
       <Hero lang={lang} dict={dict} />
       <Services lang={lang} dict={dict} />
-      <Sectors dict={dict} />
+      <Sectors lang={lang} dict={dict} />
       <Method dict={{ method: dict.method }} />
       <Faq dict={{ faq: dict.faq }} lang={lang} />
       <Cta dict={dict} />
