@@ -27,7 +27,8 @@ const CloseIcon = () => (
 );
 
 /**
- * En-tête de la maquette Accueil : non collant, fond transparent, sans filet.
+ * En-tête : non collant, fond transparent, sans filet, sur un rail de 1400px plus large
+ * que les sections.
  * Logo à gauche, navigation centrée, à droite langue · thème · Contact. Sous 900px,
  * navigation et Contact laissent place au bouton menu (44×44) qui ouvre un menu
  * plein écran.
@@ -84,7 +85,8 @@ export function Header({ lang, dict }: Props) {
   return (
     <>
       <header className={`relative z-[2] flex justify-center bg-transparent pt-[22px] ${GOUTTIERE}`}>
-        <div className="relative flex w-full max-w-[1100px] min-h-[44px] items-center gap-[8px]">
+        {/* Rail plus large que les sections (1100px) : l'en-tête s'étire vers les bords, décision du 2026-09-16. */}
+        <div className="relative flex w-full max-w-[1400px] min-h-[44px] items-center gap-[8px]">
           <Link href={`/${lang}`} aria-label={`${site.name} — ${dict.nav.home}`} className="flex min-w-[0px] flex-1 items-center no-underline">
             <Logo height={24} className="relative -top-[1px]" />
           </Link>
