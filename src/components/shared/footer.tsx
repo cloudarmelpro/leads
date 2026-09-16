@@ -67,7 +67,8 @@ export function Footer({ lang, dict }: Props) {
       id="footer"
       className={`relative flex justify-center overflow-hidden border-t border-ligne pt-[clamp(40px,6vw,80px)] pb-[32px] ${GOUTTIERE}`}
     >
-      <div className="relative w-full max-w-[1100px]">
+      {/* Même rail de 1400px que l'en-tête (décision du 2026-09-17), plus large que les sections. */}
+      <div className="relative w-full max-w-[1400px]">
         <div className="grid grid-cols-[minmax(0,1fr)] items-start gap-[28px] min-[620px]:grid-cols-[repeat(2,minmax(0,1fr))] min-[760px]:grid-cols-[minmax(0,1fr)_130px_130px_max-content]">
           <div className="flex flex-col gap-[26px]">
             <Logo height={30} />
