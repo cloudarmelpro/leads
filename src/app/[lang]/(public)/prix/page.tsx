@@ -45,8 +45,8 @@ export default async function PricingPage({ params }: PageProps<"/[lang]/prix">)
         ]}
       />
       <PricingHero lang={lang} dict={dict} />
-      <PricingExplorer lang={lang} dict={dict} />
-      <Faq dict={dict} lang={lang} variant="pricing" />
+      <PricingExplorer lang={lang} dict={{ pricing: dict.pricing }} />
+      <Faq dict={{ faq: dict.faq }} lang={lang} variant="pricing" />
       <Cta dict={dict} />
     </div>
   );

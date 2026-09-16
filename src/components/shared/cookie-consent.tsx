@@ -31,7 +31,7 @@ export function readCookieChoice(): CookieChoice | null {
  * une éventuelle mesure d'audience. Le choix est mémorisé (localStorage) et
  * modifiable via « Gérer mes témoins ». Aucun outil de suivi n'est chargé ici.
  */
-export function CookieConsent({ lang, dict }: { lang: Locale; dict: Dictionary }) {
+export function CookieConsent({ lang, dict }: { lang: Locale; dict: Pick<Dictionary, "cookies"> }) {
   const t = dict.cookies;
   const [open, setOpen] = useState(false);
 

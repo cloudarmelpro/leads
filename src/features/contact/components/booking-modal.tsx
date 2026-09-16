@@ -7,7 +7,7 @@ import { CalcomEmbed } from "@/features/contact/components/calcom-embed";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 
 type Props = {
-  dict: Dictionary;
+  dict: { contactPage: Pick<Dictionary["contactPage"], "booking"> };
   calLink: string | null;
   onClose: () => void;
 };

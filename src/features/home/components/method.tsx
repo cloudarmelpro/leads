@@ -7,7 +7,7 @@ import { AccordionRow } from "@/features/home/components/accordion-row";
 import { SectionHead } from "@/components/shared/section-head";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 
-type Props = { dict: Dictionary };
+type Props = { dict: Pick<Dictionary, "method"> };
 
 /**
  * Méthode : six étapes numérotées en accordéon, quatre dans la colonne de gauche et

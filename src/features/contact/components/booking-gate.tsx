@@ -6,7 +6,7 @@ import { useCallback, useRef, useState } from "react";
 import { BookingModal } from "@/features/contact/components/booking-modal";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 
-type Props = { dict: Dictionary; calLink: string | null };
+type Props = { dict: { contactPage: Pick<Dictionary["contactPage"], "booking"> }; calLink: string | null };
 
 const GRID_MASK = "radial-gradient(70% 70% at 50% 50%, #000 0%, transparent 85%)";
 

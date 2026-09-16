@@ -10,7 +10,7 @@ import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 
 type Props = {
-  dict: Dictionary;
+  dict: Pick<Dictionary, "faq">;
   lang: Locale;
   /** Sur la page Prix, « Combien ça coûte ? » renvoie aux tableaux ci-dessus au lieu de la page. */
   variant?: "home" | "pricing";

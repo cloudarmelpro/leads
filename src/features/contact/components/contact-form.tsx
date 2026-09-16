@@ -12,7 +12,7 @@ import { contactSchema, type ContactInput } from "@/features/contact/schemas/con
 import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 
-type Props = { lang: Locale; dict: Dictionary };
+type Props = { lang: Locale; dict: { contactPage: Pick<Dictionary["contactPage"], "form"> } };
 
 const LABEL = "text-[13px] leading-[18px] font-normal tracking-[0.02em] text-texte2";
 // Champ de la maquette : 48px, rayon 12px, contour 1px, texte 15/24 ; le contour passe

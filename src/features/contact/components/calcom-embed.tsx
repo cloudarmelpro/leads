@@ -20,7 +20,7 @@ const CalcomInline = dynamic(
 
 type Props = {
   calLink: string;
-  dict: Dictionary;
+  dict: { contactPage: Pick<Dictionary["contactPage"], "booking"> };
   /** Vrai quand le visiteur vient de cliquer « Afficher le calendrier » (avis lu) : pas de seconde porte. */
   initiallyLoaded?: boolean;
 };

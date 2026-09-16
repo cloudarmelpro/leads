@@ -68,7 +68,7 @@ function CrossIcon({ label }: { label: string }) {
   );
 }
 
-type Props = { lang: Locale; dict: Dictionary };
+type Props = { lang: Locale; dict: Pick<Dictionary, "pricing"> };
 
 const subscribeNothing = () => () => {};
 const readSearch = () => window.location.search;

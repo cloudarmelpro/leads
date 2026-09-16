@@ -76,11 +76,13 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[la
         >
           {dict.common.skipToContent}
         </a>
-        <Header lang={lang} dict={dict} />
+        {/* Les composants clients ne reçoivent que leur tranche du dictionnaire : tout ce
+            qu'on leur passe est copié dans le HTML de chaque page (≈ 69 Ko en entier). */}
+        <Header lang={lang} dict={{ nav: dict.nav, header: dict.header, common: dict.common, placeholders: dict.placeholders }} />
         <main id="contenu">{children}</main>
         <Footer lang={lang} dict={dict} />
-        <FloatingContact dict={dict} />
-        <CookieConsent lang={lang} dict={dict} />
+        <FloatingContact dict={{ floating: dict.floating }} />
+        <CookieConsent lang={lang} dict={{ cookies: dict.cookies }} />
       </body>
     </html>
   );

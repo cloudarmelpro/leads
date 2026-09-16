@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { site, telHref } from "@/config/site";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 
-type Props = { dict: Dictionary };
+type Props = { dict: Pick<Dictionary, "floating"> };
 
 /**
  * Bulle d'appel flottante (maquette Accueil) : 52×52 en bas à droite, appel direct.

@@ -88,7 +88,7 @@ export function ContactPageContent({ lang, dict }: Props) {
               </div>
             </div>
 
-            <BookingGate dict={dict} calLink={site.calLink} />
+            <BookingGate dict={{ contactPage: { booking: dict.contactPage.booking } }} calLink={site.calLink} />
           </div>
         </div>
       </section>
@@ -99,7 +99,7 @@ export function ContactPageContent({ lang, dict }: Props) {
 
           <div className="grid grid-cols-[minmax(0,1fr)] items-start gap-[24px] min-[620px]:grid-cols-[minmax(0,1.35fr)_minmax(0,0.65fr)]">
             <div className="relative rounded-[24px] bg-surface p-[clamp(22px,3vw,32px)] ring-1 ring-ligne ring-inset dark:ring-0">
-              <ContactForm lang={lang} dict={dict} />
+              <ContactForm lang={lang} dict={{ contactPage: { form: dict.contactPage.form } }} />
             </div>
 
             {/* Coordonnées depuis site.ts : une carte absente plutôt qu'un substitut. */}
