@@ -25,7 +25,7 @@ export function Services({ lang, dict }: Props) {
           <span id="services" className="text-[13px] leading-[20px] font-medium tracking-[0.08em] text-vert uppercase">
             {t.kicker}
           </span>
-          <h2 className="m-[0px] text-[clamp(26px,2.5vw,34px)] leading-[1.12] font-medium tracking-[-0.5px] text-encre text-balance">
+          <h2 className="m-[0px] text-[clamp(22px,2vw,28px)] leading-[1.15] font-medium tracking-[-0.4px] text-encre text-balance">
             {t.titleA} {t.titleB}
           </h2>
           <p className="m-[0px] max-w-[440px] text-[15px] leading-[26px] font-normal text-texte2 text-pretty">{t.intro}</p>
