@@ -80,23 +80,20 @@ export function Sectors({ lang, dict }: Props) {
                 data-sector-card={index}
                 className={`sticky ${CARD_TOP} grid h-[560px] grid-cols-[minmax(0,1fr)] min-[900px]:h-[clamp(390px,calc(100vh-330px),620px)] overflow-hidden rounded-[24px] bg-surface shadow-[0_-4px_0_var(--color-surface)] min-[900px]:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]`}
               >
-                {/* La photo couvre toute la carte, sans fondu (demande du client) ; un leger
-                    assombrissement uniforme et le texte en blanc gardent l'argument lisible. */}
+                {/* La photo couvre toute la carte, sans fondu (demande du client) ; c'est
+                    l'assombrissement uniforme (55%) qui garde l'argument blanc lisible,
+                    y compris sur les photos claires comme le deneigement. */}
                 <Image src={`/images/home/${photo}.jpg`} alt={demo.imgLabel} fill sizes="(max-width: 900px) 100vw, 1400px" className="object-cover" />
-                <span aria-hidden className="absolute inset-[0px] bg-black/35" />
-                <div className="relative flex flex-col justify-end p-[clamp(24px,3.2vw,56px)] min-[900px]:col-start-2 min-[900px]:justify-center">
-                  {/* Plaque noire sous le texte : les photos claires (deneigement) ne laissaient
-                      plus lire le blanc. Pas de flou, le client n'en veut pas. */}
-                  <div className="flex w-fit max-w-[540px] flex-col gap-[18px] rounded-[16px] bg-black/60 p-[clamp(18px,2vw,28px)]">
-                    <span className="text-[13px] leading-[20px] font-normal tracking-[0.14em] text-white/75 uppercase">{demo.trade}</span>
-                    <p className="m-[0px] text-[15px] leading-[26px] font-normal text-white text-pretty">{demo.pitch}</p>
-                    <Link
-                      href={`/${lang}/contact`}
-                      className="mt-[6px] inline-flex min-h-[44px] w-fit items-center rounded-[8px] bg-vert px-[20px] text-[14px] leading-[20px] font-medium whitespace-nowrap text-sur-vert no-underline transition-colors hover:bg-vert-clair"
-                    >
-                      {t.ctaBook}
-                    </Link>
-                  </div>
+                <span aria-hidden className="absolute inset-[0px] bg-black/55" />
+                <div className="relative flex flex-col justify-end gap-[18px] p-[clamp(24px,3.2vw,56px)] min-[900px]:col-start-2 min-[900px]:justify-center">
+                  <span className="text-[13px] leading-[20px] font-normal tracking-[0.14em] text-white/75 uppercase">{demo.trade}</span>
+                  <p className="m-[0px] max-w-[480px] text-[15px] leading-[26px] font-normal text-white text-pretty">{demo.pitch}</p>
+                  <Link
+                    href={`/${lang}/contact`}
+                    className="mt-[6px] inline-flex min-h-[44px] w-fit items-center rounded-[8px] bg-vert px-[20px] text-[14px] leading-[20px] font-medium whitespace-nowrap text-sur-vert no-underline transition-colors hover:bg-vert-clair"
+                  >
+                    {t.ctaBook}
+                  </Link>
                 </div>
               </li>
             );
