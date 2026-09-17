@@ -30,9 +30,9 @@ const CARD_TOP = "top-[80px] min-[900px]:top-[calc(68px+var(--sectors-head))]";
 /**
  * Secteurs (direction du 2026-09-17, mesurée image par image sur la vidéo de référence) :
  * en-tête collant — titre à gauche, étapes numérotées à droite — et sept grandes cartes
- * qui s'empilent dessous. En-tête et cartes ont la MÊME largeur et se touchent : ils
- * forment un seul bloc, l'en-tête n'a donc ni filet ni coins bas arrondis, seul un fond
- * un peu plus clair le détache de la page (comme la référence).
+ * qui s'empilent dessous, le tout posé sur un seul bloc arrondi au fond un peu plus clair
+ * (pas de filet). Ce fond doit passer DERRIÈRE les cartes : c'est lui qu'on aperçoit sur
+ * les côtés quand la carte recouverte se rétrécit, et non la page (mesuré sur la référence).
  * Chaque carte est `sticky` sous l'en-tête : en défilant, la suivante glisse par-dessus.
  * La photo couvre toute la carte, sans fondu, texte en blanc ; secteur en surtitre,
  * argument en texte courant et bouton d'appel à droite.
@@ -44,7 +44,7 @@ export function Sectors({ lang, dict }: Props) {
 
   return (
     <section className={`relative flex justify-center pb-[clamp(112px,16vw,240px)] [--sectors-head:112px] ${GOUTTIERE}`}>
-      <div className="w-full max-w-[1400px]">
+      <div className="w-full max-w-[1400px] rounded-[24px] bg-surface">
         <div className={`${HEADER_STICKY} z-[3] flex min-h-[var(--sectors-head)] flex-wrap items-center justify-between gap-x-[32px] gap-y-[14px] rounded-t-[24px] bg-surface px-[clamp(20px,3vw,48px)] py-[22px]`}>
           <div className="flex flex-col gap-[2px]">
             <span id="secteurs" className="text-[13px] leading-[20px] font-medium tracking-[0.08em] text-vert uppercase">
