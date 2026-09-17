@@ -52,7 +52,12 @@ export function Sectors({ lang, dict }: Props) {
             remplirait l'air garde sous l'en-tete de page. Ce bandeau colle juste sous
             l'en-tete de page le recouvre a la couleur de la page. z-[-1] : au-dessus du fond
             du bloc, sous l'en-tete et les cartes (d'ou `isolate` sur le conteneur). */}
-        <span aria-hidden className="pointer-events-none sticky top-[68px] z-[-1] -mb-[88px] block h-[88px] bg-fond" />
+        <span aria-hidden className="pointer-events-none sticky top-[68px] z-[-1] -mb-[88px] block h-[88px] bg-fond">
+          {/* Deux quarts de disque a la couleur de la page redonnent au bloc ses coins hauts
+              arrondis : sans eux le bandeau laisse une arete droite. */}
+          <span className="absolute top-full left-[0px] block h-[24px] w-[24px] bg-[radial-gradient(circle_24px_at_100%_100%,transparent_98%,var(--color-fond))]" />
+          <span className="absolute top-full right-[0px] block h-[24px] w-[24px] bg-[radial-gradient(circle_24px_at_0%_100%,transparent_98%,var(--color-fond))]" />
+        </span>
         <div className={`${HEADER_STICKY} flex min-h-[var(--sectors-head)] flex-wrap items-center justify-between gap-x-[32px] gap-y-[14px] rounded-t-[24px] bg-surface px-[clamp(20px,3vw,48px)] py-[22px]`}>
           <div className="flex flex-col gap-[2px]">
             <span id="secteurs" className="text-[13px] leading-[20px] font-medium tracking-[0.08em] text-vert uppercase">
