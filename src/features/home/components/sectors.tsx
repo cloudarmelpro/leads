@@ -21,12 +21,12 @@ const PHOTOS = [
   "sector-arboriculture",
 ];
 
-// En-tête de page collant (68px) + 16px de respiration : sans ce jour, le bloc se colle
-// à l'en-tête de page et ses coins hauts arrondis passent pour un défaut.
+// En-tête de page collant (68px) + l'air demandé par le client (2026-09-18) : le bloc se
+// fige à 156px, soit la même respiration au repos qu'une fois collé.
 // Les cartes se collent sous l'en-tête de la section ; la suivante recouvre la précédente.
 // Sous 900px, l'en-tete de section n'est pas collant (trop haut) : les cartes se collent sous l'en-tete de page.
-const HEADER_STICKY = "min-[900px]:sticky min-[900px]:top-[84px]";
-const CARD_TOP = "top-[84px] min-[900px]:top-[calc(84px+var(--sectors-head))]";
+const HEADER_STICKY = "min-[900px]:sticky min-[900px]:top-[156px]";
+const CARD_TOP = "top-[84px] min-[900px]:top-[calc(156px+var(--sectors-head))]";
 
 /**
  * Secteurs (direction du 2026-09-17, mesurée image par image sur la vidéo de référence) :
@@ -35,6 +35,8 @@ const CARD_TOP = "top-[84px] min-[900px]:top-[calc(84px+var(--sectors-head))]";
  * (pas de filet). Ce fond doit passer DERRIÈRE les cartes : c'est lui qu'on aperçoit sur
  * les côtés quand la carte recouverte se rétrécit, et non la page (mesuré sur la référence).
  * Chaque carte est `sticky` sous l'en-tête : en défilant, la suivante glisse par-dessus.
+ * Les cartes passent devant l'en-tête (aucun z-index ne l'élève) : à la fin de la section,
+ * la dernière remonte et le recouvre au lieu de le laisser réapparaître au-dessus d'elle.
  * La photo couvre toute la carte, sans fondu, texte en blanc ; secteur en surtitre,
  * argument en texte courant et bouton d'appel à droite.
  * Sous 900px, texte en bas de la photo. L'empilement est du CSS (sticky) ; le petit script
@@ -46,7 +48,7 @@ export function Sectors({ lang, dict }: Props) {
   return (
     <section className={`relative flex justify-center pb-[clamp(112px,16vw,240px)] [--sectors-head:112px] ${GOUTTIERE}`}>
       <div className="w-full max-w-[1400px] rounded-[24px] bg-surface">
-        <div className={`${HEADER_STICKY} z-[3] flex min-h-[var(--sectors-head)] flex-wrap items-center justify-between gap-x-[32px] gap-y-[14px] rounded-t-[24px] bg-surface px-[clamp(20px,3vw,48px)] py-[22px]`}>
+        <div className={`${HEADER_STICKY} flex min-h-[var(--sectors-head)] flex-wrap items-center justify-between gap-x-[32px] gap-y-[14px] rounded-t-[24px] bg-surface px-[clamp(20px,3vw,48px)] py-[22px]`}>
           <div className="flex flex-col gap-[2px]">
             <span id="secteurs" className="text-[13px] leading-[20px] font-medium tracking-[0.08em] text-vert uppercase">
               {t.tradesKicker}
@@ -64,7 +66,7 @@ export function Sectors({ lang, dict }: Props) {
               <li
                 key={demo.trade}
                 data-sector-card={index}
-                className={`sticky ${CARD_TOP} grid h-[560px] grid-cols-[minmax(0,1fr)] min-[900px]:h-[clamp(440px,64vh,620px)] overflow-hidden rounded-[24px] bg-surface min-[900px]:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]`}
+                className={`sticky ${CARD_TOP} grid h-[560px] grid-cols-[minmax(0,1fr)] min-[900px]:h-[clamp(420px,calc(100vh-300px),620px)] overflow-hidden rounded-[24px] bg-surface min-[900px]:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]`}
               >
                 {/* La photo couvre toute la carte, sans fondu (demande du client) ; un leger
                     assombrissement uniforme et le texte en blanc gardent l'argument lisible. */}
