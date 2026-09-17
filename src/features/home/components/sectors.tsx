@@ -21,11 +21,12 @@ const PHOTOS = [
   "sector-arboriculture",
 ];
 
-// Hauteur de l'en-tête de page collant (68px) + en-tête de la section : les cartes se
-// collent juste dessous et la suivante recouvre la précédente en défilant.
+// En-tête de page collant (68px) + 16px de respiration : sans ce jour, le bloc se colle
+// à l'en-tête de page et ses coins hauts arrondis passent pour un défaut.
+// Les cartes se collent sous l'en-tête de la section ; la suivante recouvre la précédente.
 // Sous 900px, l'en-tete de section n'est pas collant (trop haut) : les cartes se collent sous l'en-tete de page.
-const HEADER_STICKY = "min-[900px]:sticky min-[900px]:top-[68px]";
-const CARD_TOP = "top-[80px] min-[900px]:top-[calc(68px+var(--sectors-head))]";
+const HEADER_STICKY = "min-[900px]:sticky min-[900px]:top-[84px]";
+const CARD_TOP = "top-[84px] min-[900px]:top-[calc(84px+var(--sectors-head))]";
 
 /**
  * Secteurs (direction du 2026-09-17, mesurée image par image sur la vidéo de référence) :
@@ -63,7 +64,7 @@ export function Sectors({ lang, dict }: Props) {
               <li
                 key={demo.trade}
                 data-sector-card={index}
-                className={`sticky ${CARD_TOP} grid h-[560px] origin-top grid-cols-[minmax(0,1fr)] min-[900px]:h-[clamp(440px,64vh,620px)] overflow-hidden rounded-[24px] bg-surface min-[900px]:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]`}
+                className={`sticky ${CARD_TOP} grid h-[560px] grid-cols-[minmax(0,1fr)] min-[900px]:h-[clamp(440px,64vh,620px)] overflow-hidden rounded-[24px] bg-surface min-[900px]:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]`}
               >
                 {/* La photo couvre toute la carte, sans fondu (demande du client) ; un leger
                     assombrissement uniforme et le texte en blanc gardent l'argument lisible. */}

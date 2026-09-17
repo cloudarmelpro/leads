@@ -7,13 +7,19 @@ type Props = { names: string[]; aria: string };
 // Rétrécissement maximal d'une carte quand la suivante la recouvre entièrement.
 // 0,12 = rapport mesuré sur la vidéo de référence (1167/1320 px de large).
 const SHRINK = 0.12;
+// Sur la toute fin du recouvrement, la carte du dessous ne dépasse plus que de quelques
+// pixels : ce liseré aux coins arrondis se lit comme un défaut, on l'efface.
+const FADE_FROM = 0.85;
 
 /**
  * Étapes numérotées de la section Secteurs (référence : « 1 — 2 — 3 ») et effet
  * d'empilement : l'étape active suit la carte qui occupe le haut de l'écran
- * (IntersectionObserver), et chaque carte se rétrécit légèrement, depuis son bord haut,
- * à mesure que la suivante glisse par-dessus (lecture de la position au défilement,
- * une frame à la fois, `transform` seulement). Rien sous `prefers-reduced-motion`.
+ * (IntersectionObserver), et chaque carte se rétrécit légèrement à mesure que la suivante
+ * glisse par-dessus (lecture de la position au défilement, une frame à la fois, `transform`
+ * seulement). Rien sous `prefers-reduced-motion`.
+ * L'échelle part du CENTRE de la carte, comme la référence : son bord haut descend donc
+ * pendant qu'elle rétrécit et finit sous la carte suivante, au lieu de laisser dépasser un
+ * liseré aux coins arrondis.
  */
 export function SectorSteps({ names, aria }: Props) {
   const [active, setActive] = useState(0);
@@ -51,6 +57,7 @@ export function SectorSteps({ names, aria }: Props) {
         // 0 quand la carte suivante entre par le bas, 1 quand elle est collée à sa place.
         const progress = Math.min(1, Math.max(0, (viewport - next.getBoundingClientRect().top) / (viewport - stuckTop)));
         cards[i].style.transform = progress > 0 ? `scale(${1 - SHRINK * progress})` : "";
+        cards[i].style.opacity = progress > FADE_FROM ? String((1 - progress) / (1 - FADE_FROM)) : "";
       }
     };
     const onScroll = () => {
@@ -64,7 +71,10 @@ export function SectorSteps({ names, aria }: Props) {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
       if (frame) cancelAnimationFrame(frame);
-      cards.forEach((card) => (card.style.transform = ""));
+      cards.forEach((card) => {
+        card.style.transform = "";
+        card.style.opacity = "";
+      });
     };
   }, []);
 
