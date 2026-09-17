@@ -84,15 +84,19 @@ export function Sectors({ lang, dict }: Props) {
                     assombrissement uniforme et le texte en blanc gardent l'argument lisible. */}
                 <Image src={`/images/home/${photo}.jpg`} alt={demo.imgLabel} fill sizes="(max-width: 900px) 100vw, 1400px" className="object-cover" />
                 <span aria-hidden className="absolute inset-[0px] bg-black/35" />
-                <div className="relative flex flex-col justify-end gap-[18px] p-[clamp(24px,3.2vw,56px)] min-[900px]:col-start-2 min-[900px]:justify-center">
-                  <span className="text-[13px] leading-[20px] font-normal tracking-[0.14em] text-white/75 uppercase">{demo.trade}</span>
-                  <p className="m-[0px] max-w-[480px] text-[15px] leading-[26px] font-normal text-white/90 text-pretty">{demo.pitch}</p>
-                  <Link
-                    href={`/${lang}/contact`}
-                    className="mt-[6px] inline-flex min-h-[44px] w-fit items-center rounded-[8px] bg-vert px-[20px] text-[14px] leading-[20px] font-medium whitespace-nowrap text-sur-vert no-underline transition-colors hover:bg-vert-clair"
-                  >
-                    {t.ctaBook}
-                  </Link>
+                <div className="relative flex flex-col justify-end p-[clamp(24px,3.2vw,56px)] min-[900px]:col-start-2 min-[900px]:justify-center">
+                  {/* Plaque noire sous le texte : les photos claires (deneigement) ne laissaient
+                      plus lire le blanc. Pas de flou, le client n'en veut pas. */}
+                  <div className="flex w-fit max-w-[540px] flex-col gap-[18px] rounded-[16px] bg-black/60 p-[clamp(18px,2vw,28px)]">
+                    <span className="text-[13px] leading-[20px] font-normal tracking-[0.14em] text-white/75 uppercase">{demo.trade}</span>
+                    <p className="m-[0px] text-[15px] leading-[26px] font-normal text-white text-pretty">{demo.pitch}</p>
+                    <Link
+                      href={`/${lang}/contact`}
+                      className="mt-[6px] inline-flex min-h-[44px] w-fit items-center rounded-[8px] bg-vert px-[20px] text-[14px] leading-[20px] font-medium whitespace-nowrap text-sur-vert no-underline transition-colors hover:bg-vert-clair"
+                    >
+                      {t.ctaBook}
+                    </Link>
+                  </div>
                 </div>
               </li>
             );
