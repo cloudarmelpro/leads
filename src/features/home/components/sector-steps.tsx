@@ -56,11 +56,8 @@ export function SectorSteps({ names, aria }: Props) {
         const stuckTop = parseFloat(getComputedStyle(next).top) || 0;
         // 0 quand la carte suivante entre par le bas, 1 quand elle est collée à sa place.
         const progress = Math.min(1, Math.max(0, (viewport - next.getBoundingClientRect().top) / (viewport - stuckTop)));
-        // La carte garde sa taille (son fond clair fait le lisere) : seule sa couche visuelle bouge.
-        const visual = cards[i].querySelector<HTMLElement>("[data-sector-visual]");
-        if (!visual) continue;
-        visual.style.transform = progress > 0 ? `scale(${1 - SHRINK * progress})` : "";
-        visual.style.opacity = progress > FADE_FROM ? String((1 - progress) / (1 - FADE_FROM)) : "";
+        cards[i].style.transform = progress > 0 ? `scale(${1 - SHRINK * progress})` : "";
+        cards[i].style.opacity = progress > FADE_FROM ? String((1 - progress) / (1 - FADE_FROM)) : "";
       }
     };
     const onScroll = () => {
@@ -75,11 +72,8 @@ export function SectorSteps({ names, aria }: Props) {
       window.removeEventListener("resize", onScroll);
       if (frame) cancelAnimationFrame(frame);
       cards.forEach((card) => {
-        const visual = card.querySelector<HTMLElement>("[data-sector-visual]");
-        if (visual) {
-          visual.style.transform = "";
-          visual.style.opacity = "";
-        }
+        card.style.transform = "";
+        card.style.opacity = "";
       });
     };
   }, []);

@@ -31,11 +31,9 @@ const CARD_TOP = "top-[84px] min-[900px]:top-[calc(156px+var(--sectors-head))]";
 /**
  * Secteurs (direction du 2026-09-17, mesurée image par image sur la vidéo de référence) :
  * en-tête collant — titre à gauche, étapes numérotées à droite — et sept grandes cartes
- * qui s'empilent dessous, sur un fond un peu plus clair (pas de filet). Ce fond appartient
- * à l'en-tête et à chaque carte, jamais au conteneur : sinon il remonterait au-dessus de
- * l'en-tête collé et remplirait l'air qu'on garde sous l'en-tête de page.
- * C'est ce fond qu'on aperçoit autour de la carte recouverte quand elle se rétrécit
- * (mesuré sur la référence).
+ * qui s'empilent dessous, le tout posé sur un seul bloc arrondi au fond un peu plus clair
+ * (pas de filet). Ce fond doit passer DERRIÈRE les cartes : c'est lui qu'on aperçoit sur
+ * les côtés quand la carte recouverte se rétrécit, et non la page (mesuré sur la référence).
  * Chaque carte est `sticky` sous l'en-tête : en défilant, la suivante glisse par-dessus.
  * Les cartes passent devant l'en-tête (aucun z-index ne l'élève) : à la fin de la section,
  * la dernière remonte et le recouvre au lieu de le laisser réapparaître au-dessus d'elle.
@@ -49,7 +47,12 @@ export function Sectors({ lang, dict }: Props) {
 
   return (
     <section className={`relative flex justify-center pb-[clamp(112px,16vw,240px)] [--sectors-head:112px] ${GOUTTIERE}`}>
-      <div className="w-full max-w-[1400px]">
+      <div className="relative isolate w-full max-w-[1400px] rounded-[24px] bg-surface">
+        {/* Le fond clair du bloc defile avec lui : une fois l'en-tete de section colle, il
+            remplirait l'air garde sous l'en-tete de page. Ce bandeau colle juste sous
+            l'en-tete de page le recouvre a la couleur de la page. z-[-1] : au-dessus du fond
+            du bloc, sous l'en-tete et les cartes (d'ou `isolate` sur le conteneur). */}
+        <span aria-hidden className="pointer-events-none sticky top-[68px] z-[-1] -mb-[88px] block h-[88px] bg-fond" />
         <div className={`${HEADER_STICKY} flex min-h-[var(--sectors-head)] flex-wrap items-center justify-between gap-x-[32px] gap-y-[14px] rounded-t-[24px] bg-surface px-[clamp(20px,3vw,48px)] py-[22px]`}>
           <div className="flex flex-col gap-[2px]">
             <span id="secteurs" className="text-[13px] leading-[20px] font-medium tracking-[0.08em] text-vert uppercase">
@@ -68,28 +71,21 @@ export function Sectors({ lang, dict }: Props) {
               <li
                 key={demo.trade}
                 data-sector-card={index}
-                className={`sticky ${CARD_TOP} h-[560px] rounded-[24px] bg-surface min-[900px]:h-[clamp(420px,calc(100vh-300px),620px)]`}
+                className={`sticky ${CARD_TOP} grid h-[560px] grid-cols-[minmax(0,1fr)] min-[900px]:h-[clamp(420px,calc(100vh-300px),620px)] overflow-hidden rounded-[24px] bg-surface min-[900px]:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]`}
               >
-                {/* Seule cette couche se retrecit : la carte garde sa taille et laisse voir son
-                    fond clair tout autour — c'est ce lisere qu'on voit sur la reference. */}
-                <div
-                  data-sector-visual
-                  className="relative grid h-full grid-cols-[minmax(0,1fr)] overflow-hidden rounded-[24px] min-[900px]:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]"
-                >
-                  {/* La photo couvre toute la carte, sans fondu (demande du client) ; un leger
-                      assombrissement uniforme et le texte en blanc gardent l'argument lisible. */}
-                  <Image src={`/images/home/${photo}.jpg`} alt={demo.imgLabel} fill sizes="(max-width: 900px) 100vw, 1400px" className="object-cover" />
-                  <span aria-hidden className="absolute inset-[0px] bg-black/35" />
-                  <div className="relative flex flex-col justify-end gap-[18px] p-[clamp(24px,3.2vw,56px)] min-[900px]:col-start-2 min-[900px]:justify-center">
-                    <span className="text-[13px] leading-[20px] font-normal tracking-[0.14em] text-white/75 uppercase">{demo.trade}</span>
-                    <p className="m-[0px] max-w-[480px] text-[15px] leading-[26px] font-normal text-white/90 text-pretty">{demo.pitch}</p>
-                    <Link
-                      href={`/${lang}/contact`}
-                      className="mt-[6px] inline-flex min-h-[44px] w-fit items-center rounded-[10px] bg-vert px-[20px] text-[14px] leading-[20px] font-medium whitespace-nowrap text-sur-vert no-underline transition-colors hover:bg-vert-clair"
-                    >
-                      {t.ctaBook}
-                    </Link>
-                  </div>
+                {/* La photo couvre toute la carte, sans fondu (demande du client) ; un leger
+                    assombrissement uniforme et le texte en blanc gardent l'argument lisible. */}
+                <Image src={`/images/home/${photo}.jpg`} alt={demo.imgLabel} fill sizes="(max-width: 900px) 100vw, 1400px" className="object-cover" />
+                <span aria-hidden className="absolute inset-[0px] bg-black/35" />
+                <div className="relative flex flex-col justify-end gap-[18px] p-[clamp(24px,3.2vw,56px)] min-[900px]:col-start-2 min-[900px]:justify-center">
+                  <span className="text-[13px] leading-[20px] font-normal tracking-[0.14em] text-white/75 uppercase">{demo.trade}</span>
+                  <p className="m-[0px] max-w-[480px] text-[15px] leading-[26px] font-normal text-white/90 text-pretty">{demo.pitch}</p>
+                  <Link
+                    href={`/${lang}/contact`}
+                    className="mt-[6px] inline-flex min-h-[44px] w-fit items-center rounded-[10px] bg-vert px-[20px] text-[14px] leading-[20px] font-medium whitespace-nowrap text-sur-vert no-underline transition-colors hover:bg-vert-clair"
+                  >
+                    {t.ctaBook}
+                  </Link>
                 </div>
               </li>
             );
