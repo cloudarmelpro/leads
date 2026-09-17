@@ -248,6 +248,18 @@ body {
    d'un écran vers la gauche (~22 %) ; à -300 % la copie est à la place du premier, la
    boucle est invisible. Chaque pas = un écran + l'écart de 14px entre tableaux, pour que
    les cartes gardent leur gouttière en glissant. Sur `transform` seulement. */
+/* Bandeau des secteurs du hero : la liste est ecrite deux fois, on la decale de la moitie
+   de sa largeur, donc la boucle est invisible. Chaque element porte sa marge a droite (pas
+   de `gap`), sinon le raccord tomberait au milieu d'un espace. */
+@keyframes tw-bandeau {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 @keyframes tw-vitrine {
   0%,
   26% {
