@@ -48,7 +48,7 @@ export function Sectors({ lang, dict }: Props) {
   const t = dict.hero;
 
   return (
-    <section className={`relative flex justify-center pb-[clamp(112px,16vw,240px)] [--sectors-head:112px] ${GOUTTIERE}`}>
+    <section className={`relative flex justify-center pb-[clamp(112px,16vw,240px)] [--sectors-head:140px] ${GOUTTIERE}`}>
       <div className="relative isolate w-full max-w-[1400px] rounded-[24px] bg-surface">
         {/* Le fond clair du bloc defile avec lui : une fois l'en-tete de section colle, il
             remplirait l'air garde sous l'en-tete de page. Ce bandeau colle juste sous
@@ -78,7 +78,7 @@ export function Sectors({ lang, dict }: Props) {
               <li
                 key={demo.trade}
                 data-sector-card={index}
-                className={`sticky ${CARD_TOP} grid h-[560px] grid-cols-[minmax(0,1fr)] min-[900px]:h-[clamp(420px,calc(100vh-300px),620px)] overflow-hidden rounded-[24px] bg-surface shadow-[0_-4px_0_var(--color-surface)] min-[900px]:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]`}
+                className={`sticky ${CARD_TOP} grid h-[560px] grid-cols-[minmax(0,1fr)] min-[900px]:h-[clamp(390px,calc(100vh-330px),620px)] overflow-hidden rounded-[24px] bg-surface shadow-[0_-4px_0_var(--color-surface)] min-[900px]:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]`}
               >
                 {/* La photo couvre toute la carte, sans fondu (demande du client) ; un leger
                     assombrissement uniforme et le texte en blanc gardent l'argument lisible. */}
