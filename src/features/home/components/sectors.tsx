@@ -35,6 +35,9 @@ const CARD_TOP = "top-[84px] min-[900px]:top-[calc(156px+var(--sectors-head))]";
  * (pas de filet). Ce fond doit passer DERRIÈRE les cartes : c'est lui qu'on aperçoit sur
  * les côtés quand la carte recouverte se rétrécit, et non la page (mesuré sur la référence).
  * Chaque carte est `sticky` sous l'en-tête : en défilant, la suivante glisse par-dessus.
+ * Elle porte une ombre vers le haut : c'est le trait sombre qui marque, sur la référence,
+ * la limite entre la carte qui arrive et celle qu'elle recouvre. Ombre et pas filet : les
+ * cartes n'en ont pas.
  * Les cartes passent devant l'en-tête (aucun z-index ne l'élève) : à la fin de la section,
  * la dernière remonte et le recouvre au lieu de le laisser réapparaître au-dessus d'elle.
  * La photo couvre toute la carte, sans fondu, texte en blanc ; secteur en surtitre,
@@ -76,7 +79,7 @@ export function Sectors({ lang, dict }: Props) {
               <li
                 key={demo.trade}
                 data-sector-card={index}
-                className={`sticky ${CARD_TOP} grid h-[560px] grid-cols-[minmax(0,1fr)] min-[900px]:h-[clamp(420px,calc(100vh-300px),620px)] overflow-hidden rounded-[24px] bg-surface min-[900px]:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]`}
+                className={`sticky ${CARD_TOP} grid h-[560px] grid-cols-[minmax(0,1fr)] min-[900px]:h-[clamp(420px,calc(100vh-300px),620px)] overflow-hidden rounded-[24px] bg-surface shadow-[0_-3px_0_rgba(0,0,0,0.6),0_-16px_32px_-12px_rgba(0,0,0,0.55)] min-[900px]:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]`}
               >
                 {/* La photo couvre toute la carte, sans fondu (demande du client) ; un leger
                     assombrissement uniforme et le texte en blanc gardent l'argument lisible. */}
