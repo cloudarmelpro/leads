@@ -114,7 +114,7 @@
     ],
     "ctaPricing": "Voir les forfaits et les prix",
     "stepAria": "Secteur {n} sur {total} : {name}",
-    "trustedKicker": "Pensé pour"
+    "trustedKicker": "Pensé pour :"
   },
   "services": {
     "kicker": "Services",

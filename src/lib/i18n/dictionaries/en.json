@@ -114,7 +114,7 @@
     ],
     "ctaPricing": "See plans and pricing",
     "stepAria": "Sector {n} of {total}: {name}",
-    "trustedKicker": "Built for"
+    "trustedKicker": "Built for:"
   },
   "services": {
     "kicker": "Services",

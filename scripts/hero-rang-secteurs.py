@@ -10,7 +10,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent / "src" / "lib" / "i18n" / "dictionaries"
 
-LIBELLE = {"fr": "Pensé pour", "en": "Built for"}
+LIBELLE = {"fr": "Pensé pour :", "en": "Built for:"}
 
 for langue, libelle in LIBELLE.items():
     chemin = ROOT / f"{langue}.json"

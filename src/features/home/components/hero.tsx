@@ -1,3 +1,4 @@
+import { Axe, HardHat, Hammer, Shovel, Snowflake, Store, Trees, type LucideIcon } from "lucide-react";
 import Link from "next/link";
 
 import { GOUTTIERE } from "@/components/shared/container";
@@ -8,6 +9,10 @@ import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 
 type Props = { lang: Locale; dict: Dictionary };
+
+// Une icone par secteur, dans le MEME ordre que `hero.demos` : paysagement, excavation,
+// construction, renovation, commerce local, deneigement, arboriculture.
+const ICONES_SECTEURS: LucideIcon[] = [Trees, Shovel, HardHat, Hammer, Store, Snowflake, Axe];
 
 // Fondu des bords de la carte : le flanc gauche (vers le titre) et le bas s'estompent.
 const MAP_MASK =
@@ -56,13 +61,13 @@ export function Hero({ lang, dict }: Props) {
         <div className="flex flex-wrap items-center gap-[12px]">
           <Link
             href={`/${lang}/contact`}
-            className="inline-flex min-h-[44px] items-center rounded-[8px] bg-vert px-[18px] text-[14px] leading-[20px] font-medium whitespace-nowrap text-sur-vert no-underline transition-colors hover:bg-vert-clair"
+            className="tap-44 inline-flex min-h-[38px] items-center rounded-[8px] bg-vert px-[16px] text-[13px] leading-[20px] font-medium whitespace-nowrap text-sur-vert no-underline transition-colors hover:bg-vert-clair"
           >
             {t.ctaBook}
           </Link>
           <Link
             href={features.pricing ? `/${lang}/prix` : `/${lang}/a-propos`}
-            className="inline-flex min-h-[44px] items-center rounded-[8px] bg-surface-2 px-[18px] text-[14px] leading-[20px] font-medium whitespace-nowrap text-encre no-underline ring-1 ring-contour transition-colors ring-inset hover:bg-surface-3"
+            className="tap-44 inline-flex min-h-[38px] items-center rounded-[8px] bg-surface-2 px-[16px] text-[13px] leading-[20px] font-medium whitespace-nowrap text-encre no-underline ring-1 ring-contour transition-colors ring-inset hover:bg-surface-3"
           >
             {features.pricing ? t.ctaPricing : dict.nav.about}
           </Link>
@@ -70,16 +75,27 @@ export function Hero({ lang, dict }: Props) {
 
         {/* Rangee facon « trusted by ». Aucun logo client : rien de confirme, et le guide
             interdit d'inventer des references. On nomme les metiers vises. */}
-        <div className="mt-[6px] flex flex-col items-start gap-[10px] min-[620px]:max-w-[min(700px,64%)]">
-          <span className="text-[12px] leading-[18px] font-medium tracking-[0.12em] text-texte2/75 uppercase">{t.trustedKicker}</span>
-          <ul className="m-[0px] flex list-none flex-wrap items-center gap-x-[10px] gap-y-[6px] p-[0px]">
-            {t.demos.map((demo, index) => (
-              <li key={demo.trade} className="flex items-center gap-[10px] text-[13px] leading-[18px] font-normal text-texte2">
-                {index > 0 && <span aria-hidden className="block h-[3px] w-[3px] rounded-full bg-texte2/45" />}
-                {demo.trade}
-              </li>
-            ))}
-          </ul>
+        <div className="mt-[clamp(56px,10vw,144px)] flex w-full items-center gap-[clamp(14px,1.8vw,26px)]">
+          <span className="shrink-0 text-[13px] leading-[18px] font-normal whitespace-nowrap text-texte2">{t.trustedKicker}</span>
+          {/* La piste defile ; le fondu de droite dit que la liste continue. */}
+          <div className="min-w-[0px] flex-1 overflow-hidden [mask-image:linear-gradient(90deg,transparent_0%,#000_4%,#000_88%,transparent_100%)]">
+            <ul className="m-[0px] flex w-max list-none items-center p-[0px] [animation:tw-bandeau_38s_linear_infinite] hover:[animation-play-state:paused] motion-reduce:[animation:none]">
+              {[...t.demos, ...t.demos].map((demo, index) => {
+                const Icone = ICONES_SECTEURS[index % t.demos.length];
+                if (!Icone) return null;
+                return (
+                  <li
+                    key={`${demo.trade}-${index}`}
+                    aria-hidden={index >= t.demos.length}
+                    className="flex items-center gap-[7px] pr-[clamp(22px,3vw,44px)] text-[14px] leading-[20px] font-medium whitespace-nowrap text-encre/85"
+                  >
+                    <Icone aria-hidden className="h-[17px] w-[17px] shrink-0" strokeWidth={1.75} />
+                    {demo.trade}
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
         </div>
       </div>
     </section>
