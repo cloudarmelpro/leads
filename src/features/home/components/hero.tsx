@@ -17,6 +17,8 @@ const MAP_MASK =
  * Hero de la maquette Accueil : carte du monde en points ancrée à droite avec ses
  * points pulsés, grille fine dans la moitié basse, H1 en majuscules (seconde phrase
  * en vert), paragraphe d'appui et deux boutons. La carte est masquée sous 620px.
+ * Boutons au gabarit de l'en-tête (rayon 8px, vert plein / surface avec filet interne),
+ * juste plus hauts : 44px, la cible minimale.
  */
 export function Hero({ lang, dict }: Props) {
   const t = dict.hero;
@@ -54,13 +56,13 @@ export function Hero({ lang, dict }: Props) {
         <div className="flex flex-wrap items-center gap-[12px]">
           <Link
             href={`/${lang}/contact`}
-            className="rounded-[9px] bg-vert px-[16px] py-[10px] text-[14px] leading-[20px] font-medium whitespace-nowrap text-sur-vert no-underline transition-colors hover:bg-vert-clair"
+            className="inline-flex min-h-[44px] items-center rounded-[8px] bg-vert px-[18px] text-[14px] leading-[20px] font-medium whitespace-nowrap text-sur-vert no-underline transition-colors hover:bg-vert-clair"
           >
             {t.ctaBook}
           </Link>
           <Link
             href={features.pricing ? `/${lang}/prix` : `/${lang}/a-propos`}
-            className="rounded-[9px] bg-surface-2 px-[16px] py-[10px] text-[14px] leading-[20px] font-medium whitespace-nowrap text-encre no-underline transition-colors hover:bg-surface-3"
+            className="inline-flex min-h-[44px] items-center rounded-[8px] bg-surface-2 px-[18px] text-[14px] leading-[20px] font-medium whitespace-nowrap text-encre no-underline ring-1 ring-contour transition-colors ring-inset hover:bg-surface-3"
           >
             {features.pricing ? t.ctaPricing : dict.nav.about}
           </Link>
