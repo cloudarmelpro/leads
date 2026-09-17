@@ -48,7 +48,7 @@ export function Faq({ dict, lang, variant = "home" }: Props) {
 
   return (
     <section className={`relative flex justify-center pb-[clamp(112px,16vw,240px)] ${GOUTTIERE}`}>
-      <div className="flex w-full max-w-[1100px] flex-col gap-[48px]">
+      <div className="flex w-full max-w-[1400px] flex-col gap-[48px]">
         <SectionHead id="faq" label={t.kicker} title={`${t.titleA} ${t.titleB}`} intro={t.intro} introMax={420} />
 
         <div className="grid grid-cols-[minmax(0,1fr)] items-start gap-[10px] min-[760px]:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">

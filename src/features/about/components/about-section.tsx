@@ -37,7 +37,7 @@ export function AboutSection({ id, kicker, title, intro, introMax, items, photo,
 
   return (
     <section className={`relative flex justify-center pb-[clamp(112px,16vw,240px)] ${GOUTTIERE}`}>
-      <div className="flex w-full max-w-[1100px] flex-col gap-[48px]">
+      <div className="flex w-full max-w-[1400px] flex-col gap-[48px]">
         <SectionHead id={id} label={kicker} title={title} intro={intro} introMax={introMax} />
 
         <div className="grid grid-cols-[minmax(0,1fr)] items-stretch gap-[24px] min-[620px]:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">

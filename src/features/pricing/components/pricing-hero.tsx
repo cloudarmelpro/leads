@@ -21,7 +21,7 @@ export function PricingHero({ lang, dict }: Props) {
   return (
     <section className={`relative flex justify-center overflow-x-clip pt-[120px] pb-[140px] ${GOUTTIERE}`}>
       <HeroGrid />
-      <div className="relative z-[1] flex w-full max-w-[1100px] flex-col items-start gap-[22px]">
+      <div className="relative z-[1] flex w-full max-w-[1400px] flex-col items-start gap-[22px]">
         <h1 className="m-[0px] max-w-[640px] text-[clamp(26px,3.2vw,36px)] leading-[1.12] font-normal tracking-[-0.7px] text-encre text-pretty">
           {t.heroTitleA}
           <span className="text-vert">{t.heroHighlight}</span>

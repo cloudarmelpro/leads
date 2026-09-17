@@ -89,7 +89,7 @@ export async function BlogArticle({ post, lang }: Props) {
 
       {related.length > 0 && (
         <section className={`relative flex justify-center pb-[clamp(112px,16vw,240px)] ${GOUTTIERE}`}>
-          <div className="flex w-full max-w-[1100px] flex-col gap-[40px]">
+          <div className="flex w-full max-w-[1400px] flex-col gap-[40px]">
             <SectionHead id="suite" label={t.relatedKicker} title={t.relatedTitle} />
             <div className={POST_GRID}>
               {related.map((item) => (

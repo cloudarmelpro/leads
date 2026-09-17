@@ -31,7 +31,7 @@ export function ContactPageContent({ lang, dict }: Props) {
     <>
       <section className={`relative flex justify-center overflow-x-clip pt-[120px] pb-[140px] ${GOUTTIERE}`}>
         <HeroGrid />
-        <div className="relative z-[1] flex w-full max-w-[1100px] flex-col items-start gap-[22px]">
+        <div className="relative z-[1] flex w-full max-w-[1400px] flex-col items-start gap-[22px]">
           <h1 className="m-[0px] max-w-[680px] text-[clamp(26px,3.2vw,36px)] leading-[1.12] font-normal tracking-[-0.7px] text-encre text-pretty">
             {t.title} <span className="text-vert">{t.titleHighlight}</span>
           </h1>
@@ -57,7 +57,7 @@ export function ContactPageContent({ lang, dict }: Props) {
       </section>
 
       <section className={`relative flex justify-center pb-[clamp(112px,16vw,240px)] ${GOUTTIERE}`}>
-        <div className="flex w-full max-w-[1100px] flex-col gap-[48px]">
+        <div className="flex w-full max-w-[1400px] flex-col gap-[48px]">
           <SectionHead id="rendez-vous" label={t.booking.kicker} title={t.booking.title} intro={t.booking.intro} introMax={460} />
 
           <div className="grid grid-cols-[minmax(0,1fr)] items-stretch gap-[24px] min-[620px]:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)]">
@@ -94,7 +94,7 @@ export function ContactPageContent({ lang, dict }: Props) {
       </section>
 
       <section className={`relative flex justify-center pb-[clamp(112px,16vw,240px)] ${GOUTTIERE}`}>
-        <div className="flex w-full max-w-[1100px] flex-col gap-[48px]">
+        <div className="flex w-full max-w-[1400px] flex-col gap-[48px]">
           <SectionHead id="formulaire" label={t.form.kicker} title={t.form.title} intro={t.form.intro} introMax={420} />
 
           <div className="grid grid-cols-[minmax(0,1fr)] items-start gap-[24px] min-[620px]:grid-cols-[minmax(0,1.35fr)_minmax(0,0.65fr)]">

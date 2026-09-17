@@ -263,7 +263,7 @@ export function PricingExplorer({ lang, dict }: Props) {
     <>
       {/* Barre des catégories : collante, fond translucide flouté, sans filet. */}
       <div id="prix" className={`sticky top-0 z-30 flex justify-center bg-fond/94 py-[12px] backdrop-blur-[14px] ${GOUTTIERE}`}>
-        <div className="flex w-full max-w-[1100px] flex-wrap items-center justify-between gap-[20px]">
+        <div className="flex w-full max-w-[1400px] flex-wrap items-center justify-between gap-[20px]">
           <div role="tablist" aria-label={labels.families} className="flex flex-wrap gap-[4px] rounded-[12px] bg-surface-2 p-[4px]">
             {families.map((f) => {
               const active = f.key === family.key;
@@ -293,7 +293,7 @@ export function PricingExplorer({ lang, dict }: Props) {
       </div>
 
       <section className={`flex justify-center pt-[64px] pb-[clamp(112px,16vw,240px)] ${GOUTTIERE}`}>
-        <div className="w-full max-w-[1100px]">
+        <div className="w-full max-w-[1400px]">
           {families.map((fam) => {
             const activeFam = fam.key === family.key;
             const hasRanges = fam.ranges.length > 0;
