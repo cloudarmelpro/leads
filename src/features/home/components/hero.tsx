@@ -30,11 +30,12 @@ export function Hero({ lang, dict }: Props) {
     >
       <HeroGrid />
 
-      {/* Carte en points + points pulsés : 62 % du rail dès 620px (100 % atténué en dessous). */}
+      {/* Carte en points + points pulsés : 62 % du rail dès 620px (100 % atténué en dessous).
+          Son bord droit tombe sur le rail, comme le bouton Contact de l'en-tête. */}
       <div aria-hidden className={`pointer-events-none absolute inset-[0px] hidden select-none min-[620px]:block ${GOUTTIERE}`}>
         <div className="mx-auto h-full w-full max-w-[1400px]">
           <div
-            className="relative ml-auto mr-[-4.5%] h-full w-full opacity-50 min-[620px]:w-[62%] min-[620px]:opacity-100"
+            className="relative ml-auto h-full w-full opacity-50 min-[620px]:w-[62%] min-[620px]:opacity-100"
             style={{ maskImage: MAP_MASK, maskComposite: "intersect", WebkitMaskImage: MAP_MASK, WebkitMaskComposite: "source-in" }}
           >
             {/* Le SVG sert de masque : la couleur des points suit le thème. */}
