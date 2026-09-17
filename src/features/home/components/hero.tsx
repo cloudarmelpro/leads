@@ -32,7 +32,7 @@ export function Hero({ lang, dict }: Props) {
 
       {/* Carte en points + points pulsés : 62 % du rail dès 620px (100 % atténué en dessous). */}
       <div aria-hidden className={`pointer-events-none absolute inset-[0px] hidden select-none min-[620px]:block ${GOUTTIERE}`}>
-        <div className="mx-auto h-full w-full max-w-[1100px]">
+        <div className="mx-auto h-full w-full max-w-[1400px]">
           <div
             className="relative ml-auto mr-[-4.5%] h-full w-full opacity-50 min-[620px]:w-[62%] min-[620px]:opacity-100"
             style={{ maskImage: MAP_MASK, maskComposite: "intersect", WebkitMaskImage: MAP_MASK, WebkitMaskComposite: "source-in" }}
@@ -46,7 +46,7 @@ export function Hero({ lang, dict }: Props) {
         </div>
       </div>
 
-      <div className="relative z-[1] flex w-full max-w-[1100px] flex-col items-start gap-[24px]">
+      <div className="relative z-[1] flex w-full max-w-[1400px] flex-col items-start gap-[24px]">
         <h1 className="m-[0px] max-w-[720px] text-[clamp(24px,3.2vw,34px)] leading-[1.15] font-normal tracking-[-1px] text-encre uppercase text-pretty min-[620px]:max-w-[min(720px,54%)]">
           {t.titleA} <span className="text-vert">{t.titleB}</span>
         </h1>
