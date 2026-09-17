@@ -65,10 +65,10 @@ export function Sectors({ lang, dict }: Props) {
                 {/* La photo couvre toute la carte, sans fondu (demande du client) ; un leger
                     assombrissement uniforme et le texte en blanc gardent l'argument lisible. */}
                 <Image src={`/images/home/${photo}.jpg`} alt={demo.imgLabel} fill sizes="(max-width: 900px) 100vw, 1400px" className="object-cover" />
-                <span aria-hidden className="absolute inset-[0px] bg-black/25" />
+                <span aria-hidden className="absolute inset-[0px] bg-black/35" />
                 <div className="relative flex flex-col justify-end gap-[18px] p-[clamp(24px,3.2vw,56px)] min-[900px]:col-start-2 min-[900px]:justify-center">
-                  <span className="text-[13px] leading-[20px] font-medium tracking-[0.14em] text-white/80 uppercase [text-shadow:0_1px_2px_rgba(0,0,0,0.5)]">{demo.trade}</span>
-                  <p className="m-[0px] max-w-[480px] text-[15px] leading-[26px] font-normal text-white text-pretty [text-shadow:0_1px_3px_rgba(0,0,0,0.55)]">{demo.pitch}</p>
+                  <span className="text-[13px] leading-[20px] font-normal tracking-[0.14em] text-white/75 uppercase">{demo.trade}</span>
+                  <p className="m-[0px] max-w-[480px] text-[15px] leading-[26px] font-normal text-white/90 text-pretty">{demo.pitch}</p>
                   <Link
                     href={`/${lang}/contact`}
                     className="mt-[6px] inline-flex min-h-[44px] w-fit items-center rounded-[10px] bg-vert px-[20px] text-[14px] leading-[20px] font-medium whitespace-nowrap text-sur-vert no-underline transition-colors hover:bg-vert-clair"
