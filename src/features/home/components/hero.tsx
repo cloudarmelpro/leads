@@ -31,7 +31,7 @@ export function Hero({ lang, dict }: Props) {
   return (
     <section
       id="accueil"
-      className={`relative flex justify-center overflow-x-clip pt-[128px] pb-[clamp(112px,16vw,240px)] min-[620px]:min-h-[440px] min-[620px]:pt-[192px] ${GOUTTIERE}`}
+      className={`relative flex justify-center overflow-x-clip pt-[128px] pb-[clamp(148px,20vw,300px)] min-[620px]:min-h-[440px] min-[620px]:pt-[192px] ${GOUTTIERE}`}
     >
       <HeroGrid />
 
@@ -87,9 +87,9 @@ export function Hero({ lang, dict }: Props) {
                   <li
                     key={`${demo.trade}-${index}`}
                     aria-hidden={index >= t.demos.length}
-                    className="flex items-center gap-[7px] pr-[clamp(22px,3vw,44px)] text-[14px] leading-[20px] font-medium whitespace-nowrap text-encre/85"
+                    className="flex items-center gap-[7px] pr-[clamp(22px,3vw,44px)] text-[16px] leading-[22px] font-medium whitespace-nowrap text-encre/85"
                   >
-                    <Icone aria-hidden className="h-[17px] w-[17px] shrink-0" strokeWidth={1.75} />
+                    <Icone aria-hidden className="h-[19px] w-[19px] shrink-0" strokeWidth={1.75} />
                     {demo.trade}
                   </li>
                 );
