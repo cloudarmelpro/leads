@@ -91,14 +91,14 @@ export function CookieConsent({ lang, dict }: { lang: Locale; dict: Pick<Diction
         <button
           type="button"
           onClick={() => choose("declined")}
-          className="flex-1 min-h-10 cursor-pointer rounded-[9px] px-3.5 py-2 text-cta-fluid font-medium text-encre shadow-[inset_0_0_0_1px_var(--color-encre)] transition-colors hover:bg-encre/[0.08] sm:px-4 sm:py-2.5"
+          className="flex-1 min-h-10 cursor-pointer rounded-[8px] bg-surface-2 px-3.5 py-2 text-cta-fluid font-medium text-encre ring-1 ring-contour transition-colors ring-inset hover:bg-surface-3 sm:px-4 sm:py-2.5"
         >
           {t.decline}
         </button>
         <button
           type="button"
           onClick={() => choose("accepted")}
-          className="flex-1 min-h-10 cursor-pointer rounded-[9px] bg-emeraude px-3.5 py-2 text-cta-fluid font-medium text-white transition-colors hover:bg-sapin sm:px-4 sm:py-2.5 dark:bg-accent-strong dark:text-fond dark:hover:bg-[#7fefc0]"
+          className="flex-1 min-h-10 cursor-pointer rounded-[8px] bg-vert px-3.5 py-2 text-cta-fluid font-medium text-sur-vert transition-colors hover:bg-vert-clair sm:px-4 sm:py-2.5"
         >
           {t.accept}
         </button>

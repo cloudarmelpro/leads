@@ -90,7 +90,7 @@ export function Header({ lang, dict }: Props) {
   const isCurrent = (href: string) => !href.includes("#") && pathname === href;
 
   const outlined =
-    "flex min-h-[48px] items-center justify-center rounded-[12px] border border-contour text-[15px] leading-[20px] font-medium text-encre no-underline transition-colors hover:border-vert hover:text-vert";
+    "flex min-h-[48px] items-center justify-center rounded-[8px] border border-contour text-[15px] leading-[20px] font-medium text-encre no-underline transition-colors hover:border-vert hover:text-vert";
 
   return (
     <>
@@ -148,7 +148,7 @@ export function Header({ lang, dict }: Props) {
               onClick={() => setMenuOpen(true)}
               aria-label={dict.common.openMenu}
               aria-expanded={menuOpen}
-              className="flex h-[44px] w-[44px] cursor-pointer items-center justify-center rounded-[9px] bg-surface-2 text-encre transition-colors hover:bg-surface-3 min-[900px]:hidden"
+              className="flex h-[44px] w-[44px] cursor-pointer items-center justify-center rounded-[8px] bg-surface-2 text-encre ring-1 ring-contour transition-colors ring-inset hover:bg-surface-3 min-[900px]:hidden"
             >
               <BurgerIcon />
             </button>
@@ -170,7 +170,7 @@ export function Header({ lang, dict }: Props) {
               type="button"
               onClick={close}
               aria-label={dict.common.close}
-              className="flex h-[44px] w-[44px] cursor-pointer items-center justify-center rounded-[12px] bg-surface-2 text-encre transition-colors hover:bg-surface-3"
+              className="flex h-[44px] w-[44px] cursor-pointer items-center justify-center rounded-[8px] bg-surface-2 text-encre ring-1 ring-contour transition-colors ring-inset hover:bg-surface-3"
             >
               <CloseIcon />
             </button>
@@ -215,7 +215,7 @@ export function Header({ lang, dict }: Props) {
             <ActionLink
               href={telHref(site.phone)}
               unavailableLabel={`${dict.header.menuCall} — ${phoneLabel}`}
-              className="flex min-h-[48px] items-center justify-center rounded-[12px] bg-vert text-[15px] leading-[20px] font-medium text-sur-vert no-underline transition-colors hover:bg-vert-clair disabled:cursor-not-allowed disabled:opacity-55"
+              className="flex min-h-[48px] items-center justify-center rounded-[8px] bg-vert text-[15px] leading-[20px] font-medium text-sur-vert no-underline transition-colors hover:bg-vert-clair disabled:cursor-not-allowed disabled:opacity-55"
             >
               {dict.header.menuCall}
             </ActionLink>

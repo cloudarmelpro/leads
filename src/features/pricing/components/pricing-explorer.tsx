@@ -33,7 +33,7 @@ const GRAIN = `${NOISE}, radial-gradient(130% 125% at 88% 96%, #7FEFC0 0%, #30D9
 
 const EASE = "ease-[cubic-bezier(0.2,0.7,0.2,1)]";
 const PRICE = "font-bold tracking-[-0.02em] tabular-nums whitespace-nowrap";
-const BOOK_FULL = `flex w-full items-center justify-center rounded-[9px] text-[14px] leading-[20px] font-medium no-underline transition-colors duration-[220ms] ${EASE}`;
+const BOOK_FULL = `flex w-full items-center justify-center rounded-[8px] text-[14px] leading-[20px] font-medium no-underline transition-colors duration-[220ms] ${EASE}`;
 
 /**
  * « 1 999 $ » → « 1 999 » + « $ » ; « 35 $ / mois » → « 35 » + « $ / mois » ; « $499 » reste entier,
@@ -219,7 +219,7 @@ export function PricingExplorer({ lang, dict }: Props) {
                   role="tab"
                   aria-selected={on}
                   onClick={() => setPick(k)}
-                  className={`min-h-[44px] min-w-[96px] flex-1 cursor-pointer rounded-[9px] px-[10px] py-[6px] text-[13px] leading-[17px] font-medium whitespace-nowrap transition-colors ${
+                  className={`min-h-[44px] min-w-[96px] flex-1 cursor-pointer rounded-[8px] px-[10px] py-[6px] text-[13px] leading-[17px] font-medium whitespace-nowrap transition-colors ${
                     on ? "bg-vert text-sur-vert" : "text-texte2 hover:text-encre"
                   }`}
                 >
@@ -277,7 +277,7 @@ export function PricingExplorer({ lang, dict }: Props) {
                     setFamKey(f.key);
                     setPick(0);
                   }}
-                  className={`min-h-[40px] cursor-pointer rounded-[9px] px-[16px] py-[8px] text-[14px] leading-[20px] font-medium whitespace-nowrap transition-colors ${
+                  className={`min-h-[40px] cursor-pointer rounded-[8px] px-[16px] py-[8px] text-[14px] leading-[20px] font-medium whitespace-nowrap transition-colors ${
                     active ? "bg-vert text-sur-vert" : "text-texte2 hover:text-encre"
                   }`}
                 >

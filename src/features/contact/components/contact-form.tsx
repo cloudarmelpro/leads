@@ -76,7 +76,7 @@ export function ContactForm({ lang, dict }: Props) {
         <button
           type="button"
           onClick={() => setStatus("idle")}
-          className="mt-[6px] flex min-h-[40px] cursor-pointer items-center rounded-[9px] bg-surface-2 px-[20px] text-[14px] leading-[20px] font-medium text-encre transition-colors duration-200 hover:bg-surface-3"
+          className="mt-[6px] flex min-h-[40px] cursor-pointer items-center rounded-[8px] bg-surface-2 px-[20px] text-[14px] leading-[20px] font-medium text-encre ring-1 ring-contour transition-colors duration-200 ring-inset hover:bg-surface-3"
         >
           {t.another}
         </button>
@@ -226,7 +226,7 @@ export function ContactForm({ lang, dict }: Props) {
       <button
         type="submit"
         disabled={isPending}
-        className="mt-[4px] flex min-h-[48px] w-full cursor-pointer items-center justify-center rounded-[12px] bg-vert text-[15px] leading-[20px] font-medium text-sur-vert transition-[background-color,transform] duration-200 ease-[cubic-bezier(0.2,0.7,0.2,1)] hover:-translate-y-px hover:bg-vert-clair active:scale-[0.99] disabled:cursor-progress disabled:opacity-80"
+        className="mt-[4px] flex min-h-[48px] w-full cursor-pointer items-center justify-center rounded-[8px] bg-vert text-[15px] leading-[20px] font-medium text-sur-vert transition-[background-color,transform] duration-200 ease-[cubic-bezier(0.2,0.7,0.2,1)] hover:-translate-y-px hover:bg-vert-clair active:scale-[0.99] disabled:cursor-progress disabled:opacity-80"
       >
         {isPending ? t.sending : t.send}
       </button>

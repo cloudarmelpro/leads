@@ -79,7 +79,7 @@ export async function BlogArticle({ post, lang }: Props) {
             {back}
             <Link
               href={`/${lang}/contact#formulaire`}
-              className="flex h-[40px] items-center rounded-[9px] bg-vert px-[20px] text-[14px] leading-[20px] font-medium text-sur-vert no-underline transition-colors hover:bg-vert-clair"
+              className="flex h-[40px] items-center rounded-[8px] bg-vert px-[20px] text-[14px] leading-[20px] font-medium text-sur-vert no-underline transition-colors hover:bg-vert-clair"
             >
               {t.articleCta}
             </Link>

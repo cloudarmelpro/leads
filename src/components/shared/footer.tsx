@@ -139,7 +139,7 @@ export function Footer({ lang, dict }: Props) {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={dict.footer.social[network.key]}
-                  className={`tap-44 flex h-[36px] w-[36px] items-center justify-center rounded-[9px] bg-surface-2 text-encre ring-1 ring-contour ring-inset transition-colors hover:ring-0 ${SOCIAL_HOVER[network.key]}`}
+                  className={`tap-44 flex h-[36px] w-[36px] items-center justify-center rounded-[8px] bg-surface-2 text-encre ring-1 ring-contour ring-inset transition-colors hover:ring-0 ${SOCIAL_HOVER[network.key]}`}
                 >
                   <Icon />
                 </a>

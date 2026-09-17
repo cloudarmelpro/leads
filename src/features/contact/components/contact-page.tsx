@@ -39,14 +39,14 @@ export function ContactPageContent({ lang, dict }: Props) {
           <div className="mt-[6px] flex flex-wrap gap-[10px]">
             <a
               href="#rendez-vous"
-              className="flex h-[38px] items-center gap-[10px] rounded-[9px] bg-vert px-[22px] text-[14px] leading-[20px] font-medium text-sur-vert no-underline transition-colors hover:bg-vert-clair"
+              className="flex h-[38px] items-center gap-[10px] rounded-[8px] bg-vert px-[22px] text-[14px] leading-[20px] font-medium text-sur-vert no-underline transition-colors hover:bg-vert-clair"
             >
               {dict.hero.ctaBook}
             </a>
             {tel && (
               <a
                 href={tel}
-                className="flex h-[38px] items-center gap-[9px] rounded-[9px] bg-surface-2 px-[20px] text-[14px] leading-[20px] font-medium text-encre no-underline transition-colors hover:bg-surface-3"
+                className="flex h-[38px] items-center gap-[9px] rounded-[8px] bg-surface-2 px-[20px] text-[14px] leading-[20px] font-medium text-encre no-underline ring-1 ring-contour transition-colors ring-inset hover:bg-surface-3"
               >
                 <Phone size={15} strokeWidth={2.2} aria-hidden />
                 {site.phone}

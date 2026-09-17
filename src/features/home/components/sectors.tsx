@@ -89,7 +89,7 @@ export function Sectors({ lang, dict }: Props) {
                   <p className="m-[0px] max-w-[480px] text-[15px] leading-[26px] font-normal text-white/90 text-pretty">{demo.pitch}</p>
                   <Link
                     href={`/${lang}/contact`}
-                    className="mt-[6px] inline-flex min-h-[44px] w-fit items-center rounded-[10px] bg-vert px-[20px] text-[14px] leading-[20px] font-medium whitespace-nowrap text-sur-vert no-underline transition-colors hover:bg-vert-clair"
+                    className="mt-[6px] inline-flex min-h-[44px] w-fit items-center rounded-[8px] bg-vert px-[20px] text-[14px] leading-[20px] font-medium whitespace-nowrap text-sur-vert no-underline transition-colors hover:bg-vert-clair"
                   >
                     {t.ctaBook}
                   </Link>

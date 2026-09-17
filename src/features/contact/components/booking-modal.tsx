@@ -84,7 +84,7 @@ export function BookingModal({ dict, calLink, onClose }: Props) {
             type="button"
             onClick={onClose}
             aria-label={t.close}
-            className="flex h-[40px] w-[40px] shrink-0 cursor-pointer items-center justify-center rounded-[12px] bg-surface-2 text-encre transition-colors duration-200 hover:bg-surface-3"
+            className="flex h-[40px] w-[40px] shrink-0 cursor-pointer items-center justify-center rounded-[8px] bg-surface-2 text-encre ring-1 ring-contour transition-colors duration-200 ring-inset hover:bg-surface-3"
           >
             <X size={15} strokeWidth={2.4} aria-hidden />
           </button>
@@ -128,7 +128,7 @@ export function BookingModal({ dict, calLink, onClose }: Props) {
             <button
               type="button"
               disabled={!picked}
-              className={`flex min-h-[48px] items-center justify-center gap-[10px] rounded-[12px] text-[15px] leading-[20px] font-medium transition-colors duration-200 ${
+              className={`flex min-h-[48px] items-center justify-center gap-[10px] rounded-[8px] text-[15px] leading-[20px] font-medium transition-colors duration-200 ${
                 picked ? "cursor-pointer bg-vert text-sur-vert hover:bg-vert-clair" : "cursor-default bg-surface-2 text-texte2"
               }`}
             >
