@@ -25,16 +25,17 @@ const PHOTOS = [
 // collent juste dessous et la suivante recouvre la précédente en défilant.
 // Sous 900px, l'en-tete de section n'est pas collant (trop haut) : les cartes se collent sous l'en-tete de page.
 const HEADER_STICKY = "min-[900px]:sticky min-[900px]:top-[68px]";
-const CARD_TOP = "top-[80px] min-[900px]:top-[calc(68px+var(--sectors-head)+16px)]";
+const CARD_TOP = "top-[80px] min-[900px]:top-[calc(68px+var(--sectors-head)+8px)]";
 
 /**
- * Secteurs (direction du 2026-09-17, d'après une vidéo de référence) : un en-tête collant
- * — titre à gauche, étapes numérotées à droite — puis sept grandes cartes empilées.
+ * Secteurs (direction du 2026-09-17, d'après une vidéo de référence) : un panneau d'en-tête
+ * collant — titre à gauche, étapes numérotées à droite — sous lequel sept grandes cartes
+ * viennent s'emboîter et s'empiler.
  * Chaque carte est `sticky` sous l'en-tête : en défilant, la suivante glisse par-dessus.
  * La photo couvre toute la carte, sans fondu ni filet, texte en blanc ; secteur en surtitre,
  * argument en texte courant et bouton d'appel à droite.
- * Sous 900px, texte en bas de la photo. Pas de JavaScript pour l'empilement ; seul
- * l'indicateur d'étape observe les cartes.
+ * Sous 900px, texte en bas de la photo. L'empilement est du CSS (sticky) ; le petit script
+ * de `SectorSteps` tient l'étape active et rétrécit la carte recouverte, comme la référence.
  */
 export function Sectors({ lang, dict }: Props) {
   const t = dict.hero;
@@ -42,7 +43,7 @@ export function Sectors({ lang, dict }: Props) {
   return (
     <section className={`relative flex justify-center pb-[clamp(112px,16vw,240px)] [--sectors-head:128px] ${GOUTTIERE}`}>
       <div className="w-full max-w-[1400px]">
-        <div className={`${HEADER_STICKY} z-[3] flex min-h-[var(--sectors-head)] flex-wrap items-center justify-between gap-x-[32px] gap-y-[14px] bg-fond py-[28px]`}>
+        <div className={`${HEADER_STICKY} z-[3] flex min-h-[var(--sectors-head)] flex-wrap items-center justify-between gap-x-[32px] gap-y-[14px] rounded-[24px] bg-surface px-[clamp(20px,3vw,48px)] py-[24px] ring-1 ring-ligne ring-inset dark:ring-contour`}>
           <div className="flex flex-col gap-[2px]">
             <span id="secteurs" className="text-[13px] leading-[20px] font-medium tracking-[0.08em] text-vert uppercase">
               {t.tradesKicker}
@@ -52,7 +53,7 @@ export function Sectors({ lang, dict }: Props) {
           <SectorSteps names={t.demos.map((demo) => demo.trade)} aria={t.stepAria} />
         </div>
 
-        <ol className="m-[0px] mt-[16px] flex list-none flex-col gap-[clamp(16px,2vw,24px)] p-[0px]">
+        <ol className="m-[0px] mt-[8px] flex list-none flex-col gap-[clamp(12px,1.5vw,20px)] p-[0px]">
           {t.demos.map((demo, index) => {
             const photo = PHOTOS[index];
             if (!photo) return null;
@@ -60,7 +61,7 @@ export function Sectors({ lang, dict }: Props) {
               <li
                 key={demo.trade}
                 data-sector-card={index}
-                className={`sticky ${CARD_TOP} grid h-[560px] grid-cols-[minmax(0,1fr)] min-[900px]:h-[clamp(440px,64vh,620px)] overflow-hidden rounded-[24px] bg-surface min-[900px]:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]`}
+                className={`sticky ${CARD_TOP} grid h-[560px] origin-top grid-cols-[minmax(0,1fr)] min-[900px]:h-[clamp(440px,64vh,620px)] overflow-hidden rounded-[24px] bg-surface min-[900px]:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]`}
               >
                 {/* La photo couvre toute la carte, sans fondu (demande du client) ; un leger
                     assombrissement uniforme et le texte en blanc gardent l'argument lisible. */}
