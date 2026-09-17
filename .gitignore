@@ -60,3 +60,4 @@ __pycache__/
 /*.png
 
 .vercel
+docs/ref/

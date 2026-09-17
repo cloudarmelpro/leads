@@ -5,7 +5,8 @@ import { useEffect, useState } from "react";
 type Props = { names: string[]; aria: string };
 
 // Rétrécissement maximal d'une carte quand la suivante la recouvre entièrement.
-const SHRINK = 0.06;
+// 0,12 = rapport mesuré sur la vidéo de référence (1167/1320 px de large).
+const SHRINK = 0.12;
 
 /**
  * Étapes numérotées de la section Secteurs (référence : « 1 — 2 — 3 ») et effet
@@ -73,11 +74,11 @@ export function SectorSteps({ names, aria }: Props) {
         const on = index === active;
         return (
           <li key={name} className="flex items-center">
-            {index > 0 && <span aria-hidden className="mx-[4px] h-px w-[clamp(6px,1.6vw,28px)] border-t border-dashed border-contour min-[620px]:mx-[6px]" />}
+            {index > 0 && <span aria-hidden className="mx-[4px] h-px w-[clamp(6px,2.4vw,44px)] border-t border-dashed border-contour min-[620px]:mx-[8px]" />}
             <span
               aria-label={aria.replace("{n}", String(index + 1)).replace("{total}", String(names.length)).replace("{name}", name)}
               aria-current={on ? "step" : undefined}
-              className={`flex h-[30px] w-[30px] items-center justify-center rounded-full text-[13px] leading-none font-medium tabular-nums transition-colors duration-300 min-[620px]:h-[36px] min-[620px]:w-[36px] min-[620px]:text-[14px] ${
+              className={`flex h-[34px] w-[34px] items-center justify-center rounded-full text-[14px] leading-none font-medium tabular-nums transition-colors duration-300 min-[620px]:h-[44px] min-[620px]:w-[44px] min-[620px]:text-[15px] ${
                 on ? "bg-vert text-sur-vert" : "text-texte2 ring-1 ring-contour ring-inset"
               }`}
             >

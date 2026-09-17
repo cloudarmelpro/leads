@@ -25,14 +25,16 @@ const PHOTOS = [
 // collent juste dessous et la suivante recouvre la précédente en défilant.
 // Sous 900px, l'en-tete de section n'est pas collant (trop haut) : les cartes se collent sous l'en-tete de page.
 const HEADER_STICKY = "min-[900px]:sticky min-[900px]:top-[68px]";
-const CARD_TOP = "top-[80px] min-[900px]:top-[calc(68px+var(--sectors-head)+8px)]";
+const CARD_TOP = "top-[80px] min-[900px]:top-[calc(68px+var(--sectors-head))]";
 
 /**
- * Secteurs (direction du 2026-09-17, d'après une vidéo de référence) : un panneau d'en-tête
- * collant — titre à gauche, étapes numérotées à droite — sous lequel sept grandes cartes
- * viennent s'emboîter et s'empiler.
+ * Secteurs (direction du 2026-09-17, mesurée image par image sur la vidéo de référence) :
+ * en-tête collant — titre à gauche, étapes numérotées à droite — et sept grandes cartes
+ * qui s'empilent dessous. En-tête et cartes ont la MÊME largeur et se touchent : ils
+ * forment un seul bloc, l'en-tête n'a donc ni filet ni coins bas arrondis, seul un fond
+ * un peu plus clair le détache de la page (comme la référence).
  * Chaque carte est `sticky` sous l'en-tête : en défilant, la suivante glisse par-dessus.
- * La photo couvre toute la carte, sans fondu ni filet, texte en blanc ; secteur en surtitre,
+ * La photo couvre toute la carte, sans fondu, texte en blanc ; secteur en surtitre,
  * argument en texte courant et bouton d'appel à droite.
  * Sous 900px, texte en bas de la photo. L'empilement est du CSS (sticky) ; le petit script
  * de `SectorSteps` tient l'étape active et rétrécit la carte recouverte, comme la référence.
@@ -41,9 +43,9 @@ export function Sectors({ lang, dict }: Props) {
   const t = dict.hero;
 
   return (
-    <section className={`relative flex justify-center pb-[clamp(112px,16vw,240px)] [--sectors-head:128px] ${GOUTTIERE}`}>
+    <section className={`relative flex justify-center pb-[clamp(112px,16vw,240px)] [--sectors-head:112px] ${GOUTTIERE}`}>
       <div className="w-full max-w-[1400px]">
-        <div className={`${HEADER_STICKY} z-[3] flex min-h-[var(--sectors-head)] flex-wrap items-center justify-between gap-x-[32px] gap-y-[14px] rounded-[24px] bg-surface px-[clamp(20px,3vw,48px)] py-[24px] ring-1 ring-ligne ring-inset dark:ring-contour`}>
+        <div className={`${HEADER_STICKY} z-[3] flex min-h-[var(--sectors-head)] flex-wrap items-center justify-between gap-x-[32px] gap-y-[14px] rounded-t-[24px] bg-surface px-[clamp(20px,3vw,48px)] py-[22px]`}>
           <div className="flex flex-col gap-[2px]">
             <span id="secteurs" className="text-[13px] leading-[20px] font-medium tracking-[0.08em] text-vert uppercase">
               {t.tradesKicker}
@@ -53,7 +55,7 @@ export function Sectors({ lang, dict }: Props) {
           <SectorSteps names={t.demos.map((demo) => demo.trade)} aria={t.stepAria} />
         </div>
 
-        <ol className="m-[0px] mt-[8px] flex list-none flex-col gap-[clamp(12px,1.5vw,20px)] p-[0px]">
+        <ol className="m-[0px] flex list-none flex-col gap-[4px] p-[0px]">
           {t.demos.map((demo, index) => {
             const photo = PHOTOS[index];
             if (!photo) return null;
