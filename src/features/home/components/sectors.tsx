@@ -32,7 +32,7 @@ const CARD_TOP = "top-[80px] min-[900px]:top-[calc(68px+var(--sectors-head)+16px
  * — titre à gauche, étapes numérotées à droite — puis sept grandes cartes empilées.
  * Chaque carte est `sticky` sous l'en-tête : en défilant, la suivante glisse par-dessus.
  * La photo couvre toute la carte, sans fondu ni filet, texte en blanc ; secteur en surtitre,
- * argument en grand et bouton d'appel à droite.
+ * argument en texte courant et bouton d'appel à droite.
  * Sous 900px, texte en bas de la photo. Pas de JavaScript pour l'empilement ; seul
  * l'indicateur d'étape observe les cartes.
  */
@@ -68,7 +68,7 @@ export function Sectors({ lang, dict }: Props) {
                 <span aria-hidden className="absolute inset-[0px] bg-black/25" />
                 <div className="relative flex flex-col justify-end gap-[18px] p-[clamp(24px,3.2vw,56px)] min-[900px]:col-start-2 min-[900px]:justify-center">
                   <span className="text-[13px] leading-[20px] font-medium tracking-[0.14em] text-white/80 uppercase [text-shadow:0_1px_2px_rgba(0,0,0,0.5)]">{demo.trade}</span>
-                  <p className="m-[0px] max-w-[560px] text-[clamp(19px,1.9vw,27px)] leading-[1.35] font-normal tracking-[-0.2px] text-white text-pretty [text-shadow:0_1px_3px_rgba(0,0,0,0.55)]">{demo.pitch}</p>
+                  <p className="m-[0px] max-w-[480px] text-[15px] leading-[26px] font-normal text-white text-pretty [text-shadow:0_1px_3px_rgba(0,0,0,0.55)]">{demo.pitch}</p>
                   <Link
                     href={`/${lang}/contact`}
                     className="mt-[6px] inline-flex min-h-[44px] w-fit items-center rounded-[10px] bg-vert px-[20px] text-[14px] leading-[20px] font-medium whitespace-nowrap text-sur-vert no-underline transition-colors hover:bg-vert-clair"
