@@ -67,6 +67,20 @@ export function Hero({ lang, dict }: Props) {
             {features.pricing ? t.ctaPricing : dict.nav.about}
           </Link>
         </div>
+
+        {/* Rangee facon « trusted by ». Aucun logo client : rien de confirme, et le guide
+            interdit d'inventer des references. On nomme les metiers vises. */}
+        <div className="mt-[6px] flex flex-col items-start gap-[10px] min-[620px]:max-w-[min(700px,64%)]">
+          <span className="text-[12px] leading-[18px] font-medium tracking-[0.12em] text-texte2/75 uppercase">{t.trustedKicker}</span>
+          <ul className="m-[0px] flex list-none flex-wrap items-center gap-x-[10px] gap-y-[6px] p-[0px]">
+            {t.demos.map((demo, index) => (
+              <li key={demo.trade} className="flex items-center gap-[10px] text-[13px] leading-[18px] font-normal text-texte2">
+                {index > 0 && <span aria-hidden className="block h-[3px] w-[3px] rounded-full bg-texte2/45" />}
+                {demo.trade}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </section>
   );

@@ -113,7 +113,8 @@
       }
     ],
     "ctaPricing": "See plans and pricing",
-    "stepAria": "Sector {n} of {total}: {name}"
+    "stepAria": "Sector {n} of {total}: {name}",
+    "trustedKicker": "Built for"
   },
   "services": {
     "kicker": "Services",
