@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { DM_Sans, Geist_Mono } from "next/font/google";
+import { Geist_Mono, Poppins } from "next/font/google";
 import { notFound } from "next/navigation";
 
 import "../globals.css";
@@ -17,9 +17,10 @@ import { pageMetadata } from "@/lib/seo/metadata";
 
 import { setRequestLocale } from "@/lib/i18n/request-locale";
 
-// Police unique de la maquette « Accueil » : DM Sans (400 / 500 / 600 / 700).
-const dmSans = DM_Sans({
-  variable: "--font-dm-sans",
+// Police unique du site : Poppins (400 / 500 / 600 / 700). Google n'en publie pas de
+// version variable : les graisses doivent etre listees une a une.
+const poppins = Poppins({
+  variable: "--font-poppins",
   subsets: ["latin", "latin-ext"],
   weight: ["400", "500", "600", "700"],
 });
@@ -62,7 +63,7 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[la
   return (
     <html
       lang={localeHtmlLang[lang]}
-      className={`${dmSans.variable} ${geistMono.variable}`}
+      className={`${poppins.variable} ${geistMono.variable}`}
       // Le script inline pose `.dark` sur <html> avant l'hydratation (script de
       // thème) → on ignore la différence de className.
       suppressHydrationWarning

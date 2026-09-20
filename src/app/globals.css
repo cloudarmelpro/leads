@@ -59,9 +59,9 @@
   /* Corps des articles de blog (17px/30px) : gris encre en clair, #c6d5db en sombre. */
   --color-prose: #4a5560;
 
-  /* Une seule police (maquette Accueil) : DM Sans, graisses 400 / 500 / 700. */
-  --font-display: var(--font-dm-sans), -apple-system, "Segoe UI", sans-serif;
-  --font-sans: var(--font-dm-sans), -apple-system, "Segoe UI", sans-serif;
+  /* Une seule police : Poppins, graisses 400 / 500 / 600 / 700. */
+  --font-display: var(--font-poppins), -apple-system, "Segoe UI", sans-serif;
+  --font-sans: var(--font-poppins), -apple-system, "Segoe UI", sans-serif;
   --font-serif: ui-serif, Georgia, serif;
   --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
