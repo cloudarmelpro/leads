@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { Geist_Mono } from "next/font/google";
-import localFont from "next/font/local";
+import { Geist_Mono, Google_Sans } from "next/font/google";
 import { notFound } from "next/navigation";
 
 import "../globals.css";
@@ -18,15 +17,12 @@ import { pageMetadata } from "@/lib/seo/metadata";
 
 import { setRequestLocale } from "@/lib/i18n/request-locale";
 
-// Police unique du site : Google Sans (licence SIL Open Font 1.1). Absente de la liste
-// de `next/font/google`, donc servie depuis le projet : un seul fichier variable 400-700,
-// sous-ensemble latin — il couvre les accents du francais. Aucun appel a Google au
-// chargement de la page (vitesse, et rien qui parte chez un tiers).
-const googleSans = localFont({
-  src: "../fonts/google-sans-latin.woff2",
+// Police unique du site : Google Sans (licence SIL Open Font 1.1), en variable 400-700.
+// `next/font` la telecharge a la compilation et la sert depuis notre domaine : aucun
+// appel a Google quand un visiteur ouvre la page.
+const googleSans = Google_Sans({
   variable: "--font-google-sans",
-  weight: "400 700",
-  display: "swap",
+  subsets: ["latin", "latin-ext"],
 });
 // Accent monospace (boutons, coordonnées) — conservé.
 const geistMono = Geist_Mono({

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+import { Google_Sans } from "next/font/google";
 
 import "./globals.css";
 
@@ -14,11 +14,9 @@ import { getDictionary } from "@/lib/i18n/dictionaries";
  * Requiert `experimental.globalNotFound: true` dans `next.config.ts`.
  * Bilingue côte à côte : aucune locale n'est connue à ce stade.
  */
-const googleSans = localFont({
-  src: "./fonts/google-sans-latin.woff2",
+const googleSans = Google_Sans({
   variable: "--font-google-sans",
-  weight: "400 700",
-  display: "swap",
+  subsets: ["latin", "latin-ext"],
 });
 
 export async function generateMetadata(): Promise<Metadata> {
