@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Geist_Mono, Poppins } from "next/font/google";
+import { Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import { notFound } from "next/navigation";
 
 import "../globals.css";
@@ -17,12 +18,15 @@ import { pageMetadata } from "@/lib/seo/metadata";
 
 import { setRequestLocale } from "@/lib/i18n/request-locale";
 
-// Police unique du site : Poppins (400 / 500 / 600 / 700). Google n'en publie pas de
-// version variable : les graisses doivent etre listees une a une.
-const poppins = Poppins({
-  variable: "--font-poppins",
-  subsets: ["latin", "latin-ext"],
-  weight: ["400", "500", "600", "700"],
+// Police unique du site : Google Sans (licence SIL Open Font 1.1). Absente de la liste
+// de `next/font/google`, donc servie depuis le projet : un seul fichier variable 400-700,
+// sous-ensemble latin — il couvre les accents du francais. Aucun appel a Google au
+// chargement de la page (vitesse, et rien qui parte chez un tiers).
+const googleSans = localFont({
+  src: "../fonts/google-sans-latin.woff2",
+  variable: "--font-google-sans",
+  weight: "400 700",
+  display: "swap",
 });
 // Accent monospace (boutons, coordonnées) — conservé.
 const geistMono = Geist_Mono({
@@ -63,7 +67,7 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[la
   return (
     <html
       lang={localeHtmlLang[lang]}
-      className={`${poppins.variable} ${geistMono.variable}`}
+      className={`${googleSans.variable} ${geistMono.variable}`}
       // Le script inline pose `.dark` sur <html> avant l'hydratation (script de
       // thème) → on ignore la différence de className.
       suppressHydrationWarning

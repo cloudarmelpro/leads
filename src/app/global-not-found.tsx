@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
+import localFont from "next/font/local";
 
 import "./globals.css";
 
@@ -14,10 +14,11 @@ import { getDictionary } from "@/lib/i18n/dictionaries";
  * Requiert `experimental.globalNotFound: true` dans `next.config.ts`.
  * Bilingue côte à côte : aucune locale n'est connue à ce stade.
  */
-const poppins = Poppins({
-  variable: "--font-poppins",
-  subsets: ["latin", "latin-ext"],
-  weight: ["400", "500", "600", "700"],
+const googleSans = localFont({
+  src: "./fonts/google-sans-latin.woff2",
+  variable: "--font-google-sans",
+  weight: "400 700",
+  display: "swap",
 });
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -29,7 +30,7 @@ export default async function GlobalNotFound() {
   const [fr, en] = await Promise.all([getDictionary("fr"), getDictionary("en")]);
 
   return (
-    <html lang="fr" className={poppins.variable}>
+    <html lang="fr" className={googleSans.variable}>
       <body className="min-h-dvh bg-fond text-encre">
         <main className="mx-auto flex min-h-dvh max-w-[52ch] flex-col justify-center gap-10 px-[clamp(1rem,4vw,3.5rem)] py-16">
           <section>
