@@ -83,7 +83,11 @@ export function Sectors({ lang, dict }: Props) {
                 {/* La photo couvre toute la carte, sans fondu (demande du client) ; c'est
                     l'assombrissement uniforme (55%) qui garde l'argument blanc lisible,
                     y compris sur les photos claires comme le deneigement. */}
-                <Image src={`/images/home/${photo}.jpg`} alt={demo.imgLabel} fill sizes="(max-width: 900px) 100vw, 1400px" className="object-cover" />
+                {/* La carte est `sticky` : Next refuse ce positionnement comme parent d'une
+                    image `fill`. On l'enveloppe donc dans un calque absolu. */}
+                <span className="absolute inset-[0px]">
+                  <Image src={`/images/home/${photo}.jpg`} alt={demo.imgLabel} fill sizes="(max-width: 900px) 100vw, 1400px" className="object-cover" />
+                </span>
                 <span aria-hidden className="absolute inset-[0px] bg-black/55" />
                 <div className="relative flex flex-col justify-end gap-[18px] p-[clamp(24px,3.2vw,56px)] min-[900px]:col-start-2 min-[900px]:justify-center">
                   <span className="text-[13px] leading-[20px] font-normal tracking-[0.14em] text-white/75 uppercase">{demo.trade}</span>
