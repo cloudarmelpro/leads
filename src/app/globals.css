@@ -64,9 +64,11 @@
      Helvetica sur macOS, Liberation Sans sur Linux (metriques identiques a Arial). */
   --font-display: Arial, Helvetica, "Liberation Sans", sans-serif;
   --font-sans: Arial, Helvetica, "Liberation Sans", sans-serif;
-  --font-serif: ui-serif, Georgia, serif;
-  /* Monospace du systeme : plus aucune police n'est telechargee sur le site. */
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  --font-serif: Arial, Helvetica, "Liberation Sans", sans-serif;
+  /* Arial derriere `font-mono` aussi : le client ne veut qu'une seule police sur le
+     site. Plus aucun composant n'utilise ce jeton ; il pointe sur la meme pile pour
+     qu'un usage futur ne fasse pas revenir une deuxieme police. */
+  --font-mono: Arial, Helvetica, "Liberation Sans", sans-serif;
 
   /*
    * Tokens shadcn/ui mappés sur la marque (site clair uniquement, pas de mode
