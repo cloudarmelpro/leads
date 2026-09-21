@@ -59,16 +59,16 @@
   /* Corps des articles de blog (17px/30px) : gris encre en clair, #c6d5db en sombre. */
   --color-prose: #4a5560;
 
-  /* Une seule police : Arial, prise sur la machine du visiteur (rien a telecharger).
-     Les reserves gardent les memes proportions la ou Arial est absente :
-     Helvetica sur macOS, Liberation Sans sur Linux (metriques identiques a Arial). */
-  --font-display: Arial, Helvetica, "Liberation Sans", sans-serif;
-  --font-sans: Arial, Helvetica, "Liberation Sans", sans-serif;
-  --font-serif: Arial, Helvetica, "Liberation Sans", sans-serif;
-  /* Arial derriere `font-mono` aussi : le client ne veut qu'une seule police sur le
-     site. Plus aucun composant n'utilise ce jeton ; il pointe sur la meme pile pour
-     qu'un usage futur ne fasse pas revenir une deuxieme police. */
-  --font-mono: Arial, Helvetica, "Liberation Sans", sans-serif;
+  /* Une seule police : Neue Haas Grotesk Display Pro, servie depuis le projet.
+     Arial en reserve — proportions voisines, donc les retours a la ligne bougent peu
+     pendant le chargement. */
+  --font-display: var(--font-neue-haas), Arial, Helvetica, sans-serif;
+  --font-sans: var(--font-neue-haas), Arial, Helvetica, sans-serif;
+  --font-serif: var(--font-neue-haas), Arial, Helvetica, sans-serif;
+  /* Meme police derriere `font-mono` et `font-serif` : le client n'en veut qu'une sur
+     le site. Plus aucun composant ne s'en sert ; ces jetons pointent sur la meme pile
+     pour qu'un usage futur ne fasse pas revenir une deuxieme police. */
+  --font-mono: var(--font-neue-haas), Arial, Helvetica, sans-serif;
 
   /*
    * Tokens shadcn/ui mappés sur la marque (site clair uniquement, pas de mode

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import localFont from "next/font/local";
 import { notFound } from "next/navigation";
 
 import "../globals.css";
@@ -16,8 +17,21 @@ import { pageMetadata } from "@/lib/seo/metadata";
 
 import { setRequestLocale } from "@/lib/i18n/request-locale";
 
-// Police du site : Arial (decision du 2026-09-21). Police systeme, donc rien a
-// telecharger et aucun texte invisible au chargement — la pile est dans globals.css.
+// Police du site : Neue Haas Grotesk Display Pro (fournie par le client, 2026-09-21).
+// Les TTF de bureau ont ete reduits au latin et convertis en woff2 par
+// `scripts/polices-neue-haas.py` : 100 ko -> 17 ko par graisse. Pas d'italique, le site
+// n'en utilise aucune. Arial reste en reserve, ses proportions sont voisines.
+const neueHaas = localFont({
+  src: [
+    { path: "../fonts/neue-haas-300.woff2", weight: "300", style: "normal" },
+    { path: "../fonts/neue-haas-400.woff2", weight: "400", style: "normal" },
+    { path: "../fonts/neue-haas-500.woff2", weight: "500", style: "normal" },
+    { path: "../fonts/neue-haas-700.woff2", weight: "700", style: "normal" },
+  ],
+  variable: "--font-neue-haas",
+  display: "swap",
+});
+
 // ISR courte sur TOUT le site public. Sans `revalidate`, Next annonce
 // `s-maxage=31536000` : le CDN Hostinger (hcdn) gardait alors le HTML un an, sans
 // purge fiable à chaque déploiement → HTML périmé pointant vers des chunks JS
@@ -51,6 +65,7 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[la
   return (
     <html
       lang={localeHtmlLang[lang]}
+      className={neueHaas.variable}
       // Le script inline pose `.dark` sur <html> avant l'hydratation (script de
       // thème) → on ignore la différence de className.
       suppressHydrationWarning
