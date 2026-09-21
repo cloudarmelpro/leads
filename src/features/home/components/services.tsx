@@ -22,7 +22,7 @@ export function Services({ lang, dict }: Props) {
             {t.kicker}
           </span>
           {/* Deux lignes voulues : « Ce qu'on fait, » puis « concrètement ». */}
-          <h2 className="m-[0px] text-[clamp(22px,2vw,28px)] leading-[1.15] font-medium tracking-[-0.4px] text-encre">
+          <h2 className="m-[0px] text-[clamp(22px,2vw,28px)] leading-[1.15] font-normal tracking-[-0.4px] text-encre">
             {t.titleA}
             <br />
             {t.titleB}

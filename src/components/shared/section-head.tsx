@@ -23,7 +23,7 @@ export function SectionHead({ id, label, title, intro, introMax = 380 }: Props) 
         >
           {label}
         </span>
-        <h2 className="m-[0px] text-[clamp(22px,2.6vw,30px)] leading-[1.15] font-medium tracking-[-0.4px] text-encre text-pretty">
+        <h2 className="m-[0px] text-[clamp(22px,2.6vw,30px)] leading-[1.15] font-normal tracking-[-0.4px] text-encre text-pretty">
           {title}
         </h2>
       </div>

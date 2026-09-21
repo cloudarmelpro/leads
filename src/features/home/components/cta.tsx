@@ -46,7 +46,7 @@ export function Cta({ dict }: Props) {
         />
 
         <div className="relative flex flex-col gap-[18px]">
-          <h2 className="m-[0px] max-w-[520px] text-[clamp(22px,2.6vw,30px)] leading-[1.15] font-medium tracking-[-0.4px] text-encre text-balance">
+          <h2 className="m-[0px] max-w-[520px] text-[clamp(22px,2.6vw,30px)] leading-[1.15] font-normal tracking-[-0.4px] text-encre text-balance">
             {t.title}
           </h2>
           <p className="m-[0px] max-w-[440px] text-[15px] leading-[26px] font-normal text-texte2 text-pretty">{t.body}</p>

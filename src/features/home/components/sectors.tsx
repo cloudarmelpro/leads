@@ -65,7 +65,7 @@ export function Sectors({ lang, dict }: Props) {
             <span id="secteurs" className="text-[13px] leading-[20px] font-medium tracking-[0.08em] text-vert uppercase">
               {t.tradesKicker}
             </span>
-            <h2 className="m-[0px] text-[clamp(22px,2vw,28px)] leading-[1.15] font-medium tracking-[-0.4px] text-encre">{t.tradesLabel}</h2>
+            <h2 className="m-[0px] text-[clamp(22px,2vw,28px)] leading-[1.15] font-normal tracking-[-0.4px] text-encre">{t.tradesLabel}</h2>
           </div>
           <SectorSteps names={t.demos.map((demo) => demo.trade)} aria={t.stepAria} />
         </div>

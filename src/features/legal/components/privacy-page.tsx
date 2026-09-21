@@ -68,7 +68,7 @@ export async function PrivacyPage({ lang }: Props) {
                   <span className="text-[0.875rem] leading-[1.5625rem] tabular-nums text-emeraude dark:text-accent-strong">
                     {entry.n}
                   </span>
-                  <h2 className="text-title-fluid font-medium text-encre">{entry.h}</h2>
+                  <h2 className="text-title-fluid font-normal text-encre">{entry.h}</h2>
                 </div>
                 <div className="flex flex-col gap-3">
                   {entry.p.map((para, index) => (
