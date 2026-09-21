@@ -46,7 +46,7 @@ export default async function GlobalNotFound() {
             {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
             <a
               href="/fr"
-              className="mt-6 inline-flex items-center justify-center rounded-xl bg-emeraude px-5 py-3 text-sm font-medium text-white no-underline"
+              className="mt-6 inline-flex items-center justify-center rounded-xl bg-emeraude px-5 py-3 text-sm font-normal text-white no-underline"
             >
               {fr.notFound.cta}
             </a>
@@ -60,7 +60,7 @@ export default async function GlobalNotFound() {
             {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
             <a
               href="/en"
-              className="mt-6 inline-flex items-center justify-center rounded-xl bg-emeraude px-5 py-3 text-sm font-medium text-white no-underline"
+              className="mt-6 inline-flex items-center justify-center rounded-xl bg-emeraude px-5 py-3 text-sm font-normal text-white no-underline"
             >
               {en.notFound.cta}
             </a>

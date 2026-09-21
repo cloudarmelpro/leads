@@ -28,8 +28,8 @@ export function PostCard({ post, lang, minRead }: Props) {
         <span aria-hidden className="absolute inset-[0px] block" style={{ background: SHADE }} />
       </span>
       <span className="flex flex-1 flex-col gap-[11px] pt-[18px]">
-        <span className="text-[12px] leading-[16px] font-medium tracking-[0.08em] text-vert uppercase">{post.category}</span>
-        <span className="text-[17px] leading-[24px] font-medium text-encre text-pretty">{post.title}</span>
+        <span className="text-[12px] leading-[16px] font-normal tracking-[0.08em] text-vert uppercase">{post.category}</span>
+        <span className="text-[17px] leading-[24px] font-normal text-encre text-pretty">{post.title}</span>
         <span className="text-[14px] leading-[24px] font-normal text-texte2 text-pretty">{post.excerpt}</span>
         <span className="mt-auto flex flex-wrap items-center gap-[8px] pt-[4px] text-[13px] leading-[20px] font-normal text-texte2">
           <span>{formatDate(post.date, lang)}</span>

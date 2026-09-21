@@ -90,7 +90,7 @@ export function Header({ lang, dict }: Props) {
   const isCurrent = (href: string) => !href.includes("#") && pathname === href;
 
   const outlined =
-    "flex min-h-[48px] items-center justify-center rounded-[8px] border border-contour text-[15px] leading-[20px] font-medium text-encre no-underline transition-colors hover:border-vert hover:text-vert";
+    "flex min-h-[48px] items-center justify-center rounded-[8px] border border-contour text-[15px] leading-[20px] font-normal text-encre no-underline transition-colors hover:border-vert hover:text-vert";
 
   return (
     <>
@@ -118,7 +118,7 @@ export function Header({ lang, dict }: Props) {
                   {sections.map((item) => (
                     <li key={item.href}>
                       <Link href={item.href} className="flex flex-col gap-[3px] rounded-[10px] px-[14px] py-[12px] no-underline transition-colors hover:bg-surface-2">
-                        <span className="text-[15px] leading-[22px] font-medium text-encre">{item.label}</span>
+                        <span className="text-[15px] leading-[22px] font-normal text-encre">{item.label}</span>
                         <span className="text-[13px] leading-[19px] font-normal text-texte2 text-pretty">{item.desc}</span>
                       </Link>
                     </li>
@@ -138,7 +138,7 @@ export function Header({ lang, dict }: Props) {
             <ThemeToggle label={dict.header.themeAria} optionLabels={dict.header.theme} />
             <Link
               href={`/${lang}/contact`}
-              className="hidden min-h-[38px] items-center rounded-[8px] bg-vert px-[16px] text-[13px] leading-[20px] font-medium whitespace-nowrap text-sur-vert no-underline transition-colors hover:bg-vert-clair min-[900px]:inline-flex"
+              className="hidden min-h-[38px] items-center rounded-[8px] bg-vert px-[16px] text-[13px] leading-[20px] font-normal whitespace-nowrap text-sur-vert no-underline transition-colors hover:bg-vert-clair min-[900px]:inline-flex"
             >
               {dict.nav.contact}
             </Link>
@@ -215,7 +215,7 @@ export function Header({ lang, dict }: Props) {
             <ActionLink
               href={telHref(site.phone)}
               unavailableLabel={`${dict.header.menuCall} — ${phoneLabel}`}
-              className="flex min-h-[48px] items-center justify-center rounded-[8px] bg-vert text-[15px] leading-[20px] font-medium text-sur-vert no-underline transition-colors hover:bg-vert-clair disabled:cursor-not-allowed disabled:opacity-55"
+              className="flex min-h-[48px] items-center justify-center rounded-[8px] bg-vert text-[15px] leading-[20px] font-normal text-sur-vert no-underline transition-colors hover:bg-vert-clair disabled:cursor-not-allowed disabled:opacity-55"
             >
               {dict.header.menuCall}
             </ActionLink>

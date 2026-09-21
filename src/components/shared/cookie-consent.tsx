@@ -77,12 +77,12 @@ export function CookieConsent({ lang, dict }: { lang: Locale; dict: Pick<Diction
       <p className="mb-2">
         <Eyebrow>{t.kicker}</Eyebrow>
       </p>
-      <p className="text-title-fluid font-medium text-encre">{t.title}</p>
+      <p className="text-title-fluid font-normal text-encre">{t.title}</p>
       <p className="mt-2 text-small-fluid text-texte2 text-pretty">
         {t.body}{" "}
         <Link
           href={`/${lang}/confidentialite`}
-          className="tap-44 font-medium text-emeraude underline underline-offset-2 dark:text-accent-strong"
+          className="tap-44 font-normal text-emeraude underline underline-offset-2 dark:text-accent-strong"
         >
           {t.learnMore}
         </Link>
@@ -91,14 +91,14 @@ export function CookieConsent({ lang, dict }: { lang: Locale; dict: Pick<Diction
         <button
           type="button"
           onClick={() => choose("declined")}
-          className="flex-1 min-h-10 cursor-pointer rounded-[8px] bg-surface-2 px-3.5 py-2 text-cta-fluid font-medium text-encre ring-1 ring-contour transition-colors ring-inset hover:bg-surface-3 sm:px-4 sm:py-2.5"
+          className="flex-1 min-h-10 cursor-pointer rounded-[8px] bg-surface-2 px-3.5 py-2 text-cta-fluid font-normal text-encre ring-1 ring-contour transition-colors ring-inset hover:bg-surface-3 sm:px-4 sm:py-2.5"
         >
           {t.decline}
         </button>
         <button
           type="button"
           onClick={() => choose("accepted")}
-          className="flex-1 min-h-10 cursor-pointer rounded-[8px] bg-vert px-3.5 py-2 text-cta-fluid font-medium text-sur-vert transition-colors hover:bg-vert-clair sm:px-4 sm:py-2.5"
+          className="flex-1 min-h-10 cursor-pointer rounded-[8px] bg-vert px-3.5 py-2 text-cta-fluid font-normal text-sur-vert transition-colors hover:bg-vert-clair sm:px-4 sm:py-2.5"
         >
           {t.accept}
         </button>

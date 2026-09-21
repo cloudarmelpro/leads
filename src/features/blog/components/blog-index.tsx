@@ -11,7 +11,7 @@ import { getDictionary } from "@/lib/i18n/dictionaries";
 
 type Props = { lang: Locale };
 
-const PILL = "flex min-h-[34px] items-center rounded-[9px] bg-surface px-[14px] py-[7px] text-[13px] leading-[18px] font-medium text-texte-bascule ring-1 ring-ligne ring-inset dark:ring-0";
+const PILL = "flex min-h-[34px] items-center rounded-[9px] bg-surface px-[14px] py-[7px] text-[13px] leading-[18px] font-normal text-texte-bascule ring-1 ring-ligne ring-inset dark:ring-0";
 
 /**
  * Index du blog (maquette Blog) : hero à deux colonnes — masthead à gauche, article à
@@ -40,7 +40,7 @@ export async function BlogIndex({ lang }: Props) {
         <HeroGrid />
         <div className={`relative z-[1] grid w-full max-w-[1400px] grid-cols-[minmax(0,1fr)] items-end gap-[48px] ${featured ? "min-[620px]:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]" : ""}`}>
           <div className="flex flex-col items-start gap-[20px]">
-            <span className="text-[13px] leading-[20px] font-medium tracking-[0.08em] text-vert uppercase">{dict.nav.blog}</span>
+            <span className="text-[13px] leading-[20px] font-normal tracking-[0.08em] text-vert uppercase">{dict.nav.blog}</span>
             <h1 className="m-[0px] max-w-[520px] text-[clamp(26px,3.2vw,36px)] leading-[1.12] font-normal tracking-[-0.7px] text-encre text-balance">
               {t.title} <span className="text-vert">{t.titleHighlight}</span>
             </h1>

@@ -88,7 +88,7 @@ export function SectorSteps({ names, aria }: Props) {
             <span
               aria-label={aria.replace("{n}", String(index + 1)).replace("{total}", String(names.length)).replace("{name}", name)}
               aria-current={on ? "step" : undefined}
-              className={`flex h-[34px] w-[34px] items-center justify-center rounded-full text-[14px] leading-none font-medium tabular-nums transition-colors duration-300 min-[620px]:h-[44px] min-[620px]:w-[44px] min-[620px]:text-[15px] ${
+              className={`flex h-[34px] w-[34px] items-center justify-center rounded-full text-[14px] leading-none font-normal tabular-nums transition-colors duration-300 min-[620px]:h-[44px] min-[620px]:w-[44px] min-[620px]:text-[15px] ${
                 on ? "bg-vert text-sur-vert" : "text-texte2 ring-1 ring-contour ring-inset"
               }`}
             >

@@ -62,7 +62,7 @@ export function Sectors({ lang, dict }: Props) {
         </span>
         <div className={`${HEADER_STICKY} flex min-h-[var(--sectors-head)] flex-wrap items-center justify-between gap-x-[32px] gap-y-[14px] rounded-t-[24px] bg-surface px-[clamp(20px,3vw,48px)] py-[22px]`}>
           <div className="flex flex-col gap-[2px]">
-            <span id="secteurs" className="text-[13px] leading-[20px] font-medium tracking-[0.08em] text-vert uppercase">
+            <span id="secteurs" className="text-[13px] leading-[20px] font-normal tracking-[0.08em] text-vert uppercase">
               {t.tradesKicker}
             </span>
             <h2 className="m-[0px] text-[clamp(22px,2vw,28px)] leading-[1.15] font-normal tracking-[-0.4px] text-encre">{t.tradesLabel}</h2>
@@ -94,7 +94,7 @@ export function Sectors({ lang, dict }: Props) {
                   <p className="m-[0px] max-w-[480px] text-[15px] leading-[26px] font-normal text-white text-pretty">{demo.pitch}</p>
                   <Link
                     href={`/${lang}/contact`}
-                    className="mt-[6px] inline-flex min-h-[44px] w-fit items-center rounded-[8px] bg-vert px-[20px] text-[14px] leading-[20px] font-medium whitespace-nowrap text-sur-vert no-underline transition-colors hover:bg-vert-clair"
+                    className="mt-[6px] inline-flex min-h-[44px] w-fit items-center rounded-[8px] bg-vert px-[20px] text-[14px] leading-[20px] font-normal whitespace-nowrap text-sur-vert no-underline transition-colors hover:bg-vert-clair"
                   >
                     {t.ctaBook}
                   </Link>

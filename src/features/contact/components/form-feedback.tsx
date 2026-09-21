@@ -23,7 +23,7 @@ export function FormStatusBanner({
     >
       <XCircle size={16} strokeWidth={2.2} className="mt-px shrink-0" aria-hidden />
       <span>
-        <strong className="font-medium">{errorTitle}.</strong> {errorDesc}
+        <strong className="font-normal">{errorTitle}.</strong> {errorDesc}
       </span>
     </p>
   );

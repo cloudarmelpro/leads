@@ -18,7 +18,7 @@ export function Services({ lang, dict }: Props) {
       {/* Trois quarts pour la piste de vignettes, un quart pour le texte (décision du 2026-09-17). */}
       <div className="grid w-full max-w-[1400px] grid-cols-[minmax(0,1fr)] items-center gap-[clamp(32px,4vw,64px)] min-[900px]:grid-cols-[minmax(0,3fr)_minmax(0,1fr)]">
         <div className="flex flex-col items-start gap-[18px] min-[900px]:order-2">
-          <span id="services" className="text-[13px] leading-[20px] font-medium tracking-[0.08em] text-vert uppercase">
+          <span id="services" className="text-[13px] leading-[20px] font-normal tracking-[0.08em] text-vert uppercase">
             {t.kicker}
           </span>
           {/* Deux lignes voulues : « Ce qu'on fait, » puis « concrètement ». */}

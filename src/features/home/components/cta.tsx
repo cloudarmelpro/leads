@@ -62,8 +62,8 @@ export function Cta({ dict }: Props) {
               <Phone size={20} strokeWidth={2.2} aria-hidden />
             </span>
             <span className="flex flex-col gap-[2px]">
-              <span className="text-[12px] leading-[14px] font-medium tracking-[0.06em] text-sur-vert/70 uppercase">{t.callLabel}</span>
-              <span className="text-[20px] leading-[24px] font-semibold tracking-[-0.3px] whitespace-nowrap">{phone}</span>
+              <span className="text-[12px] leading-[14px] font-normal tracking-[0.06em] text-sur-vert/70 uppercase">{t.callLabel}</span>
+              <span className="text-[20px] leading-[24px] font-normal tracking-[-0.3px] whitespace-nowrap">{phone}</span>
             </span>
           </ActionLink>
           <span className="text-[13px] leading-[18px] font-normal text-texte-note">{t.note}</span>

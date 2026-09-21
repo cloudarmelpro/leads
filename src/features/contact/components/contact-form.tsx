@@ -71,12 +71,12 @@ export function ContactForm({ lang, dict }: Props) {
         <span className="flex h-[48px] w-[48px] items-center justify-center rounded-[16px] bg-vert/14 text-vert">
           <Check size={22} strokeWidth={2.2} aria-hidden />
         </span>
-        <span className="text-[20px] leading-[28px] font-medium tracking-[-0.3px] text-encre">{t.successTitle}</span>
+        <span className="text-[20px] leading-[28px] font-normal tracking-[-0.3px] text-encre">{t.successTitle}</span>
         <p className="m-[0px] max-w-[400px] text-[15px] leading-[26px] font-normal text-texte2">{t.successBody}</p>
         <button
           type="button"
           onClick={() => setStatus("idle")}
-          className="mt-[6px] flex min-h-[40px] cursor-pointer items-center rounded-[8px] bg-surface-2 px-[20px] text-[14px] leading-[20px] font-medium text-encre ring-1 ring-contour transition-colors duration-200 ring-inset hover:bg-surface-3"
+          className="mt-[6px] flex min-h-[40px] cursor-pointer items-center rounded-[8px] bg-surface-2 px-[20px] text-[14px] leading-[20px] font-normal text-encre ring-1 ring-contour transition-colors duration-200 ring-inset hover:bg-surface-3"
         >
           {t.another}
         </button>
@@ -206,7 +206,7 @@ export function ContactForm({ lang, dict }: Props) {
                 {t.consent}{" "}
                 <Link
                   href={`/${lang}/confidentialite`}
-                  className="font-medium text-vert underline underline-offset-2 hover:text-vert-clair"
+                  className="font-normal text-vert underline underline-offset-2 hover:text-vert-clair"
                 >
                   {t.consentLink}
                 </Link>
@@ -226,7 +226,7 @@ export function ContactForm({ lang, dict }: Props) {
       <button
         type="submit"
         disabled={isPending}
-        className="mt-[4px] flex min-h-[48px] w-full cursor-pointer items-center justify-center rounded-[8px] bg-vert text-[15px] leading-[20px] font-medium text-sur-vert transition-[background-color,transform] duration-200 ease-[cubic-bezier(0.2,0.7,0.2,1)] hover:-translate-y-px hover:bg-vert-clair active:scale-[0.99] disabled:cursor-progress disabled:opacity-80"
+        className="mt-[4px] flex min-h-[48px] w-full cursor-pointer items-center justify-center rounded-[8px] bg-vert text-[15px] leading-[20px] font-normal text-sur-vert transition-[background-color,transform] duration-200 ease-[cubic-bezier(0.2,0.7,0.2,1)] hover:-translate-y-px hover:bg-vert-clair active:scale-[0.99] disabled:cursor-progress disabled:opacity-80"
       >
         {isPending ? t.sending : t.send}
       </button>

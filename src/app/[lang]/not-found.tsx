@@ -32,13 +32,13 @@ export default async function NotFound() {
           <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
             <Link
               href={`/${lang}`}
-              className="tap-44 inline-flex items-center justify-center rounded-xl bg-emeraude px-5 py-3 text-sm font-medium text-white no-underline transition-colors hover:bg-emeraude/90"
+              className="tap-44 inline-flex items-center justify-center rounded-xl bg-emeraude px-5 py-3 text-sm font-normal text-white no-underline transition-colors hover:bg-emeraude/90"
             >
               {dict.notFound.cta}
             </Link>
             <Link
               href={`/${lang}/contact`}
-              className="tap-44 inline-flex items-center justify-center rounded-xl border border-ligne px-5 py-3 text-sm font-medium text-encre no-underline transition-colors hover:bg-surface"
+              className="tap-44 inline-flex items-center justify-center rounded-xl border border-ligne px-5 py-3 text-sm font-normal text-encre no-underline transition-colors hover:bg-surface"
             >
               {dict.notFound.contact}
             </Link>

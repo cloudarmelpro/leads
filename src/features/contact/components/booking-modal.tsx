@@ -75,7 +75,7 @@ export function BookingModal({ dict, calLink, onClose }: Props) {
       >
         <div className="flex items-start justify-between gap-[16px]">
           <div className="flex min-w-[0px] flex-col gap-[4px]">
-            <span id="booking-modal-title" className="text-[20px] leading-[28px] font-medium tracking-[-0.3px] text-encre">
+            <span id="booking-modal-title" className="text-[20px] leading-[28px] font-normal tracking-[-0.3px] text-encre">
               {t.modalTitle}
             </span>
             <span className="text-[14px] leading-[22px] font-normal text-texte2">{t.modalMeta}</span>
@@ -102,7 +102,7 @@ export function BookingModal({ dict, calLink, onClose }: Props) {
         ) : (
           <>
             <div className="flex flex-col gap-[14px]">
-              <span className="text-[15px] leading-[22px] font-medium text-encre">{t.pickSlot}</span>
+              <span className="text-[15px] leading-[22px] font-normal text-encre">{t.pickSlot}</span>
               <div className="grid grid-cols-[repeat(auto-fit,minmax(112px,1fr))] gap-[10px]">
                 {t.slots.map((slot, i) => {
                   const active = i === pick;
@@ -119,7 +119,7 @@ export function BookingModal({ dict, calLink, onClose }: Props) {
                       <span className={`text-[12px] leading-[16px] font-normal tracking-[0.04em] uppercase ${active ? "text-sur-vert/70" : "text-texte2"}`}>
                         {slot.day}
                       </span>
-                      <span className={`text-[15px] leading-[20px] font-medium ${active ? "text-sur-vert" : "text-encre"}`}>{slot.time}</span>
+                      <span className={`text-[15px] leading-[20px] font-normal ${active ? "text-sur-vert" : "text-encre"}`}>{slot.time}</span>
                     </button>
                   );
                 })}
@@ -128,7 +128,7 @@ export function BookingModal({ dict, calLink, onClose }: Props) {
             <button
               type="button"
               disabled={!picked}
-              className={`flex min-h-[48px] items-center justify-center gap-[10px] rounded-[8px] text-[15px] leading-[20px] font-medium transition-colors duration-200 ${
+              className={`flex min-h-[48px] items-center justify-center gap-[10px] rounded-[8px] text-[15px] leading-[20px] font-normal transition-colors duration-200 ${
                 picked ? "cursor-pointer bg-vert text-sur-vert hover:bg-vert-clair" : "cursor-default bg-surface-2 text-texte2"
               }`}
             >

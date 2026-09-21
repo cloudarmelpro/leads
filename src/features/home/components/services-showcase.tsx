@@ -76,7 +76,7 @@ export function ServicesShowcase({ lang, items }: Props) {
             href={`/${lang}/prix?${pricing}`}
             aria-label={`${priceLine} — ${item.name}`}
             tabIndex={clone ? -1 : undefined}
-            className="relative mt-auto flex min-h-[32px] w-fit items-center text-[clamp(12.5px,0.95vw,14px)] leading-[20px] font-medium text-vert no-underline transition-colors hover:text-vert-clair"
+            className="relative mt-auto flex min-h-[32px] w-fit items-center text-[clamp(12.5px,0.95vw,14px)] leading-[20px] font-normal text-vert no-underline transition-colors hover:text-vert-clair"
           >
             <span className="text-pretty">
               {priceLine}

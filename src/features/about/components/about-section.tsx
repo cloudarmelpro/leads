@@ -67,7 +67,7 @@ export function AboutSection({ id, kicker, title, intro, introMax, items, photo,
                           isOpen ? "bg-vert" : "bg-ligne dark:bg-[#012a3c]"
                         }`}
                       />
-                      <span className="text-[17px] leading-[24px] font-medium text-encre">{item.title}</span>
+                      <span className="text-[17px] leading-[24px] font-normal text-encre">{item.title}</span>
                     </button>
                   </h3>
                   <Collapsible id={panelId} open={isOpen} labelledBy={buttonId}>

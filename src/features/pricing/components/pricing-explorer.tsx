@@ -33,7 +33,7 @@ const GRAIN = `${NOISE}, radial-gradient(130% 125% at 88% 96%, #7FEFC0 0%, #30D9
 
 const EASE = "ease-[cubic-bezier(0.2,0.7,0.2,1)]";
 const PRICE = "font-bold tracking-[-0.02em] tabular-nums whitespace-nowrap";
-const BOOK_FULL = `flex w-full items-center justify-center rounded-[8px] text-[14px] leading-[20px] font-medium no-underline transition-colors duration-[220ms] ${EASE}`;
+const BOOK_FULL = `flex w-full items-center justify-center rounded-[8px] text-[14px] leading-[20px] font-normal no-underline transition-colors duration-[220ms] ${EASE}`;
 
 /**
  * « 1 999 $ » → « 1 999 » + « $ » ; « 35 $ / mois » → « 35 » + « $ / mois » ; « $499 » reste entier,
@@ -154,7 +154,7 @@ export function PricingExplorer({ lang, dict }: Props) {
           style={{ gridTemplateColumns: `minmax(230px,1.5fr) repeat(${columns.length}, minmax(0,1fr))` }}
         >
           <div className="flex flex-col justify-end gap-[6px] px-[16px] py-[20px]">
-            <span className="text-[15px] leading-[22px] font-medium text-encre">{lead}</span>
+            <span className="text-[15px] leading-[22px] font-normal text-encre">{lead}</span>
             <span className="max-w-[280px] text-[13px] leading-[20px] font-normal text-texte2 text-pretty">{diff ? labels.diffRows : labels.allRows}</span>
           </div>
           {columns.map((plan) => (
@@ -185,7 +185,7 @@ export function PricingExplorer({ lang, dict }: Props) {
                 >
                   <path d="M6 9l6 6 6-6" />
                 </svg>
-                <span className="flex-1 text-[15px] leading-[22px] font-medium text-encre">{group.title}</span>
+                <span className="flex-1 text-[15px] leading-[22px] font-normal text-encre">{group.title}</span>
                 <span className="text-[12px] leading-[18px] font-normal text-texte2">{count(group.rows.length, labels.lineOne, labels.lines)}</span>
               </button>,
               ...(open
@@ -219,7 +219,7 @@ export function PricingExplorer({ lang, dict }: Props) {
                   role="tab"
                   aria-selected={on}
                   onClick={() => setPick(k)}
-                  className={`min-h-[44px] min-w-[96px] flex-1 cursor-pointer rounded-[8px] px-[10px] py-[6px] text-[13px] leading-[17px] font-medium whitespace-nowrap transition-colors ${
+                  className={`min-h-[44px] min-w-[96px] flex-1 cursor-pointer rounded-[8px] px-[10px] py-[6px] text-[13px] leading-[17px] font-normal whitespace-nowrap transition-colors ${
                     on ? "bg-vert text-sur-vert" : "text-texte2 hover:text-encre"
                   }`}
                 >
@@ -236,7 +236,7 @@ export function PricingExplorer({ lang, dict }: Props) {
             <div key={group.title} className="flex flex-col px-[6px]">
               <div className="flex items-center gap-[8px] pt-[8px] pb-[12px]">
                 <span aria-hidden className="block h-[8px] w-[8px] rounded-full bg-vert" />
-                <span className="text-[15px] leading-[22px] font-medium text-encre">{group.title}</span>
+                <span className="text-[15px] leading-[22px] font-normal text-encre">{group.title}</span>
               </div>
               {group.rows.map((row, rowIndex) => {
                 const value = row.cells[idx[picked]] ?? EXCLUDED;
@@ -277,7 +277,7 @@ export function PricingExplorer({ lang, dict }: Props) {
                     setFamKey(f.key);
                     setPick(0);
                   }}
-                  className={`min-h-[40px] cursor-pointer rounded-[8px] px-[16px] py-[8px] text-[14px] leading-[20px] font-medium whitespace-nowrap transition-colors ${
+                  className={`min-h-[40px] cursor-pointer rounded-[8px] px-[16px] py-[8px] text-[14px] leading-[20px] font-normal whitespace-nowrap transition-colors ${
                     active ? "bg-vert text-sur-vert" : "text-texte2 hover:text-encre"
                   }`}
                 >
@@ -302,7 +302,7 @@ export function PricingExplorer({ lang, dict }: Props) {
                 {/* En-tête : label + titre de la catégorie, description alignée à droite. */}
                 <div className="flex flex-wrap items-end justify-between gap-[40px]">
                   <div className="flex flex-col gap-[2px]">
-                    <span className="text-[13px] leading-[20px] font-medium tracking-[0.08em] text-vert uppercase">{t.kicker}</span>
+                    <span className="text-[13px] leading-[20px] font-normal tracking-[0.08em] text-vert uppercase">{t.kicker}</span>
                     <h2 className="m-[0px] text-[clamp(22px,2.6vw,30px)] leading-[1.15] font-normal tracking-[-0.4px] text-encre">{fam.title}</h2>
                   </div>
                   <p className="m-[0px] ml-auto max-w-[420px] text-right text-[14px] leading-[24px] font-normal text-texte2 text-pretty">{fam.desc}</p>

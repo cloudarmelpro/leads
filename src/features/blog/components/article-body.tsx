@@ -15,7 +15,7 @@ export function ArticleBody({ blocks }: Props) {
         switch (block.type) {
           case "h":
             return (
-              <h2 key={index} className="mt-[18px] mb-[0px] text-[clamp(20px,2.2vw,24px)] leading-[1.25] font-medium tracking-[-0.4px] text-encre text-pretty">
+              <h2 key={index} className="mt-[18px] mb-[0px] text-[clamp(20px,2.2vw,24px)] leading-[1.25] font-normal tracking-[-0.4px] text-encre text-pretty">
                 {block.text}
               </h2>
             );

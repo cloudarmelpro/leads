@@ -57,13 +57,13 @@ export function Hero({ lang, dict }: Props) {
         <div className="flex flex-wrap items-center gap-[12px]">
           <Link
             href={`/${lang}/contact`}
-            className="tap-44 inline-flex min-h-[38px] items-center rounded-[8px] bg-vert px-[16px] text-[13px] leading-[20px] font-medium whitespace-nowrap text-sur-vert no-underline transition-colors hover:bg-vert-clair"
+            className="tap-44 inline-flex min-h-[38px] items-center rounded-[8px] bg-vert px-[16px] text-[13px] leading-[20px] font-normal whitespace-nowrap text-sur-vert no-underline transition-colors hover:bg-vert-clair"
           >
             {t.ctaBook}
           </Link>
           <Link
             href={features.pricing ? `/${lang}/prix` : `/${lang}/a-propos`}
-            className="tap-44 inline-flex min-h-[38px] items-center rounded-[8px] bg-surface-2 px-[16px] text-[13px] leading-[20px] font-medium whitespace-nowrap text-encre no-underline ring-1 ring-contour transition-colors ring-inset hover:bg-surface-3"
+            className="tap-44 inline-flex min-h-[38px] items-center rounded-[8px] bg-surface-2 px-[16px] text-[13px] leading-[20px] font-normal whitespace-nowrap text-encre no-underline ring-1 ring-contour transition-colors ring-inset hover:bg-surface-3"
           >
             {features.pricing ? t.ctaPricing : dict.nav.about}
           </Link>

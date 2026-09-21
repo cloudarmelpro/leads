@@ -20,7 +20,7 @@ export function EmailCard({ user, domain, label, className, plateClassName, over
           </span>
           <span className="flex min-w-[0px] flex-col gap-[2px]">
             <span className={overClassName}>{label}</span>
-            <span className="text-[16px] leading-[22px] font-medium text-encre [overflow-wrap:anywhere]">{address}</span>
+            <span className="text-[16px] leading-[22px] font-normal text-encre [overflow-wrap:anywhere]">{address}</span>
           </span>
         </>
       )}

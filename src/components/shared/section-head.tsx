@@ -19,7 +19,7 @@ export function SectionHead({ id, label, title, intro, introMax = 380 }: Props) 
       <div className="flex flex-col gap-[2px]">
         <span
           id={id}
-          className="text-[13px] leading-[20px] font-medium tracking-[0.08em] text-vert uppercase"
+          className="text-[13px] leading-[20px] font-normal tracking-[0.08em] text-vert uppercase"
         >
           {label}
         </span>

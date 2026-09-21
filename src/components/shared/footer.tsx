@@ -42,7 +42,7 @@ const SOCIAL_HOVER: Record<SocialKey, string> = {
   linkedin: "hover:bg-[#0a66c2] hover:text-white",
 };
 
-const TITLE = "mb-[12px] text-[13px] leading-[20px] font-medium tracking-[0.08em] text-encre uppercase";
+const TITLE = "mb-[12px] text-[13px] leading-[20px] font-normal tracking-[0.08em] text-encre uppercase";
 const LINK = "text-[14px] leading-[26px] font-normal text-texte3 no-underline transition-colors hover:text-encre";
 const COORD = "text-[14px] leading-[26px] font-normal text-texte3 no-underline transition-colors hover:text-vert";
 

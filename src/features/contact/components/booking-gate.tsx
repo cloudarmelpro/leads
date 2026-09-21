@@ -37,7 +37,7 @@ export function BookingGate({ dict, calLink }: Props) {
           <span className="flex h-[44px] w-[44px] items-center justify-center rounded-[14px] bg-surface-2 text-vert">
             <Calendar size={21} strokeWidth={1.8} aria-hidden />
           </span>
-          <span className="text-[17px] leading-[24px] font-medium text-encre">{t.loadTitle}</span>
+          <span className="text-[17px] leading-[24px] font-normal text-encre">{t.loadTitle}</span>
           <p className="m-[0px] text-[14px] leading-[23px] font-normal text-texte2 text-pretty">{t.loadBody}</p>
           <button
             ref={trigger}
@@ -45,7 +45,7 @@ export function BookingGate({ dict, calLink }: Props) {
             onClick={() => setOpen(true)}
             aria-haspopup="dialog"
             aria-expanded={open}
-            className="mt-[4px] flex min-h-[40px] cursor-pointer items-center rounded-[8px] bg-vert px-[20px] text-[14px] leading-[20px] font-medium text-sur-vert transition-colors duration-200 ease-[cubic-bezier(0.2,0.7,0.2,1)] hover:bg-vert-clair"
+            className="mt-[4px] flex min-h-[40px] cursor-pointer items-center rounded-[8px] bg-vert px-[20px] text-[14px] leading-[20px] font-normal text-sur-vert transition-colors duration-200 ease-[cubic-bezier(0.2,0.7,0.2,1)] hover:bg-vert-clair"
           >
             {t.loadCta}
           </button>

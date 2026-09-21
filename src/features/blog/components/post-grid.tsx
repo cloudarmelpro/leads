@@ -33,7 +33,7 @@ export function PostGrid({ posts, featuredSlug, categories, lang, allLabel, minR
         type="button"
         aria-pressed={on}
         onClick={() => setActive(value)}
-        className={`flex min-h-[40px] cursor-pointer items-center rounded-[8px] px-[16px] text-[13px] leading-[18px] font-medium transition-colors duration-200 ease-[cubic-bezier(0.2,0.7,0.2,1)] pointer-coarse:min-h-[44px] ${
+        className={`flex min-h-[40px] cursor-pointer items-center rounded-[8px] px-[16px] text-[13px] leading-[18px] font-normal transition-colors duration-200 ease-[cubic-bezier(0.2,0.7,0.2,1)] pointer-coarse:min-h-[44px] ${
           on ? "bg-vert text-sur-vert" : "bg-surface text-texte-bascule hover:bg-surface-2"
         }`}
       >

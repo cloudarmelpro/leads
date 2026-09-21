@@ -38,10 +38,10 @@ export function AccordionRow({ id, open, onToggle, number, title, children, body
           className="flex min-h-[64px] w-full cursor-pointer items-center gap-[20px] px-[24px] py-[20px] text-left"
         >
           {number && (
-            <span className="shrink-0 text-[13px] leading-[24px] font-medium tracking-[0.08em] text-vert">{number}</span>
+            <span className="shrink-0 text-[13px] leading-[24px] font-normal tracking-[0.08em] text-vert">{number}</span>
           )}
           <span
-            className={`min-w-[0px] flex-1 overflow-hidden text-[16px] leading-[24px] font-medium text-encre text-ellipsis ${
+            className={`min-w-[0px] flex-1 overflow-hidden text-[16px] leading-[24px] font-normal text-encre text-ellipsis ${
               open ? "whitespace-normal" : "whitespace-nowrap"
             }`}
           >

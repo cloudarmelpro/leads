@@ -17,7 +17,7 @@ import { getDictionary } from "@/lib/i18n/dictionaries";
 
 type Props = { post: Post; lang: Locale };
 
-const BACK = "flex items-center gap-[8px] text-[14px] leading-[20px] font-medium text-texte2 no-underline transition-colors duration-200 ease-[cubic-bezier(0.2,0.7,0.2,1)] hover:text-encre";
+const BACK = "flex items-center gap-[8px] text-[14px] leading-[20px] font-normal text-texte2 no-underline transition-colors duration-200 ease-[cubic-bezier(0.2,0.7,0.2,1)] hover:text-encre";
 
 /**
  * Page d'article (maquette « Blog article ») : hero étroit de 760px — retour, H1,
@@ -79,7 +79,7 @@ export async function BlogArticle({ post, lang }: Props) {
             {back}
             <Link
               href={`/${lang}/contact#formulaire`}
-              className="flex h-[40px] items-center rounded-[8px] bg-vert px-[20px] text-[14px] leading-[20px] font-medium text-sur-vert no-underline transition-colors hover:bg-vert-clair"
+              className="flex h-[40px] items-center rounded-[8px] bg-vert px-[20px] text-[14px] leading-[20px] font-normal text-sur-vert no-underline transition-colors hover:bg-vert-clair"
             >
               {t.articleCta}
             </Link>
