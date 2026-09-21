@@ -26,7 +26,7 @@ export function PageHero({ title, subtitle, cta, secondary }: Props) {
       {/* Mêmes traits de lumière que le hero de l'accueil, remontés sous l'en-tête. */}
       <HeroStreaks />
       <div className={`${CONTENEUR} relative flex flex-col items-start gap-6`}>
-        <h1 className="m-0 max-w-[720px] lg:max-w-[min(720px,60%)] font-display text-[clamp(1.5rem,4vw,2.375rem)] leading-[1.143] font-normal tracking-[-0.5px] text-encre text-pretty">
+        <h1 className="m-0 max-w-[720px] lg:max-w-[min(720px,60%)] font-display text-[clamp(1.5rem,4vw,2.375rem)] leading-[1.143] font-normal tracking-[-1.2px] text-encre text-pretty uppercase">
           {title}
         </h1>
 
