@@ -59,9 +59,11 @@
   /* Corps des articles de blog (17px/30px) : gris encre en clair, #c6d5db en sombre. */
   --color-prose: #4a5560;
 
-  /* Une seule police : Google Sans, variable de 400 a 700. */
-  --font-display: var(--font-google-sans), -apple-system, "Segoe UI", sans-serif;
-  --font-sans: var(--font-google-sans), -apple-system, "Segoe UI", sans-serif;
+  /* Une seule police : Arial, prise sur la machine du visiteur (rien a telecharger).
+     Les reserves gardent les memes proportions la ou Arial est absente :
+     Helvetica sur macOS, Liberation Sans sur Linux (metriques identiques a Arial). */
+  --font-display: Arial, Helvetica, "Liberation Sans", sans-serif;
+  --font-sans: Arial, Helvetica, "Liberation Sans", sans-serif;
   --font-serif: ui-serif, Georgia, serif;
   --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 

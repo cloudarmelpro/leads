@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Google_Sans } from "next/font/google";
 
 import "./globals.css";
 
@@ -14,11 +13,6 @@ import { getDictionary } from "@/lib/i18n/dictionaries";
  * Requiert `experimental.globalNotFound: true` dans `next.config.ts`.
  * Bilingue côte à côte : aucune locale n'est connue à ce stade.
  */
-const googleSans = Google_Sans({
-  variable: "--font-google-sans",
-  subsets: ["latin", "latin-ext"],
-});
-
 export async function generateMetadata(): Promise<Metadata> {
   const dict = await getDictionary(defaultLocale);
   return { title: `${dict.notFound.title} — ${site.name}`, description: dict.notFound.body };
@@ -28,7 +22,7 @@ export default async function GlobalNotFound() {
   const [fr, en] = await Promise.all([getDictionary("fr"), getDictionary("en")]);
 
   return (
-    <html lang="fr" className={googleSans.variable}>
+    <html lang="fr">
       <body className="min-h-dvh bg-fond text-encre">
         <main className="mx-auto flex min-h-dvh max-w-[52ch] flex-col justify-center gap-10 px-[clamp(1rem,4vw,3.5rem)] py-16">
           <section>

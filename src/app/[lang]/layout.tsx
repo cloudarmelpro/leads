@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist_Mono, Google_Sans } from "next/font/google";
+import { Geist_Mono } from "next/font/google";
 import { notFound } from "next/navigation";
 
 import "../globals.css";
@@ -17,13 +17,8 @@ import { pageMetadata } from "@/lib/seo/metadata";
 
 import { setRequestLocale } from "@/lib/i18n/request-locale";
 
-// Police unique du site : Google Sans (licence SIL Open Font 1.1), en variable 400-700.
-// `next/font` la telecharge a la compilation et la sert depuis notre domaine : aucun
-// appel a Google quand un visiteur ouvre la page.
-const googleSans = Google_Sans({
-  variable: "--font-google-sans",
-  subsets: ["latin", "latin-ext"],
-});
+// Police du site : Arial (decision du 2026-09-21). Police systeme, donc rien a
+// telecharger et aucun texte invisible au chargement — la pile est dans globals.css.
 // Accent monospace (boutons, coordonnées) — conservé.
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -63,7 +58,7 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[la
   return (
     <html
       lang={localeHtmlLang[lang]}
-      className={`${googleSans.variable} ${geistMono.variable}`}
+      className={geistMono.variable}
       // Le script inline pose `.dark` sur <html> avant l'hydratation (script de
       // thème) → on ignore la différence de className.
       suppressHydrationWarning
