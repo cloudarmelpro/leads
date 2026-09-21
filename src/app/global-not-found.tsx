@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+import { Urbanist } from "next/font/google";
 
 import "./globals.css";
 
@@ -14,13 +14,9 @@ import { getDictionary } from "@/lib/i18n/dictionaries";
  * Requiert `experimental.globalNotFound: true` dans `next.config.ts`.
  * Bilingue côte à côte : aucune locale n'est connue à ce stade.
  */
-const neueHaas = localFont({
-  src: [
-    { path: "./fonts/neue-haas-400.woff2", weight: "400", style: "normal" },
-    { path: "./fonts/neue-haas-500.woff2", weight: "500", style: "normal" },
-    { path: "./fonts/neue-haas-700.woff2", weight: "700", style: "normal" },
-  ],
-  variable: "--font-neue-haas",
+const urbanist = Urbanist({
+  subsets: ["latin"],
+  variable: "--font-urbanist",
   display: "swap",
 });
 
@@ -33,7 +29,7 @@ export default async function GlobalNotFound() {
   const [fr, en] = await Promise.all([getDictionary("fr"), getDictionary("en")]);
 
   return (
-    <html lang="fr" className={neueHaas.variable}>
+    <html lang="fr" className={urbanist.variable}>
       <body className="min-h-dvh bg-fond text-encre">
         <main className="mx-auto flex min-h-dvh max-w-[52ch] flex-col justify-center gap-10 px-[clamp(1rem,4vw,3.5rem)] py-16">
           <section>

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+import { Urbanist } from "next/font/google";
 import { notFound } from "next/navigation";
 
 import "../globals.css";
@@ -17,18 +17,13 @@ import { pageMetadata } from "@/lib/seo/metadata";
 
 import { setRequestLocale } from "@/lib/i18n/request-locale";
 
-// Police du site : Neue Haas Grotesk Display Pro (fournie par le client, 2026-09-21).
-// Les TTF de bureau ont ete reduits au latin et convertis en woff2 par
-// `scripts/polices-neue-haas.py` : 100 ko -> 17 ko par graisse. Pas d'italique, le site
-// n'en utilise aucune. Arial reste en reserve, ses proportions sont voisines.
-const neueHaas = localFont({
-  src: [
-    { path: "../fonts/neue-haas-300.woff2", weight: "300", style: "normal" },
-    { path: "../fonts/neue-haas-400.woff2", weight: "400", style: "normal" },
-    { path: "../fonts/neue-haas-500.woff2", weight: "500", style: "normal" },
-    { path: "../fonts/neue-haas-700.woff2", weight: "700", style: "normal" },
-  ],
-  variable: "--font-neue-haas",
+// Police unique du site : Urbanist (decision client 2026-09-21).
+// `next/font/google` telecharge la police au build et la sert depuis notre domaine :
+// aucune requete vers Google a l'execution (loi 25). Fichier variable, donc toutes les
+// graisses en un seul telechargement. Pas d'italique, le site n'en utilise aucune.
+const urbanist = Urbanist({
+  subsets: ["latin"],
+  variable: "--font-urbanist",
   display: "swap",
 });
 
@@ -65,7 +60,7 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[la
   return (
     <html
       lang={localeHtmlLang[lang]}
-      className={neueHaas.variable}
+      className={urbanist.variable}
       // Le script inline pose `.dark` sur <html> avant l'hydratation (script de
       // thème) → on ignore la différence de className.
       suppressHydrationWarning
