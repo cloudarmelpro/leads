@@ -48,8 +48,13 @@ export function Hero({ lang, dict }: Props) {
       </div>
 
       <div className="relative z-[1] flex w-full max-w-[1100px] flex-col items-start gap-[24px]">
-        <h1 className="m-[0px] max-w-[720px] text-[clamp(28px,4vw,48px)] leading-[1.1] font-normal tracking-[-0.4px] text-encre text-pretty min-[620px]:max-w-[min(720px,54%)]">
-          {t.titleA} <span className="text-vert">{t.titleB}</span>
+        {/* Une phrase par ligne (demande du client) : le `<br>` force la coupure, et la
+            largeur laisse passer la plus longue des deux — 884px a 48px, mesure. Sous
+            620px le titre reprend la mise a la ligne naturelle. */}
+        <h1 className="m-[0px] max-w-[720px] text-[clamp(28px,4vw,48px)] leading-[1.1] font-normal tracking-[-0.4px] text-encre text-pretty min-[620px]:max-w-[920px]">
+          {t.titleA}
+          <br className="hidden min-[620px]:block" />
+          <span className="text-vert">{t.titleB}</span>
         </h1>
         <p className="m-[0px] max-w-[560px] text-[15px] leading-[26px] font-normal text-texte2 text-pretty min-[620px]:max-w-[min(560px,46%)]">
           {t.subtitle}
