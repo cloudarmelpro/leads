@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Geist_Mono } from "next/font/google";
 import { notFound } from "next/navigation";
 
 import "../globals.css";
@@ -19,12 +18,6 @@ import { setRequestLocale } from "@/lib/i18n/request-locale";
 
 // Police du site : Arial (decision du 2026-09-21). Police systeme, donc rien a
 // telecharger et aucun texte invisible au chargement — la pile est dans globals.css.
-// Accent monospace (boutons, coordonnées) — conservé.
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin", "latin-ext"],
-});
-
 // ISR courte sur TOUT le site public. Sans `revalidate`, Next annonce
 // `s-maxage=31536000` : le CDN Hostinger (hcdn) gardait alors le HTML un an, sans
 // purge fiable à chaque déploiement → HTML périmé pointant vers des chunks JS
@@ -58,7 +51,6 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[la
   return (
     <html
       lang={localeHtmlLang[lang]}
-      className={geistMono.variable}
       // Le script inline pose `.dark` sur <html> avant l'hydratation (script de
       // thème) → on ignore la différence de className.
       suppressHydrationWarning
