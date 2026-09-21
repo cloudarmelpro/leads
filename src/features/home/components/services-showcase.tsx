@@ -69,7 +69,7 @@ export function ServicesShowcase({ lang, items }: Props) {
         <span className="relative flex h-[40px] w-[40px] shrink-0 items-center justify-center rounded-[12px] bg-surface-2 text-vert">
           <Icon size={19} strokeWidth={1.6} aria-hidden />
         </span>
-        <h3 className="relative m-[0px] text-[clamp(15px,1.2vw,18px)] leading-[1.3] font-medium text-encre">{item.name}</h3>
+        <h3 className="relative m-[0px] text-[clamp(15px,1.2vw,18px)] leading-[1.3] font-normal text-encre">{item.name}</h3>
         <p className={`relative m-[0px] text-[clamp(12.5px,0.95vw,14px)] leading-[1.55] font-normal text-texte2 text-pretty ${tall ? "line-clamp-6" : "line-clamp-3"}`}>{item.note}</p>
         {priceLine && (
           <Link
