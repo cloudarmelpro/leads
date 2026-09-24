@@ -125,7 +125,8 @@ export function Hero({ lang, dict }: Props) {
                 {t.tradesKicker}
               </span>
               <span className="min-w-[0px] overflow-hidden text-ellipsis">{t.sectorsTeaser}</span>
-              <span className="shrink-0">{icon(<path d="m9 6 6 6-6 6" />, 15, 2)}</span>
+              {/* Oxanium pose ses minuscules haut dans la ligne : centré, le chevron paraissait 1px trop bas. */}
+              <span className="flex shrink-0 -translate-y-[1px]">{icon(<path d="m9 6 6 6-6 6" />, 15, 2)}</span>
             </a>
           </div>
         </div>
