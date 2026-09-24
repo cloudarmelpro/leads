@@ -8,6 +8,8 @@ type Props = {
   className?: string;
   /** Contenu personnalisé (carte, icône…) ; reçoit l'adresse à afficher — voilée avant hydratation. */
   children?: (address: string) => ReactNode;
+  /** Texte affiché à la place de l'adresse (« Un courriel ») ; utilisable depuis un composant serveur. */
+  label?: string;
 };
 
 /**
@@ -17,7 +19,7 @@ type Props = {
  * invisible pour les robots de collecte (qui n'exécutent pas le JS et cherchent
  * `x@y.z`). Repli lisible « user (at) domain » avant hydratation / sans JS.
  */
-export function ObfuscatedEmail({ user, domain, className, children }: Props) {
+export function ObfuscatedEmail({ user, domain, className, children, label }: Props) {
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
@@ -29,13 +31,13 @@ export function ObfuscatedEmail({ user, domain, className, children }: Props) {
 
   if (!ready) {
     const veiled = `${user} (at) ${domain}`;
-    return <span className={className}>{children ? children(veiled) : veiled}</span>;
+    return <span className={className}>{label ?? (children ? children(veiled) : veiled)}</span>;
   }
 
   const addr = `${user}@${domain}`;
   return (
     <a href={`mailto:${addr}`} className={className}>
-      {children ? children(addr) : addr}
+      {label ?? (children ? children(addr) : addr)}
     </a>
   );
 }

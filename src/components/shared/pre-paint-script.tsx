@@ -2,12 +2,14 @@
 
 import { useServerInsertedHTML } from "next/navigation";
 
-// Script critique posé AVANT peinture, sur <html> : `.dark` selon le thème mémorisé
-// / la préférence système (anti-flash). Injecté via `useServerInsertedHTML` → rendu
+// Script critique posé AVANT peinture, sur <html> : `.dark` sauf si le visiteur a choisi
+// le thème clair (anti-flash). Sombre par défaut : les maquettes sont en bleu nuit. Injecté via `useServerInsertedHTML` → rendu
 // UNIQUEMENT côté serveur (dans le flux initial, avant le <body>). Il ne réintègre
 // donc jamais l'arbre React côté client : aux navigations client (ex. changement de
 // langue), React ne réconcilie aucun <script> (pas d'avertissement « script tag »).
-const PRE_PAINT = `try{var e=localStorage.getItem('theme');var d=matchMedia('(prefers-color-scheme: dark)').matches;if(e==='dark'||((e===null||e==='system')&&d))document.documentElement.classList.add('dark')}catch(e){}`;
+// Même passe : `tw-seen` masque l'écran de bienvenue déjà vu (clé de welcome-splash.tsx),
+// sinon il s'afficherait jusqu'à l'hydratation.
+const PRE_PAINT = `var h=document.documentElement;try{if(localStorage.getItem('theme')!=='light')h.classList.add('dark');if(localStorage.getItem('talgasy-welcome-v3'))h.classList.add('tw-seen')}catch(e){h.classList.add('dark')}`;
 
 export function PrePaintScript() {
   useServerInsertedHTML(() => <script dangerouslySetInnerHTML={{ __html: PRE_PAINT }} />);

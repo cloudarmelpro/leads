@@ -58,16 +58,24 @@
   --color-erreur: #c0362c;
   /* Corps des articles de blog (17px/30px) : gris encre en clair, #c6d5db en sombre. */
   --color-prose: #4a5560;
+  /* Maquette « Accueil » (Claude Design, 2026-09-24) : verre de l'en-tete (fond, survol,
+     filet), pastille du lien courant, liens de la barre, liens des metiers, puces d'outils. */
+  --color-verre: rgba(253, 253, 253, 0.72);
+  --color-verre-fort: rgba(253, 253, 253, 0.92);
+  --color-filet-verre: rgba(30, 30, 30, 0.1);
+  --color-pastille: rgba(30, 30, 30, 0.06);
+  --color-lien-barre: #3a3a3f;
+  --color-texte-sourd: #646468;
+  --color-puce: #1e1e1e;
 
-  /* Une seule police : Urbanist, telechargee au build et servie depuis notre domaine.
-     Arial en reserve pendant le chargement. */
-  --font-display: var(--font-urbanist), Arial, Helvetica, sans-serif;
-  --font-sans: var(--font-urbanist), Arial, Helvetica, sans-serif;
-  --font-serif: var(--font-urbanist), Arial, Helvetica, sans-serif;
+  /* Une seule police : Oxanium, telechargee au build et servie depuis notre domaine. */
+  --font-display: var(--font-oxanium), -apple-system, "Segoe UI", sans-serif;
+  --font-sans: var(--font-oxanium), -apple-system, "Segoe UI", sans-serif;
+  --font-serif: var(--font-oxanium), -apple-system, "Segoe UI", sans-serif;
   /* Meme police derriere `font-mono` et `font-serif` : le client n'en veut qu'une sur
      le site. Plus aucun composant ne s'en sert ; ces jetons pointent sur la meme pile
      pour qu'un usage futur ne fasse pas revenir une deuxieme police. */
-  --font-mono: var(--font-urbanist), Arial, Helvetica, sans-serif;
+  --font-mono: var(--font-oxanium), -apple-system, "Segoe UI", sans-serif;
 
   /*
    * Tokens shadcn/ui mappés sur la marque (site clair uniquement, pas de mode
@@ -120,6 +128,13 @@
   --color-piste: #3b5764;
   --color-erreur: #ff8f7a;
   --color-prose: #c6d5db;
+  --color-verre: rgba(1, 24, 35, 0.55);
+  --color-verre-fort: rgba(1, 24, 35, 0.75);
+  --color-filet-verre: rgba(255, 255, 255, 0.09);
+  --color-pastille: rgba(255, 255, 255, 0.1);
+  --color-lien-barre: #d5e0e5;
+  --color-texte-sourd: #8fa3ac;
+  --color-puce: #d7e3e8;
 
   /* Alias shadcn */
   --color-background: #011823;
@@ -157,7 +172,12 @@ section[id],
 [id="methode"],
 [id="faq"],
 [id="contact"] {
-  scroll-margin-top: 72px;
+  scroll-margin-top: 84px;
+}
+
+/* Écran de bienvenue déjà vu : masqué dès le HTML (classe posée par le script avant peinture). */
+.tw-seen [data-splash] {
+  display: none;
 }
 
 /* Sur mobile, le bandeau témoins est une barre pleine largeur en bas : on masque
@@ -254,15 +274,15 @@ body {
    les cartes gardent leur gouttière en glissant. Sur `transform` seulement. */
 @keyframes tw-vitrine {
   0%,
-  26% {
+  21.05% {
     transform: translateX(0);
   }
   33.333%,
-  59.333% {
+  54.39% {
     transform: translateX(calc(-100% - 14px));
   }
   66.667%,
-  92.667% {
+  87.72% {
     transform: translateX(calc(-200% - 28px));
   }
   100% {
@@ -272,19 +292,111 @@ body {
 /* Même cadence, vers le haut : la colonne droite de la vitrine. */
 @keyframes tw-vitrine-y {
   0%,
-  26% {
+  21.05% {
     transform: translateY(0);
   }
   33.333%,
-  59.333% {
+  54.39% {
     transform: translateY(calc(-100% - 14px));
   }
   66.667%,
-  92.667% {
+  87.72% {
     transform: translateY(calc(-200% - 28px));
   }
   100% {
     transform: translateY(calc(-300% - 42px));
+  }
+}
+
+/* Animations de la maquette « Accueil » (2026-09-24), noms repris tels quels. */
+@keyframes tw-menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes tw-hero-word {
+  from {
+    opacity: 0;
+    transform: translateY(0.22em);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+/* Rangées d'outils : chaque piste contient deux fois la liste, -50 % boucle sans saut. */
+@keyframes tw-tools-rail {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes tw-tools-rail-rev {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+@keyframes tw-pin-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(48, 217, 140, 0.45);
+  }
+  60% {
+    box-shadow: 0 0 0 14px rgba(48, 217, 140, 0);
+  }
+}
+/* Écran de bienvenue : le vert balaie le mot puis le monogramme, de gauche à droite. */
+@keyframes tw-wave-rect {
+  0% {
+    transform: translateX(0px) scaleX(0);
+  }
+  38% {
+    transform: translateX(0px) scaleX(1);
+  }
+  76%,
+  100% {
+    transform: translateX(169px) scaleX(0);
+  }
+}
+@keyframes tw-wave-text {
+  0% {
+    clip-path: inset(0 100% 0 0);
+  }
+  38% {
+    clip-path: inset(0 0 0 0);
+  }
+  76%,
+  100% {
+    clip-path: inset(0 0 0 100%);
+  }
+}
+@keyframes tw-lockup-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes tw-splash-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
   }
 }
 

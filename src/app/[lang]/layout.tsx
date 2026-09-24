@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Urbanist } from "next/font/google";
+import { Oxanium } from "next/font/google";
 import { notFound } from "next/navigation";
 
 import "../globals.css";
@@ -17,13 +17,13 @@ import { pageMetadata } from "@/lib/seo/metadata";
 
 import { setRequestLocale } from "@/lib/i18n/request-locale";
 
-// Police unique du site : Urbanist (decision client 2026-09-21).
+// Police unique du site : Oxanium, celle des maquettes Claude Design (decision du 2026-09-24).
 // `next/font/google` telecharge la police au build et la sert depuis notre domaine :
-// aucune requete vers Google a l'execution (loi 25). Fichier variable, donc toutes les
-// graisses en un seul telechargement. Pas d'italique, le site n'en utilise aucune.
-const urbanist = Urbanist({
+// aucune requete vers Google a l'execution (loi 25). Fichier variable 200-800, donc toutes
+// les graisses en un seul telechargement.
+const oxanium = Oxanium({
   subsets: ["latin"],
-  variable: "--font-urbanist",
+  variable: "--font-oxanium",
   display: "swap",
 });
 
@@ -60,7 +60,7 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[la
   return (
     <html
       lang={localeHtmlLang[lang]}
-      className={urbanist.variable}
+      className={oxanium.variable}
       // Le script inline pose `.dark` sur <html> avant l'hydratation (script de
       // thème) → on ignore la différence de className.
       suppressHydrationWarning

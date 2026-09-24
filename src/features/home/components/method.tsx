@@ -1,52 +1,65 @@
-"use client";
+import Link from "next/link";
 
-import { useId, useState } from "react";
-
-import { GOUTTIERE } from "@/components/shared/container";
-import { AccordionRow } from "@/features/home/components/accordion-row";
-import { SectionHead } from "@/components/shared/section-head";
+import { ObfuscatedEmail } from "@/components/shared/obfuscated-email";
+import { MethodTrack } from "@/features/home/components/method-track";
+import { site, telHref, whatsappHref } from "@/config/site";
+import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 
-type Props = { dict: Pick<Dictionary, "method"> };
+type Props = { lang: Locale; dict: Pick<Dictionary, "method" | "hero"> };
+
+// Rendus des six étapes (public/images/home), ceux de la maquette (`methode-0N-web.png`, 800×993).
+const IMAGES = ["methode-01.webp", "methode-02.webp", "methode-03.webp", "methode-04.webp", "methode-05.webp", "methode-06.webp"];
+
+const CHIP =
+  "inline-flex h-[32px] items-center rounded-[8px] bg-surface px-[12px] text-[13px] leading-[1] font-medium text-encre no-underline shadow-[inset_0_0_0_1px_var(--color-contour)] transition-colors hover:bg-surface-2";
 
 /**
- * Méthode : six étapes numérotées en accordéon, quatre dans la colonne de gauche et
- * deux à droite (une seule colonne sous 760px). Une seule étape ouverte à la fois,
- * la première par défaut ; chaque colonne garde sa hauteur propre.
+ * Méthode (maquette Accueil, 2026-09-24) : titre et intro à gauche, flèches à droite ; les
+ * six étapes en cartes illustrées sur une piste horizontale ; en bas, trois raccourcis de
+ * contact et le bouton de prise de rendez-vous. Un raccourci n'apparaît que si la
+ * coordonnée existe dans `site.ts`.
  */
-export function Method({ dict }: Props) {
-  const [open, setOpen] = useState(0);
-  const baseId = useId();
+export function Method({ lang, dict }: Props) {
   const t = dict.method;
-
-  const columns = [t.steps.slice(0, 4), t.steps.slice(4)];
+  const shortcuts = [
+    { label: t.startCall, href: telHref(site.phone), external: false },
+    { label: "WhatsApp", href: whatsappHref(site.whatsapp), external: true },
+  ].filter((s): s is { label: string; href: string; external: boolean } => s.href !== null);
+  // L'adresse ne doit jamais apparaître en clair dans le HTML (voir ObfuscatedEmail).
+  const [emailUser, emailDomain] = (site.email ?? "").split("@");
 
   return (
-    <section className={`relative flex justify-center pb-[clamp(112px,16vw,240px)] ${GOUTTIERE}`}>
-      <div className="flex w-full max-w-[1100px] flex-col gap-[48px]">
-        <SectionHead id="methode" label={t.kicker} title={`${t.titleA} ${t.titleB}`} intro={t.intro} introMax={420} />
+    <section id="methode" className="relative flex justify-center overflow-x-clip px-[clamp(16px,4vw,56px)] pb-[clamp(96px,11vw,180px)]">
+      <div className="flex w-full max-w-[1400px] flex-col gap-[clamp(28px,3vw,40px)]">
+        <MethodTrack steps={t.steps} images={IMAGES} stepLabel={t.stepLabel} prevLabel={t.prev} nextLabel={t.next}>
+          <div className="flex min-w-[0px] flex-col items-start gap-[14px]">
+            <h2 className="m-[0px] max-w-[520px] text-[clamp(22px,2.2vw,30px)] leading-[1.2] font-semibold tracking-[-0.01em] text-encre text-pretty">{t.title}</h2>
+            <p className="m-[0px] max-w-[540px] text-[16px] leading-[26px] font-normal text-texte2 text-pretty">{t.intro}</p>
+          </div>
+        </MethodTrack>
 
-        <div className="grid grid-cols-[minmax(0,1fr)] items-start gap-[10px] min-[760px]:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
-          {columns.map((steps, col) => (
-            <div key={col} className="flex flex-col gap-[10px]">
-              {steps.map((step) => {
-                const index = t.steps.indexOf(step);
-                return (
-                  <AccordionRow
-                    key={step.n}
-                    id={`${baseId}-step-${index}`}
-                    open={open === index}
-                    onToggle={() => setOpen(open === index ? -1 : index)}
-                    number={step.n.padStart(2, "0")}
-                    title={step.title}
-                    bodyIndent={60}
-                  >
-                    {step.desc}
-                  </AccordionRow>
-                );
-              })}
+        <div className="mt-[8px] flex flex-col items-center gap-[22px]">
+          {(shortcuts.length > 0 || emailUser) && (
+            <div className="flex flex-wrap items-center justify-center gap-[8px]">
+              <span className="mr-[4px] text-[14px] leading-[20px] font-normal text-texte-note">{t.startWith}</span>
+              {shortcuts.map((s) => (
+                <a key={s.label} href={s.href} {...(s.external ? { target: "_blank", rel: "noopener noreferrer" } : {})} className={`tap-44 ${CHIP}`}>
+                  {s.label}
+                </a>
+              ))}
+              {emailUser && emailDomain && <ObfuscatedEmail user={emailUser} domain={emailDomain} label={t.startEmail} className={`tap-44 ${CHIP}`} />}
             </div>
-          ))}
+          )}
+          <Link
+            href={`/${lang}/contact`}
+            className="inline-flex h-[48px] items-center gap-[10px] rounded-[8px] bg-vert px-[22px] text-[15px] leading-[1] font-medium whitespace-nowrap text-sur-vert no-underline transition-colors hover:bg-vert-clair"
+          >
+            {dict.hero.ctaBook}
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+              <path d="M5 12h14M13 6l6 6-6 6" />
+            </svg>
+          </Link>
         </div>
       </div>
     </section>

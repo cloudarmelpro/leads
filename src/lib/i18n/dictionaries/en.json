@@ -68,9 +68,9 @@
     }
   },
   "hero": {
-    "titleA": "Your next contract starts with a click.",
-    "titleB": "Make sure it ends with a phone call.",
-    "subtitle": "Talgasy Web builds professional websites, structured to convert — so your customers call you, not your competitor.",
+    "titleA": "From idea to platform.",
+    "titleB": "We build the solutions that move your business forward.",
+    "subtitle": "Talgasy Web builds {b1}, structured to convert — so your customers {b2}, not your competitor.",
     "tradesKicker": "Sectors",
     "tradesLabel": "What sector are you in?",
     "ctaBook": "Book a free call",
@@ -112,8 +112,16 @@
         "pitch": "Pruning, removal, storm emergencies: a site that shows your expertise and answers clients before your competitors do."
       }
     ],
-    "ctaPricing": "See plans and pricing",
-    "stepAria": "Sector {n} of {total}: {name}"
+    "ctaPricing": "See the plans",
+    "stepAria": "Sector {n} of {total}: {name}",
+    "badgeZone": "Laval, the North Shore and across Canada",
+    "badgePrice": "Websites from $499",
+    "subtitleStrong1": "professional websites",
+    "subtitleStrong2": "call you",
+    "sectorsTeaser": "Landscaping, excavation, construction, local shops…",
+    "tradesTitle": "Websites built for Québec’s trades.",
+    "tradesAria": "Industries we serve",
+    "sectorNum": "Sector · {n}"
   },
   "services": {
     "kicker": "Services",
@@ -124,42 +132,147 @@
       {
         "name": "Website creation",
         "note": "A clear structure, smooth navigation, content that gets straight to the point: a premium web experience that reflects how serious your business is — and makes people want to call.",
-        "pricing": "From $499"
+        "pricing": "From $499",
+        "short": "Clear structure, smooth navigation, content that gets to the point: a premium web experience.",
+        "art": [
+          "talgasyweb.ca",
+          "Websites that",
+          "make the phone",
+          "ring.",
+          "Design and redesign",
+          "Get a quote",
+          "Landscaping",
+          "Excavation"
+        ]
       },
       {
         "name": "Existing site rebuild",
         "note": "We analyze what’s there, pinpoint what’s blocking conversion, then rework every element — structure, speed, content — for a site that pushes the visitor to contact you.",
-        "pricing": "Same plans as a new site, from $499"
+        "pricing": "Same plans as a new site, from $499",
+        "short": "",
+        "art": [
+          "96",
+          " /100",
+          "Performance after redesign",
+          "Before",
+          "42",
+          "After",
+          "96"
+        ]
       },
       {
         "name": "Hosting",
         "note": "We handle everything: a fast server, a security certificate, regular backups and continuous monitoring. Your site stays online, fast and protected — at all times.",
-        "pricing": "From $35 per month"
+        "pricing": "From $35 per month",
+        "short": "",
+        "art": [
+          "All services online",
+          "99.98%",
+          "Uptime, last 90 days",
+          "90 days ago"
+        ]
       },
       {
         "name": "Professional email addresses",
         "note": "An email on your own domain changes everything — instead of a generic Gmail, your customers see an established, serious business that earns trust from the very first exchange.",
-        "pricing": "Included with hosting"
+        "pricing": "Included with hosting",
+        "short": "",
+        "art": [
+          "@",
+          "info@talgasyweb.ca",
+          "Main inbox",
+          "12",
+          "@",
+          "soumissions@talgasyweb.ca",
+          "Quote requests",
+          "4",
+          "@",
+          "comptabilite@talgasyweb.ca",
+          "Billing",
+          "1"
+        ]
       },
       {
         "name": "Logo and brand identity",
         "note": "From a standalone logo to a full identity: creative directions, variants, palette, typefaces and source files. A complete rebrand is possible, with a brand guide and launch preparation.",
-        "pricing": "From $200"
+        "pricing": "From $200",
+        "short": "",
+        "art": [
+          "Signal green",
+          "#30D98C",
+          "Night",
+          "#00131C",
+          "Surface",
+          "#01293C",
+          "Paper",
+          "#FFFFFF"
+        ]
       },
       {
         "name": "VPS servers",
         "note": "For an application or a CRM that needs more than a showcase site: 1 to 8 vCPUs, 4 to 32 GB of RAM and NVMe storage, managed and monitored on our side.",
-        "pricing": "From $45 to $150 per month"
+        "pricing": "From $45 to $150 per month",
+        "short": "From 1 to 8 vCPU, 4 to 32 GB of RAM and NVMe storage, managed and monitored on our end.",
+        "art": [
+          "640 GB",
+          "Total NVMe storage",
+          "Websites",
+          "38.4%",
+          "Free space",
+          "32.8%",
+          "Databases",
+          "17.2%",
+          "Backups",
+          "11.6%"
+        ]
       },
       {
         "name": "CRM and automations",
         "note": "A CRM in your image: leads, sales pipeline, dashboard and connected forms. Automations link the site, the CRM and your external software.",
-        "pricing": "Included from the Professional plan"
+        "pricing": "Included from the Professional plan",
+        "short": "Leads, sales pipeline, dashboard and connected forms.",
+        "art": [
+          "Quote pipeline",
+          "Lead",
+          "2",
+          "Landscaping",
+          "Roy inc.",
+          "Showcase site",
+          "Nadeau",
+          "Roofing",
+          "Redesign",
+          "Quote",
+          "1",
+          "Excavation",
+          "Lavoie",
+          "Site and CRM",
+          "Signed",
+          "2",
+          "Snow removal",
+          "North Shore",
+          "Hosting",
+          "Caron",
+          "Renovations",
+          "Redesign"
+        ]
       },
       {
         "name": "Blog and SEO content",
         "note": "Built-in CMS, articles written and published on a regular cadence, reviewed with you. Content is structured for local search from day one.",
-        "pricing": "Included from the Professional plan"
+        "pricing": "Included from the Professional plan",
+        "short": "Articles written and published on a regular schedule, structured for local search.",
+        "art": [
+          "12,480",
+          "Visits, last 6 months",
+          "Google search",
+          "52.4%",
+          "Direct",
+          "21.8%",
+          "Social media",
+          "14.3%",
+          "Referring sites",
+          "11.5%"
+        ]
       }
     ]
   },
@@ -199,7 +312,14 @@
         "title": "We put the site live",
         "desc": "Launch on your domain, with the hosting period included in your plan. You receive all your access credentials and a summary of what was delivered."
       }
-    ]
+    ],
+    "title": "How we work.",
+    "stepLabel": "Step {n}",
+    "prev": "Previous",
+    "next": "Next",
+    "startWith": "Or start with",
+    "startCall": "A call",
+    "startEmail": "An email"
   },
   "proof": {
     "title": "Social proof — reserved slot",
@@ -250,13 +370,13 @@
   },
   "final": {
     "title": "Your next contract starts with a phone call.",
-    "body": "One free 45-minute call is enough to pin down your need. No commitment.",
+    "body": "One consultation is enough to pin down your need. No commitment.",
     "callLabel": "Call us",
     "note": "Reply within 24 hours, Monday to Friday."
   },
   "footer": {
-    "description": "Talgasy Web builds professional, bilingual websites in Québec — built to turn your visitors into calls.",
-    "navTitle": "Site map",
+    "description": "Websites that make the phone ring.",
+    "navTitle": "Explore",
     "coordTitle": "Contact details",
     "social": {
       "facebook": "Facebook",
@@ -265,7 +385,9 @@
     },
     "legal2": "Privacy (Law 25)",
     "rights": "All rights reserved",
-    "resourcesTitle": "Resources"
+    "resourcesTitle": "Resources",
+    "socialTitle": "Social",
+    "bookCall": "Book a call"
   },
   "cookies": {
     "kicker": "Cookies",
@@ -2337,5 +2459,14 @@
       "zone": "Based in Québec City, we work all across Québec.",
       "zoneBody": "We work remotely with businesses from every region. Reply within 24 hours, Monday to Friday."
     }
+  },
+  "welcome": {
+    "before": "Welcome to",
+    "brand": "Web"
+  },
+  "tools": {
+    "kicker": "Tools",
+    "title": "The tools we work with",
+    "aria": "Our tools"
   }
 }

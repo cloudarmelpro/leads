@@ -68,9 +68,9 @@
     }
   },
   "hero": {
-    "titleA": "Votre prochain contrat commence par un clic.",
-    "titleB": "Assurez-vous qu’il se termine par un appel.",
-    "subtitle": "Talgasy Web conçoit des sites web professionnels, structurés pour convertir — pour que vos clients vous appellent, pas votre compétiteur.",
+    "titleA": "De l’idée à la plateforme.",
+    "titleB": "On développe les solutions qui font avancer votre entreprise.",
+    "subtitle": "Talgasy Web conçoit des {b1}, structurés pour convertir — pour que vos clients {b2}, pas votre compétiteur.",
     "tradesKicker": "Secteurs",
     "tradesLabel": "Dans quel secteur d’activité êtes-vous ?",
     "ctaBook": "Réserver un appel gratuit",
@@ -112,8 +112,16 @@
         "pitch": "Élagage, abattage, urgences après tempête : un site qui montre votre expertise et répond aux clients avant vos concurrents."
       }
     ],
-    "ctaPricing": "Voir les forfaits et les prix",
-    "stepAria": "Secteur {n} sur {total} : {name}"
+    "ctaPricing": "Voir les forfaits",
+    "stepAria": "Secteur {n} sur {total} : {name}",
+    "badgeZone": "Laval, Rive-Nord et partout au Canada",
+    "badgePrice": "Site web à partir de 499 $",
+    "subtitleStrong1": "sites web professionnels",
+    "subtitleStrong2": "vous appellent",
+    "sectorsTeaser": "Paysagement, excavation, construction, commerce local…",
+    "tradesTitle": "Des sites web pensés pour les métiers du Québec.",
+    "tradesAria": "Secteurs desservis",
+    "sectorNum": "Secteur · {n}"
   },
   "services": {
     "kicker": "Services",
@@ -124,42 +132,147 @@
       {
         "name": "Création de site web",
         "note": "Structure claire, navigation fluide, contenu qui va droit au but : une expérience web premium qui reflète le sérieux de votre entreprise — et qui donne envie d’appeler.",
-        "pricing": "À partir de 499 $"
+        "pricing": "À partir de 499 $",
+        "short": "Structure claire, navigation fluide, contenu qui va droit au but : une expérience web premium.",
+        "art": [
+          "talgasyweb.ca",
+          "Des sites qui",
+          "font sonner",
+          "le téléphone.",
+          "Création et refonte",
+          "Demander un prix",
+          "Paysagement",
+          "Excavation"
+        ]
       },
       {
         "name": "Refonte de site existant",
         "note": "On analyse ce qui existe, on identifie ce qui bloque la conversion, puis on retravaille chaque élément — structure, vitesse, contenu — pour un site qui pousse le visiteur à vous contacter.",
-        "pricing": "Mêmes forfaits que la création, à partir de 499 $"
+        "pricing": "Mêmes forfaits que la création, à partir de 499 $",
+        "short": "",
+        "art": [
+          "96",
+          " /100",
+          "Performance après refonte",
+          "Avant",
+          "42",
+          "Après",
+          "96"
+        ]
       },
       {
         "name": "Hébergement",
         "note": "On s’occupe de tout : serveur performant, certificat de sécurité, sauvegardes régulières et surveillance continue. Le site reste en ligne, rapide et protégé — en tout temps.",
-        "pricing": "À partir de 35 $ par mois"
+        "pricing": "À partir de 35 $ par mois",
+        "short": "",
+        "art": [
+          "Tous les services en ligne",
+          "99,98 %",
+          "Disponibilité, 90 derniers jours",
+          "il y a 90 jours"
+        ]
       },
       {
         "name": "Adresses courriel professionnelles",
         "note": "Un courriel à votre nom de domaine, ça change tout — au lieu d’un Gmail générique, vos clients voient une entreprise établie, sérieuse, qui inspire confiance dès le premier échange.",
-        "pricing": "Inclus avec l’hébergement"
+        "pricing": "Inclus avec l’hébergement",
+        "short": "",
+        "art": [
+          "@",
+          "info@talgasyweb.ca",
+          "Boîte principale",
+          "12",
+          "@",
+          "soumissions@talgasyweb.ca",
+          "Demandes de prix",
+          "4",
+          "@",
+          "comptabilite@talgasyweb.ca",
+          "Facturation",
+          "1"
+        ]
       },
       {
         "name": "Logo et identité de marque",
         "note": "Du logo seul à l’identité complète : pistes créatives, variantes, palette, typographies et fichiers sources. Une refonte de marque au complet est possible, avec guide et préparation du lancement.",
-        "pricing": "À partir de 200 $"
+        "pricing": "À partir de 200 $",
+        "short": "",
+        "art": [
+          "Vert signal",
+          "#30D98C",
+          "Nuit",
+          "#00131C",
+          "Surface",
+          "#01293C",
+          "Papier",
+          "#FFFFFF"
+        ]
       },
       {
         "name": "Serveurs VPS",
         "note": "Pour une application ou un CRM qui demande plus qu’un site vitrine : de 1 à 8 vCPU, 4 à 32 Go de RAM et du stockage NVMe, gérés et surveillés de notre côté.",
-        "pricing": "De 45 $ à 150 $ par mois"
+        "pricing": "De 45 $ à 150 $ par mois",
+        "short": "De 1 à 8 vCPU, 4 à 32 Go de RAM et du stockage NVMe, gérés et surveillés de notre côté.",
+        "art": [
+          "640 Go",
+          "Stockage NVMe total",
+          "Sites web",
+          "38,4 %",
+          "Espace libre",
+          "32,8 %",
+          "Bases de données",
+          "17,2 %",
+          "Sauvegardes",
+          "11,6 %"
+        ]
       },
       {
         "name": "CRM et automatisations",
         "note": "Un CRM à votre image : prospects, pipeline de vente, tableau de bord et formulaires connectés. Les automatisations relient le site, le CRM et vos logiciels externes.",
-        "pricing": "Inclus à partir du forfait Professionnel"
+        "pricing": "Inclus à partir du forfait Professionnel",
+        "short": "Prospects, pipeline de vente, tableau de bord et formulaires connectés.",
+        "art": [
+          "Pipeline de soumissions",
+          "Prospect",
+          "2",
+          "Paysagement",
+          "Roy inc.",
+          "Site vitrine",
+          "Toitures",
+          "Nadeau",
+          "Refonte",
+          "Soumission",
+          "1",
+          "Excavation",
+          "Lavoie",
+          "Site et CRM",
+          "Signé",
+          "2",
+          "Déneigement",
+          "Rive-Nord",
+          "Hébergement",
+          "Rénovations",
+          "Caron",
+          "Refonte"
+        ]
       },
       {
         "name": "Blogue et contenu SEO",
         "note": "CMS intégré, articles rédigés et publiés à cadence régulière, révisés avec vous. Le contenu est structuré pour le référencement local dès la mise en ligne.",
-        "pricing": "Inclus à partir du forfait Professionnel"
+        "pricing": "Inclus à partir du forfait Professionnel",
+        "short": "Articles rédigés et publiés à cadence régulière, structurés pour le référencement local.",
+        "art": [
+          "12 480",
+          "Visites, 6 derniers mois",
+          "Recherche Google",
+          "52,4 %",
+          "Accès direct",
+          "21,8 %",
+          "Réseaux sociaux",
+          "14,3 %",
+          "Sites référents",
+          "11,5 %"
+        ]
       }
     ]
   },
@@ -199,7 +312,14 @@
         "title": "On met le site en ligne",
         "desc": "Mise en ligne sur votre domaine, avec la période d’hébergement de votre forfait. Vous recevez tous vos accès et le récapitulatif de ce qui a été livré."
       }
-    ]
+    ],
+    "title": "Comment on travaille.",
+    "stepLabel": "Étape {n}",
+    "prev": "Précédent",
+    "next": "Suivant",
+    "startWith": "Ou commencez par",
+    "startCall": "Un appel",
+    "startEmail": "Un courriel"
   },
   "proof": {
     "title": "Preuve sociale — emplacement réservé",
@@ -250,13 +370,13 @@
   },
   "final": {
     "title": "Votre prochain contrat commence par un appel.",
-    "body": "Un appel gratuit de 45 minutes suffit pour cerner votre besoin. Sans engagement.",
+    "body": "Une consultation suffit pour cerner votre besoin. Sans engagement.",
     "callLabel": "Appelez-nous",
     "note": "Réponse en moins de 24 h, du lundi au vendredi."
   },
   "footer": {
-    "description": "Talgasy Web conçoit des sites web professionnels et bilingues au Québec — construits pour transformer vos visiteurs en appels.",
-    "navTitle": "Plan du site",
+    "description": "Des sites web qui font sonner le téléphone.",
+    "navTitle": "Explorer",
     "coordTitle": "Coordonnées",
     "social": {
       "facebook": "Facebook",
@@ -265,7 +385,9 @@
     },
     "legal2": "Confidentialité (Loi 25)",
     "rights": "Tous droits réservés",
-    "resourcesTitle": "Ressources"
+    "resourcesTitle": "Ressources",
+    "socialTitle": "Réseaux",
+    "bookCall": "Réserver un appel"
   },
   "cookies": {
     "kicker": "Témoins",
@@ -2337,5 +2459,14 @@
       "zone": "Basés à Québec, on travaille partout au Québec.",
       "zoneBody": "On travaille à distance avec des entreprises de toutes les régions. Réponse en moins de 24 h, du lundi au vendredi."
     }
+  },
+  "welcome": {
+    "before": "Bienvenue chez",
+    "brand": "Web"
+  },
+  "tools": {
+    "kicker": "Outils",
+    "title": "Les outils avec lesquels on travaille",
+    "aria": "Nos outils"
   }
 }

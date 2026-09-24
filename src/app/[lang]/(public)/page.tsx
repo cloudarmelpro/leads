@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 
-import { Cta, Faq, Hero, Method, Sectors, Services } from "@/features/home";
+import { Cta, Faq, Hero, Method, Sectors, Services, Tools, TradesStrip, WelcomeSplash } from "@/features/home";
 import { isLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 
@@ -12,12 +12,15 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
 
   return (
     <div>
+      <WelcomeSplash label={dict.welcome.before} brand={dict.welcome.brand} />
       <Hero lang={lang} dict={dict} />
+      <TradesStrip dict={{ hero: dict.hero }} />
       <Services lang={lang} dict={dict} />
+      <Tools dict={{ tools: dict.tools }} />
       <Sectors lang={lang} dict={dict} />
-      <Method dict={{ method: dict.method }} />
+      <Method lang={lang} dict={{ method: dict.method, hero: dict.hero }} />
       <Faq dict={{ faq: dict.faq }} lang={lang} />
-      <Cta dict={dict} />
+      <Cta dict={{ final: dict.final, placeholders: dict.placeholders }} />
     </div>
   );
 }

@@ -1,7 +1,10 @@
 /** Surface publique de la feature `home` — seule porte d'entrée depuis l'extérieur. */
 
+export { WelcomeSplash } from "./components/welcome-splash";
 export { Hero } from "./components/hero";
+export { TradesStrip } from "./components/trades-strip";
 export { Services } from "./components/services";
+export { Tools } from "./components/tools";
 export { Sectors } from "./components/sectors";
 export { Method } from "./components/method";
 export { Faq } from "./components/faq";
