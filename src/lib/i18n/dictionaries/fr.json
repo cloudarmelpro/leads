@@ -9,8 +9,6 @@
   },
   "common": {
     "close": "Fermer",
-    "soon": "à venir",
-    "tbd": "à confirmer",
     "openMenu": "Ouvrir le menu",
     "skipToContent": "Aller au contenu"
   },
@@ -74,7 +72,6 @@
     "tradesKicker": "Secteurs",
     "tradesLabel": "Dans quel secteur d’activité êtes-vous ?",
     "ctaBook": "Réserver un appel gratuit",
-    "demoCaption": "Paysagement, excavation, construction, rénovation, déneigement, commerce local : on connaît vos clients, et votre site leur parlera dans leurs mots.",
     "demos": [
       {
         "trade": "Paysagement",
@@ -113,7 +110,6 @@
       }
     ],
     "ctaPricing": "Voir les forfaits",
-    "stepAria": "Secteur {n} sur {total} : {name}",
     "badgeZone": "Laval, Rive-Nord et partout au Canada",
     "badgePrice": "Site web à partir de 499 $",
     "subtitleStrong1": "sites web professionnels",
@@ -321,11 +317,6 @@
     "startCall": "Un appel",
     "startEmail": "Un courriel"
   },
-  "proof": {
-    "title": "Preuve sociale — emplacement réservé",
-    "note": "Témoignages réels uniquement, avec autorisation écrite. Tant qu’il n’y en a pas, cette section reste éteinte : la page tient debout sans elle.",
-    "img": "photo client / projet réel"
-  },
   "faq": {
     "kicker": "FAQ",
     "titleA": "Vos questions,",
@@ -482,13 +473,11 @@
     "heroTitleB": ", du premier site au sur-mesure.",
     "heroSubtitle": "Sites web, logo et identité de marque, hébergement et serveurs. Choisissez une catégorie, puis comparez les forfaits ligne par ligne.",
     "cta": "Réserver un appel gratuit",
-    "viewPlans": "Voir les forfaits",
     "kicker": "Forfaits",
     "labels": {
       "families": "Catégories de forfaits",
       "plansCount": "{n} forfaits",
       "plansCountOne": "1 forfait",
-      "rangesLabel": "Gammes",
       "shownInTable": "Gamme affichée",
       "compareRange": "Comparer cette gamme",
       "detailed": "Comparaison détaillée",
@@ -502,9 +491,7 @@
       "bookShort": "Réserver un appel",
       "included": "Inclus",
       "notIncluded": "Non inclus",
-      "pickPlan": "Choisir un forfait",
-      "collapse": "Replier",
-      "expand": "Déplier"
+      "pickPlan": "Choisir un forfait"
     },
     "families": [
       {

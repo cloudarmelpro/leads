@@ -9,8 +9,6 @@
   },
   "common": {
     "close": "Close",
-    "soon": "soon",
-    "tbd": "to confirm",
     "openMenu": "Open menu",
     "skipToContent": "Skip to content"
   },
@@ -74,7 +72,6 @@
     "tradesKicker": "Sectors",
     "tradesLabel": "What sector are you in?",
     "ctaBook": "Book a free call",
-    "demoCaption": "Landscaping, excavation, construction, renovation, snow removal, local retail: we know your customers, and your site will speak their language.",
     "demos": [
       {
         "trade": "Landscaping",
@@ -113,7 +110,6 @@
       }
     ],
     "ctaPricing": "See the plans",
-    "stepAria": "Sector {n} of {total}: {name}",
     "badgeZone": "Laval, the North Shore and across Canada",
     "badgePrice": "Websites from $499",
     "subtitleStrong1": "professional websites",
@@ -321,11 +317,6 @@
     "startCall": "A call",
     "startEmail": "An email"
   },
-  "proof": {
-    "title": "Social proof — reserved slot",
-    "note": "Real testimonials only, with written permission. Until there are some, this section stays off: the page stands without it.",
-    "img": "real client / project photo"
-  },
   "faq": {
     "kicker": "FAQ",
     "titleA": "Your questions,",
@@ -482,13 +473,11 @@
     "heroTitleB": ", from your first site to fully custom.",
     "heroSubtitle": "Websites, logo and brand identity, hosting and servers. Pick a category, then compare the plans line by line.",
     "cta": "Book a free call",
-    "viewPlans": "See the plans",
     "kicker": "Plans",
     "labels": {
       "families": "Plan categories",
       "plansCount": "{n} plans",
       "plansCountOne": "1 plan",
-      "rangesLabel": "Ranges",
       "shownInTable": "Range shown",
       "compareRange": "Compare this range",
       "detailed": "Detailed comparison",
@@ -502,9 +491,7 @@
       "bookShort": "Book a call",
       "included": "Included",
       "notIncluded": "Not included",
-      "pickPlan": "Pick a plan",
-      "collapse": "Collapse",
-      "expand": "Expand"
+      "pickPlan": "Pick a plan"
     },
     "families": [
       {

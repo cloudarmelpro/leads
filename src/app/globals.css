@@ -94,9 +94,9 @@
   --font-mono: var(--font-oxanium), -apple-system, "Segoe UI", sans-serif;
 
   /*
-   * Tokens shadcn/ui mappés sur la marque (site clair uniquement, pas de mode
-   * sombre). Les composants ui/ (base-ui) lisent ces variables — jamais de
-   * couleur codée en dur dans un composant.
+   * Tokens shadcn/ui mappés sur la marque (valeurs sombres dans `.dark`), pour les
+   * composants ui/ quand le kit sera installé — jamais de couleur codée en dur
+   * dans un composant.
    */
   --color-background: #fdfdfd;
   --color-foreground: var(--color-encre);
