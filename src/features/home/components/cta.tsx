@@ -8,28 +8,49 @@ import type { Dictionary } from "@/lib/i18n/dictionaries";
 
 type Props = { dict: Pick<Dictionary, "final" | "placeholders"> };
 
-// Méridiens et parallèles du globe filaire, repris tels quels de la maquette (viewBox 2000).
-const MERIDIANS = [309.0, 587.8, 809.0, 951.1, 1000.0, 951.1, 809.0, 587.8, 309.0];
-const PARALLELS: [number, number, number][] = [
-  [691.0, 1309.0, 48.9],
-  [412.2, 1587.8, 191.0],
-  [191.0, 1809.0, 412.2],
-  [48.9, 1951.1, 691.0],
-  [0.0, 2000.0, 1000.0],
-  [48.9, 1951.1, 1309.0],
-  [191.0, 1809.0, 1587.8],
-  [412.2, 1587.8, 1809.0],
-  [691.0, 1309.0, 1951.1],
-];
+// Quadrillage du globe (viewBox 2000, rayon 1000) : pôle nord basculé vers nous de TILT,
+// projection orthographique, face avant seulement. Parallèles et méridiens tous les 15°.
+const TILT = (22 * Math.PI) / 180;
+const RAD = Math.PI / 180;
+
+function project(lat: number, lon: number): [number, number, number] {
+  const x = Math.cos(lat * RAD) * Math.sin(lon * RAD);
+  const y = Math.sin(lat * RAD);
+  const z = Math.cos(lat * RAD) * Math.cos(lon * RAD);
+  const ty = y * Math.cos(TILT) - z * Math.sin(TILT);
+  const tz = y * Math.sin(TILT) + z * Math.cos(TILT);
+  return [1000 + 1000 * x, 1000 - 1000 * ty, tz];
+}
+
+function trace(points: [number, number, number][]): string {
+  let d = "";
+  let pen = false;
+  for (const [x, y, z] of points) {
+    if (z <= 0) {
+      pen = false;
+      continue;
+    }
+    d += `${pen ? "L" : "M"}${x.toFixed(1)} ${y.toFixed(1)}`;
+    pen = true;
+  }
+  return d;
+}
+
+const range = (from: number, to: number, step: number) => Array.from({ length: Math.floor((to - from) / step) + 1 }, (_, i) => from + i * step);
+const GRID = [
+  ...range(-75, 75, 15).map((lat) => trace(range(-180, 180, 2).map((lon) => project(lat, lon)))),
+  ...range(0, 345, 15).map((lon) => trace(range(-90, 90, 2).map((lat) => project(lat, lon)))),
+].filter(Boolean);
 
 /**
  * Bandeau d'appel final (maquette Accueil, 2026-09-24) : grand panneau arrondi, un globe
  * filaire qui dépasse du haut, une épingle verte pulsante avec son faisceau, puis au centre
  * le titre, le texte, le bouton d'appel et la mention de délai. À la souris, le globe
  * glisse, son quadrillage tourne et l'épingle suit (rien sous `prefers-reduced-motion`).
- * Dès 620px, la hauteur mini du panneau vaut la partie visible du globe
- * (largeur × (1 − `--dy`)) + 60px, 540px au moins sous 1100px pour que l'épingle ne touche
- * pas le bord : toucher à la largeur ou à `--dy` oblige à la recalculer.
+ * Dès 1100px, le globe déborde du panneau et n'en montre que la calotte basse. Dès 620px, la
+ * hauteur mini du panneau vaut la partie visible du globe (largeur × (1 − `--dy`)) + une marge,
+ * 540px au moins sous 1100px pour que l'épingle ne touche pas le bord : toucher à la largeur
+ * ou à `--dy` oblige à la recalculer.
  */
 export function Cta({ dict }: Props) {
   const t = dict.final;
@@ -67,13 +88,13 @@ export function Cta({ dict }: Props) {
     <section id="contact" className="relative flex justify-center px-[10px]">
       <div
         ref={panel}
-        className="relative isolate flex w-full items-center justify-center overflow-hidden rounded-[24px] bg-surface-2 dark:bg-surface px-[clamp(20px,5vw,72px)] py-[clamp(56px,8vw,120px)] min-[620px]:min-h-[max(540px,calc(0.4*min(1.18*(100vw-20px),1300px)+60px))] min-[1100px]:min-h-[calc(0.48*min(1.18*(100vw-20px),max(1300px,80vw))+60px)]"
+        className="relative isolate flex w-full items-center justify-center overflow-hidden rounded-[24px] bg-surface-2 dark:bg-surface px-[clamp(20px,5vw,72px)] py-[clamp(56px,8vw,120px)] min-[620px]:min-h-[max(540px,calc(0.4*1.18*(100vw-20px)+60px))] min-[1100px]:min-h-[calc(0.36*1.2*(100vw-20px)+80px)] min-[1440px]:min-h-[calc(0.31*1.2*(100vw-20px)+80px)]"
       >
         <svg
           ref={globe}
           aria-hidden
           viewBox="0 0 2000 2000"
-          className="pointer-events-none absolute top-[0px] left-1/2 block h-auto w-[220%] [--dy:-62%] [transform:translate(-50%,var(--dy))_var(--move,translate(0px,0px))] select-none min-[620px]:w-[min(118%,max(1300px,80vw))] min-[620px]:[--dy:-60%] min-[1100px]:[--dy:-52%]"
+          className="pointer-events-none absolute top-[0px] left-1/2 block h-auto w-[220%] [--dy:-62%] [transform:translate(-50%,var(--dy))_var(--move,translate(0px,0px))] select-none min-[620px]:w-[118%] min-[620px]:[--dy:-60%] min-[1100px]:w-[120%] min-[1100px]:[--dy:-64%] min-[1440px]:[--dy:-69%]"
         >
           <defs>
             <clipPath id="tw-globe-clip">
@@ -89,12 +110,8 @@ export function Cta({ dict }: Props) {
             strokeWidth="2"
             className="[transform-box:view-box] [transform-origin:1000px_1000px] transition-transform duration-[900ms] ease-[cubic-bezier(0.2,0.7,0.2,1)]"
           >
-            <line x1="1000" y1="0" x2="1000" y2="2000" />
-            {MERIDIANS.map((rx, i) => (
-              <ellipse key={`m${i}`} cx="1000" cy="1000" rx={rx} ry="1000" />
-            ))}
-            {PARALLELS.map(([x1, x2, y], i) => (
-              <line key={`p${i}`} x1={x1} y1={y} x2={x2} y2={y} />
+            {GRID.map((d, i) => (
+              <path key={i} d={d} />
             ))}
           </g>
           <circle cx="1000" cy="1000" r="999" fill="none" stroke="var(--color-globe-bord)" strokeWidth="2" />
