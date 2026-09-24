@@ -364,6 +364,10 @@ export function createHeroScene(host: HTMLElement, pointerArea: HTMLElement, opt
   logo.scale.setScalar(opts.logoScale || 0.82);
   scene.add(logo);
   const LOGO_Y0 = 0.28; // logo légèrement remonté : dégage la zone du titre
+  // En portrait (tablette), le texte du hero occupe la moitié basse : le logo remonte vers
+  // le tiers haut du panneau au lieu de rester au centre, derrière le titre. Écart à la
+  // maquette, qui ne prévoit que le paysage. Recalculé à chaque redimensionnement.
+  let logoY = LOGO_Y0;
 
   /* lumières */
   scene.add(new THREE.AmbientLight(0x0b2520, 0.2));
@@ -923,6 +927,10 @@ export function createHeroScene(host: HTMLElement, pointerArea: HTMLElement, opt
     baseCamZ = Math.max(5.3, 1.1 / (0.36 * TANH * camera.aspect));
     camera.position.z = baseCamZ - 0.9 * exitE;
     renderer.setSize(w, h, false);
+    // Hauteur visible à la profondeur du logo ; cible : centre du logo à 27 % du haut.
+    const portrait = clamp01((1.15 - camera.aspect) / 0.4);
+    const haut = (0.5 - 0.27) * 2 * TANH * baseCamZ;
+    logoY = LOGO_Y0 + (Math.max(LOGO_Y0, haut) - LOGO_Y0) * portrait;
     const W = Math.max(2, (w * DPR) | 0);
     H = Math.max(2, (h * DPR) | 0);
     if (post) {
@@ -1035,7 +1043,7 @@ export function createHeroScene(host: HTMLElement, pointerArea: HTMLElement, opt
     const a = t01 * Math.PI * 2;
     logo.rotation.y = reduce ? -0.35 : a + Math.sin(a) * CONFIG.swing + manual;
     logo.rotation.x = Math.sin(a) * 0.05;
-    logo.position.y = LOGO_Y0 + Math.sin(a * 2) * 0.03;
+    logo.position.y = logoY + Math.sin(a * 2) * 0.03;
     sweep.position.set(Math.cos(a) * 3.5, 1.2 + Math.sin(a * 2) * 0.7, Math.sin(a) * 2.5 + 1.8);
     updateSmoke(t01);
     updateMap(dt);

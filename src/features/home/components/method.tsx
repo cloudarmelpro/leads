@@ -42,7 +42,7 @@ export function Method({ lang, dict }: Props) {
         <div className="mt-[8px] flex flex-col items-center gap-[22px]">
           {(shortcuts.length > 0 || emailUser) && (
             <div className="flex flex-wrap items-center justify-center gap-[8px]">
-              <span className="mr-[4px] text-[14px] leading-[20px] font-normal text-texte-note">{t.startWith}</span>
+              <span className="w-full text-center text-[14px] leading-[20px] font-normal text-texte-note min-[480px]:mr-[4px] min-[480px]:w-auto">{t.startWith}</span>
               {shortcuts.map((s) => (
                 <a key={s.label} href={s.href} {...(s.external ? { target: "_blank", rel: "noopener noreferrer" } : {})} className={`tap-44 ${CHIP}`}>
                   {s.label}

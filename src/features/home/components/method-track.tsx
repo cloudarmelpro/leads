@@ -62,9 +62,9 @@ export function MethodTrack({ steps, images, stepLabel, prevLabel, nextLabel, ch
           <article key={step.title} className="flex w-[min(78vw,320px)] shrink-0 grow-0 snap-start flex-col gap-[14px] min-[640px]:w-[clamp(280px,23vw,340px)]">
             <div className="relative aspect-[4/5] overflow-hidden rounded-[16px] bg-surface shadow-[inset_0_0_0_1px_rgba(255,255,255,0.06)]">
               {images[i] && <Image src={`/images/home/${images[i]}`} alt={step.title} fill sizes="(max-width: 640px) 78vw, 340px" className="object-cover" />}
-              <span className="absolute top-1/2 left-1/2 inline-flex h-[36px] max-w-[calc(100%-32px)] -translate-x-1/2 -translate-y-1/2 items-center gap-[8px] rounded-[8px] bg-[rgba(1,24,35,0.62)] pr-[6px] pl-[14px] text-[14px] leading-[1] font-medium whitespace-nowrap text-white shadow-[inset_0_0_0_1px_rgba(255,255,255,0.12)] backdrop-blur-[14px]">
-                <span className="overflow-hidden text-ellipsis">{step.title}</span>
-                <span className="inline-flex h-[26px] shrink-0 items-center rounded-[6px] bg-[rgba(255,255,255,0.12)] px-[9px] text-[12px] font-normal text-[#E4ECEF]">
+              <span className="absolute top-1/2 left-1/2 inline-flex min-h-[36px] w-max max-w-[calc(100%-32px)] -translate-x-1/2 -translate-y-1/2 items-center gap-[8px] rounded-[8px] bg-[rgba(1,24,35,0.62)] py-[5px] pr-[6px] pl-[14px] text-[14px] leading-[18px] font-medium text-white shadow-[inset_0_0_0_1px_rgba(255,255,255,0.12)] backdrop-blur-[14px]">
+                <span className="min-w-[0px] text-balance">{step.title}</span>
+                <span className="inline-flex h-[26px] shrink-0 items-center rounded-[6px] bg-[rgba(255,255,255,0.12)] px-[9px] text-[12px] font-normal whitespace-nowrap text-[#E4ECEF]">
                   {stepLabel.replace("{n}", String(i + 1))}
                 </span>
               </span>

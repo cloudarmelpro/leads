@@ -50,7 +50,7 @@ export function Hero({ lang, dict }: Props) {
   const t = dict.hero;
 
   return (
-    <section id="top" className="relative z-[2] block">
+    <section id="top" data-fab-avoid className="relative z-[2] block">
       <HeroStage fallbackSrc="/images/home/hero-repli-mobile.webp">
         <div className="relative flex h-full flex-col [opacity:calc(1-var(--exit,0)*1.6)]">
           <span

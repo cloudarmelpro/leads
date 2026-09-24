@@ -32,6 +32,8 @@ const TRACK_ANIM = {
   right: "flex flex-col [animation:tw-vitrine-y_11.4s_cubic-bezier(0.33,0,0.2,1)_0s_infinite]",
 };
 const SIDE = "clamp(18px,1.8vw,26px)";
+// Illustrations hautes (viewBox 440×400) ; les autres sont basses (440×170).
+const TALL = new Set([0, 5, 6, 7]);
 
 /**
  * Vitrine des services (maquette Accueil, 2026-09-24) : deux colonnes, chacune une piste de
@@ -39,9 +41,12 @@ const SIDE = "clamp(18px,1.8vw,26px)";
  * arrivent de la droite, à droite elles montent. Chaque carte : une illustration d'écran,
  * le nom, parfois une phrase, et le prix vers la page Prix. Pause au survol, arrêt sous
  * `prefers-reduced-motion`. La copie de bouclage est `aria-hidden` et non focusable.
+ * Sous 620px, pas d'animation : les huit cartes s'empilent dans l'ordre, entières, chaque
+ * illustration à son format (des cartes à hauteur fixe coupaient le texte et laissaient
+ * voir des cartes à moitié pendant les transitions).
  */
 export function ServicesShowcase({ lang, items }: Props) {
-  const card = (index: number, tall: boolean, clone: boolean) => {
+  const card = (index: number, tall: boolean, clone: boolean, stacked = false) => {
     const item = items[index];
     const art = SERVICE_ART[index];
     if (!item || !art) return null;
@@ -49,8 +54,14 @@ export function ServicesShowcase({ lang, items }: Props) {
     const priceLine = features.pricing && item.pricing ? item.pricing : null;
 
     return (
-      <article key={`${index}-${clone ? "b" : "a"}`} className={`relative flex flex-col overflow-hidden rounded-[20px] bg-surface ${tall ? "h-full" : "min-h-[0px] flex-1"}`}>
-        <div className="relative flex min-h-[0px] min-w-[0px] flex-1 items-center justify-start overflow-hidden" style={{ padding: `${SIDE} ${SIDE} 0` }}>
+      <article
+        key={`${index}-${clone ? "b" : "a"}`}
+        className={`relative flex flex-col overflow-hidden rounded-[20px] bg-surface ${stacked ? "" : tall ? "h-full" : "min-h-[0px] flex-1"}`}
+      >
+        <div
+          className={`relative flex min-w-[0px] items-center justify-start overflow-hidden ${stacked ? (TALL.has(index) ? "aspect-[440/400]" : "aspect-[440/170]") : "min-h-[0px] flex-1"}`}
+          style={{ padding: `${SIDE} ${SIDE} 0` }}
+        >
           {art(item.art)}
         </div>
         <div className="relative flex min-w-[0px] shrink-0 flex-col gap-[5px] pt-[13px] pb-[clamp(16px,1.6vw,20px)]" style={{ paddingInline: SIDE }}>
@@ -63,7 +74,7 @@ export function ServicesShowcase({ lang, items }: Props) {
               href={`/${lang}/prix?${pricing}`}
               aria-label={`${priceLine} — ${item.name}`}
               tabIndex={clone ? -1 : undefined}
-              className="inline-flex min-h-[26px] w-fit items-center text-[clamp(12.5px,0.95vw,14px)] leading-[20px] font-normal text-vert no-underline transition-colors hover:text-vert-clair"
+              className="tap-44 inline-flex min-h-[26px] w-fit items-center text-[clamp(12.5px,0.95vw,14px)] leading-[20px] font-normal text-vert no-underline transition-colors hover:text-vert-clair"
             >
               {priceLine}
               <ChevronRight size={15} strokeWidth={2} aria-hidden className="ml-[3px]" />
@@ -78,7 +89,7 @@ export function ServicesShowcase({ lang, items }: Props) {
     const scenes = side === "left" ? LEFT : RIGHT;
     const slides = [...scenes, scenes[0]];
     return (
-      <div className="relative h-[400px] overflow-hidden [clip-path:inset(0_round_20px)] min-[620px]:h-full">
+      <div className="relative h-full overflow-hidden [clip-path:inset(0_round_20px)]">
         <div className={`h-full w-full gap-[14px] group-hover:[animation-play-state:paused] motion-reduce:[animation:none] ${TRACK_ANIM[side]}`}>
           {slides.map((column, s) => {
             const clone = s === scenes.length;
@@ -94,9 +105,12 @@ export function ServicesShowcase({ lang, items }: Props) {
   };
 
   return (
-    <div className="group grid min-w-[0px] grid-cols-[minmax(0,1fr)] gap-[14px] min-[620px]:h-[clamp(380px,40vw,560px)] min-[620px]:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
-      {track("left")}
-      {track("right")}
-    </div>
+    <>
+      <div className="flex flex-col gap-[14px] min-[620px]:hidden">{items.map((_, index) => card(index, false, false, true))}</div>
+      <div className="group hidden h-[clamp(380px,40vw,560px)] min-w-[0px] grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-[14px] min-[620px]:grid">
+        {track("left")}
+        {track("right")}
+      </div>
+    </>
   );
 }
