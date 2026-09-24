@@ -22,7 +22,7 @@ const EASE_IN = "cubic-bezier(0.22,1,0.36,1)";
 
 /**
  * Ligne de la FAQ de l'accueil (maquette, 2026-09-24) : question en 500 sur une ligne
- * coupée quand fermée, plus/moins en vert ; la réponse s'ouvre en 500ms, puis apparaît en
+ * coupée quand fermée (dès 620px ; en dessous elle passe à la ligne), plus/moins en vert ; la réponse s'ouvre en 500ms, puis apparaît en
  * glissant de 6px, 80ms plus tard.
  */
 function FaqRow({ id, open, onToggle, question, children }: { id: string; open: boolean; onToggle: () => void; question: string; children: ReactNode }) {
@@ -40,7 +40,7 @@ function FaqRow({ id, open, onToggle, question, children }: { id: string; open: 
           onClick={onToggle}
           className="flex min-h-[64px] w-full cursor-pointer items-center gap-[20px] px-[24px] py-[20px] text-left"
         >
-          <span className={`min-w-[0px] flex-1 overflow-hidden text-[16px] leading-[24px] font-medium text-encre text-ellipsis ${open ? "whitespace-normal" : "whitespace-nowrap"}`}>
+          <span className={`min-w-[0px] flex-1 overflow-hidden text-[16px] leading-[24px] font-medium text-encre text-ellipsis ${open ? "whitespace-normal" : "whitespace-normal min-[620px]:whitespace-nowrap"}`}>
             {question}
           </span>
           <span aria-hidden className="relative block h-[11px] w-[11px] shrink-0">

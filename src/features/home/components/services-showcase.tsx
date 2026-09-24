@@ -78,7 +78,7 @@ export function ServicesShowcase({ lang, items }: Props) {
     const scenes = side === "left" ? LEFT : RIGHT;
     const slides = [...scenes, scenes[0]];
     return (
-      <div className="relative h-full overflow-hidden [clip-path:inset(0_round_20px)]">
+      <div className="relative h-[400px] overflow-hidden [clip-path:inset(0_round_20px)] min-[620px]:h-full">
         <div className={`h-full w-full gap-[14px] group-hover:[animation-play-state:paused] motion-reduce:[animation:none] ${TRACK_ANIM[side]}`}>
           {slides.map((column, s) => {
             const clone = s === scenes.length;
@@ -94,7 +94,7 @@ export function ServicesShowcase({ lang, items }: Props) {
   };
 
   return (
-    <div className="group grid h-[clamp(380px,40vw,560px)] min-w-[0px] grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-[14px]">
+    <div className="group grid min-w-[0px] grid-cols-[minmax(0,1fr)] gap-[14px] min-[620px]:h-[clamp(380px,40vw,560px)] min-[620px]:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
       {track("left")}
       {track("right")}
     </div>

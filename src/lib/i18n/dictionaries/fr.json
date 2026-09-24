@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Talgasy Web — Sites web professionnels qui convertissent",
-    "description": "Talgasy Web conçoit des sites web professionnels, structurés pour convertir. Un seul objectif : que vos clients vous appellent, pas votre compétiteur."
+    "description": "Talgasy Web conçoit des sites web professionnels, structurés pour convertir. Un seul objectif : que vos clients vous appellent, pas votre compétiteur."
   },
   "og": {
     "kicker": "Agence web · Québec",
@@ -72,9 +72,9 @@
     "titleB": "On développe les solutions qui font avancer votre entreprise.",
     "subtitle": "Talgasy Web conçoit des {b1}, structurés pour convertir — pour que vos clients {b2}, pas votre compétiteur.",
     "tradesKicker": "Secteurs",
-    "tradesLabel": "Dans quel secteur d’activité êtes-vous ?",
+    "tradesLabel": "Dans quel secteur d’activité êtes-vous ?",
     "ctaBook": "Réserver un appel gratuit",
-    "demoCaption": "Paysagement, excavation, construction, rénovation, déneigement, commerce local : on connaît vos clients, et votre site leur parlera dans leurs mots.",
+    "demoCaption": "Paysagement, excavation, construction, rénovation, déneigement, commerce local : on connaît vos clients, et votre site leur parlera dans leurs mots.",
     "demos": [
       {
         "trade": "Paysagement",
@@ -84,12 +84,12 @@
       {
         "trade": "Excavation",
         "imgLabel": "Chantier d’excavation avec pelle mécanique",
-        "pitch": "Fondations, drainage, terrassement : vos clients cherchent une équipe fiable, vite. Un site clair qui rassure et fait décrocher le téléphone."
+        "pitch": "Fondations, drainage, terrassement : vos clients cherchent une équipe fiable, vite. Un site clair qui rassure et fait décrocher le téléphone."
       },
       {
         "trade": "Construction",
         "imgLabel": "Chantier de construction en bois",
-        "pitch": "Un site à la hauteur de vos chantiers : vos projets, vos spécialités, votre zone desservie, et une demande de soumission en un clic."
+        "pitch": "Un site à la hauteur de vos chantiers : vos projets, vos spécialités, votre zone desservie, et une demande de soumission en un clic."
       },
       {
         "trade": "Rénovation",
@@ -99,7 +99,7 @@
       {
         "trade": "Commerce local",
         "imgLabel": "Vitrine d’un commerce local",
-        "pitch": "Heures, adresse, produits, avis : tout ce qu’un client cherche avant de passer la porte, trouvé en quelques secondes sur Google."
+        "pitch": "Heures, adresse, produits, avis : tout ce qu’un client cherche avant de passer la porte, trouvé en quelques secondes sur Google."
       },
       {
         "trade": "Déneigement",
@@ -109,11 +109,11 @@
       {
         "trade": "Arboriculture",
         "imgLabel": "Élagage d’un arbre par un arboriculteur",
-        "pitch": "Élagage, abattage, urgences après tempête : un site qui montre votre expertise et répond aux clients avant vos concurrents."
+        "pitch": "Élagage, abattage, urgences après tempête : un site qui montre votre expertise et répond aux clients avant vos concurrents."
       }
     ],
     "ctaPricing": "Voir les forfaits",
-    "stepAria": "Secteur {n} sur {total} : {name}",
+    "stepAria": "Secteur {n} sur {total} : {name}",
     "badgeZone": "Laval, Rive-Nord et partout au Canada",
     "badgePrice": "Site web à partir de 499 $",
     "subtitleStrong1": "sites web professionnels",
@@ -131,9 +131,9 @@
     "items": [
       {
         "name": "Création de site web",
-        "note": "Structure claire, navigation fluide, contenu qui va droit au but : une expérience web premium qui reflète le sérieux de votre entreprise — et qui donne envie d’appeler.",
+        "note": "Structure claire, navigation fluide, contenu qui va droit au but : une expérience web premium qui reflète le sérieux de votre entreprise — et qui donne envie d’appeler.",
         "pricing": "À partir de 499 $",
-        "short": "Structure claire, navigation fluide, contenu qui va droit au but : une expérience web premium.",
+        "short": "Structure claire, navigation fluide, contenu qui va droit au but : une expérience web premium.",
         "art": [
           "talgasyweb.ca",
           "Des sites qui",
@@ -162,7 +162,7 @@
       },
       {
         "name": "Hébergement",
-        "note": "On s’occupe de tout : serveur performant, certificat de sécurité, sauvegardes régulières et surveillance continue. Le site reste en ligne, rapide et protégé — en tout temps.",
+        "note": "On s’occupe de tout : serveur performant, certificat de sécurité, sauvegardes régulières et surveillance continue. Le site reste en ligne, rapide et protégé — en tout temps.",
         "pricing": "À partir de 35 $ par mois",
         "short": "",
         "art": [
@@ -194,7 +194,7 @@
       },
       {
         "name": "Logo et identité de marque",
-        "note": "Du logo seul à l’identité complète : pistes créatives, variantes, palette, typographies et fichiers sources. Une refonte de marque au complet est possible, avec guide et préparation du lancement.",
+        "note": "Du logo seul à l’identité complète : pistes créatives, variantes, palette, typographies et fichiers sources. Une refonte de marque au complet est possible, avec guide et préparation du lancement.",
         "pricing": "À partir de 200 $",
         "short": "",
         "art": [
@@ -210,7 +210,7 @@
       },
       {
         "name": "Serveurs VPS",
-        "note": "Pour une application ou un CRM qui demande plus qu’un site vitrine : de 1 à 8 vCPU, 4 à 32 Go de RAM et du stockage NVMe, gérés et surveillés de notre côté.",
+        "note": "Pour une application ou un CRM qui demande plus qu’un site vitrine : de 1 à 8 vCPU, 4 à 32 Go de RAM et du stockage NVMe, gérés et surveillés de notre côté.",
         "pricing": "De 45 $ à 150 $ par mois",
         "short": "De 1 à 8 vCPU, 4 à 32 Go de RAM et du stockage NVMe, gérés et surveillés de notre côté.",
         "art": [
@@ -228,7 +228,7 @@
       },
       {
         "name": "CRM et automatisations",
-        "note": "Un CRM à votre image : prospects, pipeline de vente, tableau de bord et formulaires connectés. Les automatisations relient le site, le CRM et vos logiciels externes.",
+        "note": "Un CRM à votre image : prospects, pipeline de vente, tableau de bord et formulaires connectés. Les automatisations relient le site, le CRM et vos logiciels externes.",
         "pricing": "Inclus à partir du forfait Professionnel",
         "short": "Prospects, pipeline de vente, tableau de bord et formulaires connectés.",
         "art": [
@@ -280,7 +280,7 @@
     "kicker": "Méthode",
     "titleA": "Comment on",
     "titleB": "travaille",
-    "intro": "Pas de boîte noire : vous savez toujours où en est votre projet, et ce qu’il vous reste à décider.",
+    "intro": "Pas de boîte noire : vous savez toujours où en est votre projet, et ce qu’il vous reste à décider.",
     "steps": [
       {
         "n": "1",
@@ -290,12 +290,12 @@
       {
         "n": "2",
         "title": "On analyse",
-        "desc": "On regarde votre site actuel et votre marché : un constat honnête de ce qui fonctionne, de ce qui manque et de ce qui rapporterait le plus."
+        "desc": "On regarde votre site actuel et votre marché : un constat honnête de ce qui fonctionne, de ce qui manque et de ce qui rapporterait le plus."
       },
       {
         "n": "3",
         "title": "On planifie une stratégie, pas juste un site",
-        "desc": "Un plan pensé pour votre métier : quelles pages, quels appels à l’action, quelle structure pour amener des demandes qualifiées."
+        "desc": "Un plan pensé pour votre métier : quelles pages, quels appels à l’action, quelle structure pour amener des demandes qualifiées."
       },
       {
         "n": "4",
@@ -305,7 +305,7 @@
       {
         "n": "5",
         "title": "On peaufine ensemble",
-        "desc": "Révision finale avant lancement : on passe en revue chaque détail avec vous avant de mettre le site en ligne."
+        "desc": "Révision finale avant lancement : on passe en revue chaque détail avec vous avant de mettre le site en ligne."
       },
       {
         "n": "6",
@@ -323,7 +323,7 @@
   },
   "proof": {
     "title": "Preuve sociale — emplacement réservé",
-    "note": "Témoignages réels uniquement, avec autorisation écrite. Tant qu’il n’y en a pas, cette section reste éteinte : la page tient debout sans elle.",
+    "note": "Témoignages réels uniquement, avec autorisation écrite. Tant qu’il n’y en a pas, cette section reste éteinte : la page tient debout sans elle.",
     "img": "photo client / projet réel"
   },
   "faq": {
@@ -333,13 +333,13 @@
     "intro": "Les questions qu’on nous pose avant chaque projet, et nos réponses.",
     "items": [
       {
-        "q": "Combien ça coûte ?",
+        "q": "Combien ça coûte ?",
         "a": "Un site web commence à 499 $, un logo à 200 $ et l’hébergement à 35 $ par mois. Chaque forfait et ses inclusions sont détaillés sur la {link}. Si votre projet sort du cadre, on vous donne un prix ferme après un appel gratuit.",
         "aLink": "page Prix",
         "aPricing": "Un site web commence à 499 $, un logo à 200 $ et l’hébergement à 35 $ par mois. Les inclusions exactes de chaque forfait sont dans les tableaux ci-dessus. Si votre projet sort du cadre, on vous donne un prix ferme après un appel de consultation gratuit."
       },
       {
-        "q": "Combien de temps prend la conception d’un site ?",
+        "q": "Combien de temps prend la conception d’un site ?",
         "a": "Un forfait Démarrage est en ligne en 3 à 5 jours ouvrables si vos textes et vos photos sont prêts. Les forfaits Croissance et Entreprise prennent quelques semaines, selon l’ampleur du projet."
       },
       {
@@ -347,24 +347,24 @@
         "a": "C’est la situation la plus courante. On vous guide pour préparer vos textes et vos photos, quel que soit le forfait. La rédaction de vos pages est incluse à partir du forfait Signature et disponible sur devis pour les autres."
       },
       {
-        "q": "J’ai déjà un site, mais il est faible. Vous le refaites ?",
+        "q": "J’ai déjà un site, mais il est faible. Vous le refaites ?",
         "a": "Oui, une refonte est tout à fait possible. On commence par une consultation pour analyser votre site actuel, puis on vous accompagne dans tout le processus de refonte."
       },
       {
-        "q": "Le site sera-t-il en français et en anglais ?",
+        "q": "Le site sera-t-il en français et en anglais ?",
         "a": "Oui, tous nos sites sont conçus bilingues par défaut, pour que vous puissiez rejoindre l’ensemble de votre clientèle, peu importe leur langue."
       },
       {
-        "q": "Comment mes clients pourront-ils me joindre ou prendre rendez-vous ?",
-        "a": "Votre site offre plusieurs façons de vous joindre : formulaire, courriel, téléphone et liens vers vos réseaux sociaux. La prise de rendez-vous en ligne est incluse à partir du forfait Croissance."
+        "q": "Comment mes clients pourront-ils me joindre ou prendre rendez-vous ?",
+        "a": "Votre site offre plusieurs façons de vous joindre : formulaire, courriel, téléphone et liens vers vos réseaux sociaux. La prise de rendez-vous en ligne est incluse à partir du forfait Croissance."
       },
       {
-        "q": "Vais-je pouvoir gérer mon blogue moi-même ?",
+        "q": "Vais-je pouvoir gérer mon blogue moi-même ?",
         "a": "Oui. Le blogue est conçu pour que vous publiiez vous-même, sans connaissances techniques. Il est inclus à partir du forfait Professionnel, avec des articles rédigés pour vous pendant 12 ou 24 mois. Si vous préférez, on s’en charge."
       },
       {
-        "q": "Le site sera-t-il bien référencé sur Google ?",
-        "a": "Chaque site est construit selon les bonnes pratiques SEO : vitesse, mobile, structure des pages et contenu local. Google décide du classement final, mais votre site part avec les bonnes bases."
+        "q": "Le site sera-t-il bien référencé sur Google ?",
+        "a": "Chaque site est construit selon les bonnes pratiques SEO : vitesse, mobile, structure des pages et contenu local. Google décide du classement final, mais votre site part avec les bonnes bases."
       }
     ]
   },
@@ -404,11 +404,11 @@
   "blog": {
     "meta": {
       "title": "Blogue — Conseils web pour les PME du Québec | Talgasy Web",
-      "description": "Idées et conseils concrets pour aider les PME du Québec à attirer plus de clients avec leur site web : conversion, référencement local et bonnes pratiques."
+      "description": "Idées et conseils concrets pour aider les PME du Québec à attirer plus de clients avec leur site web : conversion, référencement local et bonnes pratiques."
     },
     "title": "Idées et",
     "titleHighlight": "conseils",
-    "heroIntro": "Des articles concrets pour attirer plus de clients avec votre site web. Conversion, référencement local, contenu : ce qu’on applique chez nos clients, expliqué sans jargon.",
+    "heroIntro": "Des articles concrets pour attirer plus de clients avec votre site web. Conversion, référencement local, contenu : ce qu’on applique chez nos clients, expliqué sans jargon.",
     "filterAll": "Tous",
     "featured": "À la une",
     "minRead": "min de lecture",
@@ -423,13 +423,13 @@
   "about": {
     "meta": {
       "title": "À propos de Talgasy Web — L’agence derrière votre site",
-      "description": "L’agence derrière les sites qui font sonner le téléphone des PME du Québec. Notre approche : qualité, professionnalisme, confiance."
+      "description": "L’agence derrière les sites qui font sonner le téléphone des PME du Québec. Notre approche : qualité, professionnalisme, confiance."
     },
     "breadcrumb": "À propos",
     "heroTitleA": "Talgasy Web est né d’une idée",
     "heroHighlight": "simple",
-    "heroTitleB": " : aider les entrepreneurs à avancer.",
-    "heroSubtitle": "Une agence web de Québec qui bâtit des sites clairs pour les entreprises d’ici. Pas de jargon, pas de boîte noire : un site qui fait sonner le téléphone.",
+    "heroTitleB": " : aider les entrepreneurs à avancer.",
+    "heroSubtitle": "Une agence web de Québec qui bâtit des sites clairs pour les entreprises d’ici. Pas de jargon, pas de boîte noire : un site qui fait sonner le téléphone.",
     "story": {
       "kicker": "Pour qui on travaille",
       "title": "Pour ceux qui démarrent, et ceux qui grandissent",
@@ -442,7 +442,7 @@
         },
         {
           "title": "Un outil, pas une vitrine",
-          "body": "Un site web n’est pas juste une présence sur Internet. C’est un outil qui doit servir l’entreprise : présenter clairement ce qu’elle fait, inspirer confiance et aider les clients à passer à l’action."
+          "body": "Un site web n’est pas juste une présence sur Internet. C’est un outil qui doit servir l’entreprise : présenter clairement ce qu’elle fait, inspirer confiance et aider les clients à passer à l’action."
         },
         {
           "title": "Contribuer à la réussite d’ici",
@@ -458,7 +458,7 @@
       "items": [
         {
           "title": "Qualité",
-          "body": "Chaque site est testé avant la mise en ligne : vitesse, affichage mobile, formulaires, référencement de base."
+          "body": "Chaque site est testé avant la mise en ligne : vitesse, affichage mobile, formulaires, référencement de base."
         },
         {
           "title": "Professionnalisme",
@@ -474,7 +474,7 @@
   "pricing": {
     "meta": {
       "title": "Prix — Forfaits de site web, logo, hébergement et serveurs | Talgasy Web",
-      "description": "Des forfaits clairs, du premier site au sur-mesure : sites web, logo et identité de marque, hébergement et serveurs VPS. Comparez ligne par ligne et réservez un appel gratuit."
+      "description": "Des forfaits clairs, du premier site au sur-mesure : sites web, logo et identité de marque, hébergement et serveurs VPS. Comparez ligne par ligne et réservez un appel gratuit."
     },
     "breadcrumb": "Prix",
     "heroTitleA": "Des forfaits ",
@@ -511,7 +511,7 @@
         "key": "site",
         "label": "Site web",
         "title": "Site web",
-        "desc": "Trois gammes, neuf forfaits, des prix affichés. Vous hésitez entre deux ? Un appel gratuit suffit pour vous orienter.",
+        "desc": "Trois gammes, neuf forfaits, des prix affichés. Vous hésitez entre deux ? Un appel gratuit suffit pour vous orienter.",
         "plans": [
           {
             "name": "Express",
@@ -2362,7 +2362,7 @@
   "contactPage": {
     "meta": {
       "title": "Contact — Réservez un appel gratuit | Talgasy Web",
-      "description": "Parlons de votre projet de site web. Réservez un appel découverte gratuit ou écrivez-nous : une vraie personne vous répond rapidement, partout au Québec."
+      "description": "Parlons de votre projet de site web. Réservez un appel découverte gratuit ou écrivez-nous : une vraie personne vous répond rapidement, partout au Québec."
     },
     "title": "Parlons de votre",
     "titleHighlight": "projet",
@@ -2433,7 +2433,7 @@
       "honeypot": "Laissez ce champ vide",
       "send": "Envoyer ma demande",
       "sending": "Envoi…",
-      "successTitle": "Message bien reçu !",
+      "successTitle": "Message bien reçu !",
       "successBody": "Merci, on vous répond en moins de 24 h, du lundi au vendredi.",
       "errorTitle": "Un souci est survenu",
       "errorBody": "Votre message n’a pas pu être envoyé. Réessayez, ou appelez-nous directement.",

@@ -58,9 +58,9 @@ export function Hero({ lang, dict }: Props) {
             className="pointer-events-none absolute inset-[0px] z-0 block bg-[linear-gradient(180deg,rgba(1,19,26,0.30)_0%,rgba(1,19,26,0)_28%,rgba(1,19,26,0)_48%,rgba(1,19,26,0.72)_72%,rgba(1,19,26,0.94)_100%),radial-gradient(ellipse_60%_45%_at_18%_88%,rgba(1,19,26,0.85)_0%,rgba(1,19,26,0)_100%)]"
           />
 
-          <div className="relative z-[1] flex flex-1 items-end px-[clamp(18px,5vw,72px)] pt-[calc(68px+clamp(28px,5vw,72px))] pb-[clamp(96px,13vh,150px)]">
+          <div className="relative z-[1] flex flex-1 items-end px-[clamp(18px,5vw,72px)] pt-[calc(68px+clamp(28px,5vw,72px))] pb-[clamp(88px,13vh,150px)]">
             <div className="mx-auto grid w-full max-w-[1400px] grid-cols-[minmax(0,1fr)] items-start gap-[clamp(28px,4vw,72px)] min-[860px]:grid-cols-[minmax(0,1.02fr)_minmax(0,0.98fr)]">
-              <div className="flex min-w-[0px] flex-col items-start gap-[22px]">
+              <div className="flex min-w-[0px] flex-col items-start gap-[18px] min-[620px]:gap-[22px]">
                 <div className="flex flex-wrap gap-[8px]">
                   <span className={`${BADGE} gap-[12px] px-[12px] shadow-[0_0_0_1px_#FFFFFF18]`}>
                     <span className="text-[#30D98C]">{icon(PIN, 16, 1.7)}</span>
@@ -69,19 +69,21 @@ export function Hero({ lang, dict }: Props) {
                   <span className={`${BADGE} px-[14px] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.09)]`}>{t.badgePrice}</span>
                 </div>
                 <h1 className="m-[0px] max-w-[820px] text-[clamp(24px,2.9vw,40px)] leading-[1.08] font-medium tracking-[-0.02em] text-white uppercase text-pretty">
-                  <span className={`${WORD} w-full text-left text-[36px] font-semibold tracking-[-2px] [animation-delay:90ms]`}>{t.titleA}</span>{" "}
-                  <span className={`${WORD} text-[32px] font-semibold tracking-[-2px] text-[#30D98C] [animation-delay:560ms]`}>{t.titleB}</span>
+                  <span className={`${WORD} w-full text-left text-[clamp(26px,7vw,36px)] font-semibold tracking-[-1px] [animation-delay:90ms] min-[620px]:tracking-[-2px]`}>{t.titleA}</span>{" "}
+                  <span className={`${WORD} text-[clamp(22px,6.2vw,32px)] font-semibold tracking-[-1px] text-[#30D98C] [animation-delay:560ms] min-[620px]:tracking-[-2px]`}>
+                    {t.titleB}
+                  </span>
                 </h1>
               </div>
 
-              <div className="flex min-w-[0px] max-w-[520px] flex-col items-start gap-[22px] text-left min-[860px]:items-end min-[860px]:justify-self-end min-[860px]:text-right">
-                <p className="m-[0px] text-[18px] leading-[24px] font-normal text-[#E4ECEF] text-pretty">
+              <div className="flex min-w-[0px] max-w-[520px] flex-col items-start gap-[20px] text-left min-[620px]:gap-[22px] min-[860px]:items-end min-[860px]:justify-self-end min-[860px]:text-right">
+                <p className="m-[0px] text-[16px] leading-[24px] font-normal text-[#E4ECEF] text-pretty min-[620px]:text-[18px]">
                   {withStrong(t.subtitle, { b1: t.subtitleStrong1, b2: t.subtitleStrong2 })}
                 </p>
-                <div className="flex flex-wrap items-center justify-center gap-[24px]">
+                <div className="flex w-full flex-col gap-[12px] min-[480px]:w-auto min-[480px]:flex-row min-[480px]:flex-wrap min-[480px]:items-center min-[480px]:gap-[24px]">
                   <Link
                     href={`/${lang}/contact`}
-                    className="pointer-events-auto inline-flex min-h-[48px] items-center gap-[9px] rounded-[8px] bg-[#30D98C] px-[24px] text-[15px] leading-[20px] font-medium whitespace-nowrap text-[#011823] no-underline transition-colors hover:bg-[#7FEFC0]"
+                    className="pointer-events-auto inline-flex min-h-[48px] items-center justify-center gap-[9px] rounded-[8px] bg-[#30D98C] px-[24px] text-[15px] leading-[20px] font-medium whitespace-nowrap text-[#011823] no-underline transition-colors hover:bg-[#7FEFC0]"
                   >
                     {icon(PHONE, 18, 2.2)}
                     <span className="whitespace-nowrap">{t.ctaBook}</span>
@@ -89,7 +91,7 @@ export function Hero({ lang, dict }: Props) {
                   {features.pricing && (
                     <Link
                       href={`/${lang}/prix`}
-                      className="pointer-events-auto inline-flex min-h-[48px] items-center gap-[9px] rounded-[8px] bg-[rgba(1,41,60,0.72)] px-[22px] text-[15px] leading-[20px] font-normal whitespace-nowrap text-white no-underline shadow-[inset_0_0_0_1px_#0A3247] transition-[color,box-shadow] hover:text-[#30D98C] hover:shadow-[inset_0_0_0_1px_#30D98C]"
+                      className="pointer-events-auto inline-flex min-h-[48px] items-center justify-center gap-[9px] rounded-[8px] bg-[rgba(1,41,60,0.72)] px-[22px] text-[15px] leading-[20px] font-normal whitespace-nowrap text-white no-underline shadow-[inset_0_0_0_1px_#0A3247] transition-[color,box-shadow] hover:text-[#30D98C] hover:shadow-[inset_0_0_0_1px_#30D98C]"
                     >
                       {t.ctaPricing}
                     </Link>
