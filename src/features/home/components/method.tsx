@@ -53,12 +53,9 @@ export function Method({ lang, dict }: Props) {
           )}
           <Link
             href={`/${lang}/contact`}
-            className="inline-flex h-[48px] items-center gap-[10px] rounded-[8px] bg-vert px-[22px] text-[15px] leading-[1] font-medium whitespace-nowrap text-sur-vert no-underline transition-colors hover:bg-vert-clair"
+            className="tap-44 inline-flex h-[clamp(40px,35.86px+1.1vw,48px)] items-center rounded-[8px] bg-vert px-[clamp(16px,12.9px+0.83vw,22px)] text-[clamp(13px,11.97px+0.28vw,15px)] leading-[1] font-medium whitespace-nowrap text-sur-vert no-underline transition-colors hover:bg-vert-clair"
           >
             {dict.hero.ctaBook}
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-              <path d="m9 6 6 6-6 6" />
-            </svg>
           </Link>
         </div>
       </div>

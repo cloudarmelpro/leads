@@ -135,12 +135,9 @@ export function Cta({ dict }: Props) {
           <ActionLink
             href={telHref(site.phone)}
             unavailableLabel={`${t.callLabel} — ${phone}`}
-            className="tap-44 inline-flex h-[clamp(40px,35.86px+1.1vw,48px)] items-center gap-[clamp(7px,5.45px+0.41vw,10px)] rounded-[8px] bg-vert px-[clamp(16px,12.9px+0.83vw,22px)] text-[clamp(13px,11.97px+0.28vw,15px)] leading-[1] [&>svg]:size-[clamp(14px,12.97px+0.28vw,16px)] font-medium whitespace-nowrap text-sur-vert no-underline transition-[background-color,transform] duration-200 ease-[cubic-bezier(0.2,0.7,0.2,1)] hover:-translate-y-[2px] hover:bg-vert-clair active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-55"
+            className="tap-44 inline-flex h-[clamp(40px,35.86px+1.1vw,48px)] items-center rounded-[8px] bg-vert px-[clamp(16px,12.9px+0.83vw,22px)] text-[clamp(13px,11.97px+0.28vw,15px)] leading-[1] font-medium whitespace-nowrap text-sur-vert no-underline transition-[background-color,transform] duration-200 ease-[cubic-bezier(0.2,0.7,0.2,1)] hover:-translate-y-[2px] hover:bg-vert-clair active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-55"
           >
             {t.callLabel} · {phone}
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-              <path d="m9 6 6 6-6 6" />
-            </svg>
           </ActionLink>
           <span className="text-[13px] leading-[18px] font-normal text-texte-note">{t.note}</span>
         </div>

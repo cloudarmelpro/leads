@@ -25,7 +25,6 @@ const PHOTOS = [
 // carte, `--pad` la marge basse de la liste ; le fond du bloc et la marge de la section en
 // dépendent, d'où les variables.
 const VARS = "[--card:380px] [--pad:clamp(12px,1.4vw,20px)] min-[620px]:[--card:460px] min-[1100px]:[--card:clamp(360px,calc(100vh-380px),520px)]";
-const ARROW = <path d="m9 6 6 6-6 6" />;
 
 /**
  * Secteurs (maquette Accueil, 2026-09-24) : un bloc arrondi dont l'en-tête (surtitre et
@@ -93,12 +92,9 @@ export function Sectors({ lang, dict }: Props) {
                   <p className="m-[0px] max-w-[480px] text-[15px] leading-[26px] font-normal text-white text-pretty">{demo.pitch}</p>
                   <Link
                     href={`/${lang}/contact`}
-                    className="tap-44 mt-[6px] inline-flex h-[34px] w-fit items-center gap-[6px] rounded-[8px] bg-[#30D98C] px-[20px] text-[13px] leading-[1] font-normal whitespace-nowrap text-[#011823] no-underline transition-[background] duration-[240ms] ease-[cubic-bezier(0.2,0.7,0.2,1)] hover:bg-[#7FEFC0]"
+                    className="tap-44 mt-[6px] inline-flex h-[34px] w-fit items-center rounded-[8px] bg-[#30D98C] px-[20px] text-[13px] leading-[1] font-normal whitespace-nowrap text-[#011823] no-underline transition-[background] duration-[240ms] ease-[cubic-bezier(0.2,0.7,0.2,1)] hover:bg-[#7FEFC0]"
                   >
                     {t.ctaBook}
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-                      {ARROW}
-                    </svg>
                   </Link>
                 </div>
               </li>
