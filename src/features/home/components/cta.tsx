@@ -119,7 +119,7 @@ export function Cta({ dict }: Props) {
 
         <div
           aria-hidden
-          className="pointer-events-none absolute top-1/2 left-1/2 z-[1] [transform:translate(calc(-50%_-_90px),calc(-50%_-_150px))] min-[620px]:[transform:translate(calc(-50%_-_220px),calc(-50%_-_170px))]"
+          className="pointer-events-none absolute top-1/2 left-1/2 z-[1] max-[619px]:scale-[0.8] [transform:translate(calc(-50%_-_90px),calc(-50%_-_150px))] min-[620px]:[transform:translate(calc(-50%_-_220px),calc(-50%_-_170px))]"
         >
           <div ref={pin} className="transition-transform duration-[700ms] ease-[cubic-bezier(0.2,0.7,0.2,1)]">
             <span className="absolute top-1/2 left-1/2 block h-[110px] w-[260px] origin-[0_50%] [transform:translateY(-50%)_rotate(28deg)] bg-[linear-gradient(90deg,rgba(48,217,140,0.28)_0%,rgba(48,217,140,0)_100%)] [clip-path:polygon(0_46%,100%_0,100%_100%,0_54%)]" />
@@ -131,11 +131,11 @@ export function Cta({ dict }: Props) {
 
         <div className="relative z-[2] flex max-w-[640px] flex-col items-center gap-[28px] pt-[56px] text-center">
           <h2 className="m-[0px] text-[clamp(22px,2.2vw,30px)] leading-[1.2] font-semibold tracking-[-0.01em] text-encre text-balance">{t.title}</h2>
-          <p className="m-[0px] max-w-[440px] text-[15px] leading-[26px] font-normal text-texte2 text-pretty">{t.body}</p>
+          <p className="m-[0px] max-w-[440px] text-[clamp(14px,13.48px+0.14vw,15px)] leading-[1.7] font-normal text-texte2 text-pretty">{t.body}</p>
           <ActionLink
             href={telHref(site.phone)}
             unavailableLabel={`${t.callLabel} — ${phone}`}
-            className="inline-flex h-[48px] items-center gap-[10px] rounded-[8px] bg-vert px-[22px] text-[15px] leading-[1] font-medium whitespace-nowrap text-sur-vert no-underline transition-[background-color,transform] duration-200 ease-[cubic-bezier(0.2,0.7,0.2,1)] hover:-translate-y-[2px] hover:bg-vert-clair active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-55"
+            className="tap-44 inline-flex h-[clamp(40px,35.86px+1.1vw,48px)] items-center gap-[clamp(7px,5.45px+0.41vw,10px)] rounded-[8px] bg-vert px-[clamp(16px,12.9px+0.83vw,22px)] text-[clamp(13px,11.97px+0.28vw,15px)] leading-[1] [&>svg]:size-[clamp(14px,12.97px+0.28vw,16px)] font-medium whitespace-nowrap text-sur-vert no-underline transition-[background-color,transform] duration-200 ease-[cubic-bezier(0.2,0.7,0.2,1)] hover:-translate-y-[2px] hover:bg-vert-clair active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-55"
           >
             {t.callLabel} · {phone}
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
