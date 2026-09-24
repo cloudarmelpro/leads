@@ -59,7 +59,13 @@ export function Hero({ lang, dict }: Props) {
 
   return (
     <section id="top" data-fab-avoid className="relative z-[2] block">
-      <HeroStage fallbackSrc="/images/home/hero-repli-mobile.webp">
+      <HeroStage
+        fallback={{
+          portrait: { src: "/images/home/hero-repli-mobile.webp", width: 830, height: 1612 },
+          tablet: { src: "/images/home/hero-repli-tablette.webp", width: 1118, height: 1470 },
+          landscape: { src: "/images/home/hero-repli-paysage.webp", width: 1868, height: 1110 },
+        }}
+      >
         <div className="relative flex h-full flex-col [opacity:calc(1-var(--exit,0)*1.6)]">
           <span
             aria-hidden

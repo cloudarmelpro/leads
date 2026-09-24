@@ -1,14 +1,18 @@
 "use client";
 
-import Image from "next/image";
+import { getImageProps } from "next/image";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 
 import type { HeroScene } from "./scene";
 
+type Still = { src: string; width: number; height: number };
 type Props = {
   children: ReactNode;
-  /** Image fixe affichée à la place du WebGL (mobile, mouvement réduit). */
-  fallbackSrc: string;
+  /**
+   * Images fixes de secours, si l'appareil n'affiche pas le WebGL. Une par format d'écran :
+   * une image très haute rognée sur un écran moins allongé coupait le logo.
+   */
+  fallback: { portrait: Still; tablet: Still; landscape: Still };
   mapIntensity?: number;
   /** Fraction de hauteur d'écran sur laquelle le hero se dissout en sortant. */
   exitLength?: number;
@@ -20,29 +24,32 @@ const INSET = 10;
  * Scène du hero (maquette `talgasy-hero3d`, mode `data-static`) : un panneau de
  * `100vh - 20px`, décollé de 10px des bords, rayon 24px, qui défile normalement. La
  * progression de sortie `--exit` (0 → 1 sur `exitLength` écran) pilote la dissolution
- * du logo et le fondu du texte. Sous 768px ou avec `prefers-reduced-motion`, une image
- * fixe remplace le WebGL, avec une respiration lente et une parallaxe douce.
+ * du logo et le fondu du texte. La scène 3D tourne à toutes les largeurs, téléphone compris
+ * (demande du client : même rendu qu'à l'ordinateur) ; sous `prefers-reduced-motion`, elle
+ * s'affiche figée. Si le WebGL échoue, une image fixe prend le relais.
  */
-export function HeroStage({ children, fallbackSrc, mapIntensity = 2, exitLength = 0.85 }: Props) {
+// Seuils de format (largeur / hauteur de l'écran) : téléphone en portrait sous 0,62,
+// tablette jusqu'à 1,2, paysage au-delà.
+const TABLET = "(min-aspect-ratio: 31/50)";
+const LANDSCAPE = "(min-aspect-ratio: 6/5)";
+
+export function HeroStage({ children, fallback, mapIntensity = 2, exitLength = 0.85 }: Props) {
   const root = useRef<HTMLDivElement>(null);
   const panel = useRef<HTMLDivElement>(null);
   const canvasHost = useRef<HTMLDivElement>(null);
   const still = useRef<HTMLSpanElement>(null);
   const [mode, setMode] = useState<"pending" | "webgl" | "still">("pending");
 
-  // Choix du rendu côté client (largeur et préférence de mouvement inconnues au serveur), et
-  // de nouveau à chaque bascule : une fenêtre rétrécie sous 768px passe à l'image fixe.
+  // Une seule image téléchargée : celle du format courant (<picture> + getImageProps).
+  const common = { alt: "", sizes: "100vw", loading: "eager", fetchPriority: "high" } as const;
+  const landscape = getImageProps({ ...common, ...fallback.landscape }).props.srcSet;
+  const tablet = getImageProps({ ...common, ...fallback.tablet }).props.srcSet;
+  const { srcSet: portraitSet, ...portrait } = getImageProps({ ...common, ...fallback.portrait }).props;
+
+  // Le WebGL ne démarre que côté client ; l'image fixe n'est qu'un secours (voir `.catch`).
   useEffect(() => {
-    const narrow = window.matchMedia("(max-width: 767px)");
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const pick = () => setMode(narrow.matches || reduce.matches ? "still" : "webgl");
-    pick();
-    narrow.addEventListener("change", pick);
-    reduce.addEventListener("change", pick);
-    return () => {
-      narrow.removeEventListener("change", pick);
-      reduce.removeEventListener("change", pick);
-    };
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setMode("webgl");
   }, []);
 
   useEffect(() => {
@@ -125,7 +132,8 @@ export function HeroStage({ children, fallbackSrc, mapIntensity = 2, exitLength 
         io.observe(el);
       })
       .catch(() => {
-        // WebGL indisponible : le panneau garde son fond, le texte reste lisible
+        // WebGL indisponible : image fixe à la place de la scène
+        if (alive) setMode("still");
       });
     return () => {
       alive = false;
@@ -146,7 +154,11 @@ export function HeroStage({ children, fallbackSrc, mapIntensity = 2, exitLength 
         <div ref={canvasHost} aria-hidden className="absolute inset-[0px]">
           {mode === "still" && (
             <span ref={still} className="absolute top-[-4%] left-[-4%] block h-[108%] w-[108%] origin-[50%_45%] will-change-transform">
-              <Image src={fallbackSrc} alt="" fill priority sizes="100vw" className="object-cover object-[center_40%]" />
+              <picture>
+                <source media={LANDSCAPE} srcSet={landscape} />
+                <source media={TABLET} srcSet={tablet} />
+                <img {...portrait} srcSet={portraitSet} alt="" className="absolute inset-[0px] h-full w-full object-cover object-[center_25%]" />
+              </picture>
             </span>
           )}
         </div>

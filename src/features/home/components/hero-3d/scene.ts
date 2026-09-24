@@ -927,9 +927,11 @@ export function createHeroScene(host: HTMLElement, pointerArea: HTMLElement, opt
     baseCamZ = Math.max(5.3, 1.1 / (0.36 * TANH * camera.aspect));
     camera.position.z = baseCamZ - 0.9 * exitE;
     renderer.setSize(w, h, false);
-    // Hauteur visible à la profondeur du logo ; cible : centre du logo à 27 % du haut.
+    // Hauteur visible à la profondeur du logo ; cible : centre du logo à 27 % du haut en
+    // tablette, 14 % sur un téléphone très étroit (entre l'en-tête et les badges).
     const portrait = clamp01((1.15 - camera.aspect) / 0.4);
-    const haut = (0.5 - 0.27) * 2 * TANH * baseCamZ;
+    const cible = 0.14 + 0.13 * clamp01((camera.aspect - 0.45) / 0.35);
+    const haut = (0.5 - cible) * 2 * TANH * baseCamZ;
     logoY = LOGO_Y0 + (Math.max(LOGO_Y0, haut) - LOGO_Y0) * portrait;
     const W = Math.max(2, (w * DPR) | 0);
     H = Math.max(2, (h * DPR) | 0);
