@@ -67,13 +67,13 @@ export function Cta({ dict }: Props) {
     <section id="contact" className="relative flex justify-center px-[10px]">
       <div
         ref={panel}
-        className="relative isolate flex w-full items-center justify-center overflow-hidden rounded-[24px] bg-surface-2 dark:bg-surface px-[clamp(20px,5vw,72px)] py-[clamp(56px,8vw,120px)] min-[620px]:min-h-[max(540px,calc(0.4*min(1.18*(100vw-20px),1300px)+60px))] min-[1100px]:min-h-[calc(0.48*min(1.18*(100vw-20px),1300px)+60px)]"
+        className="relative isolate flex w-full items-center justify-center overflow-hidden rounded-[24px] bg-surface-2 dark:bg-surface px-[clamp(20px,5vw,72px)] py-[clamp(56px,8vw,120px)] min-[620px]:min-h-[max(540px,calc(0.4*min(1.18*(100vw-20px),1300px)+60px))] min-[1100px]:min-h-[calc(0.48*min(1.18*(100vw-20px),max(1300px,80vw))+60px)]"
       >
         <svg
           ref={globe}
           aria-hidden
           viewBox="0 0 2000 2000"
-          className="pointer-events-none absolute top-[0px] left-1/2 block h-auto w-[220%] [--dy:-62%] [transform:translate(-50%,var(--dy))_var(--move,translate(0px,0px))] select-none min-[620px]:w-[min(118%,1300px)] min-[620px]:[--dy:-60%] min-[1100px]:[--dy:-52%]"
+          className="pointer-events-none absolute top-[0px] left-1/2 block h-auto w-[220%] [--dy:-62%] [transform:translate(-50%,var(--dy))_var(--move,translate(0px,0px))] select-none min-[620px]:w-[min(118%,max(1300px,80vw))] min-[620px]:[--dy:-60%] min-[1100px]:[--dy:-52%]"
         >
           <defs>
             <clipPath id="tw-globe-clip">
