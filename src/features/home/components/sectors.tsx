@@ -24,7 +24,7 @@ const PHOTOS = [
 // 58px d'air), les cartes 140px plus bas, juste sous lui. `--card` est la hauteur d'une
 // carte, `--pad` la marge basse de la liste ; le fond du bloc et la marge de la section en
 // dépendent, d'où les variables.
-const VARS = "[--card:460px] [--pad:clamp(12px,1.4vw,20px)] min-[1100px]:[--card:clamp(360px,calc(100vh-380px),520px)]";
+const VARS = "[--card:380px] [--pad:clamp(12px,1.4vw,20px)] min-[620px]:[--card:460px] min-[1100px]:[--card:clamp(360px,calc(100vh-380px),520px)]";
 const ARROW = <path d="m9 6 6 6-6 6" />;
 
 /**
@@ -36,7 +36,8 @@ const ARROW = <path d="m9 6 6 6-6 6" />;
  * couvre donc jamais l'air laissé sous l'en-tête de page. Il déborde sous la section d'une
  * hauteur de carte, que la marge basse de la section et la marge négative de la liste
  * compensent : la dernière carte reste ainsi collée jusqu'au bout.
- * Sous 1100px : en-tête non collant, cartes collées à 88px, texte en bas de la photo.
+ * Sous 1100px : en-tête non collant, cartes collées à 88px, texte en bas de la photo ;
+ * cartes de 380px sous 620px pour raccourcir la section sur téléphone.
  */
 export function Sectors({ lang, dict }: Props) {
   const t = dict.hero;

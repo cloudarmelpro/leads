@@ -77,15 +77,14 @@ const pill = (current: boolean) =>
 const HEADER_H = "h-[78px]";
 
 /**
- * En-tête fixe (maquette Accueil, 2026-09-24) : transparent en haut de page, il prend un
- * fond en verre dès qu'on défile (sinon le contenu se lit sous le logo). Logo à gauche, barre de navigation en verre centrée, à droite langue · thème ·
- * Contact. Sous 1100px, barre et Contact laissent place au bouton menu (40×40) qui ouvre
+ * En-tête fixe (maquette Accueil, 2026-09-24) : transparent, sans fond ni filet même au
+ * défilement (demande du client ; un fond en verre a été essayé puis retiré). Logo à
+ * gauche, barre de navigation en verre centrée, à droite langue · thème · Contact. Sous 1100px, barre et Contact laissent place au bouton menu (40×40) qui ouvre
  * un menu plein écran. Hors accueil, une cale de sa hauteur évite qu'il recouvre le haut
  * des pages intérieures ; sur l'accueil, le hero plein écran passe dessous.
  */
 export function Header({ lang, dict }: Props) {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
   const burgerRef = useRef<HTMLButtonElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
@@ -128,26 +127,13 @@ export function Header({ lang, dict }: Props) {
     };
   }, [menuOpen]);
 
-  // Dès qu'on défile, un fond en verre sépare l'en-tête du contenu qui passe dessous
-  // (transparent, les titres de section se lisaient sous le logo).
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
   const close = () => setMenuOpen(false);
 
   const outlined = `flex min-h-[48px] items-center justify-center rounded-[8px] border border-contour text-[15px] leading-[20px] font-normal text-encre no-underline ${EASE} hover:border-vert hover:text-vert`;
 
   return (
     <>
-      <header
-        className={`pointer-events-none fixed inset-x-[0px] top-[0px] z-[60] flex justify-center px-[calc(10px+clamp(18px,5vw,72px))] pt-[24px] pb-[14px] transition-[background-color,box-shadow,backdrop-filter] duration-200 ease-[cubic-bezier(0.2,0.7,0.2,1)] max-[359px]:px-[16px] ${
-          scrolled ? "bg-fond/80 shadow-[0_1px_0_var(--color-filet-verre)] backdrop-blur-[14px]" : ""
-        }`}
-      >
+      <header className="pointer-events-none fixed inset-x-[0px] top-[0px] z-[60] flex justify-center px-[calc(10px+clamp(18px,5vw,72px))] pt-[24px] pb-[14px] max-[359px]:px-[16px]">
         <div className="pointer-events-auto relative flex w-full max-w-[1400px] items-center justify-between gap-[12px]">
           <Link href={home} aria-label={`${site.name} — ${dict.nav.home}`} className="flex h-[40px] shrink-0 items-center no-underline">
             <Logo height={24} />
