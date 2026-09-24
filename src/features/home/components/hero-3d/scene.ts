@@ -12,6 +12,8 @@ import { HERO_MAP as MAP } from "./map-data";
 export type HeroSceneOptions = { skipIntro: boolean; mapIntensity: number | null; logoScale: number | null };
 export type HeroScene = {
   setExit: (p: number) => void;
+  /** Centre voulu du logo, en fraction de la hauteur depuis le haut ; `null` = cadrage de la maquette. */
+  setLogoAnchor: (f: number | null) => void;
   setMap: (v: number) => void;
   setActive: (v: boolean) => void;
   dispose: () => void;
@@ -368,6 +370,9 @@ export function createHeroScene(host: HTMLElement, pointerArea: HTMLElement, opt
   // le tiers haut du panneau au lieu de rester au centre, derrière le titre. Écart à la
   // maquette, qui ne prévoit que le paysage. Recalculé à chaque redimensionnement.
   let logoY = LOGO_Y0;
+  // Sur une colonne (mobile, tablette), le hero donne la position du texte : le logo se
+  // centre entre l'en-tête et le haut du texte (voir hero-stage).
+  let logoAnchor: number | null = null;
 
   /* lumières */
   scene.add(new THREE.AmbientLight(0x0b2520, 0.2));
@@ -927,12 +932,7 @@ export function createHeroScene(host: HTMLElement, pointerArea: HTMLElement, opt
     baseCamZ = Math.max(5.3, 1.1 / (0.36 * TANH * camera.aspect));
     camera.position.z = baseCamZ - 0.9 * exitE;
     renderer.setSize(w, h, false);
-    // Hauteur visible à la profondeur du logo ; cible : centre du logo à 27 % du haut en
-    // tablette, 14 % sur un téléphone très étroit (entre l'en-tête et les badges).
-    const portrait = clamp01((1.15 - camera.aspect) / 0.4);
-    const cible = 0.14 + 0.13 * clamp01((camera.aspect - 0.45) / 0.35);
-    const haut = (0.5 - cible) * 2 * TANH * baseCamZ;
-    logoY = LOGO_Y0 + (Math.max(LOGO_Y0, haut) - LOGO_Y0) * portrait;
+    placeLogo();
     const W = Math.max(2, (w * DPR) | 0);
     H = Math.max(2, (h * DPR) | 0);
     if (post) {
@@ -943,6 +943,17 @@ export function createHeroScene(host: HTMLElement, pointerArea: HTMLElement, opt
     }
     fitMap();
   };
+  // Hauteur visible à la profondeur du logo (z = 0) : 2·tan(fov/2)·distance de la caméra.
+  function placeLogo() {
+    if (logoAnchor !== null) {
+      logoY = (0.5 - logoAnchor) * 2 * TANH * baseCamZ;
+      return;
+    }
+    // Sans ancre : en portrait le logo remonte vers le tiers haut, en paysage cadrage maquette.
+    const portrait = clamp01((1.15 - camera.aspect) / 0.4);
+    const haut = (0.5 - 0.27) * 2 * TANH * baseCamZ;
+    logoY = LOGO_Y0 + (Math.max(LOGO_Y0, haut) - LOGO_Y0) * portrait;
+  }
   const ro = new ResizeObserver(resize);
   ro.observe(host);
   resize();
@@ -1085,6 +1096,10 @@ export function createHeroScene(host: HTMLElement, pointerArea: HTMLElement, opt
   return {
     setExit: (p) => {
       scrollT = clamp01(p);
+    },
+    setLogoAnchor: (f) => {
+      logoAnchor = f;
+      placeLogo();
     },
     setMap: (v) => {
       if (isFinite(v)) mapU.uBase.value = 0.5 * v;

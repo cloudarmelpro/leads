@@ -19,6 +19,8 @@ type Props = {
 };
 
 const INSET = 10;
+// Bas de l'en-tête fixe (78px) mesuré depuis le haut du panneau, décollé de 10px.
+const HEADER_BOTTOM = 78 - INSET;
 
 /**
  * Scène du hero (maquette `talgasy-hero3d`, mode `data-static`) : un panneau de
@@ -116,6 +118,7 @@ export function HeroStage({ children, fallback, mapIntensity = 2, exitLength = 0
     let alive = true;
     let hero: HeroScene | null = null;
     let io: IntersectionObserver | null = null;
+    let anchorRo: ResizeObserver | null = null;
     const onScroll = () => {
       const p = progress();
       hero?.setExit(p);
@@ -124,7 +127,23 @@ export function HeroStage({ children, fallback, mapIntensity = 2, exitLength = 0
     import("./scene")
       .then(({ createHeroScene }) => {
         if (!alive) return;
-        hero = createHeroScene(host, area, { skipIntro: false, mapIntensity, logoScale: null });
+        const scene = createHeroScene(host, area, { skipIntro: false, mapIntensity, logoScale: null });
+        hero = scene;
+        // Sur une colonne (< 860px), logo centré entre l'en-tête et le haut du texte
+        // (`data-hero-text`), quelle que soit la taille de l'écran.
+        const anchor = () => {
+          const text = area.querySelector("[data-hero-text]");
+          const box = area.getBoundingClientRect();
+          if (!text || box.width >= 860 || box.height === 0) return scene.setLogoAnchor(null);
+          const top = text.getBoundingClientRect().top - box.top;
+          scene.setLogoAnchor((HEADER_BOTTOM + top) / 2 / box.height);
+        };
+        anchor();
+        anchorRo = new ResizeObserver(anchor);
+        anchorRo.observe(area);
+        // Le haut du texte bouge aussi quand sa hauteur change (police chargée, retours à la ligne).
+        const text = area.querySelector("[data-hero-text]");
+        if (text) anchorRo.observe(text);
         window.addEventListener("scroll", onScroll, { passive: true });
         window.addEventListener("resize", onScroll);
         onScroll();
@@ -140,16 +159,19 @@ export function HeroStage({ children, fallback, mapIntensity = 2, exitLength = 0
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
       io?.disconnect();
+      anchorRo?.disconnect();
       hero?.dispose();
     };
   }, [mode, mapIntensity, exitLength]);
 
   return (
-    <div ref={root} className="relative block h-[100vh] w-full [--exit:0]">
+    // Au moins un écran de haut, davantage si le contenu l'exige (téléphone à l'horizontale :
+    // 360px ne suffisent pas, le texte débordait du panneau).
+    <div ref={root} className="relative block min-h-[100vh] w-full [--exit:0]" style={{ padding: `${INSET}px ${INSET}px` }}>
       <div
         ref={panel}
-        className="relative z-0 overflow-hidden rounded-[24px] bg-[#021b26] [touch-action:pan-y]"
-        style={{ top: INSET, height: `calc(100vh - ${INSET * 2}px)`, margin: `0 ${INSET}px` }}
+        className="relative z-0 flex flex-col overflow-hidden rounded-[24px] bg-[#021b26] [touch-action:pan-y]"
+        style={{ minHeight: `calc(100vh - ${INSET * 2}px)` }}
       >
         <div ref={canvasHost} aria-hidden className="absolute inset-[0px]">
           {mode === "still" && (
@@ -162,7 +184,7 @@ export function HeroStage({ children, fallback, mapIntensity = 2, exitLength = 0
             </span>
           )}
         </div>
-        <div className="pointer-events-none relative z-[1] h-full">{children}</div>
+        <div className="pointer-events-none relative z-[1] flex flex-1 flex-col">{children}</div>
       </div>
     </div>
   );

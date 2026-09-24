@@ -66,14 +66,16 @@ export function Hero({ lang, dict }: Props) {
           landscape: { src: "/images/home/hero-repli-paysage.webp", width: 1868, height: 1110 },
         }}
       >
-        <div className="relative flex h-full flex-col [opacity:calc(1-var(--exit,0)*1.6)]">
+        <div className="relative flex flex-1 flex-col [opacity:calc(1-var(--exit,0)*1.6)]">
           <span
             aria-hidden
             className="pointer-events-none absolute inset-[0px] z-0 block bg-[linear-gradient(180deg,rgba(1,19,26,0.30)_0%,rgba(1,19,26,0)_28%,rgba(1,19,26,0)_48%,rgba(1,19,26,0.72)_72%,rgba(1,19,26,0.94)_100%),radial-gradient(ellipse_60%_45%_at_18%_88%,rgba(1,19,26,0.85)_0%,rgba(1,19,26,0)_100%)]"
           />
 
-          <div className="relative z-[1] flex flex-1 items-end px-[clamp(18px,5vw,72px)] pt-[calc(68px+clamp(28px,5vw,72px))] pb-[clamp(88px,13vh,150px)]">
-            <div className="mx-auto grid w-full max-w-[1400px] grid-cols-[minmax(0,1fr)] items-start gap-[clamp(28px,4vw,72px)] min-[860px]:grid-cols-[minmax(0,1.02fr)_minmax(0,0.98fr)]">
+          {/* Une colonne (< 860px) : le texte se centre dans le panneau ; en portrait, une bande
+              réservée en haut accueille le logo 3D, qui se cale entre l'en-tête et le texte. */}
+          <div className="relative z-[1] flex flex-1 items-center px-[clamp(18px,5vw,72px)] pt-[calc(68px+clamp(28px,5vw,72px))] pb-[clamp(88px,13vh,150px)] min-[860px]:items-end [@media(max-width:859px)_and_(orientation:portrait)]:pt-[calc(68px+clamp(28px,5vw,72px)+clamp(100px,16vh,180px))]">
+            <div data-hero-text className="mx-auto grid w-full max-w-[1400px] grid-cols-[minmax(0,1fr)] items-start gap-[clamp(28px,4vw,72px)] min-[860px]:grid-cols-[minmax(0,1.02fr)_minmax(0,0.98fr)]">
               <div className="flex min-w-[0px] flex-col items-start gap-[clamp(16px,12.9px+0.83vw,22px)]">
                 <div className="flex flex-wrap gap-[8px]">
                   <span className={`${BADGE} gap-[clamp(8px,5.93px+0.55vw,12px)] px-[clamp(10px,8.97px+0.28vw,12px)] shadow-[0_0_0_1px_#FFFFFF18]`}>
