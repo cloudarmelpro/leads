@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useId, useState, type ReactNode } from "react";
 
 import { GOUTTIERE } from "@/components/shared/container";
+import { LineReveal } from "@/components/shared/line-reveal";
 import { AccordionRow } from "@/features/home/components/accordion-row";
 import { SectionHead } from "@/components/shared/section-head";
 import type { Locale } from "@/lib/i18n/config";
@@ -114,9 +115,9 @@ export function Faq({ dict, lang, variant = "home" }: Props) {
           <div className="flex flex-col items-start gap-[14px]">
             <div className="flex flex-col gap-[2px]">
               <span className="text-[13px] leading-[20px] font-normal tracking-[0.08em] text-vert uppercase">{t.kicker}</span>
-              <h2 className="m-[0px] text-[clamp(22px,2.2vw,30px)] leading-[1.2] font-semibold tracking-[-0.01em] text-encre text-pretty">{`${t.titleA} ${t.titleB}`}</h2>
+              <LineReveal as="h2" className="m-[0px] text-[clamp(22px,2.2vw,30px)] leading-[1.2] font-semibold tracking-[-0.01em] text-encre text-pretty">{`${t.titleA} ${t.titleB}`}</LineReveal>
             </div>
-            <p className="m-[0px] max-w-[420px] text-[15px] leading-[26px] font-normal text-texte2 text-pretty">{t.intro}</p>
+            <LineReveal delay={0.12} className="m-[0px] max-w-[420px] text-[15px] leading-[26px] font-normal text-texte2 text-pretty">{t.intro}</LineReveal>
           </div>
           <div className="flex flex-col gap-[10px]">
             {t.items.map((item, index) => (

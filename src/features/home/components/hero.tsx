@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 
+import { LineReveal } from "@/components/shared/line-reveal";
 import { HeroStage } from "@/features/home/components/hero-3d/hero-stage";
 import { features } from "@/config/site";
 import type { Locale } from "@/lib/i18n/config";
@@ -30,7 +31,6 @@ const BADGE =
 // de 44 px même quand le bouton visible est plus petit.
 const BTN =
   "tap-44 pointer-events-auto inline-flex min-h-[clamp(40px,35.86px+1.1vw,48px)] items-center justify-center gap-[clamp(7px,5.97px+0.28vw,9px)] rounded-[8px] text-[clamp(13px,11.97px+0.28vw,15px)] leading-[20px] whitespace-nowrap no-underline [&>svg]:size-[clamp(15px,13.45px+0.41vw,18px)] min-[860px]:min-h-[clamp(38px,10.2cqi,48px)] min-[860px]:gap-[min(9px,1.9cqi)] min-[860px]:text-[clamp(12px,3.2cqi,15px)] min-[860px]:[&>svg]:size-[clamp(14px,3.8cqi,18px)]";
-const WORD = "inline-block [animation:tw-hero-word_1400ms_cubic-bezier(0.16,0.68,0.16,1)_both] motion-reduce:[animation:none]";
 
 /** Découpe « … {b1} … {b2} … » et met les deux segments en gras blanc, comme la maquette. */
 function withStrong(text: string, strong: Record<string, string>) {
@@ -82,18 +82,20 @@ export function Hero({ lang, dict }: Props) {
                   <span className={`${BADGE} px-[clamp(10px,7.93px+0.55vw,14px)] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.09)]`}>{t.badgePrice}</span>
                 </div>
                 <h1 className="m-[0px] max-w-[820px] text-[clamp(24px,2.9vw,40px)] leading-[1.08] font-medium tracking-[-0.02em] text-white uppercase text-pretty">
-                  <span className={`${WORD} w-full text-left text-[clamp(24px,17.79px+1.66vw,36px)] font-semibold tracking-[-1px] [animation-delay:90ms] min-[620px]:tracking-[-2px]`}>{t.titleA}</span>{" "}
-                  <span className={`${WORD} text-[clamp(21px,15.31px+1.52vw,32px)] font-semibold tracking-[-1px] text-[#30D98C] [animation-delay:560ms] min-[620px]:tracking-[-2px]`}>
+                  <LineReveal as="span" className="block text-left text-[clamp(24px,17.79px+1.66vw,36px)] font-semibold tracking-[-1px] min-[620px]:tracking-[-2px]">
+                    {t.titleA}
+                  </LineReveal>{" "}
+                  <LineReveal as="span" delay={0.18} className="block text-[clamp(21px,15.31px+1.52vw,32px)] font-semibold tracking-[-1px] text-[#30D98C] min-[620px]:tracking-[-2px]">
                     {t.titleB}
-                  </span>
+                  </LineReveal>
                 </h1>
               </div>
 
               <div className="@container min-w-[0px]">
               <div className="flex min-w-[0px] max-w-[520px] flex-col items-start gap-[clamp(16px,12.9px+0.83vw,22px)] text-left min-[860px]:ml-auto min-[860px]:items-end min-[860px]:text-right">
-                <p className="m-[0px] text-[clamp(15px,13.45px+0.41vw,18px)] leading-[1.34] font-normal text-[#E4ECEF] text-pretty">
+                <LineReveal delay={0.3} className="m-[0px] text-[clamp(15px,13.45px+0.41vw,18px)] leading-[1.34] font-normal text-[#E4ECEF] text-pretty">
                   {withStrong(t.subtitle, { b1: t.subtitleStrong1, b2: t.subtitleStrong2 })}
-                </p>
+                </LineReveal>
                 <div className="flex w-full flex-col gap-[12px] min-[480px]:w-auto min-[480px]:flex-row min-[480px]:flex-wrap min-[480px]:items-center min-[480px]:gap-[clamp(12px,5.79px+1.66vw,24px)] min-[860px]:flex-nowrap min-[860px]:gap-[min(24px,4.2cqi)]">
                   <Link
                     href={`/${lang}/contact`}

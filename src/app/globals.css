@@ -348,15 +348,24 @@ body {
     transform: none;
   }
 }
-@keyframes tw-hero-word {
-  from {
-    opacity: 0;
-    transform: translateY(0.22em);
+/* Révélation ligne par ligne (line-reveal.tsx) : texte masqué jusqu'au découpage, pour ne pas
+   le voir apparaître puis disparaître à l'hydratation. Sécurité : visible au bout de 2,5 s
+   si le script ne tourne jamais. Le masque déborde de 0,14em en haut et en bas (marge
+   négative, sans effet sur la mise en page) : sinon il rognait accents et jambages. */
+@media (prefers-reduced-motion: no-preference) {
+  [data-line-reveal]:not([data-revealed]) {
+    visibility: hidden;
+    animation: tw-reveal-guard 0s linear 2.5s forwards;
   }
+}
+@keyframes tw-reveal-guard {
   to {
-    opacity: 1;
-    transform: none;
+    visibility: visible;
   }
+}
+.tw-line-mask {
+  padding-block: 0.14em;
+  margin-block: -0.14em;
 }
 /* Rangées d'outils : chaque piste contient deux fois la liste, -50 % boucle sans saut. */
 @keyframes tw-tools-rail {

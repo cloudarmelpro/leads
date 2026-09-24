@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { LangMenu } from "@/components/shared/lang-menu";
+import { LineReveal } from "@/components/shared/line-reveal";
 import { Logo } from "@/components/shared/logo";
 import { ManageCookiesButton } from "@/components/shared/manage-cookies-button";
 import { ObfuscatedEmail } from "@/components/shared/obfuscated-email";
@@ -45,7 +46,7 @@ export function Footer({ lang, dict }: Props) {
         <div className="grid grid-cols-[minmax(0,1fr)] items-start gap-x-[32px] gap-y-[36px] min-[760px]:gap-x-[clamp(40px,6vw,96px)] min-[1000px]:grid-cols-[minmax(0,1fr)_max-content]">
           <div className="flex flex-col items-start gap-[22px]">
             <Logo height={28} />
-            <p className="m-[0px] max-w-[300px] text-[15px] leading-[24px] font-normal text-texte2 text-pretty">{t.description}</p>
+            <LineReveal className="m-[0px] max-w-[300px] text-[15px] leading-[24px] font-normal text-texte2 text-pretty">{t.description}</LineReveal>
             <LangMenu current={lang} label={dict.header.langAria} variant="outline" placement="above" />
           </div>
 

@@ -13,6 +13,7 @@
     "@hookform/resolvers": "^5.5.7",
     "@neondatabase/serverless": "^1.1.0",
     "clsx": "^2.1.1",
+    "gsap": "3.15.0",
     "lucide-react": "^1.26.0",
     "next": "16.3.6",
     "react": "19.2.4",

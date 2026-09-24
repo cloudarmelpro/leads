@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { LineReveal } from "@/components/shared/line-reveal";
 import { SectorStack } from "@/features/home/components/sector-steps";
 import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
@@ -54,7 +55,7 @@ export function Sectors({ lang, dict }: Props) {
         <div className="relative z-[2] flex min-h-[140px] flex-wrap items-center justify-between gap-x-[32px] gap-y-[14px] rounded-t-[24px] bg-surface-2 dark:bg-surface px-[clamp(20px,3vw,48px)] py-[22px] min-[1100px]:sticky min-[1100px]:top-[136px]">
           <div className="flex flex-col gap-[2px]">
             <span className="text-[13px] leading-[20px] font-normal tracking-[0.08em] text-vert uppercase">{t.tradesKicker}</span>
-            <h2 className="m-[0px] text-[clamp(22px,2.2vw,30px)] leading-[1.2] font-semibold tracking-[-0.01em] text-encre text-pretty">{t.tradesLabel}</h2>
+            <LineReveal as="h2" className="m-[0px] text-[clamp(22px,2.2vw,30px)] leading-[1.2] font-semibold tracking-[-0.01em] text-encre text-pretty">{t.tradesLabel}</LineReveal>
           </div>
         </div>
 

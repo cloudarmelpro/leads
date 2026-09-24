@@ -1,3 +1,4 @@
+import { LineReveal } from "@/components/shared/line-reveal";
 import { ServicesShowcase } from "@/features/home/components/services-showcase";
 import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
@@ -18,12 +19,12 @@ export function Services({ lang, dict }: Props) {
         <div className="flex flex-col items-start gap-[18px] min-[1100px]:order-2">
           <span className="text-[13px] leading-[20px] font-normal tracking-[0.08em] text-vert uppercase">{t.kicker}</span>
           {/* Deux lignes voulues : « Ce qu'on fait, » puis « concrètement ». */}
-          <h2 className="m-[0px] text-[clamp(22px,2.2vw,30px)] leading-[1.2] font-semibold tracking-[-0.01em] text-encre">
+          <LineReveal as="h2" className="m-[0px] text-[clamp(22px,2.2vw,30px)] leading-[1.2] font-semibold tracking-[-0.01em] text-encre">
             {t.titleA}
             <br />
             {t.titleB}
-          </h2>
-          <p className="m-[0px] max-w-[440px] text-[15px] leading-[26px] font-normal text-texte2 text-pretty">{t.intro}</p>
+          </LineReveal>
+          <LineReveal delay={0.12} className="m-[0px] max-w-[440px] text-[15px] leading-[26px] font-normal text-texte2 text-pretty">{t.intro}</LineReveal>
         </div>
 
         <div className="min-w-[0px] min-[1100px]:order-1">
