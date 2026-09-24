@@ -120,13 +120,10 @@ export function Hero({ lang, dict }: Props) {
               href="#secteurs"
               className="pointer-events-auto inline-flex h-[clamp(36px,33.93px+0.55vw,40px)] max-w-full min-w-[0px] items-center gap-[clamp(8px,6.97px+0.28vw,10px)] rounded-[8px] bg-[rgba(1,24,35,0.55)] pr-[clamp(12px,9.93px+0.55vw,16px)] pl-[6px] text-[clamp(12.5px,11.98px+0.14vw,13.5px)] leading-[1] font-normal whitespace-nowrap text-white no-underline shadow-[inset_0_0_0_1px_rgba(255,255,255,0.09)] backdrop-blur-[14px] transition-colors hover:bg-[rgba(1,24,35,0.75)]"
             >
-              <span className="inline-flex h-[clamp(24px,21.93px+0.55vw,28px)] shrink-0 items-center gap-[6px] rounded-[6px] bg-[#30D98C] px-[clamp(8px,6.97px+0.28vw,10px)] text-[clamp(11px,10.48px+0.14vw,12px)] font-semibold text-[#011823]">
-                {icon(PIN, 13, 2.2)}
+              <span className="inline-flex h-[clamp(24px,21.93px+0.55vw,28px)] shrink-0 items-center rounded-[6px] bg-[#30D98C] px-[clamp(8px,6.97px+0.28vw,10px)] text-[clamp(11px,10.48px+0.14vw,12px)] font-semibold text-[#011823]">
                 {t.tradesKicker}
               </span>
               <span className="min-w-[0px] overflow-hidden text-ellipsis">{t.sectorsTeaser}</span>
-              {/* Oxanium pose ses minuscules haut dans la ligne : centré, le chevron paraissait 1px trop bas. */}
-              <span className="flex shrink-0 -translate-y-[1px]">{icon(<path d="m9 6 6 6-6 6" />, 15, 2)}</span>
             </a>
           </div>
         </div>
