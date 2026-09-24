@@ -75,6 +75,7 @@ const pill = (current: boolean) =>
 
 // Hauteur de l'en-tête fixe : 24px en haut, 40px de barre, 14px en bas.
 const HEADER_H = "h-[78px]";
+const BAR_MIDDLE = 44;
 
 /**
  * En-tête fixe (maquette Accueil, 2026-09-24) : transparent, sans fond ni filet même au
@@ -127,13 +128,41 @@ export function Header({ lang, dict }: Props) {
     };
   }, [menuOpen]);
 
+  // En thème clair, la barre prend les couleurs du sombre tant qu'elle survole une zone
+  // sombre (`data-header-sombre`, le hero 3D) : sinon logo et liens y seraient illisibles.
+  const [overDark, setOverDark] = useState(false);
+  useEffect(() => {
+    const zones = Array.from(document.querySelectorAll<HTMLElement>("[data-header-sombre]"));
+    let raf = 0;
+    const check = () => {
+      raf = 0;
+      setOverDark(
+        zones.some((zone) => {
+          const r = zone.getBoundingClientRect();
+          return r.top <= BAR_MIDDLE && r.bottom >= BAR_MIDDLE;
+        }),
+      );
+    };
+    const schedule = () => {
+      if (!raf) raf = requestAnimationFrame(check);
+    };
+    schedule();
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("resize", schedule);
+    };
+  }, [pathname]);
+
   const close = () => setMenuOpen(false);
 
   const outlined = `flex min-h-[48px] items-center justify-center rounded-[8px] border border-contour text-[15px] leading-[20px] font-normal text-encre no-underline ${EASE} hover:border-vert hover:text-vert`;
 
   return (
     <>
-      <header className="pointer-events-none fixed inset-x-[0px] top-[0px] z-[60] flex justify-center px-[calc(10px+clamp(18px,5vw,72px))] pt-[24px] pb-[14px] max-[359px]:px-[16px]">
+      <header className={`${overDark ? "dark" : ""} pointer-events-none fixed inset-x-[0px] top-[0px] z-[60] flex justify-center px-[calc(10px+clamp(18px,5vw,72px))] pt-[24px] pb-[14px] max-[359px]:px-[16px]`}>
         <div className="pointer-events-auto relative flex w-full max-w-[1400px] items-center justify-between gap-[12px]">
           <Link href={home} aria-label={`${site.name} — ${dict.nav.home}`} className="flex h-[40px] shrink-0 items-center no-underline">
             <Logo height={24} />

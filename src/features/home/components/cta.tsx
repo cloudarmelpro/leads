@@ -64,7 +64,7 @@ export function Cta({ dict }: Props) {
     <section id="contact" className="relative flex justify-center px-[10px]">
       <div
         ref={panel}
-        className="relative isolate flex w-full items-center justify-center overflow-hidden rounded-[24px] bg-surface px-[clamp(20px,5vw,72px)] py-[clamp(56px,8vw,120px)] min-[620px]:min-h-[min(82vh,820px)]"
+        className="relative isolate flex w-full items-center justify-center overflow-hidden rounded-[24px] bg-surface-2 dark:bg-surface px-[clamp(20px,5vw,72px)] py-[clamp(56px,8vw,120px)] min-[620px]:min-h-[min(82vh,820px)]"
       >
         <svg
           ref={globe}
@@ -77,12 +77,12 @@ export function Cta({ dict }: Props) {
               <circle cx="1000" cy="1000" r="998" />
             </clipPath>
           </defs>
-          <circle cx="1000" cy="1000" r="1000" fill="#0B2432" />
+          <circle cx="1000" cy="1000" r="1000" fill="var(--color-globe)" />
           <g
             ref={grid}
             clipPath="url(#tw-globe-clip)"
             fill="none"
-            stroke="rgba(255,255,255,0.08)"
+            stroke="var(--color-globe-trait)"
             strokeWidth="2"
             className="[transform-box:view-box] [transform-origin:1000px_1000px] transition-transform duration-[900ms] ease-[cubic-bezier(0.2,0.7,0.2,1)]"
           >
@@ -94,7 +94,7 @@ export function Cta({ dict }: Props) {
               <line key={`p${i}`} x1={x1} y1={y} x2={x2} y2={y} />
             ))}
           </g>
-          <circle cx="1000" cy="1000" r="999" fill="none" stroke="rgba(255,255,255,0.10)" strokeWidth="2" />
+          <circle cx="1000" cy="1000" r="999" fill="none" stroke="var(--color-globe-bord)" strokeWidth="2" />
         </svg>
 
         <div
@@ -103,7 +103,7 @@ export function Cta({ dict }: Props) {
         >
           <div ref={pin} className="transition-transform duration-[700ms] ease-[cubic-bezier(0.2,0.7,0.2,1)]">
             <span className="absolute top-1/2 left-1/2 block h-[110px] w-[260px] origin-[0_50%] [transform:translateY(-50%)_rotate(28deg)] bg-[linear-gradient(90deg,rgba(48,217,140,0.28)_0%,rgba(48,217,140,0)_100%)] [clip-path:polygon(0_46%,100%_0,100%_100%,0_54%)]" />
-            <span className="relative flex h-[72px] w-[72px] items-center justify-center rounded-full bg-[rgba(255,255,255,0.85)] shadow-[0_10px_40px_rgba(0,0,0,0.35)]">
+            <span className="relative flex h-[72px] w-[72px] items-center justify-center rounded-full bg-[rgba(255,255,255,0.85)] shadow-[0_10px_30px_rgba(15,29,23,0.16)] dark:shadow-[0_10px_40px_rgba(0,0,0,0.35)]">
               <span className="block h-[38px] w-[38px] rounded-full bg-[#30D98C] [animation:tw-pin-pulse_2.4s_ease-in-out_infinite]" />
             </span>
           </div>

@@ -10,8 +10,8 @@ export const WELCOME_KEY = "talgasy-welcome-v3";
 
 const T = "M55.9557 140H34.6925V17.836H0L0 0L168.333 0V17.836L55.9557 17.836V140Z";
 const G = "M168.333 45.7126H120.479V63.1308H147.898V121.028H102.853V27.4766H80.4709V140H168.333V45.7126Z";
-const WORD = "relative text-[clamp(20px,2.6vw,31px)] leading-[1] font-medium tracking-[0.02em] whitespace-nowrap text-[#012A3C] uppercase";
-const WAVE = "absolute top-[0px] left-[0px] text-[#30D98C] [animation:tw-wave-text_1700ms_linear_infinite]";
+const WORD = "relative text-[clamp(20px,2.6vw,31px)] leading-[1] font-medium tracking-[0.02em] whitespace-nowrap text-mot-accueil uppercase";
+const WAVE = "absolute top-[0px] left-[0px] text-vert [animation:tw-wave-text_1700ms_linear_infinite]";
 
 /**
  * Écran de bienvenue (maquette Accueil) : au premier passage seulement, « Bienvenue chez
@@ -62,7 +62,7 @@ export function WelcomeSplash({ label, brand }: Props) {
     <div
       data-splash
       aria-hidden
-      className="fixed inset-[0px] z-[95] flex items-center justify-center bg-[#011823] p-[24px] [animation:tw-splash-out_380ms_cubic-bezier(0.22,1,0.36,1)_1600ms_both]"
+      className="fixed inset-[0px] z-[95] flex items-center justify-center bg-fond p-[24px] [animation:tw-splash-out_380ms_cubic-bezier(0.22,1,0.36,1)_1600ms_both]"
     >
       <div className="flex flex-nowrap items-center justify-center gap-[10px] [animation:tw-lockup-in_700ms_cubic-bezier(0.22,1,0.36,1)_both]">
         <span className={WORD}>
@@ -78,10 +78,10 @@ export function WelcomeSplash({ label, brand }: Props) {
               <rect x="0" y="0" width="169" height="140" className="origin-[0px_0px] [animation:tw-wave-rect_1700ms_linear_400ms_infinite]" />
             </clipPath>
           </defs>
-          <path d={T} fill="#012A3C" />
-          <path d={G} fill="#012A3C" />
-          <path d={T} fill="#30D98C" clipPath="url(#tw-splash-t)" />
-          <path d={G} fill="#30D98C" clipPath="url(#tw-splash-g)" />
+          <path d={T} fill="var(--color-mot-accueil)" />
+          <path d={G} fill="var(--color-mot-accueil)" />
+          <path d={T} fill="var(--color-vert)" clipPath="url(#tw-splash-t)" />
+          <path d={G} fill="var(--color-vert)" clipPath="url(#tw-splash-g)" />
         </svg>
         <span className={WORD}>
           {brand}

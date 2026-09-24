@@ -67,6 +67,22 @@
   --color-lien-barre: #3a3a3f;
   --color-texte-sourd: #646468;
   --color-puce: #1e1e1e;
+  /* Accueil en clair : globe de l'appel final, mots de l'écran de bienvenue. */
+  --color-globe: #ffffff;
+  --color-globe-trait: rgba(15, 29, 23, 0.09);
+  --color-globe-bord: rgba(15, 29, 23, 0.12);
+  --color-mot-accueil: #e1e8e5;
+  /* Illustrations des Services (service-art.tsx) : écran, puces, textes du dessin.
+     Le vert des textes est plus sombre que celui des formes pour rester lisible sur blanc. */
+  --color-art-cadre: #f8faf9;
+  --color-art-ecran: #f1f5f3;
+  --color-art-puce: #e6ede9;
+  --color-art-creux: #dfe7e3;
+  --color-art-texte: #0f1d17;
+  --color-art-sourd: #5b6f68;
+  --color-art-vert: #22b573;
+  --color-art-vert-texte: #177e4f;
+  --color-art-sur-vert: #00131c;
 
   /* Une seule police : Oxanium, telechargee au build et servie depuis notre domaine. */
   --font-display: var(--font-oxanium), -apple-system, "Segoe UI", sans-serif;
@@ -135,6 +151,19 @@
   --color-lien-barre: #d5e0e5;
   --color-texte-sourd: #8fa3ac;
   --color-puce: #d7e3e8;
+  --color-globe: #0b2432;
+  --color-globe-trait: rgba(255, 255, 255, 0.08);
+  --color-globe-bord: rgba(255, 255, 255, 0.1);
+  --color-mot-accueil: #012a3c;
+  --color-art-cadre: #011b28;
+  --color-art-ecran: #01212f;
+  --color-art-puce: #01293c;
+  --color-art-creux: #00131c;
+  --color-art-texte: #ffffff;
+  --color-art-sourd: #a9bcc4;
+  --color-art-vert: #30d98c;
+  --color-art-vert-texte: #30d98c;
+  --color-art-sur-vert: #00131c;
 
   /* Alias shadcn */
   --color-background: #011823;

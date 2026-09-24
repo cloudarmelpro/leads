@@ -49,10 +49,10 @@ export function Sectors({ lang, dict }: Props) {
     >
       <div className="relative isolate w-full max-w-[1400px] rounded-[24px]">
         <div aria-hidden className="pointer-events-none absolute inset-x-[0px] top-[0px] bottom-[0px] z-0 min-[1100px]:bottom-[calc(-1*(var(--card)+var(--pad)))]">
-          <span className="block h-full rounded-[24px] bg-surface min-[1100px]:sticky min-[1100px]:top-[136px] min-[1100px]:h-[calc(140px+var(--card)+var(--pad))]" />
+          <span className="block h-full rounded-[24px] bg-surface-2 dark:bg-surface min-[1100px]:sticky min-[1100px]:top-[136px] min-[1100px]:h-[calc(140px+var(--card)+var(--pad))]" />
         </div>
 
-        <div className="relative z-[2] flex min-h-[140px] flex-wrap items-center justify-between gap-x-[32px] gap-y-[14px] rounded-t-[24px] bg-surface px-[clamp(20px,3vw,48px)] py-[22px] min-[1100px]:sticky min-[1100px]:top-[136px]">
+        <div className="relative z-[2] flex min-h-[140px] flex-wrap items-center justify-between gap-x-[32px] gap-y-[14px] rounded-t-[24px] bg-surface-2 dark:bg-surface px-[clamp(20px,3vw,48px)] py-[22px] min-[1100px]:sticky min-[1100px]:top-[136px]">
           <div className="flex flex-col gap-[2px]">
             <span className="text-[13px] leading-[20px] font-normal tracking-[0.08em] text-vert uppercase">{t.tradesKicker}</span>
             <h2 className="m-[0px] text-[clamp(22px,2.2vw,30px)] leading-[1.2] font-semibold tracking-[-0.01em] text-encre text-pretty">{t.tradesLabel}</h2>

@@ -56,7 +56,7 @@ export function ServicesShowcase({ lang, items }: Props) {
     return (
       <article
         key={`${index}-${clone ? "b" : "a"}`}
-        className={`relative flex flex-col overflow-hidden rounded-[20px] bg-surface ${stacked ? "" : tall ? "h-full" : "min-h-[0px] flex-1"}`}
+        className={`relative flex flex-col overflow-hidden rounded-[20px] bg-surface ring-1 ring-ligne ring-inset dark:ring-0 ${stacked ? "" : tall ? "h-full" : "min-h-[0px] flex-1"}`}
       >
         <div
           className={`relative flex min-w-[0px] items-center justify-start overflow-hidden ${stacked ? (TALL.has(index) ? "aspect-[440/400]" : "aspect-[440/170]") : "min-h-[0px] flex-1"}`}

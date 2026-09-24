@@ -58,7 +58,7 @@ export function Hero({ lang, dict }: Props) {
   const t = dict.hero;
 
   return (
-    <section id="top" data-fab-avoid className="relative z-[2] block">
+    <section id="top" data-fab-avoid data-header-sombre className="relative z-[2] block">
       <HeroStage
         fallback={{
           portrait: { src: "/images/home/hero-repli-mobile.webp", width: 830, height: 1612 },
