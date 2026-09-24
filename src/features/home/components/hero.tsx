@@ -125,7 +125,7 @@ export function Hero({ lang, dict }: Props) {
                 {t.tradesKicker}
               </span>
               <span className="min-w-[0px] overflow-hidden text-ellipsis">{t.sectorsTeaser}</span>
-              <span className="shrink-0">{icon(<path d="M5 12h14M13 6l6 6-6 6" />, 15, 2)}</span>
+              <span className="shrink-0">{icon(<path d="m9 6 6 6-6 6" />, 15, 2)}</span>
             </a>
           </div>
         </div>

@@ -139,7 +139,7 @@ export function Cta({ dict }: Props) {
           >
             {t.callLabel} · {phone}
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-              <path d="M5 12h14M13 6l6 6-6 6" />
+              <path d="m9 6 6 6-6 6" />
             </svg>
           </ActionLink>
           <span className="text-[13px] leading-[18px] font-normal text-texte-note">{t.note}</span>
