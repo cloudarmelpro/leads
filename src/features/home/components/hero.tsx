@@ -24,7 +24,12 @@ const icon = (d: ReactNode, size: number, strokeWidth: number) => (
 );
 
 // Le hero est toujours posé sur la scène sombre : ses couleurs ne suivent pas le thème.
-const BADGE = "flex h-[32px] items-center rounded-[8px] bg-[#01182380] backdrop-blur-[14px] text-[12.5px] leading-[20px] font-normal whitespace-nowrap text-[#E4ECEF]";
+// Tout le contenu suit la largeur : valeurs de la maquette dès 860px, réduction continue
+// jusqu'à 375px (formes « a + b·vw » calées sur ces deux largeurs).
+const BADGE =
+  "flex h-[clamp(28px,24.9px+0.82vw,32px)] items-center rounded-[8px] bg-[#01182380] backdrop-blur-[14px] text-[clamp(11px,9.8px+0.31vw,12.5px)] leading-[20px] font-normal whitespace-nowrap text-[#E4ECEF]";
+const BTN =
+  "pointer-events-auto inline-flex min-h-[clamp(44px,40.9px+0.82vw,48px)] items-center justify-center gap-[9px] rounded-[8px] text-[clamp(14px,13.2px+0.21vw,15px)] leading-[20px] whitespace-nowrap no-underline";
 const WORD = "inline-block [animation:tw-hero-word_1400ms_cubic-bezier(0.16,0.68,0.16,1)_both] motion-reduce:[animation:none]";
 
 /** Découpe « … {b1} … {b2} … » et met les deux segments en gras blanc, comme la maquette. */
@@ -60,30 +65,30 @@ export function Hero({ lang, dict }: Props) {
 
           <div className="relative z-[1] flex flex-1 items-end px-[clamp(18px,5vw,72px)] pt-[calc(68px+clamp(28px,5vw,72px))] pb-[clamp(88px,13vh,150px)]">
             <div className="mx-auto grid w-full max-w-[1400px] grid-cols-[minmax(0,1fr)] items-start gap-[clamp(28px,4vw,72px)] min-[860px]:grid-cols-[minmax(0,1.02fr)_minmax(0,0.98fr)]">
-              <div className="flex min-w-[0px] flex-col items-start gap-[18px] min-[620px]:gap-[22px]">
+              <div className="flex min-w-[0px] flex-col items-start gap-[clamp(16px,11.4px+1.24vw,22px)]">
                 <div className="flex flex-wrap gap-[8px]">
-                  <span className={`${BADGE} gap-[12px] px-[12px] shadow-[0_0_0_1px_#FFFFFF18]`}>
+                  <span className={`${BADGE} gap-[clamp(8px,4.9px+0.82vw,12px)] px-[clamp(10px,8.5px+0.41vw,12px)] shadow-[0_0_0_1px_#FFFFFF18]`}>
                     <span className="text-[#30D98C]">{icon(PIN, 16, 1.7)}</span>
                     {t.badgeZone}
                   </span>
-                  <span className={`${BADGE} px-[14px] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.09)]`}>{t.badgePrice}</span>
+                  <span className={`${BADGE} px-[clamp(10px,6.9px+0.82vw,14px)] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.09)]`}>{t.badgePrice}</span>
                 </div>
                 <h1 className="m-[0px] max-w-[820px] text-[clamp(24px,2.9vw,40px)] leading-[1.08] font-medium tracking-[-0.02em] text-white uppercase text-pretty">
-                  <span className={`${WORD} w-full text-left text-[clamp(26px,7vw,36px)] font-semibold tracking-[-1px] [animation-delay:90ms] min-[620px]:tracking-[-2px]`}>{t.titleA}</span>{" "}
-                  <span className={`${WORD} text-[clamp(22px,6.2vw,32px)] font-semibold tracking-[-1px] text-[#30D98C] [animation-delay:560ms] min-[620px]:tracking-[-2px]`}>
+                  <span className={`${WORD} w-full text-left text-[clamp(24px,14.7px+2.47vw,36px)] font-semibold tracking-[-1px] [animation-delay:90ms] min-[620px]:tracking-[-2px]`}>{t.titleA}</span>{" "}
+                  <span className={`${WORD} text-[clamp(21px,12.5px+2.27vw,32px)] font-semibold tracking-[-1px] text-[#30D98C] [animation-delay:560ms] min-[620px]:tracking-[-2px]`}>
                     {t.titleB}
                   </span>
                 </h1>
               </div>
 
-              <div className="flex min-w-[0px] max-w-[520px] flex-col items-start gap-[20px] text-left min-[620px]:gap-[22px] min-[860px]:items-end min-[860px]:justify-self-end min-[860px]:text-right">
-                <p className="m-[0px] text-[16px] leading-[24px] font-normal text-[#E4ECEF] text-pretty min-[620px]:text-[18px]">
+              <div className="flex min-w-[0px] max-w-[520px] flex-col items-start gap-[clamp(16px,11.4px+1.24vw,22px)] text-left min-[860px]:items-end min-[860px]:justify-self-end min-[860px]:text-right">
+                <p className="m-[0px] text-[clamp(15px,12.7px+0.62vw,18px)] leading-[1.34] font-normal text-[#E4ECEF] text-pretty">
                   {withStrong(t.subtitle, { b1: t.subtitleStrong1, b2: t.subtitleStrong2 })}
                 </p>
-                <div className="flex w-full flex-col gap-[12px] min-[480px]:w-auto min-[480px]:flex-row min-[480px]:flex-wrap min-[480px]:items-center min-[480px]:gap-[24px]">
+                <div className="flex w-full flex-col gap-[12px] min-[480px]:w-auto min-[480px]:flex-row min-[480px]:flex-wrap min-[480px]:items-center min-[480px]:gap-[clamp(12px,2.7px+2.47vw,24px)]">
                   <Link
                     href={`/${lang}/contact`}
-                    className="pointer-events-auto inline-flex min-h-[48px] items-center justify-center gap-[9px] rounded-[8px] bg-[#30D98C] px-[24px] text-[15px] leading-[20px] font-medium whitespace-nowrap text-[#011823] no-underline transition-colors hover:bg-[#7FEFC0]"
+                    className={`${BTN} bg-[#30D98C] px-[clamp(18px,13.4px+1.24vw,24px)] font-medium text-[#011823] transition-colors hover:bg-[#7FEFC0]`}
                   >
                     {icon(PHONE, 18, 2.2)}
                     <span className="whitespace-nowrap">{t.ctaBook}</span>
@@ -91,7 +96,7 @@ export function Hero({ lang, dict }: Props) {
                   {features.pricing && (
                     <Link
                       href={`/${lang}/prix`}
-                      className="pointer-events-auto inline-flex min-h-[48px] items-center justify-center gap-[9px] rounded-[8px] bg-[rgba(1,41,60,0.72)] px-[22px] text-[15px] leading-[20px] font-normal whitespace-nowrap text-white no-underline shadow-[inset_0_0_0_1px_#0A3247] transition-[color,box-shadow] hover:text-[#30D98C] hover:shadow-[inset_0_0_0_1px_#30D98C]"
+                      className={`${BTN} bg-[rgba(1,41,60,0.72)] px-[clamp(16px,11.4px+1.24vw,22px)] font-normal text-white shadow-[inset_0_0_0_1px_#0A3247] transition-[color,box-shadow] hover:text-[#30D98C] hover:shadow-[inset_0_0_0_1px_#30D98C]`}
                     >
                       {t.ctaPricing}
                     </Link>
@@ -104,9 +109,9 @@ export function Hero({ lang, dict }: Props) {
           <div className="relative z-[1] flex justify-center px-[clamp(18px,5vw,72px)] pb-[26px]">
             <a
               href="#secteurs"
-              className="pointer-events-auto inline-flex h-[40px] max-w-full min-w-[0px] items-center gap-[10px] rounded-[8px] bg-[rgba(1,24,35,0.55)] pr-[16px] pl-[6px] text-[13.5px] leading-[1] font-normal whitespace-nowrap text-white no-underline shadow-[inset_0_0_0_1px_rgba(255,255,255,0.09)] backdrop-blur-[14px] transition-colors hover:bg-[rgba(1,24,35,0.75)]"
+              className="pointer-events-auto inline-flex h-[clamp(36px,32.9px+0.82vw,40px)] max-w-full min-w-[0px] items-center gap-[clamp(8px,6.5px+0.41vw,10px)] rounded-[8px] bg-[rgba(1,24,35,0.55)] pr-[clamp(12px,8.9px+0.82vw,16px)] pl-[6px] text-[clamp(12.5px,11.7px+0.21vw,13.5px)] leading-[1] font-normal whitespace-nowrap text-white no-underline shadow-[inset_0_0_0_1px_rgba(255,255,255,0.09)] backdrop-blur-[14px] transition-colors hover:bg-[rgba(1,24,35,0.75)]"
             >
-              <span className="inline-flex h-[28px] shrink-0 items-center gap-[6px] rounded-[6px] bg-[#30D98C] px-[10px] text-[12px] font-semibold text-[#011823]">
+              <span className="inline-flex h-[clamp(24px,20.9px+0.82vw,28px)] shrink-0 items-center gap-[6px] rounded-[6px] bg-[#30D98C] px-[clamp(8px,6.5px+0.41vw,10px)] text-[clamp(11px,10.2px+0.21vw,12px)] font-semibold text-[#011823]">
                 {icon(PIN, 13, 2.2)}
                 {t.tradesKicker}
               </span>

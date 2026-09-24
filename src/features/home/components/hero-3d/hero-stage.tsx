@@ -30,11 +30,19 @@ export function HeroStage({ children, fallbackSrc, mapIntensity = 2, exitLength 
   const still = useRef<HTMLSpanElement>(null);
   const [mode, setMode] = useState<"pending" | "webgl" | "still">("pending");
 
-  // Choix du rendu au montage : la largeur et la préférence de mouvement n'existent pas côté serveur.
+  // Choix du rendu côté client (largeur et préférence de mouvement inconnues au serveur), et
+  // de nouveau à chaque bascule : une fenêtre rétrécie sous 768px passe à l'image fixe.
   useEffect(() => {
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setMode(window.innerWidth < 768 || reduce ? "still" : "webgl");
+    const narrow = window.matchMedia("(max-width: 767px)");
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const pick = () => setMode(narrow.matches || reduce.matches ? "still" : "webgl");
+    pick();
+    narrow.addEventListener("change", pick);
+    reduce.addEventListener("change", pick);
+    return () => {
+      narrow.removeEventListener("change", pick);
+      reduce.removeEventListener("change", pick);
+    };
   }, []);
 
   useEffect(() => {
