@@ -74,10 +74,10 @@
   --color-mot-accueil: #e1e8e5;
   /* Illustrations des Services (service-art.tsx) : écran, puces, textes du dessin.
      Le vert des textes est plus sombre que celui des formes pour rester lisible sur blanc. */
-  --color-art-cadre: #f8faf9;
-  --color-art-ecran: #f1f5f3;
-  --color-art-puce: #e6ede9;
-  --color-art-creux: #dfe7e3;
+  --color-art-cadre: #ffffff;
+  --color-art-ecran: #fbfcfc;
+  --color-art-puce: #ecf0ee;
+  --color-art-creux: #e3e8e6;
   --color-art-texte: #0f1d17;
   --color-art-sourd: #5b6f68;
   --color-art-vert: #22b573;

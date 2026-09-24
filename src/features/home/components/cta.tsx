@@ -70,7 +70,7 @@ export function Cta({ dict }: Props) {
           ref={globe}
           aria-hidden
           viewBox="0 0 2000 2000"
-          className="pointer-events-none absolute top-[0px] left-1/2 block h-auto w-[220%] [--dy:-62%] [transform:translate(-50%,var(--dy))_var(--move,translate(0px,0px))] select-none min-[620px]:w-[118%] min-[620px]:[--dy:-60%]"
+          className="pointer-events-none absolute top-[0px] left-1/2 block h-auto w-[220%] [--dy:-62%] [transform:translate(-50%,var(--dy))_var(--move,translate(0px,0px))] select-none min-[620px]:w-[min(118%,1300px)] min-[620px]:[--dy:-60%] min-[1100px]:[--dy:-52%]"
         >
           <defs>
             <clipPath id="tw-globe-clip">

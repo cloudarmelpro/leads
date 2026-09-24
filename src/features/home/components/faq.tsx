@@ -30,7 +30,7 @@ function FaqRow({ id, open, onToggle, question, children }: { id: string; open: 
   const buttonId = `${id}-button`;
 
   return (
-    <div className="overflow-hidden rounded-[16px] bg-surface ring-1 ring-ligne ring-inset dark:ring-0">
+    <div className="overflow-hidden rounded-[16px] bg-surface-2 dark:bg-surface">
       <h3 className="m-[0px]">
         <button
           type="button"

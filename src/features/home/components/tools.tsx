@@ -7,7 +7,7 @@ const MASK = "linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)";
 
 function Chip({ tool }: { tool: Tool }) {
   return (
-    <span className="inline-flex h-[44px] items-center gap-[10px] rounded-[8px] bg-surface px-[20px] ring-1 ring-ligne ring-inset dark:ring-0 text-[15px] leading-[1] font-medium whitespace-nowrap text-puce">
+    <span className="inline-flex h-[44px] items-center gap-[10px] rounded-[8px] bg-surface-2 px-[20px] dark:bg-surface text-[15px] leading-[1] font-medium whitespace-nowrap text-puce">
       {tool.kind === "icon" ? (
         // Les glyphes blancs de la maquette suivent la couleur du texte : lisibles en clair aussi.
         <svg
