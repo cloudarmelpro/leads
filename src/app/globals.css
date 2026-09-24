@@ -68,8 +68,8 @@
   --color-texte-sourd: #646468;
   --color-puce: #1e1e1e;
   /* Accueil en clair : globe de l'appel final, mots de l'écran de bienvenue. */
-  --color-globe: #ffffff;
-  --color-globe-trait: rgba(15, 29, 23, 0.09);
+  --color-globe: #e9eeec;
+  --color-globe-trait: rgba(15, 29, 23, 0.1);
   --color-globe-bord: rgba(15, 29, 23, 0.12);
   --color-mot-accueil: #e1e8e5;
   /* Illustrations des Services (service-art.tsx) : écran, puces, textes du dessin.
