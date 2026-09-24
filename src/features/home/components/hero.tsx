@@ -14,9 +14,6 @@ const PIN = (
     <circle cx="12" cy="10.2" r="2.8" />
   </>
 );
-const PHONE = (
-  <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z" />
-);
 const icon = (d: ReactNode, size: number, strokeWidth: number) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
     {d}
@@ -102,7 +99,6 @@ export function Hero({ lang, dict }: Props) {
                     href={`/${lang}/contact`}
                     className={`${BTN} bg-[#30D98C] px-[clamp(14px,8.83px+1.38vw,24px)] font-medium text-[#011823] min-[860px]:px-[min(24px,5.1cqi)] transition-colors hover:bg-[#7FEFC0]`}
                   >
-                    {icon(PHONE, 18, 2.2)}
                     <span className="whitespace-nowrap">{t.ctaBook}</span>
                   </Link>
                   {features.pricing && (
