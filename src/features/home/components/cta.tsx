@@ -27,6 +27,9 @@ const PARALLELS: [number, number, number][] = [
  * filaire qui dépasse du haut, une épingle verte pulsante avec son faisceau, puis au centre
  * le titre, le texte, le bouton d'appel et la mention de délai. À la souris, le globe
  * glisse, son quadrillage tourne et l'épingle suit (rien sous `prefers-reduced-motion`).
+ * Dès 620px, la hauteur mini du panneau vaut la partie visible du globe
+ * (largeur × (1 − `--dy`)) + 60px, 540px au moins sous 1100px pour que l'épingle ne touche
+ * pas le bord : toucher à la largeur ou à `--dy` oblige à la recalculer.
  */
 export function Cta({ dict }: Props) {
   const t = dict.final;
@@ -64,7 +67,7 @@ export function Cta({ dict }: Props) {
     <section id="contact" className="relative flex justify-center px-[10px]">
       <div
         ref={panel}
-        className="relative isolate flex w-full items-center justify-center overflow-hidden rounded-[24px] bg-surface-2 dark:bg-surface px-[clamp(20px,5vw,72px)] py-[clamp(56px,8vw,120px)] min-[620px]:min-h-[min(82vh,820px)]"
+        className="relative isolate flex w-full items-center justify-center overflow-hidden rounded-[24px] bg-surface-2 dark:bg-surface px-[clamp(20px,5vw,72px)] py-[clamp(56px,8vw,120px)] min-[620px]:min-h-[max(540px,calc(0.4*min(1.18*(100vw-20px),1300px)+60px))] min-[1100px]:min-h-[calc(0.48*min(1.18*(100vw-20px),1300px)+60px)]"
       >
         <svg
           ref={globe}
