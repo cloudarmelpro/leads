@@ -86,7 +86,7 @@ export function ContactFormSection({ lang, watermark, dict }: Props) {
         <circle cx="84" cy="70" r="3.5" stroke="rgba(126,154,147,0.35)" />
       </svg>
 
-      <div className="relative grid w-full max-w-[1160px] grid-cols-[minmax(0,1fr)] items-stretch gap-[clamp(20px,2.4vw,28px)] pt-[clamp(40px,6vw,90px)] min-[900px]:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+      <div className="relative grid w-full max-w-[1400px] grid-cols-[minmax(0,1fr)] items-stretch gap-[clamp(20px,2.4vw,28px)] pt-[clamp(40px,6vw,90px)] min-[900px]:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
         <div ref={info} className="flex min-w-[0px] flex-col justify-between gap-[32px]">
           <div className="flex flex-col items-start gap-[18px]">
             <LineReveal as="h2" className="m-[0px] text-[clamp(22px,2.2vw,30px)] leading-[1.2] font-semibold tracking-[-0.01em] text-encre text-pretty">

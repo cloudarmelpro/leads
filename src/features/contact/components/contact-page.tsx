@@ -26,7 +26,7 @@ export function ContactPageContent({ lang, dict }: Props) {
       {/* Dès 620px, remonte sur le bas fondu de la carte, comme la maquette ; sur téléphone
           la carte est trop basse pour ça, le titre passait dessus. */}
       <section id="rendez-vous" className="relative z-[1] mt-[24px] flex justify-center px-[clamp(16px,4vw,56px)] min-[620px]:mt-[clamp(-96px,-7vw,-40px)]">
-        <div className="flex w-full max-w-[1200px] flex-col gap-[clamp(32px,4vw,48px)]">
+        <div className="flex w-full max-w-[1400px] flex-col gap-[clamp(32px,4vw,48px)]">
           <div className="flex flex-col items-center gap-[14px] text-center">
             <LineReveal as="h2" className="m-[0px] text-center text-[clamp(22px,2.2vw,30px)] leading-[1.2] font-semibold tracking-[-0.01em] text-encre text-balance">
               {t.booking.title}
@@ -43,7 +43,7 @@ export function ContactPageContent({ lang, dict }: Props) {
       </section>
 
       <Reveal ariaHidden className="relative flex justify-center px-[clamp(16px,4vw,56px)] pt-[clamp(28px,3.5vw,48px)]">
-        <div className="flex w-full max-w-[1160px] items-center gap-[20px]">
+        <div className="flex w-full max-w-[1400px] items-center gap-[20px]">
           <span className="h-px flex-1 bg-[linear-gradient(90deg,transparent,var(--color-contour))]" />
           <span className="flex size-[52px] items-center justify-center rounded-full bg-surface-2 text-[15px] font-semibold tracking-[0.08em] text-vert uppercase shadow-[inset_0_0_0_1px_var(--color-contour)] dark:bg-surface">
             {t.or}
