@@ -420,7 +420,9 @@
     "hero": {
       "title": "About",
       "lede": "Talgasy Web was born from a simple idea: helping local entrepreneurs move forward. Clear, bilingual websites that make the phone ring.",
-      "heroAlt": "Two people working together on a laptop in a workshop",
+      "ctaBook": "Book a call",
+      "ctaStory": "Our story",
+      "mapAria": "Dotted world map showing our base in Québec, Canada",
       "bandAria": "Helping entrepreneurs move forward",
       "band": [
         "Helping entrepreneurs move forward",

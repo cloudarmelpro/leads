@@ -41,7 +41,7 @@ export default async function AboutPage({ params }: PageProps<"/[lang]/a-propos"
       />
       <WelcomeSplash label={dict.welcome.before} brand={dict.welcome.brand} />
       <ScrollProgress />
-      <AboutHero dict={dict} />
+      <AboutHero lang={lang} dict={dict} />
       <ScrollCue label={t.scroll.label} aria={t.scroll.aria} />
       <StoryPin quote={t.story.quote} items={t.story.items} />
       <Principles title={t.principles.title} intro={t.principles.intro} items={t.principles.items} />

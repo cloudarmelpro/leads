@@ -420,7 +420,9 @@
     "hero": {
       "title": "À propos",
       "lede": "Talgasy Web est né d’une idée simple : aider les entrepreneurs d’ici à avancer. Des sites clairs, bilingues, qui font sonner le téléphone.",
-      "heroAlt": "Deux personnes travaillent ensemble sur un ordinateur portable dans un atelier",
+      "ctaBook": "Réserver un appel",
+      "ctaStory": "Notre histoire",
+      "mapAria": "Carte du monde en points, avec notre base au Québec, Canada",
       "bandAria": "Aider les entrepreneurs à avancer",
       "band": [
         "Aider les entrepreneurs à avancer",
