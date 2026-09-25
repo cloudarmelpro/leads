@@ -6,7 +6,7 @@ type Props = { label: string; aria: string };
  */
 export function ScrollCue({ label, aria }: Props) {
   return (
-    <div className="flex justify-center pt-[clamp(56px,7vw,104px)] pb-[clamp(40px,5vw,72px)]">
+    <div className="flex justify-center pt-[clamp(48px,6vw,88px)] pb-[clamp(24px,3vw,40px)]">
       <a
         href="#histoire"
         aria-label={aria}

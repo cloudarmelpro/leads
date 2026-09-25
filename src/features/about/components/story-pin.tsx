@@ -128,10 +128,13 @@ export function StoryPin({ quote, items }: Props) {
     <section ref={section} id="histoire" className="relative" style={{ height: pinned ? "260vh" : "auto" }}>
       <div
         ref={inner}
-        // Épinglé : contenu calé sous l'en-tête plutôt que centré dans l'écran, sinon un
-        // grand vide s'ouvrait entre « Défiler » et la citation.
+        // Épinglé : le bloc se colle sous l'en-tête (décalage porté par `top`, pas par un
+        // remplissage) et son contenu part du haut, sinon un grand vide s'ouvrait entre
+        // « Défiler » et la citation avant même l'épinglage.
         className={`flex justify-center px-[clamp(16px,4vw,56px)] pb-[clamp(40px,5vw,64px)] ${
-          pinned ? "sticky top-[0px] min-h-[100vh] items-start pt-[calc(78px+clamp(40px,6vh,80px))]" : "relative items-center pt-[clamp(40px,5vw,72px)]"
+          pinned
+            ? "sticky top-[calc(78px+clamp(24px,4vh,48px))] min-h-[calc(100vh-78px-clamp(24px,4vh,48px))] items-start pt-[0px]"
+            : "relative items-center pt-[clamp(32px,4vw,56px)]"
         }`}
       >
         <div className="grid w-full max-w-[1400px] grid-cols-[minmax(0,1fr)] items-start gap-[clamp(40px,6vw,96px)] min-[860px]:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)]">
