@@ -278,29 +278,18 @@ export function Header({ lang, dict }: Props) {
             </button>
           </div>
 
+          {/* Mêmes entrées et mêmes icônes que la barre ; les sections de l'accueil ne sont
+              pas listées ici (demande du client). */}
           <nav aria-label={dict.nav.quickNav} className="mt-[30px] flex flex-col items-start gap-[8px]">
-            <Link
-              href={home}
-              onClick={close}
-              aria-current={isHome ? "page" : undefined}
-              className={`flex min-h-[36px] items-center text-[16px] leading-[24px] font-normal no-underline ${EASE} hover:text-vert ${isHome ? "text-vert" : "text-encre"}`}
-            >
-              {dict.nav.home}
-            </Link>
-            {/* Sections de l'accueil, en retrait sous Accueil. */}
-            {sections.map((item) => (
-              <Link key={item.href} href={item.href} onClick={close} className={`flex min-h-[32px] items-center pl-[16px] text-[15px] leading-[22px] font-normal text-texte2 no-underline ${EASE} hover:text-vert`}>
-                {item.label}
-              </Link>
-            ))}
-            {nav.map((item) => (
+            {[{ label: dict.nav.home, href: home, glyph: HOME, current: isHome }, ...nav.map((item) => ({ ...item, current: isCurrent(item.href) }))].map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 onClick={close}
-                aria-current={isCurrent(item.href) ? "page" : undefined}
-                className={`flex min-h-[36px] items-center text-[16px] leading-[24px] font-normal no-underline ${EASE} hover:text-vert ${isCurrent(item.href) ? "text-vert" : "text-encre"}`}
+                aria-current={item.current ? "page" : undefined}
+                className={`flex min-h-[36px] items-center gap-[10px] text-[16px] leading-[24px] font-normal no-underline ${EASE} hover:text-vert ${item.current ? "text-vert" : "text-encre"}`}
               >
+                {glyph(item.glyph)}
                 {item.label}
               </Link>
             ))}

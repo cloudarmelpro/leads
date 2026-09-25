@@ -92,7 +92,9 @@ export function LangMenu({ current, label, variant = "glass", placement = "below
       </button>
 
       {open && (
-        <div className={`absolute z-[50] ${placement === "below" ? "top-full right-[0px] pt-[10px]" : "bottom-full left-[0px] pb-[10px]"}`}>
+        // Dans l'en-tête (verre), le panneau s'aligne à droite du bouton ; ailleurs (menu
+        // mobile, pied de page) à gauche, sinon il sortirait de l'écran par la gauche.
+        <div className={`absolute z-[50] ${placement === "below" ? `top-full pt-[10px] ${variant === "glass" ? "right-[0px]" : "left-[0px]"}` : "bottom-full left-[0px] pb-[10px]"}`}>
           <ul className="m-[0px] flex w-[176px] list-none flex-col gap-[2px] rounded-[12px] bg-surface p-[6px] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.07),0_26px_60px_rgba(0,0,0,0.5)] [animation:tw-menu-in_200ms_cubic-bezier(0.22,1,0.36,1)_both]">
             {locales.map((locale) => (
               <li key={locale}>
