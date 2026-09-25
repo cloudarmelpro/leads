@@ -75,7 +75,7 @@ const pill = (current: boolean) =>
 
 // Hauteur de l'en-tête fixe : 24px en haut, 40px de barre, 14px en bas.
 const HEADER_H = "h-[78px]";
-const FULL_BLEED = ["/a-propos", "/contact"];
+const FULL_BLEED = ["/a-propos", "/contact", "/prix"];
 const BAR_MIDDLE = 44;
 
 /**

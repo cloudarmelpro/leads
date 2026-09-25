@@ -20,34 +20,39 @@ const ROLL_OFF = "0.3em";
 const ROLL_DUR = 0.26;
 
 function rollLetters(el: HTMLElement, lines: SplitText, done: () => void) {
-  // Le découpage en lignes (révélation déjà jouée) est défait d'abord : un second
-  // découpage sur le même élément le défait de toute façon, autant le faire proprement.
-  // Chaque lettre a son masque, élargi de 0,14em comme celui des lignes (accent du À), un
-  // double posé sous elle ; tout remonte d'un cran, puis le découpage est défait.
-  if (lines.isSplit) lines.revert();
-  const chars = SplitText.create(el, { type: "chars", mask: "chars", aria: "none" });
-  for (const c of chars.chars) {
-    const mask = c.parentElement;
-    if (mask) mask.style.cssText += ";padding-block:0.14em;margin-block:-0.14em";
-    const twin = document.createElement("span");
-    twin.setAttribute("aria-hidden", "true");
-    twin.textContent = c.textContent;
-    twin.style.cssText = `position:absolute;left:0;right:0;top:calc(100% + ${ROLL_OFF});display:block`;
-    c.appendChild(twin);
+  // Les lettres sont découpées LIGNE PAR LIGNE, à l'intérieur des lignes déjà découpées
+  // (un second découpage sur l'élément lui-même déferait le premier, et le texte se
+  // reformerait sous le pointeur). Chaque ligne garde donc sa place ; `words` empêche
+  // les coupures en plein mot. Chaque lettre a son masque, élargi de 0,14em comme celui
+  // des lignes (accent du À), et un double posé sous elle ; la première ligne roule en
+  // entier, puis la suivante (demande du client), et les découpages sont défaits.
+  const rows = lines.isSplit && lines.lines.length > 0 ? (lines.lines as HTMLElement[]) : [el];
+  const splits = rows.map((row) => SplitText.create(row, { type: "words,chars", mask: "chars", aria: "none" }));
+  for (const split of splits) {
+    for (const c of split.chars) {
+      const mask = c.parentElement;
+      if (mask) mask.style.cssText += ";padding-block:0.14em;margin-block:-0.14em";
+      const twin = document.createElement("span");
+      twin.setAttribute("aria-hidden", "true");
+      twin.textContent = c.textContent;
+      twin.style.cssText = `position:absolute;left:0;right:0;top:calc(100% + ${ROLL_OFF});display:block`;
+      c.appendChild(twin);
+    }
   }
-  const n = chars.chars.length;
-  const step = n > 12 ? Math.max(0.018, 0.7 / n) : 0.07;
-  gsap.to(chars.chars, {
-    yPercent: -100,
-    y: `-${ROLL_OFF}`,
-    duration: ROLL_DUR,
-    ease: "power3.inOut",
-    stagger: step,
+  let start = 0;
+  const tl = gsap.timeline({
     onComplete: () => {
-      chars.revert();
+      for (const split of splits) split.revert();
       done();
     },
   });
+  for (const split of splits) {
+    const n = split.chars.length;
+    if (n === 0) continue;
+    const step = n > 12 ? Math.max(0.018, 0.7 / n) : 0.07;
+    tl.to(split.chars, { yPercent: -100, y: `-${ROLL_OFF}`, duration: ROLL_DUR, ease: "power3.inOut", stagger: step }, start);
+    start += (n - 1) * step + ROLL_DUR;
+  }
 }
 
 /**

@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect, useRef, type PointerEvent } from "react";
+import { useEffect, useRef } from "react";
 
 import { HERO_BTN_GLASS, HERO_BTN_PRIMARY } from "@/components/shared/hero-buttons";
+import { HeroSpot, moveSpot, SPOT_STYLE } from "@/components/shared/hero-spot";
 import { LineReveal } from "@/components/shared/line-reveal";
 import { Reveal } from "@/components/shared/reveal";
 import { ContactMap } from "@/features/contact/components/contact-map";
@@ -29,21 +30,15 @@ export function ContactHero({ title, lede, ctaBook, ctaWrite, mapAria }: Props) 
     return () => ctx.revert();
   }, []);
 
-  const spot = (e: PointerEvent<HTMLElement>) => {
-    const r = e.currentTarget.getBoundingClientRect();
-    e.currentTarget.style.setProperty("--mx", `${e.clientX - r.left}px`);
-    e.currentTarget.style.setProperty("--my", `${e.clientY - r.top}px`);
-  };
-
   return (
     <section
       ref={section}
       id="top"
-      onPointerMove={spot}
-      style={{ ["--mx" as string]: "50%", ["--my" as string]: "40%" }}
+      onPointerMove={moveSpot}
+      style={SPOT_STYLE}
       className="relative flex justify-center px-[clamp(16px,4vw,56px)] pt-[clamp(168px,16.7vw,240px)] text-center"
     >
-      <div aria-hidden className="pointer-events-none absolute inset-x-[0px] top-[-140px] bottom-[0px] bg-[radial-gradient(620px_circle_at_var(--mx)_var(--my),rgba(48,217,140,0.10),transparent_62%)]" />
+      <HeroSpot />
       <div className="relative flex w-full flex-col items-center gap-[22px]">
         <div ref={heading} className="flex flex-col items-center gap-[22px]">
           <LineReveal as="h1" rollOnHover className="m-[0px] cursor-default text-center text-[clamp(24px,17.79px+1.66vw,36px)] leading-[1.08] font-semibold tracking-[-1px] text-encre uppercase min-[620px]:tracking-[-2px]">
