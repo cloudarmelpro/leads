@@ -125,12 +125,16 @@ export function StoryPin({ quote, items }: Props) {
   }, [pinned]);
 
   return (
-    <section ref={section} id="histoire" className="relative mt-[clamp(24px,3vw,48px)]" style={{ height: pinned ? "260vh" : "auto" }}>
+    <section ref={section} id="histoire" className="relative" style={{ height: pinned ? "260vh" : "auto" }}>
       <div
         ref={inner}
-        className={`flex items-center justify-center px-[clamp(16px,4vw,56px)] pt-[clamp(40px,5vw,72px)] pb-[clamp(40px,5vw,64px)] ${pinned ? "sticky top-[0px] min-h-[100vh]" : "relative"}`}
+        // Épinglé : contenu calé sous l'en-tête plutôt que centré dans l'écran, sinon un
+        // grand vide s'ouvrait entre « Défiler » et la citation.
+        className={`flex justify-center px-[clamp(16px,4vw,56px)] pb-[clamp(40px,5vw,64px)] ${
+          pinned ? "sticky top-[0px] min-h-[100vh] items-start pt-[calc(78px+clamp(40px,6vh,80px))]" : "relative items-center pt-[clamp(40px,5vw,72px)]"
+        }`}
       >
-        <div className="grid w-full max-w-[1400px] grid-cols-[minmax(0,1fr)] items-center gap-[clamp(40px,6vw,96px)] min-[860px]:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)]">
+        <div className="grid w-full max-w-[1400px] grid-cols-[minmax(0,1fr)] items-start gap-[clamp(40px,6vw,96px)] min-[860px]:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)]">
           <div data-lit className="flex flex-col gap-[clamp(18px,2vw,28px)]">
             <Reveal kind="scale" as="span" className="block">
               <svg ref={mark} viewBox="0 0 80 64" aria-hidden className="block h-auto w-[clamp(56px,6vw,84px)] [filter:drop-shadow(0_0_24px_rgba(48,217,140,0.35))]">
