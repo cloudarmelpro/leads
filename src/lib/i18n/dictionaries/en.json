@@ -2383,11 +2383,6 @@
     "booking": {
       "title": "Book a discovery call",
       "intro": "45 minutes, by phone or video. Pick a time that fits between two jobs.",
-      "service": "Discovery call",
-      "duration": "45 min",
-      "channel": "Phone or video",
-      "timezone": "Eastern Time (Québec)",
-      "pitch": "We look at your current site and your market, then tell you plainly what would bring in more calls.",
       "loadTitle": "Calendar provided by Cal.com",
       "loadBody": "The booking calendar is a third-party service. By displaying it, you agree that your IP address is sent to it. You can also write to us with the form below.",
       "loadCta": "Show the booking calendar",

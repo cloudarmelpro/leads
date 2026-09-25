@@ -12,9 +12,8 @@ type Props = { lang: Locale; dict: Dictionary };
 
 /**
  * Corps de la page Contact (maquette Claude Design, 2026-09-25) : hero centré avec la
- * carte en points, carte Rendez-vous (résumé de l'appel + calendrier Cal.com derrière
- * l'avis Loi 25), séparateur « Ou », la section Formulaire, puis le bandeau d'appel
- * commun.
+ * carte en points, calendrier Cal.com, séparateur « Ou », la section Formulaire, puis
+ * le bandeau d'appel commun.
  */
 export function ContactPageContent({ lang, dict }: Props) {
   const t = dict.contactPage;
@@ -36,7 +35,7 @@ export function ContactPageContent({ lang, dict }: Props) {
             </LineReveal>
           </div>
           <Reveal kind="scale" delay={200}>
-            <BookingCard dict={{ contactPage: { booking: t.booking } }} brand={site.name} calLink={site.calLink} />
+            <BookingCard dict={{ contactPage: { booking: t.booking } }} calLink={site.calLink} />
           </Reveal>
           <span className="self-center text-[13px] leading-[20px] font-medium text-texte-note">{t.booking.poweredBy}</span>
         </div>

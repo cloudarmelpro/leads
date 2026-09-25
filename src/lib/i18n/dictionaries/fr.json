@@ -2383,11 +2383,6 @@
     "booking": {
       "title": "Réservez un appel découverte",
       "intro": "45 minutes, par téléphone ou en visio. Choisissez un moment entre deux chantiers.",
-      "service": "Appel découverte",
-      "duration": "45 min",
-      "channel": "Téléphone ou visio",
-      "timezone": "Heure de l’Est (Québec)",
-      "pitch": "On regarde votre site actuel et votre marché, puis on vous dit franchement ce qui ferait sonner le téléphone.",
       "loadTitle": "Calendrier fourni par Cal.com",
       "loadBody": "Le calendrier de réservation est un service tiers. En l’affichant, vous acceptez que votre adresse IP lui soit transmise. Vous pouvez aussi nous écrire avec le formulaire ci-dessous.",
       "loadCta": "Afficher le calendrier de réservation",
