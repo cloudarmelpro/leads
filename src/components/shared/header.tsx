@@ -103,9 +103,10 @@ export function Header({ lang, dict }: Props) {
     const key = item.key as SectionKey;
     return { key, label: dict.nav[key], desc: item.desc, href: `${home}#${SECTION_IDS[key]}` };
   });
+  // Ordre voulu par le client (2026-09-25) : Accueil, Prix, À propos, Blogue.
   const nav = [
-    { label: dict.nav.about, href: `/${lang}/a-propos`, glyph: INFO },
     ...(features.pricing ? [{ label: dict.nav.pricing, href: `/${lang}/prix`, glyph: TAG }] : []),
+    { label: dict.nav.about, href: `/${lang}/a-propos`, glyph: INFO },
     { label: dict.nav.blog, href: `/${lang}/blog`, glyph: BOOK },
   ];
   const isCurrent = (href: string) => pathname === href || pathname.startsWith(`${href}/`);
