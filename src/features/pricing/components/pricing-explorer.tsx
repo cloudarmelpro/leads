@@ -162,7 +162,7 @@ export function PricingExplorer({ lang, dict }: Props) {
       <div hidden={!active} className="flex flex-col gap-[48px]">
         {/* Dès 900px : tableau, une colonne par forfait. */}
         <div
-          className="hidden items-stretch rounded-[24px] bg-surface p-[28px] ring-1 ring-ligne ring-inset min-[900px]:grid dark:ring-0"
+          className="hidden items-stretch rounded-[24px] bg-surface-2 p-[28px] min-[900px]:grid dark:bg-surface"
           style={{ gridTemplateColumns: `minmax(230px,1.5fr) repeat(${columns.length}, minmax(0,1fr))` }}
         >
           <div className="flex flex-col justify-end gap-[6px] px-[16px] py-[20px]">
@@ -182,7 +182,7 @@ export function PricingExplorer({ lang, dict }: Props) {
                 aria-expanded={open}
                 onClick={() => setClosed((s) => ({ ...s, [groupKey(group.title)]: open }))}
                 style={{ gridColumn: "1 / -1" }}
-                className="mt-[22px] flex cursor-pointer items-center gap-[12px] rounded-[12px] bg-surface-2 px-[16px] py-[14px] text-left"
+                className="mt-[22px] flex cursor-pointer items-center gap-[12px] rounded-[12px] bg-surface px-[16px] py-[14px] text-left dark:bg-surface-2"
               >
                 <svg
                   width="14"
@@ -220,8 +220,8 @@ export function PricingExplorer({ lang, dict }: Props) {
         </div>
 
         {/* Sous 900px : onglets de forfaits à défilement horizontal, puis les lignes du forfait choisi. */}
-        <div className="flex flex-col gap-[24px] rounded-[24px] bg-surface p-[18px] ring-1 ring-ligne ring-inset min-[900px]:hidden dark:ring-0">
-          <div role="tablist" aria-label={labels.pickPlan} className="flex gap-[6px] overflow-x-auto rounded-[13px] bg-surface-2 p-[5px]">
+        <div className="flex flex-col gap-[24px] rounded-[24px] bg-surface-2 p-[18px] min-[900px]:hidden dark:bg-surface">
+          <div role="tablist" aria-label={labels.pickPlan} className="flex gap-[6px] overflow-x-auto rounded-[13px] bg-surface p-[5px] dark:bg-surface-2">
             {columns.map((plan, k) => {
               const on = k === picked;
               return (
@@ -346,7 +346,7 @@ export function PricingExplorer({ lang, dict }: Props) {
                             onClick={select}
                             onMouseEnter={() => setHover(`${fam.key}g${i}`)}
                             onMouseLeave={() => setHover((h) => (h === `${fam.key}g${i}` ? null : h))}
-                            className={`flex min-h-[210px] cursor-pointer flex-col items-start gap-[8px] rounded-[16px] bg-surface p-[24px] text-left transition-[background] duration-[320ms] ${EASE} ring-1 ring-ligne ring-inset dark:ring-0`}
+                            className={`flex min-h-[210px] cursor-pointer flex-col items-start gap-[8px] rounded-[16px] bg-surface-2 p-[24px] text-left transition-[background] duration-[320ms] ${EASE} dark:bg-surface`}
                             style={lit ? { backgroundImage: GRAIN } : undefined}
                           >
                             <span className={`text-[26px] leading-[32px] font-normal tracking-[-0.02em] ${lit ? "text-white" : "text-encre"}`}>{r.title}</span>
@@ -383,7 +383,7 @@ export function PricingExplorer({ lang, dict }: Props) {
                           <div
                             onMouseEnter={() => setHover(`${fam.key}p${i}`)}
                             onMouseLeave={() => setHover((h) => (h === `${fam.key}p${i}` ? null : h))}
-                            className={`flex min-h-[210px] flex-col items-start gap-[8px] rounded-[16px] bg-surface p-[24px] transition-[background] duration-[320ms] ${EASE} ring-1 ring-ligne ring-inset dark:ring-0`}
+                            className={`flex min-h-[210px] flex-col items-start gap-[8px] rounded-[16px] bg-surface-2 p-[24px] transition-[background] duration-[320ms] ${EASE} dark:bg-surface`}
                             style={lit ? { backgroundImage: GRAIN } : undefined}
                           >
                             <span className={`text-[26px] leading-[32px] font-normal tracking-[-0.02em] ${lit ? "text-white" : "text-encre"}`}>{plan.name}</span>
