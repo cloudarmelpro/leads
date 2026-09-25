@@ -4,6 +4,7 @@ import { site } from "@/config/site";
 import { BookingCard } from "@/features/contact/components/booking-card";
 import { ContactFormSection } from "@/features/contact/components/contact-form-section";
 import { ContactHero } from "@/features/contact/components/contact-hero";
+import { Cta } from "@/features/home";
 import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 
@@ -12,8 +13,8 @@ type Props = { lang: Locale; dict: Dictionary };
 /**
  * Corps de la page Contact (maquette Claude Design, 2026-09-25) : hero centré avec la
  * carte en points, carte Rendez-vous (résumé de l'appel + calendrier Cal.com derrière
- * l'avis Loi 25), séparateur « Ou », puis la section Formulaire. Pas de bandeau
- * d'appel : la page entière est l'appel à l'action.
+ * l'avis Loi 25), séparateur « Ou », la section Formulaire, puis le bandeau d'appel
+ * commun.
  */
 export function ContactPageContent({ lang, dict }: Props) {
   const t = dict.contactPage;
@@ -52,6 +53,8 @@ export function ContactPageContent({ lang, dict }: Props) {
       </Reveal>
 
       <ContactFormSection lang={lang} watermark={t.hero.title} dict={{ contactPage: { form: t.form } }} />
+      {/* Même bandeau d'appel que l'accueil (demande du client : la maquette n'en avait pas). */}
+      <Cta dict={dict} />
     </>
   );
 }
