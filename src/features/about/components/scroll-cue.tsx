@@ -8,7 +8,7 @@ export function ScrollCue({ label, aria }: Props) {
   return (
     // `z-[1]` : la section épinglée qui suit remonte sur ce bloc (marge négative), le
     // lien doit rester cliquable.
-    <div className="relative z-[1] flex justify-center pt-[clamp(48px,6vw,88px)] pb-[0px]">
+    <div className="relative z-[1] flex justify-center pt-[clamp(72px,9vw,136px)] pb-[0px]">
       <a
         href="#histoire"
         aria-label={aria}
