@@ -28,6 +28,8 @@ const SEUILS = [0.1, 0.4, 0.66];
 const CARD_TRANSITION =
   "opacity 1000ms cubic-bezier(0.22,1,0.36,1), transform 1100ms cubic-bezier(0.22,1,0.36,1), filter 1000ms cubic-bezier(0.22,1,0.36,1), background 800ms cubic-bezier(0.65,0,0.35,1)";
 const clamp01 = (v: number) => Math.min(1, Math.max(0, v));
+// Espacement voulu avant et après le bloc épinglé (rythme de l'accueil).
+const GAP = "clamp(48px, 6vw, 96px)";
 
 /**
  * Notre histoire (maquette À propos) : dès 860px, la section fait 260vh et son contenu
@@ -36,12 +38,15 @@ const clamp01 = (v: number) => Math.min(1, Math.max(0, v));
  * s'ouvrent à leur tour ; un clic ouvre un volet à tout moment. Le bloc bascule en 3D à
  * l'entrée et s'estompe en sortant. Sous 860px ou avec moins d'animations : rien n'est
  * épinglé, les mots s'allument à l'approche et les volets sont tous visibles.
+ * La section porte des marges négatives (voir `GAP`) : sans elles, le centrage dans un
+ * écran entier laisserait un grand vide avant et après le bloc.
  */
 export function StoryPin({ quote, items }: Props) {
   const [story, setStory] = useState(0);
   const [pinned, setPinned] = useState(false);
   const section = useRef<HTMLElement>(null);
   const inner = useRef<HTMLDivElement>(null);
+  const grid = useRef<HTMLDivElement>(null);
   const mark = useRef<SVGSVGElement>(null);
   const pinIdx = useRef(-1);
   const baseId = useId();
@@ -115,11 +120,32 @@ export function StoryPin({ quote, items }: Props) {
         gsap.fromTo(mark.current, { rotate: -12 }, { rotate: 0, ease: "none", scrollTrigger: { trigger: el, start: "top bottom", end: "top top", scrub: true } });
       }
     });
+    // Épinglé, le contenu est centré dans un écran entier : le vide au-dessus et au-dessous
+    // (P) apparaîtrait aussi avant et après l'épinglage. On remonte la section de P moins
+    // l'espacement voulu (GAP, celui de l'accueil), et pareil en bas.
+    let ro: ResizeObserver | null = null;
+    if (pinned && inner.current && grid.current) {
+      const box = inner.current;
+      const content = grid.current;
+      const place = () => {
+        const p = Math.max(0, (box.clientHeight - content.offsetHeight) / 2);
+        el.style.marginTop = `calc(${GAP} - ${p}px)`;
+        el.style.marginBottom = `calc(${GAP} - ${p}px)`;
+        ScrollTrigger.refresh();
+      };
+      ro = new ResizeObserver(place);
+      ro.observe(box);
+      ro.observe(content);
+    } else {
+      el.style.marginTop = "";
+      el.style.marginBottom = "";
+    }
     // La hauteur épinglée (260vh) déplace tout ce qui suit : les déclencheurs se recalculent.
     const refresh = window.setTimeout(() => ScrollTrigger.refresh(), 600);
     return () => {
       cancelAnimationFrame(raf);
       window.clearTimeout(refresh);
+      ro?.disconnect();
       ctx.revert();
     };
   }, [pinned]);
@@ -128,16 +154,11 @@ export function StoryPin({ quote, items }: Props) {
     <section ref={section} id="histoire" className="relative" style={{ height: pinned ? "260vh" : "auto" }}>
       <div
         ref={inner}
-        // Épinglé : le bloc se colle sous l'en-tête (décalage porté par `top`, pas par un
-        // remplissage) et son contenu part du haut, sinon un grand vide s'ouvrait entre
-        // « Défiler » et la citation avant même l'épinglage.
-        className={`flex justify-center px-[clamp(16px,4vw,56px)] pb-[clamp(40px,5vw,64px)] ${
-          pinned
-            ? "sticky top-[calc(78px+clamp(24px,4vh,48px))] min-h-[calc(100vh-78px-clamp(24px,4vh,48px))] items-start pt-[0px]"
-            : "relative items-center pt-[clamp(32px,4vw,56px)]"
+        className={`flex items-center justify-center px-[clamp(16px,4vw,56px)] ${
+          pinned ? "sticky top-[0px] h-[100vh]" : "relative py-[clamp(32px,4vw,56px)]"
         }`}
       >
-        <div className="grid w-full max-w-[1400px] grid-cols-[minmax(0,1fr)] items-start gap-[clamp(40px,6vw,96px)] min-[860px]:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)]">
+        <div ref={grid} className="grid w-full max-w-[1400px] grid-cols-[minmax(0,1fr)] items-center gap-[clamp(40px,6vw,96px)] min-[860px]:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)]">
           <div data-lit className="flex flex-col gap-[clamp(18px,2vw,28px)]">
             <Reveal kind="scale" as="span" className="block">
               <svg ref={mark} viewBox="0 0 80 64" aria-hidden className="block h-auto w-[clamp(56px,6vw,84px)] [filter:drop-shadow(0_0_24px_rgba(48,217,140,0.35))]">

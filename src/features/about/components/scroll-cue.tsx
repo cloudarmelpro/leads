@@ -6,7 +6,9 @@ type Props = { label: string; aria: string };
  */
 export function ScrollCue({ label, aria }: Props) {
   return (
-    <div className="flex justify-center pt-[clamp(48px,6vw,88px)] pb-[clamp(24px,3vw,40px)]">
+    // `z-[1]` : la section épinglée qui suit remonte sur ce bloc (marge négative), le
+    // lien doit rester cliquable.
+    <div className="relative z-[1] flex justify-center pt-[clamp(48px,6vw,88px)] pb-[0px]">
       <a
         href="#histoire"
         aria-label={aria}
