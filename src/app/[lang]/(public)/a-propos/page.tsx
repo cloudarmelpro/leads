@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 
 import { BreadcrumbLd } from "@/components/shared/breadcrumb-ld";
 import { ScrollProgress } from "@/components/shared/scroll-progress";
-import { AboutHero, Principles, ScrollCue, StoryPin, Team } from "@/features/about";
+import { AboutHero, Principles, StoryPin, Team } from "@/features/about";
 import { Cta, WelcomeSplash } from "@/features/home";
 import { isLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
@@ -42,7 +42,6 @@ export default async function AboutPage({ params }: PageProps<"/[lang]/a-propos"
       <WelcomeSplash label={dict.welcome.before} brand={dict.welcome.brand} />
       <ScrollProgress />
       <AboutHero lang={lang} dict={dict} />
-      <ScrollCue label={t.scroll.label} aria={t.scroll.aria} />
       <StoryPin quote={t.story.quote} items={t.story.items} />
       <Principles title={t.principles.title} intro={t.principles.intro} items={t.principles.items} />
       <Team {...t.team} />

@@ -363,34 +363,11 @@ body {
     visibility: visible;
   }
 }
-/* Même garde pour les blocs qui apparaissent au défilement (reveal.tsx, roll-title.tsx). */
+/* Même garde pour les blocs qui apparaissent au défilement (reveal.tsx). */
 @media (prefers-reduced-motion: no-preference) {
   [data-reveal]:not([data-in]) {
     visibility: hidden;
     animation: tw-reveal-guard 0s linear 2.5s forwards;
-  }
-}
-/* Page À propos : lent zoom de la photo du hero, molette et chevron de l'invitation à défiler. */
-@keyframes tw-kb {
-  from {
-    transform: scale(1);
-  }
-  to {
-    transform: scale(1.08) translate(-1%, 1%);
-  }
-}
-@keyframes tw-wheel {
-  0% {
-    transform: translateY(0);
-    opacity: 0;
-  }
-  20% {
-    opacity: 1;
-  }
-  70%,
-  100% {
-    transform: translateY(16px);
-    opacity: 0;
   }
 }
 /* Page Contact : trait de lumière qui tourne autour du formulaire, reflet sur le bouton. */
@@ -409,15 +386,6 @@ body {
   45%,
   100% {
     transform: translateX(320%);
-  }
-}
-@keyframes tw-bob {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(3px);
   }
 }
 .tw-line-mask {

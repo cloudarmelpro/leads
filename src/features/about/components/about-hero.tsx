@@ -37,7 +37,7 @@ export function AboutHero({ lang, dict }: Props) {
       >
         <div aria-hidden className="pointer-events-none absolute inset-x-[0px] top-[-140px] bottom-[0px] bg-[radial-gradient(620px_circle_at_var(--mx)_var(--my),rgba(48,217,140,0.10),transparent_62%)]" />
         <div className="relative flex w-full flex-col items-center gap-[22px]">
-          <LineReveal as="h1" className="m-[0px] text-center text-[clamp(24px,17.79px+1.66vw,36px)] leading-[1.08] font-semibold tracking-[-1px] text-encre uppercase min-[620px]:tracking-[-2px]">
+          <LineReveal as="h1" rollOnHover className="m-[0px] cursor-default text-center text-[clamp(24px,17.79px+1.66vw,36px)] leading-[1.08] font-semibold tracking-[-1px] text-encre uppercase min-[620px]:tracking-[-2px]">
             {t.title}
           </LineReveal>
           <LineReveal delay={0.3} className="m-[0px] max-w-[620px] text-[clamp(15px,13.45px+0.41vw,18px)] leading-[1.34] font-normal text-texte2 text-pretty">

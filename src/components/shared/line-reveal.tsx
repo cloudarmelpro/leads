@@ -10,7 +10,45 @@ type Props = {
   children: ReactNode;
   /** Décalage (s) après l'entrée à l'écran, pour enchaîner titre puis texte. */
   delay?: number;
+  /** Au survol, chaque lettre roule vers le haut, remplacée par son double qui monte du bas. */
+  rollOnHover?: boolean;
 };
+
+// Roulement au survol (maquette À propos, `rollIn`) : 70 ms entre les lettres (resserré
+// au-delà de 12 lettres), 260 ms par lettre, la lettre sort 0,3em plus haut que sa hauteur.
+const ROLL_OFF = "0.3em";
+const ROLL_DUR = 0.26;
+
+function rollLetters(el: HTMLElement, lines: SplitText, done: () => void) {
+  // Le découpage en lignes (révélation déjà jouée) est défait d'abord : un second
+  // découpage sur le même élément le défait de toute façon, autant le faire proprement.
+  // Chaque lettre a son masque, élargi de 0,14em comme celui des lignes (accent du À), un
+  // double posé sous elle ; tout remonte d'un cran, puis le découpage est défait.
+  if (lines.isSplit) lines.revert();
+  const chars = SplitText.create(el, { type: "chars", mask: "chars", aria: "none" });
+  for (const c of chars.chars) {
+    const mask = c.parentElement;
+    if (mask) mask.style.cssText += ";padding-block:0.14em;margin-block:-0.14em";
+    const twin = document.createElement("span");
+    twin.setAttribute("aria-hidden", "true");
+    twin.textContent = c.textContent;
+    twin.style.cssText = `position:absolute;left:0;right:0;top:calc(100% + ${ROLL_OFF});display:block`;
+    c.appendChild(twin);
+  }
+  const n = chars.chars.length;
+  const step = n > 12 ? Math.max(0.018, 0.7 / n) : 0.07;
+  gsap.to(chars.chars, {
+    yPercent: -100,
+    y: `-${ROLL_OFF}`,
+    duration: ROLL_DUR,
+    ease: "power3.inOut",
+    stagger: step,
+    onComplete: () => {
+      chars.revert();
+      done();
+    },
+  });
+}
 
 /**
  * Révélation ligne par ligne (« masked line reveal ») : SplitText découpe le texte en
@@ -19,8 +57,9 @@ type Props = {
  * change ou quand la police arrive (`autoSplit`). Sous `prefers-reduced-motion`, rien ne
  * bouge. Le texte reste masqué jusqu'au découpage (globals.css, `[data-line-reveal]`).
  */
-export function LineReveal({ as: Tag = "p", className, children, delay = 0 }: Props) {
+export function LineReveal({ as: Tag = "p", className, children, delay = 0, rollOnHover = false }: Props) {
   const ref = useRef<HTMLElement>(null);
+  const rolling = useRef(false);
 
   useEffect(() => {
     const el = ref.current;
@@ -67,12 +106,24 @@ export function LineReveal({ as: Tag = "p", className, children, delay = 0 }: Pr
     );
     io.observe(el);
 
+    // Le roulement attend la fin de la révélation, sinon les deux animations se disputent
+    // les mêmes lignes.
+    const onEnter = () => {
+      if (!rollOnHover || rolling.current || !played || tween?.isActive()) return;
+      rolling.current = true;
+      rollLetters(el, split, () => {
+        rolling.current = false;
+      });
+    };
+    el.addEventListener("pointerenter", onEnter);
+
     return () => {
       io.disconnect();
       cancelAnimationFrame(raf);
+      el.removeEventListener("pointerenter", onEnter);
       split.revert();
     };
-  }, [delay]);
+  }, [delay, rollOnHover]);
 
   return (
     <Tag ref={ref} data-line-reveal className={className}>
