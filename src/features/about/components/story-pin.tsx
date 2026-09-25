@@ -100,9 +100,14 @@ export function StoryPin({ quote, items }: Props) {
     };
     raf = requestAnimationFrame(tick);
 
-    // Entrée en 3D et sortie en fondu (maquette `fx`), calées sur le défilement.
+    // Entrée en 3D (sur le bloc collant) et sortie en fondu (sur le contenu), calées sur le
+    // défilement. Deux animations distinctes sur deux éléments : sur le même élément, un
+    // recalcul de ScrollTrigger pouvait figer un flou en cours comme point de départ, et
+    // le bloc restait flou au centre de l'écran. Le filtre est retiré dès la sortie revenue
+    // à zéro, sinon `blur(0px)` laisse le texte rendu sur une couche à part, moins net.
     const ctx = gsap.context(() => {
-      if (reduce || !inner.current) return;
+      if (reduce || !inner.current || !grid.current) return;
+      const content = grid.current;
       const trig = pinned ? el : inner.current;
       const enter = pinned ? ["top bottom", "top top"] : ["top bottom", "center 55%"];
       const exit = pinned ? ["bottom bottom", "bottom top"] : ["center 40%", "bottom top"];
@@ -112,9 +117,20 @@ export function StoryPin({ quote, items }: Props) {
         { rotationX: 0, y: 0, opacity: 1, ease: "none", immediateRender: true, scrollTrigger: { trigger: trig, start: enter[0], end: enter[1], scrub: 0.5 } },
       );
       gsap.fromTo(
-        inner.current,
-        { rotationX: 0, y: 0, opacity: 1 },
-        { y: -90, opacity: 0.35, filter: "blur(6px)", ease: "none", immediateRender: false, scrollTrigger: { trigger: trig, start: exit[0], end: exit[1], scrub: 0.5 } },
+        content,
+        { y: 0, opacity: 1, filter: "blur(0px)" },
+        {
+          y: -90,
+          opacity: 0.35,
+          filter: "blur(6px)",
+          ease: "none",
+          immediateRender: false,
+          scrollTrigger: { trigger: trig, start: exit[0], end: exit[1], scrub: 0.5 },
+          // `this` est l'animation elle-même (GSAP l'appelle ainsi dès sa création).
+          onUpdate(this: gsap.core.Tween) {
+            if (this.progress() === 0) content.style.filter = "";
+          },
+        },
       );
       if (mark.current) {
         gsap.fromTo(mark.current, { rotate: -12 }, { rotate: 0, ease: "none", scrollTrigger: { trigger: el, start: "top bottom", end: "top top", scrub: true } });
