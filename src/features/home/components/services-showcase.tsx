@@ -65,16 +65,16 @@ export function ServicesShowcase({ lang, items }: Props) {
           {art(item.art)}
         </div>
         <div className="relative flex min-w-[0px] shrink-0 flex-col gap-[5px] pt-[13px] pb-[clamp(16px,1.6vw,20px)]" style={{ paddingInline: SIDE }}>
-          <h3 className="m-[0px] max-w-full text-[clamp(15px,1.2vw,18px)] leading-[1.3] font-medium text-encre text-pretty">{item.name}</h3>
+          <h3 className="m-[0px] max-w-full text-[15px] leading-[26px] font-medium text-encre text-pretty">{item.name}</h3>
           {item.short && (
-            <p className="m-[0px] line-clamp-2 max-w-full text-[clamp(12.5px,0.95vw,14px)] leading-[1.5] font-normal text-texte2 text-pretty">{item.short}</p>
+            <p className="m-[0px] line-clamp-2 max-w-full text-[15px] leading-[26px] font-normal text-texte2 text-pretty">{item.short}</p>
           )}
           {priceLine && (
             <Link
               href={`/${lang}/prix?${pricing}`}
               aria-label={`${priceLine} — ${item.name}`}
               tabIndex={clone ? -1 : undefined}
-              className="tap-44 inline-flex min-h-[26px] w-fit items-center text-[clamp(12.5px,0.95vw,14px)] leading-[20px] font-normal text-vert no-underline transition-colors hover:text-vert-clair"
+              className="tap-44 inline-flex min-h-[26px] w-fit items-center text-[15px] leading-[26px] font-normal text-vert no-underline transition-colors hover:text-vert-clair"
             >
               {priceLine}
               <ChevronRight size={15} strokeWidth={2} aria-hidden className="ml-[3px]" />

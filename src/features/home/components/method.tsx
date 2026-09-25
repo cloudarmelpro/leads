@@ -36,7 +36,7 @@ export function Method({ lang, dict }: Props) {
         <MethodTrack steps={t.steps} images={IMAGES} stepLabel={t.stepLabel} prevLabel={t.prev} nextLabel={t.next}>
           <div className="flex min-w-[0px] flex-col items-start gap-[14px]">
             <LineReveal as="h2" className="m-[0px] max-w-[520px] text-[clamp(22px,2.2vw,30px)] leading-[1.2] font-semibold tracking-[-0.01em] text-encre text-pretty">{t.title}</LineReveal>
-            <LineReveal delay={0.12} className="m-[0px] max-w-[540px] text-[16px] leading-[26px] font-normal text-texte2 text-pretty">{t.intro}</LineReveal>
+            <LineReveal delay={0.12} className="m-[0px] max-w-[540px] text-[15px] leading-[26px] font-normal text-texte2 text-pretty">{t.intro}</LineReveal>
           </div>
         </MethodTrack>
 

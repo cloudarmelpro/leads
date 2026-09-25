@@ -69,7 +69,7 @@ export function MethodTrack({ steps, images, stepLabel, prevLabel, nextLabel, ch
                 </span>
               </span>
             </div>
-            <p className="m-[0px] px-[4px] text-[14.5px] leading-[23px] font-normal text-texte2 text-pretty">{step.desc}</p>
+            <p className="m-[0px] px-[4px] text-[15px] leading-[26px] font-normal text-texte2 text-pretty">{step.desc}</p>
           </article>
         ))}
       </div>

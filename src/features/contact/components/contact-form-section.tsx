@@ -66,7 +66,7 @@ export function ContactFormSection({ lang, watermark, dict }: Props) {
   }, []);
 
   return (
-    <section id="formulaire" className="relative flex justify-center overflow-hidden px-[clamp(16px,4vw,56px)] pt-[clamp(28px,3.5vw,48px)] pb-[clamp(96px,12vw,160px)]">
+    <section id="formulaire" className="relative flex justify-center overflow-hidden px-[clamp(16px,4vw,56px)] pt-[clamp(28px,3.5vw,48px)] pb-[clamp(96px,11vw,180px)]">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-x-[0px] top-[clamp(24px,4vw,56px)] bg-[linear-gradient(180deg,rgba(30,30,30,0.07)_0%,rgba(30,30,30,0)_85%)] bg-clip-text text-center text-[clamp(96px,20vw,300px)] leading-[0.85] font-extrabold tracking-[0.02em] whitespace-nowrap text-transparent uppercase select-none dark:bg-[linear-gradient(180deg,rgba(201,218,209,0.13)_0%,rgba(201,218,209,0)_85%)]"

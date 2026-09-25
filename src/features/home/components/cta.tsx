@@ -132,7 +132,7 @@ export function Cta({ dict }: Props) {
 
         <div className="relative z-[2] flex max-w-[640px] flex-col items-center gap-[28px] pt-[56px] text-center">
           <LineReveal as="h2" className="m-[0px] text-[clamp(22px,2.2vw,30px)] leading-[1.2] font-semibold tracking-[-0.01em] text-encre text-balance">{t.title}</LineReveal>
-          <LineReveal delay={0.12} className="m-[0px] max-w-[440px] text-[clamp(14px,13.48px+0.14vw,15px)] leading-[1.7] font-normal text-texte2 text-pretty">{t.body}</LineReveal>
+          <LineReveal delay={0.12} className="m-[0px] max-w-[440px] text-[15px] leading-[26px] font-normal text-texte2 text-pretty">{t.body}</LineReveal>
           <ActionLink
             href={telHref(site.phone)}
             unavailableLabel={`${t.callLabel} — ${phone}`}
