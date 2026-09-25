@@ -9,9 +9,10 @@ import { gsap, reducedMotion } from "@/lib/motion/gsap";
 
 type Props = { title: string; lede: string; ctaBook: string; ctaWrite: string; mapAria: string };
 
-// Boutons à la taille de ceux du hero de l'accueil (40 → 48px, 13 → 15px), texte seul.
+// Boutons à la taille de ceux du hero de l'accueil (40 → 48px, 13 → 15px), texte seul,
+// et comme eux sans mouvement au survol : seule la couleur change.
 const BTN =
-  "tap-44 inline-flex min-h-[clamp(40px,35.86px+1.1vw,48px)] items-center justify-center rounded-[8px] px-[clamp(16px,12.9px+0.83vw,22px)] text-[clamp(13px,11.97px+0.28vw,15px)] leading-[20px] font-medium whitespace-nowrap no-underline transition-[background-color,box-shadow,transform] duration-[250ms] ease-[cubic-bezier(0.2,0.7,0.2,1)] hover:-translate-y-[2px] active:scale-[0.98]";
+  "tap-44 inline-flex min-h-[clamp(40px,35.86px+1.1vw,48px)] items-center justify-center rounded-[8px] px-[clamp(16px,12.9px+0.83vw,22px)] text-[clamp(13px,11.97px+0.28vw,15px)] leading-[20px] font-medium whitespace-nowrap no-underline transition-colors duration-200 ease-[cubic-bezier(0.2,0.7,0.2,1)]";
 
 /**
  * Hero Contact (maquette, 2026-09-25) : titre et texte centrés, deux boutons, puis la
@@ -57,7 +58,7 @@ export function ContactHero({ title, lede, ctaBook, ctaWrite, mapAria }: Props) 
           </LineReveal>
         </div>
         <Reveal delay={640} immediate className="mt-[clamp(10px,1.6vw,22px)] flex flex-wrap justify-center gap-[12px]">
-          <a href="#rendez-vous" className={`${BTN} bg-vert text-sur-vert shadow-[0_14px_40px_-14px_rgba(48,217,140,0.8)] hover:bg-vert-clair`}>
+          <a href="#rendez-vous" className={`${BTN} bg-vert text-sur-vert hover:bg-vert-clair`}>
             {ctaBook}
           </a>
           {/* Même verre que les boutons de l'en-tête : le survol fonce le fond, sans filet vert. */}
