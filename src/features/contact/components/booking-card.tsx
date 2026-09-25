@@ -1,7 +1,6 @@
 "use client";
 
-import { Calendar, Clock, Globe, Video } from "lucide-react";
-import { useState } from "react";
+import { Clock, Globe, Video } from "lucide-react";
 
 import { CalcomEmbed } from "@/features/contact/components/calcom-embed";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
@@ -12,14 +11,13 @@ const LINE = "flex items-center gap-[10px] text-[15px] leading-[26px] font-norma
 
 /**
  * Carte Rendez-vous (maquette Contact) : à gauche le résumé de l'appel (monogramme,
- * durée, canal, fuseau, promesse) ; à droite le calendrier. Celui-ci reste derrière
- * l'avis Loi 25 tant que le visiteur n'a pas cliqué « Afficher le calendrier » ; le
- * calendrier Cal.com se charge alors sur place, sans fenêtre. Sans lien Cal.com, la
+ * durée, canal, fuseau, promesse) ; à droite le calendrier Cal.com, affiché d'emblée
+ * (demande du client du 2026-09-25 : plus d'avis « Afficher le calendrier » — le
+ * service tiers est donc chargé dès l'arrivée sur la page). Sans lien Cal.com, la
  * carte de droite montre seulement la note d'aperçu.
  */
 export function BookingCard({ dict, brand, calLink }: Props) {
   const t = dict.contactPage.booking;
-  const [shown, setShown] = useState(false);
 
   return (
     <div className="grid grid-cols-[minmax(0,1fr)] gap-[1px] overflow-hidden rounded-[8px] bg-ligne min-[1000px]:grid-cols-[minmax(220px,0.75fr)_minmax(0,2.55fr)] dark:border dark:border-[#012A3C] dark:bg-[#012A3C]">
@@ -52,29 +50,12 @@ export function BookingCard({ dict, brand, calLink }: Props) {
       </div>
 
       <div className="flex min-h-[468px] min-w-[0px] flex-col justify-center bg-surface p-[clamp(20px,2.4vw,32px)] dark:bg-fond">
-        {calLink && shown ? (
+        {calLink ? (
           <div className="overflow-hidden">
             <CalcomEmbed calLink={calLink} dict={dict} initiallyLoaded />
           </div>
         ) : (
-          <div className="flex max-w-[420px] flex-col items-start gap-[14px] self-center">
-            <span className="flex size-[44px] items-center justify-center rounded-[14px] bg-surface-2 text-vert dark:bg-[#01293C]">
-              <Calendar size={21} strokeWidth={1.8} aria-hidden />
-            </span>
-            <span className="text-[15px] leading-[26px] font-semibold text-encre">{t.loadTitle}</span>
-            <p className="m-[0px] text-[15px] leading-[26px] font-normal text-texte2 text-pretty">{t.loadBody}</p>
-            {calLink ? (
-              <button
-                type="button"
-                onClick={() => setShown(true)}
-                className="tap-44 mt-[4px] flex min-h-[40px] cursor-pointer items-center rounded-[8px] bg-vert px-[20px] text-[15px] leading-[20px] font-medium text-sur-vert transition-colors duration-200 ease-[cubic-bezier(0.2,0.7,0.2,1)] hover:bg-vert-clair"
-              >
-                {t.loadCta}
-              </button>
-            ) : (
-              <p className="m-[0px] text-[13px] leading-[20px] font-normal text-texte-note">{t.embedNote}</p>
-            )}
-          </div>
+          <p className="m-[0px] self-center text-[15px] leading-[26px] font-normal text-texte-note">{t.embedNote}</p>
         )}
       </div>
     </div>
