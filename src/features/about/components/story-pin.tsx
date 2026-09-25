@@ -137,7 +137,7 @@ export function StoryPin({ quote, items }: Props) {
                 <path d="M4 64V38C4 18 12 6 34 0l4 10C26 15 21 22 20 32h16v32H4Zm42 0V38c0-20 8-32 30-38l4 10c-12 5-17 12-18 22h16v32H46Z" fill="#30D98C" />
               </svg>
             </Reveal>
-            <p className="m-[0px] text-[clamp(22px,2.4vw,32px)] leading-[1.32] font-normal tracking-[-0.2px] text-encre text-pretty">
+            <p className="m-[0px] text-[clamp(22px,2.2vw,30px)] leading-[1.32] font-normal tracking-[-0.2px] text-encre text-pretty">
               {quote.split(" ").map((word, i) => (
                 <span key={i}>
                   <span data-word className="opacity-20 transition-opacity duration-300 ease-[cubic-bezier(0.2,0.7,0.2,1)]">
@@ -176,7 +176,7 @@ export function StoryPin({ quote, items }: Props) {
                           {ICONS[i]}
                         </svg>
                       </span>
-                      <span className="text-[clamp(17px,1.5vw,20px)] leading-[26px] font-medium text-encre">{item.title}</span>
+                      <span className="text-[17px] leading-[24px] font-medium text-encre">{item.title}</span>
                     </button>
                   </h3>
                   <div
@@ -187,7 +187,7 @@ export function StoryPin({ quote, items }: Props) {
                     style={{ gridTemplateRows: open ? "1fr" : "0fr" }}
                   >
                     <div className="min-h-[0px] overflow-hidden">
-                      <p className="m-[0px] pt-[12px] pl-[34px] text-[15px] leading-[25px] font-normal text-texte2 text-pretty">{item.body}</p>
+                      <p className="m-[0px] pt-[12px] pl-[34px] text-[15px] leading-[26px] font-normal text-texte2 text-pretty">{item.body}</p>
                     </div>
                   </div>
                 </div>

@@ -1,7 +1,6 @@
 import Image from "next/image";
 
-import { Reveal } from "@/components/shared/reveal";
-import { RollTitle } from "@/components/shared/roll-title";
+import { LineReveal } from "@/components/shared/line-reveal";
 import { HeroBand } from "@/features/about/components/hero-band";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 
@@ -10,7 +9,8 @@ type Props = { dict: Pick<Dictionary, "about"> };
 /**
  * Hero À propos (maquette Claude Design, 2026-09-25) : panneau arrondi décollé de 10px,
  * photo en lent zoom (Ken Burns, 22 s) sous une trame claire en surimpression, voiles
- * sombres et bande floutée en bas ; titre centré qui roule au survol, texte d'appui,
+ * sombres et bande floutée en bas ; titre et texte d'appui centrés (révélation ligne par
+ * ligne, comme l'accueil),
  * puis le bandeau défilant. Toujours sombre, comme le hero de l'accueil (écrin) : les
  * couleurs sont littérales et l'en-tête passe en sombre au-dessus (`data-header-sombre`).
  */
@@ -30,16 +30,12 @@ export function AboutHero({ dict }: Props) {
 
         <div className="relative flex justify-center px-[clamp(18px,5vw,72px)] pt-[calc(68px+clamp(28px,5vw,72px))] pb-[calc(80px+clamp(56px,8vh,96px))]">
           <div className="flex w-full max-w-[1400px] flex-col items-center gap-[22px] text-center">
-            <RollTitle
-              as="h1"
-              text={t.title}
-              immediate
-              delay={0.15}
-              className="m-[0px] text-center text-[clamp(24px,17.79px+1.66vw,36px)] leading-[1.08] font-semibold tracking-[-1px] text-white uppercase min-[620px]:tracking-[-2px]"
-            />
-            <Reveal delay={520} immediate className="flex max-w-[620px] min-w-[0px] justify-center text-center">
-              <p className="m-[0px] text-[clamp(15px,13.45px+0.41vw,18px)] leading-[1.34] font-normal text-[#E4ECEF] text-pretty">{t.lede}</p>
-            </Reveal>
+            <LineReveal as="h1" className="m-[0px] text-center text-[clamp(24px,17.79px+1.66vw,36px)] leading-[1.08] font-semibold tracking-[-1px] text-white uppercase min-[620px]:tracking-[-2px]">
+              {t.title}
+            </LineReveal>
+            <LineReveal delay={0.3} className="m-[0px] max-w-[620px] text-[clamp(15px,13.45px+0.41vw,18px)] leading-[1.34] font-normal text-[#E4ECEF] text-pretty">
+              {t.lede}
+            </LineReveal>
           </div>
         </div>
 

@@ -3,8 +3,8 @@
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 
+import { LineReveal } from "@/components/shared/line-reveal";
 import { Reveal } from "@/components/shared/reveal";
-import { RollTitle } from "@/components/shared/roll-title";
 import { gsap, reducedMotion } from "@/lib/motion/gsap";
 
 type Props = {
@@ -66,10 +66,12 @@ export function Team({ title, intro, prev, next, namePlaceholder, altPrefix, rol
       <div className="flex w-full max-w-[1400px] flex-col gap-[clamp(36px,4vw,56px)]">
         <div className="grid grid-cols-[minmax(0,1fr)] items-end gap-[24px] min-[620px]:grid-cols-[minmax(0,1fr)_auto]">
           <div className="flex flex-col gap-[12px]">
-            <RollTitle text={title} className="m-[0px] text-[clamp(24px,17.79px+1.66vw,36px)] leading-[1.08] font-semibold tracking-[-1px] text-encre uppercase min-[620px]:tracking-[-2px]" />
-            <Reveal as="p" delay={180} className="m-[0px] max-w-[560px] text-[clamp(15px,1.3vw,17px)] leading-[1.6] font-normal text-texte2 text-pretty">
+            <LineReveal as="h2" className="m-[0px] text-[clamp(22px,2.2vw,30px)] leading-[1.2] font-semibold tracking-[-0.01em] text-encre text-pretty">
+              {title}
+            </LineReveal>
+            <LineReveal delay={0.12} className="m-[0px] max-w-[540px] text-[15px] leading-[26px] font-normal text-texte2 text-pretty">
               {intro}
-            </Reveal>
+            </LineReveal>
           </div>
           <Reveal delay={260} className="flex gap-[10px] justify-self-start min-[860px]:justify-self-end">
             <button type="button" aria-label={prev} onClick={() => slide(-1)} className={NAV}>

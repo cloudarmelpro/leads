@@ -2,8 +2,8 @@
 
 import { useEffect, useRef, type PointerEvent } from "react";
 
+import { LineReveal } from "@/components/shared/line-reveal";
 import { Reveal } from "@/components/shared/reveal";
-import { RollTitle } from "@/components/shared/roll-title";
 import { gsap, reducedMotion } from "@/lib/motion/gsap";
 
 type Item = { title: string; body: string };
@@ -72,10 +72,12 @@ export function Principles({ title, intro, items }: Props) {
     <section id="principes" className="relative flex justify-center px-[clamp(16px,4vw,56px)] pt-[clamp(40px,5vw,72px)] pb-[clamp(96px,11vw,180px)]">
       <div className="flex w-full max-w-[1400px] flex-col gap-[clamp(40px,5vw,60px)]">
         <div className="flex flex-col items-center gap-[16px] text-center">
-          <RollTitle text={title} className="m-[0px] text-center text-[clamp(24px,17.79px+1.66vw,36px)] leading-[1.08] font-semibold tracking-[-1px] text-encre uppercase min-[620px]:tracking-[-2px]" />
-          <Reveal as="p" delay={140} className="m-[0px] max-w-[920px] text-[clamp(17px,1.9vw,26px)] leading-[1.35] font-normal text-texte2 text-balance dark:text-[#C9DAD1]">
+          <LineReveal as="h2" className="m-[0px] text-center text-[clamp(22px,2.2vw,30px)] leading-[1.2] font-semibold tracking-[-0.01em] text-encre text-balance">
+            {title}
+          </LineReveal>
+          <LineReveal delay={0.12} className="m-[0px] max-w-[560px] text-[15px] leading-[26px] font-normal text-texte2 text-pretty">
             {intro}
-          </Reveal>
+          </LineReveal>
         </div>
 
         <div ref={grid} className="grid grid-cols-[minmax(0,1fr)] gap-[clamp(16px,2.4vw,32px)] min-[860px]:grid-cols-[repeat(3,minmax(0,1fr))]">
@@ -99,9 +101,9 @@ export function Principles({ title, intro, items }: Props) {
                     {ICONS[i]}
                   </svg>
                 </span>
-                <h3 className="m-[0px] text-[clamp(20px,1.9vw,24px)] leading-[1.2] font-semibold text-encre">{item.title}</h3>
+                <h3 className="m-[0px] text-[clamp(16px,1.2vw,18px)] leading-[1.3] font-medium text-encre">{item.title}</h3>
               </div>
-              <p className="pointer-events-none relative m-[0px] text-[15px] leading-[27px] font-normal text-texte2 text-pretty">{item.body}</p>
+              <p className="pointer-events-none relative m-[0px] text-[15px] leading-[26px] font-normal text-texte2 text-pretty">{item.body}</p>
             </Reveal>
           ))}
         </div>

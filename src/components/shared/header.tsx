@@ -75,14 +75,16 @@ const pill = (current: boolean) =>
 
 // Hauteur de l'en-tête fixe : 24px en haut, 40px de barre, 14px en bas.
 const HEADER_H = "h-[78px]";
+const FULL_BLEED = ["/a-propos"];
 const BAR_MIDDLE = 44;
 
 /**
  * En-tête fixe (maquette Accueil, 2026-09-24) : transparent, sans fond ni filet même au
  * défilement (demande du client ; un fond en verre a été essayé puis retiré). Logo à
  * gauche, barre de navigation en verre centrée, à droite langue · thème · Contact. Sous 1100px, barre et Contact laissent place au bouton menu (40×40) qui ouvre
- * un menu plein écran. Hors accueil, une cale de sa hauteur évite qu'il recouvre le haut
- * des pages intérieures ; sur l'accueil, le hero plein écran passe dessous.
+ * un menu plein écran. Une cale de sa hauteur évite qu'il recouvre le haut des pages
+ * intérieures ; sur l'accueil et les pages à hero pleine largeur (`FULL_BLEED`), le hero
+ * passe dessous.
  */
 export function Header({ lang, dict }: Props) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -95,6 +97,8 @@ export function Header({ lang, dict }: Props) {
 
   const home = `/${lang}`;
   const isHome = pathname === home;
+  // Pages dont le hero occupe le haut de l'écran : l'en-tête flotte dessus, sans cale.
+  const fullBleed = isHome || FULL_BLEED.some((p) => pathname === `${home}${p}`);
   const sections = dict.nav.homeMenu.map((item) => {
     const key = item.key as SectionKey;
     return { key, label: dict.nav[key], desc: item.desc, href: `${home}#${SECTION_IDS[key]}` };
@@ -249,7 +253,7 @@ export function Header({ lang, dict }: Props) {
         </div>
       </header>
 
-      {!isHome && <div aria-hidden className={HEADER_H} />}
+      {!fullBleed && <div aria-hidden className={HEADER_H} />}
 
       {menuOpen && (
         <div
