@@ -37,7 +37,6 @@ export function ContactPageContent({ lang, dict }: Props) {
           <Reveal kind="scale" delay={200}>
             <BookingCard dict={{ contactPage: { booking: t.booking } }} calLink={site.calLink} />
           </Reveal>
-          <span className="self-center text-[13px] leading-[20px] font-medium text-texte-note">{t.booking.poweredBy}</span>
         </div>
       </section>
 

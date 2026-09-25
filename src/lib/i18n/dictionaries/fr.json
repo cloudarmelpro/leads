@@ -2381,8 +2381,7 @@
       "loadTitle": "Calendrier fourni par Cal.com",
       "loadBody": "Le calendrier de réservation est un service tiers. En l’affichant, vous acceptez que votre adresse IP lui soit transmise. Vous pouvez aussi nous écrire avec le formulaire ci-dessous.",
       "loadCta": "Afficher le calendrier de réservation",
-      "embedNote": "Aperçu du design — le vrai calendrier Cal.com s’affichera dans cette fenêtre dès que l’URL sera branchée.",
-      "poweredBy": "Prise de rendez-vous par Cal.com"
+      "embedNote": "Aperçu du design — le vrai calendrier Cal.com s’affichera dans cette fenêtre dès que l’URL sera branchée."
     },
     "or": "Ou",
     "form": {

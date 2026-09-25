@@ -2381,8 +2381,7 @@
       "loadTitle": "Calendar provided by Cal.com",
       "loadBody": "The booking calendar is a third-party service. By displaying it, you agree that your IP address is sent to it. You can also write to us with the form below.",
       "loadCta": "Show the booking calendar",
-      "embedNote": "Design preview — the real Cal.com calendar will appear in this window once the URL is connected.",
-      "poweredBy": "Scheduling by Cal.com"
+      "embedNote": "Design preview — the real Cal.com calendar will appear in this window once the URL is connected."
     },
     "or": "Or",
     "form": {

@@ -22,7 +22,7 @@ export function PricingHero({ lang, dict }: Props) {
       id="top"
       onPointerMove={moveSpot}
       style={SPOT_STYLE}
-      className="relative flex justify-center px-[clamp(16px,4vw,56px)] pt-[clamp(168px,16.7vw,240px)] pb-[clamp(48px,6vw,96px)] text-center"
+      className="relative flex justify-center px-[clamp(16px,4vw,56px)] pt-[clamp(168px,16.7vw,240px)] pb-[clamp(64px,7.5vw,120px)] text-center"
     >
       <HeroSpot />
       <div className="relative flex w-full flex-col items-center gap-[22px]">

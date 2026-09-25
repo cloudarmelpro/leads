@@ -3,10 +3,7 @@
 import Link from "next/link";
 import { useId, useState, type ReactNode } from "react";
 
-import { GOUTTIERE } from "@/components/shared/container";
 import { LineReveal } from "@/components/shared/line-reveal";
-import { AccordionRow } from "@/features/home/components/accordion-row";
-import { SectionHead } from "@/components/shared/section-head";
 import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 
@@ -108,49 +105,23 @@ export function Faq({ dict, lang, variant = "home" }: Props) {
   };
   const toggle = (index: number) => setOpen(open === index ? -1 : index);
 
-  if (variant === "home") {
-    return (
-      <section id="faq" className="relative flex justify-center px-[clamp(16px,4vw,56px)] pb-[clamp(96px,11vw,180px)]">
-        <div className="grid w-full max-w-[1400px] grid-cols-[minmax(0,1fr)] items-start gap-[clamp(24px,3vw,64px)] min-[900px]:grid-cols-[minmax(0,0.9fr)_minmax(0,2.1fr)]">
-          <div className="flex flex-col items-start gap-[14px]">
-            <div className="flex flex-col gap-[2px]">
-              <span className="text-[13px] leading-[20px] font-normal tracking-[0.08em] text-vert uppercase">{t.kicker}</span>
-              <LineReveal as="h2" className="m-[0px] text-[clamp(22px,2.2vw,30px)] leading-[1.2] font-semibold tracking-[-0.01em] text-encre text-pretty">{`${t.titleA} ${t.titleB}`}</LineReveal>
-            </div>
-            <LineReveal delay={0.12} className="m-[0px] max-w-[420px] text-[15px] leading-[26px] font-normal text-texte2 text-pretty">{t.intro}</LineReveal>
-          </div>
-          <div className="flex flex-col gap-[10px]">
-            {t.items.map((item, index) => (
-              <FaqRow key={item.q} id={`${baseId}-faq-${index}`} open={open === index} onToggle={() => toggle(index)} question={item.q}>
-                {answer(item)}
-              </FaqRow>
-            ))}
-          </div>
-        </div>
-      </section>
-    );
-  }
-
-  const half = Math.ceil(t.items.length / 2);
-  const columns = [t.items.slice(0, half), t.items.slice(half)];
-
+  // Même mise en page sur l'accueil et sur Prix (demande du client) : seules les
+  // réponses diffèrent.
   return (
-    <section className={`relative flex justify-center pb-[clamp(112px,16vw,240px)] ${GOUTTIERE}`}>
-      <div className="flex w-full max-w-[1100px] flex-col gap-[48px]">
-        <SectionHead id="faq" label={t.kicker} title={`${t.titleA} ${t.titleB}`} intro={t.intro} introMax={420} />
-
-        <div className="grid grid-cols-[minmax(0,1fr)] items-start gap-[10px] min-[760px]:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
-          {columns.map((items, col) => (
-            <div key={col} className="flex flex-col gap-[10px]">
-              {items.map((item) => {
-                const index = t.items.indexOf(item);
-                return (
-                  <AccordionRow key={item.q} id={`${baseId}-faq-${index}`} open={open === index} onToggle={() => toggle(index)} title={item.q} bodyIndent={24}>
-                    {answer(item)}
-                  </AccordionRow>
-                );
-              })}
-            </div>
+    <section id="faq" className="relative flex justify-center px-[clamp(16px,4vw,56px)] pb-[clamp(96px,11vw,180px)]">
+      <div className="grid w-full max-w-[1400px] grid-cols-[minmax(0,1fr)] items-start gap-[clamp(24px,3vw,64px)] min-[900px]:grid-cols-[minmax(0,0.9fr)_minmax(0,2.1fr)]">
+        <div className="flex flex-col items-start gap-[14px]">
+          <div className="flex flex-col gap-[2px]">
+            <span className="text-[13px] leading-[20px] font-normal tracking-[0.08em] text-vert uppercase">{t.kicker}</span>
+            <LineReveal as="h2" className="m-[0px] text-[clamp(22px,2.2vw,30px)] leading-[1.2] font-semibold tracking-[-0.01em] text-encre text-pretty">{`${t.titleA} ${t.titleB}`}</LineReveal>
+          </div>
+          <LineReveal delay={0.12} className="m-[0px] max-w-[420px] text-[15px] leading-[26px] font-normal text-texte2 text-pretty">{t.intro}</LineReveal>
+        </div>
+        <div className="flex flex-col gap-[10px]">
+          {t.items.map((item, index) => (
+            <FaqRow key={item.q} id={`${baseId}-faq-${index}`} open={open === index} onToggle={() => toggle(index)} question={item.q}>
+              {answer(item)}
+            </FaqRow>
           ))}
         </div>
       </div>

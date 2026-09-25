@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useState, useSyncExternalStore } from "react";
+import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 
 import { GOUTTIERE } from "@/components/shared/container";
 import type { Locale } from "@/lib/i18n/config";
@@ -110,6 +110,18 @@ export function PricingExplorer({ lang, dict }: Props) {
   const [pick, setPick] = useState(0);
   const [hover, setHover] = useState<string | null>(null);
   const [closed, setClosed] = useState<Record<string, boolean>>({});
+
+  // Barre collée : son fond flouté remonte alors sous l'en-tête flottant (78px, voir
+  // header.tsx) pour ne former qu'une bande ; libre, rien ne recouvre le bas du hero.
+  const [stuck, setStuck] = useState(false);
+  const sentinel = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const el = sentinel.current;
+    if (!el) return;
+    const io = new IntersectionObserver(([entry]) => setStuck(!(entry?.isIntersecting ?? true)), { rootMargin: "-78px 0px 0px 0px" });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
 
   useEffect(() => {
     if (!sel) return;
@@ -261,8 +273,15 @@ export function PricingExplorer({ lang, dict }: Props) {
 
   return (
     <>
-      {/* Barre des catégories : collante, fond translucide flouté, sans filet. */}
-      <div id="prix" className={`sticky top-0 z-30 flex justify-center bg-fond/94 py-[12px] backdrop-blur-[14px] ${GOUTTIERE}`}>
+      {/* Barre des catégories : collante sous l'en-tête flottant, fond translucide flouté,
+          sans filet. */}
+      <div ref={sentinel} aria-hidden className="h-px" />
+      <div
+        id="prix"
+        className={`sticky top-[78px] z-30 flex justify-center bg-fond/94 py-[12px] backdrop-blur-[14px] ${GOUTTIERE} ${
+          stuck ? "before:absolute before:inset-x-[0px] before:top-[-78px] before:h-[78px] before:bg-fond/94 before:backdrop-blur-[14px]" : ""
+        }`}
+      >
         <div className="flex w-full max-w-[1400px] flex-wrap items-center justify-between gap-[20px]">
           <div role="tablist" aria-label={labels.families} className="flex flex-wrap gap-[4px] rounded-[12px] bg-surface-2 p-[4px]">
             {families.map((f) => {
@@ -292,7 +311,9 @@ export function PricingExplorer({ lang, dict }: Props) {
         </div>
       </div>
 
-      <section className={`flex justify-center pt-[64px] pb-[clamp(112px,16vw,240px)] ${GOUTTIERE}`}>
+      {/* Même rythme que les autres pages : l'écart au-dessus reprend celui sous le hero, le bas
+          celui des sections de l'accueil. */}
+      <section className={`flex justify-center pt-[clamp(48px,6vw,96px)] pb-[clamp(96px,11vw,180px)] ${GOUTTIERE}`}>
         <div className="w-full max-w-[1400px]">
           {families.map((fam) => {
             const activeFam = fam.key === family.key;
