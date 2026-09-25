@@ -393,6 +393,24 @@ body {
     opacity: 0;
   }
 }
+/* Page Contact : trait de lumière qui tourne autour du formulaire, reflet sur le bouton. */
+@keyframes tw-spin {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+@keyframes tw-sheen {
+  0% {
+    transform: translateX(-120%);
+  }
+  45%,
+  100% {
+    transform: translateX(320%);
+  }
+}
 @keyframes tw-bob {
   0%,
   100% {

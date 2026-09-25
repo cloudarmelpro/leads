@@ -34,7 +34,7 @@ export default async function ContactPage({ params }: PageProps<"/[lang]/contact
         lang={lang}
         items={[
           { name: dict.nav.home, path: "" },
-          { name: dict.contactPage.heroTitle, path: "/contact" },
+          { name: dict.contactPage.hero.title, path: "/contact" },
         ]}
       />
       <ContactPageContent lang={lang} dict={dict} />

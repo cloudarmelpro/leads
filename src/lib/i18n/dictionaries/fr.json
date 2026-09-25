@@ -2373,77 +2373,49 @@
       "title": "Contact — Réservez un appel gratuit | Talgasy Web",
       "description": "Parlons de votre projet de site web. Réservez un appel découverte gratuit ou écrivez-nous : une vraie personne vous répond rapidement, partout au Québec."
     },
-    "title": "Parlons de votre",
-    "titleHighlight": "projet",
-    "heroTitle": "Contact",
-    "subtitle": "Un appel suffit pour savoir si on peut vous aider. Pas de pression, pas de jargon.",
+    "hero": {
+      "title": "Contact",
+      "lede": "Un appel suffit pour savoir si on peut vous aider. Parlez-nous de votre entreprise : on répond en moins de 24 h.",
+      "ctaBook": "Réserver un appel découverte",
+      "ctaWrite": "Nous écrire",
+      "mapAria": "Carte du monde en points, avec notre base au Québec, Canada"
+    },
     "booking": {
-      "title": "Réservez un appel gratuit",
-      "kicker": "Rendez-vous",
-      "intro": "Un appel découverte de 45 minutes, par téléphone ou en visio, sans engagement.",
+      "title": "Réservez un appel découverte",
+      "intro": "45 minutes, par téléphone ou en visio. Choisissez un moment entre deux chantiers.",
       "service": "Appel découverte",
       "duration": "45 min",
       "channel": "Téléphone ou visio",
-      "expectTitle": "Ce qu’on couvre ensemble",
-      "expect": [
-        "Vos objectifs et votre métier",
-        "Un premier regard sur votre présence en ligne",
-        "Les prochaines étapes — sans engagement"
-      ],
       "timezone": "Heure de l’Est (Québec)",
-      "pickSlot": "Créneaux disponibles",
+      "pitch": "On regarde votre site actuel et votre marché, puis on vous dit franchement ce qui ferait sonner le téléphone.",
       "loadTitle": "Calendrier fourni par Cal.com",
       "loadBody": "Le calendrier de réservation est un service tiers. En l’affichant, vous acceptez que votre adresse IP lui soit transmise. Vous pouvez aussi nous écrire avec le formulaire ci-dessous.",
       "loadCta": "Afficher le calendrier de réservation",
       "embedNote": "Aperçu du design — le vrai calendrier Cal.com s’affichera dans cette fenêtre dès que l’URL sera branchée.",
-      "free": "Gratuit",
-      "modalTitle": "Réserver un appel découverte",
-      "modalMeta": "45 min · téléphone ou visio · heure de l’Est (Québec)",
-      "pickPrompt": "Choisissez un créneau",
-      "confirm": "Confirmer {day} à {time}",
-      "close": "Fermer",
-      "slots": [
-        {
-          "day": "Lun 22 sept",
-          "time": "9:00"
-        },
-        {
-          "day": "Lun 22 sept",
-          "time": "13:30"
-        },
-        {
-          "day": "Mar 23 sept",
-          "time": "10:00"
-        },
-        {
-          "day": "Mar 23 sept",
-          "time": "15:00"
-        },
-        {
-          "day": "Mer 24 sept",
-          "time": "8:30"
-        },
-        {
-          "day": "Jeu 25 sept",
-          "time": "11:00"
-        }
-      ]
+      "poweredBy": "Prise de rendez-vous par Cal.com"
     },
+    "or": "Ou",
     "form": {
-      "title": "Ou écrivez-nous",
-      "kicker": "Formulaire",
+      "title": "Écrivez-nous",
+      "intro": "Vous préférez parler tout de suite ? Appelez-nous. Sinon, laissez quelques détails et on vous revient.",
+      "emailLabel": "Nous écrire",
+      "phoneLabel": "Nous appeler",
+      "basedLabel": "Basés à",
+      "basedValue": "Québec, Canada",
       "name": "Nom",
       "email": "Courriel",
       "phone": "Téléphone",
-      "message": "Votre message",
-      "intro": "Dites-nous ce dont vous avez besoin, on vous revient rapidement.",
+      "message": "Message",
+      "messagePlaceholder": "Message — type d’entreprise, ce que vous cherchez, échéance approximative.",
       "consent": "J’accepte d’être recontacté au sujet de ma demande.",
       "consentLink": "Politique de confidentialité",
       "honeypot": "Laissez ce champ vide",
-      "send": "Envoyer ma demande",
+      "send": "Envoyer mon message",
       "sending": "Envoi…",
-      "successTitle": "Message bien reçu !",
-      "successBody": "Merci, on vous répond en moins de 24 h, du lundi au vendredi.",
+      "note": "Vos informations servent uniquement à vous répondre (Loi 25).",
+      "successTitle": "Message envoyé",
+      "successBody": "Merci {name}. On vous revient en moins de 24 h, les jours ouvrables.",
+      "another": "Envoyer un autre message",
       "errorTitle": "Un souci est survenu",
       "errorBody": "Votre message n’a pas pu être envoyé. Réessayez, ou appelez-nous directement.",
       "errors": {
@@ -2457,16 +2429,7 @@
         "messageMax": "Ce message est trop long.",
         "consent": "Vous devez accepter pour envoyer.",
         "contactRequired": "Indiquez au moins un courriel ou un téléphone."
-      },
-      "namePlaceholder": "Jean Tremblay",
-      "emailPlaceholder": "jean@exemple.ca",
-      "phonePlaceholder": "438-808-6594",
-      "another": "Écrire un autre message",
-      "messagePlaceholder": "Type d’entreprise, ce que vous cherchez, échéance approximative."
-    },
-    "aside": {
-      "zone": "Basés à Québec, on travaille partout au Québec.",
-      "zoneBody": "On travaille à distance avec des entreprises de toutes les régions. Réponse en moins de 24 h, du lundi au vendredi."
+      }
     }
   },
   "welcome": {

@@ -16,6 +16,8 @@ type Props = {
   delay?: number;
   /** Joue tout de suite (hero) au lieu d'attendre l'entrée à l'écran. */
   immediate?: boolean;
+  /** Bloc purement décoratif, ignoré des lecteurs d'écran. */
+  ariaHidden?: boolean;
 };
 
 const FROM: Record<Kind, gsap.TweenVars> = {
@@ -37,7 +39,7 @@ const TO: Record<Kind, gsap.TweenVars> = {
  * l'hydratation (globals.css, `[data-reveal]`) pour ne pas clignoter ; rien sous
  * `prefers-reduced-motion`.
  */
-export function Reveal({ as: Tag = "div", className, style, children, kind = "fade", delay = 0, immediate = false }: Props) {
+export function Reveal({ as: Tag = "div", className, style, children, kind = "fade", delay = 0, immediate = false, ariaHidden }: Props) {
   const ref = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -60,7 +62,7 @@ export function Reveal({ as: Tag = "div", className, style, children, kind = "fa
   }, [kind, delay, immediate]);
 
   return (
-    <Tag ref={ref} data-reveal={kind} className={className} style={style}>
+    <Tag ref={ref} data-reveal={kind} aria-hidden={ariaHidden || undefined} className={className} style={style}>
       {children}
     </Tag>
   );

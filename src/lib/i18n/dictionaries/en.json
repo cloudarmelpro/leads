@@ -2373,77 +2373,49 @@
       "title": "Contact — Book a free call | Talgasy Web",
       "description": "Let’s talk about your website project. Book a free discovery call or write to us: a real person gets back to you quickly, anywhere in Québec."
     },
-    "title": "Let’s talk about your",
-    "titleHighlight": "project",
-    "heroTitle": "Contact",
-    "subtitle": "One call is enough to know whether we can help. No pressure, no jargon.",
+    "hero": {
+      "title": "Contact us",
+      "lede": "One call is enough to know if we can help. Tell us about your business — we reply within 24 hours.",
+      "ctaBook": "Book a discovery call",
+      "ctaWrite": "Get in touch",
+      "mapAria": "Dotted world map showing our base in Québec, Canada"
+    },
     "booking": {
-      "title": "Book a free call",
-      "kicker": "Booking",
-      "intro": "A 45-minute discovery call, by phone or video, no commitment.",
+      "title": "Book a discovery call",
+      "intro": "45 minutes, by phone or video. Pick a time that fits between two jobs.",
       "service": "Discovery call",
       "duration": "45 min",
       "channel": "Phone or video",
-      "expectTitle": "What we cover together",
-      "expect": [
-        "Your goals and your trade",
-        "A first look at your online presence",
-        "The next steps — no commitment"
-      ],
       "timezone": "Eastern Time (Québec)",
-      "pickSlot": "Available slots",
+      "pitch": "We look at your current site and your market, then tell you plainly what would bring in more calls.",
       "loadTitle": "Calendar provided by Cal.com",
       "loadBody": "The booking calendar is a third-party service. By displaying it, you agree that your IP address is sent to it. You can also write to us with the form below.",
       "loadCta": "Show the booking calendar",
       "embedNote": "Design preview — the real Cal.com calendar will appear in this window once the URL is connected.",
-      "free": "Free",
-      "modalTitle": "Book a discovery call",
-      "modalMeta": "45 min · phone or video · Eastern Time (Québec)",
-      "pickPrompt": "Pick a time slot",
-      "confirm": "Confirm {day} at {time}",
-      "close": "Close",
-      "slots": [
-        {
-          "day": "Mon Sep 22",
-          "time": "9:00"
-        },
-        {
-          "day": "Mon Sep 22",
-          "time": "13:30"
-        },
-        {
-          "day": "Tue Sep 23",
-          "time": "10:00"
-        },
-        {
-          "day": "Tue Sep 23",
-          "time": "15:00"
-        },
-        {
-          "day": "Wed Sep 24",
-          "time": "8:30"
-        },
-        {
-          "day": "Thu Sep 25",
-          "time": "11:00"
-        }
-      ]
+      "poweredBy": "Scheduling by Cal.com"
     },
+    "or": "Or",
     "form": {
-      "title": "Or write to us",
-      "kicker": "Form",
+      "title": "Get in touch",
+      "intro": "Prefer to talk right away? Call us. Otherwise, leave a few details and we’ll get back to you.",
+      "emailLabel": "Email us",
+      "phoneLabel": "Call us",
+      "basedLabel": "Based in",
+      "basedValue": "Québec, Canada",
       "name": "Name",
       "email": "Email",
       "phone": "Phone",
-      "message": "Your message",
-      "intro": "Tell us what you need — we’ll get back to you shortly.",
+      "message": "Message",
+      "messagePlaceholder": "Message — type of business, what you’re looking for, rough timeline.",
       "consent": "I agree to be contacted about my request.",
       "consentLink": "Privacy policy",
       "honeypot": "Leave this field empty",
-      "send": "Send my request",
+      "send": "Send my message",
       "sending": "Sending…",
-      "successTitle": "Message received!",
-      "successBody": "Thank you. We reply within 24 hours, Monday to Friday.",
+      "note": "Your information is only used to answer you (Law 25).",
+      "successTitle": "Message sent",
+      "successBody": "Thanks {name}. We’ll get back to you within 24 hours, on business days.",
+      "another": "Send another message",
       "errorTitle": "Something went wrong",
       "errorBody": "Your message couldn’t be sent. Please try again, or call us directly.",
       "errors": {
@@ -2457,16 +2429,7 @@
         "messageMax": "This message is too long.",
         "consent": "You must agree in order to send.",
         "contactRequired": "Add at least an email or a phone number."
-      },
-      "namePlaceholder": "Jean Tremblay",
-      "emailPlaceholder": "jean@example.ca",
-      "phonePlaceholder": "438-808-6594",
-      "another": "Write another message",
-      "messagePlaceholder": "Type of business, what you’re looking for, rough timeline."
-    },
-    "aside": {
-      "zone": "Based in Québec City, we work all across Québec.",
-      "zoneBody": "We work remotely with businesses from every region. Reply within 24 hours, Monday to Friday."
+      }
     }
   },
   "welcome": {
