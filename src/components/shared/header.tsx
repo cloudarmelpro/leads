@@ -75,7 +75,7 @@ const pill = (current: boolean) =>
 
 // Hauteur de l'en-tête fixe : 24px en haut, 40px de barre, 14px en bas.
 const HEADER_H = "h-[78px]";
-const FULL_BLEED = ["/a-propos", "/contact", "/prix"];
+const FULL_BLEED = ["/a-propos", "/contact", "/prix", "/blog", "/confidentialite"];
 const BAR_MIDDLE = 44;
 
 /**
@@ -98,7 +98,7 @@ export function Header({ lang, dict }: Props) {
   const home = `/${lang}`;
   const isHome = pathname === home;
   // Pages dont le hero occupe le haut de l'écran : l'en-tête flotte dessus, sans cale.
-  const fullBleed = isHome || FULL_BLEED.some((p) => pathname === `${home}${p}`);
+  const fullBleed = isHome || FULL_BLEED.some((p) => pathname === `${home}${p}` || pathname.startsWith(`${home}${p}/`));
   const sections = dict.nav.homeMenu.map((item) => {
     const key = item.key as SectionKey;
     return { key, label: dict.nav[key], desc: item.desc, href: `${home}#${SECTION_IDS[key]}` };

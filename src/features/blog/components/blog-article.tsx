@@ -1,10 +1,11 @@
-import { ArrowLeft } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
 import { BreadcrumbLd } from "@/components/shared/breadcrumb-ld";
 import { GOUTTIERE } from "@/components/shared/container";
-import { HeroGrid } from "@/components/shared/hero-grid";
+import { HERO_BTN_GLASS, HERO_BTN_PRIMARY } from "@/components/shared/hero-buttons";
+import { HeroCentre } from "@/components/shared/hero-centre";
+import { Reveal } from "@/components/shared/reveal";
 import { SectionHead } from "@/components/shared/section-head";
 import { ArticleBody } from "@/features/blog/components/article-body";
 import { ArticleLd } from "@/features/blog/components/article-ld";
@@ -17,24 +18,15 @@ import { getDictionary } from "@/lib/i18n/dictionaries";
 
 type Props = { post: Post; lang: Locale };
 
-const BACK = "flex items-center gap-[8px] text-[14px] leading-[20px] font-normal text-texte2 no-underline transition-colors duration-200 ease-[cubic-bezier(0.2,0.7,0.2,1)] hover:text-encre";
-
 /**
- * Page d'article (maquette « Blog article ») : hero étroit de 760px — retour, H1,
- * chapeau, ligne auteur/méta — puis couverture 16:9, corps, pied de l'article,
+ * Page d'article sur le modèle des autres pages : hero centré (titre, chapeau, ligne
+ * auteur/méta), couverture 16:9 et corps sur 760px, pied de l'article (retour, appel),
  * bloc « À lire ensuite » et bandeau d'appel partagé.
  */
 export async function BlogArticle({ post, lang }: Props) {
   const dict = await getDictionary(lang);
   const t = dict.blog;
   const related = getRelatedPosts(lang, post.slug);
-
-  const back = (
-    <Link href={`/${lang}/blog#articles`} className={BACK}>
-      <ArrowLeft size={15} strokeWidth={2} aria-hidden />
-      <span>{t.backToBlog}</span>
-    </Link>
-  );
 
   return (
     <article>
@@ -48,39 +40,25 @@ export async function BlogArticle({ post, lang }: Props) {
         ]}
       />
 
-      <section className={`relative flex justify-center overflow-x-clip pt-[72px] ${GOUTTIERE}`}>
-        <HeroGrid />
-        <div className="relative z-[1] flex w-full max-w-[760px] flex-col items-start gap-[18px]">
-          {back}
-          <h1 className="m-[0px] text-[clamp(26px,3.2vw,36px)] leading-[1.12] font-normal tracking-[-0.7px] text-encre text-balance">{post.title}</h1>
-          <p className="m-[0px] max-w-[60ch] text-[16px] leading-[27px] font-normal text-texte2 text-pretty">{post.excerpt}</p>
+      <HeroCentre title={post.title} lede={post.excerpt} className="pb-[clamp(32px,4vw,56px)]">
+        <Reveal delay={640} immediate className="mt-[clamp(6px,1vw,14px)] w-full max-w-[760px]">
           <PostMeta post={post} lang={lang} dict={dict} />
-        </div>
-      </section>
+        </Reveal>
+      </HeroCentre>
 
-      <section className={`relative flex justify-center pt-[32px] pb-[clamp(64px,9vw,120px)] ${GOUTTIERE}`}>
-        <div className="flex w-full max-w-[760px] flex-col gap-[32px]">
-          <span className="relative block aspect-video w-full overflow-hidden rounded-[24px] bg-surface">
-            <Image
-              src={post.cover}
-              alt={post.title}
-              fill
-              priority
-              sizes="(max-width: 760px) 100vw, 760px"
-              className="object-cover opacity-90"
-            />
-          </span>
+      <section className={`relative flex justify-center pb-[clamp(96px,11vw,180px)] ${GOUTTIERE}`}>
+        <div className="flex w-full max-w-[760px] flex-col gap-[clamp(28px,3vw,40px)]">
+          <Reveal kind="scale" immediate delay={760} className="relative block aspect-video w-full overflow-hidden rounded-[24px] bg-surface-2 dark:bg-surface">
+            <Image src={post.cover} alt={post.title} fill priority sizes="(max-width: 760px) 100vw, 760px" className="object-cover" />
+          </Reveal>
 
           <ArticleBody blocks={post.body} />
 
-          <div aria-hidden className="h-[1px] bg-ligne" />
-
-          <div className="flex flex-wrap items-center justify-between gap-[12px]">
-            {back}
-            <Link
-              href={`/${lang}/contact#formulaire`}
-              className="flex h-[40px] items-center rounded-[8px] bg-vert px-[20px] text-[14px] leading-[20px] font-normal text-sur-vert no-underline transition-colors hover:bg-vert-clair"
-            >
+          <div className="flex flex-wrap items-center justify-between gap-[12px] pt-[8px]">
+            <Link href={`/${lang}/blog#articles`} className={HERO_BTN_GLASS}>
+              {t.backToBlog}
+            </Link>
+            <Link href={`/${lang}/contact#formulaire`} className={HERO_BTN_PRIMARY}>
               {t.articleCta}
             </Link>
           </div>
@@ -88,8 +66,8 @@ export async function BlogArticle({ post, lang }: Props) {
       </section>
 
       {related.length > 0 && (
-        <section className={`relative flex justify-center pb-[clamp(112px,16vw,240px)] ${GOUTTIERE}`}>
-          <div className="flex w-full max-w-[1400px] flex-col gap-[40px]">
+        <section className={`relative flex justify-center pb-[clamp(96px,11vw,180px)] ${GOUTTIERE}`}>
+          <div className="flex w-full max-w-[1400px] flex-col gap-[clamp(32px,4vw,48px)]">
             <SectionHead id="suite" label={t.relatedKicker} title={t.relatedTitle} />
             <div className={POST_GRID}>
               {related.map((item) => (

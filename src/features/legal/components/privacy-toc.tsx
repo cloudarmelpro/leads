@@ -7,8 +7,8 @@ type Props = { label: string; entries: Entry[] };
 
 /**
  * Sommaire ancré de la politique : l'article le plus haut dans la zone de lecture
- * est marqué actif (texte principal — blanc en sombre, noir en clair — graisse moyenne).
- * Observe les `<article id>` rendus par la page ; sans JavaScript, simple liste de liens.
+ * est marqué actif (texte principal, graisse moyenne). Observe les `<article id>`
+ * rendus par la page ; sans JavaScript, simple liste de liens.
  */
 export function PrivacyToc({ label, entries }: Props) {
   const [active, setActive] = useState(entries[0]?.id ?? "");
@@ -39,20 +39,18 @@ export function PrivacyToc({ label, entries }: Props) {
 
   return (
     <nav aria-label={label}>
-      <p className="text-body-fluid font-normal text-encre">{label}</p>
-      <ol className="mt-3 flex flex-col gap-2">
+      <p className="m-[0px] text-[15px] leading-[26px] font-medium text-encre">{label}</p>
+      <ol className="m-[0px] mt-[8px] flex list-none flex-col gap-[4px] p-[0px]">
         {entries.map((entry) => {
           const isActive = entry.id === active;
           return (
-            <li key={entry.id} className="flex items-start gap-3 text-[0.875rem] leading-[1.375rem]">
-              <span className="shrink-0 tabular-nums text-emeraude dark:text-accent-strong">{entry.n}</span>
+            <li key={entry.id} className="flex items-start gap-[10px] text-[15px] leading-[26px]">
+              <span className="shrink-0 text-[13px] leading-[26px] text-vert tabular-nums">{entry.n}</span>
               <a
                 href={`#${entry.id}`}
                 aria-current={isActive ? "location" : undefined}
                 onClick={() => setActive(entry.id)}
-                className={`no-underline transition-colors hover:text-encre ${
-                  isActive ? "font-medium text-encre" : "font-light text-texte2"
-                }`}
+                className={`no-underline transition-colors duration-200 hover:text-encre ${isActive ? "font-medium text-encre" : "font-normal text-texte2"}`}
               >
                 {entry.h}
               </a>

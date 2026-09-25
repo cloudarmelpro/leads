@@ -1,6 +1,7 @@
 import { BreadcrumbLd } from "@/components/shared/breadcrumb-ld";
 import { GOUTTIERE } from "@/components/shared/container";
-import { HeroGrid } from "@/components/shared/hero-grid";
+import { HeroCentre } from "@/components/shared/hero-centre";
+import { Reveal } from "@/components/shared/reveal";
 import { SectionHead } from "@/components/shared/section-head";
 import { FeaturedCard } from "@/features/blog/components/featured-card";
 import { PostGrid } from "@/features/blog/components/post-grid";
@@ -11,19 +12,16 @@ import { getDictionary } from "@/lib/i18n/dictionaries";
 
 type Props = { lang: Locale };
 
-const PILL = "flex min-h-[34px] items-center rounded-[9px] bg-surface px-[14px] py-[7px] text-[13px] leading-[18px] font-normal text-texte-bascule ring-1 ring-ligne ring-inset dark:ring-0";
-
 /**
- * Index du blog (maquette Blog) : hero à deux colonnes — masthead à gauche, article à
- * la une à droite — puis filtres et grille des autres articles, bandeau d'appel partagé.
- * Sans article, le hero tient seul (colonne de droite masquée) ; pas de carte « à venir ».
+ * Index du blogue sur le modèle des autres pages (demande du client, 2026-09-25) : hero
+ * centré au nom de la page, article à la une sur un panneau plein, puis filtres et
+ * grille des autres articles, bandeau d'appel partagé. Sans article, le hero tient seul.
  */
 export async function BlogIndex({ lang }: Props) {
   const dict = await getDictionary(lang);
   const t = dict.blog;
   const posts = getPosts(lang);
   const [featured, ...rest] = posts;
-  // Une seule liste de catégories pour les pastilles du hero et les filtres (rapport E29).
   const categories = Array.from(new Set(posts.map((post) => post.category)));
 
   return (
@@ -36,31 +34,21 @@ export async function BlogIndex({ lang }: Props) {
         ]}
       />
 
-      <section className={`relative flex justify-center overflow-x-clip pt-[120px] pb-[clamp(112px,16vw,160px)] ${GOUTTIERE}`}>
-        <HeroGrid />
-        <div className={`relative z-[1] grid w-full max-w-[1400px] grid-cols-[minmax(0,1fr)] items-end gap-[48px] ${featured ? "min-[620px]:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]" : ""}`}>
-          <div className="flex flex-col items-start gap-[20px]">
-            <span className="text-[13px] leading-[20px] font-normal tracking-[0.08em] text-vert uppercase">{dict.nav.blog}</span>
-            <h1 className="m-[0px] max-w-[520px] text-[clamp(26px,3.2vw,36px)] leading-[1.12] font-normal tracking-[-0.7px] text-encre text-balance">
-              {t.title} <span className="text-vert">{t.titleHighlight}</span>
-            </h1>
-            <p className="m-[0px] max-w-[460px] text-[15px] leading-[26px] font-normal text-texte2 text-pretty">{t.heroIntro}</p>
-            <div className="mt-[4px] flex flex-wrap gap-[8px]">
-              {categories.map((topic) => (
-                <span key={topic} className={PILL}>
-                  {topic}
-                </span>
-              ))}
-            </div>
-          </div>
-          {featured && <FeaturedCard post={featured} lang={lang} dict={dict} />}
-        </div>
-      </section>
+      {/* Sous le texte du hero, le même écart que sous les sections de l'accueil (demande du client). */}
+      <HeroCentre title={dict.nav.blog} lede={t.heroIntro} className="pb-[clamp(96px,11vw,180px)]" />
+
+      {featured && (
+        <section className={`relative flex justify-center pb-[clamp(96px,11vw,180px)] ${GOUTTIERE}`}>
+          <Reveal kind="scale" immediate delay={600} className="w-full max-w-[1400px]">
+            <FeaturedCard post={featured} lang={lang} dict={dict} />
+          </Reveal>
+        </section>
+      )}
 
       {rest.length > 0 && (
-        <section className={`relative flex justify-center pb-[clamp(112px,16vw,240px)] ${GOUTTIERE}`}>
-          <div className="flex w-full max-w-[1400px] flex-col gap-[48px]">
-            <SectionHead id="articles" label={dict.nav.blog} title={t.moreArticles} intro={t.listSubtitle} introMax={420} />
+        <section className={`relative flex justify-center pb-[clamp(96px,11vw,180px)] ${GOUTTIERE}`}>
+          <div className="flex w-full max-w-[1400px] flex-col gap-[clamp(32px,4vw,48px)]">
+            <SectionHead id="articles" label={dict.nav.blog} title={t.moreArticles} intro={t.listSubtitle} />
             <PostGrid posts={posts} featuredSlug={featured?.slug} categories={categories} lang={lang} allLabel={t.filterAll} minRead={t.minRead} />
           </div>
         </section>

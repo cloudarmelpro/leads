@@ -8,39 +8,38 @@ import type { Dictionary } from "@/lib/i18n/dictionaries";
 
 type Props = { post: Post; lang: Locale; dict: Dictionary };
 
-const SHADE = "linear-gradient(180deg, rgba(1,24,35,0.1) 0%, rgba(1,24,35,0) 45%, rgba(1,24,35,0.72) 100%)";
-
 /**
- * Article à la une, dans la colonne droite du hero (maquette Blog) : bloc 16:10
- * cliquable en entier, couverture à 90 %, dégradé de protection, pastille « À la une »,
- * catégorie, titre, extrait (rapport E30) et méta posés en bas.
+ * Article à la une : panneau plein (fond gris en clair, surface en sombre, sans filet),
+ * couverture 16:10 à gauche et texte à droite dès 860px ; cliquable en entier.
  */
 export function FeaturedCard({ post, lang, dict }: Props) {
   return (
-    <Link href={`/${lang}/blog/${post.slug}`} className="group flex flex-col no-underline">
-      <span className="relative block aspect-[16/10] overflow-hidden rounded-[24px] bg-surface">
+    <Link
+      href={`/${lang}/blog/${post.slug}`}
+      className="group grid grid-cols-[minmax(0,1fr)] gap-[clamp(16px,2vw,28px)] rounded-[24px] bg-surface-2 p-[clamp(12px,1.6vw,20px)] no-underline min-[860px]:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] min-[860px]:items-center dark:bg-surface"
+    >
+      <span className="relative block aspect-[16/10] overflow-hidden rounded-[16px] bg-fond">
         <Image
           src={post.cover}
           alt={post.title}
           fill
           priority
-          sizes="(max-width: 620px) 100vw, 560px"
-          className="object-cover opacity-90 transition-[opacity,transform] duration-[220ms] ease-[cubic-bezier(0.2,0.7,0.2,1)] group-hover:scale-[1.03] group-hover:opacity-100"
+          sizes="(max-width: 860px) 100vw, 760px"
+          className="object-cover transition-transform duration-[400ms] ease-[cubic-bezier(0.2,0.7,0.2,1)] group-hover:scale-[1.03]"
         />
-        <span aria-hidden className="absolute inset-[0px] block" style={{ background: SHADE }} />
-        <span className="absolute top-[18px] left-[18px] rounded-[9px] bg-fond/72 px-[13px] py-[6px] text-[12px] leading-[16px] font-normal tracking-[0.06em] text-vert uppercase backdrop-blur-[8px]">
-          {dict.blog.featured}
+      </span>
+      <span className="flex flex-col gap-[12px] px-[clamp(4px,1vw,16px)] py-[clamp(4px,1vw,12px)]">
+        <span className="flex flex-wrap items-center gap-[10px] text-[13px] leading-[20px] font-normal tracking-[0.08em] uppercase">
+          <span className="rounded-[6px] bg-vert px-[9px] py-[2px] text-[12px] leading-[18px] font-semibold text-sur-vert">{dict.blog.featured}</span>
+          <span className="text-vert">{post.category}</span>
         </span>
-        <span className="absolute inset-x-[0px] bottom-[0px] flex flex-col gap-[9px] p-[22px]">
-          <span className="text-[12px] leading-[16px] font-normal tracking-[0.08em] text-vert uppercase">{post.category}</span>
-          <span className="text-[clamp(18px,2.1vw,23px)] leading-[1.22] font-normal tracking-[-0.4px] text-white text-pretty">{post.title}</span>
-          <span className="line-clamp-2 text-[14px] leading-[22px] font-normal text-white/78 text-pretty">{post.excerpt}</span>
-          <span className="flex flex-wrap items-center gap-[8px] text-[13px] leading-[20px] font-normal text-texte2">
-            <span>{formatDate(post.date, lang)}</span>
-            <span aria-hidden className="text-white/28">·</span>
-            <span>
-              {post.readMinutes} {dict.blog.minRead}
-            </span>
+        <span className="text-[clamp(22px,2.2vw,30px)] leading-[1.2] font-semibold tracking-[-0.01em] text-encre text-pretty">{post.title}</span>
+        <span className="text-[15px] leading-[26px] font-normal text-texte2 text-pretty">{post.excerpt}</span>
+        <span className="flex flex-wrap items-center gap-[8px] text-[13px] leading-[20px] font-normal text-texte2">
+          <span>{formatDate(post.date, lang)}</span>
+          <span aria-hidden>·</span>
+          <span>
+            {post.readMinutes} {dict.blog.minRead}
           </span>
         </span>
       </span>
