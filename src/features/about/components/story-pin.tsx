@@ -204,7 +204,7 @@ export function StoryPin({ quote, items }: Props) {
                           {ICONS[i]}
                         </svg>
                       </span>
-                      <span className="text-[17px] leading-[24px] font-medium text-encre">{item.title}</span>
+                      <span className="text-[15px] leading-[26px] font-medium text-encre">{item.title}</span>
                     </button>
                   </h3>
                   <div

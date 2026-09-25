@@ -104,9 +104,9 @@ export function Team({ title, intro, prev, next, namePlaceholder, altPrefix, rol
               </span>
               <span aria-hidden className="pointer-events-none absolute inset-[0px] bg-[linear-gradient(0deg,rgba(48,217,140,0.6)_0%,rgba(48,217,140,0.14)_42%,transparent_66%)] opacity-0 transition-opacity duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:opacity-100" />
               <span aria-hidden className="pointer-events-none absolute inset-[0px] bg-[linear-gradient(180deg,transparent_48%,rgba(1,24,35,0.88)_100%)]" />
-              <div className="absolute inset-x-[22px] bottom-[20px] flex flex-col gap-[4px]">
-                <span className="text-[20px] leading-[26px] font-semibold text-white">{namePlaceholder}</span>
-                <span className="text-[14px] leading-[20px] font-normal text-[#C9DAD1]">{role}</span>
+              <div className="absolute inset-x-[22px] bottom-[20px] flex flex-col gap-[0px]">
+                <span className="text-[15px] leading-[26px] font-semibold text-white">{namePlaceholder}</span>
+                <span className="text-[15px] leading-[26px] font-normal text-[#C9DAD1]">{role}</span>
               </div>
             </Reveal>
           ))}

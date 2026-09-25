@@ -101,7 +101,7 @@ export function Principles({ title, intro, items }: Props) {
                     {ICONS[i]}
                   </svg>
                 </span>
-                <h3 className="m-[0px] text-[clamp(16px,1.2vw,18px)] leading-[1.3] font-medium text-encre">{item.title}</h3>
+                <h3 className="m-[0px] text-[15px] leading-[26px] font-medium text-encre">{item.title}</h3>
               </div>
               <p className="pointer-events-none relative m-[0px] text-[15px] leading-[26px] font-normal text-texte2 text-pretty">{item.body}</p>
             </Reveal>
