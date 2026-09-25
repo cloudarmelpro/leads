@@ -11,7 +11,7 @@ export function PricingHero({ lang, dict }: Props) {
   const t = dict.pricing;
 
   return (
-    <HeroCentre title={t.breadcrumb} lede={t.heroSubtitle} className="pb-[clamp(64px,7.5vw,120px)]">
+    <HeroCentre title={t.breadcrumb} lede={t.heroSubtitle} className="pb-[clamp(96px,11vw,180px)]">
       <Reveal delay={640} immediate className="mt-[clamp(10px,1.6vw,22px)] flex flex-wrap justify-center gap-[12px]">
         <a href={`/${lang}/contact`} className={HERO_BTN_PRIMARY}>
           {t.cta}
