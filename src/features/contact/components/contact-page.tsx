@@ -22,8 +22,9 @@ export function ContactPageContent({ lang, dict }: Props) {
     <>
       <ContactHero title={t.hero.title} lede={t.hero.lede} ctaBook={t.hero.ctaBook} ctaWrite={t.hero.ctaWrite} mapAria={t.hero.mapAria} />
 
-      {/* Remonte sur le bas fondu de la carte, comme la maquette. */}
-      <section id="rendez-vous" className="relative z-[1] mt-[clamp(-96px,-7vw,-40px)] flex justify-center px-[clamp(16px,4vw,56px)]">
+      {/* Dès 620px, remonte sur le bas fondu de la carte, comme la maquette ; sur téléphone
+          la carte est trop basse pour ça, le titre passait dessus. */}
+      <section id="rendez-vous" className="relative z-[1] mt-[24px] flex justify-center px-[clamp(16px,4vw,56px)] min-[620px]:mt-[clamp(-96px,-7vw,-40px)]">
         <div className="flex w-full max-w-[1200px] flex-col gap-[clamp(32px,4vw,48px)]">
           <div className="flex flex-col items-center gap-[14px] text-center">
             <LineReveal as="h2" className="m-[0px] text-center text-[clamp(22px,2.2vw,30px)] leading-[1.2] font-semibold tracking-[-0.01em] text-encre text-balance">
