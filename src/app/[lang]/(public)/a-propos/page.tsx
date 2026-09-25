@@ -2,15 +2,14 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { BreadcrumbLd } from "@/components/shared/breadcrumb-ld";
-import { AboutHero, Principles, Story } from "@/features/about";
-import { Cta } from "@/features/home";
+import { ScrollProgress } from "@/components/shared/scroll-progress";
+import { AboutHero, Principles, ScrollCue, StoryPin, Team } from "@/features/about";
+import { Cta, WelcomeSplash } from "@/features/home";
 import { isLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { pageMetadata } from "@/lib/seo/metadata";
 
-export async function generateMetadata({
-  params,
-}: PageProps<"/[lang]/a-propos">): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProps<"/[lang]/a-propos">): Promise<Metadata> {
   const { lang } = await params;
   if (!isLocale(lang)) return {};
 
@@ -29,6 +28,7 @@ export default async function AboutPage({ params }: PageProps<"/[lang]/a-propos"
   if (!isLocale(lang)) notFound();
 
   const dict = await getDictionary(lang);
+  const t = dict.about;
 
   return (
     <div>
@@ -36,12 +36,16 @@ export default async function AboutPage({ params }: PageProps<"/[lang]/a-propos"
         lang={lang}
         items={[
           { name: dict.nav.home, path: "" },
-          { name: dict.about.breadcrumb, path: "/a-propos" },
+          { name: t.breadcrumb, path: "/a-propos" },
         ]}
       />
-      <AboutHero dict={dict} lang={lang} />
-      <Story dict={dict} />
-      <Principles dict={dict} />
+      <WelcomeSplash label={dict.welcome.before} brand={dict.welcome.brand} />
+      <ScrollProgress />
+      <AboutHero dict={dict} />
+      <ScrollCue label={t.scroll.label} aria={t.scroll.aria} />
+      <StoryPin quote={t.story.quote} items={t.story.items} />
+      <Principles title={t.principles.title} intro={t.principles.intro} items={t.principles.items} />
+      <Team {...t.team} />
       {/* Même bandeau d'appel que l'accueil (dictionnaire `final`), ancre #contact. */}
       <Cta dict={dict} />
     </div>

@@ -417,23 +417,32 @@
       "description": "L’agence derrière les sites qui font sonner le téléphone des PME du Québec. Notre approche : qualité, professionnalisme, confiance."
     },
     "breadcrumb": "À propos",
-    "heroTitleA": "Talgasy Web est né d’une idée",
-    "heroHighlight": "simple",
-    "heroTitleB": " : aider les entrepreneurs à avancer.",
-    "heroSubtitle": "Une agence web de Québec qui bâtit des sites clairs pour les entreprises d’ici. Pas de jargon, pas de boîte noire : un site qui fait sonner le téléphone.",
+    "hero": {
+      "title": "À propos",
+      "lede": "Talgasy Web est né d’une idée simple : aider les entrepreneurs d’ici à avancer. Des sites clairs, bilingues, qui font sonner le téléphone.",
+      "heroAlt": "Deux personnes travaillent ensemble sur un ordinateur portable dans un atelier",
+      "bandAria": "Aider les entrepreneurs à avancer",
+      "band": [
+        "Aider les entrepreneurs à avancer",
+        "Des sites clairs, bilingues",
+        "Qui font sonner le téléphone",
+        "Pensés pour le Québec"
+      ]
+    },
+    "scroll": {
+      "label": "Défiler",
+      "aria": "Défiler vers notre histoire"
+    },
     "story": {
-      "kicker": "Pour qui on travaille",
-      "title": "Pour ceux qui démarrent, et ceux qui grandissent",
-      "intro": "Un bon départ fait toute la différence. On donne aux nouvelles entreprises des bases solides pour présenter leur travail et gagner leurs premiers clients.",
-      "photoAlt": "Deux personnes travaillent ensemble sur un ordinateur portable dans un atelier",
+      "quote": "Un bon départ fait toute la différence. On donne aux nouvelles entreprises des bases solides pour présenter leur travail et gagner leurs premiers clients.",
       "items": [
         {
           "title": "Des entreprises déjà établies",
-          "body": "On travaille aussi avec des entrepreneurs établis qui veulent moderniser leur présence en ligne et avoir enfin un site à la hauteur de l’entreprise qu’ils ont bâtie."
+          "body": "Mais on travaille aussi avec des entrepreneurs déjà bien établis qui veulent moderniser leur présence en ligne et enfin avoir un site à la hauteur de l’entreprise qu’ils ont bâtie."
         },
         {
           "title": "Un outil, pas une vitrine",
-          "body": "Un site web n’est pas juste une présence sur Internet. C’est un outil qui doit servir l’entreprise : présenter clairement ce qu’elle fait, inspirer confiance et aider les clients à passer à l’action."
+          "body": "Pour nous, un site web n’est pas juste une présence sur Internet. C’est un outil qui doit servir l’entreprise : présenter clairement ce qu’elle fait, inspirer confiance et aider les clients à passer à l’action."
         },
         {
           "title": "Contribuer à la réussite d’ici",
@@ -442,23 +451,36 @@
       ]
     },
     "principles": {
-      "kicker": "Principes",
-      "title": "On construit pour le résultat",
-      "intro": "Un site doit vous amener des clients, pas seulement être beau.",
-      "photoAlt": "Poste de travail avec deux écrans dans une pièce sombre",
+      "title": "Principes",
+      "intro": "Talgasy Web repose sur une idée simple : un site doit vous amener des clients, pas seulement être beau.",
       "items": [
         {
           "title": "Qualité",
-          "body": "Chaque site est testé avant la mise en ligne : vitesse, affichage mobile, formulaires, référencement de base."
+          "body": "Nous ne faisons aucun compromis sur la qualité. Chaque détail est soigné afin d’offrir un résultat professionnel, crédible et à la hauteur de votre entreprise."
         },
         {
           "title": "Professionnalisme",
-          "body": "Des délais annoncés et tenus, un point d’avancement à chaque étape, et une seule personne responsable de votre projet du début à la fin."
+          "body": "Nous travaillons avec sérieux, rigueur et transparence à chaque étape. De la première discussion jusqu’à la livraison, vous pouvez compter sur une équipe professionnelle, fiable et engagée dans la réussite de votre projet."
         },
         {
           "title": "Confiance",
-          "body": "Des prix affichés, des engagements écrits, et un site dont vous gardez tous les accès."
+          "body": "Des échanges honnêtes, des engagements respectés et un suivi clair du début à la fin."
         }
+      ]
+    },
+    "team": {
+      "title": "Les gens derrière vos résultats",
+      "intro": "Une équipe aux expertises complémentaires, unie autour d’un objectif : mener chaque projet avec soin.",
+      "prev": "Précédent",
+      "next": "Suivant",
+      "namePlaceholder": "[Nom]",
+      "altPrefix": "Membre de l’équipe Talgasy Web — ",
+      "roles": [
+        "Développeur full-stack",
+        "Directeur technique",
+        "Chef de projet numérique",
+        "Designer UX/UI",
+        "Spécialiste SEO et performance"
       ]
     }
   },

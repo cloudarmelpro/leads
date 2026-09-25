@@ -417,23 +417,32 @@
       "description": "The agency behind websites that make Québec small businesses’ phones ring. Our approach: quality, professionalism, trust."
     },
     "breadcrumb": "About",
-    "heroTitleA": "Talgasy Web was born from a",
-    "heroHighlight": "simple",
-    "heroTitleB": " idea: helping entrepreneurs move forward.",
-    "heroSubtitle": "A Québec web agency that builds clear websites for local businesses. No jargon, no black box: a website that makes the phone ring.",
+    "hero": {
+      "title": "About",
+      "lede": "Talgasy Web was born from a simple idea: helping local entrepreneurs move forward. Clear, bilingual websites that make the phone ring.",
+      "heroAlt": "Two people working together on a laptop in a workshop",
+      "bandAria": "Helping entrepreneurs move forward",
+      "band": [
+        "Helping entrepreneurs move forward",
+        "Clear, bilingual websites",
+        "That make the phone ring",
+        "Built for Québec"
+      ]
+    },
+    "scroll": {
+      "label": "Scroll",
+      "aria": "Scroll to our story"
+    },
     "story": {
-      "kicker": "Who we work for",
-      "title": "For those starting out, and those growing",
-      "intro": "A strong start makes all the difference. We give new businesses solid foundations to showcase their work and win their first clients.",
-      "photoAlt": "Two people working together on a laptop in a workshop",
+      "quote": "A strong start makes all the difference. We give new businesses solid foundations to showcase their work and win their first clients.",
       "items": [
         {
           "title": "Well-established businesses",
-          "body": "We also work with established entrepreneurs who want to modernize their online presence and finally have a website worthy of the business they’ve built."
+          "body": "But we also work with well-established entrepreneurs who want to modernize their online presence and finally have a website worthy of the business they’ve built."
         },
         {
           "title": "A tool, not a showcase",
-          "body": "A website isn’t just a presence on the Internet. It’s a tool that has to serve the business: clearly present what it does, inspire trust and help clients take action."
+          "body": "To us, a website isn’t just a presence on the Internet. It’s a tool that has to serve the business: clearly present what it does, inspire trust and help clients take action."
         },
         {
           "title": "Contributing to local success",
@@ -442,23 +451,36 @@
       ]
     },
     "principles": {
-      "kicker": "Principles",
-      "title": "We build for results",
-      "intro": "A website should bring you customers, not just look good.",
-      "photoAlt": "Dual-screen workstation in a dim room",
+      "title": "Principles",
+      "intro": "Talgasy Web rests on a simple idea: a website should bring you customers, not just look good.",
       "items": [
         {
           "title": "Quality",
-          "body": "Every site is tested before launch: speed, mobile display, forms, basic SEO."
+          "body": "We make no compromise on quality. Every detail is refined to deliver a professional, credible result worthy of your business."
         },
         {
           "title": "Professionalism",
-          "body": "Deadlines announced and kept, a progress update at every step, and a single person responsible for your project from start to finish."
+          "body": "We work with seriousness, rigour and transparency at every step. From the first conversation to delivery, you can count on a professional, reliable team committed to your project’s success."
         },
         {
           "title": "Trust",
-          "body": "Prices displayed, commitments in writing, and a website you keep full access to."
+          "body": "Honest conversations, commitments kept, and clear follow-up from start to finish."
         }
+      ]
+    },
+    "team": {
+      "title": "The people behind your results",
+      "intro": "A team with complementary expertise, united around one goal: carrying out every project with care.",
+      "prev": "Previous",
+      "next": "Next",
+      "namePlaceholder": "[Name]",
+      "altPrefix": "Talgasy Web team member — ",
+      "roles": [
+        "Full-stack developer",
+        "Technical director",
+        "Digital project manager",
+        "UX/UI designer",
+        "SEO and performance specialist"
       ]
     }
   },

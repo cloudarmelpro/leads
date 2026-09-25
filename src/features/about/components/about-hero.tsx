@@ -1,36 +1,49 @@
-import { GOUTTIERE } from "@/components/shared/container";
-import { HeroGrid } from "@/components/shared/hero-grid";
-import type { Locale } from "@/lib/i18n/config";
+import Image from "next/image";
+
+import { Reveal } from "@/components/shared/reveal";
+import { RollTitle } from "@/components/shared/roll-title";
+import { HeroBand } from "@/features/about/components/hero-band";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 
-type Props = { dict: Dictionary; lang: Locale };
+type Props = { dict: Pick<Dictionary, "about"> };
 
 /**
- * Hero de la page À propos (maquette) : titre en casse normale avec coupure de ligne
- * forcée et mot-clé en vert, paragraphe, bouton de 38px vers la page Contact (comme
- * tous les « Réserver un appel gratuit » du site). Fond = référence Accueil (grille du hero). Padding haut
- * 120 / 64 / 96px selon la largeur, bas 140 / 96 / 72px.
+ * Hero À propos (maquette Claude Design, 2026-09-25) : panneau arrondi décollé de 10px,
+ * photo en lent zoom (Ken Burns, 22 s) sous une trame claire en surimpression, voiles
+ * sombres et bande floutée en bas ; titre centré qui roule au survol, texte d'appui,
+ * puis le bandeau défilant. Toujours sombre, comme le hero de l'accueil (écrin) : les
+ * couleurs sont littérales et l'en-tête passe en sombre au-dessus (`data-header-sombre`).
  */
-export function AboutHero({ dict, lang }: Props) {
-  const t = dict.about;
+export function AboutHero({ dict }: Props) {
+  const t = dict.about.hero;
 
   return (
-    <section className={`relative flex justify-center overflow-x-clip pt-[120px] pb-[140px] ${GOUTTIERE}`}>
-      <HeroGrid />
-      <div className="relative z-[1] flex w-full max-w-[1400px] flex-col items-start gap-[22px]">
-        <h1 className="m-[0px] max-w-[680px] text-[clamp(26px,3.2vw,36px)] leading-[1.12] font-normal tracking-[-0.7px] text-encre text-pretty">
-          {t.heroTitleA}
-          <br />
-          <span className="text-vert">{t.heroHighlight}</span>
-          {t.heroTitleB}
-        </h1>
-        <p className="m-[0px] max-w-[520px] text-[14px] leading-[24px] font-normal text-texte2 text-pretty">{t.heroSubtitle}</p>
-        <a
-          href={`/${lang}/contact`}
-          className="mt-[10px] flex h-[38px] items-center gap-[10px] rounded-[8px] bg-vert px-[22px] text-[14px] leading-[20px] font-normal text-sur-vert no-underline transition-colors hover:bg-vert-clair"
-        >
-          {dict.hero.ctaBook}
-        </a>
+    <section id="top" data-header-sombre className="relative z-[2] block px-[10px] pt-[10px]">
+      <div className="relative flex min-h-[min(72svh,720px)] flex-col justify-center overflow-hidden rounded-[24px] bg-[#011B28]">
+        <span aria-hidden className="absolute inset-[0px] block [animation:tw-kb_22s_ease-in-out_infinite_alternate] [filter:saturate(0.85)_contrast(1.05)] motion-reduce:[animation:none]">
+          <Image src="/images/about/hero.jpg" alt="" fill sizes="100vw" loading="eager" fetchPriority="high" className="object-cover" />
+        </span>
+        <Image src="/images/about/hero-trame.jpg" alt="" aria-hidden fill sizes="100vw" className="pointer-events-none object-cover object-right-top opacity-50 mix-blend-screen select-none" />
+        <span aria-hidden className="pointer-events-none absolute inset-[0px] bg-[linear-gradient(180deg,rgba(1,24,35,0.70)_0%,rgba(1,24,35,0.45)_45%,rgba(1,24,35,0.88)_100%)]" />
+        <span aria-hidden className="pointer-events-none absolute inset-x-[0px] bottom-[0px] h-[260px] backdrop-blur-[28px] [mask-image:linear-gradient(180deg,transparent_0%,#000_60%)]" />
+        <span aria-hidden className="pointer-events-none absolute inset-x-[0px] bottom-[0px] h-[260px] bg-[linear-gradient(180deg,rgba(1,24,35,0)_0%,rgba(1,24,35,0.6)_50%,#011823_100%)]" />
+
+        <div className="relative flex justify-center px-[clamp(18px,5vw,72px)] pt-[calc(68px+clamp(28px,5vw,72px))] pb-[calc(80px+clamp(56px,8vh,96px))]">
+          <div className="flex w-full max-w-[1400px] flex-col items-center gap-[22px] text-center">
+            <RollTitle
+              as="h1"
+              text={t.title}
+              immediate
+              delay={0.15}
+              className="m-[0px] text-center text-[clamp(24px,17.79px+1.66vw,36px)] leading-[1.08] font-semibold tracking-[-1px] text-white uppercase min-[620px]:tracking-[-2px]"
+            />
+            <Reveal delay={520} immediate className="flex max-w-[620px] min-w-[0px] justify-center text-center">
+              <p className="m-[0px] text-[clamp(15px,13.45px+0.41vw,18px)] leading-[1.34] font-normal text-[#E4ECEF] text-pretty">{t.lede}</p>
+            </Reveal>
+          </div>
+        </div>
+
+        <HeroBand items={t.band} label={t.bandAria} />
       </div>
     </section>
   );

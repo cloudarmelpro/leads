@@ -1,10 +1,8 @@
 "use client";
 
-import { gsap } from "gsap";
-import { SplitText } from "gsap/SplitText";
 import { useEffect, useRef, type ElementType, type ReactNode } from "react";
 
-gsap.registerPlugin(SplitText);
+import { gsap, SplitText } from "@/lib/motion/gsap";
 
 type Props = {
   as?: ElementType;
