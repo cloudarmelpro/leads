@@ -27,7 +27,10 @@ const ICONS = [
     <path d="M3 4h8" />
   </>,
 ];
-const SPOT = "radial-gradient(380px_circle_at_var(--mx)_var(--my),rgba(48,217,140,0.09),transparent_60%)";
+// Halo qui suit le pointeur, posé sur le fond de carte (gris en clair, dégradé nuit en sombre).
+// Classe écrite en entier : Tailwind ne génère pas une classe assemblée à l'exécution.
+const CARD_BG =
+  "bg-[radial-gradient(380px_circle_at_var(--mx)_var(--my),rgba(48,217,140,0.09),transparent_60%),linear-gradient(160deg,var(--color-surface-2),var(--color-surface-2))] dark:bg-[radial-gradient(380px_circle_at_var(--mx)_var(--my),rgba(48,217,140,0.09),transparent_60%),linear-gradient(160deg,#011E2B_0%,#011823_100%)]";
 
 /**
  * Principes (maquette À propos) : titre centré, texte d'appui, puis trois cartes qui
@@ -82,7 +85,7 @@ export function Principles({ title, intro, items }: Props) {
               kind="scale"
               delay={i * 130}
               style={{ ["--mx" as string]: "50%", ["--my" as string]: "0%" }}
-              className={`relative flex min-h-[clamp(240px,22vw,300px)] flex-col gap-[22px] overflow-hidden rounded-[16px] p-[clamp(28px,3vw,40px)] transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-[6px] bg-[${SPOT},linear-gradient(160deg,var(--color-surface-2),var(--color-surface-2))] dark:bg-[${SPOT},linear-gradient(160deg,#011E2B_0%,#011823_100%)]`}
+              className={`relative flex min-h-[clamp(240px,22vw,300px)] flex-col gap-[22px] overflow-hidden rounded-[16px] p-[clamp(28px,3vw,40px)] transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-[6px] ${CARD_BG}`}
             >
               <div onPointerMove={spot} className="absolute inset-[0px]" aria-hidden />
               <span data-filigrane aria-hidden className="pointer-events-none absolute right-[-28px] bottom-[-34px] flex text-vert opacity-[0.07]">
