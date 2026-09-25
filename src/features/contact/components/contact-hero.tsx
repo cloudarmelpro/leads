@@ -60,7 +60,8 @@ export function ContactHero({ title, lede, ctaBook, ctaWrite, mapAria }: Props) 
           <a href="#rendez-vous" className={`${BTN} bg-vert text-sur-vert shadow-[0_14px_40px_-14px_rgba(48,217,140,0.8)] hover:bg-vert-clair`}>
             {ctaBook}
           </a>
-          <a href="#formulaire" className={`${BTN} bg-verre text-encre shadow-[inset_0_0_0_1px_var(--color-contour)] backdrop-blur-[14px] hover:shadow-[inset_0_0_0_1px_var(--color-vert)]`}>
+          {/* Même verre que les boutons de l'en-tête : le survol fonce le fond, sans filet vert. */}
+          <a href="#formulaire" className={`${BTN} bg-verre text-encre shadow-[inset_0_0_0_1px_var(--color-filet-verre)] backdrop-blur-[14px] hover:bg-verre-fort`}>
             {ctaWrite}
           </a>
         </Reveal>
