@@ -16,6 +16,8 @@ export type Block =
 type PostContent = {
   category: string;
   title: string;
+  /** Titre court des cartes du hero du blogue. */
+  short: string;
   excerpt: string;
   body: Block[];
 };
@@ -46,6 +48,7 @@ const POSTS: RawPost[] = [
     fr: {
       category: "Conversion",
       title: "Pourquoi votre site ne fait pas sonner le téléphone",
+      short: "Site sans appels",
       excerpt:
         "Un beau site qui ne génère aucun appel a un problème de structure, pas de design. Les quatre éléments qui transforment une visite en soumission.",
       body: [
@@ -75,6 +78,7 @@ const POSTS: RawPost[] = [
     en: {
       category: "Conversion",
       title: "Why your website doesn’t make the phone ring",
+      short: "A site with no calls",
       excerpt:
         "A good-looking site that generates no calls has a structure problem, not a design problem. The four elements that turn a visit into a quote request.",
       body: [
@@ -111,6 +115,7 @@ const POSTS: RawPost[] = [
     fr: {
       category: "Référencement local",
       title: "Être trouvé dans votre région avant vos concurrents",
+      short: "SEO local",
       excerpt:
         "Fiche Google, pages de villes, avis clients : ce qui fait vraiment remonter une entreprise de service dans les résultats locaux.",
       body: [
@@ -139,6 +144,7 @@ const POSTS: RawPost[] = [
     en: {
       category: "Local SEO",
       title: "Getting found in your area before your competitors",
+      short: "Local SEO",
       excerpt:
         "Google Business Profile, city pages, customer reviews: what actually moves a service business up in local search results.",
       body: [
@@ -174,6 +180,7 @@ const POSTS: RawPost[] = [
     fr: {
       category: "Prix",
       title: "Combien coûte un site web au Québec",
+      short: "Le vrai prix d’un site",
       excerpt:
         "Ce qui fait varier la facture d’un projet, et comment savoir si une soumission est raisonnable pour votre type d’entreprise.",
       body: [
@@ -203,6 +210,7 @@ const POSTS: RawPost[] = [
     en: {
       category: "Pricing",
       title: "How much does a website cost in Québec",
+      short: "The real cost of a site",
       excerpt:
         "What drives the price of a project up or down, and how to tell whether a quote is reasonable for your type of business.",
       body: [
@@ -239,6 +247,7 @@ const POSTS: RawPost[] = [
     fr: {
       category: "Bonnes pratiques",
       title: "Bilingue par défaut : pourquoi ça compte ici",
+      short: "Bilingue par défaut",
       excerpt:
         "Un site en français seulement laisse des contrats sur la table. Comment structurer les deux langues sans doubler le travail.",
       body: [
@@ -263,6 +272,7 @@ const POSTS: RawPost[] = [
     en: {
       category: "Best practices",
       title: "Bilingual by default: why it matters here",
+      short: "Bilingual by default",
       excerpt:
         "A French-only website leaves contracts on the table. How to structure both languages without doubling the work.",
       body: [
@@ -294,6 +304,7 @@ const POSTS: RawPost[] = [
     fr: {
       category: "Contenu",
       title: "Les photos de chantier qui convainquent",
+      short: "Photos de chantier",
       excerpt:
         "Vos vraies photos valent mieux que n’importe quelle banque d’images. Ce qu’il faut cadrer, et ce qu’il faut éviter.",
       body: [
@@ -321,6 +332,7 @@ const POSTS: RawPost[] = [
     en: {
       category: "Content",
       title: "Job-site photos that win the job",
+      short: "Job-site photos",
       excerpt:
         "Your real photos beat any stock image. What to frame, and what to avoid.",
       body: [
@@ -355,6 +367,7 @@ const POSTS: RawPost[] = [
     fr: {
       category: "Refonte",
       title: "Refonte ou nouveau site : comment décider",
+      short: "Refonte ou nouveau ?",
       excerpt:
         "Trois questions à se poser avant de tout jeter. Parfois, une refonte partielle suffit à débloquer les demandes.",
       body: [
@@ -381,6 +394,7 @@ const POSTS: RawPost[] = [
     en: {
       category: "Redesign",
       title: "Redesign or new website: how to decide",
+      short: "Redesign or rebuild?",
       excerpt:
         "Three questions to ask before throwing everything out. Sometimes a partial redesign is enough to get the requests flowing.",
       body: [
