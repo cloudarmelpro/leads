@@ -61,8 +61,8 @@ const FULL_BLEED = ["/a-propos", "/contact", "/services", "/blog", "/confidentia
 const BAR_MIDDLE = 40;
 
 /**
- * En-tête fixe (maquette Accueil, 2026-09-30) : transparent en haut de page, fond en verre
- * flouté dès qu'on défile (demande du client du même jour), jamais de filet. Logo à
+ * En-tête fixe (maquette Accueil, 2026-09-30) : transparent en haut de page, fond opaque
+ * et filet en bas dès qu'on défile (demande du client du même jour). Logo à
  * gauche ; au centre, Accueil (avec le panneau des sections), À propos, Services, Blogue ;
  * à droite langue · thème · « Soumettre une soumission ». Sous 1100px, la navigation et le
  * bouton laissent place au bouton menu (40×40) qui ouvre un menu plein écran listant aussi
@@ -144,7 +144,8 @@ export function Header({ lang, dict }: Props) {
     };
   }, [pathname]);
 
-  // Passé 40px de défilement (maquette), l'en-tête prend un fond en verre, fondu en 300ms.
+  // Passé 40px de défilement (maquette), l'en-tête prend un fond opaque et un filet en bas,
+  // sans flou (demande du client, 2026-09-30 : « seulement un fond »), fondu en 300ms.
   const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -160,8 +161,8 @@ export function Header({ lang, dict }: Props) {
   return (
     <>
       <header
-        className={`${overDark ? "dark" : ""} pointer-events-none fixed inset-x-[0px] top-[0px] z-[60] flex ${HEADER_H} items-center justify-center px-[clamp(18px,4vw,40px)] transition-[background-color,backdrop-filter] duration-300 ease-[cubic-bezier(0.2,0.7,0.2,1)] max-[359px]:px-[16px] ${
-          scrolled ? "bg-verre-fort backdrop-blur-[14px]" : "bg-transparent"
+        className={`${overDark ? "dark" : ""} pointer-events-none fixed inset-x-[0px] top-[0px] z-[60] flex ${HEADER_H} items-center justify-center px-[clamp(18px,4vw,40px)] transition-[background-color,box-shadow] duration-300 ease-[cubic-bezier(0.2,0.7,0.2,1)] max-[359px]:px-[16px] ${
+          scrolled ? "bg-fond/94 shadow-[0_1px_0_var(--color-ligne)]" : "bg-transparent"
         }`}
       >
         <div className="pointer-events-auto relative flex w-full max-w-[1400px] items-center justify-between gap-[12px]">
