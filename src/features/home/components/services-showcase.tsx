@@ -48,13 +48,11 @@ export function ServicesShowcase({ lang, items }: Props) {
       <article key={`${index}-${clone ? "b" : "a"}`} className="relative flex min-h-[0px] flex-1 flex-col overflow-hidden rounded-[20px] bg-carte">
         {/* Visuels détourés (fond transparent, comme les illustrations du design précédent) posés
             entiers, avec la même marge que le texte — demande du client du 2026-09-30 : plus de
-            photo pleine carte fondue vers le bas. Les objets sont dessinés pour un fond nuit :
-            en mode clair, ils reposent sur un panneau nuit arrondi dans la carte grise. */}
+            photo pleine carte fondue vers le bas. En mode clair aussi, l'objet est posé tel quel
+            sur la carte grise, sans panneau derrière (choix du client). */}
         <div className="relative min-h-[0px] min-w-[0px] flex-1 overflow-hidden px-[clamp(18px,1.8vw,26px)] pt-[clamp(18px,1.8vw,26px)]">
-          <span className="relative block h-full w-full overflow-hidden rounded-[14px] bg-[#022536] dark:rounded-none dark:bg-transparent">
-            <span className="absolute inset-[10px] block dark:inset-[0px]">
-              <Image src={`/images/home/services/${spec.image}.webp`} alt="" fill sizes="(max-width: 1100px) 50vw, 560px" className="object-contain object-center" />
-            </span>
+          <span className="relative block h-full w-full">
+            <Image src={`/images/home/services/${spec.image}.webp`} alt="" fill sizes="(max-width: 1100px) 50vw, 560px" className="object-contain object-center" />
           </span>
         </div>
         <div className="relative flex min-w-[0px] shrink-0 flex-col gap-[5px] px-[clamp(18px,1.8vw,26px)] pt-[13px] pb-[clamp(16px,1.6vw,20px)]">
