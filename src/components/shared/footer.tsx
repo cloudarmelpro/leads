@@ -104,7 +104,7 @@ export function Footer({ lang, dict }: Props) {
             visible, sinon elle recouvre « Gérer mes témoins » (voir floating-contact). */}
         <div
           data-fab-avoid
-          className="relative mt-[clamp(40px,6vw,72px)] flex flex-wrap items-center justify-between gap-x-[32px] gap-y-[12px] border-t border-ligne pt-[24px]"
+          className="relative mt-[clamp(40px,6vw,72px)] flex flex-wrap items-center justify-between gap-x-[32px] gap-y-[12px] pt-[24px]"
         >
           <span className="text-[14px] leading-[22px] font-normal text-texte-note">
             © {new Date().getFullYear()} {site.name}. {t.rights}.
