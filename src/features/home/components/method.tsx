@@ -54,12 +54,9 @@ export function Method({ lang, dict }: Props) {
           )}
           <Link
             href={`/${lang}/contact`}
-            className="tap-44 inline-flex h-[40px] items-center gap-[10px] rounded-[8px] bg-vert px-[18px] text-[13.5px] leading-[1] font-medium whitespace-nowrap text-sur-vert no-underline transition-colors hover:bg-vert-clair"
+            className="tap-44 inline-flex h-[40px] items-center rounded-[8px] bg-vert px-[18px] text-[13.5px] leading-[1] font-medium whitespace-nowrap text-sur-vert no-underline transition-colors hover:bg-vert-clair"
           >
             {t.cta}
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-              <path d="M5 12h14M13 6l6 6-6 6" />
-            </svg>
           </Link>
         </div>
       </div>

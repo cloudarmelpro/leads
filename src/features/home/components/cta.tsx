@@ -8,8 +8,9 @@ import type { Dictionary } from "@/lib/i18n/dictionaries";
 
 type Props = { dict: Pick<Dictionary, "final" | "placeholders"> };
 
+// Texte seul, sans la flèche de la maquette (décision du client, 2026-09-30).
 const BUTTON =
-  "inline-flex items-center gap-[10px] rounded-[6px] bg-[#2fd286] px-[17px] py-[11px] text-[14.5px] leading-[1.2] font-medium whitespace-nowrap text-[#052a1b] no-underline transition-[transform,box-shadow,filter] duration-200 ease-out hover:-translate-y-[1px] hover:brightness-[1.07] hover:shadow-[0_10px_28px_-10px_rgba(47,210,134,0.7)] active:translate-y-[0px] focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-[#f3f7f9] [&>svg]:transition-transform [&>svg]:duration-200 hover:[&>svg]:translate-x-[2px]";
+  "inline-flex items-center rounded-[6px] bg-[#2fd286] px-[17px] py-[11px] text-[14.5px] leading-[1.2] font-medium whitespace-nowrap text-[#052a1b] no-underline transition-[transform,box-shadow,filter] duration-200 ease-out hover:-translate-y-[1px] hover:brightness-[1.07] hover:shadow-[0_10px_28px_-10px_rgba(47,210,134,0.7)] active:translate-y-[0px] focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-[#f3f7f9]";
 
 /**
  * Appel final (maquette Accueil, 2026-09-30) : panneau sombre à dégradé fixe (identique
@@ -54,9 +55,6 @@ export function Cta({ dict }: Props) {
             {tel ? (
               <a data-cg-btn href={tel} className={BUTTON}>
                 {t.callLabel} · {phone}
-                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden>
-                  <path d="M3 8h9.5M8.5 3.5 13 8l-4.5 4.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
               </a>
             ) : (
               <button type="button" disabled aria-label={`${t.callLabel} — ${phone}`} className={`${BUTTON} cursor-not-allowed opacity-55`}>
