@@ -21,6 +21,8 @@ export type PrivacyDoc = {
   /** Description SEO (120-160 caractères) : l'intro est trop longue pour un <meta>. */
   metaDescription: string;
   intro: string;
+  /** Les quatre repères du hero (maquette du 2026-09-30), résumés fidèles des articles. */
+  brief: { title: string; text: string }[];
   sections: PrivacySection[];
 };
 
@@ -46,6 +48,12 @@ function fr(): PrivacyDoc {
     updated: UPDATED,
     metaDescription: `Politique de confidentialité de ${site.name} : ce que le formulaire de contact recueille, pourquoi, où c'est conservé et vos droits sous la Loi 25 (Québec).`,
     intro: `Chez ${site.name}, nous prenons la protection de vos renseignements personnels au sérieux. Cette politique explique ce que nous recueillons, pourquoi, et les droits dont vous disposez, conformément à la Loi 25 (Québec).`,
+    brief: [
+      { title: "Le strict nécessaire", text: "Seulement ce que vous nous écrivez dans le formulaire." },
+      { title: "Jamais revendu", text: "Aucune publicité, aucune vente, aucun échange." },
+      { title: "Aucun témoin publicitaire", text: "Seuls les témoins essentiels au site sont déposés." },
+      { title: "Réponse en 30 jours", text: "Accès, correction ou suppression, sur simple demande." },
+    ],
     sections: [
       {
         h: "Renseignements que nous recueillons",
@@ -134,6 +142,12 @@ function en(): PrivacyDoc {
     updated: UPDATED,
     metaDescription: `${site.name} privacy policy: what the contact form collects, why, where it is stored, and the rights you have under Quebec's Law 25.`,
     intro: `At ${site.name}, we take the protection of your personal information seriously. This policy explains what we collect, why, and the rights you have, in line with Quebec's Law 25.`,
+    brief: [
+      { title: "Only what is necessary", text: "Only what you write to us in the form." },
+      { title: "Never sold", text: "No advertising, no sale, no exchange." },
+      { title: "No advertising cookies", text: "Only the cookies essential to the site are set." },
+      { title: "Answer within 30 days", text: "Access, correction or deletion, on request." },
+    ],
     sections: [
       {
         h: "Information we collect",
