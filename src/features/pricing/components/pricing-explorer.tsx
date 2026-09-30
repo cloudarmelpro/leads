@@ -111,14 +111,14 @@ export function PricingExplorer({ lang, dict }: Props) {
   const [hover, setHover] = useState<string | null>(null);
   const [closed, setClosed] = useState<Record<string, boolean>>({});
 
-  // Barre collée : son fond flouté remonte alors sous l'en-tête flottant (78px, voir
+  // Barre collée : son fond flouté remonte alors sous l'en-tête flottant (80px, voir
   // header.tsx) pour ne former qu'une bande ; libre, rien ne recouvre le bas du hero.
   const [stuck, setStuck] = useState(false);
   const sentinel = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const el = sentinel.current;
     if (!el) return;
-    const io = new IntersectionObserver(([entry]) => setStuck(!(entry?.isIntersecting ?? true)), { rootMargin: "-78px 0px 0px 0px" });
+    const io = new IntersectionObserver(([entry]) => setStuck(!(entry?.isIntersecting ?? true)), { rootMargin: "-80px 0px 0px 0px" });
     io.observe(el);
     return () => io.disconnect();
   }, []);
@@ -278,8 +278,8 @@ export function PricingExplorer({ lang, dict }: Props) {
       <div ref={sentinel} aria-hidden className="h-px" />
       <div
         id="prix"
-        className={`sticky top-[78px] z-30 flex justify-center bg-fond/94 py-[12px] backdrop-blur-[14px] ${GOUTTIERE} ${
-          stuck ? "before:absolute before:inset-x-[0px] before:top-[-78px] before:h-[78px] before:bg-fond/94 before:backdrop-blur-[14px]" : ""
+        className={`sticky top-[80px] z-30 flex justify-center bg-fond/94 py-[12px] backdrop-blur-[14px] ${GOUTTIERE} ${
+          stuck ? "before:absolute before:inset-x-[0px] before:top-[-80px] before:h-[80px] before:bg-fond/94 before:backdrop-blur-[14px]" : ""
         }`}
       >
         <div className="flex w-full max-w-[1400px] flex-wrap items-center justify-between gap-[20px]">

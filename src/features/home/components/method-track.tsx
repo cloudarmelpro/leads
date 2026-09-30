@@ -22,7 +22,7 @@ const arrow = (d: string) => (
   </svg>
 );
 const NAV =
-  "tap-44 flex h-[44px] w-[44px] cursor-pointer items-center justify-center rounded-full bg-surface text-encre shadow-[inset_0_0_0_1px_var(--color-contour)] transition-colors duration-200 ease-[cubic-bezier(0.2,0.7,0.2,1)] hover:bg-surface-2";
+  "tap-44 flex h-[44px] w-[44px] cursor-pointer items-center justify-center rounded-full bg-carte text-encre shadow-[inset_0_0_0_1px_var(--color-contour)] transition-colors duration-200 ease-[cubic-bezier(0.2,0.7,0.2,1)] hover:bg-surface-2";
 
 /**
  * Piste des étapes (maquette Accueil) : cartes 4:5 qui défilent à l'horizontale avec
@@ -60,7 +60,7 @@ export function MethodTrack({ steps, images, stepLabel, prevLabel, nextLabel, ch
       >
         {steps.map((step, i) => (
           <article key={step.title} className="flex w-[min(78vw,320px)] shrink-0 grow-0 snap-start flex-col gap-[14px] min-[640px]:w-[clamp(280px,23vw,340px)]">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-[16px] bg-surface shadow-[inset_0_0_0_1px_rgba(255,255,255,0.06)]">
+            <div className="relative aspect-[4/5] overflow-hidden rounded-[16px] bg-carte shadow-[inset_0_0_0_1px_rgba(255,255,255,0.06)]">
               {images[i] && <Image src={`/images/home/${images[i]}`} alt={step.title} fill sizes="(max-width: 640px) 78vw, 340px" className="object-cover" />}
               <span className="absolute top-1/2 left-1/2 inline-flex min-h-[36px] w-max max-w-[calc(100%-32px)] -translate-x-1/2 -translate-y-1/2 items-center gap-[8px] rounded-[8px] bg-[rgba(1,24,35,0.62)] py-[5px] pr-[6px] pl-[14px] text-[14px] leading-[18px] font-medium text-white shadow-[inset_0_0_0_1px_rgba(255,255,255,0.12)] backdrop-blur-[14px]">
                 <span className="min-w-[0px] text-balance">{step.title}</span>
@@ -69,7 +69,7 @@ export function MethodTrack({ steps, images, stepLabel, prevLabel, nextLabel, ch
                 </span>
               </span>
             </div>
-            <p className="m-[0px] px-[4px] text-[15px] leading-[26px] font-normal text-texte2 text-pretty">{step.desc}</p>
+            <p className="m-[0px] px-[4px] text-[14.5px] leading-[23px] font-normal text-texte2 text-pretty">{step.desc}</p>
           </article>
         ))}
       </div>

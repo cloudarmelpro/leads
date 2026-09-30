@@ -18,13 +18,12 @@ type Props = {
   exitLength?: number;
 };
 
-const INSET = 10;
-// Bas de l'en-tête fixe (78px) mesuré depuis le haut du panneau, décollé de 10px.
-const HEADER_BOTTOM = 78 - INSET;
+// Bas de l'en-tête fixe (80px), mesuré depuis le haut du panneau.
+const HEADER_BOTTOM = 80;
 
 /**
- * Scène du hero (maquette `talgasy-hero3d`, mode `data-static`) : un panneau de
- * `100vh - 20px`, décollé de 10px des bords, rayon 24px, qui défile normalement. La
+ * Scène du hero (maquette `talgasy-hero3d`, mode `data-static`, sans marge ni rayon) :
+ * un panneau d'un écran de haut, bord à bord, qui défile normalement. La
  * progression de sortie `--exit` (0 → 1 sur `exitLength` écran) pilote la dissolution
  * du logo et le fondu du texte. La scène 3D tourne à toutes les largeurs, téléphone compris
  * (demande du client : même rendu qu'à l'ordinateur) ; sous `prefers-reduced-motion`, elle
@@ -167,12 +166,8 @@ export function HeroStage({ children, fallback, mapIntensity = 2, exitLength = 0
   return (
     // Au moins un écran de haut, davantage si le contenu l'exige (téléphone à l'horizontale :
     // 360px ne suffisent pas, le texte débordait du panneau).
-    <div ref={root} className="relative block min-h-[100vh] w-full [--exit:0]" style={{ padding: `${INSET}px ${INSET}px` }}>
-      <div
-        ref={panel}
-        className="relative z-0 flex flex-col overflow-hidden rounded-[24px] bg-[#021b26] [touch-action:pan-y]"
-        style={{ minHeight: `calc(100vh - ${INSET * 2}px)` }}
-      >
+    <div ref={root} className="relative block min-h-[100vh] w-full [--exit:0]">
+      <div ref={panel} className="relative z-0 flex min-h-[100vh] flex-col overflow-hidden bg-[#011823] [touch-action:pan-y]">
         <div ref={canvasHost} aria-hidden className="absolute inset-[0px]">
           {mode === "still" && (
             <span ref={still} className="absolute top-[-4%] left-[-4%] block h-[108%] w-[108%] origin-[50%_45%] will-change-transform">

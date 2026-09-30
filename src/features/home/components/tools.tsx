@@ -1,4 +1,3 @@
-import { LineReveal } from "@/components/shared/line-reveal";
 import { TOOL_ROWS, type Tool } from "@/features/home/components/tools-data";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 
@@ -8,7 +7,7 @@ const MASK = "linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)";
 
 function Chip({ tool }: { tool: Tool }) {
   return (
-    <span className="inline-flex h-[44px] items-center gap-[10px] rounded-[8px] bg-surface-2 px-[20px] dark:bg-surface text-[15px] leading-[1] font-medium whitespace-nowrap text-puce">
+    <span className="inline-flex h-[44px] items-center gap-[10px] rounded-[8px] bg-carte px-[20px] text-[15px] leading-[1] font-medium whitespace-nowrap text-puce">
       {tool.kind === "icon" ? (
         // Les glyphes blancs de la maquette suivent la couleur du texte : lisibles en clair aussi.
         <svg
@@ -48,10 +47,10 @@ export function Tools({ dict }: Props) {
   const t = dict.tools;
 
   return (
-    <section id="outils" aria-label={t.aria} className="group relative flex flex-col items-center gap-[clamp(28px,3vw,40px)] pb-[clamp(96px,11vw,180px)]">
+    <section id="outils" aria-label={t.aria} className="group relative flex flex-col items-center gap-[clamp(28px,3vw,40px)] pb-[clamp(128px,14vw,230px)]">
       <div className="box-border flex w-full max-w-[1400px] flex-col items-center gap-[14px] px-[clamp(16px,4vw,56px)]">
         <span className="text-[13px] leading-[20px] font-normal tracking-[0.08em] text-vert uppercase">{t.kicker}</span>
-        <LineReveal as="h2" className="m-[0px] max-w-[640px] text-center text-[clamp(22px,2.2vw,30px)] leading-[1.2] font-semibold tracking-[-0.01em] text-encre text-balance">{t.title}</LineReveal>
+        <h2 className="m-[0px] max-w-[640px] text-center text-[clamp(22px,2.2vw,30px)] leading-[1.2] font-semibold tracking-[-0.01em] text-encre text-balance">{t.title}</h2>
       </div>
       <div className="flex w-full flex-col gap-[12px] overflow-hidden" style={{ maskImage: MASK, WebkitMaskImage: MASK }}>
         {TOOL_ROWS.map((row) => (

@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 
-import { Cta, Faq, Hero, Method, Sectors, Services, Tools, TradesStrip, WelcomeSplash } from "@/features/home";
+import { ScrollProgress } from "@/components/shared/scroll-progress";
+import { Cta, Faq, Hero, HomeCursor, HomePricing, Method, Positioning, Sectors, Services, Tools, WelcomeSplash } from "@/features/home";
 import { isLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 
@@ -13,12 +14,15 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
   return (
     <div>
       <WelcomeSplash label={dict.welcome.before} brand={dict.welcome.brand} />
-      <Hero lang={lang} dict={dict} />
-      <TradesStrip dict={{ hero: dict.hero }} />
-      <Services lang={lang} dict={dict} />
+      <ScrollProgress />
+      <HomeCursor />
+      <Hero lang={lang} dict={{ hero: dict.hero }} />
+      <Positioning dict={{ positioning: dict.positioning }} />
+      <Services lang={lang} dict={{ services: dict.services }} />
       <Tools dict={{ tools: dict.tools }} />
-      <Sectors lang={lang} dict={dict} />
-      <Method lang={lang} dict={{ method: dict.method, hero: dict.hero }} />
+      <Sectors lang={lang} dict={{ organisations: dict.organisations }} />
+      <Method lang={lang} dict={{ method: dict.method }} />
+      <HomePricing dict={{ homePricing: dict.homePricing }} />
       <Faq dict={{ faq: dict.faq }} lang={lang} />
       <Cta dict={{ final: dict.final, placeholders: dict.placeholders }} />
     </div>

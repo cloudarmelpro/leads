@@ -1,85 +1,64 @@
-import { ChevronRight } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
-import { SERVICE_ART } from "@/features/home/components/service-art";
-import { features } from "@/config/site";
 import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 
 type Item = Dictionary["services"]["items"][number];
 type Props = { lang: Locale; items: Item[] };
 
-// Requête `categorie`/`gamme` de la page Prix pour chaque service, dans l'ordre du dictionnaire.
-const PRICING: string[] = [
-  "categorie=site",
-  "categorie=site",
-  "categorie=host",
-  "categorie=host",
-  "categorie=logo",
-  "categorie=vps",
-  "categorie=site&gamme=croissance",
-  "categorie=site&gamme=croissance",
+// Huit cartes de la maquette : le visuel (public/images/home/services) et le service dont
+// elle reprend le texte (`items`). Deux visuels (commerce en ligne, application web)
+// illustrent une seconde fois le développement web et la plateforme SaaS.
+const CARDS: { image: string; item: number }[] = [
+  { image: "site-web", item: 0 },
+  { image: "app-mobile", item: 1 },
+  { image: "saas", item: 2 },
+  { image: "integration", item: 3 },
+  { image: "logo", item: 4 },
+  { image: "hebergement", item: 5 },
+  { image: "ecommerce", item: 0 },
+  { image: "app-web", item: 2 },
 ];
-
-// Tableaux de la maquette : chaque colonne fait défiler trois tableaux, d'une vignette haute
-// ou de deux empilées. Les indices renvoient à `items`. `tw-vitrine` (globals.css) est écrite
-// pour exactement trois tableaux.
-const LEFT: number[][] = [[0], [3, 4], [6]];
-const RIGHT: number[][] = [[1, 2], [5], [7]];
+// Tableaux de chaque colonne : une carte haute ou deux empilées. `tw-vitrine` (globals.css)
+// est écrite pour exactement trois tableaux.
+const LEFT: number[][] = [[0], [1, 2], [3]];
+const RIGHT: number[][] = [[4, 5], [6], [7]];
 
 const TRACK_ANIM = {
   left: "flex [animation:tw-vitrine_11.4s_cubic-bezier(0.33,0,0.2,1)_0.32s_infinite]",
   right: "flex flex-col [animation:tw-vitrine-y_11.4s_cubic-bezier(0.33,0,0.2,1)_0s_infinite]",
 };
-const SIDE = "clamp(18px,1.8vw,26px)";
-// Illustrations hautes (viewBox 440×400) ; les autres sont basses (440×170).
-const TALL = new Set([0, 5, 6, 7]);
 
 /**
- * Vitrine des services (maquette Accueil, 2026-09-24) : deux colonnes, chacune une piste de
+ * Vitrine des services (maquette Accueil, 2026-09-30) : deux colonnes, chacune une piste de
  * trois tableaux plus une copie du premier pour boucler sans saut. À gauche les cartes
- * arrivent de la droite, à droite elles montent. Chaque carte : une illustration d'écran,
- * le nom, parfois une phrase, et le prix vers la page Prix. Pause au survol, arrêt sous
+ * arrivent de la droite, à droite elles montent. Chaque carte : un visuel fondu vers le bas,
+ * le nom, une phrase et le prix de départ vers la section Prix. Pause au survol, arrêt sous
  * `prefers-reduced-motion`. La copie de bouclage est `aria-hidden` et non focusable.
- * Sous 620px, pas d'animation : les huit cartes s'empilent dans l'ordre, entières, chaque
- * illustration à son format (des cartes à hauteur fixe coupaient le texte et laissaient
- * voir des cartes à moitié pendant les transitions).
  */
 export function ServicesShowcase({ lang, items }: Props) {
-  const card = (index: number, tall: boolean, clone: boolean, stacked = false) => {
-    const item = items[index];
-    const art = SERVICE_ART[index];
-    if (!item || !art) return null;
-    const pricing = PRICING[index];
-    const priceLine = features.pricing && item.pricing ? item.pricing : null;
+  const card = (index: number, clone: boolean) => {
+    const spec = CARDS[index];
+    const item = spec ? items[spec.item] : undefined;
+    if (!spec || !item) return null;
 
     return (
-      <article
-        key={`${index}-${clone ? "b" : "a"}`}
-        className={`relative flex flex-col overflow-hidden rounded-[20px] bg-surface-2 dark:bg-surface ${stacked ? "" : tall ? "h-full" : "min-h-[0px] flex-1"}`}
-      >
-        <div
-          className={`relative flex min-w-[0px] items-center justify-start overflow-hidden ${stacked ? (TALL.has(index) ? "aspect-[440/400]" : "aspect-[440/170]") : "min-h-[0px] flex-1"}`}
-          style={{ padding: `${SIDE} ${SIDE} 0` }}
-        >
-          {art(item.art)}
+      <article key={`${index}-${clone ? "b" : "a"}`} className="relative flex min-h-[0px] flex-1 flex-col overflow-hidden rounded-[20px] bg-carte">
+        <div className="relative min-h-[0px] min-w-[0px] flex-1 overflow-hidden [mask-image:linear-gradient(180deg,#000_70%,transparent_100%)]">
+          <Image src={`/images/home/services/${spec.image}.jpg`} alt="" fill sizes="(max-width: 1100px) 50vw, 560px" className="object-cover dark:mix-blend-lighten" />
         </div>
-        <div className="relative flex min-w-[0px] shrink-0 flex-col gap-[5px] pt-[13px] pb-[clamp(16px,1.6vw,20px)]" style={{ paddingInline: SIDE }}>
-          <h3 className="m-[0px] max-w-full text-[15px] leading-[26px] font-medium text-encre text-pretty">{item.name}</h3>
-          {item.short && (
-            <p className="m-[0px] line-clamp-2 max-w-full text-[15px] leading-[26px] font-normal text-texte2 text-pretty">{item.short}</p>
-          )}
-          {priceLine && (
-            <Link
-              href={`/${lang}/prix?${pricing}`}
-              aria-label={`${priceLine} — ${item.name}`}
-              tabIndex={clone ? -1 : undefined}
-              className="tap-44 inline-flex min-h-[26px] w-fit items-center text-[15px] leading-[26px] font-normal text-vert no-underline transition-colors hover:text-vert-clair"
-            >
-              {priceLine}
-              <ChevronRight size={15} strokeWidth={2} aria-hidden className="ml-[3px]" />
-            </Link>
-          )}
+        <div className="relative flex min-w-[0px] shrink-0 flex-col gap-[5px] px-[clamp(18px,1.8vw,26px)] pt-[13px] pb-[clamp(16px,1.6vw,20px)]">
+          <h3 className="m-[0px] max-w-full text-[clamp(15px,1.2vw,18px)] leading-[1.3] font-medium text-encre text-pretty">{item.name}</h3>
+          <p className="m-[0px] line-clamp-2 max-w-full text-[clamp(12.5px,0.95vw,14px)] leading-[1.5] font-normal text-texte2 text-pretty">{item.desc}</p>
+          <Link
+            href={`/${lang}#prix`}
+            aria-label={`${item.price} — ${item.name}`}
+            tabIndex={clone ? -1 : undefined}
+            className="tap-44 inline-flex min-h-[26px] w-fit items-center text-[clamp(12.5px,0.95vw,14px)] leading-[20px] font-normal text-vert no-underline transition-colors hover:text-vert-clair"
+          >
+            {item.price}
+          </Link>
         </div>
       </article>
     );
@@ -95,7 +74,7 @@ export function ServicesShowcase({ lang, items }: Props) {
             const clone = s === scenes.length;
             return (
               <div key={`${side}-${s}`} aria-hidden={clone || undefined} className="flex h-full w-full shrink-0 flex-col gap-[14px]">
-                {column.map((index) => card(index, column.length === 1, clone))}
+                {column.map((index) => card(index, clone))}
               </div>
             );
           })}
@@ -105,12 +84,9 @@ export function ServicesShowcase({ lang, items }: Props) {
   };
 
   return (
-    <>
-      <div className="flex flex-col gap-[14px] min-[620px]:hidden">{items.map((_, index) => card(index, false, false, true))}</div>
-      <div className="group hidden h-[clamp(380px,40vw,560px)] min-w-[0px] grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-[14px] min-[620px]:grid">
-        {track("left")}
-        {track("right")}
-      </div>
-    </>
+    <div className="group grid h-[clamp(520px,54vw,760px)] min-w-[0px] grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-[14px]">
+      {track("left")}
+      {track("right")}
+    </div>
   );
 }

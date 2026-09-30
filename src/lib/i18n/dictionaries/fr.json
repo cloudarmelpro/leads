@@ -25,7 +25,7 @@
   },
   "nav": {
     "home": "Accueil",
-    "sectors": "Secteurs",
+    "sectors": "Organisations",
     "services": "Services",
     "method": "Méthode",
     "about": "À propos",
@@ -37,22 +37,23 @@
     "homeMenu": [
       {
         "key": "services",
-        "desc": "Huit services, du site web au CRM."
+        "desc": "Six catégories, du site web au SaaS."
       },
       {
         "key": "sectors",
-        "desc": "Paysagement, excavation, construction, commerce local…"
+        "desc": "PME, startups, industriel, institutions, OBNL…"
       },
       {
         "key": "method",
-        "desc": "Six étapes, de l’appel à la mise en ligne."
+        "desc": "Sept étapes, de la découverte au déploiement."
       },
       {
         "key": "faq",
         "desc": "Les questions qu’on nous pose avant chaque projet."
       }
     ],
-    "homeMenuAria": "Sections de l’accueil"
+    "homeMenuAria": "Sections de l’accueil",
+    "quote": "Soumettre une soumission"
   },
   "header": {
     "menuCall": "Appeler maintenant",
@@ -66,304 +67,137 @@
     }
   },
   "hero": {
-    "titleA": "De l’idée à la plateforme.",
-    "titleB": "On développe les solutions qui font avancer votre entreprise.",
-    "subtitle": "Talgasy Web conçoit des {b1}, structurés pour convertir — pour que vos clients {b2}, pas votre compétiteur.",
-    "tradesKicker": "Secteurs",
-    "tradesLabel": "Dans quel secteur d’activité êtes-vous ?",
+    "kicker": "Développement — Canada",
+    "titleA": "Votre partenaire",
+    "titleB": "de développement.",
+    "lede": "Talgasy Web accompagne les entreprises et les organisations dans la conception, le développement et l'évolution de leurs solutions numériques.",
+    "aside": "Sites web, applications web, applications mobiles, plateformes SaaS, intégrations, automatisations et solutions sur mesure : nous bâtissons des produits adaptés à vos besoins, de l'idée jusqu'au déploiement.",
     "ctaBook": "Réserver un appel gratuit",
-    "demos": [
-      {
-        "trade": "Paysagement",
-        "imgLabel": "Chantier de paysagement résidentiel",
-        "pitch": "Vos aménagements méritent d’être vus. Un site qui met vos réalisations en avant et amène les propriétaires à demander une soumission."
-      },
-      {
-        "trade": "Excavation",
-        "imgLabel": "Chantier d’excavation avec pelle mécanique",
-        "pitch": "Fondations, drainage, terrassement : vos clients cherchent une équipe fiable, vite. Un site clair qui rassure et fait décrocher le téléphone."
-      },
-      {
-        "trade": "Construction",
-        "imgLabel": "Chantier de construction en bois",
-        "pitch": "Un site à la hauteur de vos chantiers : vos projets, vos spécialités, votre zone desservie, et une demande de soumission en un clic."
-      },
-      {
-        "trade": "Rénovation",
-        "imgLabel": "Salle de bain rénovée",
-        "pitch": "Avant, après, et la confiance entre les deux. Un site qui montre la qualité de votre travail et simplifie la prise de contact."
-      },
-      {
-        "trade": "Commerce local",
-        "imgLabel": "Vitrine d’un commerce local",
-        "pitch": "Heures, adresse, produits, avis : tout ce qu’un client cherche avant de passer la porte, trouvé en quelques secondes sur Google."
-      },
-      {
-        "trade": "Déneigement",
-        "imgLabel": "Déneigement d’une entrée résidentielle",
-        "pitch": "La saison se vend en quelques semaines. Un site qui présente vos forfaits clairement et prend les inscriptions avant la première neige."
-      },
-      {
-        "trade": "Arboriculture",
-        "imgLabel": "Élagage d’un arbre par un arboriculteur",
-        "pitch": "Élagage, abattage, urgences après tempête : un site qui montre votre expertise et répond aux clients avant vos concurrents."
-      }
-    ],
-    "ctaPricing": "Voir les forfaits",
-    "badgeZone": "Laval, Rive-Nord et partout au Canada",
-    "badgePrice": "Site web à partir de 499 $",
-    "subtitleStrong1": "sites web professionnels",
-    "subtitleStrong2": "vous appellent",
-    "sectorsTeaser": "Paysagement, excavation, construction, commerce local…",
-    "tradesTitle": "Des sites web pensés pour les métiers du Québec.",
-    "tradesAria": "Secteurs desservis",
-    "sectorNum": "Secteur · {n}"
+    "ctaServices": "Voir les services",
+    "teaserKicker": "Organisations",
+    "teaser": "PME, startups, industriel, institutions, OBNL…"
   },
   "services": {
     "kicker": "Services",
     "titleA": "Ce qu’on fait,",
     "titleB": "concrètement",
-    "intro": "Huit services clairs, pensés pour les entreprises et commerces du Québec.",
+    "intro": "Six grandes familles de services, pour tout ce que votre organisation doit développer.",
     "items": [
       {
-        "name": "Création de site web",
-        "note": "Structure claire, navigation fluide, contenu qui va droit au but : une expérience web premium qui reflète le sérieux de votre entreprise — et qui donne envie d’appeler.",
-        "pricing": "À partir de 499 $",
-        "short": "Structure claire, navigation fluide, contenu qui va droit au but : une expérience web premium.",
-        "art": [
-          "talgasyweb.ca",
-          "Des sites qui",
-          "font sonner",
-          "le téléphone.",
-          "Création et refonte",
-          "Demander un prix",
-          "Paysagement",
-          "Excavation"
-        ]
+        "name": "Développement web",
+        "desc": "Sites web, applications web et commerce en ligne. Conception UX/UI, développement sur mesure, intégrations, performance et mise en ligne.",
+        "price": "À partir de 1 500 $"
       },
       {
-        "name": "Refonte de site existant",
-        "note": "On analyse ce qui existe, on identifie ce qui bloque la conversion, puis on retravaille chaque élément — structure, vitesse, contenu — pour un site qui pousse le visiteur à vous contacter.",
-        "pricing": "Mêmes forfaits que la création, à partir de 499 $",
-        "short": "",
-        "art": [
-          "96",
-          " /100",
-          "Performance après refonte",
-          "Avant",
-          "42",
-          "Après",
-          "96"
-        ]
+        "name": "Applications mobiles",
+        "desc": "Applications iOS et Android, expériences mobiles, outils terrain, espaces clients et produits mobiles sur mesure.",
+        "price": "À partir de 7 000 $"
       },
       {
-        "name": "Hébergement",
-        "note": "On s’occupe de tout : serveur performant, certificat de sécurité, sauvegardes régulières et surveillance continue. Le site reste en ligne, rapide et protégé — en tout temps.",
-        "pricing": "À partir de 35 $ par mois",
-        "short": "",
-        "art": [
-          "Tous les services en ligne",
-          "99,98 %",
-          "Disponibilité, 90 derniers jours",
-          "il y a 90 jours"
-        ]
+        "name": "Plateforme SaaS",
+        "desc": "Produits logiciels, plateformes multi-utilisateurs, abonnements, permissions, tableaux de bord, workflows et architecture évolutive.",
+        "price": "À partir de 30 000 $"
       },
       {
-        "name": "Adresses courriel professionnelles",
-        "note": "Un courriel à votre nom de domaine, ça change tout — au lieu d’un Gmail générique, vos clients voient une entreprise établie, sérieuse, qui inspire confiance dès le premier échange.",
-        "pricing": "Inclus avec l’hébergement",
-        "short": "",
-        "art": [
-          "@",
-          "info@talgasyweb.ca",
-          "Boîte principale",
-          "12",
-          "@",
-          "soumissions@talgasyweb.ca",
-          "Demandes de prix",
-          "4",
-          "@",
-          "comptabilite@talgasyweb.ca",
-          "Facturation",
-          "1"
-        ]
+        "name": "Intégration & automatisation",
+        "desc": "Connexion de CRM, API, paiements et outils métiers; synchronisation des données; automatisation des tâches et des processus.",
+        "price": "À partir de 2 000 $"
       },
       {
-        "name": "Logo et identité de marque",
-        "note": "Du logo seul à l’identité complète : pistes créatives, variantes, palette, typographies et fichiers sources. Une refonte de marque au complet est possible, avec guide et préparation du lancement.",
-        "pricing": "À partir de 200 $",
-        "short": "",
-        "art": [
-          "Vert signal",
-          "#30D98C",
-          "Nuit",
-          "#00131C",
-          "Surface",
-          "#01293C",
-          "Papier",
-          "#FFFFFF"
-        ]
+        "name": "Logo & identité",
+        "desc": "Création de logo, système visuel, palette, typographies, iconographie et éléments de marque.",
+        "price": "À partir de 600 $"
       },
       {
-        "name": "Serveurs VPS",
-        "note": "Pour une application ou un CRM qui demande plus qu’un site vitrine : de 1 à 8 vCPU, 4 à 32 Go de RAM et du stockage NVMe, gérés et surveillés de notre côté.",
-        "pricing": "De 45 $ à 150 $ par mois",
-        "short": "De 1 à 8 vCPU, 4 à 32 Go de RAM et du stockage NVMe, gérés et surveillés de notre côté.",
-        "art": [
-          "640 Go",
-          "Stockage NVMe total",
-          "Sites web",
-          "38,4 %",
-          "Espace libre",
-          "32,8 %",
-          "Bases de données",
-          "17,2 %",
-          "Sauvegardes",
-          "11,6 %"
-        ]
-      },
-      {
-        "name": "CRM et automatisations",
-        "note": "Un CRM à votre image : prospects, pipeline de vente, tableau de bord et formulaires connectés. Les automatisations relient le site, le CRM et vos logiciels externes.",
-        "pricing": "Inclus à partir du forfait Professionnel",
-        "short": "Prospects, pipeline de vente, tableau de bord et formulaires connectés.",
-        "art": [
-          "Pipeline de soumissions",
-          "Prospect",
-          "2",
-          "Paysagement",
-          "Roy inc.",
-          "Site vitrine",
-          "Toitures",
-          "Nadeau",
-          "Refonte",
-          "Soumission",
-          "1",
-          "Excavation",
-          "Lavoie",
-          "Site et CRM",
-          "Signé",
-          "2",
-          "Déneigement",
-          "Rive-Nord",
-          "Hébergement",
-          "Rénovations",
-          "Caron",
-          "Refonte"
-        ]
-      },
-      {
-        "name": "Blogue et contenu SEO",
-        "note": "CMS intégré, articles rédigés et publiés à cadence régulière, révisés avec vous. Le contenu est structuré pour le référencement local dès la mise en ligne.",
-        "pricing": "Inclus à partir du forfait Professionnel",
-        "short": "Articles rédigés et publiés à cadence régulière, structurés pour le référencement local.",
-        "art": [
-          "12 480",
-          "Visites, 6 derniers mois",
-          "Recherche Google",
-          "52,4 %",
-          "Accès direct",
-          "21,8 %",
-          "Réseaux sociaux",
-          "14,3 %",
-          "Sites référents",
-          "11,5 %"
-        ]
+        "name": "Hébergement & serveur",
+        "desc": "Hébergement, déploiement, SSL, sauvegardes, domaine, courriels, mises à jour, monitoring et support technique.",
+        "price": "À partir de 35 $ / mois"
       }
     ]
   },
   "method": {
-    "kicker": "Méthode",
-    "titleA": "Comment on",
-    "titleB": "travaille",
-    "intro": "Pas de boîte noire : vous savez toujours où en est votre projet, et ce qu’il vous reste à décider.",
+    "title": "Comment on travaille",
+    "intro": "Une méthode de livraison complète, de la compréhension du besoin jusqu’au déploiement et à l’évolution du produit.",
     "steps": [
       {
-        "n": "1",
-        "title": "On écoute",
-        "desc": "Un appel de 45 minutes. Vous parlez métier, on prend en note ce qui compte vraiment pour vos clients."
+        "title": "Découverte",
+        "desc": "Comprendre l’entreprise, les utilisateurs, les objectifs, les contraintes et le problème à résoudre."
       },
       {
-        "n": "2",
-        "title": "On analyse",
-        "desc": "On regarde votre site actuel et votre marché : un constat honnête de ce qui fonctionne, de ce qui manque et de ce qui rapporterait le plus."
+        "title": "Cadrage du projet",
+        "desc": "Définir la portée, les fonctionnalités, les priorités, le budget et la meilleure approche de réalisation."
       },
       {
-        "n": "3",
-        "title": "On planifie une stratégie, pas juste un site",
-        "desc": "Un plan pensé pour votre métier : quelles pages, quels appels à l’action, quelle structure pour amener des demandes qualifiées."
+        "title": "Architecture & planification",
+        "desc": "Structurer les parcours, la logique fonctionnelle, les données, l’architecture technique et le plan de réalisation."
       },
       {
-        "n": "4",
-        "title": "On bâtit selon les bonnes pratiques",
-        "desc": "Bilingue, rapide, optimisé mobile, structuré pour Google dès le départ. Vous voyez le site prendre forme — les détails techniques, on les prend en charge."
+        "title": "Design UX/UI",
+        "desc": "Concevoir l’expérience et l’interface afin que le produit soit clair, efficace et cohérent avec la marque."
       },
       {
-        "n": "5",
-        "title": "On peaufine ensemble",
-        "desc": "Révision finale avant lancement : on passe en revue chaque détail avec vous avant de mettre le site en ligne."
+        "title": "Développement",
+        "desc": "Construire la solution : site, application web, mobile, SaaS, automatisation, intégration ou plateforme sur mesure."
       },
       {
-        "n": "6",
-        "title": "On met le site en ligne",
-        "desc": "Mise en ligne sur votre domaine, avec la période d’hébergement de votre forfait. Vous recevez tous vos accès et le récapitulatif de ce qui a été livré."
+        "title": "Tests & ajustements",
+        "desc": "Valider les fonctionnalités, les parcours, la qualité, la compatibilité et corriger les problèmes avant la mise en production."
+      },
+      {
+        "title": "Déploiement & évolution",
+        "desc": "Mettre en ligne, accompagner le lancement, monitorer et faire évoluer la solution lorsque les besoins changent."
       }
     ],
-    "title": "Comment on travaille.",
     "stepLabel": "Étape {n}",
     "prev": "Précédent",
     "next": "Suivant",
     "startWith": "Ou commencez par",
     "startCall": "Un appel",
-    "startEmail": "Un courriel"
+    "startEmail": "Un courriel",
+    "cta": "Réserver un appel gratuit"
   },
   "faq": {
     "kicker": "FAQ",
-    "titleA": "Vos questions,",
-    "titleB": "sans détour",
+    "title": "Vos questions, sans détour",
     "intro": "Les questions qu’on nous pose avant chaque projet, et nos réponses.",
     "items": [
       {
-        "q": "Combien ça coûte ?",
-        "a": "Un site web commence à 499 $, un logo à 200 $ et l’hébergement à 35 $ par mois. Chaque forfait et ses inclusions sont détaillés sur la {link}. Si votre projet sort du cadre, on vous donne un prix ferme après un appel gratuit.",
-        "aLink": "page Prix",
-        "aPricing": "Un site web commence à 499 $, un logo à 200 $ et l’hébergement à 35 $ par mois. Les inclusions exactes de chaque forfait sont dans les tableaux ci-dessus. Si votre projet sort du cadre, on vous donne un prix ferme après un appel de consultation gratuit."
+        "q": "Quels types de projets réalisez-vous ?",
+        "a": "Nous réalisons des projets numériques de différentes envergures : sites web, applications web, applications mobiles, plateformes SaaS, commerce en ligne, intégrations, automatisations et solutions sur mesure. Nous pouvons autant intervenir sur un projet relativement simple que sur le développement d'un produit numérique beaucoup plus complexe."
       },
       {
-        "q": "Combien de temps prend la conception d’un site ?",
-        "a": "Un forfait Démarrage est en ligne en 3 à 5 jours ouvrables si vos textes et vos photos sont prêts. Les forfaits Croissance et Entreprise prennent quelques semaines, selon l’ampleur du projet."
+        "q": "Avec quels types d’entreprises travaillez-vous ?",
+        "a": "Nous pouvons travailler avec pratiquement n'importe quel type d'organisation : PME, startups, entreprises industrielles, grandes entreprises, institutions, OBNL, organismes et entreprises technologiques. Notre approche s'adapte au projet, à la taille de l'organisation et à ses besoins techniques."
       },
       {
-        "q": "Je n’ai ni textes, ni photos.",
-        "a": "C’est la situation la plus courante. On vous guide pour préparer vos textes et vos photos, quel que soit le forfait. La rédaction de vos pages est incluse à partir du forfait Signature et disponible sur devis pour les autres."
+        "q": "Quelle stack technologique utilisez-vous ?",
+        "a": "Notre stack varie selon les besoins du projet. Nous choisissons les technologies selon les contraintes, la performance recherchée, l'évolutivité et la maintenance à long terme. [STACK — à valider par l’équipe technique : front-end, back-end, bases de données, mobile, cloud, CMS, infrastructure]"
       },
       {
-        "q": "J’ai déjà un site, mais il est faible. Vous le refaites ?",
-        "a": "Oui, une refonte est tout à fait possible. On commence par une consultation pour analyser votre site actuel, puis on vous accompagne dans tout le processus de refonte."
+        "q": "Comment se déroule votre processus de travail ?",
+        "a": "Notre processus suit généralement 7 grandes étapes : Découverte → Cadrage du projet → Architecture & planification → Design UX/UI → Développement → Tests & ajustements → Déploiement & évolution. L'objectif est d'accompagner le client de l'idée jusqu'à la mise en production, puis de continuer à faire évoluer la solution au besoin."
       },
       {
-        "q": "Le site sera-t-il en français et en anglais ?",
-        "a": "Oui, tous nos sites sont conçus bilingues par défaut, pour que vous puissiez rejoindre l’ensemble de votre clientèle, peu importe leur langue."
+        "q": "Travaillez-vous en français et en anglais ?",
+        "a": "Oui. Talgasy Web travaille en français et en anglais, autant pour les communications avec les clients que pour la documentation, la conception et la réalisation des projets."
       },
       {
-        "q": "Comment mes clients pourront-ils me joindre ou prendre rendez-vous ?",
-        "a": "Votre site offre plusieurs façons de vous joindre : formulaire, courriel, téléphone et liens vers vos réseaux sociaux. La prise de rendez-vous en ligne est incluse à partir du forfait Croissance."
+        "q": "Faites-vous des formulaires personnalisés pour les sites web ?",
+        "a": "Oui. Nous pouvons développer des formulaires adaptés précisément au processus de l'entreprise : champs personnalisés, logique conditionnelle, validation des données, demandes de soumission, collecte de documents, qualification des prospects et intégration avec des CRM ou d'autres systèmes. Le formulaire est construit autour du workflow réel du client plutôt qu'à partir d'un modèle générique."
       },
       {
-        "q": "Vais-je pouvoir gérer mon blogue moi-même ?",
-        "a": "Oui. Le blogue est conçu pour que vous publiiez vous-même, sans connaissances techniques. Il est inclus à partir du forfait Professionnel, avec des articles rédigés pour vous pendant 12 ou 24 mois. Si vous préférez, on s’en charge."
-      },
-      {
-        "q": "Le site sera-t-il bien référencé sur Google ?",
-        "a": "Chaque site est construit selon les bonnes pratiques SEO : vitesse, mobile, structure des pages et contenu local. Google décide du classement final, mais votre site part avec les bonnes bases."
+        "q": "Où est basée Talgasy Web ?",
+        "a": "Talgasy Web est basée au Québec, Canada, mais notre modèle de développement est international. Nous collaborons avec des professionnels situés dans différents marchés afin de sélectionner les compétences les mieux adaptées à chaque projet. Notre objectif est de réunir les bonnes expertises, sans limiter l'équipe à une seule région."
       }
     ]
   },
   "final": {
-    "title": "Votre prochain contrat commence par un appel.",
-    "body": "Une consultation suffit pour cerner votre besoin. Sans engagement.",
+    "titleA": "Votre prochain contrat",
+    "titleB": "commence par un appel.",
+    "bodyA": "Une consultation suffit pour cerner votre besoin.",
+    "bodyB": "Sans engagement.",
     "callLabel": "Appelez-nous",
-    "note": "Réponse en moins de 24 h, du lundi au vendredi."
+    "note": "Réponse en moins de 24 h, du lundi au vendredi."
   },
   "footer": {
     "description": "Des sites web qui font sonner le téléphone.",
@@ -2427,5 +2261,138 @@
     "kicker": "Outils",
     "title": "Les outils avec lesquels on travaille",
     "aria": "Nos outils"
+  },
+  "positioning": {
+    "aria": "Positionnement",
+    "title": "Du projet simple aux plateformes d’entreprise",
+    "paragraphs": [
+      "Talgasy Web conçoit et développe des solutions numériques sur mesure pour des organisations de toutes tailles. PME, startup, entreprise industrielle, institution, OBNL, organisme ou grande entreprise : notre équipe s'adapte au contexte, aux objectifs et à la complexité du projet.",
+      "Du site web à l'application métier, en passant par les applications mobiles, les plateformes SaaS, les systèmes internes et les automatisations, nous intervenons là où le développement peut créer de la valeur."
+    ],
+    "more": "En savoir plus",
+    "less": "Réduire",
+    "orgs": [
+      "PME",
+      "Startup",
+      "Entreprise industrielle",
+      "Institution",
+      "Grande entreprise",
+      "OBNL / organisme"
+    ]
+  },
+  "organisations": {
+    "kicker": "Organisations",
+    "title": "Quel type d’organisation êtes-vous ?",
+    "num": "Secteur · {n}",
+    "cta": "Soumettre une soumission",
+    "items": [
+      {
+        "label": "PME",
+        "alt": "Propriétaire de PME dans son commerce",
+        "text": "Sites, outils internes, automatisations, commerce en ligne et solutions adaptées aux opérations quotidiennes."
+      },
+      {
+        "label": "Startups",
+        "alt": "Équipe de startup au travail",
+        "text": "MVP, applications, SaaS, prototypes, itérations rapides et produits numériques destinés à évoluer."
+      },
+      {
+        "label": "Entreprises industrielles",
+        "alt": "Technicien avec une tablette en usine",
+        "text": "Outils métiers, applications terrain, automatisations, intégrations de systèmes et plateformes internes."
+      },
+      {
+        "label": "Grandes entreprises",
+        "alt": "Salle de réunion d’une grande entreprise",
+        "text": "Applications, plateformes, systèmes internes, intégrations complexes et projets à plus grande échelle."
+      },
+      {
+        "label": "Institutions",
+        "alt": "Hall d’une institution publique",
+        "text": "Portails, plateformes, applications, outils internes et projets numériques structurés selon les besoins de l’organisation."
+      },
+      {
+        "label": "OBNL & organismes",
+        "alt": "Bénévoles d’un organisme communautaire",
+        "text": "Sites, plateformes, outils de gestion, formulaires, portails et solutions numériques adaptées aux opérations et aux publics desservis."
+      }
+    ]
+  },
+  "homePricing": {
+    "kicker": "Prix",
+    "title": "Nos prix de départ",
+    "intro": "Les prix minimums servent de point de départ. Une soumission finale dépend des besoins, de la complexité et des intégrations requises.",
+    "cta": "Voir tous les services",
+    "from": "À partir de",
+    "perMonth": "/ mois",
+    "cards": [
+      {
+        "name": "Développement web",
+        "rows": [
+          {
+            "label": "Site web",
+            "price": "1 500 $"
+          },
+          {
+            "label": "Application web",
+            "price": "3 000 $"
+          },
+          {
+            "label": "Commerce en ligne",
+            "price": "6 000 $"
+          }
+        ]
+      },
+      {
+        "name": "Applications mobiles",
+        "rows": [
+          {
+            "label": "Application iOS / Android",
+            "price": "7 000 $"
+          }
+        ]
+      },
+      {
+        "name": "Plateforme SaaS",
+        "rows": [
+          {
+            "label": "Plateforme SaaS",
+            "price": "30 000 $"
+          }
+        ]
+      },
+      {
+        "name": "Intégration & automatisation",
+        "rows": [
+          {
+            "label": "Intégration & automatisation",
+            "price": "2 000 $"
+          }
+        ]
+      },
+      {
+        "name": "Logo & identité",
+        "rows": [
+          {
+            "label": "Logo professionnel",
+            "price": "600 $"
+          },
+          {
+            "label": "Identité visuelle",
+            "price": "1 250 $"
+          }
+        ]
+      },
+      {
+        "name": "Hébergement & serveur",
+        "rows": [
+          {
+            "label": "Hébergement & serveur",
+            "price": "35 $",
+            "monthly": true
+          }
+        ]
+      }
+    ]
   }
 }

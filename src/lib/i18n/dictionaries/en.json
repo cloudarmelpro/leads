@@ -25,7 +25,7 @@
   },
   "nav": {
     "home": "Home",
-    "sectors": "Sectors",
+    "sectors": "Organizations",
     "services": "Services",
     "method": "Method",
     "about": "About",
@@ -37,22 +37,23 @@
     "homeMenu": [
       {
         "key": "services",
-        "desc": "Eight services, from website to CRM."
+        "desc": "Six categories, from websites to SaaS."
       },
       {
         "key": "sectors",
-        "desc": "Landscaping, excavation, construction, local retail…"
+        "desc": "SMEs, startups, industrial, institutions, non-profits…"
       },
       {
         "key": "method",
-        "desc": "Six steps, from the call to launch."
+        "desc": "Seven steps, from discovery to deployment."
       },
       {
         "key": "faq",
         "desc": "The questions we get before every project."
       }
     ],
-    "homeMenuAria": "Home page sections"
+    "homeMenuAria": "Home page sections",
+    "quote": "Request a quote"
   },
   "header": {
     "menuCall": "Call now",
@@ -66,304 +67,137 @@
     }
   },
   "hero": {
-    "titleA": "From idea to platform.",
-    "titleB": "We build the solutions that move your business forward.",
-    "subtitle": "Talgasy Web builds {b1}, structured to convert — so your customers {b2}, not your competitor.",
-    "tradesKicker": "Sectors",
-    "tradesLabel": "What sector are you in?",
+    "kicker": "Development — Canada",
+    "titleA": "Your development",
+    "titleB": "partner.",
+    "lede": "Talgasy Web supports businesses and organizations in designing, building and evolving their digital solutions.",
+    "aside": "Websites, web applications, mobile apps, SaaS platforms, integrations, automations and custom solutions: we build products tailored to your needs, from idea to deployment.",
     "ctaBook": "Book a free call",
-    "demos": [
-      {
-        "trade": "Landscaping",
-        "imgLabel": "Residential landscaping job site",
-        "pitch": "Your landscapes deserve to be seen. A site that showcases your work and gets homeowners asking for a quote."
-      },
-      {
-        "trade": "Excavation",
-        "imgLabel": "Excavation site with a digger",
-        "pitch": "Foundations, drainage, grading: your clients want a reliable crew, fast. A clear site that reassures and makes the phone ring."
-      },
-      {
-        "trade": "Construction",
-        "imgLabel": "Wood-frame construction site",
-        "pitch": "A site worthy of your job sites: your projects, your specialties, your service area, and a quote request in one click."
-      },
-      {
-        "trade": "Renovation",
-        "imgLabel": "Renovated bathroom",
-        "pitch": "Before, after, and trust in between. A site that shows the quality of your work and makes getting in touch easy."
-      },
-      {
-        "trade": "Local shop",
-        "imgLabel": "Local shop storefront",
-        "pitch": "Hours, address, products, reviews: everything a customer checks before walking in, found on Google in seconds."
-      },
-      {
-        "trade": "Snow removal",
-        "imgLabel": "Snow removal on a residential driveway",
-        "pitch": "The season sells out in a few weeks. A site that lays out your plans clearly and takes sign-ups before the first snow."
-      },
-      {
-        "trade": "Arboriculture",
-        "imgLabel": "Arborist pruning a tree",
-        "pitch": "Pruning, removal, storm emergencies: a site that shows your expertise and answers clients before your competitors do."
-      }
-    ],
-    "ctaPricing": "See the plans",
-    "badgeZone": "Laval, the North Shore and across Canada",
-    "badgePrice": "Websites from $499",
-    "subtitleStrong1": "professional websites",
-    "subtitleStrong2": "call you",
-    "sectorsTeaser": "Landscaping, excavation, construction, local shops…",
-    "tradesTitle": "Websites built for Québec’s trades.",
-    "tradesAria": "Industries we serve",
-    "sectorNum": "Sector · {n}"
+    "ctaServices": "See our services",
+    "teaserKicker": "Organizations",
+    "teaser": "SMEs, startups, industrial, institutions, non-profits…"
   },
   "services": {
     "kicker": "Services",
     "titleA": "What we do,",
     "titleB": "concretely",
-    "intro": "Eight clear services, built for Québec businesses and shops.",
+    "intro": "Six broad service families, for everything your organization needs to build.",
     "items": [
       {
-        "name": "Website creation",
-        "note": "A clear structure, smooth navigation, content that gets straight to the point: a premium web experience that reflects how serious your business is — and makes people want to call.",
-        "pricing": "From $499",
-        "short": "Clear structure, smooth navigation, content that gets to the point: a premium web experience.",
-        "art": [
-          "talgasyweb.ca",
-          "Websites that",
-          "make the phone",
-          "ring.",
-          "Design and redesign",
-          "Get a quote",
-          "Landscaping",
-          "Excavation"
-        ]
+        "name": "Web development",
+        "desc": "Websites, web applications and e-commerce. UX/UI design, custom development, integrations, performance and launch.",
+        "price": "From $1,500"
       },
       {
-        "name": "Existing site rebuild",
-        "note": "We analyze what’s there, pinpoint what’s blocking conversion, then rework every element — structure, speed, content — for a site that pushes the visitor to contact you.",
-        "pricing": "Same plans as a new site, from $499",
-        "short": "",
-        "art": [
-          "96",
-          " /100",
-          "Performance after redesign",
-          "Before",
-          "42",
-          "After",
-          "96"
-        ]
+        "name": "Mobile applications",
+        "desc": "iOS and Android apps, mobile experiences, field tools, client portals and custom mobile products.",
+        "price": "From $7,000"
       },
       {
-        "name": "Hosting",
-        "note": "We handle everything: a fast server, a security certificate, regular backups and continuous monitoring. Your site stays online, fast and protected — at all times.",
-        "pricing": "From $35 per month",
-        "short": "",
-        "art": [
-          "All services online",
-          "99.98%",
-          "Uptime, last 90 days",
-          "90 days ago"
-        ]
+        "name": "SaaS platform",
+        "desc": "Software products, multi-user platforms, subscriptions, permissions, dashboards, workflows and scalable architecture.",
+        "price": "From $30,000"
       },
       {
-        "name": "Professional email addresses",
-        "note": "An email on your own domain changes everything — instead of a generic Gmail, your customers see an established, serious business that earns trust from the very first exchange.",
-        "pricing": "Included with hosting",
-        "short": "",
-        "art": [
-          "@",
-          "info@talgasyweb.ca",
-          "Main inbox",
-          "12",
-          "@",
-          "soumissions@talgasyweb.ca",
-          "Quote requests",
-          "4",
-          "@",
-          "comptabilite@talgasyweb.ca",
-          "Billing",
-          "1"
-        ]
+        "name": "Integration & automation",
+        "desc": "Connecting CRMs, APIs, payments and business tools; data synchronization; automating tasks and processes.",
+        "price": "From $2,000"
       },
       {
-        "name": "Logo and brand identity",
-        "note": "From a standalone logo to a full identity: creative directions, variants, palette, typefaces and source files. A complete rebrand is possible, with a brand guide and launch preparation.",
-        "pricing": "From $200",
-        "short": "",
-        "art": [
-          "Signal green",
-          "#30D98C",
-          "Night",
-          "#00131C",
-          "Surface",
-          "#01293C",
-          "Paper",
-          "#FFFFFF"
-        ]
+        "name": "Logo & identity",
+        "desc": "Logo design, visual system, palette, typography, iconography and brand elements.",
+        "price": "From $600"
       },
       {
-        "name": "VPS servers",
-        "note": "For an application or a CRM that needs more than a showcase site: 1 to 8 vCPUs, 4 to 32 GB of RAM and NVMe storage, managed and monitored on our side.",
-        "pricing": "From $45 to $150 per month",
-        "short": "From 1 to 8 vCPU, 4 to 32 GB of RAM and NVMe storage, managed and monitored on our end.",
-        "art": [
-          "640 GB",
-          "Total NVMe storage",
-          "Websites",
-          "38.4%",
-          "Free space",
-          "32.8%",
-          "Databases",
-          "17.2%",
-          "Backups",
-          "11.6%"
-        ]
-      },
-      {
-        "name": "CRM and automations",
-        "note": "A CRM in your image: leads, sales pipeline, dashboard and connected forms. Automations link the site, the CRM and your external software.",
-        "pricing": "Included from the Professional plan",
-        "short": "Leads, sales pipeline, dashboard and connected forms.",
-        "art": [
-          "Quote pipeline",
-          "Lead",
-          "2",
-          "Landscaping",
-          "Roy inc.",
-          "Showcase site",
-          "Nadeau",
-          "Roofing",
-          "Redesign",
-          "Quote",
-          "1",
-          "Excavation",
-          "Lavoie",
-          "Site and CRM",
-          "Signed",
-          "2",
-          "Snow removal",
-          "North Shore",
-          "Hosting",
-          "Caron",
-          "Renovations",
-          "Redesign"
-        ]
-      },
-      {
-        "name": "Blog and SEO content",
-        "note": "Built-in CMS, articles written and published on a regular cadence, reviewed with you. Content is structured for local search from day one.",
-        "pricing": "Included from the Professional plan",
-        "short": "Articles written and published on a regular schedule, structured for local search.",
-        "art": [
-          "12,480",
-          "Visits, last 6 months",
-          "Google search",
-          "52.4%",
-          "Direct",
-          "21.8%",
-          "Social media",
-          "14.3%",
-          "Referring sites",
-          "11.5%"
-        ]
+        "name": "Hosting & server",
+        "desc": "Hosting, deployment, SSL, backups, domain, email, updates, monitoring and technical support.",
+        "price": "From $35 / month"
       }
     ]
   },
   "method": {
-    "kicker": "Method",
-    "titleA": "How we",
-    "titleB": "work",
-    "intro": "No black box: you always know where your project stands, and what’s left for you to decide.",
+    "title": "How we work",
+    "intro": "A complete delivery method, from understanding the need through to deployment and product evolution.",
     "steps": [
       {
-        "n": "1",
-        "title": "We listen",
-        "desc": "A 45-minute call. You talk trade, we note down what really matters to your customers."
+        "title": "Discovery",
+        "desc": "Understand the business, the users, the goals, the constraints and the problem to solve."
       },
       {
-        "n": "2",
-        "title": "We analyze",
-        "desc": "We look at your current site and your market: an honest read of what works, what’s missing and what would pay off the most."
+        "title": "Project scoping",
+        "desc": "Define the scope, the features, the priorities, the budget and the best delivery approach."
       },
       {
-        "n": "3",
-        "title": "We plan a strategy, not just a site",
-        "desc": "A plan built for your trade: which pages, which calls to action, which structure to bring in qualified requests."
+        "title": "Architecture & planning",
+        "desc": "Structure the user journeys, the functional logic, the data, the technical architecture and the delivery plan."
       },
       {
-        "n": "4",
-        "title": "We build to best practices",
-        "desc": "Bilingual, fast, mobile-optimized, structured for Google from the start. You watch the site take shape — we handle the technical details."
+        "title": "UX/UI design",
+        "desc": "Design the experience and the interface so the product is clear, effective and consistent with the brand."
       },
       {
-        "n": "5",
-        "title": "We polish it together",
-        "desc": "Final review before launch: we go over every detail with you before putting the site live."
+        "title": "Development",
+        "desc": "Build the solution: website, web app, mobile, SaaS, automation, integration or custom platform."
       },
       {
-        "n": "6",
-        "title": "We put the site live",
-        "desc": "Launch on your domain, with the hosting period included in your plan. You receive all your access credentials and a summary of what was delivered."
+        "title": "Testing & adjustments",
+        "desc": "Validate the features, the journeys, the quality and the compatibility, and fix issues before going live."
+      },
+      {
+        "title": "Deployment & evolution",
+        "desc": "Go live, support the launch, monitor and evolve the solution as needs change."
       }
     ],
-    "title": "How we work.",
     "stepLabel": "Step {n}",
     "prev": "Previous",
     "next": "Next",
     "startWith": "Or start with",
     "startCall": "A call",
-    "startEmail": "An email"
+    "startEmail": "An email",
+    "cta": "Book a free call"
   },
   "faq": {
     "kicker": "FAQ",
-    "titleA": "Your questions,",
-    "titleB": "straight up",
+    "title": "Your questions, answered plainly",
     "intro": "The questions we get before every project, and our answers.",
     "items": [
       {
-        "q": "How much does it cost?",
-        "a": "A website starts at $499, a logo at $200 and hosting at $35 per month. Every plan and what it includes is detailed on the {link}. If your project falls outside these plans, we give you a firm price after a free call.",
-        "aLink": "Pricing page",
-        "aPricing": "A website starts at $499, a logo at $200 and hosting at $35 per month. The exact inclusions of every plan are in the tables above. If your project falls outside these plans, we give you a firm price after a free consultation call."
+        "q": "What types of projects do you take on?",
+        "a": "We deliver digital projects of every size: websites, web applications, mobile apps, SaaS platforms, e-commerce, integrations, automations and custom solutions. We can handle a relatively simple project just as well as the development of a far more complex digital product."
       },
       {
-        "q": "How long does it take to build a site?",
-        "a": "A Starter plan is online in 3 to 5 business days if your text and photos are ready. Growth and Enterprise plans take a few weeks, depending on the scope of the project."
+        "q": "What types of businesses do you work with?",
+        "a": "We can work with practically any type of organization: SMEs, startups, industrial companies, large enterprises, institutions, non-profits, agencies and technology companies. Our approach adapts to the project, the size of the organization and its technical needs."
       },
       {
-        "q": "I have no copy or photos.",
-        "a": "It’s the most common situation. We guide you in preparing your text and photos, whatever the plan. Copywriting for your pages is included from the Signature plan and available on quote for the others."
+        "q": "What technology stack do you use?",
+        "a": "Our stack varies with the needs of the project. We choose technologies based on the constraints, the performance required, scalability and long-term maintenance. [STACK — to be validated by the technical team: front-end, back-end, databases, mobile, cloud, CMS, infrastructure]"
       },
       {
-        "q": "I already have a website, but it’s weak. Do you rebuild it?",
-        "a": "Yes, a rebuild is entirely possible. We start with a consultation to analyze your current site, then guide you through the whole rebuild process."
+        "q": "How does your work process unfold?",
+        "a": "Our process generally follows 7 main steps: Discovery → Project scoping → Architecture & planning → UX/UI design → Development → Testing & adjustments → Deployment & evolution. The goal is to support the client from the idea through to production, then keep evolving the solution as needed."
       },
       {
-        "q": "Will the site be in both French and English?",
-        "a": "Yes, all our sites are built bilingual by default, so you can reach your entire customer base, whatever their language."
+        "q": "Do you work in French and in English?",
+        "a": "Yes. Talgasy Web works in French and in English, for client communications as well as for documentation, design and project delivery."
       },
       {
-        "q": "How will my customers reach me or book a meeting?",
-        "a": "Your site offers several ways to reach you: form, email, phone and links to your social networks. Online booking is included from the Growth plan."
+        "q": "Do you build custom forms for websites?",
+        "a": "Yes. We can build forms tailored precisely to the company’s process: custom fields, conditional logic, data validation, quote requests, document collection, lead qualification and integration with CRMs or other systems. The form is built around the client’s real workflow rather than from a generic template."
       },
       {
-        "q": "Will I be able to manage my blog myself?",
-        "a": "Yes. The blog is designed so you can publish yourself, with no technical knowledge. It’s included from the Professional plan, with articles written for you for 12 or 24 months. If you prefer, we handle it."
-      },
-      {
-        "q": "Will the site rank well on Google?",
-        "a": "Every site is built to SEO best practices: speed, mobile, page structure and local content. Google decides the final ranking, but your site starts on solid ground."
+        "q": "Where is Talgasy Web based?",
+        "a": "Talgasy Web is based in Québec, Canada, but our development model is international. We collaborate with professionals in different markets to select the skills best suited to each project. Our goal is to bring together the right expertise, without limiting the team to a single region."
       }
     ]
   },
   "final": {
-    "title": "Your next contract starts with a phone call.",
-    "body": "One consultation is enough to pin down your need. No commitment.",
+    "titleA": "Your next contract",
+    "titleB": "starts with a phone call.",
+    "bodyA": "One consultation is enough to pin down your need.",
+    "bodyB": "No commitment.",
     "callLabel": "Call us",
-    "note": "Reply within 24 hours, Monday to Friday."
+    "note": "Reply within 24 hours, Monday to Friday."
   },
   "footer": {
     "description": "Websites that make the phone ring.",
@@ -2427,5 +2261,138 @@
     "kicker": "Tools",
     "title": "The tools we work with",
     "aria": "Our tools"
+  },
+  "positioning": {
+    "aria": "Positioning",
+    "title": "From simple projects to enterprise platforms",
+    "paragraphs": [
+      "Talgasy Web designs and builds custom digital solutions for organizations of every size. SME, startup, industrial company, institution, non-profit, agency or large enterprise: our team adapts to the context, the goals and the complexity of the project.",
+      "From websites to business applications, through mobile apps, SaaS platforms, internal systems and automations, we step in wherever development can create value."
+    ],
+    "more": "Learn more",
+    "less": "Show less",
+    "orgs": [
+      "SME",
+      "Startup",
+      "Industrial company",
+      "Institution",
+      "Large enterprise",
+      "Non-profit / agency"
+    ]
+  },
+  "organisations": {
+    "kicker": "Organizations",
+    "title": "What type of organization are you?",
+    "num": "Sector · {n}",
+    "cta": "Request a quote",
+    "items": [
+      {
+        "label": "SMEs",
+        "alt": "SME owner in their shop",
+        "text": "Websites, internal tools, automations, e-commerce and solutions tailored to day-to-day operations."
+      },
+      {
+        "label": "Startups",
+        "alt": "Startup team at work",
+        "text": "MVPs, applications, SaaS, prototypes, fast iterations and digital products built to grow."
+      },
+      {
+        "label": "Industrial companies",
+        "alt": "Technician with a tablet on the factory floor",
+        "text": "Business tools, field applications, automations, system integrations and internal platforms."
+      },
+      {
+        "label": "Large enterprises",
+        "alt": "Meeting room of a large company",
+        "text": "Applications, platforms, internal systems, complex integrations and larger-scale projects."
+      },
+      {
+        "label": "Institutions",
+        "alt": "Lobby of a public institution",
+        "text": "Portals, platforms, applications, internal tools and digital projects structured around the organization’s needs."
+      },
+      {
+        "label": "Non-profits & agencies",
+        "alt": "Volunteers of a community organization",
+        "text": "Websites, platforms, management tools, forms, portals and digital solutions adapted to operations and the people served."
+      }
+    ]
+  },
+  "homePricing": {
+    "kicker": "Pricing",
+    "title": "Our starting prices",
+    "intro": "Minimum prices are a starting point. A final quote depends on the needs, the complexity and the integrations required.",
+    "cta": "See all services",
+    "from": "From",
+    "perMonth": "/ month",
+    "cards": [
+      {
+        "name": "Web development",
+        "rows": [
+          {
+            "label": "Website",
+            "price": "$1,500"
+          },
+          {
+            "label": "Web application",
+            "price": "$3,000"
+          },
+          {
+            "label": "E-commerce",
+            "price": "$6,000"
+          }
+        ]
+      },
+      {
+        "name": "Mobile applications",
+        "rows": [
+          {
+            "label": "iOS / Android app",
+            "price": "$7,000"
+          }
+        ]
+      },
+      {
+        "name": "SaaS platform",
+        "rows": [
+          {
+            "label": "SaaS platform",
+            "price": "$30,000"
+          }
+        ]
+      },
+      {
+        "name": "Integration & automation",
+        "rows": [
+          {
+            "label": "Integration & automation",
+            "price": "$2,000"
+          }
+        ]
+      },
+      {
+        "name": "Logo & identity",
+        "rows": [
+          {
+            "label": "Professional logo",
+            "price": "$600"
+          },
+          {
+            "label": "Visual identity",
+            "price": "$1,250"
+          }
+        ]
+      },
+      {
+        "name": "Hosting & server",
+        "rows": [
+          {
+            "label": "Hosting & server",
+            "price": "$35",
+            "monthly": true
+          }
+        ]
+      }
+    ]
   }
 }

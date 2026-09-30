@@ -8,36 +8,17 @@ import { ActionLink } from "@/components/shared/action-link";
 import { LangMenu } from "@/components/shared/lang-menu";
 import { Logo } from "@/components/shared/logo";
 import { ThemeToggle } from "@/components/shared/theme-toggle";
-import { features, site, telHref, whatsappHref } from "@/config/site";
+import { site, telHref, whatsappHref } from "@/config/site";
 import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 
 type Props = { lang: Locale; dict: Pick<Dictionary, "nav" | "header" | "common" | "placeholders"> };
 
 // Glyphes de la maquette (tracés au trait, 24×24), repris à l'identique.
-const glyph = (d: ReactNode, size = 14, strokeWidth = 2) => (
+const glyph = (d: ReactNode, size = 16, strokeWidth = 1.7) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
     {d}
   </svg>
-);
-const HOME = <path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-7h-6v7H4a1 1 0 0 1-1-1z" />;
-const INFO = (
-  <>
-    <circle cx="12" cy="12" r="9.5" />
-    <path d="M12 11v5M12 8h.01" />
-  </>
-);
-const TAG = (
-  <>
-    <path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8Z" />
-    <circle cx="7.5" cy="7.5" r="1" />
-  </>
-);
-const BOOK = (
-  <>
-    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z" />
-    <path d="M8 7h8M8 11h6" />
-  </>
 );
 
 // Ancres des sections de l'accueil, par clé du dictionnaire (`nav.homeMenu[].key`).
@@ -67,24 +48,27 @@ const SECTION_GLYPHS: Record<SectionKey, ReactNode> = {
 };
 
 const EASE = "transition-colors duration-200 ease-[cubic-bezier(0.2,0.7,0.2,1)]";
-// Lien de la barre : pastille de 32px ; le lien courant a le fond clair, le texte blanc et son glyphe en vert.
-const pill = (current: boolean) =>
+// Lien de la barre : 32px de haut ; la page courante en 500 et en encre, les autres en 400.
+const navLink = (current: boolean) =>
   `inline-flex h-[32px] items-center gap-[6px] rounded-[8px] px-[13px] text-[13.5px] leading-[20px] whitespace-nowrap no-underline ${EASE} ${
-    current ? "bg-pastille font-medium text-encre [&>svg:first-child]:text-vert" : "font-normal text-lien-barre hover:bg-pastille hover:text-encre [&>svg:first-child]:text-texte2"
+    current ? "font-medium text-encre" : "font-normal text-lien-barre hover:text-encre"
   }`;
+const GLASS = `bg-verre text-encre shadow-[inset_0_0_0_1px_var(--color-filet-verre)] backdrop-blur-[14px] hover:bg-verre-fort ${EASE}`;
 
-// Hauteur de l'en-tête fixe : 24px en haut, 40px de barre, 14px en bas.
-const HEADER_H = "h-[78px]";
+// Hauteur de l'en-tête fixe (maquette : 80px, contrôles de 40px centrés).
+const HEADER_H = "h-[80px]";
 const FULL_BLEED = ["/a-propos", "/contact", "/prix", "/blog", "/confidentialite"];
-const BAR_MIDDLE = 44;
+const BAR_MIDDLE = 40;
 
 /**
- * En-tête fixe (maquette Accueil, 2026-09-24) : transparent, sans fond ni filet même au
- * défilement (demande du client ; un fond en verre a été essayé puis retiré). Logo à
- * gauche, barre de navigation en verre centrée, à droite langue · thème · Contact. Sous 1100px, barre et Contact laissent place au bouton menu (40×40) qui ouvre
- * un menu plein écran. Une cale de sa hauteur évite qu'il recouvre le haut des pages
+ * En-tête fixe (maquette Accueil, 2026-09-30) : transparent, sans fond ni filet. Logo à
+ * gauche ; au centre, Accueil (avec le panneau des sections), À propos, Services, Blogue ;
+ * à droite langue · thème · « Soumettre une soumission ». Sous 1100px, la navigation et le
+ * bouton laissent place au bouton menu (40×40) qui ouvre un menu plein écran listant aussi
+ * les sections de l'accueil. Une cale de sa hauteur évite qu'il recouvre le haut des pages
  * intérieures ; sur l'accueil et les pages à hero pleine largeur (`FULL_BLEED`), le hero
- * passe dessous.
+ * passe dessous. Tant que la page Services n'existe pas, « Services » mène à la section
+ * de l'accueil et le bouton de soumission à la page Contact.
  */
 export function Header({ lang, dict }: Props) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -103,13 +87,12 @@ export function Header({ lang, dict }: Props) {
     const key = item.key as SectionKey;
     return { key, label: dict.nav[key], desc: item.desc, href: `${home}#${SECTION_IDS[key]}` };
   });
-  // Ordre voulu par le client (2026-09-25) : Accueil, Prix, À propos, Blogue.
   const nav = [
-    ...(features.pricing ? [{ label: dict.nav.pricing, href: `/${lang}/prix`, glyph: TAG }] : []),
-    { label: dict.nav.about, href: `/${lang}/a-propos`, glyph: INFO },
-    { label: dict.nav.blog, href: `/${lang}/blog`, glyph: BOOK },
+    { label: dict.nav.about, href: `${home}/a-propos` },
+    { label: dict.nav.services, href: `${home}#services` },
+    { label: dict.nav.blog, href: `${home}/blog` },
   ];
-  const isCurrent = (href: string) => pathname === href || pathname.startsWith(`${href}/`);
+  const isCurrent = (href: string) => !href.includes("#") && (pathname === href || pathname.startsWith(`${href}/`));
 
   // Le menu plein écran ne doit pas laisser la page défiler derrière lui.
   // Focus : à l'ouverture sur « Fermer » ; toute fermeture rend le focus au bouton menu.
@@ -167,19 +150,17 @@ export function Header({ lang, dict }: Props) {
 
   return (
     <>
-      <header className={`${overDark ? "dark" : ""} pointer-events-none fixed inset-x-[0px] top-[0px] z-[60] flex justify-center px-[calc(10px+clamp(18px,5vw,72px))] pt-[24px] pb-[14px] max-[359px]:px-[16px]`}>
+      <header
+        className={`${overDark ? "dark" : ""} pointer-events-none fixed inset-x-[0px] top-[0px] z-[60] flex ${HEADER_H} items-center justify-center px-[clamp(18px,4vw,40px)] max-[359px]:px-[16px]`}
+      >
         <div className="pointer-events-auto relative flex w-full max-w-[1400px] items-center justify-between gap-[12px]">
           <Link href={home} aria-label={`${site.name} — ${dict.nav.home}`} className="flex h-[40px] shrink-0 items-center no-underline">
             <Logo height={24} />
           </Link>
 
-          <nav
-            aria-label={dict.nav.quickNav}
-            className="absolute top-[0px] left-1/2 hidden h-[40px] -translate-x-1/2 items-center gap-[2px] rounded-[8px] bg-verre px-[4px] shadow-[inset_0_0_0_1px_var(--color-filet-verre)] backdrop-blur-[14px] min-[1100px]:flex"
-          >
+          <nav aria-label={dict.nav.quickNav} className="absolute top-[0px] left-1/2 hidden h-[40px] -translate-x-1/2 items-center gap-[4px] min-[1100px]:flex">
             <div className="group relative">
-              <Link href={home} aria-current={isHome ? "page" : undefined} className={pill(isHome)}>
-                {glyph(HOME)}
+              <Link href={home} aria-current={isHome ? "page" : undefined} className={`relative ${navLink(isHome)}`}>
                 {dict.nav.home}
                 <svg
                   width="14"
@@ -207,7 +188,7 @@ export function Header({ lang, dict }: Props) {
                     <li key={item.href}>
                       <Link href={item.href} className={`flex items-start gap-[11px] rounded-[12px] px-[13px] py-[12px] no-underline ${EASE} hover:bg-surface-2`}>
                         <span className="flex h-[30px] w-[30px] shrink-0 items-center justify-center rounded-[9px] text-vert shadow-[inset_0_0_0_1px_var(--color-contour)]">
-                          {glyph(SECTION_GLYPHS[item.key], 16, 1.7)}
+                          {glyph(SECTION_GLYPHS[item.key])}
                         </span>
                         <span className="flex min-w-[0px] flex-col gap-[2px]">
                           <span className="text-[14px] leading-[20px] font-medium text-encre">{item.label}</span>
@@ -220,8 +201,7 @@ export function Header({ lang, dict }: Props) {
               </div>
             </div>
             {nav.map((item) => (
-              <Link key={item.href} href={item.href} aria-current={isCurrent(item.href) ? "page" : undefined} className={pill(isCurrent(item.href))}>
-                {glyph(item.glyph)}
+              <Link key={item.href} href={item.href} aria-current={isCurrent(item.href) ? "page" : undefined} className={navLink(isCurrent(item.href))}>
                 {item.label}
               </Link>
             ))}
@@ -233,10 +213,10 @@ export function Header({ lang, dict }: Props) {
               <ThemeToggle label={dict.header.themeAria} optionLabels={dict.header.theme} />
             </span>
             <Link
-              href={`/${lang}/contact`}
+              href={`${home}/contact`}
               className={`hidden h-[40px] items-center rounded-[8px] bg-vert px-[18px] text-[13.5px] leading-[1] font-medium whitespace-nowrap text-sur-vert no-underline ${EASE} hover:bg-vert-clair min-[1100px]:flex`}
             >
-              {dict.nav.contact}
+              {dict.nav.quote}
             </Link>
             <button
               ref={burgerRef}
@@ -244,7 +224,7 @@ export function Header({ lang, dict }: Props) {
               onClick={() => setMenuOpen(true)}
               aria-label={dict.common.openMenu}
               aria-expanded={menuOpen}
-              className={`tap-44 flex h-[40px] w-[40px] cursor-pointer items-center justify-center rounded-[8px] bg-verre text-encre shadow-[inset_0_0_0_1px_var(--color-filet-verre)] backdrop-blur-[14px] ${EASE} hover:bg-verre-fort min-[1100px]:hidden`}
+              className={`tap-44 flex h-[40px] w-[40px] cursor-pointer items-center justify-center rounded-[8px] ${GLASS} min-[1100px]:hidden`}
             >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden>
                 <path d="M3 9h18M3 15h18" />
@@ -278,18 +258,29 @@ export function Header({ lang, dict }: Props) {
             </button>
           </div>
 
-          {/* Mêmes entrées et mêmes icônes que la barre ; les sections de l'accueil ne sont
-              pas listées ici (demande du client). */}
+          {/* Accueil puis ses sections en retrait, puis les autres pages (maquette). */}
           <nav aria-label={dict.nav.quickNav} className="mt-[30px] flex flex-col items-start gap-[8px]">
-            {[{ label: dict.nav.home, href: home, glyph: HOME, current: isHome }, ...nav.map((item) => ({ ...item, current: isCurrent(item.href) }))].map((item) => (
+            <Link
+              href={home}
+              onClick={close}
+              aria-current={isHome ? "page" : undefined}
+              className={`flex min-h-[36px] items-center text-[16px] leading-[24px] font-normal no-underline ${EASE} hover:text-vert ${isHome ? "text-vert" : "text-encre"}`}
+            >
+              {dict.nav.home}
+            </Link>
+            {sections.map((item) => (
+              <Link key={item.href} href={item.href} onClick={close} className={`flex min-h-[32px] items-center pl-[16px] text-[15px] leading-[22px] font-normal text-texte2 no-underline ${EASE} hover:text-vert`}>
+                {item.label}
+              </Link>
+            ))}
+            {nav.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 onClick={close}
-                aria-current={item.current ? "page" : undefined}
-                className={`flex min-h-[36px] items-center gap-[10px] text-[16px] leading-[24px] font-normal no-underline ${EASE} hover:text-vert ${item.current ? "text-vert" : "text-encre"}`}
+                aria-current={isCurrent(item.href) ? "page" : undefined}
+                className={`flex min-h-[36px] items-center text-[16px] leading-[24px] font-normal no-underline ${EASE} hover:text-vert ${isCurrent(item.href) ? "text-vert" : "text-encre"}`}
               >
-                {glyph(item.glyph)}
                 {item.label}
               </Link>
             ))}
@@ -312,7 +303,7 @@ export function Header({ lang, dict }: Props) {
               <ActionLink href={whatsappHref(site.whatsapp)} unavailableLabel={`WhatsApp — ${whatsappLabel}`} newTab className={`${outlined} disabled:cursor-not-allowed disabled:opacity-55`}>
                 WhatsApp
               </ActionLink>
-              <Link href={`/${lang}/contact`} onClick={close} className={outlined}>
+              <Link href={`${home}/contact`} onClick={close} className={outlined}>
                 {dict.header.menuRdv}
               </Link>
             </div>

@@ -1,23 +1,23 @@
 import Link from "next/link";
 
-import { LineReveal } from "@/components/shared/line-reveal";
 import { ObfuscatedEmail } from "@/components/shared/obfuscated-email";
 import { MethodTrack } from "@/features/home/components/method-track";
 import { site, telHref, whatsappHref } from "@/config/site";
 import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 
-type Props = { lang: Locale; dict: Pick<Dictionary, "method" | "hero"> };
+type Props = { lang: Locale; dict: Pick<Dictionary, "method"> };
 
-// Rendus des six étapes (public/images/home), ceux de la maquette (`methode-0N-web.png`, 800×993).
-const IMAGES = ["methode-01.webp", "methode-02.webp", "methode-03.webp", "methode-04.webp", "methode-05.webp", "methode-06.webp"];
+// Rendus des sept étapes (public/images/home), dans l'ordre des étapes. La maquette
+// illustre la 6e (tests) par le rendu `07` et la 7e (déploiement) par le `06`.
+const IMAGES = ["methode-01.webp", "methode-02.webp", "methode-03.webp", "methode-04.webp", "methode-05.webp", "methode-07.webp", "methode-06.webp"];
 
 const CHIP =
-  "inline-flex h-[32px] items-center rounded-[8px] bg-surface px-[12px] text-[13px] leading-[1] font-medium text-encre no-underline shadow-[inset_0_0_0_1px_var(--color-contour)] transition-colors hover:bg-surface-2";
+  "inline-flex h-[32px] items-center rounded-[8px] bg-carte px-[12px] text-[13px] leading-[1] font-medium text-encre no-underline shadow-[inset_0_0_0_1px_var(--color-contour)] transition-colors hover:bg-surface-2";
 
 /**
- * Méthode (maquette Accueil, 2026-09-24) : titre et intro à gauche, flèches à droite ; les
- * six étapes en cartes illustrées sur une piste horizontale ; en bas, trois raccourcis de
+ * Méthode (maquette Accueil, 2026-09-30) : titre et intro à gauche, flèches à droite ; les
+ * sept étapes en cartes illustrées sur une piste horizontale ; en bas, trois raccourcis de
  * contact et le bouton de prise de rendez-vous. Un raccourci n'apparaît que si la
  * coordonnée existe dans `site.ts`.
  */
@@ -31,12 +31,12 @@ export function Method({ lang, dict }: Props) {
   const [emailUser, emailDomain] = (site.email ?? "").split("@");
 
   return (
-    <section id="methode" className="relative flex justify-center overflow-x-clip px-[clamp(16px,4vw,56px)] pb-[clamp(96px,11vw,180px)]">
+    <section id="methode" className="relative flex justify-center overflow-x-clip px-[clamp(16px,4vw,56px)] pb-[clamp(128px,14vw,230px)]">
       <div className="flex w-full max-w-[1400px] flex-col gap-[clamp(28px,3vw,40px)]">
         <MethodTrack steps={t.steps} images={IMAGES} stepLabel={t.stepLabel} prevLabel={t.prev} nextLabel={t.next}>
           <div className="flex min-w-[0px] flex-col items-start gap-[14px]">
-            <LineReveal as="h2" className="m-[0px] max-w-[520px] text-[clamp(22px,2.2vw,30px)] leading-[1.2] font-semibold tracking-[-0.01em] text-encre text-pretty">{t.title}</LineReveal>
-            <LineReveal delay={0.12} className="m-[0px] max-w-[540px] text-[15px] leading-[26px] font-normal text-texte2 text-pretty">{t.intro}</LineReveal>
+            <h2 className="m-[0px] max-w-[520px] text-[clamp(22px,2.2vw,30px)] leading-[1.2] font-semibold tracking-[-0.01em] text-encre text-pretty">{t.title}</h2>
+            <p className="m-[0px] max-w-[540px] text-[16px] leading-[26px] font-normal text-texte2 text-pretty">{t.intro}</p>
           </div>
         </MethodTrack>
 
@@ -54,9 +54,12 @@ export function Method({ lang, dict }: Props) {
           )}
           <Link
             href={`/${lang}/contact`}
-            className="tap-44 inline-flex h-[clamp(40px,35.86px+1.1vw,48px)] items-center rounded-[8px] bg-vert px-[clamp(16px,12.9px+0.83vw,22px)] text-[clamp(13px,11.97px+0.28vw,15px)] leading-[1] font-medium whitespace-nowrap text-sur-vert no-underline transition-colors hover:bg-vert-clair"
+            className="tap-44 inline-flex h-[40px] items-center gap-[10px] rounded-[8px] bg-vert px-[18px] text-[13.5px] leading-[1] font-medium whitespace-nowrap text-sur-vert no-underline transition-colors hover:bg-vert-clair"
           >
-            {dict.hero.ctaBook}
+            {t.cta}
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+              <path d="M5 12h14M13 6l6 6-6 6" />
+            </svg>
           </Link>
         </div>
       </div>

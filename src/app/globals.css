@@ -67,22 +67,11 @@
   --color-lien-barre: #3a3a3f;
   --color-texte-sourd: #646468;
   --color-puce: #1e1e1e;
-  /* Accueil en clair : globe de l'appel final, mots de l'écran de bienvenue. */
-  --color-globe: #e9eeec;
-  --color-globe-trait: rgba(15, 29, 23, 0.1);
-  --color-globe-bord: rgba(15, 29, 23, 0.12);
+  /* Accueil en clair : mots de l'écran de bienvenue. */
   --color-mot-accueil: #e1e8e5;
-  /* Illustrations des Services (service-art.tsx) : écran, puces, textes du dessin.
-     Le vert des textes est plus sombre que celui des formes pour rester lisible sur blanc. */
-  --color-art-cadre: #ffffff;
-  --color-art-ecran: #fbfcfc;
-  --color-art-puce: #ecf0ee;
-  --color-art-creux: #e3e8e6;
-  --color-art-texte: #0f1d17;
-  --color-art-sourd: #5b6f68;
-  --color-art-vert: #22b573;
-  --color-art-vert-texte: #177e4f;
-  --color-art-sur-vert: #00131c;
+  /* Cartes de l'accueil v3 (maquette du 2026-09-30) : #022536 en sombre, un cran plus
+     bleu que `surface`. Les autres pages gardent `surface` jusqu'à leur refonte. */
+  --color-carte: #f5f5f6;
 
   /* Une seule police : Oxanium, telechargee au build et servie depuis notre domaine. */
   --font-display: var(--font-oxanium), -apple-system, "Segoe UI", sans-serif;
@@ -151,19 +140,8 @@
   --color-lien-barre: #d5e0e5;
   --color-texte-sourd: #8fa3ac;
   --color-puce: #d7e3e8;
-  --color-globe: #0b2432;
-  --color-globe-trait: rgba(255, 255, 255, 0.08);
-  --color-globe-bord: rgba(255, 255, 255, 0.1);
   --color-mot-accueil: #012a3c;
-  --color-art-cadre: #011b28;
-  --color-art-ecran: #01212f;
-  --color-art-puce: #01293c;
-  --color-art-creux: #00131c;
-  --color-art-texte: #ffffff;
-  --color-art-sourd: #a9bcc4;
-  --color-art-vert: #30d98c;
-  --color-art-vert-texte: #30d98c;
-  --color-art-sur-vert: #00131c;
+  --color-carte: #022536;
 
   /* Alias shadcn */
   --color-background: #011823;
@@ -409,13 +387,15 @@ body {
     transform: translateX(0);
   }
 }
-@keyframes tw-pin-pulse {
-  0%,
-  100% {
-    box-shadow: 0 0 0 0 rgba(48, 217, 140, 0.45);
+/* Hero : chaque moitié du titre monte et apparaît (maquette Accueil, 2026-09-30). */
+@keyframes tw-hero-word {
+  from {
+    opacity: 0;
+    transform: translateY(0.22em);
   }
-  60% {
-    box-shadow: 0 0 0 14px rgba(48, 217, 140, 0);
+  to {
+    opacity: 1;
+    transform: none;
   }
 }
 /* Écran de bienvenue : le vert balaie le mot puis le monogramme, de gauche à droite. */
