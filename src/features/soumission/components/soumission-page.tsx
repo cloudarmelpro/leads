@@ -31,7 +31,8 @@ export function SoumissionPage({ lang, dict }: Props) {
         id="top"
         onPointerMove={moveSpot}
         style={SPOT_STYLE}
-        className="relative flex justify-center overflow-clip px-[calc(10px+clamp(18px,5vw,72px))] pt-[168px] pb-[clamp(48px,6vw,88px)] text-center min-[620px]:pt-[190px] min-[900px]:pt-[240px]"
+        // Bas du hero plus aéré que la maquette (48–88px) : demande du client du 2026-09-30.
+        className="relative flex justify-center overflow-clip px-[calc(10px+clamp(18px,5vw,72px))] pt-[168px] pb-[clamp(72px,9.5vw,140px)] text-center min-[620px]:pt-[190px] min-[900px]:pt-[240px]"
       >
         <HeroSpot />
         <div className="relative flex w-full flex-col items-center gap-[22px]">
