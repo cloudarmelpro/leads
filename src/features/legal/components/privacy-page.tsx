@@ -16,8 +16,8 @@ const GUTTER = "px-[clamp(16px,4vw,56px)]";
 /**
  * Politique de confidentialité (maquette du 2026-09-30) : hero centré (halo, titre qui
  * roule, intro, quatre repères en cartes), puis deux colonnes dès 900px — sommaire collant
- * avec compteur et progression de lecture, articles numérotés séparés d'un filet — et
- * l'appel final. Le contenu vit dans `privacy.ts`.
+ * avec compteur et progression de lecture, articles numérotés — et l'appel final. Sans
+ * les filets de la maquette (demande du client). Le contenu vit dans `privacy.ts`.
  */
 export async function PrivacyPage({ lang }: Props) {
   const doc = getPrivacy(lang);
@@ -68,7 +68,7 @@ export async function PrivacyPage({ lang }: Props) {
       <section className={`relative flex justify-center pb-[clamp(80px,10vw,140px)] ${GUTTER}`}>
         <div className="grid w-full max-w-[1400px] grid-cols-[minmax(0,1fr)] items-start gap-[clamp(32px,5vw,72px)] min-[900px]:grid-cols-[minmax(0,280px)_minmax(0,1fr)]">
           {/* Sommaire collant sous l'en-tête fixe (80px + 24px d'air). */}
-          <aside className="flex flex-col gap-[18px] border-t border-ligne pt-[clamp(32px,4vw,44px)] min-[900px]:sticky min-[900px]:top-[104px]">
+          <aside className="flex flex-col gap-[18px] pt-[clamp(32px,4vw,44px)] min-[900px]:sticky min-[900px]:top-[104px]">
             <PrivacyToc label={doc.tocLabel} entries={entries.map(({ id, n, h }) => ({ id, n, h }))} />
             <p className="m-[0px] text-[13px] leading-[18px] font-normal text-texte-note">
               {doc.updatedLabel} — {formatDate(doc.updated, lang)}
@@ -77,7 +77,7 @@ export async function PrivacyPage({ lang }: Props) {
 
           <article className="flex max-w-[820px] min-w-[0px] flex-col">
             {entries.map((entry) => (
-              <section key={entry.id} id={entry.id} className="flex scroll-mt-[104px] flex-col gap-[18px] border-t border-ligne py-[clamp(32px,4vw,44px)]">
+              <section key={entry.id} id={entry.id} className="flex scroll-mt-[104px] flex-col gap-[18px] py-[clamp(32px,4vw,44px)]">
                 <div className="flex items-baseline gap-[14px]">
                   <span className="text-[14px] leading-[20px] font-semibold text-vert tabular-nums">{entry.n}</span>
                   <h2 className="m-[0px] text-[clamp(20px,2vw,24px)] leading-[1.2] font-semibold tracking-[-0.3px] text-encre text-balance">{entry.h}</h2>
