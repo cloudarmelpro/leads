@@ -10,15 +10,16 @@ type Props = { lang: Locale; items: Item[] };
 // Huit cartes de la maquette : le visuel (public/images/home/services) et le service dont
 // elle reprend le texte (`items`). Deux visuels (commerce en ligne, application web)
 // illustrent une seconde fois le développement web et la plateforme SaaS.
-const CARDS: { image: string; item: number }[] = [
-  { image: "site-web", item: 0 },
-  { image: "app-mobile", item: 1 },
-  { image: "saas", item: 2 },
-  { image: "integration", item: 3 },
-  { image: "logo", item: 4 },
-  { image: "hebergement", item: 5 },
-  { image: "ecommerce", item: 0 },
-  { image: "app-web", item: 2 },
+// `cat` : catégorie de la page Services ouverte par le lien du prix (`?categorie=`).
+const CARDS: { image: string; item: number; cat: string }[] = [
+  { image: "site-web", item: 0, cat: "web" },
+  { image: "app-mobile", item: 1, cat: "mobile" },
+  { image: "saas", item: 2, cat: "saas" },
+  { image: "integration", item: 3, cat: "integ" },
+  { image: "logo", item: 4, cat: "logo" },
+  { image: "hebergement", item: 5, cat: "host" },
+  { image: "ecommerce", item: 0, cat: "web" },
+  { image: "app-web", item: 2, cat: "saas" },
 ];
 // Tableaux de chaque colonne : une carte haute ou deux empilées. `tw-vitrine` (globals.css)
 // est écrite pour exactement trois tableaux.
@@ -34,7 +35,7 @@ const TRACK_ANIM = {
  * Vitrine des services (maquette Accueil, 2026-09-30) : deux colonnes, chacune une piste de
  * trois tableaux plus une copie du premier pour boucler sans saut. À gauche les cartes
  * arrivent de la droite, à droite elles montent. Chaque carte : un visuel fondu vers le bas,
- * le nom, une phrase et le prix de départ vers la section Prix. Pause au survol, arrêt sous
+ * le nom, une phrase et le prix de départ vers la page Services. Pause au survol, arrêt sous
  * `prefers-reduced-motion`. La copie de bouclage est `aria-hidden` et non focusable.
  */
 export function ServicesShowcase({ lang, items }: Props) {
@@ -52,7 +53,7 @@ export function ServicesShowcase({ lang, items }: Props) {
           <h3 className="m-[0px] max-w-full text-[clamp(15px,1.2vw,18px)] leading-[1.3] font-medium text-encre text-pretty">{item.name}</h3>
           <p className="m-[0px] line-clamp-2 max-w-full text-[clamp(12.5px,0.95vw,14px)] leading-[1.5] font-normal text-texte2 text-pretty">{item.desc}</p>
           <Link
-            href={`/${lang}#prix`}
+            href={`/${lang}/services?categorie=${spec.cat}`}
             aria-label={`${item.price} — ${item.name}`}
             tabIndex={clone ? -1 : undefined}
             className="tap-44 inline-flex min-h-[26px] w-fit items-center text-[clamp(12.5px,0.95vw,14px)] leading-[20px] font-normal text-vert no-underline transition-colors hover:text-vert-clair"

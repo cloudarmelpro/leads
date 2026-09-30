@@ -57,7 +57,7 @@ const GLASS = `bg-verre text-encre shadow-[inset_0_0_0_1px_var(--color-filet-ver
 
 // Hauteur de l'en-tête fixe (maquette : 80px, contrôles de 40px centrés).
 const HEADER_H = "h-[80px]";
-const FULL_BLEED = ["/a-propos", "/contact", "/prix", "/blog", "/confidentialite"];
+const FULL_BLEED = ["/a-propos", "/contact", "/services", "/blog", "/confidentialite"];
 const BAR_MIDDLE = 40;
 
 /**
@@ -68,8 +68,7 @@ const BAR_MIDDLE = 40;
  * bouton laissent place au bouton menu (40×40) qui ouvre un menu plein écran listant aussi
  * les sections de l'accueil. Une cale de sa hauteur évite qu'il recouvre le haut des pages
  * intérieures ; sur l'accueil et les pages à hero pleine largeur (`FULL_BLEED`), le hero
- * passe dessous. Tant que la page Services n'existe pas, « Services » mène à la section
- * de l'accueil et le bouton de soumission à la page Contact.
+ * passe dessous. Tant que la page Soumission n'existe pas, le bouton mène à Contact.
  */
 export function Header({ lang, dict }: Props) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -90,10 +89,10 @@ export function Header({ lang, dict }: Props) {
   });
   const nav = [
     { label: dict.nav.about, href: `${home}/a-propos` },
-    { label: dict.nav.services, href: `${home}#services` },
+    { label: dict.nav.services, href: `${home}/services` },
     { label: dict.nav.blog, href: `${home}/blog` },
   ];
-  const isCurrent = (href: string) => !href.includes("#") && (pathname === href || pathname.startsWith(`${href}/`));
+  const isCurrent = (href: string) => pathname === href || pathname.startsWith(`${href}/`);
 
   // Le menu plein écran ne doit pas laisser la page défiler derrière lui.
   // Focus : à l'ouverture sur « Fermer » ; toute fermeture rend le focus au bouton menu.

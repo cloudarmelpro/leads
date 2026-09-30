@@ -387,6 +387,17 @@ body {
     transform: translateX(0);
   }
 }
+/* Page Services : entrée des blocs du hero (montée de 28px), décalés dans le temps. */
+@keyframes tw-rise {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
 /* Hero : chaque moitié du titre monte et apparaît (maquette Accueil, 2026-09-30). */
 @keyframes tw-hero-word {
   from {

@@ -9,7 +9,7 @@ import type { Dictionary } from "@/lib/i18n/dictionaries";
 type Props = {
   dict: Pick<Dictionary, "faq">;
   lang: Locale;
-  /** Sur la page Prix, une réponse peut renvoyer aux tableaux ci-dessus au lieu de la page. */
+  /** Sur la page Services, une réponse peut renvoyer aux cartes ci-dessus au lieu de la page. */
   variant?: "home" | "pricing";
 };
 
@@ -79,8 +79,8 @@ function FaqRow({ id, open, onToggle, question, children }: { id: string; open: 
 /**
  * FAQ (maquette Accueil, 2026-09-30) : en-tête à gauche, les questions en une colonne à
  * droite (0,9 / 2,1 ; une colonne sous 900px), aucune ouverte par défaut, une seule à la
- * fois. Une réponse peut contenir « {link} », remplacé par un lien vers la page Prix
- * libellé `aLink`. Même mise en page sur la page Prix : seules les réponses diffèrent.
+ * fois. Une réponse peut contenir « {link} », remplacé par un lien vers la page Services
+ * libellé `aLink`. Même mise en page sur la page Services, avec ses propres questions.
  */
 export function Faq({ dict, lang, variant = "home" }: Props) {
   const [open, setOpen] = useState(-1);
@@ -94,7 +94,7 @@ export function Faq({ dict, lang, variant = "home" }: Props) {
     return (
       <>
         {before}
-        <Link href={`/${lang}/prix`} className="text-vert underline underline-offset-[3px] hover:text-vert-clair">
+        <Link href={`/${lang}/services`} className="text-vert underline underline-offset-[3px] hover:text-vert-clair">
           {item.aLink}
         </Link>
         {after}

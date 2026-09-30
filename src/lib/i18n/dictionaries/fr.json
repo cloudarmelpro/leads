@@ -30,7 +30,6 @@
     "method": "Méthode",
     "about": "À propos",
     "faq": "FAQ",
-    "pricing": "Prix",
     "blog": "Blogue",
     "contact": "Contact",
     "quickNav": "Navigation rapide",
@@ -315,1887 +314,6 @@
       ]
     }
   },
-  "pricing": {
-    "meta": {
-      "title": "Prix — Forfaits de site web, logo, hébergement et serveurs | Talgasy Web",
-      "description": "Des forfaits clairs, du premier site au sur-mesure : sites web, logo et identité de marque, hébergement et serveurs VPS. Comparez ligne par ligne et réservez un appel gratuit."
-    },
-    "breadcrumb": "Prix",
-    "heroSubtitle": "Sites web, logo et identité de marque, hébergement et serveurs. Choisissez une catégorie, puis comparez les forfaits ligne par ligne.",
-    "cta": "Réserver un appel gratuit",
-    "kicker": "Forfaits",
-    "labels": {
-      "families": "Catégories de forfaits",
-      "plansCount": "{n} forfaits",
-      "plansCountOne": "1 forfait",
-      "shownInTable": "Gamme affichée",
-      "compareRange": "Comparer cette gamme",
-      "detailed": "Comparaison détaillée",
-      "diffOnly": "Afficher seulement les différences",
-      "compare": "Comparer les forfaits",
-      "allRows": "Toutes les lignes sont affichées.",
-      "diffRows": "Seules les lignes qui diffèrent sont affichées.",
-      "lines": "{n} lignes",
-      "lineOne": "1 ligne",
-      "book": "Réserver un appel",
-      "bookShort": "Réserver un appel",
-      "included": "Inclus",
-      "notIncluded": "Non inclus",
-      "pickPlan": "Choisir un forfait"
-    },
-    "families": [
-      {
-        "key": "site",
-        "label": "Site web",
-        "title": "Site web",
-        "desc": "Trois gammes, neuf forfaits, des prix affichés. Vous hésitez entre deux ? Un appel gratuit suffit pour vous orienter.",
-        "plans": [
-          {
-            "name": "Express",
-            "price": "499 $",
-            "meta": "3 pages",
-            "who": "Pour être en ligne vite, avec vos contenus prêts."
-          },
-          {
-            "name": "Lancement",
-            "price": "999 $",
-            "meta": "3 pages",
-            "who": "Trois pages sur un de nos modèles, avec le contenu de chaque page optimisé pour Google."
-          },
-          {
-            "name": "Essentiel",
-            "price": "1 999 $",
-            "meta": "5 pages",
-            "who": "Jusqu’à cinq pages à votre image, avec le suivi Google inclus."
-          },
-          {
-            "name": "Sur-mesure",
-            "price": "3 999 $",
-            "meta": "7 pages",
-            "who": "Un site conçu de zéro pour votre entreprise, pensé pour convertir."
-          },
-          {
-            "name": "Croissance",
-            "price": "5 500 $",
-            "meta": "10 pages",
-            "who": "Site, logo et prise de rendez-vous, avec le suivi de vos conversions."
-          },
-          {
-            "name": "Professionnel",
-            "price": "7 500 $",
-            "meta": "15 pages",
-            "who": "Site, CRM et blogue alimenté pendant un an, sur votre propre serveur."
-          },
-          {
-            "name": "Performance",
-            "price": "10 000 $",
-            "meta": "20 pages",
-            "who": "Identité visuelle complète et vos outils connectés, du site au CRM."
-          },
-          {
-            "name": "Signature",
-            "price": "15 000 $",
-            "meta": "30 pages",
-            "who": "Contenu rédigé pour vous, support prioritaire, garantie d’un an."
-          },
-          {
-            "name": "Prestige",
-            "price": "20 000 $",
-            "meta": "30 pages",
-            "who": "Rebranding complet et accompagnement avant et après le lancement, pour toute l’équipe."
-          }
-        ],
-        "ranges": [
-          {
-            "key": "demarrage",
-            "title": "Démarrage",
-            "line": "Un site professionnel, en ligne en quelques jours.",
-            "range": "499 – 1 999 $",
-            "plans": [
-              0,
-              1,
-              2
-            ]
-          },
-          {
-            "key": "croissance",
-            "title": "Croissance",
-            "line": "Sur mesure et pensé pour convertir, du site seul jusqu’au CRM et au blogue.",
-            "range": "3 999 – 7 500 $",
-            "plans": [
-              3,
-              4,
-              5
-            ]
-          },
-          {
-            "key": "entreprise",
-            "title": "Entreprise",
-            "line": "Identité de marque complète, logo inclus, automatisations et infrastructure.",
-            "range": "10 000 – 20 000 $",
-            "plans": [
-              6,
-              7,
-              8
-            ]
-          }
-        ],
-        "groups": [
-          {
-            "title": "Design et conception",
-            "rows": [
-              {
-                "label": "Pages incluses",
-                "cells": [
-                  "3",
-                  "3",
-                  "5",
-                  "7",
-                  "10",
-                  "15",
-                  "20",
-                  "30",
-                  "30"
-                ]
-              },
-              {
-                "label": "Design à partir de nos modèles professionnels",
-                "cells": [
-                  "-",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y"
-                ]
-              },
-              {
-                "label": "Design adapté à votre image de marque",
-                "cells": [
-                  "-",
-                  "-",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y"
-                ]
-              },
-              {
-                "label": "Conception UX/UI originale",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "Premium"
-                ]
-              },
-              {
-                "label": "Design entièrement personnalisé",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y"
-                ]
-              },
-              {
-                "label": "Développement sur mesure",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y"
-                ]
-              },
-              {
-                "label": "Adapté à tous les écrans (mobile, tablette, ordinateur)",
-                "cells": [
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y"
-                ]
-              },
-              {
-                "label": "Architecture orientée conversion",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y"
-                ]
-              }
-            ]
-          },
-          {
-            "title": "Marque et identité",
-            "rows": [
-              {
-                "label": "Logo et identité visuelle",
-                "cells": [
-                  "Non inclus — option à partir de 200 $",
-                  "Non inclus — option à partir de 200 $",
-                  "Non inclus — option à partir de 200 $",
-                  "Non inclus — option à partir de 200 $",
-                  "Inclus",
-                  "Inclus",
-                  "Inclus",
-                  "Inclus",
-                  "Inclus"
-                ]
-              },
-              {
-                "label": "3 pistes créatives",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y"
-                ],
-                "sub": true
-              },
-              {
-                "label": "Variantes horizontale, verticale et icône",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y"
-                ],
-                "sub": true
-              },
-              {
-                "label": "Couleurs et typographies",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y"
-                ],
-                "sub": true
-              },
-              {
-                "label": "Fichiers sources du logo",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y"
-                ],
-                "sub": true
-              },
-              {
-                "label": "Rondes de corrections du logo",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "2",
-                  "2",
-                  "2",
-                  "2",
-                  "2"
-                ],
-                "sub": true
-              },
-              {
-                "label": "Identité visuelle complète incluse",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "y",
-                  "y",
-                  "y"
-                ]
-              },
-              {
-                "label": "Planche d’inspiration",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "y",
-                  "y",
-                  "y"
-                ],
-                "sub": true
-              },
-              {
-                "label": "Palette de couleurs",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "y",
-                  "y",
-                  "y"
-                ],
-                "sub": true
-              },
-              {
-                "label": "Typographies",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "y",
-                  "y",
-                  "y"
-                ],
-                "sub": true
-              },
-              {
-                "label": "Éléments graphiques",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "y",
-                  "y",
-                  "y"
-                ],
-                "sub": true
-              },
-              {
-                "label": "Iconographie",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "y",
-                  "y",
-                  "y"
-                ],
-                "sub": true
-              },
-              {
-                "label": "Mini-guide de marque",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "y",
-                  "y",
-                  "y"
-                ],
-                "sub": true
-              },
-              {
-                "label": "Modèles de supports",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "5",
-                  "5",
-                  "Corporatifs"
-                ],
-                "sub": true
-              },
-              {
-                "label": "Rebranding complet inclus",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "y"
-                ]
-              },
-              {
-                "label": "Analyse de la marque existante",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "y"
-                ],
-                "sub": true
-              },
-              {
-                "label": "Atelier stratégique",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "y"
-                ],
-                "sub": true
-              },
-              {
-                "label": "Positionnement de marque",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "y"
-                ],
-                "sub": true
-              },
-              {
-                "label": "Messages de marque",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "y"
-                ],
-                "sub": true
-              },
-              {
-                "label": "Refonte complète du logo",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "y"
-                ],
-                "sub": true
-              },
-              {
-                "label": "Nouvel univers visuel",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "y"
-                ],
-                "sub": true
-              },
-              {
-                "label": "Guide de marque complet",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "y"
-                ],
-                "sub": true
-              },
-              {
-                "label": "Préparation du lancement",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "y"
-                ],
-                "sub": true
-              }
-            ]
-          },
-          {
-            "title": "Fonctionnalités",
-            "rows": [
-              {
-                "label": "Site bilingue FR / EN",
-                "cells": [
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y"
-                ]
-              },
-              {
-                "label": "Formulaire de contact",
-                "cells": [
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y"
-                ]
-              },
-              {
-                "label": "Formulaire avancé anti-pourriel",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y"
-                ]
-              },
-              {
-                "label": "Réservation Cal.com intégrée",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y"
-                ]
-              },
-              {
-                "label": "Intégrations avec des logiciels externes",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "3",
-                  "5",
-                  "7",
-                  "10"
-                ]
-              },
-              {
-                "label": "Espace client ou espace membre",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "y",
-                  "y"
-                ]
-              },
-              {
-                "label": "Workflows personnalisés",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "y",
-                  "y"
-                ]
-              },
-              {
-                "label": "Automatisations entre le site, le CRM et les logiciels externes",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "y",
-                  "y",
-                  "y"
-                ]
-              },
-              {
-                "label": "Automatisations avancées",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "y",
-                  "y"
-                ]
-              },
-              {
-                "label": "Fonctionnalités métier personnalisées",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "y",
-                  "y"
-                ]
-              }
-            ]
-          },
-          {
-            "title": "CRM",
-            "rows": [
-              {
-                "label": "CRM personnalisé",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "y",
-                  "y",
-                  "y",
-                  "y"
-                ]
-              },
-              {
-                "label": "Utilisateurs CRM",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "1",
-                  "Jusqu’à 3",
-                  "Jusqu’à 5",
-                  "Jusqu’à 10"
-                ]
-              },
-              {
-                "label": "Gestion des prospects et clients",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "y",
-                  "y",
-                  "y",
-                  "y"
-                ]
-              },
-              {
-                "label": "Pipeline de vente personnalisé",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "y",
-                  "y",
-                  "y",
-                  "y"
-                ]
-              },
-              {
-                "label": "Tableau de bord CRM",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "y",
-                  "y",
-                  "y",
-                  "y"
-                ]
-              },
-              {
-                "label": "Formulaires connectés au CRM",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "y",
-                  "y",
-                  "y",
-                  "y"
-                ]
-              },
-              {
-                "label": "Tableaux de bord personnalisés",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "y",
-                  "y"
-                ]
-              },
-              {
-                "label": "Sauvegardes CRM",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "y",
-                  "y",
-                  "y",
-                  "y"
-                ]
-              }
-            ]
-          },
-          {
-            "title": "Contenu",
-            "rows": [
-              {
-                "label": "Intégration de vos textes, photos et logo",
-                "cells": [
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y"
-                ]
-              },
-              {
-                "label": "CMS / blogue",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "y",
-                  "y",
-                  "y",
-                  "y"
-                ]
-              },
-              {
-                "label": "Articles de blogue",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "24",
-                  "48",
-                  "48",
-                  "48"
-                ]
-              },
-              {
-                "label": "Publication",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "2 / mois · 12 mois",
-                  "2 / mois · 24 mois",
-                  "2 / mois · 24 mois",
-                  "2 / mois · 24 mois"
-                ]
-              },
-              {
-                "label": "Préparation et révision avec le client",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "y",
-                  "y",
-                  "y",
-                  "y"
-                ]
-              },
-              {
-                "label": "Rédaction et optimisation des pages principales",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "Approfondie",
-                  "y"
-                ]
-              }
-            ]
-          },
-          {
-            "title": "Référencement",
-            "rows": [
-              {
-                "label": "Référencement de base (titres, descriptions, structure des pages)",
-                "cells": [
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y"
-                ]
-              },
-              {
-                "label": "Optimisation technique (vitesse, mobile, indexation)",
-                "cells": [
-                  "-",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y"
-                ]
-              },
-              {
-                "label": "Optimisation du contenu de chaque page (SEO on-page)",
-                "cells": [
-                  "-",
-                  "y",
-                  "y",
-                  "Complet",
-                  "Complet",
-                  "Complet",
-                  "Complet",
-                  "Complet",
-                  "Complet"
-                ]
-              },
-              {
-                "label": "SEO local avancé",
-                "cells": [
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y"
-                ]
-              },
-              {
-                "label": "Architecture SEO approfondie",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y"
-                ]
-              },
-              {
-                "label": "Données structurées avancées",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "y",
-                  "y",
-                  "y",
-                  "y"
-                ]
-              }
-            ]
-          },
-          {
-            "title": "Suivi et mesure",
-            "rows": [
-              {
-                "label": "Google Analytics",
-                "cells": [
-                  "-",
-                  "-",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y"
-                ]
-              },
-              {
-                "label": "Google Search Console",
-                "cells": [
-                  "-",
-                  "-",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y"
-                ]
-              },
-              {
-                "label": "Google Tag Manager",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y"
-                ]
-              },
-              {
-                "label": "Suivi des conversions",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "Système",
-                  "y",
-                  "y",
-                  "y",
-                  "Système complet"
-                ]
-              },
-              {
-                "label": "Suivi des formulaires",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y"
-                ],
-                "sub": true
-              },
-              {
-                "label": "Suivi des demandes de soumission",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y"
-                ],
-                "sub": true
-              },
-              {
-                "label": "Suivi des réservations",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y"
-                ],
-                "sub": true
-              },
-              {
-                "label": "Suivi des interactions téléphoniques",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y"
-                ],
-                "sub": true
-              },
-              {
-                "label": "Tableau de bord de performance",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y"
-                ]
-              }
-            ]
-          },
-          {
-            "title": "Infrastructure",
-            "rows": [
-              {
-                "label": "Certificat SSL (site sécurisé HTTPS)",
-                "cells": [
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y"
-                ]
-              },
-              {
-                "label": "Plan du site (sitemap) pour Google",
-                "cells": [
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y"
-                ]
-              },
-              {
-                "label": "Mise en ligne",
-                "cells": [
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y",
-                  "y"
-                ]
-              },
-              {
-                "label": "Hébergement du site",
-                "cells": [
-                  "Inclus 12 mois, ensuite à partir de 35 $/mois",
-                  "Inclus 12 mois, ensuite à partir de 35 $/mois",
-                  "Inclus 12 mois, ensuite à partir de 35 $/mois",
-                  "Inclus 12 mois, ensuite à partir de 35 $/mois",
-                  "Inclus 12 mois, ensuite à partir de 35 $/mois",
-                  "Inclus 24 mois, ensuite à partir de 35 $/mois",
-                  "Inclus 24 mois, ensuite à partir de 35 $/mois",
-                  "Inclus 24 mois, ensuite à partir de 35 $/mois",
-                  "Inclus 24 mois, ensuite à partir de 35 $/mois"
-                ]
-              },
-              {
-                "label": "VPS KVM inclus",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "KVM 1 · 24 mois",
-                  "KVM 2 · 24 mois",
-                  "KVM 4 · 24 mois",
-                  "KVM 8 · 24 mois"
-                ]
-              },
-              {
-                "label": "vCPU",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "1",
-                  "2",
-                  "4",
-                  "8"
-                ],
-                "sub": true
-              },
-              {
-                "label": "RAM",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "4 Go",
-                  "8 Go",
-                  "16 Go",
-                  "32 Go"
-                ],
-                "sub": true
-              },
-              {
-                "label": "Stockage NVMe",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "50 Go",
-                  "100 Go",
-                  "200 Go",
-                  "400 Go"
-                ],
-                "sub": true
-              }
-            ]
-          },
-          {
-            "title": "Livraison et accompagnement",
-            "rows": [
-              {
-                "label": "Délai de mise en ligne",
-                "cells": [
-                  "3 à 5 jours ouvrables, contenus fournis",
-                  "3 à 5 jours ouvrables, contenus fournis",
-                  "3 à 5 jours ouvrables, contenus fournis",
-                  "Fixé à la soumission",
-                  "Fixé à la soumission",
-                  "Fixé à la soumission",
-                  "Fixé à la soumission",
-                  "Fixé à la soumission",
-                  "Fixé à la soumission"
-                ]
-              },
-              {
-                "label": "Rondes de corrections",
-                "cells": [
-                  "1",
-                  "2",
-                  "3",
-                  "3",
-                  "3",
-                  "4",
-                  "4",
-                  "4",
-                  "4"
-                ]
-              },
-              {
-                "label": "Formation",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "45 minutes",
-                  "1 heure",
-                  "2 heures",
-                  "4 heures",
-                  "Complète, pour l’équipe"
-                ]
-              },
-              {
-                "label": "Support prioritaire",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "y",
-                  "y"
-                ]
-              },
-              {
-                "label": "Accompagnement après lancement",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "-",
-                  "y"
-                ]
-              },
-              {
-                "label": "Garantie",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "60 jours",
-                  "90 jours",
-                  "120 jours",
-                  "180 jours",
-                  "365 jours",
-                  "365 jours"
-                ]
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "key": "logo",
-        "label": "Logo et identité de marque",
-        "title": "Logo et identité de marque",
-        "desc": "Du logo simple à la refonte complète de la marque, avec les fichiers sources dans tous les cas.",
-        "plans": [
-          {
-            "name": "Logo Express",
-            "price": "200 $",
-            "meta": "1 proposition"
-          },
-          {
-            "name": "Logo professionnel",
-            "price": "650 $",
-            "meta": "3 pistes créatives"
-          },
-          {
-            "name": "Identité visuelle",
-            "price": "1 800 $",
-            "meta": "Système de marque"
-          },
-          {
-            "name": "Rebranding complet",
-            "price": "5 500 $",
-            "meta": "Marque repensée"
-          }
-        ],
-        "ranges": [],
-        "groups": [
-          {
-            "title": "Création",
-            "rows": [
-              {
-                "label": "Pistes créatives",
-                "cells": [
-                  "1 proposition",
-                  "3",
-                  "3",
-                  "Refonte complète"
-                ]
-              },
-              {
-                "label": "Création à partir d’une idée ou direction claire",
-                "cells": [
-                  "y",
-                  "y",
-                  "y",
-                  "y"
-                ]
-              },
-              {
-                "label": "Développement de la piste choisie",
-                "cells": [
-                  "-",
-                  "y",
-                  "y",
-                  "y"
-                ]
-              },
-              {
-                "label": "Planche d’inspiration",
-                "cells": [
-                  "-",
-                  "-",
-                  "y",
-                  "y"
-                ]
-              },
-              {
-                "label": "Direction artistique",
-                "cells": [
-                  "-",
-                  "-",
-                  "y",
-                  "Complète"
-                ]
-              },
-              {
-                "label": "Analyse de la marque actuelle",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "y"
-                ]
-              },
-              {
-                "label": "Audit de l’identité existante",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "y"
-                ]
-              },
-              {
-                "label": "Atelier stratégique avec le client",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "y"
-                ]
-              },
-              {
-                "label": "Travail sur le positionnement",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "y"
-                ]
-              },
-              {
-                "label": "Travail sur les messages de marque",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "y"
-                ]
-              }
-            ]
-          },
-          {
-            "title": "Logo et déclinaisons",
-            "rows": [
-              {
-                "label": "Logo principal",
-                "cells": [
-                  "-",
-                  "y",
-                  "y",
-                  "y"
-                ]
-              },
-              {
-                "label": "Variantes horizontale, verticale et icône",
-                "cells": [
-                  "-",
-                  "y",
-                  "y",
-                  "y"
-                ]
-              },
-              {
-                "label": "Versions couleur et noir et blanc",
-                "cells": [
-                  "y",
-                  "y",
-                  "y",
-                  "y"
-                ]
-              },
-              {
-                "label": "Nouvel univers visuel",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "y"
-                ]
-              }
-            ]
-          },
-          {
-            "title": "Système de marque",
-            "rows": [
-              {
-                "label": "Palette de couleurs",
-                "cells": [
-                  "-",
-                  "y",
-                  "Complète",
-                  "Complète"
-                ]
-              },
-              {
-                "label": "Typographies",
-                "cells": [
-                  "-",
-                  "y",
-                  "Principales et secondaires",
-                  "y"
-                ]
-              },
-              {
-                "label": "Éléments graphiques",
-                "cells": [
-                  "-",
-                  "-",
-                  "y",
-                  "y"
-                ]
-              },
-              {
-                "label": "Iconographie",
-                "cells": [
-                  "-",
-                  "-",
-                  "y",
-                  "y"
-                ]
-              },
-              {
-                "label": "Mini-guide d’utilisation de la marque",
-                "cells": [
-                  "-",
-                  "-",
-                  "y",
-                  "y"
-                ]
-              },
-              {
-                "label": "Guide de marque complet",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "y"
-                ]
-              },
-              {
-                "label": "Modèles de supports",
-                "cells": [
-                  "-",
-                  "-",
-                  "5 au choix",
-                  "Corporatifs"
-                ]
-              },
-              {
-                "label": "Adaptation des principaux supports existants",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "y"
-                ]
-              }
-            ]
-          },
-          {
-            "title": "Livrables et révisions",
-            "rows": [
-              {
-                "label": "Fichiers PNG, JPG et SVG",
-                "cells": [
-                  "y",
-                  "y",
-                  "y",
-                  "y"
-                ]
-              },
-              {
-                "label": "Fichiers sources",
-                "cells": [
-                  "-",
-                  "y",
-                  "y",
-                  "Complets"
-                ]
-              },
-              {
-                "label": "Préparation du déploiement de la nouvelle marque",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "y"
-                ]
-              },
-              {
-                "label": "Accompagnement au lancement",
-                "cells": [
-                  "-",
-                  "-",
-                  "-",
-                  "y"
-                ]
-              },
-              {
-                "label": "Rondes de corrections",
-                "cells": [
-                  "1",
-                  "2",
-                  "3",
-                  "4"
-                ]
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "key": "host",
-        "label": "Hébergement",
-        "title": "Hébergement",
-        "desc": "Une solution simple et fiable pour assurer la mise en ligne et le maintien de votre site web.",
-        "plans": [
-          {
-            "name": "Hébergement simple",
-            "price": "35 $ / mois",
-            "meta": "Sans maintenance"
-          },
-          {
-            "name": "Hébergement + maintenance",
-            "price": "79 $ / mois",
-            "meta": "Suivi et correctifs"
-          }
-        ],
-        "ranges": [],
-        "groups": [
-          {
-            "title": "Ce qui est inclus",
-            "rows": [
-              {
-                "label": "Hébergement du site web",
-                "cells": [
-                  "y",
-                  "y"
-                ]
-              },
-              {
-                "label": "Certificat SSL (site sécurisé HTTPS)",
-                "cells": [
-                  "y",
-                  "y"
-                ]
-              },
-              {
-                "label": "Mise en ligne",
-                "cells": [
-                  "y",
-                  "y"
-                ]
-              },
-              {
-                "label": "Infrastructure standard",
-                "cells": [
-                  "y",
-                  "y"
-                ]
-              },
-              {
-                "label": "Adresses courriel professionnelles",
-                "cells": [
-                  "y",
-                  "y"
-                ]
-              },
-              {
-                "label": "Sauvegardes",
-                "cells": [
-                  "-",
-                  "y"
-                ]
-              },
-              {
-                "label": "Surveillance technique",
-                "cells": [
-                  "-",
-                  "y"
-                ]
-              },
-              {
-                "label": "Maintenance du site",
-                "cells": [
-                  "-",
-                  "y"
-                ]
-              },
-              {
-                "label": "Correctifs techniques",
-                "cells": [
-                  "-",
-                  "y"
-                ]
-              },
-              {
-                "label": "Assistance en cas de problème",
-                "cells": [
-                  "-",
-                  "y"
-                ]
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "key": "vps",
-        "label": "Serveurs VPS",
-        "title": "Serveurs VPS",
-        "desc": "Serveurs dédiés pour héberger une application ou un CRM, gérés de bout en bout.",
-        "plans": [
-          {
-            "name": "VPS KVM 1",
-            "price": "45 $ / mois",
-            "meta": "1 vCPU · 4 Go"
-          },
-          {
-            "name": "VPS KVM 2",
-            "price": "65 $ / mois",
-            "meta": "2 vCPU · 8 Go"
-          },
-          {
-            "name": "VPS KVM 4",
-            "price": "100 $ / mois",
-            "meta": "4 vCPU · 16 Go"
-          },
-          {
-            "name": "VPS KVM 8",
-            "price": "150 $ / mois",
-            "meta": "8 vCPU · 32 Go"
-          }
-        ],
-        "ranges": [],
-        "groups": [
-          {
-            "title": "Ressources",
-            "rows": [
-              {
-                "label": "Serveur VPS dédié",
-                "cells": [
-                  "Dédié",
-                  "Dédié",
-                  "Haute performance",
-                  "Haute capacité"
-                ]
-              },
-              {
-                "label": "vCPU",
-                "cells": [
-                  "1",
-                  "2",
-                  "4",
-                  "8"
-                ]
-              },
-              {
-                "label": "RAM",
-                "cells": [
-                  "4 Go",
-                  "8 Go",
-                  "16 Go",
-                  "32 Go"
-                ]
-              },
-              {
-                "label": "Stockage NVMe",
-                "cells": [
-                  "50 Go",
-                  "100 Go",
-                  "200 Go",
-                  "400 Go"
-                ]
-              }
-            ]
-          },
-          {
-            "title": "Services",
-            "rows": [
-              {
-                "label": "Hébergement d’application / CRM",
-                "cells": [
-                  "y",
-                  "y",
-                  "y",
-                  "y"
-                ]
-              },
-              {
-                "label": "Certificat SSL (site sécurisé HTTPS)",
-                "cells": [
-                  "y",
-                  "y",
-                  "y",
-                  "y"
-                ]
-              },
-              {
-                "label": "Sauvegardes",
-                "cells": [
-                  "y",
-                  "y",
-                  "y",
-                  "y"
-                ]
-              },
-              {
-                "label": "Gestion de l’infrastructure",
-                "cells": [
-                  "y",
-                  "y",
-                  "y",
-                  "y"
-                ]
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  },
   "contactPage": {
     "meta": {
       "title": "Contact — Réservez un appel gratuit | Talgasy Web",
@@ -2396,5 +514,261 @@
         ]
       }
     ]
+  },
+  "servicesPage": {
+    "meta": {
+      "title": "Services — Développement web, applications, SaaS, identité et hébergement | Talgasy Web",
+      "description": "Des points de départ clairs pour vos projets numériques : sites web, applications web et mobiles, plateformes SaaS, intégrations, logo et identité, hébergement. Chaque mandat peut évoluer selon la complexité."
+    },
+    "breadcrumb": "Services",
+    "title": "Services",
+    "lede": "Des points de départ clairs pour vos projets numériques. Chaque mandat peut évoluer selon la complexité.",
+    "catsAria": "Catégories de services",
+    "mapAria": "Carte du monde en points",
+    "labels": {
+      "kicker": "Services",
+      "from": "À partir de",
+      "minimum": "Prix minimum",
+      "youGet": "Ce que vous obtenez"
+    },
+    "families": [
+      {
+        "key": "web",
+        "label": "Développement web",
+        "short": "Web",
+        "price": "1 500 $",
+        "unit": "",
+        "count": "3 services",
+        "title": "Développement web",
+        "desc": "Choisissez le type de projet. Chaque mandat peut évoluer selon la complexité.",
+        "plans": [
+          {
+            "name": "Site web",
+            "price": "1 500 $",
+            "who": "Un site professionnel qui présente votre entreprise et fait sonner le téléphone.",
+            "img": "site-web",
+            "cta": "Demander une soumission",
+            "items": [
+              "Design UX/UI professionnel",
+              "Développement responsive",
+              "SEO technique de base",
+              "Formulaires et conversions",
+              "Mise en ligne + performance"
+            ]
+          },
+          {
+            "name": "Applications web",
+            "price": "3 000 $",
+            "who": "Un outil sur mesure pour vos clients ou votre équipe, accessible dans le navigateur.",
+            "img": "app-web",
+            "cta": "Discuter du projet",
+            "items": [
+              "Interface sur mesure",
+              "Tableau de bord / espace client",
+              "Base de données + logique métier",
+              "Authentification et rôles",
+              "Déploiement initial"
+            ]
+          },
+          {
+            "name": "Commerce en ligne",
+            "price": "6 000 $",
+            "who": "Une boutique complète pour vendre en ligne, du catalogue à la livraison.",
+            "img": "ecommerce",
+            "cta": "Lancer ma boutique",
+            "items": [
+              "Catalogue produits",
+              "Paiement en ligne sécurisé",
+              "Gestion commandes / inventaire",
+              "Livraison, taxes et e-mails",
+              "Optimisation mobile & conversion"
+            ]
+          }
+        ]
+      },
+      {
+        "key": "mobile",
+        "label": "Applications mobiles",
+        "short": "Mobile",
+        "price": "7 000 $",
+        "unit": "",
+        "count": "1 service",
+        "title": "Applications mobiles",
+        "desc": "Une application native pour iOS et Android, de la maquette à la publication.",
+        "plans": [
+          {
+            "name": "Applications mobiles",
+            "price": "7 000 $",
+            "who": "Une application iOS et Android pensée pour vos usagers.",
+            "img": "app-mobile",
+            "cta": "Évaluer mon application",
+            "items": [
+              "iOS / Android",
+              "UX mobile sur mesure",
+              "API et base de données",
+              "Notifications & comptes usagers",
+              "Publication et lancement"
+            ]
+          }
+        ]
+      },
+      {
+        "key": "saas",
+        "label": "Plateforme SaaS",
+        "short": "Plateforme SaaS",
+        "price": "30 000 $",
+        "unit": "",
+        "count": "1 service",
+        "title": "Plateforme SaaS",
+        "desc": "Un produit logiciel par abonnement, bâti pour évoluer.",
+        "plans": [
+          {
+            "name": "Plateforme SaaS",
+            "price": "30 000 $",
+            "who": "Un logiciel par abonnement, structuré pour grandir avec vos clients.",
+            "img": "saas",
+            "cta": "Construire mon SaaS",
+            "items": [
+              "MVP structuré",
+              "Architecture évolutive",
+              "Abonnements / facturation",
+              "Permissions & équipes",
+              "Dashboard, analytics, workflows"
+            ]
+          }
+        ]
+      },
+      {
+        "key": "integ",
+        "label": "Intégration & automatisation",
+        "short": "Intégration",
+        "price": "2 000 $",
+        "unit": "",
+        "count": "1 service",
+        "title": "Intégration & automatisation",
+        "desc": "On relie vos outils et on automatise les tâches répétitives.",
+        "plans": [
+          {
+            "name": "Intégration & automatisation",
+            "price": "2 000 $",
+            "who": "Vos outils connectés entre eux, pour arrêter de tout faire à la main.",
+            "img": "integration",
+            "cta": "Automatiser mes opérations",
+            "items": [
+              "Connexion CRM, API, paiements",
+              "Automatisation des tâches répétitives",
+              "Synchronisation des données",
+              "Réduction du travail manuel",
+              "Documentation + tests"
+            ]
+          }
+        ]
+      },
+      {
+        "key": "logo",
+        "label": "Logo & identité",
+        "short": "Logo & identité",
+        "price": "600 $",
+        "unit": "",
+        "count": "2 services",
+        "title": "Logo & identité",
+        "desc": "Du logo seul à l’identité visuelle complète, avec les fichiers finaux.",
+        "plans": [
+          {
+            "name": "Logo professionnel",
+            "price": "600 $",
+            "who": "Un logo clair et durable, livré dans tous les formats.",
+            "img": "logo",
+            "cta": "Créer mon logo",
+            "items": [
+              "2 à 3 pistes créatives",
+              "Révisions incluses",
+              "Versions couleur / noir / blanc",
+              "Formats web & impression",
+              "Fichier vectoriel final"
+            ]
+          },
+          {
+            "name": "Identité visuelle",
+            "price": "1 250 $",
+            "who": "Un système de marque complet pour être reconnu partout.",
+            "img": "identite",
+            "cta": "Bâtir mon identité",
+            "items": [
+              "Logo + système visuel",
+              "Palette de couleurs",
+              "Typographies de marque",
+              "Iconographie / direction visuelle",
+              "Mini guide de marque"
+            ]
+          }
+        ]
+      },
+      {
+        "key": "host",
+        "label": "Hébergement & serveur",
+        "short": "Hébergement",
+        "price": "35 $",
+        "unit": " / mois",
+        "count": "1 service",
+        "title": "Hébergement & serveur",
+        "desc": "Une mise en ligne fiable, sécurisée et suivie.",
+        "plans": [
+          {
+            "name": "Hébergement & serveur",
+            "price": "35 $ / mois",
+            "who": "Votre site en ligne, sécurisé et suivi, sans y penser.",
+            "img": "hebergement",
+            "cta": "Héberger mon projet",
+            "items": [
+              "Hébergement sécurisé",
+              "SSL et sauvegardes",
+              "Mises à jour techniques",
+              "Domaine / e-mails selon besoin",
+              "Support & monitoring"
+            ]
+          }
+        ]
+      }
+    ],
+    "faq": {
+      "kicker": "FAQ",
+      "title": "Vos questions, sans détour",
+      "intro": "Vous avez des questions avant de démarrer votre projet ?",
+      "items": [
+        {
+          "q": "Combien ça coûte ?",
+          "a": "Chaque projet est différent. On commence par une consultation pour bien cerner vos besoins, puis on vous propose un prix clair. Un site web commence à 1 500 $, un logo à 600 $ et l’hébergement à 35 $ par mois. Tous les services sont détaillés sur cette page."
+        },
+        {
+          "q": "Combien de temps prend la conception d’un site ?",
+          "a": "Pour les projets simples, comptez 3 à 5 jours, surtout si vous avez déjà vos photos et vos textes prêts. Pour les projets plus complexes, ça peut prendre quelques semaines."
+        },
+        {
+          "q": "Je n’ai ni textes, ni photos.",
+          "a": "Pas de problème, c’est la situation la plus courante. On vous accompagne pour les textes, et on trouve ou on crée les photos qui conviennent."
+        },
+        {
+          "q": "J’ai déjà un site, mais il est faible. Vous le refaites ?",
+          "a": "Oui, une refonte est tout à fait possible. On commence par une consultation pour analyser votre site actuel, puis on vous accompagne dans tout le processus de refonte."
+        },
+        {
+          "q": "Le site sera-t-il en français et en anglais ?",
+          "a": "Oui, tous nos sites sont conçus bilingues par défaut, pour que vous puissiez rejoindre l’ensemble de votre clientèle, peu importe leur langue."
+        },
+        {
+          "q": "Comment mes clients pourront-ils me joindre ou prendre rendez-vous ?",
+          "a": "Ils ont plusieurs façons simples de vous rejoindre : une demande directement sur le site, un courriel, un appel, ou même un message sur les réseaux sociaux. De là, vous planifiez la consultation avec eux, comme ça vous arrange."
+        },
+        {
+          "q": "Vais-je pouvoir gérer mon blogue moi-même ?",
+          "a": "Oui, vous êtes libre de gérer votre blogue vous-même. Et si vous manquez de temps ou n’avez pas envie de vous en occuper, on peut aussi s’en charger pour vous."
+        },
+        {
+          "q": "Le site sera-t-il bien référencé sur Google ?",
+          "a": "On structure chaque site selon les bonnes pratiques SEO — vitesse, mobile et contenu local — pour optimiser son référencement sur Google. C’est Google qui contrôle le classement final, mais on met toutes les chances de votre côté avec de bonnes bases pour maximiser votre visibilité et votre rendement."
+        }
+      ]
+    }
   }
 }

@@ -5,7 +5,7 @@ import { LineReveal } from "@/components/shared/line-reveal";
 import { Logo } from "@/components/shared/logo";
 import { ManageCookiesButton } from "@/components/shared/manage-cookies-button";
 import { ObfuscatedEmail } from "@/components/shared/obfuscated-email";
-import { features, site, telHref } from "@/config/site";
+import { site, telHref } from "@/config/site";
 import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 
@@ -31,7 +31,7 @@ export function Footer({ lang, dict }: Props) {
     { label: dict.nav.method, href: `/${lang}#methode` },
   ];
   const resources = [
-    ...(features.pricing ? [{ label: dict.nav.pricing, href: `/${lang}/prix` }] : []),
+    { label: dict.nav.services, href: `/${lang}/services` },
     { label: dict.nav.faq, href: `/${lang}#faq` },
     { label: dict.nav.about, href: `/${lang}/a-propos` },
     { label: dict.nav.blog, href: `/${lang}/blog` },

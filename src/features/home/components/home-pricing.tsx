@@ -1,14 +1,21 @@
+import Link from "next/link";
+
+import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 
-type Props = { dict: Pick<Dictionary, "homePricing"> };
+type Props = { lang: Locale; dict: Pick<Dictionary, "homePricing"> };
+
+// Catégorie de la page Services ouverte par chaque carte, dans l'ordre de `homePricing.cards`.
+const CATEGORIES = ["web", "mobile", "saas", "integ", "logo", "host"];
 
 /**
  * Prix de départ (maquette Accueil, 2026-09-30) : en-tête à gauche et bouton à droite, puis
- * six cartes (une par famille de services) listant les prix minimums. Les cartes et le
- * bouton mènent à la section Services tant que la page Services n'existe pas.
+ * six cartes (une par famille de services) listant les prix minimums. Les cartes ouvrent la
+ * catégorie correspondante de la page Services, le bouton la page entière.
  */
-export function HomePricing({ dict }: Props) {
+export function HomePricing({ lang, dict }: Props) {
   const t = dict.homePricing;
+  const services = `/${lang}/services`;
 
   return (
     <section id="prix" className="relative flex justify-center px-[clamp(16px,4vw,56px)] pb-[clamp(128px,14vw,230px)]">
@@ -19,19 +26,19 @@ export function HomePricing({ dict }: Props) {
             <h2 className="m-[0px] text-[clamp(22px,2.2vw,30px)] leading-[1.2] font-semibold tracking-[-0.01em] text-encre">{t.title}</h2>
             <p className="m-[0px] max-w-[540px] text-[15px] leading-[24px] font-normal text-texte2 text-pretty">{t.intro}</p>
           </div>
-          <a
-            href="#services"
+          <Link
+            href={services}
             className="tap-44 inline-flex h-[40px] items-center rounded-[8px] bg-surface-2 px-[18px] text-[13.5px] leading-[1] font-medium whitespace-nowrap text-encre no-underline shadow-[inset_0_0_0_1px_var(--color-contour)] transition-[color,box-shadow] duration-200 ease-[cubic-bezier(0.2,0.7,0.2,1)] hover:text-vert hover:shadow-[inset_0_0_0_1px_var(--color-vert)] dark:bg-[rgba(1,41,60,0.72)]"
           >
             {t.cta}
-          </a>
+          </Link>
         </div>
 
         <div className="grid grid-cols-[repeat(auto-fill,minmax(min(100%,max(300px,calc((100%-32px)/3))),1fr))] gap-[16px]">
           {t.cards.map((card, index) => (
-            <a
+            <Link
               key={card.name}
-              href="#services"
+              href={`${services}?categorie=${CATEGORIES[index] ?? "web"}`}
               className="flex min-w-[0px] flex-col gap-[18px] rounded-[20px] bg-carte p-[clamp(20px,2vw,28px)] no-underline transition-shadow duration-200 ease-[cubic-bezier(0.2,0.7,0.2,1)] hover:shadow-[inset_0_0_0_1px_var(--color-vert)]"
             >
               <div className="flex items-center justify-between gap-[12px]">
@@ -50,7 +57,7 @@ export function HomePricing({ dict }: Props) {
                   </div>
                 ))}
               </div>
-            </a>
+            </Link>
           ))}
         </div>
       </div>

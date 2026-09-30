@@ -65,12 +65,12 @@ export function Hero({ lang, dict }: Props) {
                   <Link href={`/${lang}/contact`} className={`${BTN} bg-[#30D98C] text-[#011823] transition-colors hover:bg-[#7FEFC0]`}>
                     <span className="whitespace-nowrap">{t.ctaBook}</span>
                   </Link>
-                  <a
-                    href="#services"
+                  <Link
+                    href={`/${lang}/services`}
                     className={`${BTN} bg-[rgba(1,41,60,0.72)] text-white shadow-[inset_0_0_0_1px_#0A3247] transition-[color,box-shadow] hover:text-[#30D98C] hover:shadow-[inset_0_0_0_1px_#30D98C]`}
                   >
                     <span className="whitespace-nowrap">{t.ctaServices}</span>
-                  </a>
+                  </Link>
                 </div>
               </div>
               <p className="m-[0px] max-w-[440px] text-[15px] leading-[24px] font-normal text-[#A9BCC4] text-pretty min-[860px]:justify-self-end min-[860px]:text-right">{t.aside}</p>

@@ -22,7 +22,7 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
       <Tools dict={{ tools: dict.tools }} />
       <Sectors lang={lang} dict={{ organisations: dict.organisations }} />
       <Method lang={lang} dict={{ method: dict.method }} />
-      <HomePricing dict={{ homePricing: dict.homePricing }} />
+      <HomePricing lang={lang} dict={{ homePricing: dict.homePricing }} />
       <Faq dict={{ faq: dict.faq }} lang={lang} />
       <Cta dict={{ final: dict.final, placeholders: dict.placeholders }} />
     </div>
