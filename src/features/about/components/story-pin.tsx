@@ -1,28 +1,13 @@
 "use client";
 
-import { Fragment, useEffect, useId, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 
 import { Reveal } from "@/components/shared/reveal";
 import { gsap, reducedMotion, ScrollTrigger } from "@/lib/motion/gsap";
 
 type Item = { title: string; body: string };
-type Props = { quote: string; items: Item[] };
+type Props = { quote: string; paragraphs: string[]; items: Item[] };
 
-// Pictogrammes des trois volets (maquette) : immeuble, globe, trophée.
-const ICONS = [
-  <Fragment key="immeuble">
-    <rect width="16" height="20" x="4" y="2" rx="2" />
-    <path d="M9 22v-4h6v4M8 6h.01M16 6h.01M12 6h.01M12 10h.01M12 14h.01M16 10h.01M16 14h.01M8 10h.01M8 14h.01" />
-  </Fragment>,
-  <Fragment key="globe">
-    <circle cx="12" cy="12" r="10" />
-    <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20M2 12h20" />
-  </Fragment>,
-  <path
-    key="trophee"
-    d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6M18 9h1.5a2.5 2.5 0 0 0 0-5H18M4 22h16M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22M18 2H6v7a6 6 0 0 0 12 0V2Z"
-  />,
-];
 // Progression (0 → 1) de la section épinglée à laquelle chaque volet apparaît.
 const SEUILS = [0.1, 0.4, 0.66];
 const CARD_TRANSITION =
@@ -32,16 +17,17 @@ const clamp01 = (v: number) => Math.min(1, Math.max(0, v));
 const GAP = "clamp(48px, 6vw, 96px)";
 
 /**
- * Notre histoire (maquette À propos) : dès 860px, la section fait 260vh et son contenu
- * reste collé un écran de haut pendant qu'on défile — la citation s'allume mot à mot,
- * puis les trois volets montent l'un après l'autre (à 10, 40 et 66 % du défilement) et
- * s'ouvrent à leur tour ; un clic ouvre un volet à tout moment. Le bloc bascule en 3D à
+ * Notre histoire (maquette À propos, v3 du 2026-09-30) : dès 860px, la section fait 260vh
+ * et son contenu reste collé un écran de haut pendant qu'on défile — la citation s'allume
+ * mot à mot au-dessus de trois paragraphes, puis les trois volets numérotés montent l'un
+ * après l'autre (à 10, 40 et 66 % du défilement) et s'ouvrent à leur tour ; un clic ouvre
+ * un volet à tout moment. Le bloc bascule en 3D à
  * l'entrée et s'estompe en sortant. Sous 860px ou avec moins d'animations : rien n'est
  * épinglé, les mots s'allument à l'approche et les volets sont tous visibles.
  * La section porte des marges négatives (voir `GAP`) : sans elles, le centrage dans un
  * écran entier laisserait un grand vide avant et après le bloc.
  */
-export function StoryPin({ quote, items }: Props) {
+export function StoryPin({ quote, paragraphs, items }: Props) {
   const [story, setStory] = useState(0);
   const [pinned, setPinned] = useState(false);
   const section = useRef<HTMLElement>(null);
@@ -181,7 +167,7 @@ export function StoryPin({ quote, items }: Props) {
                 <path d="M4 64V38C4 18 12 6 34 0l4 10C26 15 21 22 20 32h16v32H4Zm42 0V38c0-20 8-32 30-38l4 10c-12 5-17 12-18 22h16v32H46Z" fill="#30D98C" />
               </svg>
             </Reveal>
-            <p className="m-[0px] text-[clamp(22px,2.2vw,30px)] leading-[1.32] font-normal tracking-[-0.2px] text-encre text-pretty">
+            <p className="m-[0px] text-[clamp(22px,2.4vw,32px)] leading-[1.32] font-normal tracking-[-0.2px] text-encre text-pretty">
               {quote.split(" ").map((word, i) => (
                 <span key={i}>
                   <span data-word className="opacity-20 transition-opacity duration-300 ease-[cubic-bezier(0.2,0.7,0.2,1)]">
@@ -190,6 +176,13 @@ export function StoryPin({ quote, items }: Props) {
                 </span>
               ))}
             </p>
+            <div className="flex max-w-[620px] flex-col gap-[12px]">
+              {paragraphs.map((text, i) => (
+                <p key={i} className={`m-[0px] text-[15px] leading-[25px] text-pretty ${i === paragraphs.length - 1 ? "font-medium text-encre" : "font-normal text-texte2"}`}>
+                  {text}
+                </p>
+              ))}
+            </div>
           </div>
 
           <div className="flex flex-col gap-[14px]">
@@ -215,12 +208,8 @@ export function StoryPin({ quote, items }: Props) {
                       onClick={() => setStory(i)}
                       className="flex w-full cursor-pointer items-center gap-[14px] text-left"
                     >
-                      <span className="flex text-vert">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden className="shrink-0">
-                          {ICONS[i]}
-                        </svg>
-                      </span>
-                      <span className="text-[15px] leading-[26px] font-medium text-encre">{item.title}</span>
+                      <span className="flex w-[20px] shrink-0 text-[14px] leading-[20px] font-semibold text-vert tabular-nums">0{i + 1}</span>
+                      <span className="text-[clamp(17px,1.5vw,20px)] leading-[26px] font-medium text-encre">{item.title}</span>
                     </button>
                   </h3>
                   <div
@@ -231,7 +220,7 @@ export function StoryPin({ quote, items }: Props) {
                     style={{ gridTemplateRows: open ? "1fr" : "0fr" }}
                   >
                     <div className="min-h-[0px] overflow-hidden">
-                      <p className="m-[0px] pt-[12px] pl-[34px] text-[15px] leading-[26px] font-normal text-texte2 text-pretty">{item.body}</p>
+                      <p className="m-[0px] pt-[12px] pl-[34px] text-[15px] leading-[25px] font-normal text-texte2 text-pretty">{item.body}</p>
                     </div>
                   </div>
                 </div>

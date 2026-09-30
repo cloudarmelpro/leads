@@ -249,38 +249,49 @@
   },
   "about": {
     "meta": {
-      "title": "À propos de Talgasy Web — L’agence derrière votre site",
-      "description": "L’agence derrière les sites qui font sonner le téléphone des PME du Québec. Notre approche : qualité, professionnalisme, confiance."
+      "title": "À propos de Talgasy Web — Partenaire de développement, de l’idée au déploiement",
+      "description": "Talgasy Web aide les entreprises canadiennes à transformer leurs idées en solutions numériques concrètes : sites web, applications, SaaS, automatisation. Qualité, professionnalisme, confiance."
     },
     "breadcrumb": "À propos",
     "hero": {
       "title": "À propos",
-      "lede": "Talgasy Web est né d’une idée simple : aider les entrepreneurs d’ici à avancer. Des sites clairs, bilingues, qui font sonner le téléphone.",
+      "lede": "Talgasy Web est née d’une idée simple : rendre le développement plus accessible aux entreprises.",
       "ctaBook": "Réserver un appel",
       "ctaStory": "Notre histoire",
       "mapAria": "Carte du monde en points, avec notre base au Québec, Canada",
-      "bandAria": "Aider les entrepreneurs à avancer",
+      "bandAria": "Nos expertises",
       "band": [
-        "Aider les entrepreneurs à avancer",
-        "Des sites clairs, bilingues",
-        "Qui font sonner le téléphone",
-        "Pensés pour le Québec"
+        "Développement web",
+        "Applications web",
+        "Applications mobiles",
+        "Plateformes SaaS",
+        "Intégration & automatisation",
+        "API & systèmes connectés",
+        "UX/UI",
+        "Commerce en ligne",
+        "Hébergement & serveurs",
+        "Solutions sur mesure"
       ]
     },
     "story": {
-      "quote": "Un bon départ fait toute la différence. On donne aux nouvelles entreprises des bases solides pour présenter leur travail et gagner leurs premiers clients.",
+      "quote": "Talgasy Web a été créée pour aider les entreprises canadiennes à transformer leurs idées en solutions numériques concrètes, sans rendre le processus de développement inutilement complexe.",
+      "paragraphs": [
+        "Notre rôle est de simplifier le développement pour nos clients : comprendre leur besoin, structurer le projet, choisir les bonnes technologies et bâtir la solution avec eux.",
+        "Qu’il s’agisse d’un site web, d’une application web, d’une application mobile, d’une plateforme SaaS, d’une automatisation ou d’un système sur mesure, notre objectif reste le même : rendre le développement plus clair, plus structuré et plus simple à gérer pour l’entreprise.",
+        "Talgasy Web agit comme un partenaire de développement, de l’idée jusqu’au déploiement."
+      ],
       "items": [
         {
-          "title": "Des entreprises déjà établies",
-          "body": "Mais on travaille aussi avec des entrepreneurs déjà bien établis qui veulent moderniser leur présence en ligne et enfin avoir un site à la hauteur de l’entreprise qu’ils ont bâtie."
+          "title": "Comprendre avant de développer",
+          "body": "On ne commence pas par coder. On commence par comprendre votre entreprise, vos utilisateurs, vos objectifs et le problème à résoudre. Cela nous permet de bâtir une solution qui répond à un vrai besoin, plutôt que d’ajouter des fonctionnalités sans direction."
         },
         {
-          "title": "Un outil, pas une vitrine",
-          "body": "Pour nous, un site web n’est pas juste une présence sur Internet. C’est un outil qui doit servir l’entreprise : présenter clairement ce qu’elle fait, inspirer confiance et aider les clients à passer à l’action."
+          "title": "Construire la bonne solution",
+          "body": "Chaque projet est différent. Nous choisissons les technologies, l’architecture et la méthode de développement en fonction du projet, de sa complexité et de son évolution future. Site web, application, SaaS, automatisation ou système sur mesure : la technologie doit servir le projet, pas l’inverse."
         },
         {
-          "title": "Contribuer à la réussite d’ici",
-          "body": "Que ce soit pour lancer votre entreprise, soutenir sa croissance ou améliorer ce qui existe déjà, Talgasy Web veut contribuer concrètement à la réussite des entrepreneurs d’ici."
+          "title": "Vous accompagner dans la durée",
+          "body": "Notre travail ne s’arrête pas nécessairement au lancement. Nous pouvons continuer à maintenir, améliorer et faire évoluer votre solution à mesure que votre entreprise grandit et que vos besoins changent."
         }
       ]
     },
@@ -300,21 +311,6 @@
           "title": "Confiance",
           "body": "Des échanges honnêtes, des engagements respectés et un suivi clair du début à la fin."
         }
-      ]
-    },
-    "team": {
-      "title": "Les gens derrière vos résultats",
-      "intro": "Une équipe aux expertises complémentaires, unie autour d’un objectif : mener chaque projet avec soin.",
-      "prev": "Précédent",
-      "next": "Suivant",
-      "namePlaceholder": "[Nom]",
-      "altPrefix": "Membre de l’équipe Talgasy Web — ",
-      "roles": [
-        "Développeur full-stack",
-        "Directeur technique",
-        "Chef de projet numérique",
-        "Designer UX/UI",
-        "Spécialiste SEO et performance"
       ]
     }
   },

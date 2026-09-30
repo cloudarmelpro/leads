@@ -33,8 +33,8 @@ const CARD_BG =
   "bg-[radial-gradient(380px_circle_at_var(--mx)_var(--my),rgba(48,217,140,0.09),transparent_60%),linear-gradient(160deg,var(--color-surface-2),var(--color-surface-2))] dark:bg-[radial-gradient(380px_circle_at_var(--mx)_var(--my),rgba(48,217,140,0.09),transparent_60%),linear-gradient(160deg,#011E2B_0%,#011823_100%)]";
 
 /**
- * Principes (maquette À propos) : titre centré, texte d'appui, puis trois cartes qui
- * grandissent en arrivant. Chaque carte porte un halo vert qui suit le pointeur, un
+ * Principes (maquette À propos, v3 du 2026-09-30) : titre en capitales qui roule au survol
+ * comme celui du hero, grand texte d'appui, puis trois cartes qui grandissent en arrivant. Chaque carte porte un halo vert qui suit le pointeur, un
  * grand pictogramme en filigrane qui glisse avec le défilement, et se soulève au
  * survol. La grille entière bascule en 3D à l'entrée et se relève en sortant.
  */
@@ -72,10 +72,10 @@ export function Principles({ title, intro, items }: Props) {
     <section id="principes" className="relative flex justify-center px-[clamp(16px,4vw,56px)] pt-[clamp(40px,5vw,72px)] pb-[clamp(96px,11vw,180px)]">
       <div className="flex w-full max-w-[1400px] flex-col gap-[clamp(40px,5vw,60px)]">
         <div className="flex flex-col items-center gap-[16px] text-center">
-          <LineReveal as="h2" className="m-[0px] text-center text-[clamp(22px,2.2vw,30px)] leading-[1.2] font-semibold tracking-[-0.01em] text-encre text-balance">
+          <LineReveal as="h2" rollOnHover className="m-[0px] cursor-default text-center text-[clamp(24px,17.79px+1.66vw,36px)] leading-[1.08] font-semibold tracking-[-1px] text-encre uppercase min-[620px]:tracking-[-2px]">
             {title}
           </LineReveal>
-          <LineReveal delay={0.12} className="m-[0px] max-w-[560px] text-[15px] leading-[26px] font-normal text-texte2 text-pretty">
+          <LineReveal delay={0.12} className="m-[0px] max-w-[920px] text-[clamp(17px,1.9vw,26px)] leading-[1.35] font-normal text-texte-bascule text-balance">
             {intro}
           </LineReveal>
         </div>
@@ -101,9 +101,9 @@ export function Principles({ title, intro, items }: Props) {
                     {ICONS[i]}
                   </svg>
                 </span>
-                <h3 className="m-[0px] text-[15px] leading-[26px] font-medium text-encre">{item.title}</h3>
+                <h3 className="m-[0px] text-[clamp(20px,1.9vw,24px)] leading-[1.2] font-semibold text-encre">{item.title}</h3>
               </div>
-              <p className="pointer-events-none relative m-[0px] text-[15px] leading-[26px] font-normal text-texte2 text-pretty">{item.body}</p>
+              <p className="pointer-events-none relative m-[0px] text-[15px] leading-[27px] font-normal text-texte2 text-pretty">{item.body}</p>
             </Reveal>
           ))}
         </div>

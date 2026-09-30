@@ -3,4 +3,3 @@
 export { AboutHero } from "./components/about-hero";
 export { StoryPin } from "./components/story-pin";
 export { Principles } from "./components/principles";
-export { Team } from "./components/team";

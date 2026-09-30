@@ -249,38 +249,49 @@
   },
   "about": {
     "meta": {
-      "title": "About Talgasy Web — The agency behind your website",
-      "description": "The agency behind websites that make Québec small businesses’ phones ring. Our approach: quality, professionalism, trust."
+      "title": "About Talgasy Web — Your development partner, from idea to launch",
+      "description": "Talgasy Web helps Canadian businesses turn their ideas into concrete digital solutions: websites, applications, SaaS, automation. Quality, professionalism, trust."
     },
     "breadcrumb": "About",
     "hero": {
       "title": "About",
-      "lede": "Talgasy Web was born from a simple idea: helping local entrepreneurs move forward. Clear, bilingual websites that make the phone ring.",
+      "lede": "Talgasy Web was born from a simple idea: making development more accessible to businesses.",
       "ctaBook": "Book a call",
       "ctaStory": "Our story",
       "mapAria": "Dotted world map showing our base in Québec, Canada",
-      "bandAria": "Helping entrepreneurs move forward",
+      "bandAria": "Our expertise",
       "band": [
-        "Helping entrepreneurs move forward",
-        "Clear, bilingual websites",
-        "That make the phone ring",
-        "Built for Québec"
+        "Web development",
+        "Web applications",
+        "Mobile applications",
+        "SaaS platforms",
+        "Integration & automation",
+        "APIs & connected systems",
+        "UX/UI",
+        "E-commerce",
+        "Hosting & servers",
+        "Custom solutions"
       ]
     },
     "story": {
-      "quote": "A strong start makes all the difference. We give new businesses solid foundations to showcase their work and win their first clients.",
+      "quote": "Talgasy Web was created to help Canadian businesses turn their ideas into concrete digital solutions, without making the development process needlessly complex.",
+      "paragraphs": [
+        "Our role is to simplify development for our clients: understand the need, structure the project, choose the right technologies and build the solution with them.",
+        "Whether it is a website, a web application, a mobile application, a SaaS platform, an automation or a custom system, our goal stays the same: make development clearer, more structured and easier to manage for the business.",
+        "Talgasy Web acts as a development partner, from the idea all the way to launch."
+      ],
       "items": [
         {
-          "title": "Well-established businesses",
-          "body": "But we also work with well-established entrepreneurs who want to modernize their online presence and finally have a website worthy of the business they’ve built."
+          "title": "Understand before building",
+          "body": "We don’t start by coding. We start by understanding your business, your users, your goals and the problem to solve. That lets us build a solution that meets a real need, rather than piling on features with no direction."
         },
         {
-          "title": "A tool, not a showcase",
-          "body": "To us, a website isn’t just a presence on the Internet. It’s a tool that has to serve the business: clearly present what it does, inspire trust and help clients take action."
+          "title": "Build the right solution",
+          "body": "Every project is different. We choose the technologies, the architecture and the development method based on the project, its complexity and how it will evolve. Website, application, SaaS, automation or custom system: the technology must serve the project, not the other way around."
         },
         {
-          "title": "Contributing to local success",
-          "body": "Whether it’s to launch your business, support its growth or improve what already exists, Talgasy Web wants to make a real contribution to the success of local entrepreneurs."
+          "title": "Support you over time",
+          "body": "Our work doesn’t necessarily end at launch. We can keep maintaining, improving and evolving your solution as your business grows and your needs change."
         }
       ]
     },
@@ -300,21 +311,6 @@
           "title": "Trust",
           "body": "Honest conversations, commitments kept, and clear follow-up from start to finish."
         }
-      ]
-    },
-    "team": {
-      "title": "The people behind your results",
-      "intro": "A team with complementary expertise, united around one goal: carrying out every project with care.",
-      "prev": "Previous",
-      "next": "Next",
-      "namePlaceholder": "[Name]",
-      "altPrefix": "Talgasy Web team member — ",
-      "roles": [
-        "Full-stack developer",
-        "Technical director",
-        "Digital project manager",
-        "UX/UI designer",
-        "SEO and performance specialist"
       ]
     }
   },
