@@ -1,6 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
 
+import { CoverImage } from "@/features/blog/components/cover-image";
 import type { Post } from "@/features/blog/mock-posts";
 import { formatDate } from "@/lib/format/date";
 import type { Locale } from "@/lib/i18n/config";
@@ -14,9 +14,9 @@ type Props = { post: Post; lang: Locale; minRead: string };
 export function RelatedCard({ post, lang, minRead }: Props) {
   return (
     <Link href={`/${lang}/blog/${post.slug}`} className="flex flex-col no-underline">
-      <span className="relative block aspect-video shrink-0 overflow-hidden rounded-[24px] bg-[#01212F]">
-        <Image src={post.cover} alt="" fill sizes="(max-width: 640px) 100vw, (max-width: 980px) 50vw, 440px" className="object-cover opacity-90" />
-        <span aria-hidden className="absolute inset-[0px] block bg-[linear-gradient(180deg,rgba(1,24,35,0.05)_0%,rgba(1,24,35,0)_60%,rgba(1,24,35,0.45)_100%)]" />
+      <span className="relative block aspect-video shrink-0 overflow-hidden rounded-[24px] bg-surface-2 dark:bg-[#01212F]">
+        <CoverImage post={post} sizes="(max-width: 640px) 100vw, (max-width: 980px) 50vw, 440px" className="opacity-90" />
+        <span aria-hidden className="absolute inset-[0px] block bg-[linear-gradient(180deg,rgba(238,241,243,0.05)_0%,rgba(238,241,243,0)_60%,rgba(238,241,243,0.45)_100%)] dark:bg-[linear-gradient(180deg,rgba(1,24,35,0.05)_0%,rgba(1,24,35,0)_60%,rgba(1,24,35,0.45)_100%)]" />
       </span>
       <span className="flex flex-1 flex-col gap-[11px] pt-[18px]">
         <span className="text-[12px] leading-[16px] font-medium tracking-[0.08em] text-vert uppercase">{post.category}</span>

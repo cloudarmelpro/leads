@@ -1,10 +1,10 @@
-import Image from "next/image";
 import Link from "next/link";
 
 import { BreadcrumbLd } from "@/components/shared/breadcrumb-ld";
 import { ScrollProgress } from "@/components/shared/scroll-progress";
 import { ArticleBody } from "@/features/blog/components/article-body";
 import { ArticleLd } from "@/features/blog/components/article-ld";
+import { CoverImage } from "@/features/blog/components/cover-image";
 import { PostMeta } from "@/features/blog/components/post-meta";
 import { RELATED_GRID, RelatedCard } from "@/features/blog/components/related-card";
 import { getRelatedPosts, type Post } from "@/features/blog/mock-posts";
@@ -54,26 +54,26 @@ export async function BlogArticle({ post, lang }: Props) {
 
       <section
         id="top"
-        data-header-sombre
         // Bas du hero plus aéré que la maquette (48–80px), demande du client du 2026-09-30 :
-        // le même air sous le texte que sur les autres heros (72–140px).
-        className={`relative flex min-h-[clamp(520px,72vh,760px)] items-end justify-center overflow-hidden bg-[#011823] pt-[calc(80px+clamp(56px,8vw,120px))] pb-[clamp(72px,9.5vw,140px)] ${GUTTER}`}
+        // le même air sous le texte que sur les autres heros (72–140px). Mode clair : voile
+        // gris perle et textes encre (valeurs nuit sous `dark:`), en-tête plus forcé en sombre.
+        className={`relative flex min-h-[clamp(520px,72vh,760px)] items-end justify-center overflow-hidden bg-[#eef1f3] pt-[calc(80px+clamp(56px,8vw,120px))] pb-[clamp(72px,9.5vw,140px)] dark:bg-[#011823] ${GUTTER}`}
       >
-        <Image src={post.cover} alt="" fill priority sizes="100vw" className="object-cover" />
-        <span aria-hidden className="absolute inset-[0px] block bg-[linear-gradient(90deg,rgba(1,24,35,0.92)_0%,rgba(1,24,35,0.7)_38%,rgba(1,24,35,0.25)_70%,rgba(1,24,35,0.35)_100%)]" />
-        <span aria-hidden className="absolute inset-[0px] block bg-[linear-gradient(180deg,rgba(1,24,35,0.75)_0%,rgba(1,24,35,0)_22%,rgba(1,24,35,0)_55%,#011823_92%,#011823_100%)]" />
+        <CoverImage post={post} priority sizes="100vw" />
+        <span aria-hidden className={`absolute inset-[0px] block bg-[linear-gradient(90deg,rgba(238,241,243,0.92)_0%,rgba(238,241,243,0.7)_38%,rgba(238,241,243,0.25)_70%,rgba(238,241,243,0.35)_100%)] dark:bg-[linear-gradient(90deg,rgba(1,24,35,0.92)_0%,rgba(1,24,35,0.7)_38%,rgba(1,24,35,0.25)_70%,rgba(1,24,35,0.35)_100%)]`} />
+        <span aria-hidden className={`absolute inset-[0px] block bg-[linear-gradient(180deg,rgba(238,241,243,0.75)_0%,rgba(238,241,243,0)_22%,rgba(238,241,243,0)_55%,#eef1f3_92%,#eef1f3_100%)] dark:bg-[linear-gradient(180deg,rgba(1,24,35,0.75)_0%,rgba(1,24,35,0)_22%,rgba(1,24,35,0)_55%,#011823_92%,#011823_100%)]`} />
         <div className="relative z-[1] flex w-full max-w-[1400px] flex-col items-start gap-[18px]">
-          <BackLink href={back} label={t.backToBlog} className="text-[#A9BCC4] hover:text-white" />
-          <h1 className="m-[0px] max-w-[760px] text-[clamp(28px,3vw,40px)] leading-[1.05] font-semibold tracking-[-0.02em] text-white uppercase text-balance">{post.title}</h1>
-          <p className="m-[0px] max-w-[60ch] text-[16px] leading-[27px] font-normal text-[#A9BCC4] text-pretty">{post.excerpt}</p>
+          <BackLink href={back} label={t.backToBlog} className="text-texte2 hover:text-encre dark:text-[#A9BCC4] dark:hover:text-white" />
+          <h1 className="m-[0px] max-w-[760px] text-[clamp(28px,3vw,40px)] leading-[1.05] font-semibold tracking-[-0.02em] text-encre uppercase text-balance dark:text-white">{post.title}</h1>
+          <p className="m-[0px] max-w-[60ch] text-[16px] leading-[27px] font-normal text-texte-bascule text-pretty dark:text-[#A9BCC4]">{post.excerpt}</p>
           <PostMeta post={post} lang={lang} dict={{ blog: t }} />
         </div>
       </section>
 
       <section id="article" className={`relative flex justify-center pt-[32px] pb-[clamp(64px,9vw,120px)] ${GUTTER}`}>
         <div className="flex w-full max-w-[760px] flex-col gap-[32px]">
-          <span className="relative block aspect-video w-full overflow-hidden rounded-[24px] bg-[#01212F]">
-            <Image src={post.cover} alt={post.title} fill sizes="(max-width: 760px) 100vw, 760px" className="object-cover opacity-90" />
+          <span className="relative block aspect-video w-full overflow-hidden rounded-[24px] bg-surface-2 dark:bg-[#01212F]">
+            <CoverImage post={post} alt={post.title} sizes="(max-width: 760px) 100vw, 760px" className="opacity-90" />
           </span>
 
           <ArticleBody blocks={post.body} />
@@ -83,7 +83,7 @@ export async function BlogArticle({ post, lang }: Props) {
             <BackLink href={back} label={t.backToBlog} className="text-texte2 hover:text-encre" />
             <Link
               href={`/${lang}/soumission`}
-              className="flex h-[40px] items-center rounded-[9px] bg-vert px-[20px] text-[14px] leading-[20px] font-medium text-sur-vert no-underline transition-colors duration-200 hover:bg-vert-clair"
+              className="flex h-[40px] items-center rounded-[9px] bg-bouton px-[20px] text-[14px] leading-[20px] font-medium text-sur-bouton no-underline transition-colors duration-200 hover:bg-bouton-clair"
             >
               {t.articleCta}
             </Link>

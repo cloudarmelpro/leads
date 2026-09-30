@@ -226,7 +226,7 @@ export function Header({ lang, dict }: Props) {
             </span>
             <Link
               href={`${home}/soumission`}
-              className={`hidden h-[40px] items-center rounded-[8px] bg-vert px-[18px] text-[13.5px] leading-[1] font-medium whitespace-nowrap text-sur-vert no-underline ${EASE} hover:bg-vert-clair min-[1100px]:flex`}
+              className={`hidden h-[40px] items-center rounded-[8px] bg-bouton px-[18px] text-[13.5px] leading-[1] font-medium whitespace-nowrap text-sur-bouton no-underline ${EASE} hover:bg-bouton-clair min-[1100px]:flex`}
             >
               {dict.nav.quote}
             </Link>
@@ -307,7 +307,7 @@ export function Header({ lang, dict }: Props) {
             <ActionLink
               href={telHref(site.phone)}
               unavailableLabel={`${dict.header.menuCall} — ${phoneLabel}`}
-              className={`flex min-h-[48px] items-center justify-center rounded-[8px] bg-vert text-[15px] leading-[20px] font-normal text-sur-vert no-underline ${EASE} hover:bg-vert-clair disabled:cursor-not-allowed disabled:opacity-55`}
+              className={`flex min-h-[48px] items-center justify-center rounded-[8px] bg-bouton text-[15px] leading-[20px] font-normal text-sur-bouton no-underline ${EASE} hover:bg-bouton-clair disabled:cursor-not-allowed disabled:opacity-55`}
             >
               {dict.header.menuCall}
             </ActionLink>

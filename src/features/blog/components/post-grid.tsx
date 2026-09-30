@@ -29,7 +29,7 @@ export function PostGrid({ posts, lang, dict }: Props) {
         aria-pressed={on}
         onClick={() => setActive(value)}
         className={`flex min-h-[40px] cursor-pointer items-center rounded-[8px] border px-[16px] text-[13px] leading-[18px] font-medium whitespace-nowrap transition-colors duration-200 hover:border-vert pointer-coarse:min-h-[44px] ${
-          on ? "border-vert bg-vert text-sur-vert" : "border-contour bg-transparent text-texte-bascule dark:border-[rgba(255,255,255,0.22)]"
+          on ? "border-bouton bg-bouton text-sur-bouton" : "border-contour bg-transparent text-texte-bascule dark:border-[rgba(255,255,255,0.22)]"
         }`}
       >
         {label}

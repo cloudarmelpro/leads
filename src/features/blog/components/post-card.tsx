@@ -1,6 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
 
+import { CoverImage } from "@/features/blog/components/cover-image";
 import type { Post } from "@/features/blog/mock-posts";
 import { formatDate } from "@/lib/format/date";
 import type { Locale } from "@/lib/i18n/config";
@@ -10,24 +10,25 @@ type Props = { post: Post; lang: Locale; read: string; min: string };
 /**
  * Carte d'article de la liste (maquette Blog, 2026-09-30) : couverture verticale (3:3.6)
  * sous un dégradé, en bas le tiret vert, catégorie et date, titre en capitales, extrait et
- * « Lire · n min ». Se soulève de 6px au survol. Toujours sombre (photo).
+ * « Lire · n min ». Se soulève de 6px au survol. Voile nuit en sombre, gris perle et textes
+ * encre en clair (demande du client, 2026-09-30).
  */
 export function PostCard({ post, lang, read, min }: Props) {
   return (
     <Link
       href={`/${lang}/blog/${post.slug}`}
-      className="relative block aspect-[3/3.6] overflow-hidden rounded-[16px] bg-[#01212F] shadow-[0_18px_40px_rgba(1,24,35,0.45)] no-underline transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-[6px]"
+      className="relative block aspect-[3/3.6] overflow-hidden rounded-[16px] bg-surface-2 shadow-[0_18px_40px_rgba(30,30,30,0.16)] no-underline transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-[6px] dark:bg-[#01212F] dark:shadow-[0_18px_40px_rgba(1,24,35,0.45)]"
     >
-      <Image src={post.cover} alt="" fill sizes="(max-width: 640px) 100vw, (max-width: 980px) 50vw, 440px" className="object-cover" />
-      <span aria-hidden className="absolute inset-[0px] block bg-[linear-gradient(180deg,rgba(1,24,35,0)_25%,rgba(1,24,35,0.6)_55%,rgba(1,24,35,0.95)_100%)]" />
+      <CoverImage post={post} sizes="(max-width: 640px) 100vw, (max-width: 980px) 50vw, 440px" />
+      <span aria-hidden className="absolute inset-[0px] block bg-[linear-gradient(180deg,rgba(238,241,243,0)_25%,rgba(238,241,243,0.65)_55%,rgba(238,241,243,0.96)_100%)] dark:bg-[linear-gradient(180deg,rgba(1,24,35,0)_25%,rgba(1,24,35,0.6)_55%,rgba(1,24,35,0.95)_100%)]" />
       <span className="absolute inset-x-[0px] bottom-[0px] flex flex-col gap-[8px] p-[22px]">
-        <span aria-hidden className="block h-[2px] w-[14px] rounded-[2px] bg-[#30D98C]" />
-        <span className="text-[12px] leading-[16px] font-normal text-[#D6E2E6]">
+        <span aria-hidden className="block h-[2px] w-[14px] rounded-[2px] bg-vert dark:bg-[#30D98C]" />
+        <span className="text-[12px] leading-[16px] font-normal text-texte2 dark:text-[#D6E2E6]">
           {post.category} — {formatDate(post.date, lang)}
         </span>
-        <span className="line-clamp-3 text-[clamp(18px,1.7vw,22px)] leading-[1.08] font-semibold text-white uppercase text-balance">{post.title}</span>
-        <span className="line-clamp-2 text-[14px] leading-[22px] font-normal text-[#A9BCC4] text-pretty">{post.excerpt}</span>
-        <span className="mt-[4px] flex items-center gap-[8px] text-[13px] leading-[18px] font-medium text-[#30D98C]">
+        <span className="line-clamp-3 text-[clamp(18px,1.7vw,22px)] leading-[1.08] font-semibold text-encre uppercase text-balance dark:text-white">{post.title}</span>
+        <span className="line-clamp-2 text-[14px] leading-[22px] font-normal text-texte-bascule text-pretty dark:text-[#A9BCC4]">{post.excerpt}</span>
+        <span className="mt-[4px] flex items-center gap-[8px] text-[13px] leading-[18px] font-medium text-vert dark:text-[#30D98C]">
           <span>
             {read} · {post.readMinutes} {min}
           </span>

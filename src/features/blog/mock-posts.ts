@@ -29,6 +29,8 @@ type RawPost = {
   author: { name: string };
   /** Chemin public de la couverture 16:9. */
   cover: string;
+  /** Variante pour le mode clair (rendus nuit regénérés en studio clair) ; absente pour les photos. */
+  coverLight?: string;
   fr: PostContent;
   en: PostContent;
 };
@@ -111,7 +113,8 @@ const POSTS: RawPost[] = [
     date: "2026-09-08",
     readMinutes: 7,
     author: AUTEUR,
-    cover: "/images/home/svc-network.jpg",
+    cover: "/images/home/svc-globe.jpg",
+    coverLight: "/images/home/svc-globe-clair.webp",
     fr: {
       category: "Référencement local",
       title: "Être trouvé dans votre région avant vos concurrents",
@@ -176,7 +179,8 @@ const POSTS: RawPost[] = [
     date: "2026-09-02",
     readMinutes: 5,
     author: AUTEUR,
-    cover: "/images/home/svc-stack.jpg",
+    cover: "/images/home/svc-globe.jpg",
+    coverLight: "/images/home/svc-globe-clair.webp",
     fr: {
       category: "Prix",
       title: "Combien coûte un site web au Québec",
@@ -244,6 +248,7 @@ const POSTS: RawPost[] = [
     readMinutes: 4,
     author: AUTEUR,
     cover: "/images/home/svc-globe.jpg",
+    coverLight: "/images/home/svc-globe-clair.webp",
     fr: {
       category: "Bonnes pratiques",
       title: "Bilingue par défaut : pourquoi ça compte ici",
@@ -363,7 +368,8 @@ const POSTS: RawPost[] = [
     date: "2026-08-12",
     readMinutes: 5,
     author: AUTEUR,
-    cover: "/images/home/svc-identity.jpg",
+    cover: "/images/home/svc-globe.jpg",
+    coverLight: "/images/home/svc-globe-clair.webp",
     fr: {
       category: "Refonte",
       title: "Refonte ou nouveau site : comment décider",

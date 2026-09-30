@@ -98,7 +98,7 @@ export function CookieConsent({ lang, dict }: { lang: Locale; dict: Pick<Diction
         <button
           type="button"
           onClick={() => choose("accepted")}
-          className="flex-1 min-h-10 cursor-pointer rounded-[8px] bg-vert px-3.5 py-2 text-cta-fluid font-normal text-sur-vert transition-colors hover:bg-vert-clair sm:px-4 sm:py-2.5"
+          className="flex-1 min-h-10 cursor-pointer rounded-[8px] bg-bouton px-3.5 py-2 text-cta-fluid font-normal text-sur-bouton transition-colors hover:bg-bouton-clair sm:px-4 sm:py-2.5"
         >
           {t.accept}
         </button>

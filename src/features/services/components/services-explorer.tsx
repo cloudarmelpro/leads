@@ -268,7 +268,7 @@ export function ServicesExplorer({ lang, dict }: Props) {
                               <span className="text-[13px] font-normal tracking-normal text-texte2">{f.unit}</span>
                             </span>
                           </span>
-                          <span className={`flex h-[34px] w-[34px] shrink-0 items-center justify-center rounded-full ${on ? "bg-vert text-sur-vert" : "bg-encre/6 text-encre"}`}>
+                          <span className={`flex h-[34px] w-[34px] shrink-0 items-center justify-center rounded-full ${on ? "bg-bouton text-sur-bouton" : "bg-encre/6 text-encre"}`}>
                             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
                               <path d="M12 5v14M19 12l-7 7-7-7" />
                             </svg>
@@ -309,8 +309,13 @@ export function ServicesExplorer({ lang, dict }: Props) {
                   const { amount, suffix } = splitPrice(plan.price);
                   return (
                     <div key={plan.name} className="flex min-w-[0px] flex-col gap-[12px]">
-                      <div className="relative aspect-[16/10] overflow-hidden rounded-[24px] bg-[#011823]">
-                        <Image src={`/images/home/services/${plan.img}.jpg`} alt={plan.name} fill sizes="(max-width: 900px) 100vw, 460px" className="object-cover" />
+                      {/* Mode clair : le visuel clair détouré de l'accueil, posé sur la carte grise ;
+                          mode sombre : la photo nuit de la maquette (demande du client, 2026-09-30). */}
+                      <div className="relative aspect-[16/10] overflow-hidden rounded-[24px] bg-surface-2 dark:bg-[#011823]">
+                        <span className="absolute inset-[22px] block dark:hidden">
+                          <Image src={`/images/home/services/${plan.img}-clair.webp`} alt={plan.name} fill sizes="(max-width: 900px) 100vw, 460px" className="object-contain object-center" />
+                        </span>
+                        <Image src={`/images/home/services/${plan.img}.jpg`} alt={plan.name} fill sizes="(max-width: 900px) 100vw, 460px" className="hidden object-cover dark:block" />
                       </div>
                       <div className="flex min-h-[300px] flex-col gap-[14px] px-[4px] pt-[16px] pb-[20px]">
                         <div className="flex flex-col gap-[8px]">
@@ -327,7 +332,7 @@ export function ServicesExplorer({ lang, dict }: Props) {
                         <Link
                           href={contact}
                           aria-label={`${plan.cta} — ${plan.name}`}
-                          className="flex min-h-[48px] items-center justify-center rounded-[10px] bg-vert px-[20px] text-[15px] leading-[20px] font-medium text-sur-vert no-underline transition-colors duration-[220ms] ease-[cubic-bezier(0.2,0.7,0.2,1)] hover:bg-vert-clair"
+                          className="flex min-h-[48px] items-center justify-center rounded-[10px] bg-bouton px-[20px] text-[15px] leading-[20px] font-medium text-sur-bouton no-underline transition-colors duration-[220ms] ease-[cubic-bezier(0.2,0.7,0.2,1)] hover:bg-bouton-clair"
                         >
                           {plan.cta}
                         </Link>

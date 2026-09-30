@@ -14,7 +14,7 @@ type Props = {
 const LOOK: Record<NonNullable<Props["variant"]>, string> = {
   glass:
     "h-[40px] w-[40px] bg-verre text-encre shadow-[inset_0_0_0_1px_var(--color-filet-verre)] backdrop-blur-[14px] hover:bg-verre-fort",
-  solid: "h-[34px] w-[34px] bg-vert text-sur-vert hover:bg-vert-clair",
+  solid: "h-[34px] w-[34px] bg-bouton text-sur-bouton hover:bg-bouton-clair",
 };
 
 /**

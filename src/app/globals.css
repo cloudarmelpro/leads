@@ -47,6 +47,11 @@
   --color-vert: #177e4f;
   --color-vert-clair: #14402f;
   --color-sur-vert: #ffffff;
+  /* Boutons pleins : MÊME rendu dans les deux thèmes (vert vif, texte nuit) — demande du
+     client du 2026-09-30. `vert` reste le vert de texte (foncé en clair pour le contraste). */
+  --color-bouton: #30d98c;
+  --color-bouton-clair: #7fefc0;
+  --color-sur-bouton: #011823;
   --color-texte3: #646468;
   --color-texte-note: #6b7f79;
   --color-contour: #d9d9dc;

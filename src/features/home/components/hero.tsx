@@ -24,7 +24,6 @@ const ARROW = <path d="M5 12h14M13 6l6 6-6 6" />;
 // Le hero suit le thème depuis le 2026-09-30 (scène 3D claire, textes encre) : valeurs de la
 // maquette sombre sous `dark:`, équivalents clairs par défaut.
 const BTN = "tap-44 pointer-events-auto inline-flex h-[40px] items-center rounded-[8px] px-[18px] text-[13.5px] leading-[1] font-medium whitespace-nowrap no-underline";
-const FOND = "238,241,243";
 const HALO =
   "relative isolate before:absolute before:-inset-x-[28px] before:-inset-y-[22px] before:z-[-1] before:rounded-[32px] before:bg-[rgba(238,241,243,0.62)] before:blur-[24px] before:content-[''] dark:before:hidden";
 const WORD = "inline-block [animation:tw-hero-word_1400ms_cubic-bezier(0.16,0.68,0.16,1)_both] motion-reduce:[animation:none]";
@@ -50,7 +49,7 @@ export function Hero({ lang, dict }: Props) {
       >
         <span
           aria-hidden
-          className={`pointer-events-none absolute inset-[0px] z-0 block bg-[radial-gradient(ellipse_42%_50%_at_44%_38%,rgba(${FOND},0)_0%,rgba(${FOND},0)_45%,rgba(${FOND},0.85)_85%,#eef1f3_100%),linear-gradient(180deg,rgba(${FOND},0.7)_0%,rgba(${FOND},0)_22%,rgba(${FOND},0)_46%,rgba(${FOND},0.86)_72%,#eef1f3_100%)] dark:bg-[radial-gradient(ellipse_42%_50%_at_44%_38%,rgba(1,24,35,0)_0%,rgba(1,24,35,0)_45%,rgba(1,24,35,0.85)_85%,#011823_100%),linear-gradient(180deg,rgba(1,24,35,0.7)_0%,rgba(1,24,35,0)_22%,rgba(1,24,35,0)_50%,rgba(1,24,35,0.8)_75%,#011823_100%)]`}
+          className={`pointer-events-none absolute inset-[0px] z-0 block bg-[radial-gradient(ellipse_42%_50%_at_44%_38%,rgba(238,241,243,0)_0%,rgba(238,241,243,0)_45%,rgba(238,241,243,0.85)_85%,#eef1f3_100%),linear-gradient(180deg,rgba(238,241,243,0.7)_0%,rgba(238,241,243,0)_22%,rgba(238,241,243,0)_46%,rgba(238,241,243,0.86)_72%,#eef1f3_100%)] dark:bg-[radial-gradient(ellipse_42%_50%_at_44%_38%,rgba(1,24,35,0)_0%,rgba(1,24,35,0)_45%,rgba(1,24,35,0.85)_85%,#011823_100%),linear-gradient(180deg,rgba(1,24,35,0.7)_0%,rgba(1,24,35,0)_22%,rgba(1,24,35,0)_50%,rgba(1,24,35,0.8)_75%,#011823_100%)]`}
         />
 
         <div className="relative flex flex-1 flex-col [opacity:calc(1-var(--exit,0)*1.6)]">
@@ -68,7 +67,7 @@ export function Hero({ lang, dict }: Props) {
                 </h1>
                 <p className="m-[0px] max-w-[440px] text-[15px] leading-[24px] font-normal text-texte-bascule text-pretty dark:text-[#E4ECEF]">{t.lede}</p>
                 <div className="mt-[8px] flex flex-wrap items-center gap-[12px]">
-                  <Link href={`/${lang}/soumission`} className={`${BTN} bg-vert text-sur-vert transition-colors hover:bg-vert-clair dark:bg-[#30D98C] dark:text-[#011823] dark:hover:bg-[#7FEFC0]`}>
+                  <Link href={`/${lang}/soumission`} className={`${BTN} bg-bouton text-sur-bouton transition-colors hover:bg-bouton-clair`}>
                     <span className="whitespace-nowrap">{t.ctaBook}</span>
                   </Link>
                   <Link
@@ -88,7 +87,7 @@ export function Hero({ lang, dict }: Props) {
               href="#secteurs"
               className="pointer-events-auto inline-flex h-[40px] max-w-full min-w-[0px] items-center gap-[10px] rounded-[8px] bg-verre pr-[16px] pl-[6px] text-[13.5px] leading-[1] font-normal whitespace-nowrap text-encre no-underline shadow-[inset_0_0_0_1px_var(--color-filet-verre)] backdrop-blur-[14px] transition-colors hover:bg-verre-fort dark:bg-[rgba(1,24,35,0.55)] dark:text-white dark:shadow-[inset_0_0_0_1px_rgba(255,255,255,0.09)] dark:hover:bg-[rgba(1,24,35,0.75)]"
             >
-              <span className="inline-flex h-[28px] shrink-0 items-center gap-[6px] rounded-[6px] bg-vert px-[10px] text-[12px] font-semibold text-sur-vert dark:bg-[#30D98C] dark:text-[#011823]">
+              <span className="inline-flex h-[28px] shrink-0 items-center gap-[6px] rounded-[6px] bg-bouton px-[10px] text-[12px] font-semibold text-sur-bouton">
                 {icon(PIN, 13, 2.2)}
                 {t.teaserKicker}
               </span>
