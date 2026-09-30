@@ -215,7 +215,7 @@ export function ServicesExplorer({ lang, dict }: Props) {
                     aria-selected={on}
                     onClick={() => pick(f.key)}
                     style={{ transition: `padding 820ms ${EASE_FOLD}, border-radius 820ms ${EASE_FOLD}, background-color 560ms ${EASE_OUT}, box-shadow 560ms ${EASE_OUT}, transform 560ms ${EASE_OUT}` }}
-                    className={`relative flex min-w-[0px] cursor-pointer flex-col overflow-hidden backdrop-blur-[14px] hover:-translate-y-[3px] hover:shadow-[inset_0_0_0_1px_rgba(48,217,140,0.6),0_18px_44px_rgba(0,0,0,0.35)] ${
+                    className={`relative flex min-w-[0px] cursor-pointer flex-col overflow-hidden text-left backdrop-blur-[14px] hover:-translate-y-[3px] hover:shadow-[inset_0_0_0_1px_rgba(48,217,140,0.6),0_18px_44px_rgba(0,0,0,0.35)] ${
                       compact ? "rounded-[14px] px-[14px] py-[10px]" : "rounded-[16px] p-[clamp(16px,1.5vw,22px)]"
                     } ${
                       on
@@ -224,7 +224,7 @@ export function ServicesExplorer({ lang, dict }: Props) {
                     }`}
                   >
                     <span aria-hidden className={`absolute inset-x-[0px] top-[0px] h-[2px] origin-left bg-vert transition-transform duration-[560ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${on ? "scale-x-100" : "scale-x-0"}`} />
-                    <span className={`flex min-w-[0px] items-start ${compact ? "gap-[8px]" : "gap-[10px]"}`} style={{ transition: `gap 820ms ${EASE_FOLD}` }}>
+                    <span className={`flex min-w-[0px] ${compact ? "items-center gap-[8px]" : "items-start gap-[10px]"}`} style={{ transition: `gap 820ms ${EASE_FOLD}` }}>
                       <span className={`flex h-[20px] w-[20px] shrink-0 items-center justify-center transition-colors duration-[560ms] ${on ? "text-vert" : "text-texte2"}`}>
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden className="block shrink-0">
                           {ICONS[f.key]}
