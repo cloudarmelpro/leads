@@ -25,6 +25,8 @@ const ARROW = <path d="M5 12h14M13 6l6 6-6 6" />;
 // maquette sombre sous `dark:`, équivalents clairs par défaut.
 const BTN = "tap-44 pointer-events-auto inline-flex h-[40px] items-center rounded-[8px] px-[18px] text-[13.5px] leading-[1] font-medium whitespace-nowrap no-underline";
 const FOND = "238,241,243";
+const HALO =
+  "relative isolate before:absolute before:-inset-x-[40px] before:-inset-y-[32px] before:z-[-1] before:rounded-[40px] before:bg-[rgba(238,241,243,0.84)] before:blur-[30px] before:content-[''] dark:before:hidden";
 const WORD = "inline-block [animation:tw-hero-word_1400ms_cubic-bezier(0.16,0.68,0.16,1)_both] motion-reduce:[animation:none]";
 
 /**
@@ -48,15 +50,17 @@ export function Hero({ lang, dict }: Props) {
       >
         <span
           aria-hidden
-          className={`pointer-events-none absolute inset-[0px] z-0 block bg-[radial-gradient(ellipse_42%_50%_at_44%_38%,rgba(${FOND},0)_0%,rgba(${FOND},0)_45%,rgba(${FOND},0.85)_85%,#eef1f3_100%),linear-gradient(180deg,rgba(${FOND},0.7)_0%,rgba(${FOND},0)_22%,rgba(${FOND},0)_50%,rgba(${FOND},0.8)_75%,#eef1f3_100%)] dark:bg-[radial-gradient(ellipse_42%_50%_at_44%_38%,rgba(1,24,35,0)_0%,rgba(1,24,35,0)_45%,rgba(1,24,35,0.85)_85%,#011823_100%),linear-gradient(180deg,rgba(1,24,35,0.7)_0%,rgba(1,24,35,0)_22%,rgba(1,24,35,0)_50%,rgba(1,24,35,0.8)_75%,#011823_100%)]`}
+          className={`pointer-events-none absolute inset-[0px] z-0 block bg-[radial-gradient(ellipse_42%_50%_at_44%_38%,rgba(${FOND},0)_0%,rgba(${FOND},0)_45%,rgba(${FOND},0.85)_85%,#eef1f3_100%),linear-gradient(180deg,rgba(${FOND},0.7)_0%,rgba(${FOND},0)_22%,rgba(${FOND},0)_46%,rgba(${FOND},0.86)_72%,#eef1f3_100%)] dark:bg-[radial-gradient(ellipse_42%_50%_at_44%_38%,rgba(1,24,35,0)_0%,rgba(1,24,35,0)_45%,rgba(1,24,35,0.85)_85%,#011823_100%),linear-gradient(180deg,rgba(1,24,35,0.7)_0%,rgba(1,24,35,0)_22%,rgba(1,24,35,0)_50%,rgba(1,24,35,0.8)_75%,#011823_100%)]`}
         />
 
         <div className="relative flex flex-1 flex-col [opacity:calc(1-var(--exit,0)*1.6)]">
           {/* Téléphone en portrait : une bande réservée en haut accueille le logo 3D, que la
               scène cale entre l'en-tête et le texte (sinon il n'aurait que quelques pixels). */}
           <div className="relative z-[1] flex flex-1 items-end px-[clamp(18px,4vw,40px)] pt-[calc(80px+clamp(28px,5vw,72px))] pb-[clamp(96px,13vh,150px)] [@media(max-width:859px)_and_(orientation:portrait)]:pt-[calc(80px+clamp(28px,5vw,72px)+clamp(140px,22vh,220px))]">
+            {/* Mode clair : un halo gris perle flou derrière chaque bloc de texte (pas derrière le
+                logo), sinon les points de la carte passent à travers les lettres (client, 2026-09-30). */}
             <div data-hero-text className="mx-auto grid w-full max-w-[1400px] grid-cols-[minmax(0,1fr)] items-end gap-[clamp(28px,4vw,72px)] min-[860px]:grid-cols-[minmax(0,1.02fr)_minmax(0,0.98fr)]">
-              <div className="flex max-w-[600px] min-w-[0px] flex-col items-start gap-[18px]">
+              <div className={`flex max-w-[600px] min-w-[0px] flex-col items-start gap-[18px] ${HALO}`}>
                 <span className="text-[15px] leading-[20px] font-medium text-encre dark:text-white">{t.kicker}</span>
                 <h1 className="m-[0px] max-w-[600px] text-[clamp(28px,3vw,40px)] leading-[1.05] font-semibold tracking-[-0.02em] text-encre uppercase text-balance dark:text-white">
                   <span className={`${WORD} [animation-delay:90ms]`}>{t.titleA}</span>{" "}
@@ -75,7 +79,7 @@ export function Hero({ lang, dict }: Props) {
                   </Link>
                 </div>
               </div>
-              <p className="m-[0px] max-w-[440px] text-[15px] leading-[24px] font-normal text-texte2 text-pretty min-[860px]:justify-self-end min-[860px]:text-right dark:text-[#A9BCC4]">{t.aside}</p>
+              <p className={`m-[0px] max-w-[440px] text-[15px] leading-[24px] font-normal text-texte2 text-pretty min-[860px]:justify-self-end min-[860px]:text-right dark:text-[#A9BCC4] ${HALO}`}>{t.aside}</p>
             </div>
           </div>
 
