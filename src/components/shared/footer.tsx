@@ -41,8 +41,7 @@ export function Footer({ lang, dict }: Props) {
   const [emailUser, emailDomain] = (site.email ?? "").split("@");
 
   return (
-    // Filet en haut du pied de page (demande du client, 2026-09-30), même trait que l'en-tête au défilement.
-    <footer id="footer" className="relative flex justify-center border-t border-ligne px-[clamp(16px,4vw,56px)] pt-[clamp(88px,10vw,160px)] pb-[40px]">
+    <footer id="footer" className="relative flex justify-center px-[clamp(16px,4vw,56px)] pt-[clamp(88px,10vw,160px)] pb-[40px]">
       <div className="relative flex w-full max-w-[1400px] flex-col">
         <div className="grid grid-cols-[minmax(0,1fr)] items-start gap-x-[32px] gap-y-[36px] min-[760px]:gap-x-[clamp(40px,6vw,96px)] min-[1000px]:grid-cols-[minmax(0,1fr)_max-content]">
           <div className="flex flex-col items-start gap-[22px]">

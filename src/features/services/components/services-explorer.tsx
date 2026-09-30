@@ -176,11 +176,12 @@ export function ServicesExplorer({ lang, dict }: Props) {
 
   return (
     <>
-      {/* Bande fixe derrière l'en-tête et la barre compacte (maquette `data-catbar`) : les
-          cartes ne flottent pas sur le contenu qui défile. Sous la barre (z 56) et l'en-tête (z 60). */}
+      {/* Bande fixe derrière l'en-tête et la barre compacte (maquette `data-catbar`, sans son
+          filet ni son flou : demande du client) : les cartes ne flottent pas sur le contenu qui
+          défile. Sous la barre (z 56) et l'en-tête (z 60). */}
       <div
         aria-hidden
-        className={`pointer-events-none fixed inset-x-[0px] top-[0px] z-[55] bg-fond/94 shadow-[0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-[14px] transition-opacity duration-[420ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${compact ? "opacity-100" : "opacity-0"}`}
+        className={`pointer-events-none fixed inset-x-[0px] top-[0px] z-[55] bg-fond/94 transition-opacity duration-[420ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${compact ? "opacity-100" : "opacity-0"}`}
         style={{ height: BAR_TOP + barHeight + 14 }}
       />
       <section
