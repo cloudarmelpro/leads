@@ -126,11 +126,15 @@ export function ServicesExplorer({ lang, dict }: Props) {
   const [compact, setCompact] = useState(false);
   const compactRef = useRef(false);
   const [gridHeight, setGridHeight] = useState<number | null>(null);
+  // Hauteur de la barre compacte (une rangée dès 1100px, trois en dessous) : règle la
+  // bande de fond fixe qui couvre l'en-tête et la barre.
+  const [barHeight, setBarHeight] = useState(COMPACT_H);
   useEffect(() => {
     const g = grid.current;
     if (!g) return;
     const ro = new ResizeObserver(() => {
-      if (!compactRef.current) setGridHeight(g.offsetHeight);
+      if (compactRef.current) setBarHeight(g.offsetHeight);
+      else setGridHeight(g.offsetHeight);
     });
     ro.observe(g);
     return () => ro.disconnect();
@@ -172,6 +176,13 @@ export function ServicesExplorer({ lang, dict }: Props) {
 
   return (
     <>
+      {/* Bande fixe derrière l'en-tête et la barre compacte (maquette `data-catbar`) : les
+          cartes ne flottent pas sur le contenu qui défile. Sous la barre (z 56) et l'en-tête (z 60). */}
+      <div
+        aria-hidden
+        className={`pointer-events-none fixed inset-x-[0px] top-[0px] z-[55] bg-fond/94 shadow-[0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-[14px] transition-opacity duration-[420ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${compact ? "opacity-100" : "opacity-0"}`}
+        style={{ height: BAR_TOP + barHeight + 14 }}
+      />
       <section
         id="top"
         onPointerMove={moveSpot}
