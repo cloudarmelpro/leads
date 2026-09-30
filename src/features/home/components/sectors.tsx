@@ -66,25 +66,27 @@ export function Sectors({ lang, dict }: Props) {
                 <span className="absolute inset-[0px] bg-[#01212F]">
                   <Image src={`/images/home/organisations/${photo}.jpg`} alt={item.alt} fill sizes="(max-width: 1100px) 100vw, 1400px" className="object-cover" />
                 </span>
+                {/* Voile sur la photo : nuit en sombre, gris perle en clair (demande du client du
+                    2026-09-30 : les photos restent, seul le voile et le texte suivent le thème). */}
                 <span
                   aria-hidden
-                  className={`absolute inset-[0px] bg-[linear-gradient(180deg,rgba(1,17,24,0.20)_0%,rgba(1,17,24,0.78)_52%,rgba(1,17,24,0.94)_100%)] ${
+                  className={`absolute inset-[0px] bg-[linear-gradient(180deg,rgba(238,241,243,0.20)_0%,rgba(238,241,243,0.80)_52%,rgba(238,241,243,0.95)_100%)] dark:bg-[linear-gradient(180deg,rgba(1,17,24,0.20)_0%,rgba(1,17,24,0.78)_52%,rgba(1,17,24,0.94)_100%)] ${
                     right
-                      ? "min-[1100px]:bg-[linear-gradient(270deg,rgba(1,17,24,0.94)_0%,rgba(1,17,24,0.82)_44%,rgba(1,17,24,0.12)_100%)]"
-                      : "min-[1100px]:bg-[linear-gradient(90deg,rgba(1,17,24,0.94)_0%,rgba(1,17,24,0.82)_44%,rgba(1,17,24,0.12)_100%)]"
+                      ? "min-[1100px]:bg-[linear-gradient(270deg,rgba(238,241,243,0.95)_0%,rgba(238,241,243,0.84)_44%,rgba(238,241,243,0.12)_100%)] dark:min-[1100px]:bg-[linear-gradient(270deg,rgba(1,17,24,0.94)_0%,rgba(1,17,24,0.82)_44%,rgba(1,17,24,0.12)_100%)]"
+                      : "min-[1100px]:bg-[linear-gradient(90deg,rgba(238,241,243,0.95)_0%,rgba(238,241,243,0.84)_44%,rgba(238,241,243,0.12)_100%)] dark:min-[1100px]:bg-[linear-gradient(90deg,rgba(1,17,24,0.94)_0%,rgba(1,17,24,0.82)_44%,rgba(1,17,24,0.12)_100%)]"
                   }`}
                 />
                 <div
                   className={`relative flex flex-col justify-end gap-[14px] p-[clamp(24px,3.2vw,56px)] min-[1100px]:justify-center ${right ? "min-[1100px]:col-start-2" : "min-[1100px]:col-start-1"}`}
                 >
-                  <span className="text-[13px] leading-[20px] font-medium tracking-[0.14em] text-[#30D98C] uppercase">
+                  <span className="text-[13px] leading-[20px] font-medium tracking-[0.14em] text-vert uppercase dark:text-[#30D98C]">
                     {t.num.replace("{n}", String(index + 1).padStart(2, "0"))}
                   </span>
-                  <h3 className="m-[0px] text-[clamp(26px,3vw,40px)] leading-[1.05] font-normal tracking-[-0.8px] text-white">{item.label}</h3>
-                  <p className="m-[0px] max-w-[480px] text-[15px] leading-[26px] font-normal text-white text-pretty">{item.text}</p>
+                  <h3 className="m-[0px] text-[clamp(26px,3vw,40px)] leading-[1.05] font-normal tracking-[-0.8px] text-encre dark:text-white">{item.label}</h3>
+                  <p className="m-[0px] max-w-[480px] text-[15px] leading-[26px] font-normal text-texte-bascule text-pretty dark:text-white">{item.text}</p>
                   <Link
                     href={`/${lang}/soumission`}
-                    className="tap-44 mt-[6px] inline-flex h-[40px] w-fit items-center rounded-[8px] bg-[#30D98C] px-[18px] text-[13.5px] leading-[1] font-medium whitespace-nowrap text-[#011823] no-underline transition-[background] duration-[240ms] ease-[cubic-bezier(0.2,0.7,0.2,1)] hover:bg-[#7FEFC0]"
+                    className="tap-44 mt-[6px] inline-flex h-[40px] w-fit items-center rounded-[8px] bg-vert px-[18px] text-[13.5px] leading-[1] font-medium whitespace-nowrap text-sur-vert no-underline transition-[background] duration-[240ms] ease-[cubic-bezier(0.2,0.7,0.2,1)] hover:bg-vert-clair dark:bg-[#30D98C] dark:text-[#011823] dark:hover:bg-[#7FEFC0]"
                   >
                     {t.cta}
                   </Link>
