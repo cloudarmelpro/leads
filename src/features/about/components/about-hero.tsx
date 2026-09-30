@@ -44,7 +44,9 @@ export function AboutHero({ lang, dict }: Props) {
               {t.ctaStory}
             </a>
           </Reveal>
-          <Reveal kind="scale" delay={760} immediate className="relative mt-[clamp(16px,2.6vw,32px)] w-full max-w-[960px]">
+          {/* Marge plus aérée que la maquette (16–32px), demande du client du 2026-09-30 : avec les
+              22px de la colonne, le même écart que sous le hero de Soumission et de Services (72–140px). */}
+          <Reveal kind="scale" delay={760} immediate className="relative mt-[clamp(50px,8vw,118px)] w-full max-w-[960px]">
             <DotMap label={t.mapAria} />
           </Reveal>
         </div>
