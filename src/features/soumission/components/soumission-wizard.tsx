@@ -32,12 +32,14 @@ const ADVANCE_MS = 260;
 
 const EASE = "ease-[cubic-bezier(0.2,0.7,0.2,1)]";
 const PANEL = "bg-surface-2 dark:bg-surface";
-const RING = "shadow-[inset_0_0_0_1px_var(--color-contour)] dark:shadow-[inset_0_0_0_1px_rgba(169,188,196,0.10)]";
+// Mode clair sans filet (le client n'en veut pas) : les cartes et champs se détachent par leur
+// fond gris ; le liseré discret de la maquette ne subsiste qu'en sombre.
+const RING = "dark:shadow-[inset_0_0_0_1px_rgba(169,188,196,0.10)]";
 const INPUT = `box-border min-h-[52px] w-full rounded-[11px] border-0 ${PANEL} px-[16px] py-[14px] text-[16px] leading-[22px] text-encre outline-none transition-shadow duration-200 ${EASE} ${RING} placeholder:text-texte2/70 focus:shadow-[inset_0_0_0_1px_var(--color-vert)] dark:focus:shadow-[inset_0_0_0_1px_var(--color-vert)]`;
 const LABEL = "text-[13px] leading-[18px] font-medium tracking-[0.04em] text-texte2";
 const PRIMARY = `box-border inline-flex min-h-[52px] cursor-pointer items-center justify-center rounded-[8px] bg-bouton px-[26px] text-[16px] leading-[20px] font-semibold whitespace-nowrap text-sur-bouton no-underline transition-colors duration-200 ${EASE} hover:bg-bouton-clair disabled:cursor-progress disabled:opacity-80`;
 const OUTLINED = `box-border inline-flex min-h-[52px] cursor-pointer items-center justify-center rounded-[8px] bg-transparent px-[22px] text-[16px] leading-[20px] font-medium whitespace-nowrap text-encre shadow-[inset_0_0_0_1px_var(--color-contour)] transition-shadow duration-200 hover:shadow-[inset_0_0_0_1px_var(--color-vert)]`;
-const NAV_BTN = `flex h-[44px] w-[44px] cursor-pointer items-center justify-center rounded-[10px] ${PANEL} ${RING} text-encre transition-[box-shadow,color] duration-200 hover:text-vert hover:shadow-[inset_0_0_0_1px_var(--color-vert)] disabled:cursor-default disabled:opacity-35 disabled:hover:text-encre disabled:hover:shadow-[inset_0_0_0_1px_var(--color-contour)]`;
+const NAV_BTN = `flex h-[44px] w-[44px] cursor-pointer items-center justify-center rounded-[10px] ${PANEL} ${RING} text-encre transition-[box-shadow,color] duration-200 hover:text-vert hover:shadow-[inset_0_0_0_1px_var(--color-vert)] disabled:cursor-default disabled:opacity-35 disabled:hover:text-encre disabled:hover:shadow-none dark:disabled:hover:shadow-[inset_0_0_0_1px_rgba(169,188,196,0.10)]`;
 const KBD = `inline-flex h-[22px] min-w-[22px] items-center justify-center rounded-[6px] ${PANEL} ${RING} px-[6px] text-[12px] leading-[1] text-encre`;
 
 const fill = (tpl: string, vars: Record<string, string>) => tpl.replace(/\{(\w+)\}/g, (_, k: string) => vars[k] ?? "");
