@@ -46,8 +46,13 @@ export function ServicesShowcase({ lang, items }: Props) {
 
     return (
       <article key={`${index}-${clone ? "b" : "a"}`} className="relative flex min-h-[0px] flex-1 flex-col overflow-hidden rounded-[20px] bg-carte">
-        <div className="relative min-h-[0px] min-w-[0px] flex-1 overflow-hidden [mask-image:linear-gradient(180deg,#000_70%,transparent_100%)]">
-          <Image src={`/images/home/services/${spec.image}.jpg`} alt="" fill sizes="(max-width: 1100px) 50vw, 560px" className="object-cover dark:mix-blend-lighten" />
+        {/* Visuels détourés (fond transparent, comme les illustrations du design précédent) posés
+            sur le fond de la carte, entiers, avec la même marge que le texte — demande du client
+            du 2026-09-30 : plus de photo pleine carte fondue vers le bas. */}
+        <div className="relative min-h-[0px] min-w-[0px] flex-1 overflow-hidden px-[clamp(18px,1.8vw,26px)] pt-[clamp(18px,1.8vw,26px)]">
+          <span className="relative block h-full w-full">
+            <Image src={`/images/home/services/${spec.image}.webp`} alt="" fill sizes="(max-width: 1100px) 50vw, 560px" className="object-contain object-center" />
+          </span>
         </div>
         <div className="relative flex min-w-[0px] shrink-0 flex-col gap-[5px] px-[clamp(18px,1.8vw,26px)] pt-[13px] pb-[clamp(16px,1.6vw,20px)]">
           <h3 className="m-[0px] max-w-full text-[clamp(15px,1.2vw,18px)] leading-[1.3] font-medium text-encre text-pretty">{item.name}</h3>
