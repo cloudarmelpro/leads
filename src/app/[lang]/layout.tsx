@@ -10,6 +10,7 @@ import { FloatingContact } from "@/components/shared/floating-contact";
 import { Header } from "@/components/shared/header";
 import { JsonLd } from "@/components/shared/json-ld";
 import { PrePaintScript } from "@/components/shared/pre-paint-script";
+import { SiteCursor } from "@/components/shared/site-cursor";
 import { site } from "@/config/site";
 import { isLocale, localeHtmlLang, locales } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
@@ -81,6 +82,7 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[la
         <Footer lang={lang} dict={dict} />
         <FloatingContact dict={{ floating: dict.floating }} />
         <CookieConsent lang={lang} dict={{ cookies: dict.cookies }} />
+        <SiteCursor />
       </body>
     </html>
   );

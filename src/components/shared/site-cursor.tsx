@@ -6,12 +6,13 @@ const STYLE_ID = "tw-cursor-style";
 const EASE = "cubic-bezier(0.2,0.7,0.2,1)";
 
 /**
- * Curseur de la maquette Accueil (2026-09-30), souris seulement : un point vert et un anneau
+ * Curseur de la maquette Accueil, souris seulement, sur TOUT le site depuis le 2026-09-30 (monté
+ * dans le layout `[lang]`, demande du client) : un point vert et un anneau
  * qui le suit avec un peu de retard ; l'anneau grandit et se teinte sur les éléments
  * cliquables, se contracte au clic. Le curseur natif est masqué tant que la page est
  * montée. Sous `prefers-reduced-motion`, l'anneau suit sans retard. Ne rend rien.
  */
-export function HomeCursor() {
+export function SiteCursor() {
   useEffect(() => {
     if (!window.matchMedia("(pointer: fine)").matches || document.getElementById(STYLE_ID)) return;
 
