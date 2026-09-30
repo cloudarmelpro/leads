@@ -224,13 +224,14 @@ export function ServicesExplorer({ lang, dict }: Props) {
                     }`}
                   >
                     <span aria-hidden className={`absolute inset-x-[0px] top-[0px] h-[2px] origin-left bg-vert transition-transform duration-[560ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${on ? "scale-x-100" : "scale-x-0"}`} />
-                    <span className={`flex min-w-[0px] ${compact ? "items-center gap-[8px]" : "items-start gap-[10px]"}`} style={{ transition: `gap 820ms ${EASE_FOLD}` }}>
+                    {/* Barre compacte : icône et nom groupés au centre de la carte (demande du client). */}
+                    <span className={`flex min-w-[0px] ${compact ? "items-center justify-center gap-[8px]" : "items-start gap-[10px]"}`} style={{ transition: `gap 820ms ${EASE_FOLD}` }}>
                       <span className={`flex h-[20px] w-[20px] shrink-0 items-center justify-center transition-colors duration-[560ms] ${on ? "text-vert" : "text-texte2"}`}>
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden className="block shrink-0">
                           {ICONS[f.key]}
                         </svg>
                       </span>
-                      <span className="flex min-w-[0px] flex-1 flex-col">
+                      <span className={`flex min-w-[0px] flex-col ${compact ? "" : "flex-1"}`}>
                         <span className={`overflow-hidden leading-[1.25] font-semibold text-ellipsis whitespace-nowrap text-encre ${compact ? "text-[14px]" : "text-[15px]"}`} style={{ transition: `font-size 820ms ${EASE_FOLD}` }}>
                           {compact ? f.short : f.label}
                         </span>
