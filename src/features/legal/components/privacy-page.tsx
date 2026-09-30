@@ -53,7 +53,9 @@ export async function PrivacyPage({ lang }: Props) {
           <LineReveal delay={0.3} className="m-[0px] max-w-[620px] text-[18px] leading-[24px] font-normal text-texte-bascule text-pretty">
             {doc.intro}
           </LineReveal>
-          <div className="mt-[clamp(16px,2.6vw,32px)] grid w-full grid-cols-[minmax(0,1fr)] gap-[12px] text-left min-[620px]:grid-cols-[repeat(2,minmax(0,1fr))] min-[1000px]:grid-cols-[repeat(4,minmax(0,1fr))]">
+          {/* Marge plus aérée que la maquette (16–32px), demande du client du 2026-09-30 : avec les
+              22px de la colonne, le même écart sous le texte que sur les autres heros (72–140px). */}
+          <div className="mt-[clamp(50px,8vw,118px)] grid w-full grid-cols-[minmax(0,1fr)] gap-[12px] text-left min-[620px]:grid-cols-[repeat(2,minmax(0,1fr))] min-[1000px]:grid-cols-[repeat(4,minmax(0,1fr))]">
             {doc.brief.map((item) => (
               <div key={item.title} className="flex flex-col gap-[6px] rounded-[16px] bg-surface-2 px-[20px] py-[18px] dark:bg-surface">
                 <span aria-hidden className="block h-[2px] w-[14px] rounded-[2px] bg-vert" />
