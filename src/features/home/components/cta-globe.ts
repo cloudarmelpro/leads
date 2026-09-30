@@ -15,8 +15,11 @@
 
 export type GlobeHemisphere = "south" | "north";
 
-const C = {
-  colors: {
+// Deux palettes (mode clair demandé le 2026-09-30) : la maquette n'a que la nuit. En clair,
+// lignes ardoise, vert plus profond, et les calques « lighter » (additifs, qui blanchissent
+// sur fond clair) passent en fusion normale — voir `blendLight()`.
+const PALETTES = {
+  dark: {
     line: "150, 186, 206",
     accent: "47, 210, 134",
     pinDisc: "228, 234, 238",
@@ -24,6 +27,20 @@ const C = {
     atmosphere: "110, 185, 230",
     spotlight: "185, 215, 232",
   },
+  light: {
+    line: "84, 104, 122",
+    accent: "23, 126, 79",
+    pinDisc: "255, 255, 255",
+    highlight: "120, 215, 165",
+    atmosphere: "90, 150, 200",
+    spotlight: "40, 78, 104",
+  },
+} as const;
+const isDark = (): boolean => document.documentElement.classList.contains("dark");
+const colors = () => (isDark() ? PALETTES.dark : PALETTES.light);
+const blendLight = (): GlobalCompositeOperation => (isDark() ? "lighter" : "source-over");
+
+const C = {
   globe: {
     hemisphere: "south" as GlobeHemisphere,
     /** Longitude face à nous au démarrage, selon l'hémisphère. */
@@ -458,10 +475,10 @@ function strokeSphereLines(ctx: CanvasRenderingContext2D, lines: readonly Sphere
 }
 
 function drawGraticule(ctx: CanvasRenderingContext2D, graticule: readonly SphereLine[], layout: Layout, view: View, bounds: Bounds): void {
-  strokeSphereLines(ctx, graticule, layout, view, C.colors.line, C.globe.lineAlpha, C.globe.lineWidth, bounds);
+  strokeSphereLines(ctx, graticule, layout, view, colors().line, C.globe.lineAlpha, C.globe.lineWidth, bounds);
   if (C.globe.outline) {
     const g = layout.globe;
-    ctx.strokeStyle = rgba(C.colors.line, C.globe.lineAlpha);
+    ctx.strokeStyle = rgba(colors().line, C.globe.lineAlpha);
     ctx.beginPath();
     ctx.arc(g.cx, g.cy, g.r, 0, TAU);
     ctx.stroke();
@@ -539,7 +556,7 @@ function fillLand(ctx: CanvasRenderingContext2D, land: readonly LandPolygon[], l
 function drawAtmosphere(ctx: CanvasRenderingContext2D, layout: Layout): void {
   if (!C.atmosphere.enabled) return;
   const g = layout.globe;
-  const color = C.colors.atmosphere;
+  const color = colors().atmosphere;
   const inner = g.r * (1 - C.atmosphere.width);
   const outer = g.r * (1 + C.atmosphere.width);
   const limb = (g.r - inner) / (outer - inner);
@@ -558,7 +575,7 @@ function drawAtmosphere(ctx: CanvasRenderingContext2D, layout: Layout): void {
 /** Lampe de la souris : redessine lignes et pays plus clairs dans un cercle adouci. */
 function drawSpotlight(ctx: CanvasRenderingContext2D, layer: SpotLayer, layout: Layout, view: View, graticule: readonly SphereLine[], world: World | null, light: Spotlight): void {
   const L = C.spotlight;
-  const color = C.colors.spotlight;
+  const color = colors().spotlight;
   const r = L.radius;
   const bounds: Bounds = { x0: light.x - r, y0: light.y - r, x1: light.x + r, y1: light.y + r };
   const sctx = layer.ctx;
@@ -596,7 +613,7 @@ function drawSpotlight(ctx: CanvasRenderingContext2D, layer: SpotLayer, layout: 
 
   ctx.save();
   ctx.setTransform(1, 0, 0, 1, 0, 0);
-  ctx.globalCompositeOperation = "lighter";
+  ctx.globalCompositeOperation = blendLight();
   ctx.drawImage(layer.canvas, ox, oy);
   ctx.restore();
 }
@@ -641,9 +658,9 @@ function eraseBehindText(ctx: CanvasRenderingContext2D, layout: Layout): void {
 function glow(ctx: CanvasRenderingContext2D, at: Vec2, radius: number, alpha: number): void {
   if (alpha <= 0 || radius <= 0) return;
   const g = ctx.createRadialGradient(at.x, at.y, 0, at.x, at.y, radius);
-  g.addColorStop(0, rgba(C.colors.highlight, alpha));
-  g.addColorStop(0.35, rgba(C.colors.accent, alpha * 0.6));
-  g.addColorStop(1, rgba(C.colors.accent, 0));
+  g.addColorStop(0, rgba(colors().highlight, alpha));
+  g.addColorStop(0.35, rgba(colors().accent, alpha * 0.6));
+  g.addColorStop(1, rgba(colors().accent, 0));
   ctx.fillStyle = g;
   ctx.beginPath();
   ctx.arc(at.x, at.y, radius, 0, TAU);
@@ -681,7 +698,7 @@ function drawBeam(ctx: CanvasRenderingContext2D, layout: Layout, s: SceneState, 
   const fadeStart = clamp(1 - 70 / len, 0.45, 0.9);
   const breathe = animate ? 0.8 + 0.2 * Math.sin(s.breathePhase * TAU) : 0.9;
   const boost = 1 + C.hover.beamBoost * heat;
-  const accent = C.colors.accent;
+  const accent = colors().accent;
 
   const wedge = (spread: number): void => {
     const w = halfWidth * spread;
@@ -716,10 +733,10 @@ function drawBeam(ctx: CanvasRenderingContext2D, layout: Layout, s: SceneState, 
       const band = 0.14;
       const endFade = 1 - clamp((pos - 0.6) / 0.35);
       const g = ctx.createLinearGradient(0, 0, len, 0);
-      g.addColorStop(clamp(pos - band), rgba(C.colors.highlight, 0));
-      g.addColorStop(clamp(pos), rgba(C.colors.highlight, 0.18 * endFade * breathe * boost));
-      g.addColorStop(clamp(pos + band), rgba(C.colors.highlight, 0));
-      ctx.globalCompositeOperation = "lighter";
+      g.addColorStop(clamp(pos - band), rgba(colors().highlight, 0));
+      g.addColorStop(clamp(pos), rgba(colors().highlight, 0.18 * endFade * breathe * boost));
+      g.addColorStop(clamp(pos + band), rgba(colors().highlight, 0));
+      ctx.globalCompositeOperation = blendLight();
       wedge(1);
       ctx.fillStyle = g;
       ctx.fill();
@@ -731,7 +748,7 @@ function drawBeam(ctx: CanvasRenderingContext2D, layout: Layout, s: SceneState, 
 function drawPing(ctx: CanvasRenderingContext2D, p: SurfacePoint, age: number, life: number): void {
   const a = progress(age, 0, 0.25) * (1 - progress(age, life - 0.6, 0.6)) * clamp(p.z * 2.5);
   if (a <= 0) return;
-  const accent = C.colors.accent;
+  const accent = colors().accent;
   glow(ctx, p, 11, 0.45 * a);
   ctx.fillStyle = rgba(accent, a);
   ctx.beginPath();
@@ -795,7 +812,7 @@ function drawArc3D(ctx: CanvasRenderingContext2D, layout: Layout, a: SurfacePoin
   for (let c = 0; c < ARC_CHUNKS; c++) {
     // Traînée : transparente côté queue, lumineuse côté tête.
     const f = (c + 1) / ARC_CHUNKS;
-    ctx.strokeStyle = rgba(C.colors.accent, alpha * (0.06 + 0.94 * f * f));
+    ctx.strokeStyle = rgba(colors().accent, alpha * (0.06 + 0.94 * f * f));
     ctx.beginPath();
     let open = false;
     for (let i = 1; i <= ARC_STEPS_PER_CHUNK; i++) {
@@ -886,10 +903,10 @@ function drawRipple(ctx: CanvasRenderingContext2D, layout: Layout, b: Vec3, age:
     }
     // Trait large et diffus, puis trait fin et net.
     ctx.lineWidth = 7;
-    ctx.strokeStyle = rgba(C.colors.accent, 0.12 * fade);
+    ctx.strokeStyle = rgba(colors().accent, 0.12 * fade);
     ctx.stroke();
     ctx.lineWidth = 1.6;
-    ctx.strokeStyle = rgba(C.colors.accent, 0.8 * fade);
+    ctx.strokeStyle = rgba(colors().accent, 0.8 * fade);
     ctx.stroke();
   }
 }
@@ -899,7 +916,7 @@ function drawPin(ctx: CanvasRenderingContext2D, layout: Layout, s: SceneState, a
   const { pin, pinOuter, pinInner } = layout;
   const scale = easeOutBack(appear);
   const fade = clamp(appear * 2);
-  const accent = C.colors.accent;
+  const accent = colors().accent;
   const heat = animate ? s.heat : 0;
   const flashScale = s.flashScale;
 
@@ -926,7 +943,7 @@ function drawPin(ctx: CanvasRenderingContext2D, layout: Layout, s: SceneState, a
     ctx.arc(pin.x, pin.y, fr, 0, TAU);
     ctx.fill();
   }
-  ctx.fillStyle = rgba(C.colors.pinDisc, 0.92 * fade);
+  ctx.fillStyle = rgba(colors().pinDisc, 0.92 * fade);
   ctx.beginPath();
   ctx.arc(pin.x, pin.y, Math.max(0, pinOuter * scale), 0, TAU);
   ctx.fill();
@@ -945,11 +962,11 @@ function renderScene(ctx: CanvasRenderingContext2D, layout: Layout, graticule: r
 
   // 1. Globe : atmosphère, terres, grille, côtes, frontières.
   drawAtmosphere(ctx, layout);
-  if (world) fillLand(ctx, world.land, layout, view, C.colors.line, C.countries.landAlpha, full);
+  if (world) fillLand(ctx, world.land, layout, view, colors().line, C.countries.landAlpha, full);
   drawGraticule(ctx, graticule, layout, view, full);
   if (world) {
-    strokeSphereLines(ctx, world.coast, layout, view, C.colors.line, C.countries.coastAlpha, C.countries.coastWidth, full);
-    strokeSphereLines(ctx, world.borders, layout, view, C.colors.line, C.countries.borderAlpha, C.countries.borderWidth, full);
+    strokeSphereLines(ctx, world.coast, layout, view, colors().line, C.countries.coastAlpha, C.countries.coastWidth, full);
+    strokeSphereLines(ctx, world.borders, layout, view, colors().line, C.countries.borderAlpha, C.countries.borderWidth, full);
   }
   // 2. Lampe de la souris, pings, arcs 3D et onde du clic.
   const target = pinSurface(layout);

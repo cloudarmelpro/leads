@@ -20,9 +20,11 @@ const PIN = (
 );
 const ARROW = <path d="M5 12h14M13 6l6 6-6 6" />;
 
-// Le hero est toujours posé sur la scène sombre : ses couleurs ne suivent pas le thème.
 // Boutons en texte seul (décision du client, 2026-09-30, malgré le pictogramme de la maquette).
+// Le hero suit le thème depuis le 2026-09-30 (scène 3D claire, textes encre) : valeurs de la
+// maquette sombre sous `dark:`, équivalents clairs par défaut.
 const BTN = "tap-44 pointer-events-auto inline-flex h-[40px] items-center rounded-[8px] px-[18px] text-[13.5px] leading-[1] font-medium whitespace-nowrap no-underline";
+const FOND = "238,241,243";
 const WORD = "inline-block [animation:tw-hero-word_1400ms_cubic-bezier(0.16,0.68,0.16,1)_both] motion-reduce:[animation:none]";
 
 /**
@@ -36,7 +38,7 @@ export function Hero({ lang, dict }: Props) {
   const t = dict.hero;
 
   return (
-    <section id="top" data-fab-avoid data-header-sombre className="relative z-[2] block">
+    <section id="top" data-fab-avoid className="relative z-[2] block">
       <HeroStage
         fallback={{
           portrait: { src: "/images/home/hero-repli-mobile.webp", width: 830, height: 1612 },
@@ -46,7 +48,7 @@ export function Hero({ lang, dict }: Props) {
       >
         <span
           aria-hidden
-          className="pointer-events-none absolute inset-[0px] z-0 block bg-[radial-gradient(ellipse_42%_50%_at_44%_38%,rgba(1,24,35,0)_0%,rgba(1,24,35,0)_45%,rgba(1,24,35,0.85)_85%,#011823_100%),linear-gradient(180deg,rgba(1,24,35,0.7)_0%,rgba(1,24,35,0)_22%,rgba(1,24,35,0)_50%,rgba(1,24,35,0.8)_75%,#011823_100%)]"
+          className={`pointer-events-none absolute inset-[0px] z-0 block bg-[radial-gradient(ellipse_42%_50%_at_44%_38%,rgba(${FOND},0)_0%,rgba(${FOND},0)_45%,rgba(${FOND},0.85)_85%,#eef1f3_100%),linear-gradient(180deg,rgba(${FOND},0.7)_0%,rgba(${FOND},0)_22%,rgba(${FOND},0)_50%,rgba(${FOND},0.8)_75%,#eef1f3_100%)] dark:bg-[radial-gradient(ellipse_42%_50%_at_44%_38%,rgba(1,24,35,0)_0%,rgba(1,24,35,0)_45%,rgba(1,24,35,0.85)_85%,#011823_100%),linear-gradient(180deg,rgba(1,24,35,0.7)_0%,rgba(1,24,35,0)_22%,rgba(1,24,35,0)_50%,rgba(1,24,35,0.8)_75%,#011823_100%)]`}
         />
 
         <div className="relative flex flex-1 flex-col [opacity:calc(1-var(--exit,0)*1.6)]">
@@ -55,34 +57,34 @@ export function Hero({ lang, dict }: Props) {
           <div className="relative z-[1] flex flex-1 items-end px-[clamp(18px,4vw,40px)] pt-[calc(80px+clamp(28px,5vw,72px))] pb-[clamp(96px,13vh,150px)] [@media(max-width:859px)_and_(orientation:portrait)]:pt-[calc(80px+clamp(28px,5vw,72px)+clamp(140px,22vh,220px))]">
             <div data-hero-text className="mx-auto grid w-full max-w-[1400px] grid-cols-[minmax(0,1fr)] items-end gap-[clamp(28px,4vw,72px)] min-[860px]:grid-cols-[minmax(0,1.02fr)_minmax(0,0.98fr)]">
               <div className="flex max-w-[600px] min-w-[0px] flex-col items-start gap-[18px]">
-                <span className="text-[15px] leading-[20px] font-medium text-white">{t.kicker}</span>
-                <h1 className="m-[0px] max-w-[600px] text-[clamp(28px,3vw,40px)] leading-[1.05] font-semibold tracking-[-0.02em] text-white uppercase text-balance">
+                <span className="text-[15px] leading-[20px] font-medium text-encre dark:text-white">{t.kicker}</span>
+                <h1 className="m-[0px] max-w-[600px] text-[clamp(28px,3vw,40px)] leading-[1.05] font-semibold tracking-[-0.02em] text-encre uppercase text-balance dark:text-white">
                   <span className={`${WORD} [animation-delay:90ms]`}>{t.titleA}</span>{" "}
-                  <span className={`${WORD} text-[#30D98C] [animation-delay:560ms]`}>{t.titleB}</span>
+                  <span className={`${WORD} text-vert [animation-delay:560ms] dark:text-[#30D98C]`}>{t.titleB}</span>
                 </h1>
-                <p className="m-[0px] max-w-[440px] text-[15px] leading-[24px] font-normal text-[#E4ECEF] text-pretty">{t.lede}</p>
+                <p className="m-[0px] max-w-[440px] text-[15px] leading-[24px] font-normal text-texte-bascule text-pretty dark:text-[#E4ECEF]">{t.lede}</p>
                 <div className="mt-[8px] flex flex-wrap items-center gap-[12px]">
-                  <Link href={`/${lang}/soumission`} className={`${BTN} bg-[#30D98C] text-[#011823] transition-colors hover:bg-[#7FEFC0]`}>
+                  <Link href={`/${lang}/soumission`} className={`${BTN} bg-vert text-sur-vert transition-colors hover:bg-vert-clair dark:bg-[#30D98C] dark:text-[#011823] dark:hover:bg-[#7FEFC0]`}>
                     <span className="whitespace-nowrap">{t.ctaBook}</span>
                   </Link>
                   <Link
                     href={`/${lang}/services`}
-                    className={`${BTN} bg-[rgba(1,41,60,0.72)] text-white shadow-[inset_0_0_0_1px_#0A3247] transition-[color,box-shadow] hover:text-[#30D98C] hover:shadow-[inset_0_0_0_1px_#30D98C]`}
+                    className={`${BTN} bg-verre text-encre shadow-[inset_0_0_0_1px_var(--color-filet-verre)] backdrop-blur-[14px] transition-[color,box-shadow] hover:text-vert hover:shadow-[inset_0_0_0_1px_var(--color-vert)] dark:bg-[rgba(1,41,60,0.72)] dark:text-white dark:shadow-[inset_0_0_0_1px_#0A3247] dark:backdrop-blur-none dark:hover:text-[#30D98C] dark:hover:shadow-[inset_0_0_0_1px_#30D98C]`}
                   >
                     <span className="whitespace-nowrap">{t.ctaServices}</span>
                   </Link>
                 </div>
               </div>
-              <p className="m-[0px] max-w-[440px] text-[15px] leading-[24px] font-normal text-[#A9BCC4] text-pretty min-[860px]:justify-self-end min-[860px]:text-right">{t.aside}</p>
+              <p className="m-[0px] max-w-[440px] text-[15px] leading-[24px] font-normal text-texte2 text-pretty min-[860px]:justify-self-end min-[860px]:text-right dark:text-[#A9BCC4]">{t.aside}</p>
             </div>
           </div>
 
           <div className="relative z-[1] flex justify-center px-[clamp(18px,4vw,40px)] pb-[26px]">
             <a
               href="#secteurs"
-              className="pointer-events-auto inline-flex h-[40px] max-w-full min-w-[0px] items-center gap-[10px] rounded-[8px] bg-[rgba(1,24,35,0.55)] pr-[16px] pl-[6px] text-[13.5px] leading-[1] font-normal whitespace-nowrap text-white no-underline shadow-[inset_0_0_0_1px_rgba(255,255,255,0.09)] backdrop-blur-[14px] transition-colors hover:bg-[rgba(1,24,35,0.75)]"
+              className="pointer-events-auto inline-flex h-[40px] max-w-full min-w-[0px] items-center gap-[10px] rounded-[8px] bg-verre pr-[16px] pl-[6px] text-[13.5px] leading-[1] font-normal whitespace-nowrap text-encre no-underline shadow-[inset_0_0_0_1px_var(--color-filet-verre)] backdrop-blur-[14px] transition-colors hover:bg-verre-fort dark:bg-[rgba(1,24,35,0.55)] dark:text-white dark:shadow-[inset_0_0_0_1px_rgba(255,255,255,0.09)] dark:hover:bg-[rgba(1,24,35,0.75)]"
             >
-              <span className="inline-flex h-[28px] shrink-0 items-center gap-[6px] rounded-[6px] bg-[#30D98C] px-[10px] text-[12px] font-semibold text-[#011823]">
+              <span className="inline-flex h-[28px] shrink-0 items-center gap-[6px] rounded-[6px] bg-vert px-[10px] text-[12px] font-semibold text-sur-vert dark:bg-[#30D98C] dark:text-[#011823]">
                 {icon(PIN, 13, 2.2)}
                 {t.teaserKicker}
               </span>

@@ -16,11 +16,20 @@ export type HeroScene = {
   setLogoAnchor: (f: number | null) => void;
   setMap: (v: number) => void;
   setActive: (v: boolean) => void;
+  /** Thème : fond, fumée, carte et post-traitement changent de palette (mode clair demandé le 2026-09-30). */
+  setTheme: (dark: boolean) => void;
   dispose: () => void;
 };
 
 const CONFIG = { tint: 0.0, map: 2.0, night: 0.38, loop: 9.0, extrude: 0.3, smoke: 1.0, clear: 0.16, rough: 0.34, bloom: 0.12, swing: 0.45 };
 const BG = 0x021b26;
+// Palettes par thème. En clair : fond gris perle, fumée claire, points de carte en fusion
+// normale (l'additif blanchit sur fond clair), pas de bloom, vignette légère, fondu de sortie
+// vers le fond clair de la page.
+const THEMES = {
+  dark: { bg: BG, haze: 0x14463a, fade: [0.008, 0.106, 0.149] as const, lo: 0x177e4f, hi: 0x30d98c, bloom: CONFIG.bloom, vig: 0.42, additiveMap: true, puffLight: false },
+  light: { bg: 0xeef1f3, haze: 0xd7e3dd, fade: [0.992, 0.992, 0.992] as const, lo: 0x177e4f, hi: 0x22b06e, bloom: 0, vig: 0.1, additiveMap: false, puffLight: true },
+};
 
 type Plane = THREE.Mesh<THREE.PlaneGeometry, THREE.MeshBasicMaterial>;
 type Puff = {
@@ -411,15 +420,21 @@ export function createHeroScene(host: HTMLElement, pointerArea: HTMLElement, opt
     return [1.1 * (Math.random() < 0.5 ? -1 : 1), 1.0 * (Math.random() < 0.5 ? -1 : 1), 1.05];
   };
   const puffs: Puff[] = [];
+  // Teintes HSL d'origine de chaque nappe de fumée : en clair, on les réapplique plus pâles.
+  const smokeTints: { mat: THREE.MeshBasicMaterial; h: number; s: number; l: number }[] = [];
+  const tint = (mat: THREE.MeshBasicMaterial, h: number, s: number, l: number) => {
+    smokeTints.push({ mat, h, s, l });
+    mat.color.setHSL(h, s, l);
+  };
   const N_BODY = mobile ? 60 : 112;
   for (let i = 0; i < N_BODY; i++) {
     const s = samplePos(0.1, 0.75);
     const L = 0.33 - Math.min(1, s[2]) * 0.15 + (Math.random() - 0.5) * 0.06;
-    const col = new THREE.Color().setHSL(0.424 + (Math.random() - 0.5) * 0.05, 0.24 + Math.random() * 0.18, L);
     const mesh: Plane = new THREE.Mesh(
       new THREE.PlaneGeometry(1, 1),
-      new THREE.MeshBasicMaterial({ map: TEX[(Math.random() * TEX.length) | 0], color: col, transparent: true, depthWrite: false, depthTest: true, blending: THREE.NormalBlending, opacity: 0 }),
+      new THREE.MeshBasicMaterial({ map: TEX[(Math.random() * TEX.length) | 0], transparent: true, depthWrite: false, depthTest: true, blending: THREE.NormalBlending, opacity: 0 }),
     );
+    tint(mesh.material, 0.424 + (Math.random() - 0.5) * 0.05, 0.24 + Math.random() * 0.18, L);
     mesh.renderOrder = 5;
     const inv = 1 / (s[2] + 1e-3);
     const p: Puff = {
@@ -500,13 +515,13 @@ export function createHeroScene(host: HTMLElement, pointerArea: HTMLElement, opt
       new THREE.PlaneGeometry(1, 1),
       new THREE.MeshBasicMaterial({
         map: TEX[b % TEX.length],
-        color: new THREE.Color().setHSL(0.424 + (Math.random() - 0.5) * 0.04, 0.26 + Math.random() * 0.16, 0.28 + Math.random() * 0.14),
         transparent: true,
         depthWrite: false,
         depthTest: true,
         opacity: 0,
       }),
     );
+    tint(bm.material, 0.424 + (Math.random() - 0.5) * 0.04, 0.26 + Math.random() * 0.16, 0.28 + Math.random() * 0.14);
     bm.renderOrder = 7;
     bm.visible = false;
     smokeGroup.add(bm);
@@ -675,10 +690,8 @@ export function createHeroScene(host: HTMLElement, pointerArea: HTMLElement, opt
     "  gl_FragColor=vec4(col*b*uVis,m*vA);",
     "}",
   ].join("\n");
-  const mapDots = new THREE.Points(
-    mg,
-    new THREE.ShaderMaterial({ uniforms: mapU, transparent: true, depthTest: true, depthWrite: false, blending: THREE.AdditiveBlending, vertexShader: MAP_VS, fragmentShader: MAP_FS }),
-  );
+  const mapMat = new THREE.ShaderMaterial({ uniforms: mapU, transparent: true, depthTest: true, depthWrite: false, blending: THREE.AdditiveBlending, vertexShader: MAP_VS, fragmentShader: MAP_FS });
+  const mapDots = new THREE.Points(mg, mapMat);
   mapDots.frustumCulled = false;
   mapDots.renderOrder = -5;
   mapGroup.add(mapDots);
@@ -871,11 +884,20 @@ export function createHeroScene(host: HTMLElement, pointerArea: HTMLElement, opt
         ].join("\n"),
       }),
       comp: new THREE.ShaderMaterial({
-        uniforms: { tBase: { value: null }, tBloom: { value: null }, uBloom: { value: CONFIG.bloom }, uGrain: { value: 0.028 }, uTime: { value: 0 }, uVig: { value: 0.42 }, uFade: { value: 0 } },
+        uniforms: {
+          tBase: { value: null },
+          tBloom: { value: null },
+          uBloom: { value: CONFIG.bloom },
+          uGrain: { value: 0.028 },
+          uTime: { value: 0 },
+          uVig: { value: 0.42 },
+          uFade: { value: 0 },
+          uFadeCol: { value: new THREE.Vector3(...THEMES.dark.fade) },
+        },
         vertexShader: VS,
         fragmentShader: [
           "precision highp float; varying vec2 vUv;",
-          "uniform sampler2D tBase,tBloom; uniform float uBloom,uGrain,uTime,uVig,uFade;",
+          "uniform sampler2D tBase,tBloom; uniform float uBloom,uGrain,uTime,uVig,uFade; uniform vec3 uFadeCol;",
           "float h12(vec2 p){ vec3 q=fract(vec3(p.xyx)*0.1031); q+=dot(q,q.yzx+33.33); return fract((q.x+q.y)*q.z); }",
           "void main(){",
           " vec3 b=texture2D(tBase,vUv).rgb, g=texture2D(tBloom,vUv).rgb;",
@@ -883,7 +905,7 @@ export function createHeroScene(host: HTMLElement, pointerArea: HTMLElement, opt
           " vec3 cc=clamp(c,0.0,1.0);",
           " c=mix(c,cc*cc*(3.0-2.0*cc),0.28);",
           " vec2 q=vUv-0.5; c*=clamp(1.0-dot(q,q)*uVig,0.0,1.0);",
-          " c=mix(c,vec3(0.008,0.106,0.149),uFade);",
+          " c=mix(c,uFadeCol,uFade);",
           " c+=(h12(gl_FragCoord.xy+uTime)-0.5)*uGrain;",
           " gl_FragColor=vec4(c,1.0); }",
         ].join("\n"),
@@ -1103,6 +1125,25 @@ export function createHeroScene(host: HTMLElement, pointerArea: HTMLElement, opt
     },
     setMap: (v) => {
       if (isFinite(v)) mapU.uBase.value = 0.5 * v;
+    },
+    setTheme: (dark) => {
+      if (disposed) return;
+      const T = dark ? THEMES.dark : THEMES.light;
+      (scene.background as THREE.Color).setHex(T.bg);
+      hazeU.uCol.value.setHex(T.haze);
+      mapU.uLo.value.setHex(T.lo);
+      mapU.uHi.value.setHex(T.hi);
+      mapMat.blending = T.additiveMap ? THREE.AdditiveBlending : THREE.NormalBlending;
+      mapMat.needsUpdate = true;
+      for (const { mat, h, s, l } of smokeTints) {
+        if (T.puffLight) mat.color.setHSL(h, s * 0.55, 0.8 + (l - 0.25) * 0.35);
+        else mat.color.setHSL(h, s, l);
+      }
+      if (post) {
+        post.comp.uniforms.uBloom.value = T.bloom;
+        post.comp.uniforms.uVig.value = T.vig;
+        post.comp.uniforms.uFadeCol.value.set(...T.fade);
+      }
     },
     setActive: (v) => {
       if (disposed || v === active) return;

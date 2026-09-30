@@ -3,6 +3,8 @@
 import { getImageProps } from "next/image";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 
+import { useTheme } from "@/lib/use-theme";
+
 import type { HeroScene } from "./scene";
 
 type Still = { src: string; width: number; height: number };
@@ -40,6 +42,14 @@ export function HeroStage({ children, fallback, mapIntensity = 2, exitLength = 0
   const canvasHost = useRef<HTMLDivElement>(null);
   const still = useRef<HTMLSpanElement>(null);
   const [mode, setMode] = useState<"pending" | "webgl" | "still">("pending");
+  // Scène en cours et thème courant : la scène suit le thème (mode clair du hero, 2026-09-30).
+  const sceneRef = useRef<HeroScene | null>(null);
+  const { isDark } = useTheme();
+  const darkRef = useRef(isDark);
+  useEffect(() => {
+    darkRef.current = isDark;
+    sceneRef.current?.setTheme(isDark);
+  }, [isDark]);
 
   // Une seule image téléchargée : celle du format courant (<picture> + getImageProps).
   const common = { alt: "", sizes: "100vw", loading: "eager", fetchPriority: "high" } as const;
@@ -128,6 +138,8 @@ export function HeroStage({ children, fallback, mapIntensity = 2, exitLength = 0
         if (!alive) return;
         const scene = createHeroScene(host, area, { skipIntro: false, mapIntensity, logoScale: null });
         hero = scene;
+        sceneRef.current = scene;
+        scene.setTheme(darkRef.current);
         // Sur une colonne (< 860px), logo centré entre l'en-tête et le haut du texte
         // (`data-hero-text`), quelle que soit la taille de l'écran.
         const anchor = () => {
@@ -160,6 +172,7 @@ export function HeroStage({ children, fallback, mapIntensity = 2, exitLength = 0
       io?.disconnect();
       anchorRo?.disconnect();
       hero?.dispose();
+      sceneRef.current = null;
     };
   }, [mode, mapIntensity, exitLength]);
 
@@ -167,7 +180,7 @@ export function HeroStage({ children, fallback, mapIntensity = 2, exitLength = 0
     // Au moins un écran de haut, davantage si le contenu l'exige (téléphone à l'horizontale :
     // 360px ne suffisent pas, le texte débordait du panneau).
     <div ref={root} className="relative block min-h-[100vh] w-full [--exit:0]">
-      <div ref={panel} className="relative z-0 flex min-h-[100vh] flex-col overflow-hidden bg-[#011823] [touch-action:pan-y]">
+      <div ref={panel} className="relative z-0 flex min-h-[100vh] flex-col overflow-hidden bg-[#eef1f3] [touch-action:pan-y] dark:bg-[#011823]">
         <div ref={canvasHost} aria-hidden className="absolute inset-[0px]">
           {mode === "still" && (
             <span ref={still} className="absolute top-[-4%] left-[-4%] block h-[108%] w-[108%] origin-[50%_45%] will-change-transform">
