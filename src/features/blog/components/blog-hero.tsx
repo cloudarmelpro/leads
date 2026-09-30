@@ -30,7 +30,9 @@ export function BlogHero({ posts, lang, dict }: Props) {
     <section
       id="top"
       data-header-sombre
-      className="relative flex min-h-[560px] items-end justify-center overflow-hidden bg-[#011823] px-[clamp(16px,4vw,56px)] pt-[120px] pb-[48px] min-[620px]:pt-[140px] min-[620px]:pb-[clamp(32px,7vh,72px)] min-[900px]:h-[100svh] min-[900px]:pt-[clamp(96px,14vh,150px)]"
+      // Bas du hero plus aéré que la maquette (48px / 32–72px), demande du client du 2026-09-30 :
+      // le même air sous le texte que sur Soumission, Services et À propos (72–140px).
+      className="relative flex min-h-[560px] items-end justify-center overflow-hidden bg-[#011823] px-[clamp(16px,4vw,56px)] pt-[120px] pb-[clamp(72px,9.5vw,140px)] min-[620px]:pt-[140px] min-[900px]:h-[100svh] min-[900px]:pt-[clamp(96px,14vh,150px)] min-[900px]:pb-[clamp(72px,12vh,140px)]"
     >
       {posts.map((post, i) => (
         <span
