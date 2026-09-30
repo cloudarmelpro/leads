@@ -55,7 +55,9 @@ export async function BlogArticle({ post, lang }: Props) {
       <section
         id="top"
         data-header-sombre
-        className={`relative flex min-h-[clamp(520px,72vh,760px)] items-end justify-center overflow-hidden bg-[#011823] pt-[calc(80px+clamp(56px,8vw,120px))] pb-[clamp(48px,6vw,80px)] ${GUTTER}`}
+        // Bas du hero plus aéré que la maquette (48–80px), demande du client du 2026-09-30 :
+        // le même air sous le texte que sur les autres heros (72–140px).
+        className={`relative flex min-h-[clamp(520px,72vh,760px)] items-end justify-center overflow-hidden bg-[#011823] pt-[calc(80px+clamp(56px,8vw,120px))] pb-[clamp(72px,9.5vw,140px)] ${GUTTER}`}
       >
         <Image src={post.cover} alt="" fill priority sizes="100vw" className="object-cover" />
         <span aria-hidden className="absolute inset-[0px] block bg-[linear-gradient(90deg,rgba(1,24,35,0.92)_0%,rgba(1,24,35,0.7)_38%,rgba(1,24,35,0.25)_70%,rgba(1,24,35,0.35)_100%)]" />
