@@ -60,11 +60,18 @@ export function MethodTrack({ steps, images, stepLabel, prevLabel, nextLabel, ch
       >
         {steps.map((step, i) => (
           <article key={step.title} className="flex w-[min(78vw,320px)] shrink-0 grow-0 snap-start flex-col gap-[14px] min-[640px]:w-[clamp(280px,23vw,340px)]">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-[16px] bg-carte shadow-[inset_0_0_0_1px_rgba(255,255,255,0.06)]">
-              {images[i] && <Image src={`/images/home/${images[i]}`} alt={step.title} fill sizes="(max-width: 640px) 78vw, 340px" className="object-cover" />}
-              <span className="absolute top-1/2 left-1/2 inline-flex min-h-[36px] w-max max-w-[calc(100%-32px)] -translate-x-1/2 -translate-y-1/2 items-center gap-[8px] rounded-[8px] bg-[rgba(1,24,35,0.62)] py-[5px] pr-[6px] pl-[14px] text-[14px] leading-[18px] font-medium text-white shadow-[inset_0_0_0_1px_rgba(255,255,255,0.12)] backdrop-blur-[14px]">
+            {/* Deux rendus par étape (mode clair demandé le 2026-09-30) : `<nom>.webp` nuit et
+                `<nom>-clair.webp` studio clair ; le thème affiche l'un des deux. L'étiquette suit. */}
+            <div className="relative aspect-[4/5] overflow-hidden rounded-[16px] bg-carte shadow-[inset_0_0_0_1px_var(--color-contour)] dark:shadow-[inset_0_0_0_1px_rgba(255,255,255,0.06)]">
+              {images[i] && (
+                <>
+                  <Image src={`/images/home/${images[i].replace(/\.webp$/, "-clair.webp")}`} alt={step.title} fill sizes="(max-width: 640px) 78vw, 340px" className="object-cover dark:hidden" />
+                  <Image src={`/images/home/${images[i]}`} alt={step.title} fill sizes="(max-width: 640px) 78vw, 340px" className="hidden object-cover dark:block" />
+                </>
+              )}
+              <span className="absolute top-1/2 left-1/2 inline-flex min-h-[36px] w-max max-w-[calc(100%-32px)] -translate-x-1/2 -translate-y-1/2 items-center gap-[8px] rounded-[8px] bg-[rgba(253,253,253,0.78)] py-[5px] pr-[6px] pl-[14px] text-[14px] leading-[18px] font-medium text-encre shadow-[inset_0_0_0_1px_rgba(30,30,30,0.1)] backdrop-blur-[14px] dark:bg-[rgba(1,24,35,0.62)] dark:text-white dark:shadow-[inset_0_0_0_1px_rgba(255,255,255,0.12)]">
                 <span className="min-w-[0px] text-balance">{step.title}</span>
-                <span className="inline-flex h-[26px] shrink-0 items-center rounded-[6px] bg-[rgba(255,255,255,0.12)] px-[9px] text-[12px] font-normal whitespace-nowrap text-[#E4ECEF]">
+                <span className="inline-flex h-[26px] shrink-0 items-center rounded-[6px] bg-[rgba(30,30,30,0.08)] px-[9px] text-[12px] font-normal whitespace-nowrap text-texte2 dark:bg-[rgba(255,255,255,0.12)] dark:text-[#E4ECEF]">
                   {stepLabel.replace("{n}", String(i + 1))}
                 </span>
               </span>
