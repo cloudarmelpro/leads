@@ -85,7 +85,9 @@ export function ServicesShowcase({ lang, items }: Props) {
   };
 
   return (
-    <div className="group grid h-[clamp(520px,54vw,760px)] min-w-[0px] grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-[14px]">
+    // Hauteur entre celle d'avant (380–560px) et celle de la maquette v3 (520–760px, jugée trop
+    // grande par le client le 2026-09-30 ; « un peu plus long » que l'ancienne).
+    <div className="group grid h-[clamp(440px,46vw,640px)] min-w-[0px] grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-[14px]">
       {track("left")}
       {track("right")}
     </div>
