@@ -244,7 +244,7 @@ export function ServicesExplorer({ lang, dict }: Props) {
                         </svg>
                       </span>
                       <span className="flex min-w-[0px] flex-1 flex-col">
-                        <span className={`overflow-hidden font-semibold text-ellipsis whitespace-nowrap text-encre ${compact ? "text-[14px] leading-[20px]" : "text-[15px] leading-[1.25]"}`} style={{ transition: `font-size 820ms ${EASE_FOLD}` }}>
+                        <span className={`overflow-hidden font-semibold text-ellipsis whitespace-nowrap text-encre ${compact ? "mt-[2px] text-[14px] leading-[20px]" : "text-[15px] leading-[1.25]"}`} style={{ transition: `font-size 820ms ${EASE_FOLD}` }}>
                           {compact ? f.short : f.label}
                         </span>
                         <span className="grid" style={{ gridTemplateRows: fold, ...foldStyle }}>
