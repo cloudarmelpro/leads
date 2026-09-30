@@ -90,9 +90,11 @@ export function Positioning({ dict }: Props) {
             <a
               key={label}
               href="#secteurs"
-              className="tap-44 inline-flex items-center gap-[10px] text-[clamp(15px,1.25vw,19px)] leading-[24px] font-normal tracking-[0.01em] whitespace-nowrap text-texte-sourd no-underline transition-colors duration-200 ease-[cubic-bezier(0.2,0.7,0.2,1)] hover:text-encre"
+              // Mode clair : libellés en encre et pictogrammes verts (gris jugé trop pâle par le
+              // client, 2026-09-30) ; en sombre, le gris sourd de la maquette.
+              className="tap-44 inline-flex items-center gap-[10px] text-[clamp(15px,1.25vw,19px)] leading-[24px] font-normal tracking-[0.01em] whitespace-nowrap text-encre no-underline transition-colors duration-200 ease-[cubic-bezier(0.2,0.7,0.2,1)] hover:text-vert dark:text-texte-sourd dark:hover:text-encre"
             >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden className="relative top-[-2px] block shrink-0">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden className="relative top-[-2px] block shrink-0 text-vert dark:text-current">
                 {ICONS[index]}
               </svg>
               {label}
