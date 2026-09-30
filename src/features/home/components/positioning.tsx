@@ -48,6 +48,8 @@ export function Positioning({ dict }: Props) {
     <section aria-label={t.aria} className="relative z-[1] flex justify-center px-[10px]">
       <div className="flex w-full flex-col items-center gap-[clamp(32px,4vw,56px)] px-[clamp(20px,5vw,72px)] py-[clamp(128px,14vw,230px)]">
         <div className="flex max-w-[720px] flex-col items-center gap-[18px] text-center">
+          {/* Surtitre ajouté à la demande du client (2026-09-30), comme les autres sections. */}
+          <span className="text-[13px] leading-[20px] font-normal tracking-[0.08em] text-vert uppercase">{t.kicker}</span>
           <h2 className="m-[0px] text-[clamp(22px,2.2vw,30px)] leading-[1.2] font-semibold tracking-[-0.01em] text-encre text-balance">{t.title}</h2>
           {open && (
             <div id={panelId} className="flex flex-col gap-[12px]">

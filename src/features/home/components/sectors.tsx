@@ -8,9 +8,10 @@ import type { Dictionary } from "@/lib/i18n/dictionaries";
 type Props = { lang: Locale; dict: Pick<Dictionary, "organisations"> };
 
 // Photos (public/images/home/organisations), dans le MÊME ordre que `organisations.items` :
-// PME, startups, industriel, grandes entreprises, institutions, OBNL. `null` = photo de la
-// maquette pas encore reçue (fichier trop lourd pour l'export) : la carte reste sur son fond.
-const PHOTOS: (string | null)[] = [null, null, "industriel", null, null, "obnl"];
+// PME, startups, industriel, grandes entreprises, institutions, OBNL. Quatre d'entre elles
+// (pme, startups, grandes-entreprises, institutions) sont l'export tronqué de la maquette,
+// rogné du bas (~15 %) : à remplacer par les originaux dès réception.
+const PHOTOS = ["pme", "startups", "industriel", "grandes-entreprises", "institutions", "obnl"];
 
 // Dès 1100px (maquette) : l'en-tête de section se colle à 136px (80px d'en-tête de page +
 // 56px d'air), les cartes 140px plus bas, juste sous lui. `--card` est la hauteur d'une
@@ -62,8 +63,8 @@ export function Sectors({ lang, dict }: Props) {
               >
                 {/* La carte est `sticky` : Next refuse ce positionnement comme parent d'une
                     image `fill`. On l'enveloppe donc dans un calque absolu. */}
-                <span className="absolute inset-[0px] bg-[#01212F]" role={photo ? undefined : "img"} aria-label={photo ? undefined : item.alt}>
-                  {photo && <Image src={`/images/home/organisations/${photo}.jpg`} alt={item.alt} fill sizes="(max-width: 1100px) 100vw, 1400px" className="object-cover" />}
+                <span className="absolute inset-[0px] bg-[#01212F]">
+                  <Image src={`/images/home/organisations/${photo}.jpg`} alt={item.alt} fill sizes="(max-width: 1100px) 100vw, 1400px" className="object-cover" />
                 </span>
                 <span
                   aria-hidden

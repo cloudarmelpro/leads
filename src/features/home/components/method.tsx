@@ -34,7 +34,9 @@ export function Method({ lang, dict }: Props) {
     <section id="methode" className="relative flex justify-center overflow-x-clip px-[clamp(16px,4vw,56px)] pb-[clamp(128px,14vw,230px)]">
       <div className="flex w-full max-w-[1400px] flex-col gap-[clamp(28px,3vw,40px)]">
         <MethodTrack steps={t.steps} images={IMAGES} stepLabel={t.stepLabel} prevLabel={t.prev} nextLabel={t.next}>
+          {/* Surtitre ajouté à la demande du client (2026-09-30), comme les autres sections. */}
           <div className="flex min-w-[0px] flex-col items-start gap-[14px]">
+            <span className="text-[13px] leading-[20px] font-normal tracking-[0.08em] text-vert uppercase">{t.kicker}</span>
             <h2 className="m-[0px] max-w-[520px] text-[clamp(22px,2.2vw,30px)] leading-[1.2] font-semibold tracking-[-0.01em] text-encre text-pretty">{t.title}</h2>
             <p className="m-[0px] max-w-[540px] text-[16px] leading-[26px] font-normal text-texte2 text-pretty">{t.intro}</p>
           </div>

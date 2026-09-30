@@ -61,7 +61,8 @@ const FULL_BLEED = ["/a-propos", "/contact", "/prix", "/blog", "/confidentialite
 const BAR_MIDDLE = 40;
 
 /**
- * En-tête fixe (maquette Accueil, 2026-09-30) : transparent, sans fond ni filet. Logo à
+ * En-tête fixe (maquette Accueil, 2026-09-30) : transparent en haut de page, fond en verre
+ * flouté dès qu'on défile (demande du client du même jour), jamais de filet. Logo à
  * gauche ; au centre, Accueil (avec le panneau des sections), À propos, Services, Blogue ;
  * à droite langue · thème · « Soumettre une soumission ». Sous 1100px, la navigation et le
  * bouton laissent place au bouton menu (40×40) qui ouvre un menu plein écran listant aussi
@@ -144,6 +145,15 @@ export function Header({ lang, dict }: Props) {
     };
   }, [pathname]);
 
+  // Passé 40px de défilement (maquette), l'en-tête prend un fond en verre, fondu en 300ms.
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   const close = () => setMenuOpen(false);
 
   const outlined = `flex min-h-[48px] items-center justify-center rounded-[8px] border border-contour text-[15px] leading-[20px] font-normal text-encre no-underline ${EASE} hover:border-vert hover:text-vert`;
@@ -151,7 +161,9 @@ export function Header({ lang, dict }: Props) {
   return (
     <>
       <header
-        className={`${overDark ? "dark" : ""} pointer-events-none fixed inset-x-[0px] top-[0px] z-[60] flex ${HEADER_H} items-center justify-center px-[clamp(18px,4vw,40px)] max-[359px]:px-[16px]`}
+        className={`${overDark ? "dark" : ""} pointer-events-none fixed inset-x-[0px] top-[0px] z-[60] flex ${HEADER_H} items-center justify-center px-[clamp(18px,4vw,40px)] transition-[background-color,backdrop-filter] duration-300 ease-[cubic-bezier(0.2,0.7,0.2,1)] max-[359px]:px-[16px] ${
+          scrolled ? "bg-verre-fort backdrop-blur-[14px]" : "bg-transparent"
+        }`}
       >
         <div className="pointer-events-auto relative flex w-full max-w-[1400px] items-center justify-between gap-[12px]">
           <Link href={home} aria-label={`${site.name} — ${dict.nav.home}`} className="flex h-[40px] shrink-0 items-center no-underline">

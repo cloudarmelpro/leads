@@ -116,6 +116,7 @@
     ]
   },
   "method": {
+    "kicker": "Method",
     "title": "How we work",
     "intro": "A complete delivery method, from understanding the need through to deployment and product evolution.",
     "steps": [
@@ -2264,6 +2265,7 @@
   },
   "positioning": {
     "aria": "Positioning",
+    "kicker": "Positioning",
     "title": "From simple projects to enterprise platforms",
     "paragraphs": [
       "Talgasy Web designs and builds custom digital solutions for organizations of every size. SME, startup, industrial company, institution, non-profit, agency or large enterprise: our team adapts to the context, the goals and the complexity of the project.",

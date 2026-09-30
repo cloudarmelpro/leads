@@ -116,6 +116,7 @@
     ]
   },
   "method": {
+    "kicker": "Méthode",
     "title": "Comment on travaille",
     "intro": "Une méthode de livraison complète, de la compréhension du besoin jusqu’au déploiement et à l’évolution du produit.",
     "steps": [
@@ -2264,6 +2265,7 @@
   },
   "positioning": {
     "aria": "Positionnement",
+    "kicker": "Positionnement",
     "title": "Du projet simple aux plateformes d’entreprise",
     "paragraphs": [
       "Talgasy Web conçoit et développe des solutions numériques sur mesure pour des organisations de toutes tailles. PME, startup, entreprise industrielle, institution, OBNL, organisme ou grande entreprise : notre équipe s'adapte au contexte, aux objectifs et à la complexité du projet.",
