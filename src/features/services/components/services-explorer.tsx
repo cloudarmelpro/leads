@@ -200,10 +200,11 @@ export function ServicesExplorer({ lang, dict }: Props) {
           </LineReveal>
 
           {/* L'animation d'entrée est retirée en mode compact : une animation de `transform`,
-              même terminée, ferait de ce bloc le repère de la grille fixe. */}
+              même terminée, ferait de ce bloc le repère de la grille fixe.
+              Marge haute plus aérée que la maquette (14–30px) : demande du client du 2026-09-30. */}
           <div
             ref={box}
-            className={`relative mt-[clamp(14px,2.2vw,30px)] w-full max-w-[1400px] [animation-delay:640ms] motion-safe:transition-[height] motion-safe:duration-[820ms] motion-safe:ease-[cubic-bezier(0.65,0,0.35,1)] ${compact ? "" : RISE}`}
+            className={`relative mt-[clamp(40px,5vw,80px)] w-full max-w-[1400px] [animation-delay:640ms] motion-safe:transition-[height] motion-safe:duration-[820ms] motion-safe:ease-[cubic-bezier(0.65,0,0.35,1)] ${compact ? "" : RISE}`}
             style={{ height: compact ? COMPACT_H : (gridHeight ?? "auto") }}
           >
             <div
