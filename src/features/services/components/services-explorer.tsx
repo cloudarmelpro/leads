@@ -18,6 +18,8 @@ const PARAM_FAMILY = "categorie";
 // Sous ce décalage du haut de l'écran, la grille des catégories devient une barre fixe.
 const COMPACT_AT = 78;
 const BAR_TOP = 92;
+// Hauteur d'une carte compacte (10px de marge + une ligne de 20px + 10px).
+const COMPACT_H = 40;
 
 const EASE_OUT = "cubic-bezier(0.22,1,0.36,1)";
 const EASE_FOLD = "cubic-bezier(0.65,0,0.35,1)";
@@ -116,22 +118,32 @@ export function ServicesExplorer({ lang, dict }: Props) {
     window.history.replaceState(window.history.state, "", url);
   }, [picked, families]);
 
-  // Barre compacte : la grille se fixe à 92px du haut, son emplacement garde sa hauteur.
+  // Barre compacte : la grille se fixe à 92px du haut ; son emplacement, mesuré en
+  // permanence tant qu'elle est en place, glisse alors à la hauteur de la barre pour que
+  // la carte et la suite remontent (demande du client, 2026-09-30) sans saut.
   const box = useRef<HTMLDivElement>(null);
   const grid = useRef<HTMLDivElement>(null);
   const [compact, setCompact] = useState(false);
-  const [boxHeight, setBoxHeight] = useState<number | null>(null);
+  const compactRef = useRef(false);
+  const [gridHeight, setGridHeight] = useState<number | null>(null);
+  useEffect(() => {
+    const g = grid.current;
+    if (!g) return;
+    const ro = new ResizeObserver(() => {
+      if (!compactRef.current) setGridHeight(g.offsetHeight);
+    });
+    ro.observe(g);
+    return () => ro.disconnect();
+  }, []);
   useEffect(() => {
     const onScroll = () => {
       const el = box.current;
-      const g = grid.current;
-      if (!el || !g) return;
+      if (!el) return;
       const next = el.getBoundingClientRect().top <= COMPACT_AT;
-      setCompact((prev) => {
-        if (next === prev) return prev;
-        setBoxHeight(next ? g.offsetHeight : null);
-        return next;
-      });
+      if (next !== compactRef.current) {
+        compactRef.current = next;
+        setCompact(next);
+      }
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -177,7 +189,11 @@ export function ServicesExplorer({ lang, dict }: Props) {
 
           {/* L'animation d'entrée est retirée en mode compact : une animation de `transform`,
               même terminée, ferait de ce bloc le repère de la grille fixe. */}
-          <div ref={box} className={`relative mt-[clamp(14px,2.2vw,30px)] w-full max-w-[1400px] [animation-delay:640ms] ${compact ? "" : RISE}`} style={{ height: boxHeight ?? "auto" }}>
+          <div
+            ref={box}
+            className={`relative mt-[clamp(14px,2.2vw,30px)] w-full max-w-[1400px] [animation-delay:640ms] motion-safe:transition-[height] motion-safe:duration-[820ms] motion-safe:ease-[cubic-bezier(0.65,0,0.35,1)] ${compact ? "" : RISE}`}
+            style={{ height: compact ? COMPACT_H : (gridHeight ?? "auto") }}
+          >
             <div
               ref={grid}
               role="tablist"
