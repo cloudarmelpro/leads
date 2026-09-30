@@ -5,7 +5,7 @@ import { HeroSpot, moveSpot, SPOT_STYLE } from "@/components/shared/hero-spot";
 import { LineReveal } from "@/components/shared/line-reveal";
 import { Reveal } from "@/components/shared/reveal";
 import { HeroBand } from "@/features/about/components/hero-band";
-import { ContactMap } from "@/features/contact";
+import { DotMap } from "@/components/shared/dot-map";
 import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 
@@ -13,7 +13,7 @@ type Props = { lang: Locale; dict: Pick<Dictionary, "about"> };
 
 /**
  * Hero À propos (maquette Claude Design, 2e version du 2026-09-25) : la même construction
- * que le hero Contact — halo vert qui suit le pointeur, titre et texte centrés, deux
+ * que le hero Soumission — halo vert qui suit le pointeur, titre et texte centrés, deux
  * boutons, carte du monde en points — puis le bandeau défilant qui remonte sur le bas
  * fondu de la carte.
  */
@@ -37,7 +37,7 @@ export function AboutHero({ lang, dict }: Props) {
             {t.lede}
           </LineReveal>
           <Reveal delay={640} immediate className="mt-[clamp(10px,1.6vw,22px)] flex flex-wrap justify-center gap-[12px]">
-            <a href={`/${lang}/contact#rendez-vous`} className={HERO_BTN_PRIMARY}>
+            <a href={`/${lang}/soumission`} className={HERO_BTN_PRIMARY}>
               {t.ctaBook}
             </a>
             <a href="#histoire" className={HERO_BTN_GLASS}>
@@ -45,7 +45,7 @@ export function AboutHero({ lang, dict }: Props) {
             </a>
           </Reveal>
           <Reveal kind="scale" delay={760} immediate className="relative mt-[clamp(16px,2.6vw,32px)] w-full max-w-[960px]">
-            <ContactMap label={t.mapAria} />
+            <DotMap label={t.mapAria} />
           </Reveal>
         </div>
       </section>

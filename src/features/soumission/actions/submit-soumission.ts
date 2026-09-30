@@ -2,13 +2,10 @@
 
 import { headers } from "next/headers";
 
-import {
-  contactSchema,
-  type ActionResult,
-  type ContactInput,
-} from "@/features/contact/schemas/contact";
-import { createContactLead } from "@/features/contact/services/create-lead";
-import { isLocale } from "@/lib/i18n/config";
+import { soumissionSchema, type ActionResult } from "@/features/soumission/schemas/soumission";
+import { createLead } from "@/features/soumission/services/create-lead";
+import { isLocale, type Locale } from "@/lib/i18n/config";
+import { getDictionary } from "@/lib/i18n/dictionaries";
 
 // Limiteur de débit best-effort (mémoire par instance). Deux limites connues :
 // 1) l'IP dépend d'un unique reverse-proxy de confiance en amont (voir `clientIp`) ;
@@ -66,17 +63,14 @@ async function clientIp(): Promise<string> {
 }
 
 /**
- * L'entrée arrive d'un appel réseau : `input` n'est PAS typé à l'exécution, un
- * appel forgé peut envoyer `null` ou une chaîne. Tout est lu à travers `raw`, puis
- * revalidé par Zod — la validation react-hook-form ne sert qu'à l'UX. Renvoie
- * `fieldErrors` (clés i18n) pour réafficher les erreurs champ par champ.
+ * L'entrée arrive d'un appel réseau : `input` n'est PAS typé à l'exécution, un appel
+ * forgé peut envoyer `null` ou une chaîne. Tout est lu à travers `raw`, puis revalidé
+ * par Zod — la validation côté client ne sert qu'à l'UX. Les réponses du parcours sont
+ * écrites, dans la langue du visiteur, dans le champ `message` du lead : la table
+ * `leads` reste inchangée.
  */
-export async function submitContact(
-  input: unknown,
-  locale: unknown,
-): Promise<ActionResult> {
-  const raw: Record<string, unknown> =
-    input !== null && typeof input === "object" ? (input as Record<string, unknown>) : {};
+export async function submitSoumission(input: unknown, locale: unknown): Promise<ActionResult> {
+  const raw: Record<string, unknown> = input !== null && typeof input === "object" ? (input as Record<string, unknown>) : {};
 
   // 1. Honeypot : seul un bot remplit ce champ caché. Faux succès silencieux —
   //    on n'enregistre rien et on ne le renseigne pas sur le rejet.
@@ -86,29 +80,32 @@ export async function submitContact(
 
   // 2. Rate limiting. Réponse volontairement identique à une erreur générique :
   //    rien ne doit distinguer « trop de requêtes » d'un échec quelconque.
-  if (rateLimited(await clientIp())) return { status: "error" };
+  if (rateLimited(await clientIp())) return { status: "error", error: "generic" };
 
-  // 3. Validation Zod → erreurs par champ (clés de dictionnaire).
-  const parsed = contactSchema.safeParse(raw);
+  // 3. Validation Zod → une clé d'erreur (la première).
+  const parsed = soumissionSchema.safeParse(raw);
   if (!parsed.success) {
-    const fieldErrors: Partial<Record<keyof ContactInput, string>> = {};
-    for (const issue of parsed.error.issues) {
-      const key = issue.path[0];
-      if (typeof key === "string" && !(key in fieldErrors)) {
-        fieldErrors[key as keyof ContactInput] = issue.message;
-      }
-    }
-    return { status: "error", fieldErrors };
+    return { status: "error", error: parsed.error.issues[0]?.message ?? "generic" };
   }
 
-  // 4. Écriture (+ notification). Règle 9 gérée dans le service.
+  // 4. Résumé lisible des réponses, puis écriture (+ notification). Règle 9 dans le service.
   const d = parsed.data;
-  const result = await createContactLead({
-    name: d.name,
-    email: d.email,
-    phone: d.phone,
-    message: d.message,
-    locale: typeof locale === "string" && isLocale(locale) ? locale : "fr",
-  });
-  return result.ok ? { status: "success" } : { status: "error" };
+  const lang: Locale = typeof locale === "string" && isLocale(locale) ? locale : "fr";
+  const t = (await getDictionary(lang)).soumission;
+  const label = <T extends { key: string; t: string }>(opts: readonly T[], key: string) => opts.find((o) => o.key === key)?.t ?? key;
+  const type = t.type.opts.find((o) => o.key === d.type);
+  const lines = [
+    `${t.summary.type} : ${type?.t ?? d.type}`,
+    `${t.summary.sector} : ${label(t.sector.opts, d.sector)}`,
+    `${t.summary.stage} : ${label(t.stage.opts, d.stage)}`,
+    `${t.summary.when} : ${label(t.when.opts, d.when)}`,
+    `${t.summary.fit} : ${type?.price ?? ""} — ${t.fit.yes.t}`,
+    d.company && `${t.summary.company} : ${d.company}`,
+    d.city && `${t.summary.city} : ${d.city}`,
+    d.site && `${t.summary.site} : ${d.site}`,
+    d.details && `\n${t.summary.details} :\n${d.details}`,
+  ].filter((v): v is string => typeof v === "string" && v !== "");
+
+  const result = await createLead({ name: d.name, email: d.email, phone: d.phone, message: lines.join("\n"), locale: lang });
+  return result.ok ? { status: "success" } : { status: "error", error: "generic" };
 }

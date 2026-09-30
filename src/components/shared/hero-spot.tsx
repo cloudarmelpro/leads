@@ -12,7 +12,7 @@ export function moveSpot(e: PointerEvent<HTMLElement>) {
   e.currentTarget.style.setProperty("--my", `${e.clientY - r.top}px`);
 }
 
-/** Halo vert des heros centrés (À propos, Contact, Prix), déborde de 140px sous l'en-tête. */
+/** Halo vert des heros centrés (À propos, Soumission), déborde de 140px sous l'en-tête. */
 export function HeroSpot() {
   return <div aria-hidden className="pointer-events-none absolute inset-x-[0px] top-[-140px] bottom-[0px] bg-[radial-gradient(620px_circle_at_var(--mx)_var(--my),rgba(48,217,140,0.10),transparent_62%)]" />;
 }

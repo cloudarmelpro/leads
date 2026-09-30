@@ -62,7 +62,7 @@ export function Hero({ lang, dict }: Props) {
                 </h1>
                 <p className="m-[0px] max-w-[440px] text-[15px] leading-[24px] font-normal text-[#E4ECEF] text-pretty">{t.lede}</p>
                 <div className="mt-[8px] flex flex-wrap items-center gap-[12px]">
-                  <Link href={`/${lang}/contact`} className={`${BTN} bg-[#30D98C] text-[#011823] transition-colors hover:bg-[#7FEFC0]`}>
+                  <Link href={`/${lang}/soumission`} className={`${BTN} bg-[#30D98C] text-[#011823] transition-colors hover:bg-[#7FEFC0]`}>
                     <span className="whitespace-nowrap">{t.ctaBook}</span>
                   </Link>
                   <Link

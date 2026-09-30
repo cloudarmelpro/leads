@@ -6,7 +6,7 @@ import { useEffect, useMemo, useRef, useState, useSyncExternalStore, type ReactN
 
 import { HeroSpot, moveSpot, SPOT_STYLE } from "@/components/shared/hero-spot";
 import { LineReveal } from "@/components/shared/line-reveal";
-import { ContactMap } from "@/features/contact";
+import { DotMap } from "@/components/shared/dot-map";
 import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 
@@ -99,7 +99,7 @@ function Check() {
 export function ServicesExplorer({ lang, dict }: Props) {
   const t = dict.servicesPage;
   const families: Family[] = t.families;
-  const contact = `/${lang}/contact`;
+  const contact = `/${lang}/soumission`;
 
   const search = useSyncExternalStore(subscribeNothing, readSearch, () => "");
   const urlKey = useMemo(() => {
@@ -282,7 +282,7 @@ export function ServicesExplorer({ lang, dict }: Props) {
 
           <div className={`relative mt-[10px] h-[360px] w-full max-w-[960px] [animation-delay:880ms] ${RISE}`}>
             <div className="mb-[clamp(-120px,-8vw,-48px)]">
-              <ContactMap label={t.mapAria} />
+              <DotMap label={t.mapAria} />
             </div>
           </div>
         </div>

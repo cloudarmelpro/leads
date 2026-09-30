@@ -55,7 +55,7 @@ export function Method({ lang, dict }: Props) {
             </div>
           )}
           <Link
-            href={`/${lang}/contact`}
+            href={`/${lang}/soumission`}
             className="tap-44 inline-flex h-[40px] items-center rounded-[8px] bg-vert px-[18px] text-[13.5px] leading-[1] font-medium whitespace-nowrap text-sur-vert no-underline transition-colors hover:bg-vert-clair"
           >
             {t.cta}

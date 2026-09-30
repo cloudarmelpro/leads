@@ -80,7 +80,7 @@ export async function BlogArticle({ post, lang }: Props) {
           <div className="flex flex-wrap items-center justify-between gap-[12px]">
             <BackLink href={back} label={t.backToBlog} className="text-texte2 hover:text-encre" />
             <Link
-              href={`/${lang}/contact#formulaire`}
+              href={`/${lang}/soumission`}
               className="flex h-[40px] items-center rounded-[9px] bg-vert px-[20px] text-[14px] leading-[20px] font-medium text-sur-vert no-underline transition-colors duration-200 hover:bg-vert-clair"
             >
               {t.articleCta}

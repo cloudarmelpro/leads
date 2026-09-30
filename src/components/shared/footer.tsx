@@ -84,7 +84,7 @@ export function Footer({ lang, dict }: Props) {
               ) : (
                 <span className={LINK}>{dict.placeholders.email}</span>
               )}
-              <Link href={`/${lang}/contact`} className={LINK}>
+              <Link href={`/${lang}/soumission`} className={LINK}>
                 {t.bookCall}
               </Link>
             </div>

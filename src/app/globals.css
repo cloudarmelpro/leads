@@ -54,7 +54,7 @@
   --color-texte-bascule: #3a3a3f;
   --color-croix: #9a9aa0;
   --color-piste: #c9c9ce;
-  /* Page Contact : contour et texte d'erreur des champs (rouge doux, contraste 4,5:1 en sombre). */
+  /* Page Soumission : texte d'erreur du formulaire (rouge doux, contraste 4,5:1 en sombre). */
   --color-erreur: #c0362c;
   /* Corps des articles de blog (17px/30px) : gris encre en clair, #c6d5db en sombre. */
   --color-prose: #4a5560;
@@ -346,24 +346,6 @@ body {
   [data-reveal]:not([data-in]) {
     visibility: hidden;
     animation: tw-reveal-guard 0s linear 2.5s forwards;
-  }
-}
-/* Page Contact : trait de lumière qui tourne autour du formulaire, reflet sur le bouton. */
-@keyframes tw-spin {
-  from {
-    transform: translate(-50%, -50%) rotate(0deg);
-  }
-  to {
-    transform: translate(-50%, -50%) rotate(360deg);
-  }
-}
-@keyframes tw-sheen {
-  0% {
-    transform: translateX(-120%);
-  }
-  45%,
-  100% {
-    transform: translateX(320%);
   }
 }
 .tw-line-mask {

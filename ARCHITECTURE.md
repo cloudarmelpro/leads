@@ -297,7 +297,9 @@ module.exports = {
 
 - **Base de données** : Neon Postgres, SQL brut via `@neondatabase/serverless` (`lib/db/`).
   Pas d'ORM.
-- **Prise de rendez-vous** : Cal.com (`@calcom/embed-react`, lien dans `site.calLink`).
+- **Demande de soumission** (2026-09-30) : parcours en sept étapes (`features/soumission/`),
+  sans Cal.com ni page Contact (`/contact` redirige vers `/soumission`). Les réponses sont
+  écrites dans le champ `message` de la table `leads`, inchangée.
 - **Nom de l'entreprise et domaine** : Talgasy Web, `talgasyweb.ca` — source unique dans
   `src/config/site.ts`. Toute donnée encore `null` (adresse, WhatsApp, Messenger…) reste
   un placeholder traduit : ne jamais inventer coordonnées, témoignages ni chiffres.

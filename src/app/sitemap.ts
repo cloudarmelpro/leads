@@ -17,7 +17,7 @@ const posts = getPosts(defaultLocale);
 const PATHS = [
   { path: "", lastmod: "2026-08-13" },
   { path: "/a-propos", lastmod: "2026-08-13" },
-  { path: "/contact", lastmod: "2026-08-13" },
+  { path: "/soumission", lastmod: "2026-09-30" },
   { path: "/services", lastmod: "2026-09-30" },
   // Le blog n'est listé que s'il a au moins un article (sinon il est `noindex` :
   // ne pas soumettre une URL noindex au sitemap). `lastmod` de la liste = date du

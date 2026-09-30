@@ -1,4 +1,4 @@
-// Boutons des heros centrés (Contact, À propos) à la taille de ceux du hero de l'accueil
+// Boutons des heros centrés (À propos) à la taille de ceux du hero de l'accueil
 // (40 → 48px, 13 → 15px), texte seul, sans mouvement au survol : seule la couleur change.
 export const HERO_BTN =
   "tap-44 inline-flex min-h-[clamp(40px,35.86px+1.1vw,48px)] items-center justify-center rounded-[8px] px-[clamp(16px,12.9px+0.83vw,22px)] text-[clamp(13px,11.97px+0.28vw,15px)] leading-[20px] font-medium whitespace-nowrap no-underline transition-colors duration-200 ease-[cubic-bezier(0.2,0.7,0.2,1)]";

@@ -18,7 +18,7 @@ type Props = {
 
 /**
  * Hero centré des pages intérieures (Prix, Blogue, article, Confidentialité), sur le
- * modèle d'À propos et Contact : halo vert sous le pointeur, titre en capitales qui se
+ * modèle d'À propos : halo vert sous le pointeur, titre en capitales qui se
  * révèle ligne par ligne et roule au survol, texte d'appui, puis ce que la page ajoute.
  * Sous l'en-tête flottant (pages `FULL_BLEED` dans header.tsx).
  */

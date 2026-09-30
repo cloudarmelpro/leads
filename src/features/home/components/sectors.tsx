@@ -83,7 +83,7 @@ export function Sectors({ lang, dict }: Props) {
                   <h3 className="m-[0px] text-[clamp(26px,3vw,40px)] leading-[1.05] font-normal tracking-[-0.8px] text-white">{item.label}</h3>
                   <p className="m-[0px] max-w-[480px] text-[15px] leading-[26px] font-normal text-white text-pretty">{item.text}</p>
                   <Link
-                    href={`/${lang}/contact`}
+                    href={`/${lang}/soumission`}
                     className="tap-44 mt-[6px] inline-flex h-[40px] w-fit items-center rounded-[8px] bg-[#30D98C] px-[18px] text-[13.5px] leading-[1] font-medium whitespace-nowrap text-[#011823] no-underline transition-[background] duration-[240ms] ease-[cubic-bezier(0.2,0.7,0.2,1)] hover:bg-[#7FEFC0]"
                   >
                     {t.cta}

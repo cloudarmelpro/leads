@@ -8,12 +8,12 @@ import { useTheme } from "@/lib/use-theme";
 type Props = { label: string };
 
 /**
- * Carte du monde en points sous le hero Contact (maquette : `data-dotmap`). La maquette
- * chargeait d3 et un atlas depuis un CDN ; on redessine ici les 5 449 points de la carte
- * du hero de l'accueil (données locales, aucune requête tierce). Format 2,7:1, seul le
- * haut de la carte est visible ; les points proches de Montréal sont teintés en vert.
+ * Carte du monde en points sous les heros (À propos, Services ; maquette : `data-dotmap`).
+ * La maquette chargeait d3 et un atlas depuis un CDN ; on redessine ici les 5 449 points de
+ * la carte du hero de l'accueil (données locales, aucune requête tierce). Format 2,7:1, seul
+ * le haut de la carte est visible ; les points proches de Montréal sont teintés en vert.
  */
-export function ContactMap({ label }: Props) {
+export function DotMap({ label }: Props) {
   const canvas = useRef<HTMLCanvasElement>(null);
   const { isDark } = useTheme();
 

@@ -37,7 +37,7 @@ export default async function NotFound() {
               {dict.notFound.cta}
             </Link>
             <Link
-              href={`/${lang}/contact`}
+              href={`/${lang}/soumission`}
               className="tap-44 inline-flex items-center justify-center rounded-xl border border-ligne px-5 py-3 text-sm font-normal text-encre no-underline transition-colors hover:bg-surface"
             >
               {dict.notFound.contact}

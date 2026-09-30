@@ -3,7 +3,7 @@ import "server-only";
 import { getSql } from "@/lib/db";
 import { sendLeadNotification } from "@/lib/email/send-lead-notification";
 
-/** Champs réellement persistés d'un lead (le consentement/honeypot n'y sont pas). */
+/** Champs réellement persistés d'un lead (les réponses du parcours sont dans `message`). */
 export type LeadInput = {
   name: string;
   email: string;
@@ -22,11 +22,11 @@ export type CreateLeadResult = { ok: boolean };
  * ⚠️ La table `leads` doit exister AVANT le premier lead — créée hors runtime par
  * `scripts/init-db.sql` (rôle admin). Le rôle applicatif n'a que INSERT/SELECT.
  */
-export async function createContactLead(lead: LeadInput): Promise<CreateLeadResult> {
+export async function createLead(lead: LeadInput): Promise<CreateLeadResult> {
   const sql = getSql();
   if (!sql) {
     // Ne jamais loguer les données personnelles du lead (Loi 25).
-    console.error("[contact] DATABASE_URL manquant — lead NON sauvegardé.");
+    console.error("[soumission] DATABASE_URL manquant — lead NON sauvegardé.");
     return { ok: false };
   }
 
@@ -42,7 +42,7 @@ export async function createContactLead(lead: LeadInput): Promise<CreateLeadResu
       )`;
   } catch (error) {
     // On logue le message, pas l'objet complet (peut contenir des valeurs PII).
-    console.error("[contact] échec de l'écriture du lead:", (error as Error)?.message);
+    console.error("[soumission] échec de l'écriture du lead:", (error as Error)?.message);
     return { ok: false };
   }
 
@@ -50,10 +50,7 @@ export async function createContactLead(lead: LeadInput): Promise<CreateLeadResu
   try {
     await sendLeadNotification(lead);
   } catch (error) {
-    console.error(
-      "[contact] lead sauvegardé, mais notification courriel échouée:",
-      (error as Error)?.message,
-    );
+    console.error("[soumission] lead sauvegardé, mais notification courriel échouée:", (error as Error)?.message);
   }
 
   return { ok: true };

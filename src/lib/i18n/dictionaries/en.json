@@ -31,7 +31,6 @@
     "about": "About",
     "faq": "FAQ",
     "blog": "Blog",
-    "contact": "Contact",
     "quickNav": "Quick navigation",
     "homeMenu": [
       {
@@ -317,64 +316,6 @@
         "UX/UI designer",
         "SEO and performance specialist"
       ]
-    }
-  },
-  "contactPage": {
-    "meta": {
-      "title": "Contact — Book a free call | Talgasy Web",
-      "description": "Let’s talk about your website project. Book a free discovery call or write to us: a real person gets back to you quickly, anywhere in Québec."
-    },
-    "hero": {
-      "title": "Contact us",
-      "lede": "One call is enough to know if we can help. Tell us about your business — we reply within 24 hours.",
-      "ctaBook": "Book a discovery call",
-      "ctaWrite": "Get in touch",
-      "mapAria": "Dotted world map showing our base in Québec, Canada"
-    },
-    "booking": {
-      "title": "Book a discovery call",
-      "intro": "45 minutes, by phone or video. Pick a time that fits between two jobs.",
-      "loadTitle": "Calendar provided by Cal.com",
-      "loadBody": "The booking calendar is a third-party service. By displaying it, you agree that your IP address is sent to it. You can also write to us with the form below.",
-      "loadCta": "Show the booking calendar",
-      "embedNote": "Design preview — the real Cal.com calendar will appear in this window once the URL is connected."
-    },
-    "or": "Or",
-    "form": {
-      "title": "Get in touch",
-      "intro": "Prefer to talk right away? Call us. Otherwise, leave a few details and we’ll get back to you.",
-      "emailLabel": "Email us",
-      "phoneLabel": "Call us",
-      "basedLabel": "Based in",
-      "basedValue": "Québec, Canada",
-      "name": "Name",
-      "email": "Email",
-      "phone": "Phone",
-      "message": "Message",
-      "messagePlaceholder": "Message — type of business, what you’re looking for, rough timeline.",
-      "consent": "I agree to be contacted about my request.",
-      "consentLink": "Privacy policy",
-      "honeypot": "Leave this field empty",
-      "send": "Send my message",
-      "sending": "Sending…",
-      "note": "Your information is only used to answer you (Law 25).",
-      "successTitle": "Message sent",
-      "successBody": "Thanks {name}. We’ll get back to you within 24 hours, on business days.",
-      "another": "Send another message",
-      "errorTitle": "Something went wrong",
-      "errorBody": "Your message couldn’t be sent. Please try again, or call us directly.",
-      "errors": {
-        "name": "Enter your name (2 characters minimum).",
-        "nameMax": "This name is too long.",
-        "email": "This email is invalid.",
-        "emailMax": "This email is too long.",
-        "phoneMax": "This phone number is too long.",
-        "phone": "This phone number is invalid.",
-        "message": "Write your message.",
-        "messageMax": "This message is too long.",
-        "consent": "You must agree in order to send.",
-        "contactRequired": "Add at least an email or a phone number."
-      }
     }
   },
   "welcome": {
@@ -774,6 +715,259 @@
           "a": "We structure every site according to SEO best practices — speed, mobile and local content — to optimize its Google ranking. Google controls the final ranking, but we put every chance on your side with solid foundations to maximize your visibility and your results."
         }
       ]
+    }
+  },
+  "soumission": {
+    "meta": {
+      "title": "Quote — A clear price for your project | Talgasy Web",
+      "description": "A few questions about your digital project (website, app, SaaS, identity, hosting) and we get back to you within 24 hours with a clear price. No commitment."
+    },
+    "breadcrumb": "Quote",
+    "title": "Quote",
+    "lede": "A few questions about your project, and we get back to you with a clear price. No commitment.",
+    "asideLabel": "Your quote",
+    "stepOf": "Step {n} of {total}",
+    "steps": [
+      "Project",
+      "Organization",
+      "Progress",
+      "Timeline",
+      "Details",
+      "Starting price",
+      "Contact details"
+    ],
+    "from": "from",
+    "type": {
+      "title": "What are we building?",
+      "sub": "Choose the service that best matches your project.",
+      "opts": [
+        {
+          "key": "web",
+          "t": "Website",
+          "s": "UX/UI design, responsive development, SEO and launch.",
+          "price": "$1,500",
+          "lead": "A website"
+        },
+        {
+          "key": "webapp",
+          "t": "Web application",
+          "s": "Custom interface, client portal, business logic.",
+          "price": "$3,000",
+          "lead": "A web application"
+        },
+        {
+          "key": "shop",
+          "t": "E-commerce",
+          "s": "Catalogue, secure payment, orders and shipping.",
+          "price": "$6,000",
+          "lead": "An online store"
+        },
+        {
+          "key": "mobile",
+          "t": "Mobile application",
+          "s": "iOS and Android, from mockup to publication.",
+          "price": "$7,000",
+          "lead": "A mobile application"
+        },
+        {
+          "key": "saas",
+          "t": "SaaS platform",
+          "s": "MVP, subscriptions, permissions and dashboards.",
+          "price": "$30,000",
+          "lead": "A SaaS platform"
+        },
+        {
+          "key": "integ",
+          "t": "Integration & automation",
+          "s": "CRM, APIs, payments and automated tasks.",
+          "price": "$2,000",
+          "lead": "An integration or automation"
+        },
+        {
+          "key": "logo",
+          "t": "Professional logo",
+          "s": "Creative directions, revisions and final files.",
+          "price": "$600",
+          "lead": "A professional logo"
+        },
+        {
+          "key": "identity",
+          "t": "Visual identity",
+          "s": "Logo, palette, typography and mini brand guide.",
+          "price": "$1,250",
+          "lead": "A visual identity"
+        },
+        {
+          "key": "host",
+          "t": "Hosting & server",
+          "s": "Secure hosting, SSL, backups and monitoring.",
+          "price": "$35 / month",
+          "lead": "Hosting"
+        }
+      ]
+    },
+    "sector": {
+      "title": "What type of organization are you?",
+      "sub": "We adapt the approach to your context.",
+      "opts": [
+        {
+          "key": "pme",
+          "t": "SME",
+          "s": "Day-to-day operations, internal tools, e-commerce."
+        },
+        {
+          "key": "startup",
+          "t": "Startup",
+          "s": "MVPs, prototypes and products built to grow."
+        },
+        {
+          "key": "industrial",
+          "t": "Industrial company",
+          "s": "Business tools, field applications, integrations."
+        },
+        {
+          "key": "enterprise",
+          "t": "Large enterprise",
+          "s": "Platforms, internal systems, large-scale projects."
+        },
+        {
+          "key": "institution",
+          "t": "Institution",
+          "s": "Portals, platforms and structured internal tools."
+        },
+        {
+          "key": "nonprofit",
+          "t": "Non-profit or agency",
+          "s": "Websites, portals, forms and management tools."
+        }
+      ]
+    },
+    "stage": {
+      "title": "Where is your project at?",
+      "sub": "Every starting point works for us.",
+      "opts": [
+        {
+          "key": "idea",
+          "t": "An idea",
+          "s": "Nothing written down yet."
+        },
+        {
+          "key": "spec",
+          "t": "Mockups or a specification",
+          "s": "The need is already defined."
+        },
+        {
+          "key": "existing",
+          "t": "Something existing to take over",
+          "s": "A site, app or code to improve."
+        }
+      ]
+    },
+    "when": {
+      "title": "When do you need it?",
+      "sub": "We plan around your deadline.",
+      "opts": [
+        {
+          "key": "asap",
+          "t": "As soon as possible",
+          "s": "The deadline is close."
+        },
+        {
+          "key": "month",
+          "t": "Within a month",
+          "s": ""
+        },
+        {
+          "key": "quarter",
+          "t": "Within three months",
+          "s": ""
+        },
+        {
+          "key": "later",
+          "t": "Just looking",
+          "s": "No date for now."
+        }
+      ]
+    },
+    "details": {
+      "title": "Tell us about your project",
+      "sub": "A few lines help us prepare the call.",
+      "siteLabel": "Current site or application (optional)",
+      "sitePlaceholder": "yoursite.ca",
+      "msgLabel": "Your project in a few lines (optional)",
+      "msgPlaceholder": "What you do, who will use the product, the essential features, the tools to connect…",
+      "continue": "Continue"
+    },
+    "fit": {
+      "title": "{lead} starts at {price}. Are you comfortable with this price?",
+      "sub": "This is a starting price. The final price is set with you on the first call, based on the scope of the project.",
+      "yes": {
+        "t": "Yes, let’s continue",
+        "s": "This starting price fits my budget."
+      },
+      "no": {
+        "t": "No, it’s above my budget",
+        "s": "I’m not ready to invest this amount."
+      }
+    },
+    "contact": {
+      "title": "Where can we reach you?",
+      "sub": "An email or a phone number is enough. We get back to you within 24 hours.",
+      "name": "Name",
+      "namePlaceholder": "Jean Tremblay",
+      "company": "Company",
+      "companyPlaceholder": "Tremblay Landscaping",
+      "email": "Email",
+      "emailPlaceholder": "you@company.ca",
+      "phone": "Phone",
+      "phonePlaceholder": "418 555-0123",
+      "city": "City or region",
+      "cityPlaceholder": "Québec, Lévis, Beauce…",
+      "honeypot": "Leave this field empty",
+      "submit": "Send my request",
+      "sending": "Sending…",
+      "note": "Free. Your information stays with us."
+    },
+    "errors": {
+      "name": "Please enter your name.",
+      "nameMax": "This name is too long.",
+      "contactRequired": "An email or a phone number, so we can get back to you.",
+      "email": "This email doesn’t look valid.",
+      "emailMax": "This email is too long.",
+      "phone": "This phone number is invalid.",
+      "phoneMax": "This number is too long.",
+      "tooLong": "One of the fields is too long.",
+      "generic": "Your request could not be sent. Try again, or call us directly."
+    },
+    "stop": {
+      "kicker": "Thank you for your honesty",
+      "title": "{lead} starts at {price}.",
+      "body": "This may not be the right time for this project. You can choose another type of project, or come back when your budget allows.",
+      "reChoose": "Choose another project",
+      "back": "Change my answer"
+    },
+    "done": {
+      "title": "Thank you {name}, we’ve got it.",
+      "body": "We’ll look at your project and get back to you within 24 hours with a clear price.",
+      "home": "Back to home",
+      "restart": "New request"
+    },
+    "nav": {
+      "prev": "Previous step",
+      "next": "Next step",
+      "kbdBefore": "Navigate with",
+      "kbdAfter": "on your keyboard"
+    },
+    "summary": {
+      "type": "Project",
+      "sector": "Organization",
+      "stage": "Progress",
+      "when": "Timeline",
+      "fit": "Starting price",
+      "company": "Company",
+      "city": "City or region",
+      "site": "Current site",
+      "details": "Details"
     }
   }
 }

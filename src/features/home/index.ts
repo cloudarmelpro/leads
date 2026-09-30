@@ -1,7 +1,7 @@
 /** Surface publique de la feature `home` — seule porte d'entrée depuis l'extérieur. */
 
 export { WelcomeSplash } from "./components/welcome-splash";
-// Carte du monde en points (données locales) : réutilisée par la page Contact.
+// Carte du monde en points (données locales) : réutilisée par `components/shared/dot-map.tsx`.
 export { HERO_MAP } from "./components/hero-3d/map-data";
 export { HomeCursor } from "./components/home-cursor";
 export { Hero } from "./components/hero";

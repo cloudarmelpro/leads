@@ -57,7 +57,7 @@ const GLASS = `bg-verre text-encre shadow-[inset_0_0_0_1px_var(--color-filet-ver
 
 // Hauteur de l'en-tête fixe (maquette : 80px, contrôles de 40px centrés).
 const HEADER_H = "h-[80px]";
-const FULL_BLEED = ["/a-propos", "/contact", "/services", "/blog", "/confidentialite"];
+const FULL_BLEED = ["/a-propos", "/soumission", "/services", "/blog", "/confidentialite"];
 const BAR_MIDDLE = 40;
 
 /**
@@ -68,7 +68,7 @@ const BAR_MIDDLE = 40;
  * bouton laissent place au bouton menu (40×40) qui ouvre un menu plein écran listant aussi
  * les sections de l'accueil. Une cale de sa hauteur évite qu'il recouvre le haut des pages
  * intérieures ; sur l'accueil et les pages à hero pleine largeur (`FULL_BLEED`), le hero
- * passe dessous. Tant que la page Soumission n'existe pas, le bouton mène à Contact.
+ * passe dessous.
  */
 export function Header({ lang, dict }: Props) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -225,7 +225,7 @@ export function Header({ lang, dict }: Props) {
               <ThemeToggle label={dict.header.themeAria} optionLabels={dict.header.theme} />
             </span>
             <Link
-              href={`${home}/contact`}
+              href={`${home}/soumission`}
               className={`hidden h-[40px] items-center rounded-[8px] bg-vert px-[18px] text-[13.5px] leading-[1] font-medium whitespace-nowrap text-sur-vert no-underline ${EASE} hover:bg-vert-clair min-[1100px]:flex`}
             >
               {dict.nav.quote}
@@ -315,7 +315,7 @@ export function Header({ lang, dict }: Props) {
               <ActionLink href={whatsappHref(site.whatsapp)} unavailableLabel={`WhatsApp — ${whatsappLabel}`} newTab className={`${outlined} disabled:cursor-not-allowed disabled:opacity-55`}>
                 WhatsApp
               </ActionLink>
-              <Link href={`${home}/contact`} onClick={close} className={outlined}>
+              <Link href={`${home}/soumission`} onClick={close} className={outlined}>
                 {dict.header.menuRdv}
               </Link>
             </div>
