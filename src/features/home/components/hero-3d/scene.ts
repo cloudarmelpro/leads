@@ -27,8 +27,9 @@ const BG = 0x021b26;
 // normale (l'additif blanchit sur fond clair), pas de bloom, vignette légère, fondu de sortie
 // vers le fond clair de la page.
 const THEMES = {
-  dark: { bg: BG, haze: 0x14463a, fade: [0.008, 0.106, 0.149] as const, lo: 0x177e4f, hi: 0x30d98c, bloom: CONFIG.bloom, vig: 0.42, additiveMap: true, puffLight: false },
-  light: { bg: 0xeef1f3, haze: 0xd7e3dd, fade: [0.992, 0.992, 0.992] as const, lo: 0x177e4f, hi: 0x22b06e, bloom: 0, vig: 0.1, additiveMap: false, puffLight: true },
+  dark: { bg: BG, haze: 0x14463a, fade: [0.008, 0.106, 0.149] as const, lo: 0x177e4f, hi: 0x30d98c, bloom: CONFIG.bloom, vig: 0.42, additiveMap: true, puffLight: false, mapMul: 1 },
+  // Points de carte atténués en clair : ils passaient à travers les textes du hero.
+  light: { bg: 0xeef1f3, haze: 0xd7e3dd, fade: [0.992, 0.992, 0.992] as const, lo: 0x177e4f, hi: 0x22b06e, bloom: 0, vig: 0.1, additiveMap: false, puffLight: true, mapMul: 0.55 },
 };
 
 type Plane = THREE.Mesh<THREE.PlaneGeometry, THREE.MeshBasicMaterial>;
@@ -613,6 +614,9 @@ export function createHeroScene(host: HTMLElement, pointerArea: HTMLElement, opt
   mg.setAttribute("aAnim", new THREE.BufferAttribute(aN, 3));
   mg.setAttribute("aSphere", new THREE.BufferAttribute(aS, 3));
 
+  // Intensité de base des points et facteur du thème (voir `THEMES.*.mapMul`).
+  let mapBase = 0.5 * (opts.mapIntensity != null ? opts.mapIntensity : CONFIG.map);
+  let mapMul = 1;
   const mapU = {
     uIntro: { value: 0 },
     uCornerExt: { value: new THREE.Vector2(0.8, 0.45) },
@@ -623,7 +627,7 @@ export function createHeroScene(host: HTMLElement, pointerArea: HTMLElement, opt
     uCityB: { value: new THREE.Vector2(MAP.tnr[0], MAP.tnr[1]) },
     uPA: { value: -1 },
     uPB: { value: -1 },
-    uBase: { value: 0.5 * (opts.mapIntensity != null ? opts.mapIntensity : CONFIG.map) },
+    uBase: { value: mapBase },
     uNight: { value: CONFIG.night },
     uSun: { value: new THREE.Vector3(1, 0, 0) },
     uCursor: { value: new THREE.Vector2(9, 9) },
@@ -1124,11 +1128,15 @@ export function createHeroScene(host: HTMLElement, pointerArea: HTMLElement, opt
       placeLogo();
     },
     setMap: (v) => {
-      if (isFinite(v)) mapU.uBase.value = 0.5 * v;
+      if (!isFinite(v)) return;
+      mapBase = 0.5 * v;
+      mapU.uBase.value = mapBase * mapMul;
     },
     setTheme: (dark) => {
       if (disposed) return;
       const T = dark ? THEMES.dark : THEMES.light;
+      mapMul = T.mapMul;
+      mapU.uBase.value = mapBase * mapMul;
       (scene.background as THREE.Color).setHex(T.bg);
       hazeU.uCol.value.setHex(T.haze);
       mapU.uLo.value.setHex(T.lo);

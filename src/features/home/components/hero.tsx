@@ -26,7 +26,7 @@ const ARROW = <path d="M5 12h14M13 6l6 6-6 6" />;
 const BTN = "tap-44 pointer-events-auto inline-flex h-[40px] items-center rounded-[8px] px-[18px] text-[13.5px] leading-[1] font-medium whitespace-nowrap no-underline";
 const FOND = "238,241,243";
 const HALO =
-  "relative isolate before:absolute before:-inset-x-[40px] before:-inset-y-[32px] before:z-[-1] before:rounded-[40px] before:bg-[rgba(238,241,243,0.84)] before:blur-[30px] before:content-[''] dark:before:hidden";
+  "relative isolate before:absolute before:-inset-x-[28px] before:-inset-y-[22px] before:z-[-1] before:rounded-[32px] before:bg-[rgba(238,241,243,0.62)] before:blur-[24px] before:content-[''] dark:before:hidden";
 const WORD = "inline-block [animation:tw-hero-word_1400ms_cubic-bezier(0.16,0.68,0.16,1)_both] motion-reduce:[animation:none]";
 
 /**
