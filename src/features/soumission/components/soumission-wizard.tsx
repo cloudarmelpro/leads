@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useRef, useState, useTransition } from "react";
 
+import { site } from "@/config/site";
 import { submitSoumission } from "@/features/soumission/actions/submit-soumission";
 import type { SoumissionInput } from "@/features/soumission/schemas/soumission";
 import type { Locale } from "@/lib/i18n/config";
@@ -65,6 +66,7 @@ export function SoumissionWizard({ lang, dict }: Props) {
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<Answers>({});
   const [fields, setFields] = useState<Fields>(EMPTY);
+  const [consent, setConsent] = useState(false);
   const [stop, setStop] = useState(false);
   const [done, setDone] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -129,6 +131,7 @@ export function SoumissionWizard({ lang, dict }: Props) {
     setStep(0);
     setAnswers({});
     setFields(EMPTY);
+    setConsent(false);
     setStop(false);
     setDone(false);
     setError(null);
@@ -138,6 +141,7 @@ export function SoumissionWizard({ lang, dict }: Props) {
     if (!fields.name.trim()) return setError("name");
     if (!fields.email.trim() && !fields.phone.trim()) return setError("contactRequired");
     if (fields.email.trim() && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(fields.email.trim())) return setError("email");
+    if (!consent) return setError("consent");
     const input: SoumissionInput = {
       type: answers.type as SoumissionInput["type"],
       sector: answers.sector as SoumissionInput["sector"],
@@ -150,6 +154,7 @@ export function SoumissionWizard({ lang, dict }: Props) {
       email: fields.email,
       phone: fields.phone,
       city: fields.city,
+      consent: true,
       website: "",
     };
     startTransition(async () => {
@@ -333,6 +338,25 @@ export function SoumissionWizard({ lang, dict }: Props) {
                       </label>
                     ))}
                   </div>
+                  {/* Consentement explicite (Loi 25), ajouté à la demande du client le 2026-10-01 :
+                      la maquette n'en avait pas. Revalidé par le schéma côté serveur. */}
+                  <label className="flex cursor-pointer items-start gap-[12px] text-[14px] leading-[22px] text-texte2">
+                    <input
+                      type="checkbox"
+                      checked={consent}
+                      onChange={(event) => {
+                        setConsent(event.target.checked);
+                        setError(null);
+                      }}
+                      className="mt-[3px] h-[18px] w-[18px] shrink-0 cursor-pointer accent-[#30d98c]"
+                    />
+                    <span>
+                      {fill(t.contact.consent, { name: site.name })}
+                      <Link href={`/${lang}/confidentialite`} className="text-vert underline underline-offset-[3px] hover:text-vert-clair">
+                        {t.contact.consentLink}
+                      </Link>
+                    </span>
+                  </label>
                   {error && (
                     <p role="alert" className="m-[0px] text-[14px] leading-[20px] text-erreur">
                       {t.errors[error as keyof T["errors"]] ?? t.errors.generic}

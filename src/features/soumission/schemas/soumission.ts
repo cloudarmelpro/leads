@@ -50,6 +50,8 @@ export const soumissionSchema = z
           .refine((v) => v === "" || PHONE_RE.test(v), "phone"),
       ),
     city: line(120, "tooLong"),
+    // Consentement explicite (Loi 25, demande du client du 2026-10-01) : la case doit être cochée.
+    consent: z.literal(true, "consent"),
     // Honeypot anti-bot : champ caché qui doit rester vide (contrôlé côté serveur).
     website: z.string().max(200).optional(),
   })

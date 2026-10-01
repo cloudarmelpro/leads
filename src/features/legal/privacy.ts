@@ -3,9 +3,9 @@ import type { Locale } from "@/lib/i18n/config";
 
 /**
  * Contenu de la Politique de confidentialité (Loi 25), bilingue. Adapté du modèle
- * de paysagisteacadien.com aux flux RÉELS du site : formulaire de contact → base
- * Neon (É.-U.), notifications par Resend, prise de rendez-vous par Cal.com,
- * hébergement Hostinger. Le nom de l'entreprise et les coordonnées
+ * de paysagisteacadien.com aux flux RÉELS du site : formulaire de soumission → base
+ * Neon (É.-U.), notifications par Resend, hébergement Hostinger (Cal.com retiré le
+ * 2026-10-01 avec la page Contact). Le nom de l'entreprise et les coordonnées
  * viennent de `config/site` pour rester synchronisés. Aucun fait inventé : seul le
  * NOM du responsable désigné reste à confirmer (voir `RESPONSIBLE_NAME`).
  */
@@ -27,7 +27,7 @@ export type PrivacyDoc = {
 };
 
 // Date de dernière mise à jour (à réviser à chaque changement de pratiques).
-const UPDATED = "2026-08-12";
+const UPDATED = "2026-10-01";
 
 // ⚠️ À confirmer avec le client : nom de la personne responsable désignée (Loi 25).
 // Tant qu'il n'est pas fourni, on désigne l'entreprise + les coordonnées ci-dessous.
@@ -46,7 +46,7 @@ function fr(): PrivacyDoc {
     tocLabel: "Sommaire",
     updatedLabel: "Dernière mise à jour",
     updated: UPDATED,
-    metaDescription: `Politique de confidentialité de ${site.name} : ce que le formulaire de contact recueille, pourquoi, où c'est conservé et vos droits sous la Loi 25 (Québec).`,
+    metaDescription: `Politique de confidentialité de ${site.name} : ce que le formulaire de soumission recueille, pourquoi, où c'est conservé et vos droits sous la Loi 25 (Québec).`,
     intro: `Chez ${site.name}, nous prenons la protection de vos renseignements personnels au sérieux. Cette politique explique ce que nous recueillons, pourquoi, et les droits dont vous disposez, conformément à la Loi 25 (Québec).`,
     brief: [
       { title: "Le strict nécessaire", text: "Seulement ce que vous nous écrivez dans le formulaire." },
@@ -58,9 +58,8 @@ function fr(): PrivacyDoc {
       {
         h: "Renseignements que nous recueillons",
         p: [
-          "Nous recueillons uniquement ce que vous nous transmettez volontairement par le formulaire de contact du site : votre nom, votre courriel, votre numéro de téléphone et votre message. La langue du site au moment de l'envoi et la date d'envoi sont également enregistrées.",
+          "Nous recueillons uniquement ce que vous nous transmettez volontairement par le formulaire de soumission du site : votre nom, le nom de votre entreprise, votre courriel, votre numéro de téléphone, votre ville ou région et la description de votre projet (type de projet, organisation, avancement, délai, détails). La langue du site au moment de l'envoi et la date d'envoi sont également enregistrées.",
           "Votre adresse IP est traitée en mémoire du serveur, le temps de la requête, uniquement pour limiter le nombre d'envois et prévenir les abus du formulaire. Elle n'est ni journalisée ni conservée.",
-          "La réservation d'un appel ne passe pas par nos formulaires : elle est assurée par Cal.com, un service tiers. Les renseignements que vous y inscrivez sont recueillis et conservés par Cal.com, selon sa propre politique de confidentialité.",
         ],
       },
       {
@@ -81,7 +80,7 @@ function fr(): PrivacyDoc {
         h: "Où vos renseignements sont conservés",
         p: [
           "Les demandes sont enregistrées dans une base de données hébergée par Neon, dont les serveurs sont situés aux États-Unis. Le site est hébergé par Hostinger.",
-          "Les notifications par courriel transitent par Resend, et la prise de rendez-vous par Cal.com. Vos renseignements peuvent donc être traités à l'extérieur du Québec et être soumis aux lois applicables ailleurs. Aucun tiers n'y a accès à d'autres fins que celles décrites ici.",
+          "Les notifications par courriel transitent par Resend. Vos renseignements peuvent donc être traités à l'extérieur du Québec et être soumis aux lois applicables ailleurs. Aucun tiers n'y a accès à d'autres fins que celles décrites ici.",
         ],
       },
       {
@@ -140,7 +139,7 @@ function en(): PrivacyDoc {
     tocLabel: "Contents",
     updatedLabel: "Last updated",
     updated: UPDATED,
-    metaDescription: `${site.name} privacy policy: what the contact form collects, why, where it is stored, and the rights you have under Quebec's Law 25.`,
+    metaDescription: `${site.name} privacy policy: what the quote form collects, why, where it is stored, and the rights you have under Quebec's Law 25.`,
     intro: `At ${site.name}, we take the protection of your personal information seriously. This policy explains what we collect, why, and the rights you have, in line with Quebec's Law 25.`,
     brief: [
       { title: "Only what is necessary", text: "Only what you write to us in the form." },
@@ -152,9 +151,8 @@ function en(): PrivacyDoc {
       {
         h: "Information we collect",
         p: [
-          "We only collect what you voluntarily provide through the site's contact form: your name, your email, your phone number, and your message. The site language at the time of submission and the submission date are also recorded.",
+          "We only collect what you voluntarily provide through the site's quote form: your name, your company name, your email, your phone number, your city or region, and the description of your project (project type, organization, progress, timeline, details). The site language at the time of submission and the submission date are also recorded.",
           "Your IP address is processed in server memory, for the duration of the request only, solely to limit the number of submissions and prevent abuse of the form. It is neither logged nor retained.",
-          "Booking a call does not go through our forms: it is handled by Cal.com, a third-party service. The information you enter there is collected and retained by Cal.com, under its own privacy policy.",
         ],
       },
       {
@@ -175,7 +173,7 @@ function en(): PrivacyDoc {
         h: "Where your information is stored",
         p: [
           "Requests are stored in a database hosted by Neon, whose servers are located in the United States. The website is hosted by Hostinger.",
-          "Email notifications go through Resend, and call booking through Cal.com. Your information may therefore be processed outside Quebec and be subject to the laws applicable elsewhere. No third party accesses it for purposes other than those described here.",
+          "Email notifications go through Resend. Your information may therefore be processed outside Quebec and be subject to the laws applicable elsewhere. No third party accesses it for purposes other than those described here.",
         ],
       },
       {

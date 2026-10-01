@@ -6,7 +6,7 @@ type Props = {
   children: ReactNode;
   /** Décrit pourquoi l'action est indisponible — lu par les lecteurs d'écran. */
   unavailableLabel: string;
-  /** Ouvre dans un nouvel onglet (ex. Cal.com, une vraie page web). */
+  /** Ouvre dans un nouvel onglet (ex. WhatsApp). */
   newTab?: boolean;
 };
 

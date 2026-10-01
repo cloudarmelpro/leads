@@ -27,8 +27,7 @@ function applyClass(next?: ThemeChoice) {
  * Thème 3 états (système / clair / sombre). La classe `.dark` est déjà posée
  * avant peinture par le script `theme-init` du layout ; ce hook lit/écrit le
  * choix (localStorage), applique la classe, et resynchronise TOUTES les instances
- * via un événement `themechange` (partagé entre le sélecteur de thème et l'embed
- * Cal.com). Départ « system » pour un rendu SSR/hydratation stable — la valeur
+ * via un événement `themechange` (sélecteur de thème, scène 3D du hero). Départ « system » pour un rendu SSR/hydratation stable — la valeur
  * réelle est lue après montage.
  */
 export function useTheme() {

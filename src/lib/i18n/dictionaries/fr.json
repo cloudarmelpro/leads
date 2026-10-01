@@ -170,7 +170,7 @@
       },
       {
         "q": "Quelle stack technologique utilisez-vous ?",
-        "a": "Notre stack varie selon les besoins du projet. Nous choisissons les technologies selon les contraintes, la performance recherchée, l'évolutivité et la maintenance à long terme. [STACK — à valider par l’équipe technique : front-end, back-end, bases de données, mobile, cloud, CMS, infrastructure]"
+        "a": "Notre stack varie selon les besoins du projet. Nous choisissons les technologies selon les contraintes, la performance recherchée, l'évolutivité et la maintenance à long terme."
       },
       {
         "q": "Comment se déroule votre processus de travail ?",
@@ -922,7 +922,9 @@
       "honeypot": "Laissez ce champ vide",
       "submit": "Envoyer ma demande",
       "sending": "Envoi…",
-      "note": "Gratuit. Vos informations restent chez nous."
+      "note": "Gratuit. Vos informations restent chez nous.",
+      "consent": "J’accepte que {name} utilise mes renseignements pour répondre à ma demande. ",
+      "consentLink": "Politique de confidentialité"
     },
     "errors": {
       "name": "Indiquez votre nom.",
@@ -933,7 +935,8 @@
       "phone": "Ce numéro de téléphone est invalide.",
       "phoneMax": "Ce numéro est trop long.",
       "tooLong": "Un des champs est trop long.",
-      "generic": "Votre demande n’a pas pu être envoyée. Réessayez, ou appelez-nous directement."
+      "generic": "Votre demande n’a pas pu être envoyée. Réessayez, ou appelez-nous directement.",
+      "consent": "Cochez la case pour qu’on puisse traiter votre demande."
     },
     "stop": {
       "kicker": "Merci de votre franchise",
