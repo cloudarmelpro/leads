@@ -10,7 +10,8 @@ import type { Locale } from "@/lib/i18n/config";
  * NOM du responsable désigné reste à confirmer (voir `RESPONSIBLE_NAME`).
  */
 
-type PrivacySection = { h: string; p: string[] };
+/** Paragraphes d'intro, puis liste à puces facultative, puis paragraphes de suite. */
+type PrivacySection = { h: string; p: string[]; list?: string[]; after?: string[] };
 export type PrivacyDoc = {
   title: string;
   /** Eyebrow de la section (« Loi 25 ») et intitulé du sommaire ancré. */
@@ -55,17 +56,29 @@ function fr(): PrivacyDoc {
       { title: "Réponse en 30 jours", text: "Accès, correction ou suppression, sur simple demande." },
     ],
     sections: [
+      // ⚠️ À tenir synchronisé avec `features/soumission/schemas/soumission.ts` (demande du
+      // client, 2026-10-01) : tout champ ou formulaire ajouté doit figurer ici AVANT sa mise en ligne.
       {
         h: "Renseignements que nous recueillons",
         p: [
-          "Nous recueillons uniquement ce que vous nous transmettez volontairement par le formulaire de soumission du site : votre nom, le nom de votre entreprise, votre courriel, votre numéro de téléphone, votre ville ou région et la description de votre projet (type de projet, organisation, avancement, délai, détails). La langue du site au moment de l'envoi et la date d'envoi sont également enregistrées.",
+          "Nous recueillons uniquement ce que vous nous transmettez volontairement par le formulaire de soumission du site. Au fil des étapes du formulaire, il s'agit de :",
+        ],
+        list: [
+          "votre projet : le type de projet recherché (site web, application web, commerce en ligne, application mobile, plateforme SaaS, intégration et automatisation, logo, identité visuelle ou hébergement) et votre confirmation que le prix de départ affiché convient à votre budget ;",
+          "votre organisation : le type d'organisation (PME, startup, entreprise industrielle, grande entreprise, institution, OBNL ou organisme), le nom de votre entreprise et votre ville ou région ;",
+          "l'état de votre projet : son avancement (une idée, des maquettes ou un cahier des charges, un existant à reprendre), le délai souhaité et, s'il y a lieu, l'adresse de votre site web actuel ;",
+          "la description libre de votre projet, si vous en fournissez une ;",
+          "vos coordonnées : votre nom, votre courriel et votre numéro de téléphone (au moins l'un des deux), pour pouvoir vous répondre.",
+        ],
+        after: [
+          "La langue du site au moment de l'envoi et la date d'envoi sont également enregistrées. Ces renseignements sont transmis à notre équipe par courriel et enregistrés dans notre base de données (voir « Où vos renseignements sont conservés »).",
           "Votre adresse IP est traitée en mémoire du serveur, le temps de la requête, uniquement pour limiter le nombre d'envois et prévenir les abus du formulaire. Elle n'est ni journalisée ni conservée.",
         ],
       },
       {
         h: "Pourquoi nous les recueillons",
         p: [
-          "Vos renseignements servent uniquement à répondre à votre demande : préparer une soumission, planifier un appel, répondre à vos questions.",
+          "Vos renseignements servent uniquement à répondre à votre demande : comprendre votre projet, vérifier qu'il correspond à nos services, préparer une soumission, planifier un appel, répondre à vos questions.",
           "Nous ne les utilisons pas à des fins publicitaires, et nous ne les vendons, ne les louons ni ne les échangeons.",
         ],
       },
@@ -148,17 +161,28 @@ function en(): PrivacyDoc {
       { title: "Answer within 30 days", text: "Access, correction or deletion, on request." },
     ],
     sections: [
+      // ⚠️ Keep in sync with `features/soumission/schemas/soumission.ts` (see the French version).
       {
         h: "Information we collect",
         p: [
-          "We only collect what you voluntarily provide through the site's quote form: your name, your company name, your email, your phone number, your city or region, and the description of your project (project type, organization, progress, timeline, details). The site language at the time of submission and the submission date are also recorded.",
+          "We only collect what you voluntarily provide through the site's quote form. Across the steps of the form, this includes:",
+        ],
+        list: [
+          "your project: the type of project you are looking for (website, web application, online store, mobile application, SaaS platform, integration and automation, logo, visual identity or hosting) and your confirmation that the displayed starting price fits your budget;",
+          "your organization: the type of organization (SMB, startup, industrial company, large company, institution, non-profit or organization), your company name and your city or region;",
+          "the state of your project: its progress (an idea, mockups or a specification, an existing product to take over), the desired timeline and, where applicable, the address of your current website;",
+          "a free-form description of your project, if you provide one;",
+          "your contact details: your name, your email and your phone number (at least one of the two), so that we can respond.",
+        ],
+        after: [
+          "The site language at the time of submission and the submission date are also recorded. This information is sent to our team by email and stored in our database (see “Where your information is stored”).",
           "Your IP address is processed in server memory, for the duration of the request only, solely to limit the number of submissions and prevent abuse of the form. It is neither logged nor retained.",
         ],
       },
       {
         h: "Why we collect it",
         p: [
-          "Your information is used solely to respond to your request: preparing a quote, scheduling a call, answering your questions.",
+          "Your information is used solely to respond to your request: understanding your project, checking that it matches our services, preparing a quote, scheduling a call, answering your questions.",
           "We do not use it for advertising, and we do not sell, rent, or trade it.",
         ],
       },

@@ -90,6 +90,20 @@ export async function PrivacyPage({ lang }: Props) {
                       {para}
                     </p>
                   ))}
+                  {entry.list && (
+                    <ul className="m-[0px] flex list-disc flex-col gap-[8px] pl-[22px] text-[16px] leading-[27px] font-normal text-prose marker:text-vert">
+                      {entry.list.map((item) => (
+                        <li key={item} className="pl-[4px] text-pretty">
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                  {entry.after?.map((para, index) => (
+                    <p key={index} className="m-[0px] text-[16px] leading-[27px] font-normal text-prose text-pretty">
+                      {para}
+                    </p>
+                  ))}
                 </div>
               </section>
             ))}
