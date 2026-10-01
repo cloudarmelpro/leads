@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 
+import { FaqLd } from "@/components/shared/faq-ld";
 import { ScrollProgress } from "@/components/shared/scroll-progress";
 import { Cta, Faq, Hero, HomePricing, Method, Positioning, Sectors, Services, Tools, WelcomeSplash } from "@/features/home";
 import { isLocale } from "@/lib/i18n/config";
@@ -13,6 +14,7 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
 
   return (
     <div>
+      <FaqLd items={dict.faq.items} />
       <WelcomeSplash label={dict.welcome.before} brand={dict.welcome.brand} />
       <ScrollProgress />
       <Hero lang={lang} dict={{ hero: dict.hero }} />

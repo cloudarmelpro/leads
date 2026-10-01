@@ -44,7 +44,8 @@ export function PostGrid({ posts, lang, dict }: Props) {
           <span className="text-[15px] leading-[20px] font-medium text-texte-bascule">
             {shown.length === 1 ? t.listKickerOne : t.listKicker.replace("{n}", String(shown.length))}
           </span>
-          <h2 className="m-[0px] text-[clamp(22px,2.2vw,30px)] leading-[1.2] font-semibold tracking-[-0.01em] text-encre text-balance">{t.listTitle}</h2>
+          {/* Le H1 de la page : le hero met un article en avant, mais la page EST la liste (SEO). */}
+          <h1 className="m-[0px] text-[clamp(22px,2.2vw,30px)] leading-[1.2] font-semibold tracking-[-0.01em] text-encre text-balance">{t.listTitle}</h1>
           <p className="m-[0px] max-w-[560px] text-[15px] leading-[24px] font-normal text-texte2 text-pretty">{t.listIntro}</p>
         </div>
         <div className="flex flex-wrap gap-[8px]">

@@ -57,7 +57,8 @@ export function BlogHero({ posts, lang, dict }: Props) {
           <span className="text-[15px] leading-[20px] font-medium text-encre dark:text-white">
             {current.category} — {formatDate(current.date, lang)}
           </span>
-          <h1 className="m-[0px] line-clamp-3 max-w-[560px] text-[clamp(28px,3vw,40px)] leading-[1.05] font-semibold tracking-[-0.02em] text-encre uppercase text-balance dark:text-white">{current.title}</h1>
+          {/* H2 et non H1 : le titre de la page (la liste) est dans PostGrid. */}
+          <h2 className="m-[0px] line-clamp-3 max-w-[560px] text-[clamp(28px,3vw,40px)] leading-[1.05] font-semibold tracking-[-0.02em] text-encre uppercase text-balance dark:text-white">{current.title}</h2>
           <p className="m-[0px] line-clamp-2 max-w-[440px] text-[15px] leading-[25px] font-normal text-texte-bascule text-pretty dark:text-[#D6E2E6]">{current.excerpt}</p>
           <div className="mt-[8px] flex items-center gap-[12px]">
             <Link

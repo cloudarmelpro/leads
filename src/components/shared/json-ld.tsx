@@ -27,7 +27,11 @@ export function JsonLd({ lang, dict }: Props) {
     // source (scrapable par les robots de spam), ce qui annulerait l'obfuscation du
     // footer. Faible valeur SEO. Le téléphone reste (un site de leads veut les appels).
     ...(phoneDigits ? { telephone: `+1${phoneDigits}` } : {}),
-    areaServed: { "@type": "AdministrativeArea", name: "Québec, Canada" },
+    // Positionnement du 2026-09-30 : entreprises canadiennes, base au Québec.
+    areaServed: [
+      { "@type": "Country", name: "Canada" },
+      { "@type": "AdministrativeArea", name: "Québec" },
+    ],
     availableLanguage: locales.map((l) => localeHtmlLang[l]),
   };
 

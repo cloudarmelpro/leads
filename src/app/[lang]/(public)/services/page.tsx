@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { BreadcrumbLd } from "@/components/shared/breadcrumb-ld";
+import { FaqLd } from "@/components/shared/faq-ld";
 import { Cta, Faq } from "@/features/home";
 import { ServicesExplorer } from "@/features/services";
 import { isLocale } from "@/lib/i18n/config";
@@ -37,6 +38,7 @@ export default async function ServicesPage({ params }: PageProps<"/[lang]/servic
           { name: dict.servicesPage.breadcrumb, path: "/services" },
         ]}
       />
+      <FaqLd items={dict.servicesPage.faq.items} />
       <ServicesExplorer lang={lang} dict={{ servicesPage: dict.servicesPage }} />
       <Faq dict={{ faq: dict.servicesPage.faq }} lang={lang} />
       <Cta dict={{ final: dict.final, placeholders: dict.placeholders }} />
