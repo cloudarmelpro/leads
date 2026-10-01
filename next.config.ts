@@ -53,7 +53,20 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   // Requis par `src/app/global-not-found.tsx` : la racine des routes est le segment
   // dynamique `[lang]`, donc aucun layout unique ne peut composer le 404 global.
-  experimental: { globalNotFound: true },
+  experimental: {
+    globalNotFound: true,
+    // BUILD HOSTINGER (2026-10-01, échec par dépassement des 15 min) : la machine partagée
+    // annonce les cœurs de l'hôte, Next lançait autant de processus de génération statique
+    // que de cœurs moins un, et la mémoire du conteneur s'effondrait. Deux processus au plus
+    // (38 pages), et pas de source maps pendant le pré-rendu.
+    cpus: 2,
+    staticGenerationMinPagesPerWorker: 25,
+  },
+  enablePrerenderSourceMaps: false,
+  // Même cause : la vérification des types (`tsc`) dans le build dépassait le délai sur cette
+  // machine. Elle est faite AVANT chaque push par `npm run check` (types, lint, tests, knip) ;
+  // `main` ne reçoit que des fusions déjà vérifiées. Ne jamais pousser sans `npm run check`.
+  typescript: { ignoreBuildErrors: true },
   // Images optimisées : AVIF d'abord (≈ 30 % plus léger que WebP), WebP en repli ;
   // les originaux de public/ ne changent pas → cache des variantes 31 jours.
   images: {

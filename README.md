@@ -16,6 +16,8 @@ npm run dev     # serveur de développement (http://localhost:3000)
 npm run build   # build de production (type-check inclus)
 npm run lint    # ESLint
 npm test        # Vitest (schémas, services, actions)
+npm run check   # types + lint + tests + knip — OBLIGATOIRE avant tout push : le build
+                # Hostinger ne vérifie pas les types (limite de 15 min, voir next.config.ts)
 ```
 
 ## Documentation
