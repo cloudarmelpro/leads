@@ -199,7 +199,7 @@
     "note": "Reply within 24 hours, Monday to Friday."
   },
   "footer": {
-    "description": "Websites that make the phone ring.",
+    "description": "Your development partner.",
     "navTitle": "Explore",
     "coordTitle": "Contact details",
     "social": {
@@ -470,7 +470,7 @@
     "labels": {
       "kicker": "Services",
       "from": "From",
-      "minimum": "Minimum price",
+      "minimum": "Starting at",
       "youGet": "What you get"
     },
     "families": [

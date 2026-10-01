@@ -30,9 +30,8 @@ export type PrivacyDoc = {
 // Date de dernière mise à jour (à réviser à chaque changement de pratiques).
 const UPDATED = "2026-10-01";
 
-// ⚠️ À confirmer avec le client : nom de la personne responsable désignée (Loi 25).
-// Tant qu'il n'est pas fourni, on désigne l'entreprise + les coordonnées ci-dessous.
-const RESPONSIBLE_NAME: string | null = null;
+// Personne responsable désignée (Loi 25), confirmée par le client le 2026-10-01.
+const RESPONSIBLE_NAME: string | null = "Cédric Babin";
 
 const email = site.email ?? "—";
 const phone = site.phone ?? "—";
