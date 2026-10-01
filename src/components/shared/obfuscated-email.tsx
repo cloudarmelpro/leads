@@ -1,8 +1,16 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 
-type Props = { user: string; domain: string; className?: string };
+type Props = {
+  user: string;
+  domain: string;
+  className?: string;
+  /** Contenu personnalisé (carte, icône…) ; reçoit l'adresse à afficher — voilée avant hydratation. */
+  children?: (address: string) => ReactNode;
+  /** Texte affiché à la place de l'adresse (« Un courriel ») ; utilisable depuis un composant serveur. */
+  label?: string;
+};
 
 /**
  * Email anti-scraping : l'adresse complète (avec `@`) n'apparaît JAMAIS telle
@@ -11,7 +19,7 @@ type Props = { user: string; domain: string; className?: string };
  * invisible pour les robots de collecte (qui n'exécutent pas le JS et cherchent
  * `x@y.z`). Repli lisible « user (at) domain » avant hydratation / sans JS.
  */
-export function ObfuscatedEmail({ user, domain, className }: Props) {
+export function ObfuscatedEmail({ user, domain, className, children, label }: Props) {
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
@@ -22,13 +30,14 @@ export function ObfuscatedEmail({ user, domain, className }: Props) {
   }, []);
 
   if (!ready) {
-    return <span className={className}>{`${user} (at) ${domain}`}</span>;
+    const veiled = `${user} (at) ${domain}`;
+    return <span className={className}>{label ?? (children ? children(veiled) : veiled)}</span>;
   }
 
   const addr = `${user}@${domain}`;
   return (
     <a href={`mailto:${addr}`} className={className}>
-      {addr}
+      {label ?? (children ? children(addr) : addr)}
     </a>
   );
 }

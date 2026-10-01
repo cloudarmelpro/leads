@@ -1,80 +1,102 @@
 "use client";
 
-import { Menu, X } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 
 import { ActionLink } from "@/components/shared/action-link";
-import { CONTENEUR } from "@/components/shared/container";
-import { LanguageSwitcher } from "@/components/shared/language-switcher";
+import { BTN_PLEIN } from "@/components/shared/buttons";
+import { LangMenu } from "@/components/shared/lang-menu";
+import { Logo } from "@/components/shared/logo";
 import { ThemeToggle } from "@/components/shared/theme-toggle";
-import { Wordmark } from "@/components/shared/wordmark";
-import { features, site, telHref, whatsappHref } from "@/config/site";
+import { site, telHref, whatsappHref } from "@/config/site";
 import type { Locale } from "@/lib/i18n/config";
-import { gsap, reducedMotion, useGSAP } from "@/lib/gsap";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 
-type Props = { lang: Locale; dict: Dictionary };
+type Props = { lang: Locale; dict: Pick<Dictionary, "nav" | "header" | "common" | "placeholders"> };
 
+// Glyphes de la maquette (tracés au trait, 24×24), repris à l'identique.
+const glyph = (d: ReactNode, size = 16, strokeWidth = 1.7) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+    {d}
+  </svg>
+);
+
+// Ancres des sections de l'accueil, par clé du dictionnaire (`nav.homeMenu[].key`).
+type SectionKey = "services" | "sectors" | "method" | "faq";
+const SECTION_IDS: Record<SectionKey, string> = { services: "services", sectors: "secteurs", method: "methode", faq: "faq" };
+const SECTION_GLYPHS: Record<SectionKey, ReactNode> = {
+  services: (
+    <>
+      <rect x="2.5" y="3.5" width="19" height="14" rx="2.5" />
+      <path d="M8 21h8M12 17.5V21" />
+    </>
+  ),
+  sectors: (
+    <>
+      <path d="M20 10.5c0 6-8 11.5-8 11.5s-8-5.5-8-11.5a8 8 0 0 1 16 0Z" />
+      <circle cx="12" cy="10.2" r="2.8" />
+    </>
+  ),
+  method: <path d="m3 7 2 2 4-4M3 15l2 2 4-4M13 8h8M13 16h8" />,
+  faq: (
+    <>
+      <circle cx="12" cy="12" r="9.5" />
+      <path d="M9.3 9.2a2.8 2.8 0 1 1 4.2 2.5c-.8.5-1.5 1-1.5 2.1" />
+      <path d="M12 17.2h.01" />
+    </>
+  ),
+};
+
+const EASE = "transition-colors duration-200 ease-[cubic-bezier(0.2,0.7,0.2,1)]";
+// Lien de la barre : 32px de haut ; la page courante en 500 et en encre, les autres en 400.
+const navLink = (current: boolean) =>
+  `inline-flex h-[32px] items-center gap-[6px] rounded-[8px] px-[13px] text-[13.5px] leading-[20px] whitespace-nowrap no-underline ${EASE} ${
+    current ? "font-medium text-encre" : "font-normal text-lien-barre hover:text-encre"
+  }`;
+const GLASS = `bg-verre text-encre shadow-[inset_0_0_0_1px_var(--color-filet-verre)] backdrop-blur-[14px] hover:bg-verre-fort ${EASE}`;
+
+// Hauteur de l'en-tête fixe (maquette : 80px, contrôles de 40px centrés).
+const HEADER_H = "h-[80px]";
+const FULL_BLEED = ["/a-propos", "/soumission", "/services", "/blog", "/confidentialite"];
+const BAR_MIDDLE = 40;
+
+/**
+ * En-tête fixe (maquette Accueil, 2026-09-30) : transparent en haut de page, fond opaque
+ * dès qu'on défile (demande du client du même jour), jamais de filet. Logo à
+ * gauche ; au centre, Accueil (avec le panneau des sections), À propos, Services, Blogue ;
+ * à droite langue · thème · « Soumettre une soumission ». Sous 1100px, la navigation et le
+ * bouton laissent place au bouton menu (40×40) qui ouvre un menu plein écran des quatre
+ * pages. Une cale de sa hauteur évite qu'il recouvre le haut des pages
+ * intérieures ; sur l'accueil et les pages à hero pleine largeur (`FULL_BLEED`), le hero
+ * passe dessous.
+ */
 export function Header({ lang, dict }: Props) {
   const [menuOpen, setMenuOpen] = useState(false);
-  // Le tiroir reste monté le temps de son animation de sortie : `menuOpen` pilote
-  // l'état logique, `drawerMounted` la présence dans le DOM.
-  const [drawerMounted, setDrawerMounted] = useState(false);
+  const pathname = usePathname();
   const burgerRef = useRef<HTMLButtonElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
-  const drawerRef = useRef<HTMLDivElement>(null);
-
-  const openMenu = () => {
-    setDrawerMounted(true);
-    setMenuOpen(true);
-  };
-
-  // Ouverture : fondu + glissement du panneau, entrées de nav en cascade.
-  // Fermeture : fondu inverse, puis démontage. Instantané sous reduced-motion.
-  useGSAP(
-    () => {
-      const el = drawerRef.current;
-      if (!el || !drawerMounted) return;
-      const fast = reducedMotion();
-      if (menuOpen) {
-        gsap.fromTo(el, { autoAlpha: 0, y: -16 }, { autoAlpha: 1, y: 0, duration: fast ? 0 : 0.35, ease: "power2.out" });
-        gsap.fromTo(
-          el.querySelectorAll("nav a"),
-          { autoAlpha: 0, y: 10 },
-          { autoAlpha: 1, y: 0, duration: fast ? 0 : 0.35, stagger: fast ? 0 : 0.04, delay: fast ? 0 : 0.08, ease: "power2.out" },
-        );
-      } else {
-        gsap.to(el, {
-          autoAlpha: 0,
-          y: -16,
-          duration: fast ? 0 : 0.25,
-          ease: "power2.in",
-          onComplete: () => setDrawerMounted(false),
-        });
-      }
-    },
-    { dependencies: [menuOpen, drawerMounted] },
-  );
 
   const phoneLabel = site.phone ?? dict.placeholders.phone;
   const whatsappLabel = site.whatsapp ?? dict.placeholders.whatsapp;
 
-  // Ordre du design : Services, Secteurs, Méthode, FAQ, Prix, À propos, Blog.
-  // Le Contact est porté par le bouton d'action à droite (pas dans la nav).
+  const home = `/${lang}`;
+  const isHome = pathname === home;
+  // Pages dont le hero occupe le haut de l'écran : l'en-tête flotte dessus, sans cale.
+  const fullBleed = isHome || FULL_BLEED.some((p) => pathname === `${home}${p}` || pathname.startsWith(`${home}${p}/`));
+  const sections = dict.nav.homeMenu.map((item) => {
+    const key = item.key as SectionKey;
+    return { key, label: dict.nav[key], desc: item.desc, href: `${home}#${SECTION_IDS[key]}` };
+  });
   const nav = [
-    { label: dict.nav.services, href: `/${lang}#services` },
-    { label: dict.nav.sectors, href: `/${lang}#secteurs` },
-    { label: dict.nav.method, href: `/${lang}#methode` },
-    { label: dict.nav.faq, href: `/${lang}#faq` },
-    ...(features.pricing ? [{ label: dict.nav.pricing, href: `/${lang}/prix` }] : []),
-    { label: dict.nav.about, href: `/${lang}/a-propos` },
-    { label: dict.nav.blog, href: `/${lang}/blog` },
+    { label: dict.nav.about, href: `${home}/a-propos` },
+    { label: dict.nav.services, href: `${home}/services` },
+    { label: dict.nav.blog, href: `${home}/blog` },
   ];
+  const isCurrent = (href: string) => pathname === href || pathname.startsWith(`${href}/`);
 
   // Le menu plein écran ne doit pas laisser la page défiler derrière lui.
-  // Focus : à l'ouverture sur « Fermer » ; toute fermeture (croix, Échap, lien)
-  // passe par le cleanup, qui rend le focus au burger.
+  // Focus : à l'ouverture sur « Fermer » ; toute fermeture rend le focus au bouton menu.
   useEffect(() => {
     if (!menuOpen) return;
 
@@ -95,144 +117,211 @@ export function Header({ lang, dict }: Props) {
     };
   }, [menuOpen]);
 
+  // En thème clair, la barre prend les couleurs du sombre tant qu'elle survole une zone
+  // sombre (`data-header-sombre`, le hero 3D) : sinon logo et liens y seraient illisibles.
+  const [overDark, setOverDark] = useState(false);
+  useEffect(() => {
+    const zones = Array.from(document.querySelectorAll<HTMLElement>("[data-header-sombre]"));
+    let raf = 0;
+    const check = () => {
+      raf = 0;
+      setOverDark(
+        zones.some((zone) => {
+          const r = zone.getBoundingClientRect();
+          return r.top <= BAR_MIDDLE && r.bottom >= BAR_MIDDLE;
+        }),
+      );
+    };
+    const schedule = () => {
+      if (!raf) raf = requestAnimationFrame(check);
+    };
+    schedule();
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("resize", schedule);
+    };
+  }, [pathname]);
+
+  // Passé 40px de défilement (maquette), l'en-tête prend un fond opaque, sans flou ni filet
+  // (demande du client, 2026-09-30 : « seulement un fond »), fondu en 300ms.
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const close = () => setMenuOpen(false);
+
+  const outlined = `flex min-h-[48px] items-center justify-center rounded-[8px] border border-contour text-[15px] leading-[20px] font-normal text-encre no-underline ${EASE} hover:border-vert hover:text-vert`;
+
   return (
     <>
-      {/* Barre transparente, dans le flux (non collante) — comme la référence.
-          Le module de contact flottant assure l'appel toujours accessible au défilement. */}
-      {/* Marge horizontale sur le <header>, pas sur le conteneur max-w : c'est le
-          patron des sections. La mettre à l'intérieur décalerait le logo de 32px. */}
-      <header className="relative z-50 w-full">
-        {/* Logo à gauche · nav au centre · actions à droite (design : justify-between). */}
-        <div className={`${CONTENEUR} flex min-h-17 items-center justify-between gap-2 py-4 sm:gap-6`}>
-            <Link
-              href={`/${lang}`}
-              className="shrink-0 text-encre no-underline"
-            >
-              <Wordmark hideTextOnMobile />
-            </Link>
+      <header
+        className={`${overDark ? "dark" : ""} pointer-events-none fixed inset-x-[0px] top-[0px] z-[60] flex ${HEADER_H} items-center justify-center px-[clamp(18px,4vw,40px)] transition-[background-color] duration-300 ease-[cubic-bezier(0.2,0.7,0.2,1)] max-[359px]:px-[16px] ${
+          scrolled ? "bg-fond/94" : "bg-transparent"
+        }`}
+      >
+        <div className="pointer-events-auto relative flex w-full max-w-[1400px] items-center justify-between gap-[12px]">
+          <Link href={home} aria-label={`${site.name} — ${dict.nav.home}`} className="flex h-[40px] shrink-0 items-center no-underline">
+            <Logo height={24} />
+          </Link>
 
-            {/* Logo + 6 liens + contrôles ≈ 910px : sous `lg`, la nav passe dans le
-                tiroir (burger), sinon le logo chevauche « Services » sur tablette. */}
-            <nav
-              aria-label={dict.nav.quickNav}
-              className="hidden items-center gap-3 lg:flex"
-            >
+          <nav aria-label={dict.nav.quickNav} className="absolute top-[0px] left-1/2 hidden h-[40px] -translate-x-1/2 items-center gap-[4px] min-[1100px]:flex">
+            <div className="group relative">
+              <Link href={home} aria-current={isHome ? "page" : undefined} className={`relative ${navLink(isHome)}`}>
+                {dict.nav.home}
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden
+                  className="relative top-[1px] transition-transform duration-200 ease-[cubic-bezier(0.2,0.7,0.2,1)] group-focus-within:rotate-180 group-hover:rotate-180"
+                >
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+              </Link>
+              {/* Panneau au survol ou au focus clavier. Le `pt` remplace une marge : le
+                  survol ne se perd pas entre le lien et le panneau. */}
+              <div className="invisible absolute top-full left-[-8px] z-[50] pt-[16px] group-focus-within:visible group-hover:visible">
+                <ul
+                  aria-label={dict.nav.homeMenuAria}
+                  className="m-[0px] hidden w-[520px] list-none grid-cols-2 gap-[2px] rounded-[16px] bg-surface p-[8px] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.07),0_26px_60px_rgba(0,0,0,0.5)] group-focus-within:grid group-focus-within:[animation:tw-menu-in_200ms_cubic-bezier(0.22,1,0.36,1)_both] group-hover:grid group-hover:[animation:tw-menu-in_200ms_cubic-bezier(0.22,1,0.36,1)_both]"
+                >
+                  {sections.map((item) => (
+                    <li key={item.href}>
+                      <Link href={item.href} className={`flex items-start gap-[11px] rounded-[12px] px-[13px] py-[12px] no-underline ${EASE} hover:bg-surface-2`}>
+                        <span className="flex h-[30px] w-[30px] shrink-0 items-center justify-center rounded-[9px] text-vert shadow-[inset_0_0_0_1px_var(--color-contour)]">
+                          {glyph(SECTION_GLYPHS[item.key])}
+                        </span>
+                        <span className="flex min-w-[0px] flex-col gap-[2px]">
+                          <span className="text-[14px] leading-[20px] font-medium text-encre">{item.label}</span>
+                          <span className="text-[12.5px] leading-[18px] font-normal text-texte2 text-pretty">{item.desc}</span>
+                        </span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
             {nav.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="px-1 whitespace-nowrap text-sm font-normal text-encre no-underline hover:text-emeraude dark:hover:text-accent-strong"
-              >
+              <Link key={item.href} href={item.href} aria-current={isCurrent(item.href) ? "page" : undefined} className={navLink(isCurrent(item.href))}>
                 {item.label}
               </Link>
             ))}
-            </nav>
+          </nav>
 
-          <div className="flex shrink-0 items-center gap-1.5 sm:gap-3">
-            <ThemeToggle
-              label={dict.header.themeAria}
-              optionLabels={dict.header.theme}
-            />
-            {/* Sous 380px, la langue reste accessible via le tiroir mobile. */}
-            <LanguageSwitcher
-              current={lang}
-              label={dict.header.langAria}
-              className="hidden min-[380px]:inline-flex"
-            />
-
-            {/* Bouton « Contact » (design). L'appel direct reste porté par le module flottant. */}
-            <Link
-              href={`/${lang}/contact`}
-              className="hidden shrink-0 items-center rounded-[9px] bg-emeraude px-[1.125rem] py-[0.5625rem] text-[0.875rem] font-medium text-white no-underline hover:bg-sapin md:inline-flex dark:bg-accent-strong dark:text-fond dark:hover:bg-[#7fefc0]"
-            >
-              {dict.nav.contact}
+          <div className="flex shrink-0 items-center justify-end gap-[8px] max-[359px]:gap-[6px]">
+            <LangMenu current={lang} label={dict.header.langAria} />
+            <span className="contents max-[359px]:hidden">
+              <ThemeToggle label={dict.header.themeAria} optionLabels={dict.header.theme} />
+            </span>
+            {/* `max-[1100px]:hidden` (variante) et non `hidden` : `BTN_PLEIN` contient `inline-flex`,
+                qui l'emportait et laissait le bouton déborder sur téléphone, poussant le menu hors écran. */}
+            <Link href={`${home}/soumission`} className={`${BTN_PLEIN} max-[1100px]:hidden`}>
+              {dict.nav.quote}
             </Link>
-
             <button
               ref={burgerRef}
               type="button"
-              onClick={openMenu}
+              onClick={() => setMenuOpen(true)}
               aria-label={dict.common.openMenu}
               aria-expanded={menuOpen}
-              className="tap-44 inline-flex h-8 w-8 items-center justify-center cursor-pointer rounded-xl bg-surface text-encre lg:hidden"
+              className={`tap-44 flex h-[40px] w-[40px] cursor-pointer items-center justify-center rounded-[8px] ${GLASS} min-[1100px]:hidden`}
             >
-              <Menu size={16} aria-hidden />
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden>
+                <path d="M3 9h18M3 15h18" />
+              </svg>
             </button>
           </div>
         </div>
       </header>
 
-      {drawerMounted && (
+      {!fullBleed && <div aria-hidden className={HEADER_H} />}
+
+      {menuOpen && (
         <div
-          ref={drawerRef}
           role="dialog"
           aria-modal="true"
           aria-label={dict.nav.quickNav}
-          className="fixed inset-0 z-100 flex flex-col overflow-auto overscroll-contain bg-fond px-[clamp(16px,5vw,28px)] pt-4 pb-[calc(20px+env(safe-area-inset-bottom))] text-encre"
+          className="fixed inset-[0px] z-[90] flex flex-col overflow-y-auto overscroll-contain bg-fond px-[clamp(16px,5vw,24px)] pt-[18px] pb-[calc(26px+env(safe-area-inset-bottom))] min-[1100px]:hidden"
         >
-          <div className="flex min-h-14 items-center justify-between">
-            <Wordmark />
+          <div className="flex min-h-[44px] items-center justify-between gap-[12px]">
+            <Logo height={26} />
             <button
               ref={closeRef}
               type="button"
-              onClick={() => setMenuOpen(false)}
+              onClick={close}
               aria-label={dict.common.close}
-              className="inline-flex h-11 w-11 items-center justify-center rounded-xl border-none bg-surface text-encre dark:bg-surface-2"
+              className={`flex h-[44px] w-[44px] cursor-pointer items-center justify-center rounded-[8px] bg-surface-2 text-encre ${EASE} hover:bg-surface-3`}
             >
-              <X size={20} aria-hidden />
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" aria-hidden>
+                <path d="M5 5l14 14M19 5L5 19" />
+              </svg>
             </button>
           </div>
 
-          {/* Écrans courts (320×568) : entrées compactées pour que les CTA du bas
-              restent visibles sans défilement interne. */}
-          <nav aria-label={dict.nav.quickNav} className="mt-4 flex flex-col short:mt-2">
+          {/* Les quatre pages seulement : les sections de l'accueil (maquette) ont été retirées du
+              menu mobile à la demande du client (2026-10-01) ; elles restent dans le panneau desktop. */}
+          <nav aria-label={dict.nav.quickNav} className="mt-[30px] flex flex-col items-start gap-[8px]">
+            <Link
+              href={home}
+              onClick={close}
+              aria-current={isHome ? "page" : undefined}
+              className={`flex min-h-[36px] items-center text-[16px] leading-[24px] font-normal no-underline ${EASE} hover:text-vert ${isHome ? "text-vert" : "text-encre"}`}
+            >
+              {dict.nav.home}
+            </Link>
             {nav.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                onClick={() => setMenuOpen(false)}
-                className="py-1.5 text-nav-fluid font-normal text-encre no-underline short:py-1"
+                onClick={close}
+                aria-current={isCurrent(item.href) ? "page" : undefined}
+                className={`flex min-h-[36px] items-center text-[16px] leading-[24px] font-normal no-underline ${EASE} hover:text-vert ${isCurrent(item.href) ? "text-vert" : "text-encre"}`}
               >
                 {item.label}
               </Link>
             ))}
           </nav>
 
-          <div className="mt-6 flex flex-wrap items-center gap-3 short:mt-4">
-            <LanguageSwitcher current={lang} label={dict.header.langAria} />
-            <ThemeToggle
-              label={dict.header.themeAria}
-              optionLabels={dict.header.theme}
-            />
+          <div className="mt-[22px] flex items-center gap-[12px]">
+            <LangMenu current={lang} label={dict.header.langAria} variant="plain" />
+            <ThemeToggle label={dict.header.themeAria} optionLabels={dict.header.theme} variant="solid" />
           </div>
 
-          <div className="mt-auto flex flex-col gap-2.5 pt-6 short:gap-2 short:pt-4">
+          <div className="mt-auto flex flex-col gap-[10px] pt-[40px]">
             <ActionLink
               href={telHref(site.phone)}
               unavailableLabel={`${dict.header.menuCall} — ${phoneLabel}`}
-              className="flex h-10 items-center justify-center gap-2 rounded-[9px] bg-emeraude text-[0.875rem] font-medium text-white no-underline dark:bg-accent-strong dark:text-fond"
+              className={`flex min-h-[48px] items-center justify-center rounded-[8px] bg-bouton text-[15px] leading-[20px] font-normal text-sur-bouton no-underline ${EASE} hover:bg-bouton-clair disabled:cursor-not-allowed disabled:opacity-55`}
             >
               {dict.header.menuCall}
             </ActionLink>
-
-            <div className="flex gap-3">
-              <ActionLink
-                href={whatsappHref(site.whatsapp)}
-                unavailableLabel={`WhatsApp — ${whatsappLabel}`}
-                className="flex h-10 flex-1 items-center justify-center rounded-[9px] text-[0.8125rem] font-medium text-encre no-underline shadow-[inset_0_0_0_1px_var(--color-encre)]"
-              >
+            <div className="grid grid-cols-2 gap-[10px]">
+              <ActionLink href={whatsappHref(site.whatsapp)} unavailableLabel={`WhatsApp — ${whatsappLabel}`} newTab className={`${outlined} disabled:cursor-not-allowed disabled:opacity-55`}>
                 WhatsApp
               </ActionLink>
-              <Link
-                href={`/${lang}#contact`}
-                onClick={() => setMenuOpen(false)}
-                className="flex h-10 flex-1 items-center justify-center rounded-[9px] text-[0.8125rem] font-medium text-encre no-underline shadow-[inset_0_0_0_1px_var(--color-encre)]"
-              >
+              <Link href={`${home}/soumission`} onClick={close} className={outlined}>
                 {dict.header.menuRdv}
               </Link>
             </div>
-
-            <p className="text-center text-[0.75rem] font-medium text-emeraude dark:text-accent-strong">{phoneLabel}</p>
+            <ActionLink
+              href={telHref(site.phone)}
+              unavailableLabel={phoneLabel}
+              className="flex min-h-[32px] items-center justify-center text-[14px] leading-[20px] font-normal text-vert no-underline"
+            >
+              {phoneLabel}
+            </ActionLink>
           </div>
         </div>
       )}

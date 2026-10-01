@@ -1,16 +1,14 @@
 {
   "meta": {
-    "title": "Talgasy Web — Professional websites that convert",
-    "description": "Talgasy Web builds professional websites, structured to convert. One goal: getting your customers to call you, not your competitor."
+    "title": "Web development, apps and SaaS | Talgasy Web",
+    "description": "Websites, web and mobile apps, SaaS platforms and integrations for Canadian businesses. From idea to launch, with clear starting prices."
   },
   "og": {
-    "kicker": "Web agency · Québec",
-    "tagline": "Professional websites that convert"
+    "kicker": "Development · Canada",
+    "tagline": "Your development partner"
   },
   "common": {
     "close": "Close",
-    "soon": "soon",
-    "tbd": "to confirm",
     "openMenu": "Open menu",
     "skipToContent": "Skip to content"
   },
@@ -27,15 +25,33 @@
   },
   "nav": {
     "home": "Home",
-    "sectors": "Sectors",
+    "sectors": "Organizations",
     "services": "Services",
     "method": "Method",
     "about": "About",
     "faq": "FAQ",
-    "pricing": "Pricing",
     "blog": "Blog",
-    "contact": "Contact",
-    "quickNav": "Quick navigation"
+    "quickNav": "Quick navigation",
+    "homeMenu": [
+      {
+        "key": "services",
+        "desc": "Six categories, from websites to SaaS."
+      },
+      {
+        "key": "sectors",
+        "desc": "SMEs, startups, industrial, institutions, non-profits…"
+      },
+      {
+        "key": "method",
+        "desc": "Seven steps, from discovery to deployment."
+      },
+      {
+        "key": "faq",
+        "desc": "The questions we get before every project."
+      }
+    ],
+    "homeMenuAria": "Home page sections",
+    "quote": "Request a quote"
   },
   "header": {
     "menuCall": "Call now",
@@ -49,163 +65,142 @@
     }
   },
   "hero": {
-    "titleA": "Your next contract starts with a click.",
-    "titleB": "Make sure it ends with a phone call.",
-    "subtitle": "Talgasy Web builds professional websites, structured to convert — so your customers call you, not your competitor.",
-    "tradesKicker": "Sectors",
-    "tradesLabel": "What sector are you in?",
-    "tradesCta": "Let’s talk about your project",
-    "tradesCardTitle": "Don’t see your trade? We adapt to your field.",
+    "kicker": "Development — Canada",
+    "titleA": "Your development",
+    "titleB": "partner.",
+    "lede": "Talgasy Web supports businesses and organizations in designing, building and evolving their digital solutions.",
+    "aside": "Websites, web applications, mobile apps, SaaS platforms, integrations, automations and custom solutions: we build products tailored to your needs, from idea to deployment.",
     "ctaBook": "Book a free call",
-    "demoCaption": "This preview changes with your trade. Your site will speak to your customers — in their words.",
-    "demos": [
-      {
-        "trade": "Landscaping",
-        "imgLabel": "job-site photo — landscaping"
-      },
-      {
-        "trade": "Excavation",
-        "imgLabel": "job-site photo — excavation"
-      },
-      {
-        "trade": "Construction",
-        "imgLabel": "job-site photo — construction"
-      },
-      {
-        "trade": "Renovation",
-        "imgLabel": "before / after photo — renovation"
-      },
-      {
-        "trade": "Local shop",
-        "imgLabel": "storefront photo — local shop"
-      },
-      {
-        "trade": "Snow removal",
-        "imgLabel": "job-site photo — snow removal"
-      },
-      {
-        "trade": "Arboriculture",
-        "imgLabel": "job-site photo — arboriculture"
-      }
-    ]
+    "ctaServices": "See our services",
+    "teaserKicker": "Organizations",
+    "teaser": "SMEs, startups, industrial, institutions, non-profits…"
   },
   "services": {
     "kicker": "Services",
     "titleA": "What we do,",
     "titleB": "concretely",
-    "intro": "Four clear services, built for Québec businesses and shops.",
+    "intro": "Six broad service families, for everything your organization needs to build.",
     "items": [
       {
-        "name": "Website creation",
-        "note": "A clear structure, smooth navigation, content that gets straight to the point: a premium web experience that reflects how serious your business is — and makes people want to call."
+        "name": "Web development",
+        "desc": "Websites, web applications and e-commerce. UX/UI design, custom development, integrations, performance and launch.",
+        "price": "From $1,500"
       },
       {
-        "name": "Existing site rebuild",
-        "note": "We analyze what’s there, pinpoint what’s blocking conversion, then optimize and improve every element — structure, speed, content — to rebuild a site that pushes the visitor to contact you."
+        "name": "Mobile applications",
+        "desc": "iOS and Android apps, mobile experiences, field tools, client portals and custom mobile products.",
+        "price": "From $7,000"
       },
       {
-        "name": "Hosting",
-        "note": "We handle everything: a fast server, a security certificate, regular backups and continuous monitoring. Your site stays online, fast and protected — at all times."
+        "name": "SaaS platform",
+        "desc": "Software products, multi-user platforms, subscriptions, permissions, dashboards, workflows and scalable architecture.",
+        "price": "From $30,000"
       },
       {
-        "name": "Professional email addresses",
-        "note": "An email on your own domain changes everything — instead of a generic Gmail, your customers see an established, serious business that earns trust from the very first exchange."
+        "name": "Integration & automation",
+        "desc": "Connecting CRMs, APIs, payments and business tools; data synchronization; automating tasks and processes.",
+        "price": "From $2,000"
+      },
+      {
+        "name": "Logo & identity",
+        "desc": "Logo design, visual system, palette, typography, iconography and brand elements.",
+        "price": "From $600"
+      },
+      {
+        "name": "Hosting & server",
+        "desc": "Hosting, deployment, SSL, backups, domain, email, updates, monitoring and technical support.",
+        "price": "From $35 / month"
       }
     ]
   },
   "method": {
     "kicker": "Method",
-    "titleA": "How we",
-    "titleB": "work",
-    "intro": "No black box: you always know where your project stands, and what’s left for you to decide.",
+    "title": "How we work",
+    "intro": "A complete delivery method, from understanding the need through to deployment and product evolution.",
     "steps": [
       {
-        "n": "1",
-        "title": "We listen",
-        "desc": "A short call. You talk trade, we note down what really matters to your customers."
+        "title": "Discovery",
+        "desc": "Understand the business, the users, the goals, the constraints and the problem to solve."
       },
       {
-        "n": "2",
-        "title": "We analyze",
-        "desc": "We look at your current site and your market — an honest read of what works and what’s missing, and we figure out the best way to improve your site."
+        "title": "Project scoping",
+        "desc": "Define the scope, the features, the priorities, the budget and the best delivery approach."
       },
       {
-        "n": "3",
-        "title": "A strategy, not just a site",
-        "desc": "A plan built for your trade: which pages, which calls to action, which structure to bring in qualified leads."
+        "title": "Architecture & planning",
+        "desc": "Structure the user journeys, the functional logic, the data, the technical architecture and the delivery plan."
       },
       {
-        "n": "4",
-        "title": "We build to best practices",
-        "desc": "Bilingual, fast, mobile-optimized, structured for Google from the start. You watch the site take shape — we handle the technical details."
+        "title": "UX/UI design",
+        "desc": "Design the experience and the interface so the product is clear, effective and consistent with the brand."
       },
       {
-        "n": "5",
-        "title": "We polish it together",
-        "desc": "Final review before launch: we go over every detail with you before putting the site live."
+        "title": "Development",
+        "desc": "Build the solution: website, web app, mobile, SaaS, automation, integration or custom platform."
       },
       {
-        "n": "6",
-        "title": "We put the site live",
-        "desc": "The site is deployed and ready to receive visitors."
+        "title": "Testing & adjustments",
+        "desc": "Validate the features, the journeys, the quality and the compatibility, and fix issues before going live."
+      },
+      {
+        "title": "Deployment & evolution",
+        "desc": "Go live, support the launch, monitor and evolve the solution as needs change."
       }
-    ]
-  },
-  "proof": {
-    "title": "Social proof — reserved slot",
-    "note": "Real testimonials only, with written permission. Until there are some, this section stays off: the page stands without it.",
-    "img": "real client / project photo"
+    ],
+    "stepLabel": "Step {n}",
+    "prev": "Previous",
+    "next": "Next",
+    "startWith": "Or start with",
+    "startCall": "A call",
+    "startEmail": "An email",
+    "cta": "Book a free call"
   },
   "faq": {
     "kicker": "FAQ",
-    "titleA": "Your questions,",
-    "titleB": "straight up",
-    "intro": "Have questions before starting your project? Here are the answers to the most common ones. If yours isn’t here, contact us — we reply fast.",
+    "title": "Your questions, answered plainly",
+    "intro": "The questions we get before every project, and our answers.",
     "items": [
       {
-        "q": "How much does it cost?",
-        "a": "Every project is different. We start with a consultation to pin down your needs, then give you a clear price. A website starts at $1,000, a logo at $200, and hosting is $25 per month. All packages are detailed on our Pricing page."
+        "q": "What types of projects do you take on?",
+        "a": "We deliver digital projects of every size: websites, web applications, mobile apps, SaaS platforms, e-commerce, integrations, automations and custom solutions. We can handle a relatively simple project just as well as the development of a far more complex digital product."
       },
       {
-        "q": "How long does it take to build a site?",
-        "a": "For simple projects, count on 3 to 5 days, especially if you already have your photos and copy ready. For more complex projects, it can take a few weeks."
+        "q": "What types of businesses do you work with?",
+        "a": "We can work with practically any type of organization: SMEs, startups, industrial companies, large enterprises, institutions, non-profits, agencies and technology companies. Our approach adapts to the project, the size of the organization and its technical needs."
       },
       {
-        "q": "I have no copy or photos.",
-        "a": "No problem — it’s the most common situation. We guide you with the copy, and we find or create the photos that fit."
+        "q": "What technology stack do you use?",
+        "a": "Our stack varies with the needs of the project. We choose technologies based on the constraints, the performance required, scalability and long-term maintenance."
       },
       {
-        "q": "I already have a website, but it’s weak. Do you rebuild it?",
-        "a": "Yes, a rebuild is entirely possible. We start with a consultation to analyze your current site, then guide you through the whole rebuild process."
+        "q": "How does your work process unfold?",
+        "a": "Our process generally follows 7 main steps: Discovery → Project scoping → Architecture & planning → UX/UI design → Development → Testing & adjustments → Deployment & evolution. The goal is to support the client from the idea through to production, then keep evolving the solution as needed."
       },
       {
-        "q": "Will the site be in both French and English?",
-        "a": "Yes, all our sites are built bilingual by default, so you can reach your entire customer base, whatever their language."
+        "q": "Do you work in French and in English?",
+        "a": "Yes. Talgasy Web works in French and in English, for client communications as well as for documentation, design and project delivery."
       },
       {
-        "q": "How will my customers reach me or book a meeting?",
-        "a": "They have several easy ways to reach you: a request right on the site, an email, a phone call, or even a message on social media. From there, you schedule the consultation with them, however suits you."
+        "q": "Do you build custom forms for websites?",
+        "a": "Yes. We can build forms tailored precisely to the company’s process: custom fields, conditional logic, data validation, quote requests, document collection, lead qualification and integration with CRMs or other systems. The form is built around the client’s real workflow rather than from a generic template."
       },
       {
-        "q": "Will I be able to manage my blog myself?",
-        "a": "Yes, you’re free to manage your blog yourself. And if you’re short on time or would rather not, we can handle it for you too."
-      },
-      {
-        "q": "Will the site rank well on Google?",
-        "a": "We structure every site to SEO best practices — speed, mobile and local content — to optimize its Google ranking. Google controls the final ranking, but we put every chance on your side with a strong foundation to maximize your visibility and returns."
+        "q": "Where is Talgasy Web based?",
+        "a": "Talgasy Web is based in Québec, Canada, but our development model is international. We collaborate with professionals in different markets to select the skills best suited to each project. Our goal is to bring together the right expertise, without limiting the team to a single region."
       }
     ]
   },
   "final": {
-    "kicker": "Contact",
-    "titleA": "Ready to",
-    "titleB": "get started",
-    "subtitle": "One consultation is enough to define your need and get your project started.",
-    "rdv": "Book your consultation"
+    "titleA": "Your next contract",
+    "titleB": "starts with a phone call.",
+    "bodyA": "One consultation is enough to pin down your need.",
+    "bodyB": "No commitment.",
+    "callLabel": "Call us",
+    "note": "Reply within 24 hours, Monday to Friday."
   },
   "footer": {
-    "description": "Talgasy Web builds professional, bilingual websites in Québec — structured to turn your visitors into calls.",
-    "navTitle": "Navigation",
+    "description": "Websites that make the phone ring.",
+    "navTitle": "Explore",
     "coordTitle": "Contact details",
     "social": {
       "facebook": "Facebook",
@@ -213,7 +208,10 @@
       "linkedin": "LinkedIn"
     },
     "legal2": "Privacy (Law 25)",
-    "rights": "All rights reserved"
+    "rights": "All rights reserved",
+    "resourcesTitle": "Resources",
+    "socialTitle": "Social",
+    "bookCall": "Book a call"
   },
   "cookies": {
     "kicker": "Cookies",
@@ -225,559 +223,750 @@
     "manage": "Manage my cookies"
   },
   "floating": {
-    "aria": "Open the contact module",
-    "eyebrow": "Contact · FR / EN",
-    "sheetTitle": "Talk to us",
-    "sheetSub": "A real person replies.",
-    "rowCall": "Call now",
-    "rowWaSub": "Fast reply",
-    "rowMessengerSub": "Facebook messaging",
-    "rowRdv": "Book an appointment",
-    "rowRdvSub": "Cal.com — pick your slot"
+    "aria": "Call Talgasy Web at {phone}"
   },
   "blog": {
     "meta": {
       "title": "Blog — Web advice for Québec small businesses | Talgasy Web",
       "description": "Practical ideas and advice to help Québec small businesses attract more customers with their website: conversion, local SEO and best practices."
     },
-    "title": "Ideas & advice",
-    "subtitle": "Practical articles to attract more customers with your website.",
-    "featured": "Featured",
-    "emptyKicker": "Coming soon",
+    "listKicker": "Blog — {n} articles",
+    "listKickerOne": "Blog — 1 article",
+    "listTitle": "Ideas & advice",
+    "listIntro": "Practical articles to win more customers with your website. Conversion, local SEO, content: what we apply for our clients, explained without jargon.",
+    "filterAll": "All",
+    "read": "Read",
     "readArticle": "Read the article",
+    "min": "min",
     "minRead": "min read",
+    "showArticle": "Show the article",
+    "slidesAria": "Featured articles",
     "writtenBy": "Written by",
     "backToBlog": "Back to the blog",
-    "moreArticles": "More articles",
-    "listSubtitle": "More reads to get the most out of your website.",
-    "emptyTitle": "The first articles are coming soon.",
-    "emptyBody": "We’re preparing practical tips to attract more customers with your website. Check back soon — or reach out in the meantime."
+    "relatedKicker": "Read next",
+    "relatedTitle": "Along the same lines",
+    "articleCta": "Have my site reviewed"
   },
   "about": {
     "meta": {
-      "title": "About Talgasy Web — The agency behind your website",
-      "description": "The agency behind websites that make Québec small businesses’ phones ring. Our approach: quality, professionalism, trust."
+      "title": "About Talgasy Web — Your development partner, from idea to launch",
+      "description": "Talgasy Web helps Canadian businesses turn their ideas into concrete digital solutions: websites, applications, SaaS, automation. Quality, professionalism, trust."
     },
-    "heroTitle": "About",
-    "storyKicker": "Our story",
-    "storyTitle": "Helping entrepreneurs move forward",
-    "story": [
-      "Talgasy Web was born from a simple idea: helping entrepreneurs move forward.",
-      "We know a strong start can make all the difference. That’s why we support new businesses and young entrepreneurs, giving them solid foundations to showcase their work, build credibility and start growing their client base.",
-      "But we also work with well-established entrepreneurs who want to modernize their online presence and finally have a website worthy of the business they’ve built.",
-      "To us, a website isn’t just a presence on the Internet. It’s a tool that has to serve the business: clearly present what it does, inspire trust and help clients take action.",
-      "Whether it’s to launch your business, support its growth or improve what already exists, Talgasy Web wants to make a real contribution to the success of local entrepreneurs."
-    ],
+    "breadcrumb": "About",
+    "hero": {
+      "title": "About",
+      "lede": "Talgasy Web was born from a simple idea: making development more accessible to businesses.",
+      "ctaBook": "Book a call",
+      "ctaStory": "Our story",
+      "mapAria": "Dotted world map showing our base in Québec, Canada",
+      "bandAria": "Our expertise",
+      "band": [
+        "Web development",
+        "Web applications",
+        "Mobile applications",
+        "SaaS platforms",
+        "Integration & automation",
+        "APIs & connected systems",
+        "UX/UI",
+        "E-commerce",
+        "Hosting & servers",
+        "Custom solutions"
+      ]
+    },
+    "story": {
+      "quote": "Talgasy Web was created to help Canadian businesses turn their ideas into concrete digital solutions, without making the development process needlessly complex.",
+      "paragraphs": [
+        "Our role is to simplify development for our clients: understand the need, structure the project, choose the right technologies and build the solution with them.",
+        "Whether it is a website, a web application, a mobile application, a SaaS platform, an automation or a custom system, our goal stays the same: make development clearer, more structured and easier to manage for the business.",
+        "Talgasy Web acts as a development partner, from the idea all the way to launch."
+      ],
+      "items": [
+        {
+          "title": "Understand before building",
+          "body": "We don’t start by coding. We start by understanding your business, your users, your goals and the problem to solve. That lets us build a solution that meets a real need, rather than piling on features with no direction."
+        },
+        {
+          "title": "Build the right solution",
+          "body": "Every project is different. We choose the technologies, the architecture and the development method based on the project, its complexity and how it will evolve. Website, application, SaaS, automation or custom system: the technology must serve the project, not the other way around."
+        },
+        {
+          "title": "Support you over time",
+          "body": "Our work doesn’t necessarily end at launch. We can keep maintaining, improving and evolving your solution as your business grows and your needs change."
+        }
+      ]
+    },
     "principles": {
-      "kicker": "Principles",
-      "titleA": "We build",
-      "titleB": "for results",
-      "note": "Talgasy Web is built on a simple idea: your website should bring you customers, not just look good.",
+      "title": "Principles",
+      "intro": "Talgasy Web rests on a simple idea: a website should bring you customers, not just look good.",
       "items": [
         {
           "title": "Quality",
-          "desc": "We make no compromise on quality. Every detail is refined to deliver a professional, credible result worthy of your business."
+          "body": "We make no compromise on quality. Every detail is refined to deliver a professional, credible result worthy of your business."
         },
         {
           "title": "Professionalism",
-          "desc": "We work with seriousness, rigor and transparency at every step. From the first conversation to delivery, you can count on a professional, reliable team committed to your project’s success."
+          "body": "We work with seriousness, rigour and transparency at every step. From the first conversation to delivery, you can count on a professional, reliable team committed to your project’s success."
         },
         {
           "title": "Trust",
-          "desc": "Honest exchanges, commitments kept and clear follow-up from start to finish."
+          "body": "Honest conversations, commitments kept, and clear follow-up from start to finish."
         }
-      ]
-    },
-    "team": {
-      "kicker": "The team",
-      "titleA": "The people behind",
-      "titleB": "your results",
-      "note": "A team with complementary expertise, united around one goal: to carry out every project with care."
-    }
-  },
-  "pricing": {
-    "meta": {
-      "title": "Pricing — Websites, logos and hosting | Talgasy Web",
-      "description": "Clear pricing, no surprises: website, logo and hosting packages for Québec small businesses. Every project starts with a free consultation."
-    },
-    "heroTitleA": "Clear ",
-    "heroHighlight": "pricing",
-    "heroTitleB": ", no surprises.",
-    "heroSubtitle": "Every project is unique. Discover our packages for websites, logos and hosting.",
-    "cta": "Book a free call",
-    "viewPlans": "See the packages",
-    "kicker": "Pricing",
-    "breadcrumb": "Pricing",
-    "labels": {
-      "compare": "Compare the packages",
-      "compareNote": "Each package includes everything in the previous one.",
-      "recommended": "Recommended",
-      "book": "Book a call",
-      "included": "Included",
-      "notIncluded": "Not included",
-      "pickPlan": "Choose a package"
-    },
-    "site": {
-      "title": "Website",
-      "intro": "Every project is different. We start with a consultation to pin down your needs, then give you a clear price.",
-      "plans": [
-        {
-          "name": "Launch",
-          "short": "Launch",
-          "price": "$1,000",
-          "blurb": "Your online presence — 3 pages",
-          "featured": false
-        },
-        {
-          "name": "Essential Custom",
-          "short": "Custom",
-          "price": "$2,000",
-          "blurb": "A professional site — 5 pages",
-          "featured": true
-        },
-        {
-          "name": "Growth",
-          "short": "Growth",
-          "price": "$3,500",
-          "blurb": "A site that brings in clients — 10 pages",
-          "featured": false
-        }
-      ],
-      "groups": [
-        {
-          "title": "Site and content",
-          "rows": [
-            {
-              "label": "Pages included",
-              "cells": [
-                "3 pages",
-                "5 pages",
-                "10 pages"
-              ]
-            },
-            {
-              "label": "Colours, logo, copy and images adapted",
-              "cells": [
-                "y",
-                "y",
-                "y"
-              ]
-            },
-            {
-              "label": "French and English translation",
-              "cells": [
-                "y",
-                "y",
-                "y"
-              ]
-            },
-            {
-              "label": "Phone, tablet and desktop versions",
-              "cells": [
-                "y",
-                "y",
-                "y"
-              ]
-            },
-            {
-              "label": "Sitemap",
-              "cells": [
-                "y",
-                "y",
-                "y"
-              ]
-            },
-            {
-              "label": "Original UX/UI design",
-              "cells": [
-                "-",
-                "y",
-                "y"
-              ]
-            },
-            {
-              "label": "Architecture tailored to the business",
-              "cells": [
-                "-",
-                "y",
-                "y"
-              ]
-            },
-            {
-              "label": "Fully custom navigation",
-              "cells": [
-                "-",
-                "y",
-                "y"
-              ]
-            },
-            {
-              "label": "Sections built around the client’s services",
-              "cells": [
-                "-",
-                "y",
-                "y"
-              ]
-            },
-            {
-              "label": "Conversion-oriented architecture",
-              "cells": [
-                "-",
-                "-",
-                "y"
-              ]
-            },
-            {
-              "label": "Advanced sections to present your services",
-              "cells": [
-                "-",
-                "-",
-                "y"
-              ]
-            }
-          ]
-        },
-        {
-          "title": "Forms and security",
-          "rows": [
-            {
-              "label": "Contact form",
-              "cells": [
-                "Simple",
-                "With anti-spam protection",
-                "Advanced"
-              ]
-            },
-            {
-              "label": "Anti-spam protection",
-              "cells": [
-                "y",
-                "y",
-                "y"
-              ]
-            },
-            {
-              "label": "SSL security",
-              "cells": [
-                "y",
-                "y",
-                "y"
-              ]
-            }
-          ]
-        },
-        {
-          "title": "SEO and tracking",
-          "rows": [
-            {
-              "label": "Essential technical SEO",
-              "cells": [
-                "y",
-                "y",
-                "y"
-              ]
-            },
-            {
-              "label": "Essential metadata",
-              "cells": [
-                "y",
-                "y",
-                "y"
-              ]
-            },
-            {
-              "label": "On-page SEO",
-              "cells": [
-                "-",
-                "y",
-                "y"
-              ]
-            },
-            {
-              "label": "Google Analytics",
-              "cells": [
-                "-",
-                "y",
-                "y"
-              ]
-            },
-            {
-              "label": "Google Search Console",
-              "cells": [
-                "-",
-                "y",
-                "y"
-              ]
-            },
-            {
-              "label": "Local SEO",
-              "cells": [
-                "-",
-                "-",
-                "y"
-              ]
-            },
-            {
-              "label": "1 standard integration",
-              "cells": [
-                "-",
-                "-",
-                "y"
-              ]
-            },
-            {
-              "label": "Tracking of calls, forms and quote requests",
-              "cells": [
-                "-",
-                "-",
-                "y"
-              ]
-            },
-            {
-              "label": "Optimization of the main calls to action",
-              "cells": [
-                "-",
-                "-",
-                "y"
-              ]
-            }
-          ]
-        },
-        {
-          "title": "Delivery and support",
-          "rows": [
-            {
-              "label": "Domain connection",
-              "cells": [
-                "y",
-                "y",
-                "y"
-              ]
-            },
-            {
-              "label": "Go-live",
-              "cells": [
-                "y",
-                "y",
-                "y"
-              ]
-            },
-            {
-              "label": "Rounds of revisions",
-              "cells": [
-                "1",
-                "2",
-                "3"
-              ]
-            },
-            {
-              "label": "Handover and training",
-              "cells": [
-                "-",
-                "30 minutes",
-                "45 minutes"
-              ]
-            },
-            {
-              "label": "Corrective warranty",
-              "cells": [
-                "30 days",
-                "60 days",
-                "90 days"
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    "logo": {
-      "title": "Logo",
-      "intro": "We create professional logos tailored to your brand, with options that fit your needs.",
-      "plans": [
-        {
-          "name": "Logo Express",
-          "short": "Express",
-          "price": "$200",
-          "blurb": "",
-          "featured": false
-        },
-        {
-          "name": "Professional Logo",
-          "short": "Professional",
-          "price": "$650",
-          "blurb": "",
-          "featured": true
-        }
-      ],
-      "groups": [
-        {
-          "title": "Creation",
-          "rows": [
-            {
-              "label": "Production hours",
-              "cells": [
-                "Up to 3 hours",
-                "-"
-              ]
-            },
-            {
-              "label": "Creative directions",
-              "cells": [
-                "1",
-                "3"
-              ]
-            },
-            {
-              "label": "Colour palette",
-              "cells": [
-                "-",
-                "y"
-              ]
-            },
-            {
-              "label": "Typography selection",
-              "cells": [
-                "-",
-                "y"
-              ]
-            }
-          ]
-        },
-        {
-          "title": "Variations",
-          "rows": [
-            {
-              "label": "Colour version",
-              "cells": [
-                "y",
-                "-"
-              ]
-            },
-            {
-              "label": "Monochrome version",
-              "cells": [
-                "y",
-                "-"
-              ]
-            },
-            {
-              "label": "Horizontal, vertical and icon versions",
-              "cells": [
-                "-",
-                "y"
-              ]
-            },
-            {
-              "label": "Light and dark background versions",
-              "cells": [
-                "-",
-                "y"
-              ]
-            }
-          ]
-        },
-        {
-          "title": "Deliverables and revisions",
-          "rows": [
-            {
-              "label": "PNG, JPG and SVG files",
-              "cells": [
-                "y",
-                "-"
-              ]
-            },
-            {
-              "label": "Source files",
-              "cells": [
-                "-",
-                "y"
-              ]
-            },
-            {
-              "label": "Rounds of revisions",
-              "cells": [
-                "1",
-                "2"
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    "hosting": {
-      "title": "Hosting",
-      "intro": "A simple, reliable hosting solution to get your website online and keep it running.",
-      "name": "Hosting",
-      "blurb": "A simple, reliable solution to get your website online and keep it running.",
-      "price": "$25/month",
-      "features": [
-        "Site hosting",
-        "SSL certificate",
-        "Deployment",
-        "Versioning",
-        "Domain connection",
-        "Hosting infrastructure maintenance"
       ]
     }
   },
-  "contactPage": {
-    "meta": {
-      "title": "Contact — Book a free call | Talgasy Web",
-      "description": "Let’s talk about your website project. Book a free discovery call or write to us: a real person gets back to you quickly, anywhere in Québec."
-    },
-    "title": "Let’s talk about your project",
-    "heroTitle": "Contact",
-    "subtitle": "One call is enough to know whether we can help. No pressure, no jargon.",
-    "booking": {
-      "title": "Book a free call",
-      "kicker": "Booking",
-      "intro": "A 45-minute discovery call, by phone or video: your goals, a first look at your online presence and the next steps — no commitment.",
-      "service": "Discovery call",
-      "duration": "45 min",
-      "channel": "Phone or video",
-      "expectTitle": "What we cover together",
-      "expect": [
-        "Your goals and your trade",
-        "A first look at your online presence",
-        "The next steps — no commitment"
-      ],
-      "timezone": "Eastern Time (Québec)",
-      "pickSlot": "Available slots",
-      "loadTitle": "Calendar provided by Cal.com",
-      "loadBody": "The booking calendar is a third-party service (Cal.com). By displaying it, you agree that your IP address is sent to it. You can also write to us with the form below.",
-      "loadCta": "Show the calendar",
-      "embedNote": "Design preview — the real Cal.com calendar will appear here once the URL is provided."
-    },
-    "form": {
-      "title": "Or write to us",
-      "kicker": "Form",
-      "name": "Name",
-      "email": "Email",
-      "phone": "Phone",
-      "message": "Your message",
-      "intro": "Tell us what you need — we’ll get back to you shortly.",
-      "messageHint": "Type of business, what you’re looking for, rough timeline.",
-      "consent": "I agree to be contacted about my request.",
-      "consentLink": "Privacy policy",
-      "honeypot": "Leave this field empty",
-      "send": "Send my request",
-      "sending": "Sending…",
-      "successTitle": "Message received!",
-      "successBody": "We’ll get back to you very soon. Thank you.",
-      "errorTitle": "Something went wrong",
-      "errorBody": "Your message couldn’t be sent. Please try again, or call us directly.",
-      "errors": {
-        "name": "Enter your name (2 characters minimum).",
-        "nameMax": "This name is too long.",
-        "email": "This email is invalid.",
-        "emailMax": "This email is too long.",
-        "phoneMax": "This phone number is too long.",
-        "phone": "This phone number is invalid.",
-        "message": "Write your message.",
-        "messageMax": "This message is too long.",
-        "consent": "You must agree in order to send.",
-        "contactRequired": "Add at least an email or a phone number."
+  "welcome": {
+    "before": "Welcome to",
+    "brand": "Web"
+  },
+  "tools": {
+    "kicker": "Tools",
+    "title": "The tools we work with",
+    "aria": "Our tools"
+  },
+  "positioning": {
+    "aria": "Positioning",
+    "kicker": "Positioning",
+    "title": "From simple projects to enterprise platforms",
+    "paragraphs": [
+      "Talgasy Web designs and builds custom digital solutions for organizations of every size. SME, startup, industrial company, institution, non-profit, agency or large enterprise: our team adapts to the context, the goals and the complexity of the project.",
+      "From websites to business applications, through mobile apps, SaaS platforms, internal systems and automations, we step in wherever development can create value."
+    ],
+    "more": "Learn more",
+    "less": "Show less",
+    "orgs": [
+      "SME",
+      "Startup",
+      "Industrial company",
+      "Institution",
+      "Large enterprise",
+      "Non-profit / agency"
+    ]
+  },
+  "organisations": {
+    "kicker": "Organizations",
+    "title": "What type of organization are you?",
+    "num": "Sector · {n}",
+    "cta": "Request a quote",
+    "items": [
+      {
+        "label": "SMEs",
+        "alt": "SME owner in their shop",
+        "text": "Websites, internal tools, automations, e-commerce and solutions tailored to day-to-day operations."
+      },
+      {
+        "label": "Startups",
+        "alt": "Startup team at work",
+        "text": "MVPs, applications, SaaS, prototypes, fast iterations and digital products built to grow."
+      },
+      {
+        "label": "Industrial companies",
+        "alt": "Technician with a tablet on the factory floor",
+        "text": "Business tools, field applications, automations, system integrations and internal platforms."
+      },
+      {
+        "label": "Large enterprises",
+        "alt": "Meeting room of a large company",
+        "text": "Applications, platforms, internal systems, complex integrations and larger-scale projects."
+      },
+      {
+        "label": "Institutions",
+        "alt": "Lobby of a public institution",
+        "text": "Portals, platforms, applications, internal tools and digital projects structured around the organization’s needs."
+      },
+      {
+        "label": "Non-profits & agencies",
+        "alt": "Volunteers of a community organization",
+        "text": "Websites, platforms, management tools, forms, portals and digital solutions adapted to operations and the people served."
       }
+    ]
+  },
+  "homePricing": {
+    "kicker": "Pricing",
+    "title": "Our starting prices",
+    "intro": "Minimum prices are a starting point. A final quote depends on the needs, the complexity and the integrations required.",
+    "cta": "See all services",
+    "from": "From",
+    "perMonth": "/ month",
+    "cards": [
+      {
+        "name": "Web development",
+        "rows": [
+          {
+            "label": "Website",
+            "price": "$1,500"
+          },
+          {
+            "label": "Web application",
+            "price": "$3,000"
+          },
+          {
+            "label": "E-commerce",
+            "price": "$6,000"
+          }
+        ]
+      },
+      {
+        "name": "Mobile applications",
+        "rows": [
+          {
+            "label": "iOS / Android app",
+            "price": "$7,000"
+          }
+        ]
+      },
+      {
+        "name": "SaaS platform",
+        "rows": [
+          {
+            "label": "SaaS platform",
+            "price": "$30,000"
+          }
+        ]
+      },
+      {
+        "name": "Integration & automation",
+        "rows": [
+          {
+            "label": "Integration & automation",
+            "price": "$2,000"
+          }
+        ]
+      },
+      {
+        "name": "Logo & identity",
+        "rows": [
+          {
+            "label": "Professional logo",
+            "price": "$600"
+          },
+          {
+            "label": "Visual identity",
+            "price": "$1,250"
+          }
+        ]
+      },
+      {
+        "name": "Hosting & server",
+        "rows": [
+          {
+            "label": "Hosting & server",
+            "price": "$35",
+            "monthly": true
+          }
+        ]
+      }
+    ]
+  },
+  "servicesPage": {
+    "meta": {
+      "title": "Services — Web development, apps, SaaS, identity and hosting | Talgasy Web",
+      "description": "Clear starting points for your digital projects: websites, web and mobile apps, SaaS platforms, integrations, logo and identity, hosting. Every engagement can grow with the complexity."
+    },
+    "breadcrumb": "Services",
+    "title": "Services",
+    "lede": "Clear starting points for your digital projects. Every engagement can grow with the complexity.",
+    "catsAria": "Service categories",
+    "mapAria": "Dotted world map",
+    "labels": {
+      "kicker": "Services",
+      "from": "From",
+      "minimum": "Minimum price",
+      "youGet": "What you get"
+    },
+    "families": [
+      {
+        "key": "web",
+        "label": "Web development",
+        "short": "Web",
+        "price": "$1,500",
+        "unit": "",
+        "count": "3 services",
+        "title": "Web development",
+        "desc": "Choose the type of project. Every engagement can grow with the complexity.",
+        "plans": [
+          {
+            "name": "Website",
+            "price": "$1,500",
+            "who": "A professional site that presents your business and makes the phone ring.",
+            "img": "site-web",
+            "cta": "Request a quote",
+            "items": [
+              "Professional UX/UI design",
+              "Responsive development",
+              "Basic technical SEO",
+              "Forms and conversions",
+              "Launch + performance"
+            ]
+          },
+          {
+            "name": "Web applications",
+            "price": "$3,000",
+            "who": "A custom tool for your clients or your team, available in the browser.",
+            "img": "app-web",
+            "cta": "Discuss the project",
+            "items": [
+              "Custom interface",
+              "Dashboard / client portal",
+              "Database + business logic",
+              "Authentication and roles",
+              "Initial deployment"
+            ]
+          },
+          {
+            "name": "E-commerce",
+            "price": "$6,000",
+            "who": "A complete store to sell online, from catalogue to delivery.",
+            "img": "ecommerce",
+            "cta": "Launch my store",
+            "items": [
+              "Product catalogue",
+              "Secure online payment",
+              "Order / inventory management",
+              "Shipping, taxes and emails",
+              "Mobile & conversion optimization"
+            ]
+          }
+        ]
+      },
+      {
+        "key": "mobile",
+        "label": "Mobile applications",
+        "short": "Mobile",
+        "price": "$7,000",
+        "unit": "",
+        "count": "1 service",
+        "title": "Mobile applications",
+        "desc": "A native iOS and Android app, from mockup to publication.",
+        "plans": [
+          {
+            "name": "Mobile applications",
+            "price": "$7,000",
+            "who": "An iOS and Android app designed for your users.",
+            "img": "app-mobile",
+            "cta": "Assess my app",
+            "items": [
+              "iOS / Android",
+              "Custom mobile UX",
+              "API and database",
+              "Notifications & user accounts",
+              "Publication and launch"
+            ]
+          }
+        ]
+      },
+      {
+        "key": "saas",
+        "label": "SaaS platform",
+        "short": "SaaS platform",
+        "price": "$30,000",
+        "unit": "",
+        "count": "1 service",
+        "title": "SaaS platform",
+        "desc": "A subscription software product, built to grow.",
+        "plans": [
+          {
+            "name": "SaaS platform",
+            "price": "$30,000",
+            "who": "Subscription software, structured to grow with your customers.",
+            "img": "saas",
+            "cta": "Build my SaaS",
+            "items": [
+              "Structured MVP",
+              "Scalable architecture",
+              "Subscriptions / billing",
+              "Permissions & teams",
+              "Dashboard, analytics, workflows"
+            ]
+          }
+        ]
+      },
+      {
+        "key": "integ",
+        "label": "Integration & automation",
+        "short": "Integration",
+        "price": "$2,000",
+        "unit": "",
+        "count": "1 service",
+        "title": "Integration & automation",
+        "desc": "We connect your tools and automate repetitive tasks.",
+        "plans": [
+          {
+            "name": "Integration & automation",
+            "price": "$2,000",
+            "who": "Your tools connected to each other, so you stop doing everything by hand.",
+            "img": "integration",
+            "cta": "Automate my operations",
+            "items": [
+              "CRM, API and payment connections",
+              "Automation of repetitive tasks",
+              "Data synchronization",
+              "Less manual work",
+              "Documentation + tests"
+            ]
+          }
+        ]
+      },
+      {
+        "key": "logo",
+        "label": "Logo & identity",
+        "short": "Logo & identity",
+        "price": "$600",
+        "unit": "",
+        "count": "2 services",
+        "title": "Logo & identity",
+        "desc": "From the logo alone to the complete visual identity, with final files.",
+        "plans": [
+          {
+            "name": "Professional logo",
+            "price": "$600",
+            "who": "A clear, lasting logo, delivered in every format.",
+            "img": "logo",
+            "cta": "Create my logo",
+            "items": [
+              "2 to 3 creative directions",
+              "Revisions included",
+              "Colour / black / white versions",
+              "Web & print formats",
+              "Final vector file"
+            ]
+          },
+          {
+            "name": "Visual identity",
+            "price": "$1,250",
+            "who": "A complete brand system to be recognized everywhere.",
+            "img": "identite",
+            "cta": "Build my identity",
+            "items": [
+              "Logo + visual system",
+              "Colour palette",
+              "Brand typography",
+              "Iconography / visual direction",
+              "Mini brand guide"
+            ]
+          }
+        ]
+      },
+      {
+        "key": "host",
+        "label": "Hosting & server",
+        "short": "Hosting",
+        "price": "$35",
+        "unit": " / month",
+        "count": "1 service",
+        "title": "Hosting & server",
+        "desc": "A reliable, secure and monitored launch.",
+        "plans": [
+          {
+            "name": "Hosting & server",
+            "price": "$35 / month",
+            "who": "Your site online, secure and monitored, without thinking about it.",
+            "img": "hebergement",
+            "cta": "Host my project",
+            "items": [
+              "Secure hosting",
+              "SSL and backups",
+              "Technical updates",
+              "Domain / emails as needed",
+              "Support & monitoring"
+            ]
+          }
+        ]
+      }
+    ],
+    "faq": {
+      "kicker": "FAQ",
+      "title": "Your questions, answered plainly",
+      "intro": "Do you have questions before starting your project?",
+      "items": [
+        {
+          "q": "How much does it cost?",
+          "a": "Every project is different. We start with a consultation to pin down your needs, then offer you a clear price. A website starts at $1,500, a logo at $600 and hosting at $35 per month. All services are detailed on this page."
+        },
+        {
+          "q": "How long does it take to build a site?",
+          "a": "For simple projects, count 3 to 5 days, especially if your photos and texts are ready. More complex projects can take a few weeks."
+        },
+        {
+          "q": "I have neither texts nor photos.",
+          "a": "No problem, that is the most common situation. We help you with the texts, and we find or create the photos that fit."
+        },
+        {
+          "q": "I already have a site, but it is weak. Do you rebuild it?",
+          "a": "Yes, a redesign is entirely possible. We start with a consultation to analyze your current site, then support you through the whole redesign process."
+        },
+        {
+          "q": "Will the site be in French and in English?",
+          "a": "Yes, all our sites are bilingual by default, so you can reach your whole clientele, whatever their language."
+        },
+        {
+          "q": "How will my clients reach me or book an appointment?",
+          "a": "They have several simple ways to reach you: a request directly on the site, an email, a call, or even a message on social media. From there, you schedule the consultation with them, however suits you."
+        },
+        {
+          "q": "Will I be able to manage my blog myself?",
+          "a": "Yes, you are free to manage your blog yourself. And if you lack the time or do not feel like handling it, we can take care of it for you."
+        },
+        {
+          "q": "Will the site rank well on Google?",
+          "a": "We structure every site according to SEO best practices — speed, mobile and local content — to optimize its Google ranking. Google controls the final ranking, but we put every chance on your side with solid foundations to maximize your visibility and your results."
+        }
+      ]
+    }
+  },
+  "soumission": {
+    "meta": {
+      "title": "Quote — A clear price for your project | Talgasy Web",
+      "description": "A few questions about your digital project (website, app, SaaS, identity, hosting) and we get back to you within 24 hours with a clear price. No commitment."
+    },
+    "breadcrumb": "Quote",
+    "title": "Quote",
+    "lede": "A few questions about your project, and we get back to you with a clear price. No commitment.",
+    "asideLabel": "Your quote",
+    "stepOf": "Step {n} of {total}",
+    "steps": [
+      "Project",
+      "Organization",
+      "Progress",
+      "Timeline",
+      "Details",
+      "Starting price",
+      "Contact details"
+    ],
+    "from": "from",
+    "type": {
+      "title": "What are we building?",
+      "sub": "Choose the service that best matches your project.",
+      "opts": [
+        {
+          "key": "web",
+          "t": "Website",
+          "s": "UX/UI design, responsive development, SEO and launch.",
+          "price": "$1,500",
+          "lead": "A website"
+        },
+        {
+          "key": "webapp",
+          "t": "Web application",
+          "s": "Custom interface, client portal, business logic.",
+          "price": "$3,000",
+          "lead": "A web application"
+        },
+        {
+          "key": "shop",
+          "t": "E-commerce",
+          "s": "Catalogue, secure payment, orders and shipping.",
+          "price": "$6,000",
+          "lead": "An online store"
+        },
+        {
+          "key": "mobile",
+          "t": "Mobile application",
+          "s": "iOS and Android, from mockup to publication.",
+          "price": "$7,000",
+          "lead": "A mobile application"
+        },
+        {
+          "key": "saas",
+          "t": "SaaS platform",
+          "s": "MVP, subscriptions, permissions and dashboards.",
+          "price": "$30,000",
+          "lead": "A SaaS platform"
+        },
+        {
+          "key": "integ",
+          "t": "Integration & automation",
+          "s": "CRM, APIs, payments and automated tasks.",
+          "price": "$2,000",
+          "lead": "An integration or automation"
+        },
+        {
+          "key": "logo",
+          "t": "Professional logo",
+          "s": "Creative directions, revisions and final files.",
+          "price": "$600",
+          "lead": "A professional logo"
+        },
+        {
+          "key": "identity",
+          "t": "Visual identity",
+          "s": "Logo, palette, typography and mini brand guide.",
+          "price": "$1,250",
+          "lead": "A visual identity"
+        },
+        {
+          "key": "host",
+          "t": "Hosting & server",
+          "s": "Secure hosting, SSL, backups and monitoring.",
+          "price": "$35 / month",
+          "lead": "Hosting"
+        }
+      ]
+    },
+    "sector": {
+      "title": "What type of organization are you?",
+      "sub": "We adapt the approach to your context.",
+      "opts": [
+        {
+          "key": "pme",
+          "t": "SME",
+          "s": "Day-to-day operations, internal tools, e-commerce."
+        },
+        {
+          "key": "startup",
+          "t": "Startup",
+          "s": "MVPs, prototypes and products built to grow."
+        },
+        {
+          "key": "industrial",
+          "t": "Industrial company",
+          "s": "Business tools, field applications, integrations."
+        },
+        {
+          "key": "enterprise",
+          "t": "Large enterprise",
+          "s": "Platforms, internal systems, large-scale projects."
+        },
+        {
+          "key": "institution",
+          "t": "Institution",
+          "s": "Portals, platforms and structured internal tools."
+        },
+        {
+          "key": "nonprofit",
+          "t": "Non-profit or agency",
+          "s": "Websites, portals, forms and management tools."
+        }
+      ]
+    },
+    "stage": {
+      "title": "Where is your project at?",
+      "sub": "Every starting point works for us.",
+      "opts": [
+        {
+          "key": "idea",
+          "t": "An idea",
+          "s": "Nothing written down yet."
+        },
+        {
+          "key": "spec",
+          "t": "Mockups or a specification",
+          "s": "The need is already defined."
+        },
+        {
+          "key": "existing",
+          "t": "Something existing to take over",
+          "s": "A site, app or code to improve."
+        }
+      ]
+    },
+    "when": {
+      "title": "When do you need it?",
+      "sub": "We plan around your deadline.",
+      "opts": [
+        {
+          "key": "asap",
+          "t": "As soon as possible",
+          "s": "The deadline is close."
+        },
+        {
+          "key": "month",
+          "t": "Within a month",
+          "s": ""
+        },
+        {
+          "key": "quarter",
+          "t": "Within three months",
+          "s": ""
+        },
+        {
+          "key": "later",
+          "t": "Just looking",
+          "s": "No date for now."
+        }
+      ]
+    },
+    "details": {
+      "title": "Tell us about your project",
+      "sub": "A few lines help us prepare the call.",
+      "siteLabel": "Current site or application (optional)",
+      "sitePlaceholder": "yoursite.ca",
+      "msgLabel": "Your project in a few lines (optional)",
+      "msgPlaceholder": "What you do, who will use the product, the essential features, the tools to connect…",
+      "continue": "Continue"
+    },
+    "fit": {
+      "title": "{lead} starts at {price}. Are you comfortable with this price?",
+      "sub": "This is a starting price. The final price is set with you on the first call, based on the scope of the project.",
+      "yes": {
+        "t": "Yes, let’s continue",
+        "s": "This starting price fits my budget."
+      },
+      "no": {
+        "t": "No, it’s above my budget",
+        "s": "I’m not ready to invest this amount."
+      }
+    },
+    "contact": {
+      "title": "Where can we reach you?",
+      "sub": "An email or a phone number is enough. We get back to you within 24 hours.",
+      "name": "Name",
+      "namePlaceholder": "Jean Tremblay",
+      "company": "Company",
+      "companyPlaceholder": "Tremblay Landscaping",
+      "email": "Email",
+      "emailPlaceholder": "you@company.ca",
+      "phone": "Phone",
+      "phonePlaceholder": "418 555-0123",
+      "city": "City or region",
+      "cityPlaceholder": "Québec, Lévis, Beauce…",
+      "honeypot": "Leave this field empty",
+      "submit": "Send my request",
+      "sending": "Sending…",
+      "note": "Free. Your information stays with us.",
+      "consent": "I agree that {name} may use my information to respond to my request. ",
+      "consentLink": "Privacy policy"
+    },
+    "errors": {
+      "name": "Please enter your name.",
+      "nameMax": "This name is too long.",
+      "contactRequired": "An email or a phone number, so we can get back to you.",
+      "email": "This email doesn’t look valid.",
+      "emailMax": "This email is too long.",
+      "phone": "This phone number is invalid.",
+      "phoneMax": "This number is too long.",
+      "tooLong": "One of the fields is too long.",
+      "generic": "Your request could not be sent. Try again, or call us directly.",
+      "consent": "Tick the box so we can process your request."
+    },
+    "stop": {
+      "kicker": "Thank you for your honesty",
+      "title": "{lead} starts at {price}.",
+      "body": "This may not be the right time for this project. You can choose another type of project, or come back when your budget allows.",
+      "reChoose": "Choose another project",
+      "back": "Change my answer"
+    },
+    "done": {
+      "title": "Thank you {name}, we’ve got it.",
+      "body": "We’ll look at your project and get back to you within 24 hours with a clear price.",
+      "home": "Back to home",
+      "restart": "New request"
+    },
+    "nav": {
+      "prev": "Previous step",
+      "next": "Next step",
+      "kbdBefore": "Navigate with",
+      "kbdAfter": "on your keyboard"
+    },
+    "summary": {
+      "type": "Project",
+      "sector": "Organization",
+      "stage": "Progress",
+      "when": "Timeline",
+      "fit": "Starting price",
+      "company": "Company",
+      "city": "City or region",
+      "site": "Current site",
+      "details": "Details"
     }
   }
 }

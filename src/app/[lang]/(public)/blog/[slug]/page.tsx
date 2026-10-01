@@ -41,5 +41,9 @@ export default async function Page({ params }: PageProps<"/[lang]/blog/[slug]">)
   const post = getPost(lang, slug);
   if (!post) notFound();
 
-  return <BlogArticle post={post} lang={lang} />;
+  return (
+    <div>
+      <BlogArticle post={post} lang={lang} />
+    </div>
+  );
 }

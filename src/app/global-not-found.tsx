@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Oxanium } from "next/font/google";
 
 import "./globals.css";
 
@@ -14,9 +14,10 @@ import { getDictionary } from "@/lib/i18n/dictionaries";
  * Requiert `experimental.globalNotFound: true` dans `next.config.ts`.
  * Bilingue côte à côte : aucune locale n'est connue à ce stade.
  */
-const jakarta = Plus_Jakarta_Sans({
-  variable: "--font-jakarta",
-  subsets: ["latin", "latin-ext"],
+const oxanium = Oxanium({
+  subsets: ["latin"],
+  variable: "--font-oxanium",
+  display: "swap",
 });
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -28,7 +29,7 @@ export default async function GlobalNotFound() {
   const [fr, en] = await Promise.all([getDictionary("fr"), getDictionary("en")]);
 
   return (
-    <html lang="fr" className={jakarta.variable}>
+    <html lang="fr" className={oxanium.variable}>
       <body className="min-h-dvh bg-fond text-encre">
         <main className="mx-auto flex min-h-dvh max-w-[52ch] flex-col justify-center gap-10 px-[clamp(1rem,4vw,3.5rem)] py-16">
           <section>
@@ -41,7 +42,7 @@ export default async function GlobalNotFound() {
             {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
             <a
               href="/fr"
-              className="mt-6 inline-flex items-center justify-center rounded-xl bg-emeraude px-5 py-3 text-sm font-medium text-white no-underline"
+              className="mt-6 inline-flex items-center justify-center rounded-xl bg-emeraude px-5 py-3 text-sm font-normal text-white no-underline"
             >
               {fr.notFound.cta}
             </a>
@@ -55,7 +56,7 @@ export default async function GlobalNotFound() {
             {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
             <a
               href="/en"
-              className="mt-6 inline-flex items-center justify-center rounded-xl bg-emeraude px-5 py-3 text-sm font-medium text-white no-underline"
+              className="mt-6 inline-flex items-center justify-center rounded-xl bg-emeraude px-5 py-3 text-sm font-normal text-white no-underline"
             >
               {en.notFound.cta}
             </a>

@@ -1,14 +1,10 @@
 import { notFound } from "next/navigation";
 
-import { Faq, FinalCta, Hero, Method, ProofSlot, Services, TradesShowcase } from "@/features/home";
+import { FaqLd } from "@/components/shared/faq-ld";
+import { ScrollProgress } from "@/components/shared/scroll-progress";
+import { Cta, Faq, Hero, HomePricing, Method, Positioning, Sectors, Services, Tools, WelcomeSplash } from "@/features/home";
 import { isLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
-
-/**
- * La preuve sociale reste éteinte tant qu'aucun témoignage réel n'est disponible
- * (avec autorisation écrite). Voir ARCHITECTURE.md — on n'invente jamais de preuve.
- */
-const SHOW_SOCIAL_PROOF = false;
 
 export default async function HomePage({ params }: PageProps<"/[lang]">) {
   const { lang } = await params;
@@ -17,14 +13,19 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
   const dict = await getDictionary(lang);
 
   return (
-    <>
-      <Hero lang={lang} dict={dict} />
-      <Services dict={dict} />
-      <TradesShowcase lang={lang} dict={dict} />
-      <Method dict={dict} />
-      {SHOW_SOCIAL_PROOF && <ProofSlot dict={dict} />}
-      <Faq dict={dict} />
-      <FinalCta lang={lang} dict={dict} />
-    </>
+    <div>
+      <FaqLd items={dict.faq.items} />
+      <WelcomeSplash label={dict.welcome.before} brand={dict.welcome.brand} />
+      <ScrollProgress />
+      <Hero lang={lang} dict={{ hero: dict.hero }} />
+      <Positioning dict={{ positioning: dict.positioning }} />
+      <Services lang={lang} dict={{ services: dict.services }} />
+      <Tools dict={{ tools: dict.tools }} />
+      <Sectors lang={lang} dict={{ organisations: dict.organisations }} />
+      <Method lang={lang} dict={{ method: dict.method }} />
+      <HomePricing lang={lang} dict={{ homePricing: dict.homePricing }} />
+      <Faq dict={{ faq: dict.faq }} lang={lang} />
+      <Cta dict={{ final: dict.final, placeholders: dict.placeholders }} />
+    </div>
   );
 }

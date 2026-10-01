@@ -1,16 +1,14 @@
 {
   "meta": {
-    "title": "Talgasy Web — Sites web professionnels qui convertissent",
-    "description": "Talgasy Web conçoit des sites web professionnels, structurés pour convertir. Un seul objectif : que vos clients vous appellent, pas votre compétiteur."
+    "title": "Développement web, applications et SaaS | Talgasy Web",
+    "description": "Sites web, applications web et mobiles, plateformes SaaS et intégrations pour les entreprises canadiennes. De l’idée au déploiement, avec des prix de départ clairs."
   },
   "og": {
-    "kicker": "Agence web · Québec",
-    "tagline": "Sites web professionnels qui convertissent"
+    "kicker": "Développement · Canada",
+    "tagline": "Votre partenaire de développement"
   },
   "common": {
     "close": "Fermer",
-    "soon": "à venir",
-    "tbd": "à confirmer",
     "openMenu": "Ouvrir le menu",
     "skipToContent": "Aller au contenu"
   },
@@ -27,15 +25,33 @@
   },
   "nav": {
     "home": "Accueil",
-    "sectors": "Secteurs",
+    "sectors": "Organisations",
     "services": "Services",
     "method": "Méthode",
     "about": "À propos",
     "faq": "FAQ",
-    "pricing": "Prix",
-    "blog": "Blog",
-    "contact": "Contact",
-    "quickNav": "Navigation rapide"
+    "blog": "Blogue",
+    "quickNav": "Navigation rapide",
+    "homeMenu": [
+      {
+        "key": "services",
+        "desc": "Six catégories, du site web au SaaS."
+      },
+      {
+        "key": "sectors",
+        "desc": "PME, startups, industriel, institutions, OBNL…"
+      },
+      {
+        "key": "method",
+        "desc": "Sept étapes, de la découverte au déploiement."
+      },
+      {
+        "key": "faq",
+        "desc": "Les questions qu’on nous pose avant chaque projet."
+      }
+    ],
+    "homeMenuAria": "Sections de l’accueil",
+    "quote": "Soumettre une soumission"
   },
   "header": {
     "menuCall": "Appeler maintenant",
@@ -49,163 +65,142 @@
     }
   },
   "hero": {
-    "titleA": "Votre prochain contrat commence par un clic.",
-    "titleB": "Assurez-vous qu’il se termine par un appel.",
-    "subtitle": "Talgasy Web conçoit des sites web professionnels, structurés pour convertir — pour que vos clients vous appellent, pas votre compétiteur.",
-    "tradesKicker": "Secteurs",
-    "tradesLabel": "Dans quel secteur d’activité êtes-vous ?",
-    "tradesCta": "Discutons de votre projet",
-    "tradesCardTitle": "Votre secteur n’est pas listé ? On s’adapte à votre métier.",
+    "kicker": "Développement — Canada",
+    "titleA": "Votre partenaire",
+    "titleB": "de développement.",
+    "lede": "Talgasy Web accompagne les entreprises et les organisations dans la conception, le développement et l'évolution de leurs solutions numériques.",
+    "aside": "Sites web, applications web, applications mobiles, plateformes SaaS, intégrations, automatisations et solutions sur mesure : nous bâtissons des produits adaptés à vos besoins, de l'idée jusqu'au déploiement.",
     "ctaBook": "Réserver un appel gratuit",
-    "demoCaption": "Cet aperçu change selon votre métier. Votre site parlera à vos clients — dans leurs mots.",
-    "demos": [
-      {
-        "trade": "Paysagement",
-        "imgLabel": "photo chantier — paysagement"
-      },
-      {
-        "trade": "Excavation",
-        "imgLabel": "photo chantier — excavation"
-      },
-      {
-        "trade": "Construction",
-        "imgLabel": "photo chantier — construction"
-      },
-      {
-        "trade": "Rénovation",
-        "imgLabel": "photo avant / après — rénovation"
-      },
-      {
-        "trade": "Commerce local",
-        "imgLabel": "photo commerce — vitrine"
-      },
-      {
-        "trade": "Déneigement",
-        "imgLabel": "photo chantier — déneigement"
-      },
-      {
-        "trade": "Arboriculture",
-        "imgLabel": "photo chantier — arboriculture"
-      }
-    ]
+    "ctaServices": "Voir les services",
+    "teaserKicker": "Organisations",
+    "teaser": "PME, startups, industriel, institutions, OBNL…"
   },
   "services": {
     "kicker": "Services",
     "titleA": "Ce qu’on fait,",
     "titleB": "concrètement",
-    "intro": "Quatre services clairs, pensés pour les entreprises et commerces du Québec.",
+    "intro": "Six grandes familles de services, pour tout ce que votre organisation doit développer.",
     "items": [
       {
-        "name": "Création de site web",
-        "note": "Structure claire, navigation fluide, contenu qui va droit au but : une expérience web premium qui reflète le sérieux de votre entreprise — et qui donne envie d’appeler."
+        "name": "Développement web",
+        "desc": "Sites web, applications web et commerce en ligne. Conception UX/UI, développement sur mesure, intégrations, performance et mise en ligne.",
+        "price": "À partir de 1 500 $"
       },
       {
-        "name": "Refonte de site existant",
-        "note": "On analyse ce qui existe, on identifie ce qui bloque la conversion, puis on optimise et améliore chaque élément — structure, vitesse, contenu — pour rebâtir un site qui pousse le visiteur à vous contacter."
+        "name": "Applications mobiles",
+        "desc": "Applications iOS et Android, expériences mobiles, outils terrain, espaces clients et produits mobiles sur mesure.",
+        "price": "À partir de 7 000 $"
       },
       {
-        "name": "Hébergement",
-        "note": "On s’occupe de tout : serveur performant, certificat de sécurité, sauvegardes régulières et surveillance continue. Le site reste en ligne, rapide et protégé — en tout temps."
+        "name": "Plateforme SaaS",
+        "desc": "Produits logiciels, plateformes multi-utilisateurs, abonnements, permissions, tableaux de bord, workflows et architecture évolutive.",
+        "price": "À partir de 30 000 $"
       },
       {
-        "name": "Adresses courriel professionnelles",
-        "note": "Un courriel à votre nom de domaine, ça change tout — au lieu d’un Gmail générique, vos clients voient une entreprise établie, sérieuse, qui inspire confiance dès le premier échange."
+        "name": "Intégration & automatisation",
+        "desc": "Connexion de CRM, API, paiements et outils métiers; synchronisation des données; automatisation des tâches et des processus.",
+        "price": "À partir de 2 000 $"
+      },
+      {
+        "name": "Logo & identité",
+        "desc": "Création de logo, système visuel, palette, typographies, iconographie et éléments de marque.",
+        "price": "À partir de 600 $"
+      },
+      {
+        "name": "Hébergement & serveur",
+        "desc": "Hébergement, déploiement, SSL, sauvegardes, domaine, courriels, mises à jour, monitoring et support technique.",
+        "price": "À partir de 35 $ / mois"
       }
     ]
   },
   "method": {
     "kicker": "Méthode",
-    "titleA": "Comment on",
-    "titleB": "travaille",
-    "intro": "Pas de boîte noire : vous savez toujours où en est votre projet, et ce qu’il vous reste à décider.",
+    "title": "Comment on travaille",
+    "intro": "Une méthode de livraison complète, de la compréhension du besoin jusqu’au déploiement et à l’évolution du produit.",
     "steps": [
       {
-        "n": "1",
-        "title": "On écoute",
-        "desc": "Un appel court. Vous parlez métier, on prend en note ce qui compte vraiment pour vos clients."
+        "title": "Découverte",
+        "desc": "Comprendre l’entreprise, les utilisateurs, les objectifs, les contraintes et le problème à résoudre."
       },
       {
-        "n": "2",
-        "title": "On analyse",
-        "desc": "On regarde votre site actuel pis votre marché — un constat honnête de ce qui fonctionne et ce qui manque, et on analyse la meilleure façon d’optimiser votre site."
+        "title": "Cadrage du projet",
+        "desc": "Définir la portée, les fonctionnalités, les priorités, le budget et la meilleure approche de réalisation."
       },
       {
-        "n": "3",
-        "title": "Une stratégie, pas juste un site",
-        "desc": "Un plan pensé pour votre métier : quelles pages, quels appels à l’action, quelle structure pour amener des leads qualifiés."
+        "title": "Architecture & planification",
+        "desc": "Structurer les parcours, la logique fonctionnelle, les données, l’architecture technique et le plan de réalisation."
       },
       {
-        "n": "4",
-        "title": "On bâtit selon les bonnes pratiques",
-        "desc": "Bilingue, rapide, optimisé mobile, structuré pour Google dès le départ. Vous voyez le site prendre forme — les détails techniques, on les prend en charge."
+        "title": "Design UX/UI",
+        "desc": "Concevoir l’expérience et l’interface afin que le produit soit clair, efficace et cohérent avec la marque."
       },
       {
-        "n": "5",
-        "title": "On peaufine ensemble",
-        "desc": "Révision finale avant lancement : on passe en revue chaque détail avec vous avant de mettre le site en ligne."
+        "title": "Développement",
+        "desc": "Construire la solution : site, application web, mobile, SaaS, automatisation, intégration ou plateforme sur mesure."
       },
       {
-        "n": "6",
-        "title": "On met le site en ligne",
-        "desc": "Le site est déployé et prêt à recevoir des visiteurs."
+        "title": "Tests & ajustements",
+        "desc": "Valider les fonctionnalités, les parcours, la qualité, la compatibilité et corriger les problèmes avant la mise en production."
+      },
+      {
+        "title": "Déploiement & évolution",
+        "desc": "Mettre en ligne, accompagner le lancement, monitorer et faire évoluer la solution lorsque les besoins changent."
       }
-    ]
-  },
-  "proof": {
-    "title": "Preuve sociale — emplacement réservé",
-    "note": "Témoignages réels uniquement, avec autorisation écrite. Tant qu’il n’y en a pas, cette section reste éteinte : la page tient debout sans elle.",
-    "img": "photo client / projet réel"
+    ],
+    "stepLabel": "Étape {n}",
+    "prev": "Précédent",
+    "next": "Suivant",
+    "startWith": "Ou commencez par",
+    "startCall": "Un appel",
+    "startEmail": "Un courriel",
+    "cta": "Réserver un appel gratuit"
   },
   "faq": {
     "kicker": "FAQ",
-    "titleA": "Vos questions,",
-    "titleB": "sans détour",
-    "intro": "Vous avez des questions avant de démarrer votre projet ? Voici les réponses aux plus fréquentes. Si la vôtre n’y figure pas, contactez-nous — nous répondons rapidement.",
+    "title": "Vos questions, sans détour",
+    "intro": "Les questions qu’on nous pose avant chaque projet, et nos réponses.",
     "items": [
       {
-        "q": "Combien ça coûte ?",
-        "a": "Chaque projet est différent. On commence par une consultation pour bien cerner vos besoins, puis on vous propose un prix clair. Un site web commence à 1 000 $, un logo à 200 $, et l’hébergement est à 25 $ par mois. Tous les forfaits sont détaillés sur notre page Prix."
+        "q": "Quels types de projets réalisez-vous ?",
+        "a": "Nous réalisons des projets numériques de différentes envergures : sites web, applications web, applications mobiles, plateformes SaaS, commerce en ligne, intégrations, automatisations et solutions sur mesure. Nous pouvons autant intervenir sur un projet relativement simple que sur le développement d'un produit numérique beaucoup plus complexe."
       },
       {
-        "q": "Combien de temps prend la conception d’un site ?",
-        "a": "Pour les projets simples, comptez 3 à 5 jours, surtout si vous avez déjà vos photos et vos textes prêts. Pour les projets plus complexes, ça peut prendre quelques semaines."
+        "q": "Avec quels types d’entreprises travaillez-vous ?",
+        "a": "Nous pouvons travailler avec pratiquement n'importe quel type d'organisation : PME, startups, entreprises industrielles, grandes entreprises, institutions, OBNL, organismes et entreprises technologiques. Notre approche s'adapte au projet, à la taille de l'organisation et à ses besoins techniques."
       },
       {
-        "q": "Je n’ai ni textes, ni photos.",
-        "a": "Pas de problème, c’est la situation la plus courante. On vous accompagne pour les textes, et on trouve ou on crée les photos qui conviennent."
+        "q": "Quelle stack technologique utilisez-vous ?",
+        "a": "Notre stack varie selon les besoins du projet. Nous choisissons les technologies selon les contraintes, la performance recherchée, l'évolutivité et la maintenance à long terme."
       },
       {
-        "q": "J’ai déjà un site, mais il est faible. Vous le refaites ?",
-        "a": "Oui, une refonte est tout à fait possible. On commence par une consultation pour analyser votre site actuel, puis on vous accompagne dans tout le processus de refonte."
+        "q": "Comment se déroule votre processus de travail ?",
+        "a": "Notre processus suit généralement 7 grandes étapes : Découverte → Cadrage du projet → Architecture & planification → Design UX/UI → Développement → Tests & ajustements → Déploiement & évolution. L'objectif est d'accompagner le client de l'idée jusqu'à la mise en production, puis de continuer à faire évoluer la solution au besoin."
       },
       {
-        "q": "Le site sera-t-il en français et en anglais ?",
-        "a": "Oui, tous nos sites sont conçus bilingues par défaut, pour que vous puissiez rejoindre l’ensemble de votre clientèle, peu importe leur langue."
+        "q": "Travaillez-vous en français et en anglais ?",
+        "a": "Oui. Talgasy Web travaille en français et en anglais, autant pour les communications avec les clients que pour la documentation, la conception et la réalisation des projets."
       },
       {
-        "q": "Comment mes clients pourront-ils me joindre ou prendre rendez-vous ?",
-        "a": "Ils ont plusieurs façons simples de vous rejoindre : une demande directement sur le site, un courriel, un appel, ou même un message sur les réseaux sociaux. De là, vous planifiez la consultation avec eux, comme ça vous arrange."
+        "q": "Faites-vous des formulaires personnalisés pour les sites web ?",
+        "a": "Oui. Nous pouvons développer des formulaires adaptés précisément au processus de l'entreprise : champs personnalisés, logique conditionnelle, validation des données, demandes de soumission, collecte de documents, qualification des prospects et intégration avec des CRM ou d'autres systèmes. Le formulaire est construit autour du workflow réel du client plutôt qu'à partir d'un modèle générique."
       },
       {
-        "q": "Vais-je pouvoir gérer mon blogue moi-même ?",
-        "a": "Oui, vous êtes libre de gérer votre blogue vous-même. Et si vous manquez de temps ou n’avez pas envie de vous en occuper, on peut aussi s’en charger pour vous."
-      },
-      {
-        "q": "Le site sera-t-il bien référencé sur Google ?",
-        "a": "On structure chaque site selon les bonnes pratiques SEO — vitesse, mobile et contenu local — pour optimiser son référencement sur Google. C’est Google qui contrôle le classement final, mais on met toutes les chances de votre côté avec de bonnes bases pour maximiser votre visibilité et votre rendement."
+        "q": "Où est basée Talgasy Web ?",
+        "a": "Talgasy Web est basée au Québec, Canada, mais notre modèle de développement est international. Nous collaborons avec des professionnels situés dans différents marchés afin de sélectionner les compétences les mieux adaptées à chaque projet. Notre objectif est de réunir les bonnes expertises, sans limiter l'équipe à une seule région."
       }
     ]
   },
   "final": {
-    "kicker": "Contact",
-    "titleA": "Prêt à",
-    "titleB": "commencer",
-    "subtitle": "Une consultation suffit pour déterminer votre besoin et débuter votre projet.",
-    "rdv": "Réserver votre consultation"
+    "titleA": "Votre prochain contrat",
+    "titleB": "commence par un appel.",
+    "bodyA": "Une consultation suffit pour cerner votre besoin.",
+    "bodyB": "Sans engagement.",
+    "callLabel": "Appelez-nous",
+    "note": "Réponse en moins de 24 h, du lundi au vendredi."
   },
   "footer": {
-    "description": "Talgasy Web conçoit des sites web professionnels et bilingues au Québec — structurés pour transformer vos visiteurs en appels.",
-    "navTitle": "Navigation",
+    "description": "Des sites web qui font sonner le téléphone.",
+    "navTitle": "Explorer",
     "coordTitle": "Coordonnées",
     "social": {
       "facebook": "Facebook",
@@ -213,7 +208,10 @@
       "linkedin": "LinkedIn"
     },
     "legal2": "Confidentialité (Loi 25)",
-    "rights": "Tous droits réservés"
+    "rights": "Tous droits réservés",
+    "resourcesTitle": "Ressources",
+    "socialTitle": "Réseaux",
+    "bookCall": "Réserver un appel"
   },
   "cookies": {
     "kicker": "Témoins",
@@ -225,559 +223,750 @@
     "manage": "Gérer mes témoins"
   },
   "floating": {
-    "aria": "Ouvrir le module de contact",
-    "eyebrow": "Contact · FR / EN",
-    "sheetTitle": "Parlez-nous",
-    "sheetSub": "Une vraie personne vous répond.",
-    "rowCall": "Appeler maintenant",
-    "rowWaSub": "Réponse rapide",
-    "rowMessengerSub": "Messagerie Facebook",
-    "rowRdv": "Prendre rendez-vous",
-    "rowRdvSub": "Cal.com — choisissez votre créneau"
+    "aria": "Appeler Talgasy Web au {phone}"
   },
   "blog": {
     "meta": {
-      "title": "Blog — Conseils web pour les PME du Québec | Talgasy Web",
-      "description": "Idées et conseils concrets pour aider les PME du Québec à attirer plus de clients avec leur site web : conversion, référencement local et bonnes pratiques."
+      "title": "Blogue — Conseils web pour les PME du Québec | Talgasy Web",
+      "description": "Idées et conseils concrets pour aider les PME du Québec à attirer plus de clients avec leur site web : conversion, référencement local et bonnes pratiques."
     },
-    "title": "Idées & conseils",
-    "subtitle": "Des articles concrets pour attirer plus de clients avec votre site web.",
-    "featured": "À la une",
-    "emptyKicker": "À venir",
+    "listKicker": "Blog — {n} articles",
+    "listKickerOne": "Blog — 1 article",
+    "listTitle": "Idées & conseils",
+    "listIntro": "Des articles concrets pour attirer plus de clients avec votre site web. Conversion, référencement local, contenu : ce qu’on applique chez nos clients, expliqué sans jargon.",
+    "filterAll": "Tous",
+    "read": "Lire",
     "readArticle": "Lire l’article",
+    "min": "min",
     "minRead": "min de lecture",
+    "showArticle": "Afficher l’article",
+    "slidesAria": "Articles à la une",
     "writtenBy": "Écrit par",
     "backToBlog": "Retour au blog",
-    "moreArticles": "Autres articles",
-    "listSubtitle": "D’autres lectures pour tirer le meilleur de votre site web.",
-    "emptyTitle": "Les premiers articles arrivent bientôt.",
-    "emptyBody": "On prépare des conseils concrets pour attirer plus de clients avec votre site web. Revenez bientôt — ou écrivez-nous en attendant."
+    "relatedKicker": "À lire ensuite",
+    "relatedTitle": "Dans la même idée",
+    "articleCta": "Faire regarder mon site"
   },
   "about": {
     "meta": {
-      "title": "À propos de Talgasy Web — L’agence derrière votre site",
-      "description": "L’agence derrière les sites qui font sonner le téléphone des PME du Québec. Notre approche : qualité, professionnalisme, confiance."
+      "title": "À propos de Talgasy Web — Partenaire de développement, de l’idée au déploiement",
+      "description": "Talgasy Web aide les entreprises canadiennes à transformer leurs idées en solutions numériques concrètes : sites web, applications, SaaS, automatisation. Qualité, professionnalisme, confiance."
     },
-    "heroTitle": "À propos",
-    "storyKicker": "Notre histoire",
-    "storyTitle": "Aider les entrepreneurs à avancer",
-    "story": [
-      "Talgasy Web est né d’une idée simple : aider les entrepreneurs à avancer.",
-      "On sait qu’un bon départ peut faire toute la différence. C’est pourquoi on accompagne les nouvelles entreprises et les jeunes entrepreneurs en leur donnant des bases solides pour présenter leur travail, gagner en crédibilité et commencer à développer leur clientèle.",
-      "Mais on travaille aussi avec des entrepreneurs déjà bien établis qui veulent moderniser leur présence en ligne et enfin avoir un site à la hauteur de l’entreprise qu’ils ont bâtie.",
-      "Pour nous, un site web n’est pas juste une présence sur Internet. C’est un outil qui doit servir l’entreprise : présenter clairement ce qu’elle fait, inspirer confiance et aider les clients à passer à l’action.",
-      "Que ce soit pour lancer votre entreprise, soutenir sa croissance ou améliorer ce qui existe déjà, Talgasy Web veut contribuer concrètement à la réussite des entrepreneurs d’ici."
-    ],
+    "breadcrumb": "À propos",
+    "hero": {
+      "title": "À propos",
+      "lede": "Talgasy Web est née d’une idée simple : rendre le développement plus accessible aux entreprises.",
+      "ctaBook": "Réserver un appel",
+      "ctaStory": "Notre histoire",
+      "mapAria": "Carte du monde en points, avec notre base au Québec, Canada",
+      "bandAria": "Nos expertises",
+      "band": [
+        "Développement web",
+        "Applications web",
+        "Applications mobiles",
+        "Plateformes SaaS",
+        "Intégration & automatisation",
+        "API & systèmes connectés",
+        "UX/UI",
+        "Commerce en ligne",
+        "Hébergement & serveurs",
+        "Solutions sur mesure"
+      ]
+    },
+    "story": {
+      "quote": "Talgasy Web a été créée pour aider les entreprises canadiennes à transformer leurs idées en solutions numériques concrètes, sans rendre le processus de développement inutilement complexe.",
+      "paragraphs": [
+        "Notre rôle est de simplifier le développement pour nos clients : comprendre leur besoin, structurer le projet, choisir les bonnes technologies et bâtir la solution avec eux.",
+        "Qu’il s’agisse d’un site web, d’une application web, d’une application mobile, d’une plateforme SaaS, d’une automatisation ou d’un système sur mesure, notre objectif reste le même : rendre le développement plus clair, plus structuré et plus simple à gérer pour l’entreprise.",
+        "Talgasy Web agit comme un partenaire de développement, de l’idée jusqu’au déploiement."
+      ],
+      "items": [
+        {
+          "title": "Comprendre avant de développer",
+          "body": "On ne commence pas par coder. On commence par comprendre votre entreprise, vos utilisateurs, vos objectifs et le problème à résoudre. Cela nous permet de bâtir une solution qui répond à un vrai besoin, plutôt que d’ajouter des fonctionnalités sans direction."
+        },
+        {
+          "title": "Construire la bonne solution",
+          "body": "Chaque projet est différent. Nous choisissons les technologies, l’architecture et la méthode de développement en fonction du projet, de sa complexité et de son évolution future. Site web, application, SaaS, automatisation ou système sur mesure : la technologie doit servir le projet, pas l’inverse."
+        },
+        {
+          "title": "Vous accompagner dans la durée",
+          "body": "Notre travail ne s’arrête pas nécessairement au lancement. Nous pouvons continuer à maintenir, améliorer et faire évoluer votre solution à mesure que votre entreprise grandit et que vos besoins changent."
+        }
+      ]
+    },
     "principles": {
-      "kicker": "Principes",
-      "titleA": "On construit",
-      "titleB": "pour le résultat",
-      "note": "Talgasy Web repose sur une idée simple : un site doit vous amener des clients, pas seulement être beau.",
+      "title": "Principes",
+      "intro": "Talgasy Web repose sur une idée simple : un site doit vous amener des clients, pas seulement être beau.",
       "items": [
         {
           "title": "Qualité",
-          "desc": "Nous ne faisons aucun compromis sur la qualité. Chaque détail est soigné afin d’offrir un résultat professionnel, crédible et à la hauteur de votre entreprise."
+          "body": "Nous ne faisons aucun compromis sur la qualité. Chaque détail est soigné afin d’offrir un résultat professionnel, crédible et à la hauteur de votre entreprise."
         },
         {
           "title": "Professionnalisme",
-          "desc": "Nous travaillons avec sérieux, rigueur et transparence à chaque étape. De la première discussion jusqu’à la livraison, vous pouvez compter sur une équipe professionnelle, fiable et engagée dans la réussite de votre projet."
+          "body": "Nous travaillons avec sérieux, rigueur et transparence à chaque étape. De la première discussion jusqu’à la livraison, vous pouvez compter sur une équipe professionnelle, fiable et engagée dans la réussite de votre projet."
         },
         {
           "title": "Confiance",
-          "desc": "Des échanges honnêtes, des engagements respectés et un suivi clair du début à la fin."
+          "body": "Des échanges honnêtes, des engagements respectés et un suivi clair du début à la fin."
         }
-      ]
-    },
-    "team": {
-      "kicker": "L’équipe",
-      "titleA": "Les personnes derrière",
-      "titleB": "vos résultats",
-      "note": "Une équipe aux expertises complémentaires, réunie autour d’un même objectif : réaliser chaque projet avec soin."
-    }
-  },
-  "pricing": {
-    "meta": {
-      "title": "Prix — Sites web, logos et hébergement | Talgasy Web",
-      "description": "Des prix clairs, sans surprise : forfaits de site web, de logo et d’hébergement pour les PME du Québec. Chaque projet commence par une consultation gratuite."
-    },
-    "heroTitleA": "Des prix ",
-    "heroHighlight": "clairs",
-    "heroTitleB": ", sans surprise.",
-    "heroSubtitle": "Chaque projet est unique. Découvrez nos forfaits pour sites web, logos et hébergement.",
-    "cta": "Réserver un appel gratuit",
-    "viewPlans": "Voir les forfaits",
-    "kicker": "Prix",
-    "breadcrumb": "Prix",
-    "labels": {
-      "compare": "Comparer les forfaits",
-      "compareNote": "Chaque forfait reprend tout le précédent.",
-      "recommended": "Recommandé",
-      "book": "Réserver un appel",
-      "included": "Inclus",
-      "notIncluded": "Non inclus",
-      "pickPlan": "Choisir un forfait"
-    },
-    "site": {
-      "title": "Site web",
-      "intro": "Chaque projet est différent. Nous commençons par une consultation pour bien cerner vos besoins, puis nous vous proposons un prix clair.",
-      "plans": [
-        {
-          "name": "Lancement",
-          "short": "Lancement",
-          "price": "1 000 $",
-          "blurb": "Votre présence en ligne — 3 pages",
-          "featured": false
-        },
-        {
-          "name": "Sur-mesure Essentiel",
-          "short": "Sur-mesure",
-          "price": "2 000 $",
-          "blurb": "Un site professionnel — 5 pages",
-          "featured": true
-        },
-        {
-          "name": "Croissance",
-          "short": "Croissance",
-          "price": "3 500 $",
-          "blurb": "Votre site qui génère des clients — 10 pages",
-          "featured": false
-        }
-      ],
-      "groups": [
-        {
-          "title": "Site et contenu",
-          "rows": [
-            {
-              "label": "Pages incluses",
-              "cells": [
-                "3 pages",
-                "5 pages",
-                "10 pages"
-              ]
-            },
-            {
-              "label": "Adaptation des couleurs, logo, texte, image",
-              "cells": [
-                "y",
-                "y",
-                "y"
-              ]
-            },
-            {
-              "label": "Traduction française et anglaise",
-              "cells": [
-                "y",
-                "y",
-                "y"
-              ]
-            },
-            {
-              "label": "Version téléphone, tablette et ordinateur",
-              "cells": [
-                "y",
-                "y",
-                "y"
-              ]
-            },
-            {
-              "label": "Plan du site",
-              "cells": [
-                "y",
-                "y",
-                "y"
-              ]
-            },
-            {
-              "label": "Design UX/UI original",
-              "cells": [
-                "-",
-                "y",
-                "y"
-              ]
-            },
-            {
-              "label": "Architecture adaptée à l’entreprise",
-              "cells": [
-                "-",
-                "y",
-                "y"
-              ]
-            },
-            {
-              "label": "Navigation entièrement personnalisée",
-              "cells": [
-                "-",
-                "y",
-                "y"
-              ]
-            },
-            {
-              "label": "Sections conçues selon les services du client",
-              "cells": [
-                "-",
-                "y",
-                "y"
-              ]
-            },
-            {
-              "label": "Architecture orientée vers la conversion",
-              "cells": [
-                "-",
-                "-",
-                "y"
-              ]
-            },
-            {
-              "label": "Sections avancées pour présenter les services",
-              "cells": [
-                "-",
-                "-",
-                "y"
-              ]
-            }
-          ]
-        },
-        {
-          "title": "Formulaires et sécurité",
-          "rows": [
-            {
-              "label": "Formulaire de contact",
-              "cells": [
-                "Simple",
-                "Avec protection antipourriel",
-                "Avancé"
-              ]
-            },
-            {
-              "label": "Protection antipourriel",
-              "cells": [
-                "y",
-                "y",
-                "y"
-              ]
-            },
-            {
-              "label": "Sécurité SSL",
-              "cells": [
-                "y",
-                "y",
-                "y"
-              ]
-            }
-          ]
-        },
-        {
-          "title": "Référencement et suivi",
-          "rows": [
-            {
-              "label": "SEO technique essentiel",
-              "cells": [
-                "y",
-                "y",
-                "y"
-              ]
-            },
-            {
-              "label": "Métadonnées essentielles",
-              "cells": [
-                "y",
-                "y",
-                "y"
-              ]
-            },
-            {
-              "label": "SEO on-page",
-              "cells": [
-                "-",
-                "y",
-                "y"
-              ]
-            },
-            {
-              "label": "Google Analytics",
-              "cells": [
-                "-",
-                "y",
-                "y"
-              ]
-            },
-            {
-              "label": "Google Search Console",
-              "cells": [
-                "-",
-                "y",
-                "y"
-              ]
-            },
-            {
-              "label": "SEO local",
-              "cells": [
-                "-",
-                "-",
-                "y"
-              ]
-            },
-            {
-              "label": "1 intégration standard",
-              "cells": [
-                "-",
-                "-",
-                "y"
-              ]
-            },
-            {
-              "label": "Suivi des appels, formulaires et demandes de soumission",
-              "cells": [
-                "-",
-                "-",
-                "y"
-              ]
-            },
-            {
-              "label": "Optimisation des principaux appels à l’action",
-              "cells": [
-                "-",
-                "-",
-                "y"
-              ]
-            }
-          ]
-        },
-        {
-          "title": "Livraison et accompagnement",
-          "rows": [
-            {
-              "label": "Connexion au domaine",
-              "cells": [
-                "y",
-                "y",
-                "y"
-              ]
-            },
-            {
-              "label": "Mise en ligne",
-              "cells": [
-                "y",
-                "y",
-                "y"
-              ]
-            },
-            {
-              "label": "Rondes de corrections",
-              "cells": [
-                "1",
-                "2",
-                "3"
-              ]
-            },
-            {
-              "label": "Transfert et formation",
-              "cells": [
-                "-",
-                "30 minutes",
-                "45 minutes"
-              ]
-            },
-            {
-              "label": "Garantie corrective",
-              "cells": [
-                "30 jours",
-                "60 jours",
-                "90 jours"
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    "logo": {
-      "title": "Logo",
-      "intro": "Nous créons des logos professionnels adaptés à votre image de marque, avec des options adaptées à vos besoins.",
-      "plans": [
-        {
-          "name": "Logo Express",
-          "short": "Express",
-          "price": "200 $",
-          "blurb": "",
-          "featured": false
-        },
-        {
-          "name": "Logo Professionnel",
-          "short": "Professionnel",
-          "price": "650 $",
-          "blurb": "",
-          "featured": true
-        }
-      ],
-      "groups": [
-        {
-          "title": "Création",
-          "rows": [
-            {
-              "label": "Heures de production",
-              "cells": [
-                "Maximum de 3 heures",
-                "-"
-              ]
-            },
-            {
-              "label": "Directions créatives",
-              "cells": [
-                "1",
-                "3"
-              ]
-            },
-            {
-              "label": "Palette de couleurs",
-              "cells": [
-                "-",
-                "y"
-              ]
-            },
-            {
-              "label": "Sélection typographique",
-              "cells": [
-                "-",
-                "y"
-              ]
-            }
-          ]
-        },
-        {
-          "title": "Déclinaisons",
-          "rows": [
-            {
-              "label": "Version couleur",
-              "cells": [
-                "y",
-                "-"
-              ]
-            },
-            {
-              "label": "Version monochrome",
-              "cells": [
-                "y",
-                "-"
-              ]
-            },
-            {
-              "label": "Versions horizontale, verticale et icône",
-              "cells": [
-                "-",
-                "y"
-              ]
-            },
-            {
-              "label": "Versions pour fond clair et foncé",
-              "cells": [
-                "-",
-                "y"
-              ]
-            }
-          ]
-        },
-        {
-          "title": "Livrables et révisions",
-          "rows": [
-            {
-              "label": "Fichiers PNG, JPG et SVG",
-              "cells": [
-                "y",
-                "-"
-              ]
-            },
-            {
-              "label": "Fichiers sources",
-              "cells": [
-                "-",
-                "y"
-              ]
-            },
-            {
-              "label": "Rondes de corrections",
-              "cells": [
-                "1",
-                "2"
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    "hosting": {
-      "title": "Hébergement",
-      "intro": "Une solution d’hébergement simple et fiable pour assurer la mise en ligne et le maintien de votre site web.",
-      "name": "Hébergement",
-      "blurb": "Une solution simple et fiable pour assurer la mise en ligne et le maintien de votre site web.",
-      "price": "25 $/mois",
-      "features": [
-        "Hébergement du site",
-        "Certificat SSL",
-        "Déploiement",
-        "Versionnement",
-        "Connexion au domaine",
-        "Maintien de l’infrastructure d’hébergement"
       ]
     }
   },
-  "contactPage": {
-    "meta": {
-      "title": "Contact — Réservez un appel gratuit | Talgasy Web",
-      "description": "Parlons de votre projet de site web. Réservez un appel découverte gratuit ou écrivez-nous : une vraie personne vous répond rapidement, partout au Québec."
-    },
-    "title": "Parlons de votre projet",
-    "heroTitle": "Contact",
-    "subtitle": "Un appel suffit pour savoir si on peut vous aider. Pas de pression, pas de jargon.",
-    "booking": {
-      "title": "Réservez un appel gratuit",
-      "kicker": "Rendez-vous",
-      "intro": "Un appel découverte de 45 minutes, par téléphone ou en visio : vos objectifs, un premier regard sur votre présence en ligne et les prochaines étapes — sans engagement.",
-      "service": "Appel découverte",
-      "duration": "45 min",
-      "channel": "Téléphone ou visio",
-      "expectTitle": "Ce qu’on couvre ensemble",
-      "expect": [
-        "Vos objectifs et votre métier",
-        "Un premier regard sur votre présence en ligne",
-        "Les prochaines étapes — sans engagement"
-      ],
-      "timezone": "Heure de l’Est (Québec)",
-      "pickSlot": "Créneaux disponibles",
-      "loadTitle": "Calendrier fourni par Cal.com",
-      "loadBody": "Le calendrier de réservation est un service tiers (Cal.com). En l’affichant, vous acceptez que votre adresse IP lui soit transmise. Vous pouvez aussi nous écrire avec le formulaire ci-dessous.",
-      "loadCta": "Afficher le calendrier",
-      "embedNote": "Aperçu du design — le vrai calendrier Cal.com s’affichera ici dès que l’URL sera fournie."
-    },
-    "form": {
-      "title": "Ou écrivez-nous",
-      "kicker": "Formulaire",
-      "name": "Nom",
-      "email": "Courriel",
-      "phone": "Téléphone",
-      "message": "Votre message",
-      "intro": "Dites-nous ce dont vous avez besoin, on vous revient rapidement.",
-      "messageHint": "Type d’entreprise, ce que vous cherchez, échéance approximative.",
-      "consent": "J’accepte d’être recontacté au sujet de ma demande.",
-      "consentLink": "Politique de confidentialité",
-      "honeypot": "Laissez ce champ vide",
-      "send": "Envoyer ma demande",
-      "sending": "Envoi…",
-      "successTitle": "Message bien reçu !",
-      "successBody": "On vous revient très vite. Merci de votre confiance.",
-      "errorTitle": "Un souci est survenu",
-      "errorBody": "Votre message n’a pas pu être envoyé. Réessayez, ou appelez-nous directement.",
-      "errors": {
-        "name": "Indiquez votre nom (2 caractères minimum).",
-        "nameMax": "Ce nom est trop long.",
-        "email": "Ce courriel est invalide.",
-        "emailMax": "Ce courriel est trop long.",
-        "phoneMax": "Ce numéro est trop long.",
-        "phone": "Ce numéro de téléphone est invalide.",
-        "message": "Écrivez votre message.",
-        "messageMax": "Ce message est trop long.",
-        "consent": "Vous devez accepter pour envoyer.",
-        "contactRequired": "Indiquez au moins un courriel ou un téléphone."
+  "welcome": {
+    "before": "Bienvenue chez",
+    "brand": "Web"
+  },
+  "tools": {
+    "kicker": "Outils",
+    "title": "Les outils avec lesquels on travaille",
+    "aria": "Nos outils"
+  },
+  "positioning": {
+    "aria": "Positionnement",
+    "kicker": "Positionnement",
+    "title": "Du projet simple aux plateformes d’entreprise",
+    "paragraphs": [
+      "Talgasy Web conçoit et développe des solutions numériques sur mesure pour des organisations de toutes tailles. PME, startup, entreprise industrielle, institution, OBNL, organisme ou grande entreprise : notre équipe s'adapte au contexte, aux objectifs et à la complexité du projet.",
+      "Du site web à l'application métier, en passant par les applications mobiles, les plateformes SaaS, les systèmes internes et les automatisations, nous intervenons là où le développement peut créer de la valeur."
+    ],
+    "more": "En savoir plus",
+    "less": "Réduire",
+    "orgs": [
+      "PME",
+      "Startup",
+      "Entreprise industrielle",
+      "Institution",
+      "Grande entreprise",
+      "OBNL / organisme"
+    ]
+  },
+  "organisations": {
+    "kicker": "Organisations",
+    "title": "Quel type d’organisation êtes-vous ?",
+    "num": "Secteur · {n}",
+    "cta": "Soumettre une soumission",
+    "items": [
+      {
+        "label": "PME",
+        "alt": "Propriétaire de PME dans son commerce",
+        "text": "Sites, outils internes, automatisations, commerce en ligne et solutions adaptées aux opérations quotidiennes."
+      },
+      {
+        "label": "Startups",
+        "alt": "Équipe de startup au travail",
+        "text": "MVP, applications, SaaS, prototypes, itérations rapides et produits numériques destinés à évoluer."
+      },
+      {
+        "label": "Entreprises industrielles",
+        "alt": "Technicien avec une tablette en usine",
+        "text": "Outils métiers, applications terrain, automatisations, intégrations de systèmes et plateformes internes."
+      },
+      {
+        "label": "Grandes entreprises",
+        "alt": "Salle de réunion d’une grande entreprise",
+        "text": "Applications, plateformes, systèmes internes, intégrations complexes et projets à plus grande échelle."
+      },
+      {
+        "label": "Institutions",
+        "alt": "Hall d’une institution publique",
+        "text": "Portails, plateformes, applications, outils internes et projets numériques structurés selon les besoins de l’organisation."
+      },
+      {
+        "label": "OBNL & organismes",
+        "alt": "Bénévoles d’un organisme communautaire",
+        "text": "Sites, plateformes, outils de gestion, formulaires, portails et solutions numériques adaptées aux opérations et aux publics desservis."
       }
+    ]
+  },
+  "homePricing": {
+    "kicker": "Prix",
+    "title": "Nos prix de départ",
+    "intro": "Les prix minimums servent de point de départ. Une soumission finale dépend des besoins, de la complexité et des intégrations requises.",
+    "cta": "Voir tous les services",
+    "from": "À partir de",
+    "perMonth": "/ mois",
+    "cards": [
+      {
+        "name": "Développement web",
+        "rows": [
+          {
+            "label": "Site web",
+            "price": "1 500 $"
+          },
+          {
+            "label": "Application web",
+            "price": "3 000 $"
+          },
+          {
+            "label": "Commerce en ligne",
+            "price": "6 000 $"
+          }
+        ]
+      },
+      {
+        "name": "Applications mobiles",
+        "rows": [
+          {
+            "label": "Application iOS / Android",
+            "price": "7 000 $"
+          }
+        ]
+      },
+      {
+        "name": "Plateforme SaaS",
+        "rows": [
+          {
+            "label": "Plateforme SaaS",
+            "price": "30 000 $"
+          }
+        ]
+      },
+      {
+        "name": "Intégration & automatisation",
+        "rows": [
+          {
+            "label": "Intégration & automatisation",
+            "price": "2 000 $"
+          }
+        ]
+      },
+      {
+        "name": "Logo & identité",
+        "rows": [
+          {
+            "label": "Logo professionnel",
+            "price": "600 $"
+          },
+          {
+            "label": "Identité visuelle",
+            "price": "1 250 $"
+          }
+        ]
+      },
+      {
+        "name": "Hébergement & serveur",
+        "rows": [
+          {
+            "label": "Hébergement & serveur",
+            "price": "35 $",
+            "monthly": true
+          }
+        ]
+      }
+    ]
+  },
+  "servicesPage": {
+    "meta": {
+      "title": "Services — Développement web, applications, SaaS, identité et hébergement | Talgasy Web",
+      "description": "Des points de départ clairs pour vos projets numériques : sites web, applications web et mobiles, plateformes SaaS, intégrations, logo et identité, hébergement. Chaque mandat peut évoluer selon la complexité."
+    },
+    "breadcrumb": "Services",
+    "title": "Services",
+    "lede": "Des points de départ clairs pour vos projets numériques. Chaque mandat peut évoluer selon la complexité.",
+    "catsAria": "Catégories de services",
+    "mapAria": "Carte du monde en points",
+    "labels": {
+      "kicker": "Services",
+      "from": "À partir de",
+      "minimum": "Prix minimum",
+      "youGet": "Ce que vous obtenez"
+    },
+    "families": [
+      {
+        "key": "web",
+        "label": "Développement web",
+        "short": "Web",
+        "price": "1 500 $",
+        "unit": "",
+        "count": "3 services",
+        "title": "Développement web",
+        "desc": "Choisissez le type de projet. Chaque mandat peut évoluer selon la complexité.",
+        "plans": [
+          {
+            "name": "Site web",
+            "price": "1 500 $",
+            "who": "Un site professionnel qui présente votre entreprise et fait sonner le téléphone.",
+            "img": "site-web",
+            "cta": "Demander une soumission",
+            "items": [
+              "Design UX/UI professionnel",
+              "Développement responsive",
+              "SEO technique de base",
+              "Formulaires et conversions",
+              "Mise en ligne + performance"
+            ]
+          },
+          {
+            "name": "Applications web",
+            "price": "3 000 $",
+            "who": "Un outil sur mesure pour vos clients ou votre équipe, accessible dans le navigateur.",
+            "img": "app-web",
+            "cta": "Discuter du projet",
+            "items": [
+              "Interface sur mesure",
+              "Tableau de bord / espace client",
+              "Base de données + logique métier",
+              "Authentification et rôles",
+              "Déploiement initial"
+            ]
+          },
+          {
+            "name": "Commerce en ligne",
+            "price": "6 000 $",
+            "who": "Une boutique complète pour vendre en ligne, du catalogue à la livraison.",
+            "img": "ecommerce",
+            "cta": "Lancer ma boutique",
+            "items": [
+              "Catalogue produits",
+              "Paiement en ligne sécurisé",
+              "Gestion commandes / inventaire",
+              "Livraison, taxes et e-mails",
+              "Optimisation mobile & conversion"
+            ]
+          }
+        ]
+      },
+      {
+        "key": "mobile",
+        "label": "Applications mobiles",
+        "short": "Mobile",
+        "price": "7 000 $",
+        "unit": "",
+        "count": "1 service",
+        "title": "Applications mobiles",
+        "desc": "Une application native pour iOS et Android, de la maquette à la publication.",
+        "plans": [
+          {
+            "name": "Applications mobiles",
+            "price": "7 000 $",
+            "who": "Une application iOS et Android pensée pour vos usagers.",
+            "img": "app-mobile",
+            "cta": "Évaluer mon application",
+            "items": [
+              "iOS / Android",
+              "UX mobile sur mesure",
+              "API et base de données",
+              "Notifications & comptes usagers",
+              "Publication et lancement"
+            ]
+          }
+        ]
+      },
+      {
+        "key": "saas",
+        "label": "Plateforme SaaS",
+        "short": "Plateforme SaaS",
+        "price": "30 000 $",
+        "unit": "",
+        "count": "1 service",
+        "title": "Plateforme SaaS",
+        "desc": "Un produit logiciel par abonnement, bâti pour évoluer.",
+        "plans": [
+          {
+            "name": "Plateforme SaaS",
+            "price": "30 000 $",
+            "who": "Un logiciel par abonnement, structuré pour grandir avec vos clients.",
+            "img": "saas",
+            "cta": "Construire mon SaaS",
+            "items": [
+              "MVP structuré",
+              "Architecture évolutive",
+              "Abonnements / facturation",
+              "Permissions & équipes",
+              "Dashboard, analytics, workflows"
+            ]
+          }
+        ]
+      },
+      {
+        "key": "integ",
+        "label": "Intégration & automatisation",
+        "short": "Intégration",
+        "price": "2 000 $",
+        "unit": "",
+        "count": "1 service",
+        "title": "Intégration & automatisation",
+        "desc": "On relie vos outils et on automatise les tâches répétitives.",
+        "plans": [
+          {
+            "name": "Intégration & automatisation",
+            "price": "2 000 $",
+            "who": "Vos outils connectés entre eux, pour arrêter de tout faire à la main.",
+            "img": "integration",
+            "cta": "Automatiser mes opérations",
+            "items": [
+              "Connexion CRM, API, paiements",
+              "Automatisation des tâches répétitives",
+              "Synchronisation des données",
+              "Réduction du travail manuel",
+              "Documentation + tests"
+            ]
+          }
+        ]
+      },
+      {
+        "key": "logo",
+        "label": "Logo & identité",
+        "short": "Logo & identité",
+        "price": "600 $",
+        "unit": "",
+        "count": "2 services",
+        "title": "Logo & identité",
+        "desc": "Du logo seul à l’identité visuelle complète, avec les fichiers finaux.",
+        "plans": [
+          {
+            "name": "Logo professionnel",
+            "price": "600 $",
+            "who": "Un logo clair et durable, livré dans tous les formats.",
+            "img": "logo",
+            "cta": "Créer mon logo",
+            "items": [
+              "2 à 3 pistes créatives",
+              "Révisions incluses",
+              "Versions couleur / noir / blanc",
+              "Formats web & impression",
+              "Fichier vectoriel final"
+            ]
+          },
+          {
+            "name": "Identité visuelle",
+            "price": "1 250 $",
+            "who": "Un système de marque complet pour être reconnu partout.",
+            "img": "identite",
+            "cta": "Bâtir mon identité",
+            "items": [
+              "Logo + système visuel",
+              "Palette de couleurs",
+              "Typographies de marque",
+              "Iconographie / direction visuelle",
+              "Mini guide de marque"
+            ]
+          }
+        ]
+      },
+      {
+        "key": "host",
+        "label": "Hébergement & serveur",
+        "short": "Hébergement",
+        "price": "35 $",
+        "unit": " / mois",
+        "count": "1 service",
+        "title": "Hébergement & serveur",
+        "desc": "Une mise en ligne fiable, sécurisée et suivie.",
+        "plans": [
+          {
+            "name": "Hébergement & serveur",
+            "price": "35 $ / mois",
+            "who": "Votre site en ligne, sécurisé et suivi, sans y penser.",
+            "img": "hebergement",
+            "cta": "Héberger mon projet",
+            "items": [
+              "Hébergement sécurisé",
+              "SSL et sauvegardes",
+              "Mises à jour techniques",
+              "Domaine / e-mails selon besoin",
+              "Support & monitoring"
+            ]
+          }
+        ]
+      }
+    ],
+    "faq": {
+      "kicker": "FAQ",
+      "title": "Vos questions, sans détour",
+      "intro": "Vous avez des questions avant de démarrer votre projet ?",
+      "items": [
+        {
+          "q": "Combien ça coûte ?",
+          "a": "Chaque projet est différent. On commence par une consultation pour bien cerner vos besoins, puis on vous propose un prix clair. Un site web commence à 1 500 $, un logo à 600 $ et l’hébergement à 35 $ par mois. Tous les services sont détaillés sur cette page."
+        },
+        {
+          "q": "Combien de temps prend la conception d’un site ?",
+          "a": "Pour les projets simples, comptez 3 à 5 jours, surtout si vous avez déjà vos photos et vos textes prêts. Pour les projets plus complexes, ça peut prendre quelques semaines."
+        },
+        {
+          "q": "Je n’ai ni textes, ni photos.",
+          "a": "Pas de problème, c’est la situation la plus courante. On vous accompagne pour les textes, et on trouve ou on crée les photos qui conviennent."
+        },
+        {
+          "q": "J’ai déjà un site, mais il est faible. Vous le refaites ?",
+          "a": "Oui, une refonte est tout à fait possible. On commence par une consultation pour analyser votre site actuel, puis on vous accompagne dans tout le processus de refonte."
+        },
+        {
+          "q": "Le site sera-t-il en français et en anglais ?",
+          "a": "Oui, tous nos sites sont conçus bilingues par défaut, pour que vous puissiez rejoindre l’ensemble de votre clientèle, peu importe leur langue."
+        },
+        {
+          "q": "Comment mes clients pourront-ils me joindre ou prendre rendez-vous ?",
+          "a": "Ils ont plusieurs façons simples de vous rejoindre : une demande directement sur le site, un courriel, un appel, ou même un message sur les réseaux sociaux. De là, vous planifiez la consultation avec eux, comme ça vous arrange."
+        },
+        {
+          "q": "Vais-je pouvoir gérer mon blogue moi-même ?",
+          "a": "Oui, vous êtes libre de gérer votre blogue vous-même. Et si vous manquez de temps ou n’avez pas envie de vous en occuper, on peut aussi s’en charger pour vous."
+        },
+        {
+          "q": "Le site sera-t-il bien référencé sur Google ?",
+          "a": "On structure chaque site selon les bonnes pratiques SEO — vitesse, mobile et contenu local — pour optimiser son référencement sur Google. C’est Google qui contrôle le classement final, mais on met toutes les chances de votre côté avec de bonnes bases pour maximiser votre visibilité et votre rendement."
+        }
+      ]
+    }
+  },
+  "soumission": {
+    "meta": {
+      "title": "Soumission — Un prix clair pour votre projet | Talgasy Web",
+      "description": "Quelques questions sur votre projet numérique (site, application, SaaS, identité, hébergement) et on vous revient en 24 h avec un prix clair. Sans engagement."
+    },
+    "breadcrumb": "Soumission",
+    "title": "Soumission",
+    "lede": "Quelques questions sur votre projet, et on vous revient avec un prix clair. Sans engagement.",
+    "asideLabel": "Votre soumission",
+    "stepOf": "Étape {n} sur {total}",
+    "steps": [
+      "Projet",
+      "Organisation",
+      "Avancement",
+      "Délai",
+      "Détails",
+      "Prix de départ",
+      "Coordonnées"
+    ],
+    "from": "à partir de",
+    "type": {
+      "title": "Qu’est-ce qu’on développe ?",
+      "sub": "Choisissez le service qui correspond le mieux à votre projet.",
+      "opts": [
+        {
+          "key": "web",
+          "t": "Site web",
+          "s": "Design UX/UI, développement responsive, SEO et mise en ligne.",
+          "price": "1 500 $",
+          "lead": "Un site web"
+        },
+        {
+          "key": "webapp",
+          "t": "Application web",
+          "s": "Interface sur mesure, espace client, logique métier.",
+          "price": "3 000 $",
+          "lead": "Une application web"
+        },
+        {
+          "key": "shop",
+          "t": "Commerce en ligne",
+          "s": "Catalogue, paiement sécurisé, commandes et livraison.",
+          "price": "6 000 $",
+          "lead": "Une boutique en ligne"
+        },
+        {
+          "key": "mobile",
+          "t": "Application mobile",
+          "s": "iOS et Android, de la maquette à la publication.",
+          "price": "7 000 $",
+          "lead": "Une application mobile"
+        },
+        {
+          "key": "saas",
+          "t": "Plateforme SaaS",
+          "s": "MVP, abonnements, permissions et tableaux de bord.",
+          "price": "30 000 $",
+          "lead": "Une plateforme SaaS"
+        },
+        {
+          "key": "integ",
+          "t": "Intégration & automatisation",
+          "s": "CRM, API, paiements et tâches automatisées.",
+          "price": "2 000 $",
+          "lead": "Une intégration ou automatisation"
+        },
+        {
+          "key": "logo",
+          "t": "Logo professionnel",
+          "s": "Pistes créatives, révisions et fichiers finaux.",
+          "price": "600 $",
+          "lead": "Un logo professionnel"
+        },
+        {
+          "key": "identity",
+          "t": "Identité visuelle",
+          "s": "Logo, palette, typographies et mini guide de marque.",
+          "price": "1 250 $",
+          "lead": "Une identité visuelle"
+        },
+        {
+          "key": "host",
+          "t": "Hébergement & serveur",
+          "s": "Hébergement sécurisé, SSL, sauvegardes et suivi.",
+          "price": "35 $ / mois",
+          "lead": "L’hébergement"
+        }
+      ]
+    },
+    "sector": {
+      "title": "Quel type d’organisation êtes-vous ?",
+      "sub": "On adapte l’approche à votre contexte.",
+      "opts": [
+        {
+          "key": "pme",
+          "t": "PME",
+          "s": "Opérations quotidiennes, outils internes, commerce en ligne."
+        },
+        {
+          "key": "startup",
+          "t": "Startup",
+          "s": "MVP, prototypes et produits destinés à évoluer."
+        },
+        {
+          "key": "industrial",
+          "t": "Entreprise industrielle",
+          "s": "Outils métiers, applications terrain, intégrations."
+        },
+        {
+          "key": "enterprise",
+          "t": "Grande entreprise",
+          "s": "Plateformes, systèmes internes, projets à grande échelle."
+        },
+        {
+          "key": "institution",
+          "t": "Institution",
+          "s": "Portails, plateformes et outils internes structurés."
+        },
+        {
+          "key": "nonprofit",
+          "t": "OBNL ou organisme",
+          "s": "Sites, portails, formulaires et outils de gestion."
+        }
+      ]
+    },
+    "stage": {
+      "title": "Où en est votre projet ?",
+      "sub": "Tous les points de départ nous conviennent.",
+      "opts": [
+        {
+          "key": "idea",
+          "t": "Une idée",
+          "s": "Rien d’écrit pour l’instant."
+        },
+        {
+          "key": "spec",
+          "t": "Des maquettes ou un cahier des charges",
+          "s": "Le besoin est déjà défini."
+        },
+        {
+          "key": "existing",
+          "t": "Un existant à reprendre",
+          "s": "Site, application ou code à améliorer."
+        }
+      ]
+    },
+    "when": {
+      "title": "Pour quand ?",
+      "sub": "On planifie en fonction de votre échéance.",
+      "opts": [
+        {
+          "key": "asap",
+          "t": "Dès que possible",
+          "s": "L’échéance approche."
+        },
+        {
+          "key": "month",
+          "t": "D’ici un mois",
+          "s": ""
+        },
+        {
+          "key": "quarter",
+          "t": "D’ici trois mois",
+          "s": ""
+        },
+        {
+          "key": "later",
+          "t": "Je me renseigne",
+          "s": "Pas de date pour l’instant."
+        }
+      ]
+    },
+    "details": {
+      "title": "Parlez-nous de votre projet",
+      "sub": "Quelques lignes nous aident à préparer l’appel.",
+      "siteLabel": "Site ou application actuelle (facultatif)",
+      "sitePlaceholder": "votresite.ca",
+      "msgLabel": "Votre projet en quelques lignes (facultatif)",
+      "msgPlaceholder": "Ce que vous faites, qui utilisera le produit, les fonctions essentielles, les outils à connecter…",
+      "continue": "Continuer"
+    },
+    "fit": {
+      "title": "{lead} commence à {price}. Êtes-vous à l’aise avec ce prix ?",
+      "sub": "C’est un prix de départ. Le prix final est établi avec vous au premier appel, selon la portée du projet.",
+      "yes": {
+        "t": "Oui, je continue",
+        "s": "Ce prix de départ convient à mon budget."
+      },
+      "no": {
+        "t": "Non, c’est au-dessus de mon budget",
+        "s": "Je ne suis pas prêt à investir ce montant."
+      }
+    },
+    "contact": {
+      "title": "Où vous joindre ?",
+      "sub": "Un courriel ou un numéro suffit. On vous revient en 24 h.",
+      "name": "Nom",
+      "namePlaceholder": "Jean Tremblay",
+      "company": "Entreprise",
+      "companyPlaceholder": "Paysagement Tremblay",
+      "email": "Courriel",
+      "emailPlaceholder": "vous@entreprise.ca",
+      "phone": "Téléphone",
+      "phonePlaceholder": "418 555-0123",
+      "city": "Ville ou région",
+      "cityPlaceholder": "Québec, Lévis, Beauce…",
+      "honeypot": "Laissez ce champ vide",
+      "submit": "Envoyer ma demande",
+      "sending": "Envoi…",
+      "note": "Gratuit. Vos informations restent chez nous.",
+      "consent": "J’accepte que {name} utilise mes renseignements pour répondre à ma demande. ",
+      "consentLink": "Politique de confidentialité"
+    },
+    "errors": {
+      "name": "Indiquez votre nom.",
+      "nameMax": "Ce nom est trop long.",
+      "contactRequired": "Un courriel ou un numéro de téléphone, pour qu’on puisse vous revenir.",
+      "email": "Ce courriel ne semble pas valide.",
+      "emailMax": "Ce courriel est trop long.",
+      "phone": "Ce numéro de téléphone est invalide.",
+      "phoneMax": "Ce numéro est trop long.",
+      "tooLong": "Un des champs est trop long.",
+      "generic": "Votre demande n’a pas pu être envoyée. Réessayez, ou appelez-nous directement.",
+      "consent": "Cochez la case pour qu’on puisse traiter votre demande."
+    },
+    "stop": {
+      "kicker": "Merci de votre franchise",
+      "title": "{lead} commence à {price}.",
+      "body": "Ce n’est peut-être pas le bon moment pour ce projet. Vous pouvez choisir un autre type de projet, ou revenir quand votre budget le permettra.",
+      "reChoose": "Choisir un autre projet",
+      "back": "Modifier ma réponse"
+    },
+    "done": {
+      "title": "Merci {name}, c’est reçu.",
+      "body": "On regarde votre projet et on vous revient d’ici 24 h avec un prix clair.",
+      "home": "Retour à l’accueil",
+      "restart": "Nouvelle demande"
+    },
+    "nav": {
+      "prev": "Étape précédente",
+      "next": "Étape suivante",
+      "kbdBefore": "Naviguez avec",
+      "kbdAfter": "sur votre clavier"
+    },
+    "summary": {
+      "type": "Projet",
+      "sector": "Organisation",
+      "stage": "Avancement",
+      "when": "Délai",
+      "fit": "Prix de départ",
+      "company": "Entreprise",
+      "city": "Ville ou région",
+      "site": "Site actuel",
+      "details": "Détails"
     }
   }
 }

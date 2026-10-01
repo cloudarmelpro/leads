@@ -1,96 +1,34 @@
-import { AtSign, Code2, RefreshCw, Server } from "lucide-react";
-
-import { CONTENEUR } from "@/components/shared/container";
-import { Eyebrow } from "@/components/shared/eyebrow";
-import { Reveal } from "@/components/shared/reveal";
-import { SplitReveal } from "@/components/shared/split-reveal";
+import { ServicesShowcase } from "@/features/home/components/services-showcase";
+import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 
-type Props = { dict: Dictionary };
+type Props = { lang: Locale; dict: Pick<Dictionary, "services"> };
 
-// Icônes vertes inline (design) : création, refonte, hébergement, courriels.
-const ICONS = [Code2, RefreshCw, Server, AtSign];
-// Bento du design : large + étroite / étroite + large.
-const SPAN = ["lg:col-span-2", "lg:col-span-1", "lg:col-span-1", "lg:col-span-2"];
-// Illustrations décoratives (traits gris subtils) sur les 2 cartes larges.
-const DECOR: (string | null)[] = ["/services-globe.svg", null, null, "/services-mail.svg"];
-
-export function Services({ dict }: Props) {
+/**
+ * Services (maquette Accueil, 2026-09-30) : dès 1100px, la vitrine défilante occupe le rail
+ * et le texte (label, titre, intro) une colonne de 280px à droite ; en dessous, une
+ * colonne, texte d'abord. Rail de 1400px comme l'en-tête.
+ */
+export function Services({ lang, dict }: Props) {
   const t = dict.services;
 
   return (
-    <section id="services" className="pt-[clamp(16px,2.5vw,32px)] pb-[clamp(80px,14vw,200px)]">
-      <div className={CONTENEUR}>
-        {/* En-tête : eyebrow + titre à gauche, intro à droite (alignée en bas). */}
-        <div className="grid grid-cols-1 gap-x-16 gap-y-5 md:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] md:items-end">
-          <div>
-            <p className="mb-1">
-              <Eyebrow>{t.kicker}</Eyebrow>
-            </p>
-            <SplitReveal as="h2" className="font-display text-[clamp(1.5rem,4vw,2.375rem)] leading-[1.143] font-normal tracking-[-1.2px] text-balance">
-              {t.titleA} {t.titleB}
-            </SplitReveal>
-          </div>
-          <SplitReveal
-            as="p"
-            delay={0.1}
-            className="text-body-fluid text-texte2 text-pretty md:w-[480px] md:justify-self-end md:pb-2 md:text-right"
-          >
-            {t.intro}
-          </SplitReveal>
+    <section id="services" className="relative z-[1] flex justify-center bg-fond px-[clamp(16px,4vw,56px)] pb-[clamp(128px,14vw,230px)]">
+      <div className="grid w-full max-w-[1400px] grid-cols-[minmax(0,1fr)] items-center gap-[clamp(32px,4vw,64px)] min-[1100px]:grid-cols-[minmax(0,1fr)_280px]">
+        <div className="flex flex-col items-start gap-[18px] min-[1100px]:order-2">
+          <span className="text-[13px] leading-[20px] font-normal tracking-[0.08em] text-vert uppercase">{t.kicker}</span>
+          {/* Deux lignes voulues : « Ce qu'on fait, » puis « concrètement ». */}
+          <h2 className="m-[0px] text-[clamp(22px,2.2vw,30px)] leading-[1.2] font-semibold tracking-[-0.01em] text-encre">
+            {t.titleA}
+            <br />
+            {t.titleB}
+          </h2>
+          <p className="m-[0px] max-w-[440px] text-[15px] leading-[26px] font-normal text-texte2 text-pretty">{t.intro}</p>
         </div>
 
-        <Reveal as="div" stagger={0.1} className="mt-12 grid grid-cols-1 gap-5 lg:grid-cols-3">
-          {t.items.map((item, index) => {
-            const Icon = ICONS[index % ICONS.length];
-            const decor = DECOR[index];
-
-            return (
-              <article
-                key={item.name}
-                className={`relative flex flex-col justify-center gap-9 overflow-hidden rounded-[20px] border border-ligne bg-surface px-10 pt-10 pb-11 dark:border-transparent dark:bg-[linear-gradient(180deg,#01202e_0%,#011a26_100%)] dark:shadow-[inset_0_0_0_1px_#0a2a3a] ${SPAN[index]}`}
-              >
-                {/* Halo vert d'ambiance en haut-droite (design). */}
-                <span
-                  aria-hidden
-                  className="pointer-events-none absolute top-[-160px] right-[-140px] h-[420px] w-[420px] rounded-full bg-[radial-gradient(closest-side,rgba(48,217,140,0.1),rgba(48,217,140,0)_72%)]"
-                />
-
-                {decor ? (
-                  // `loading="lazy"` : sans lui, React 19 émet un <link rel=preload>
-                  // pour chaque <img> rendue côté serveur — décor sous la ligne de
-                  // flottaison, inutile à précharger (avertissement console).
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    src={decor}
-                    alt=""
-                    aria-hidden
-                    loading="lazy"
-                    decoding="async"
-                    className={`pointer-events-none absolute w-[56%] max-w-[360px] opacity-50 select-none tint-vert dark:opacity-30 dark:[filter:none] ${
-                      index === 3
-                        ? "top-1/2 right-[-10%] -translate-y-1/2" // enveloppe : centrée verticalement, poussée à droite
-                        : "-top-6 right-[-6%]" // sphère : haut-droite
-                    }`}
-                  />
-                ) : null}
-
-                <div className="relative flex items-center gap-3">
-                  <Icon
-                    size={22}
-                    strokeWidth={1.7}
-                    aria-hidden
-                    className="shrink-0 text-emeraude dark:text-accent-strong"
-                  />
-                  <h3 className="text-lead-fluid font-normal text-encre">{item.name}</h3>
-                </div>
-                <p className="relative max-w-[44ch] text-[0.875rem] leading-[1.5rem] font-light text-texte2 text-pretty">
-                  {item.note}
-                </p>
-              </article>
-            );
-          })}
-        </Reveal>
+        <div className="min-w-[0px] min-[1100px]:order-1">
+          <ServicesShowcase lang={lang} items={t.items} />
+        </div>
       </div>
     </section>
   );

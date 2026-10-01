@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist_Mono, Outfit, Plus_Jakarta_Sans } from "next/font/google";
+import { Oxanium } from "next/font/google";
 import { notFound } from "next/navigation";
 
 import "../globals.css";
@@ -10,7 +10,7 @@ import { FloatingContact } from "@/components/shared/floating-contact";
 import { Header } from "@/components/shared/header";
 import { JsonLd } from "@/components/shared/json-ld";
 import { PrePaintScript } from "@/components/shared/pre-paint-script";
-import { SmoothScroll } from "@/components/shared/smooth-scroll";
+import { SiteCursor } from "@/components/shared/site-cursor";
 import { site } from "@/config/site";
 import { isLocale, localeHtmlLang, locales } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
@@ -18,21 +18,14 @@ import { pageMetadata } from "@/lib/seo/metadata";
 
 import { setRequestLocale } from "@/lib/i18n/request-locale";
 
-// Typographie de la maquette Figma : Outfit pour les grands titres (h1/h2),
-// Plus Jakarta Sans pour le corps et les titres secondaires. Deux polices
-// variables Google Fonts.
-const outfit = Outfit({
-  variable: "--font-outfit",
-  subsets: ["latin", "latin-ext"],
-});
-const plusJakarta = Plus_Jakarta_Sans({
-  variable: "--font-jakarta",
-  subsets: ["latin", "latin-ext"],
-});
-// Accent monospace (boutons, coordonnées) — conservé.
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin", "latin-ext"],
+// Police unique du site : Oxanium, celle des maquettes Claude Design (decision du 2026-09-24).
+// `next/font/google` telecharge la police au build et la sert depuis notre domaine :
+// aucune requete vers Google a l'execution (loi 25). Fichier variable 200-800, donc toutes
+// les graisses en un seul telechargement.
+const oxanium = Oxanium({
+  subsets: ["latin"],
+  variable: "--font-oxanium",
+  display: "swap",
 });
 
 // ISR courte sur TOUT le site public. Sans `revalidate`, Next annonce
@@ -68,21 +61,13 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[la
   return (
     <html
       lang={localeHtmlLang[lang]}
-      className={`${outfit.variable} ${plusJakarta.variable} ${geistMono.variable}`}
+      className={oxanium.variable}
       // Le script inline pose `.dark` sur <html> avant l'hydratation (script de
       // thème) → on ignore la différence de className.
       suppressHydrationWarning
     >
-      <head>
-        {/* Les titres animés partent en `opacity-0` et sont révélés par GSAP.
-            Sans JavaScript, ils resteraient invisibles : on les rétablit. */}
-        <noscript>
-          <style>{`.opacity-0{opacity:1}`}</style>
-        </noscript>
-      </head>
-      <body className="min-h-dvh bg-fond text-encre">
+      <body className="relative min-h-dvh bg-fond text-encre">
         <PrePaintScript />
-        <SmoothScroll />
         <JsonLd lang={lang} dict={dict} />
         <a
           href="#contenu"
@@ -90,11 +75,17 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[la
         >
           {dict.common.skipToContent}
         </a>
-        <Header lang={lang} dict={dict} />
+        {/* Bandeau témoins en tête du <body> (il est `fixed`, sa place n'y change rien) : en fin
+            de document, il n'était peint qu'une fois tout le HTML analysé, soit 1 à 2 s plus
+            tard sur téléphone, et c'est lui que Google retenait comme élément LCP. */}
+        <CookieConsent lang={lang} dict={{ cookies: dict.cookies }} />
+        {/* Les composants clients ne reçoivent que leur tranche du dictionnaire : tout ce
+            qu'on leur passe est copié dans le HTML de chaque page (≈ 69 Ko en entier). */}
+        <Header lang={lang} dict={{ nav: dict.nav, header: dict.header, common: dict.common, placeholders: dict.placeholders }} />
         <main id="contenu">{children}</main>
         <Footer lang={lang} dict={dict} />
-        <FloatingContact dict={dict} />
-        <CookieConsent lang={lang} dict={dict} />
+        <FloatingContact dict={{ floating: dict.floating }} />
+        <SiteCursor />
       </body>
     </html>
   );

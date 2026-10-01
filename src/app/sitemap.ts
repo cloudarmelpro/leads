@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-import { features, site } from "@/config/site";
+import { site } from "@/config/site";
 import { getPosts } from "@/features/blog";
 import { defaultLocale, localeHtmlLang, locales } from "@/lib/i18n/config";
 
@@ -15,16 +15,16 @@ const posts = getPosts(defaultLocale);
 // build est un signal trompeur que Google finit par ignorer.
 // On n'émet PAS `changefreq`/`priority` : Google les ignore depuis 2020 (bruit).
 const PATHS = [
-  { path: "", lastmod: "2026-08-13" },
-  { path: "/a-propos", lastmod: "2026-08-13" },
-  { path: "/contact", lastmod: "2026-08-13" },
-  ...(features.pricing ? [{ path: "/prix", lastmod: "2026-09-03" }] : []),
+  { path: "", lastmod: "2026-10-01" },
+  { path: "/a-propos", lastmod: "2026-09-30" },
+  { path: "/soumission", lastmod: "2026-09-30" },
+  { path: "/services", lastmod: "2026-09-30" },
   // Le blog n'est listé que s'il a au moins un article (sinon il est `noindex` :
   // ne pas soumettre une URL noindex au sitemap). `lastmod` de la liste = date du
   // plus récent article, puisque c'est ce qui la fait changer.
   ...(posts.length > 0 ? [{ path: "/blog", lastmod: isoDay(posts[0].date) }] : []),
   ...posts.map((post) => ({ path: `/blog/${post.slug}`, lastmod: isoDay(post.date) })),
-  { path: "/confidentialite", lastmod: "2026-08-12" },
+  { path: "/confidentialite", lastmod: "2026-10-01" },
 ];
 
 /** `lastmod` au format date seule (YYYY-MM-DD), même si l'article porte une heure. */

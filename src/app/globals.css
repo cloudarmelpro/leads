@@ -16,18 +16,16 @@
 @theme {
   --color-encre: #1e1e1e;
   --color-sapin: #14402f;
-  --color-sapin-fonce: #0e2f22;
   --color-emeraude: #177e4f;
   --color-lueur: #9be8c0;
   --color-menthe: #e7f2eb;
   /* Mode clair = couleurs du cadre Figma « Light » (fond #fdfdfd, cartes blanches,
-     texte neutre #1e1e1e / #646468) mais MÊME mise en forme que le sombre : cartes
-     plates délimitées par un filet, jamais par une ombre portée. Le filet est un
-     cran plus foncé que le « Stroke » Figma (#f2f2f3) pour rester visible sans ombre. */
+     texte neutre #1e1e1e / #646468). Le client ne veut PAS de filet en clair : les
+     cartes se détachent par leur fond gris (`surface-2`), `ligne` ne sert qu'aux rares
+     séparateurs (article de blogue, articles de la confidentialité). */
   --color-fond: #fdfdfd;
   --color-ligne: #e8e8ea;
   --color-texte2: #646468;
-  --color-sapin-doux: #c9dad1;
 
   /* Tokens sémantiques ajoutés pour le mode sombre (voir bloc `.dark` plus bas).
      - surface : couleur des cartes (remplace les `bg-white` codés en dur).
@@ -36,66 +34,90 @@
      - accent-strong : émeraude en TEXTE/icône (plus lumineuse en sombre). */
   --color-surface: #ffffff;
   --color-surface-2: #f5f5f6;
+  --color-surface-3: #e8e8ea;
   --color-ink: #0f1d17;
   --color-accent-strong: #177e4f;
 
-  /* Titres (h1/h2) : Outfit. Corps + titres secondaires : Plus Jakarta Sans. */
-  --font-display: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
-  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
-  --font-serif: ui-serif, Georgia, serif;
-  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  /* Jetons de la maquette « Accueil » (valeurs sombres littérales dans `.dark`) :
+     - vert / vert-clair : vert de TEXTE (surtitres, liens, pictogrammes) et son survol,
+       foncé en clair pour le contraste.
+     - texte3 : liens du pied de page ; texte-note : mention sous le bouton d'appel.
+     - contour : bordure des boutons contournés du menu mobile. */
+  --color-vert: #177e4f;
+  --color-vert-clair: #14402f;
+  /* Boutons pleins : MÊME rendu dans les deux thèmes (vert vif, texte nuit) — demande du
+     client du 2026-09-30. */
+  --color-bouton: #30d98c;
+  --color-bouton-clair: #7fefc0;
+  --color-sur-bouton: #011823;
+  --color-texte3: #646468;
+  --color-texte-note: #6b7f79;
+  --color-contour: #d9d9dc;
+  /* Texte un cran plus foncé que `texte2` (filtres du blogue, textes d'appui des heros photo). */
+  --color-texte-bascule: #3a3a3f;
+  /* Page Soumission : texte d'erreur du formulaire (rouge doux, contraste 4,5:1 en sombre). */
+  --color-erreur: #c0362c;
+  /* Corps des articles de blog (17px/30px) : gris encre en clair, #c6d5db en sombre. */
+  --color-prose: #4a5560;
+  /* Maquette « Accueil » (Claude Design, 2026-09-24) : verre de l'en-tete (fond, survol,
+     filet), pastille du lien courant, liens de la barre, liens des metiers, puces d'outils. */
+  --color-verre: rgba(253, 253, 253, 0.72);
+  --color-verre-fort: rgba(253, 253, 253, 0.92);
+  --color-filet-verre: rgba(30, 30, 30, 0.1);
+  --color-lien-barre: #3a3a3f;
+  --color-texte-sourd: #646468;
+  --color-puce: #1e1e1e;
+  /* Accueil en clair : mots de l'écran de bienvenue. */
+  --color-mot-accueil: #e1e8e5;
+  /* Cartes de l'accueil v3 (maquette du 2026-09-30) : #022536 en sombre, un cran plus
+     bleu que `surface`. Les autres pages gardent `surface` jusqu'à leur refonte. */
+  --color-carte: #f5f5f6;
 
-  /*
-   * Tokens shadcn/ui mappés sur la marque (site clair uniquement, pas de mode
-   * sombre). Les composants ui/ (base-ui) lisent ces variables — jamais de
-   * couleur codée en dur dans un composant.
-   */
-  --color-background: #fdfdfd;
-  --color-foreground: var(--color-encre);
-  --color-primary: var(--color-emeraude);
-  --color-primary-foreground: #ffffff;
-  --color-secondary: var(--color-menthe);
-  --color-secondary-foreground: var(--color-sapin);
-  --color-muted: var(--color-fond);
-  --color-muted-foreground: var(--color-texte2);
-  --color-accent: var(--color-menthe);
-  --color-accent-foreground: var(--color-sapin);
-  --color-destructive: #c0362c;
-  --color-border: var(--color-ligne);
-  /* Bordure d'input volontairement plus foncée que --border (gris moyen défini),
-     comme dans le projet de référence — sinon les champs paraissent effacés. */
-  --color-input: oklch(0.62 0 0);
+  /* Une seule police : Oxanium, telechargee au build et servie depuis notre domaine. */
+  --font-display: var(--font-oxanium), -apple-system, "Segoe UI", sans-serif;
+  --font-sans: var(--font-oxanium), -apple-system, "Segoe UI", sans-serif;
+  --font-serif: var(--font-oxanium), -apple-system, "Segoe UI", sans-serif;
+  /* Meme police derriere `font-mono` et `font-serif` : le client n'en veut qu'une sur
+     le site. Plus aucun composant ne s'en sert ; ces jetons pointent sur la meme pile
+     pour qu'un usage futur ne fasse pas revenir une deuxieme police. */
+  --font-mono: var(--font-oxanium), -apple-system, "Segoe UI", sans-serif;
+
+  /* Anneau de focus global (voir `:focus-visible` plus bas). */
   --color-ring: var(--color-emeraude);
 }
 
 /*
  * Mode sombre — palette « bleu-sarcelle » du designer (tokens Figma). On ne
- * redéfinit QUE les tokens sémantiques ; `emeraude` (boutons pleins) reste fixe à
- * ce stade — le traitement bouton vert vif (#30d98c) se fait section par section.
+ * redéfinit QUE les tokens sémantiques.
  * Fond #011823 · cartes #011b28 · bordures #012232 · texte #fff/#bfbfbf · accent #30d98c.
  */
 .dark {
   --color-fond: #011823;
   --color-surface: #011b28;
-  --color-surface-2: #012232;
+  --color-surface-2: #01293c;
   --color-encre: #ffffff;
-  --color-texte2: #bfbfbf;
+  --color-texte2: #a9bcc4;
   --color-ligne: #012232;
   --color-menthe: #04283a;
   --color-accent-strong: #30d98c;
+  --color-surface-3: #083d53;
 
-  /* Alias shadcn */
-  --color-background: #011823;
-  --color-foreground: var(--color-encre);
-  --color-secondary: var(--color-menthe);
-  --color-secondary-foreground: #bfe9d4;
-  --color-accent: var(--color-menthe);
-  --color-accent-foreground: #bfe9d4;
-  --color-muted: #011b28;
-  --color-muted-foreground: var(--color-texte2);
-  --color-border: var(--color-ligne);
-  --color-input: oklch(0.5 0.03 220);
-  --color-destructive: #e5675c;
+  --color-vert: #30d98c;
+  --color-vert-clair: #7fefc0;
+  --color-texte3: #bfbfbf;
+  --color-texte-note: #7e9a93;
+  --color-contour: #0a3247;
+  --color-texte-bascule: #d6e2e6;
+  --color-erreur: #ff8f7a;
+  --color-prose: #c6d5db;
+  --color-verre: rgba(1, 24, 35, 0.55);
+  --color-verre-fort: rgba(1, 24, 35, 0.75);
+  --color-filet-verre: rgba(255, 255, 255, 0.09);
+  --color-lien-barre: #d5e0e5;
+  --color-texte-sourd: #8fa3ac;
+  --color-puce: #d7e3e8;
+  --color-mot-accueil: #012a3c;
+  --color-carte: #022536;
   --color-ring: #30d98c;
 }
 
@@ -110,11 +132,21 @@ html {
   overflow-x: clip;
 }
 
-/* L'en-tête n'est PAS collant (il défile avec la page) : pas besoin de réserver sa
-   hauteur. La section a déjà un généreux padding haut ; on ajoute juste un petit
-   décalage pour un cadrage propre près du haut (le carrousel précédent ne dépasse pas). */
-section[id] {
-  scroll-margin-top: 40px;
+/* Ancres (sections et repère `#prix` de la page Services) : 84px sous le haut, l'en-tête
+   fixe de 80px ne les recouvre pas. */
+section[id],
+[id="prix"] {
+  scroll-margin-top: 84px;
+}
+
+/* Écran de bienvenue déjà vu : masqué dès le HTML (classe posée par le script avant peinture). */
+.tw-seen [data-splash] {
+  display: none;
+}
+/* Bandeau témoins rendu dans le HTML (il compte dès la première peinture, au lieu d'arriver
+   après l'hydratation) : masqué dès le HTML pour un visiteur qui a déjà choisi. */
+.tw-consented [data-cookie-banner] {
+  display: none;
 }
 
 /* Sur mobile, le bandeau témoins est une barre pleine largeur en bas : on masque
@@ -153,18 +185,8 @@ body {
   border-radius: 6px;
 }
 
-/* Décors SVG à traits blancs (globe, enveloppe, labyrinthe) : en clair, on les
-   teinte en vert pâle comme la maquette ; en sombre ils restent blancs. */
-@utility tint-vert {
-  filter: brightness(0.86) sepia(1) hue-rotate(90deg) saturate(2.2);
-}
-
-/* Rôles typographiques des textes courants, en rem : ils suivent la racine fluide
-   définie sur <html> (14px mobile → 16px ordinateur). */
-@utility text-body-fluid {
-  font-size: 1rem;
-  line-height: 1.5;
-}
+/* Rôles typographiques du bandeau des témoins et de la page 404, en rem : ils suivent la
+   racine fluide définie sur <html> (14px mobile → 16px ordinateur). */
 @utility text-small-fluid {
   font-size: .9375rem;
   line-height: 1.6;
@@ -176,14 +198,6 @@ body {
 @utility text-title-fluid {
   font-size: 1.125rem;
   line-height: 1.3;
-}
-@utility text-lead-fluid {
-  font-size: 1.25rem;
-  line-height: 1.25;
-}
-@utility text-nav-fluid {
-  font-size: .9375rem;
-  line-height: 1.4;
 }
 
 /* Zone tactile de 44px (Apple HIG / WCAG 2.5.8) sans changer la place occupée :
@@ -204,22 +218,191 @@ body {
   }
 }
 
-/* Fondu d'apparition des surfaces qui s'ouvrent (menu mobile, bandeau témoins). */
-@keyframes fadein {
+/* Vitrine des services (accueil) : trois tableaux puis une copie du premier sur une piste
+   large de quatre écrans. Chaque tiers du cycle = un temps d'arrêt (~78 %) puis une poussée
+   d'un écran vers la gauche (~22 %) ; à -300 % la copie est à la place du premier, la
+   boucle est invisible. Chaque pas = un écran + l'écart de 14px entre tableaux, pour que
+   les cartes gardent leur gouttière en glissant. Sur `transform` seulement. */
+@keyframes tw-vitrine {
+  0%,
+  21.05% {
+    transform: translateX(0);
+  }
+  33.333%,
+  54.39% {
+    transform: translateX(calc(-100% - 14px));
+  }
+  66.667%,
+  87.72% {
+    transform: translateX(calc(-200% - 28px));
+  }
+  100% {
+    transform: translateX(calc(-300% - 42px));
+  }
+}
+/* Même cadence, vers le haut : la colonne droite de la vitrine. */
+@keyframes tw-vitrine-y {
+  0%,
+  21.05% {
+    transform: translateY(0);
+  }
+  33.333%,
+  54.39% {
+    transform: translateY(calc(-100% - 14px));
+  }
+  66.667%,
+  87.72% {
+    transform: translateY(calc(-200% - 28px));
+  }
+  100% {
+    transform: translateY(calc(-300% - 42px));
+  }
+}
+
+/* Animations de la maquette « Accueil » (2026-09-24), noms repris tels quels. */
+@keyframes tw-menu-in {
   from {
     opacity: 0;
+    transform: translateY(-6px);
   }
   to {
     opacity: 1;
+    transform: none;
   }
 }
-@utility animate-fadein {
-  animation: fadein 180ms ease-out both;
+/* Révélation ligne par ligne (line-reveal.tsx) : texte masqué jusqu'au découpage, pour ne pas
+   le voir apparaître puis disparaître à l'hydratation. Sécurité : visible au bout de 2,5 s
+   si le script ne tourne jamais. Le masque déborde de 0,14em en haut et en bas (marge
+   négative, sans effet sur la mise en page) : sinon il rognait accents et jambages. */
+@media (prefers-reduced-motion: no-preference) {
+  [data-line-reveal]:not([data-revealed]) {
+    visibility: hidden;
+    animation: tw-reveal-guard 0s linear 2.5s forwards;
+  }
+}
+@keyframes tw-reveal-guard {
+  to {
+    visibility: visible;
+  }
+}
+/* Même garde pour les blocs qui apparaissent au défilement (reveal.tsx). */
+@media (prefers-reduced-motion: no-preference) {
+  [data-reveal]:not([data-in]) {
+    visibility: hidden;
+    animation: tw-reveal-guard 0s linear 2.5s forwards;
+  }
+}
+/* Hero (line-reveal.tsx, `immediate`) : entrée en CSS, sans attendre le script — le bloc monte
+   d'un masque dès la première peinture. Même débord de 0,14em que les masques de lignes. */
+[data-line-rise] > .tw-rise-mask {
+  display: block;
+  overflow: clip;
+  padding-block: 0.14em;
+  margin-block: -0.14em;
+}
+[data-line-rise] .tw-rise-line {
+  display: block;
+}
+@media (prefers-reduced-motion: no-preference) {
+  [data-line-rise] .tw-rise-line {
+    animation: tw-line-rise 1.1s cubic-bezier(0.16, 1, 0.3, 1) var(--rise-delay, 0s) both;
+  }
+}
+@keyframes tw-line-rise {
+  from {
+    transform: translateY(110%);
+  }
+  to {
+    transform: none;
+  }
+}
+/* Rangées d'outils : chaque piste contient deux fois la liste, -50 % boucle sans saut. */
+@keyframes tw-tools-rail {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes tw-tools-rail-rev {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+/* Pages intérieures : entrée des blocs du hero (montée de 28px), décalés dans le temps. */
+@keyframes tw-rise {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+/* Hero : chaque moitié du titre monte et apparaît (maquette Accueil, 2026-09-30). */
+@keyframes tw-hero-word {
+  from {
+    opacity: 0;
+    transform: translateY(0.22em);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+/* Écran de bienvenue : le vert balaie le mot puis le monogramme, de gauche à droite. */
+@keyframes tw-wave-rect {
+  0% {
+    transform: translateX(0px) scaleX(0);
+  }
+  38% {
+    transform: translateX(0px) scaleX(1);
+  }
+  76%,
+  100% {
+    transform: translateX(169px) scaleX(0);
+  }
+}
+@keyframes tw-wave-text {
+  0% {
+    clip-path: inset(0 100% 0 0);
+  }
+  38% {
+    clip-path: inset(0 0 0 0);
+  }
+  76%,
+  100% {
+    clip-path: inset(0 0 0 100%);
+  }
+}
+@keyframes tw-lockup-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes tw-splash-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
 }
 
-/* Le mouvement fait partie du produit, mais jamais imposé : sous
-   `prefers-reduced-motion`, toute animation/transition CSS devient instantanée
-   (les animations GSAP vérifient `reducedMotion()` de leur côté). */
+/* Sous `prefers-reduced-motion`, les transitions CSS restantes (survols, accordéons)
+   deviennent instantanées et la vitrine se fige. Les animations JavaScript ont été
+   retirées le 2026-09-16 pour la vitesse ; seule cette piste CSS a été réintroduite. */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

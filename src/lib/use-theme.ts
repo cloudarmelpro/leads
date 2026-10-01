@@ -8,12 +8,9 @@ export type ThemeChoice = "system" | "light" | "dark";
 const STORAGE_KEY = "theme";
 const EVENT = "themechange";
 
-const systemDark = () =>
-  typeof window !== "undefined" &&
-  window.matchMedia("(prefers-color-scheme: dark)").matches;
-
-const isEffectiveDark = (choice: ThemeChoice) =>
-  choice === "dark" || (choice === "system" && systemDark());
+// Sans choix mémorisé (« system »), le site est sombre : les maquettes sont en bleu nuit
+// (décision du 2026-09-24). Le script avant peinture applique la même règle.
+const isEffectiveDark = (choice: ThemeChoice) => choice !== "light";
 
 const readChoice = (): ThemeChoice => {
   if (typeof window === "undefined") return "system";
@@ -30,13 +27,12 @@ function applyClass(next?: ThemeChoice) {
  * Thème 3 états (système / clair / sombre). La classe `.dark` est déjà posée
  * avant peinture par le script `theme-init` du layout ; ce hook lit/écrit le
  * choix (localStorage), applique la classe, et resynchronise TOUTES les instances
- * via un événement `themechange` (partagé entre le sélecteur de thème et l'embed
- * Cal.com). Départ « system » pour un rendu SSR/hydratation stable — la valeur
+ * via un événement `themechange` (sélecteur de thème, scène 3D du hero). Départ « system » pour un rendu SSR/hydratation stable — la valeur
  * réelle est lue après montage.
  */
 export function useTheme() {
   const [choice, setChoice] = useState<ThemeChoice>("system");
-  const [isDark, setIsDark] = useState(false);
+  const [isDark, setIsDark] = useState(true);
   const pathname = usePathname();
 
   const sync = useCallback(() => {
@@ -60,19 +56,8 @@ export function useTheme() {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     sync();
 
-    const mq = window.matchMedia("(prefers-color-scheme: dark)");
-    const onSystem = () => {
-      if (readChoice() === "system") {
-        applyClass("system");
-        sync();
-      }
-    };
-    mq.addEventListener("change", onSystem);
     window.addEventListener(EVENT, sync);
-    return () => {
-      mq.removeEventListener("change", onSystem);
-      window.removeEventListener(EVENT, sync);
-    };
+    return () => window.removeEventListener(EVENT, sync);
   }, [sync]);
 
   const setTheme = useCallback((next: ThemeChoice) => {

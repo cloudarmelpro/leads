@@ -29,5 +29,9 @@ export default async function Page({ params }: PageProps<"/[lang]/blog">) {
   const { lang } = await params;
   if (!isLocale(lang)) notFound();
 
-  return <BlogIndex lang={lang} />;
+  return (
+    <div>
+      <BlogIndex lang={lang} />
+    </div>
+  );
 }

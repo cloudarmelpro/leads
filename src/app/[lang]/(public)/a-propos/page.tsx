@@ -2,16 +2,14 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { BreadcrumbLd } from "@/components/shared/breadcrumb-ld";
-import { PageHero } from "@/components/shared/page-hero";
-import { Principles, Story, Team } from "@/features/about";
-import { FinalCta } from "@/features/home";
+import { ScrollProgress } from "@/components/shared/scroll-progress";
+import { AboutHero, Principles, StoryPin } from "@/features/about";
+import { Cta, WelcomeSplash } from "@/features/home";
 import { isLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { pageMetadata } from "@/lib/seo/metadata";
 
-export async function generateMetadata({
-  params,
-}: PageProps<"/[lang]/a-propos">): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProps<"/[lang]/a-propos">): Promise<Metadata> {
   const { lang } = await params;
   if (!isLocale(lang)) return {};
 
@@ -30,22 +28,25 @@ export default async function AboutPage({ params }: PageProps<"/[lang]/a-propos"
   if (!isLocale(lang)) notFound();
 
   const dict = await getDictionary(lang);
+  const t = dict.about;
 
   return (
-    <>
+    <div>
       <BreadcrumbLd
         lang={lang}
         items={[
           { name: dict.nav.home, path: "" },
-          { name: dict.about.heroTitle, path: "/a-propos" },
+          { name: t.breadcrumb, path: "/a-propos" },
         ]}
       />
-      <PageHero title={dict.about.heroTitle} subtitle={dict.about.story[0]} />
-      <Story dict={dict} />
-      <Principles dict={dict} />
-      <Team dict={dict} />
-      {/* Même bandeau d'appel à l'action que l'accueil (dictionnaire `final`). */}
-      <FinalCta lang={lang} dict={dict} />
-    </>
+      <WelcomeSplash label={dict.welcome.before} brand={dict.welcome.brand} />
+      <ScrollProgress />
+      <AboutHero lang={lang} dict={dict} />
+      <StoryPin quote={t.story.quote} paragraphs={t.story.paragraphs} items={t.story.items} />
+      <Principles title={t.principles.title} intro={t.principles.intro} items={t.principles.items} />
+      {/* Section Équipe retirée de la maquette v3 (2026-09-30). */}
+      {/* Même bandeau d'appel que l'accueil (dictionnaire `final`), ancre #contact. */}
+      <Cta dict={dict} />
+    </div>
   );
 }

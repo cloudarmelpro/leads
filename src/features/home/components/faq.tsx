@@ -1,86 +1,125 @@
 "use client";
 
-import { useId, useState } from "react";
+import Link from "next/link";
+import { useId, useState, type ReactNode } from "react";
 
-import { Collapse, Rotate } from "@/components/shared/collapse";
-import { CONTENEUR } from "@/components/shared/container";
-import { ChevronRight } from "lucide-react";
-import { Eyebrow } from "@/components/shared/eyebrow";
-import { Reveal } from "@/components/shared/reveal";
-import { SplitReveal } from "@/components/shared/split-reveal";
+import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 
-type Props = { dict: Dictionary };
+type Props = {
+  dict: Pick<Dictionary, "faq">;
+  lang: Locale;
+  /** Sur la page Services, une réponse peut renvoyer aux cartes ci-dessus au lieu de la page. */
+  variant?: "home" | "pricing";
+};
 
-export function Faq({ dict }: Props) {
-  // La question 2 (index 1) est ouverte par défaut.
-  const [openIndex, setOpenIndex] = useState(1);
+type Item = Dictionary["faq"]["items"][number] & { aLink?: string; aPricing?: string };
+
+const EASE_IN = "cubic-bezier(0.22,1,0.36,1)";
+
+/**
+ * Ligne de la FAQ (maquette Accueil, 2026-09-30) : question en 500 sur une ligne coupée
+ * quand fermée (dès 620px ; en dessous elle passe à la ligne), plus/moins en vert ; la
+ * réponse s'ouvre en 500ms, puis apparaît en glissant de 6px, 80ms plus tard.
+ */
+function FaqRow({ id, open, onToggle, question, children }: { id: string; open: boolean; onToggle: () => void; question: string; children: ReactNode }) {
+  const panelId = `${id}-panel`;
+  const buttonId = `${id}-button`;
+
+  return (
+    <div className="overflow-hidden rounded-[16px] bg-carte">
+      <h3 className="m-[0px]">
+        <button
+          type="button"
+          id={buttonId}
+          aria-expanded={open}
+          aria-controls={panelId}
+          onClick={onToggle}
+          className="flex min-h-[64px] w-full cursor-pointer items-center gap-[20px] px-[24px] py-[20px] text-left"
+        >
+          <span className={`min-w-[0px] flex-1 overflow-hidden text-[16px] leading-[24px] font-medium text-encre text-ellipsis ${open ? "whitespace-normal" : "whitespace-normal min-[620px]:whitespace-nowrap"}`}>
+            {question}
+          </span>
+          <span aria-hidden className="relative block h-[11px] w-[11px] shrink-0">
+            <span className="absolute top-[4.5px] left-[0px] block h-[2px] w-[11px] rounded-[2px] bg-vert" />
+            <span
+              className={`absolute top-[4.5px] left-[0px] block h-[2px] w-[11px] rounded-[2px] bg-vert transition-transform duration-300 ease-[cubic-bezier(0.2,0.7,0.2,1)] ${open ? "rotate-0" : "rotate-90"}`}
+            />
+          </span>
+        </button>
+      </h3>
+      <div
+        id={panelId}
+        role="region"
+        aria-labelledby={buttonId}
+        aria-hidden={!open}
+        // Fermée, la réponse reste montée (pour animer la fermeture) : `inert` retire son
+        // lien éventuel de l'ordre de tabulation.
+        inert={!open}
+        className="grid"
+        style={{ gridTemplateRows: open ? "1fr" : "0fr", transition: `grid-template-rows 500ms ${EASE_IN}` }}
+      >
+        <div className="min-h-[0px] overflow-hidden">
+          <p
+            className="m-[0px] max-w-[760px] px-[24px] pb-[22px] text-[15px] leading-[26px] font-normal text-texte2 text-pretty"
+            style={{
+              opacity: open ? 1 : 0,
+              transform: open ? "translateY(0)" : "translateY(-6px)",
+              transition: `opacity 320ms ${EASE_IN} ${open ? "80ms" : "0ms"}, transform 420ms ${EASE_IN} ${open ? "80ms" : "0ms"}`,
+            }}
+          >
+            {children}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/**
+ * FAQ (maquette Accueil, 2026-09-30) : en-tête à gauche, les questions en une colonne à
+ * droite (0,9 / 2,1 ; une colonne sous 900px), aucune ouverte par défaut, une seule à la
+ * fois. Une réponse peut contenir « {link} », remplacé par un lien vers la page Services
+ * libellé `aLink`. Même mise en page sur la page Services, avec ses propres questions.
+ */
+export function Faq({ dict, lang, variant = "home" }: Props) {
+  const [open, setOpen] = useState(-1);
   const baseId = useId();
   const t = dict.faq;
 
+  const answer = (item: Item) => {
+    if (variant === "pricing" && item.aPricing) return item.aPricing;
+    const [before, after] = item.a.split("{link}");
+    if (after === undefined || !item.aLink) return item.a;
+    return (
+      <>
+        {before}
+        <Link href={`/${lang}/services`} className="text-vert underline underline-offset-[3px] hover:text-vert-clair">
+          {item.aLink}
+        </Link>
+        {after}
+      </>
+    );
+  };
+  const toggle = (index: number) => setOpen(open === index ? -1 : index);
+
   return (
-    <section id="faq" className="pb-[clamp(80px,14vw,200px)]">
-      <div className={`${CONTENEUR} grid grid-cols-1 gap-x-16 gap-y-9 md:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] md:items-start`}>
-        {/* Colonne gauche : intitulé + titre + intro. */}
-        <div>
-          <p className="mb-1">
-            <Eyebrow>{t.kicker}</Eyebrow>
-          </p>
-          <SplitReveal as="h2" className="font-display text-[clamp(1.5rem,4vw,2.375rem)] leading-[1.143] font-normal tracking-[-1.2px] text-balance">
-            {t.titleA} {t.titleB}
-          </SplitReveal>
-          <SplitReveal
-            as="p"
-            delay={0.1}
-            className="mt-5 max-w-[42ch] text-body-fluid text-texte2 text-pretty"
-          >
-            {t.intro}
-          </SplitReveal>
+    <section id="faq" className="relative flex justify-center px-[clamp(16px,4vw,56px)] pb-[clamp(128px,14vw,230px)]">
+      <div className="grid w-full max-w-[1400px] grid-cols-[minmax(0,1fr)] items-start gap-[clamp(24px,3vw,64px)] min-[900px]:grid-cols-[minmax(0,0.9fr)_minmax(0,2.1fr)]">
+        <div className="flex flex-col items-start gap-[14px]">
+          <div className="flex flex-col gap-[2px]">
+            <span className="text-[13px] leading-[20px] font-normal tracking-[0.08em] text-vert uppercase">{t.kicker}</span>
+            <h2 className="m-[0px] text-[clamp(22px,2.2vw,30px)] leading-[1.2] font-semibold tracking-[-0.01em] text-encre text-pretty">{t.title}</h2>
+          </div>
+          <p className="m-[0px] max-w-[420px] text-[15px] leading-[26px] font-normal text-texte2 text-pretty">{t.intro}</p>
         </div>
-
-        {/* Colonne droite : les questions (accordéon). Lignes soulignées ; seule la
-            question ouverte révèle sa réponse dans une carte arrondie (design).
-            Lignes révélées au scroll ; dépliage et flèche animés par GSAP. */}
-        <Reveal as="div" stagger={0.06} className="flex flex-col">
-          {t.items.map((item, index) => {
-            const open = openIndex === index;
-            const panelId = `${baseId}-panel-${index}`;
-            const buttonId = `${baseId}-button-${index}`;
-
-            return (
-              <div key={item.q} className="flex flex-col border-b border-ligne">
-                <h3>
-                  <button
-                    type="button"
-                    id={buttonId}
-                    aria-expanded={open}
-                    aria-controls={panelId}
-                    onClick={() => setOpenIndex(open ? -1 : index)}
-                    className="group flex w-full cursor-pointer items-center gap-4 border-none bg-transparent px-4 py-4 text-left sm:px-6 sm:py-5"
-                  >
-                    <span
-                      className="flex-1 text-small-fluid font-light text-encre text-pretty sm:text-body-fluid"
-                    >
-                      {item.q}
-                    </span>
-                    {/* Flèche vers la droite quand fermé ; masquée quand ouvert. */}
-                    {!open && (
-                      <Rotate deg={0} className="text-texte2 group-hover:text-encre">
-                        <ChevronRight size={18} strokeWidth={2} aria-hidden className="shrink-0" />
-                      </Rotate>
-                    )}
-                  </button>
-                </h3>
-
-                <Collapse open={open} id={panelId} role="region" aria-labelledby={buttonId}>
-                  <div className="mb-5 rounded-2xl border border-ligne bg-surface px-4 py-4 sm:px-6 sm:py-5 dark:border-transparent">
-                    <p className="text-[0.875rem] leading-[1.6] font-light text-texte2 text-pretty sm:text-small-fluid">{item.a}</p>
-                  </div>
-                </Collapse>
-              </div>
-            );
-          })}
-        </Reveal>
+        <div className="flex flex-col gap-[10px]">
+          {t.items.map((item, index) => (
+            <FaqRow key={item.q} id={`${baseId}-faq-${index}`} open={open === index} onToggle={() => toggle(index)} question={item.q}>
+              {answer(item)}
+            </FaqRow>
+          ))}
+        </div>
       </div>
     </section>
   );

@@ -20,6 +20,12 @@ export const localeLabels: Record<Locale, string> = {
   en: "EN",
 };
 
+/** Nom de chaque langue dans cette langue (autonyme) : identique quelle que soit la page. */
+export const localeNames: Record<Locale, string> = {
+  fr: "Français",
+  en: "English",
+};
+
 /** Valeur de l'attribut `lang` / `hreflang`. */
 export const localeHtmlLang: Record<Locale, string> = {
   fr: "fr-CA",

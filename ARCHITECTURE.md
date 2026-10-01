@@ -1,8 +1,9 @@
 # Leads — Architecture
 
 **Ce qu'on construit** : un **site vitrine bilingue FR/EN de 6 pages** (Accueil, À propos,
-Services, Contact, Blog, FAQ), avec un **formulaire de contact**, une **prise de rendez-vous
-Cal.com**, et un **blog administrable** par le client depuis un espace d'administration maison.
+Services, Soumission, Blog, Confidentialité ; FAQ sur l'accueil et Services), avec un
+**formulaire de soumission** en sept étapes (lead en base + notification), et un **blog
+administrable** par le client depuis un espace d'administration maison (à venir).
 
 **Ce qu'on ne construit pas** : pas de SaaS, pas d'API publique pour des tiers, pas
 d'application mobile, pas de multi-tenant. Le seul consommateur du code est ce site.
@@ -24,16 +25,16 @@ leads/
 ├── src/
 │   ├── app/                          # App Router — routes seulement, minces
 │   │   ├── [lang]/                   # ⭐ Site public bilingue : /fr/... et /en/...
-│   │   │   ├── (public)/             # Accueil, à propos, services, blog, FAQ, contact
+│   │   │   ├── (public)/             # Accueil, à propos, services, soumission, blog, confidentialité
 │   │   │   ├── layout.tsx            # <html lang={lang}>, dictionnaire, Header/Footer
 │   │   │   └── not-found.tsx
 │   │   ├── (auth)/                   # Connexion admin — hors [lang], FR seulement
 │   │   ├── admin/                    # Administration du blog — hors [lang], role-gated
 │   │   └── api/
-│   │       └── webhooks/             # Webhooks entrants (Cal.com…) — serveur-à-serveur
+│   │       └── webhooks/             # Webhooks entrants (le jour où un fournisseur en a besoin)
 │   │
 │   ├── features/                     # Modules métier (tranches verticales)
-│   │   └── <nom>/                    # contact, blog, auth
+│   │   └── <nom>/                    # soumission, blog, home, services, about, legal, auth
 │   │       ├── services/             # ⭐ Logique métier PURE — source de vérité
 │   │       ├── schemas/              # Schémas Zod (partagés partout)
 │   │       ├── components/           # Composants React de la feature
@@ -118,20 +119,20 @@ donc hors de `[lang]`, en français uniquement.
 9. **Un lead ne se perd jamais en silence.** C'est toute la valeur métier du site. Si
    l'écriture en base OU l'envoi d'email échoue, l'échec doit être tracé et le visiteur
    informé — jamais un faux « message envoyé ». Le chemin de secours (au minimum : log
-   serveur exploitable) fait partie de la définition de « terminé » pour la feature contact.
+   serveur exploitable) fait partie de la définition de « terminé » pour la feature soumission.
 
 ---
 
 ## Flux d'une requête
 
-**Soumission du formulaire de contact**
+**Envoi d'une demande de soumission**
 ```
-ContactForm (Client Component, features/contact/components/)
-  → submitContactAction (features/contact/actions/)
-      → valide avec Zod (features/contact/schemas/) + anti-spam
-      → appelle createContactLead (features/contact/services/)
+SoumissionWizard (Client Component, features/soumission/components/)
+  → submitSoumission (features/soumission/actions/)
+      → honeypot + rate limiting, puis validation Zod (features/soumission/schemas/)
+      → appelle createLead (features/soumission/services/)
           → écriture SQL (lib/db/) + notification (lib/email/)
-      → retourne un ActionResult { ok } | { error, fields }
+      → retourne un ActionResult { status: "success" } | { status: "error", error }
   → message de succès, ou erreur affichée (règle 9)
 ```
 
@@ -159,12 +160,12 @@ app/admin/blog/[id]/page.tsx  → formulaire (features/blog/components/)
 |------------------------------------------------|------------------------------------------------|
 | Une page publique bilingue                     | `src/app/[lang]/(public)/...`                  |
 | Une page d'administration                      | `src/app/admin/...`                            |
-| Un webhook entrant (Cal.com…)                  | `src/app/api/webhooks/<fournisseur>/route.ts`  |
+| Un webhook entrant                             | `src/app/api/webhooks/<fournisseur>/route.ts`  |
 | De la logique métier (créer, publier…)         | `features/<nom>/services/`                     |
 | Une Server Action (wrapper de formulaire)      | `features/<nom>/actions/`                      |
 | Une requête de lecture                         | `features/<nom>/queries/`                      |
 | Un schéma Zod de validation                    | `features/<nom>/schemas/`                      |
-| Le composant `<ContactForm>`                   | `features/contact/components/`                 |
+| Le composant `<SoumissionWizard>`              | `features/soumission/components/`              |
 | Un `<Button>` shadcn générique                 | `components/ui/`                               |
 | Le `<Header>`, le sélecteur de langue          | `components/shared/`                           |
 | Le client SQL Neon (`getSql`)                  | `lib/db/`                                      |
@@ -177,8 +178,8 @@ app/admin/blog/[id]/page.tsx  → formulaire (features/blog/components/)
 ## Conventions de nommage
 
 - **Fichiers** : `kebab-case.ts` pour les modules, `PascalCase.tsx` pour les composants.
-- **Services** : fonctions nommées d'après l'opération — `create-contact-lead.ts` exporte
-  `createContactLead(input): Promise<Result>`.
+- **Services** : fonctions nommées d'après l'opération — `create-lead.ts` exporte
+  `createLead(input): Promise<Result>`.
 - **Server Actions** : fichier sous `actions/`, `'use server'` en tête.
 - **Modules server-only** : `import 'server-only'` en tête de tout fichier qui ne doit jamais
   partir au client (DB, secrets, services, session).
@@ -188,13 +189,13 @@ app/admin/blog/[id]/page.tsx  → formulaire (features/blog/components/)
 
 ---
 
-## Sécurité du formulaire de contact
+## Sécurité du formulaire de soumission
 
 Un formulaire public sur un site de génération de leads **sera** ciblé par des bots. Sans
 protection, la boîte du client se remplit de spam et les vrais leads se noient — l'échec est
 silencieux et coûteux.
 
-Trois protections, à mettre en place dès la feature `contact` (pas après) :
+Trois protections, en place dans la feature `soumission` (à reprendre pour tout nouveau formulaire) :
 
 - **Honeypot** : un champ leurre invisible ; s'il est rempli, on rejette sans rien écrire.
 - **Rate limiting par IP** sur la Server Action (quelques soumissions par heure suffisent).
@@ -210,7 +211,9 @@ Aucun secret ne transite par un Client Component ni par une variable `NEXT_PUBLI
 La règle 3 (« la logique vit dans `services/` ») n'a de valeur que si cette logique est
 réellement testée — sinon c'est un rangement, pas une architecture.
 
-- **Vitest**, tests colocalisés : `services/create-contact-lead.test.ts`.
+- **Vitest**, tests colocalisés (`vitest.config.mts`, `npm test`) : `schemas/soumission.test.ts`,
+  `services/create-lead.test.ts`, `actions/submit-soumission.test.ts`. `server-only` y est
+  remplacé par `src/test/server-only.ts`.
 - **Ce qu'on teste en priorité** : les services (règles métier), les schémas Zod (cas
   limites, entrées hostiles), les helpers `lib/`.
 - **Ce qu'on ne teste pas** : le rendu cosmétique des composants.
@@ -297,9 +300,11 @@ module.exports = {
 
 - **Base de données** : Neon Postgres, SQL brut via `@neondatabase/serverless` (`lib/db/`).
   Pas d'ORM.
-- **Prise de rendez-vous** : Cal.com (`@calcom/embed-react`, lien dans `site.calLink`).
+- **Demande de soumission** (2026-09-30) : parcours en sept étapes (`features/soumission/`),
+  sans Cal.com ni page Contact (`/contact` redirige vers `/soumission`). Les réponses sont
+  écrites dans le champ `message` de la table `leads`, inchangée.
 - **Nom de l'entreprise et domaine** : Talgasy Web, `talgasyweb.ca` — source unique dans
-  `src/config/site.ts`. Toute donnée encore `null` (adresse, WhatsApp, Messenger…) reste
+  `src/config/site.ts`. Toute donnée encore `null` (adresse…) reste
   un placeholder traduit : ne jamais inventer coordonnées, témoignages ni chiffres.
 
 ## Décisions encore ouvertes
