@@ -36,22 +36,28 @@ export function HeroBand({ items, label }: Props) {
     let x = 0;
     let last = performance.now();
     let raf = 0;
+    // Mesures relues seulement au redimensionnement, jamais dans la boucle (chaque lecture
+    // forcerait une mise en page) ; la boucle ne tourne que le bandeau à l'écran.
+    let unit = 0;
+    let pw = 0;
+    let bw = 1;
+    const measure = () => {
+      unit = el.scrollWidth / 3;
+      pw = el.parentElement?.clientWidth || window.innerWidth;
+      bw = beamA.current?.offsetWidth || 1;
+    };
     const tick = (now: number) => {
       raf = requestAnimationFrame(tick);
       // Onglet revenu au premier plan : on ne rattrape pas le temps caché (saut du bandeau).
       const dt = Math.min(now - last, 100);
       last = now;
-      const unit = el.scrollWidth / 3;
-      const vw = el.parentElement?.clientWidth || window.innerWidth;
       if (unit) {
-        x -= Math.min(vw / 28, 60) * (dt / 1000);
+        x -= Math.min(pw / 28, 60) * (dt / 1000);
         if (-x >= unit) x += unit;
         el.style.transform = `translate3d(${x.toFixed(2)}px,0,0)`;
       }
       for (const [beam, offset] of beams) {
         if (!beam) continue;
-        const bw = beam.offsetWidth || 1;
-        const pw = beam.parentElement?.clientWidth || window.innerWidth;
         const T = 7000;
         const SWEEP = 3200;
         const t = now % T;
@@ -66,8 +72,25 @@ export function HeroBand({ items, label }: Props) {
         }
       }
     };
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
+    measure();
+    const ro = new ResizeObserver(measure);
+    ro.observe(el);
+    const io = new IntersectionObserver((entries) => {
+      const on = entries.some((entry) => entry.isIntersecting);
+      if (on && !raf) {
+        last = performance.now();
+        raf = requestAnimationFrame(tick);
+      } else if (!on && raf) {
+        cancelAnimationFrame(raf);
+        raf = 0;
+      }
+    });
+    io.observe(el.parentElement ?? el);
+    return () => {
+      cancelAnimationFrame(raf);
+      ro.disconnect();
+      io.disconnect();
+    };
   }, []);
 
   const list = [...items, ...items, ...items];

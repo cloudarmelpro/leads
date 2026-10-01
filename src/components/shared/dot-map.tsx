@@ -55,6 +55,10 @@ export function DotMap({ label }: Props) {
       const scale = W / (uMax - uMin + HERO_MAP.DU);
       const step = HERO_MAP.DU * scale;
       const r = Math.max(1.1, step * 0.24);
+      // Un seul tracé pour les milliers de points gris, rempli d'un coup (un `fill` par point
+      // coûtait ~300 ms sur téléphone) ; seuls les points verts, à l'alpha propre, sont remplis un à un.
+      const grey = new Path2D();
+      const green: [number, number, number][] = [];
       for (let q = 0; q < n; q++) {
         const u = pts[q * 2] ?? 0;
         const v = pts[q * 2 + 1] ?? 0;
@@ -62,10 +66,19 @@ export function DotMap({ label }: Props) {
         const y = (vMax - v + HERO_MAP.DV) * scale;
         if (y > H + r) continue;
         const d = Math.hypot(u - mu, v - mv);
-        const near = d < 0.045;
-        ctx.fillStyle = near ? `rgba(48,217,140,${(0.95 - d * 14).toFixed(2)})` : isDark ? "rgba(169,188,196,0.26)" : "rgba(30,30,30,0.16)";
+        if (d < 0.045) {
+          green.push([x, y, d]);
+          continue;
+        }
+        grey.moveTo(x + r, y);
+        grey.arc(x, y, r, 0, 6.2832);
+      }
+      ctx.fillStyle = isDark ? "rgba(169,188,196,0.26)" : "rgba(30,30,30,0.16)";
+      ctx.fill(grey);
+      for (const [x, y, d] of green) {
+        ctx.fillStyle = `rgba(48,217,140,${(0.95 - d * 14).toFixed(2)})`;
         ctx.beginPath();
-        ctx.arc(x, y, near ? r * 1.15 : r, 0, 6.2832);
+        ctx.arc(x, y, r * 1.15, 0, 6.2832);
         ctx.fill();
       }
     };

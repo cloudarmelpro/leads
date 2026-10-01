@@ -53,6 +53,10 @@ export function StoryPin({ quote, paragraphs, items }: Props) {
     const cards = Array.from(el.querySelectorAll<HTMLElement>("[data-sitem]"));
     const lit = el.querySelector<HTMLElement>("[data-lit]");
     let raf = 0;
+    // Dernières valeurs écrites : on ne touche au style que si elles changent (sinon chaque
+    // image invalidait une quarantaine de mots pour rien).
+    const wordOpacity = new Array<string>(words.length).fill("");
+    const cardOn = new Array<boolean | null>(cards.length).fill(null);
     const tick = () => {
       raf = requestAnimationFrame(tick);
       const vh = window.innerHeight || 800;
@@ -65,11 +69,16 @@ export function StoryPin({ quote, paragraphs, items }: Props) {
       else lp = clamp01((vh * 0.9 - lit.getBoundingClientRect().top) / (vh * 0.65));
       const glow = lp * (words.length + 2);
       words.forEach((w, i) => {
-        w.style.opacity = Math.min(1, Math.max(0.2, glow - i)).toFixed(3);
+        const o = Math.min(1, Math.max(0.2, glow - i)).toFixed(3);
+        if (o === wordOpacity[i]) return;
+        wordOpacity[i] = o;
+        w.style.opacity = o;
       });
 
       cards.forEach((card, i) => {
         const on = !pinned || p >= (SEUILS[i] ?? 0);
+        if (on === cardOn[i]) return;
+        cardOn[i] = on;
         card.style.opacity = on ? "1" : "0";
         card.style.transform = on ? "none" : "translateY(56px) scale(0.97)";
         card.style.filter = on ? "none" : "blur(8px)";
@@ -84,7 +93,23 @@ export function StoryPin({ quote, paragraphs, items }: Props) {
         }
       }
     };
-    raf = requestAnimationFrame(tick);
+    // La boucle ne tourne que la section à l'écran (ou à moins d'un écran) ; une image est
+    // calculée tout de suite pour poser l'état initial des mots et des volets.
+    tick();
+    cancelAnimationFrame(raf);
+    raf = 0;
+    const io = new IntersectionObserver(
+      (entries) => {
+        const on = entries.some((entry) => entry.isIntersecting);
+        if (on && !raf) raf = requestAnimationFrame(tick);
+        else if (!on && raf) {
+          cancelAnimationFrame(raf);
+          raf = 0;
+        }
+      },
+      { rootMargin: "100% 0px" },
+    );
+    io.observe(el);
 
     // Entrée en 3D (sur le bloc collant) et sortie en fondu (sur le contenu), calées sur le
     // défilement. Deux animations distinctes sur deux éléments : sur le même élément, un
@@ -153,6 +178,7 @@ export function StoryPin({ quote, paragraphs, items }: Props) {
     return () => {
       cancelled = true;
       cancelAnimationFrame(raf);
+      io.disconnect();
       window.clearTimeout(refresh);
       ro?.disconnect();
       ctx?.revert();

@@ -1401,22 +1401,30 @@ export function attachCtaGlobe(card: HTMLElement, hemisphere: GlobeHemisphere = 
     measure();
     if (raf === 0) render();
   });
-  // Contours des pays : chargés à part pour ne pas alourdir le premier affichage.
-  if (C.countries.enabled) {
-    loadWorld()
-      .then((data) => {
-        if (destroyed) return;
-        world = data;
-        if (raf === 0) render();
-      })
-      .catch(() => {
-        // Données indisponibles : le globe reste affiché sans les pays.
-      });
-  }
+  // Contours des pays (160 Ko de script + construction des tracés) : chargés seulement quand
+  // la section approche de l'écran (800px), pas au montage de chaque page qui a un appel final.
+  const approach = new IntersectionObserver(
+    (entries) => {
+      if (!entries.some((entry) => entry.isIntersecting)) return;
+      approach.disconnect();
+      loadWorld()
+        .then((data) => {
+          if (destroyed) return;
+          world = data;
+          if (raf === 0) render();
+        })
+        .catch(() => {
+          // Données indisponibles : le globe reste affiché sans les pays.
+        });
+    },
+    { rootMargin: "800px 0px" },
+  );
+  if (C.countries.enabled) approach.observe(card);
 
   return () => {
     destroyed = true;
     stop();
+    approach.disconnect();
     intersection.disconnect();
     resize.disconnect();
     window.removeEventListener("pointermove", onPointerMove);
