@@ -148,8 +148,6 @@
       }
     ],
     "stepLabel": "Étape {n}",
-    "prev": "Précédent",
-    "next": "Suivant",
     "startWith": "Ou commencez par",
     "startCall": "Un appel",
     "startEmail": "Un courriel",
