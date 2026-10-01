@@ -15,8 +15,10 @@ type Props = {
 
 // Défilement automatique : 14 px/s, soit une carte toutes les 25 s environ (« très lent »,
 // demande du client du 2026-10-01). Reprise 4 s après la dernière interaction.
-const SPEED = 14;
+const SPEED = 22;
 const RESUME_MS = 4000;
+// En deçà, un pointeur enfoncé puis relâché est un clic (pause / reprise), au-delà un geste.
+const CLICK_PX = 6;
 
 /** Largeur d'une série de cartes : distance entre la première carte et sa copie. */
 function seriesWidth(el: HTMLElement | null, count: number): number {
@@ -31,8 +33,10 @@ function seriesWidth(el: HTMLElement | null, count: number): number {
  * bords de l'écran et reste alignée sur le rail de 1400px à gauche. Les flèches de la maquette
  * ont été retirées (client, 2026-10-01). Depuis ce jour, la piste glisse toute seule de gauche vers droite,
  * très lentement et sans fin : la liste est rendue deux fois et, revenue au début de la première
- * série, la position saute d'une série en avant (même contenu, saut invisible). Pause au survol, pendant un geste, à la molette,
- * au focus clavier ; rien sous `prefers-reduced-motion`. Les copies sont `aria-hidden`.
+ * série, la position saute d'une série en avant (même contenu, saut invisible). Un clic met en
+ * pause, un second relance (le survol ne change rien : demande du client) ; pause pendant un
+ * geste, à la molette, au focus clavier, reprise 4 s après ; rien sous `prefers-reduced-motion`.
+ * Les copies sont `aria-hidden`.
  */
 export function MethodTrack({ steps, images, stepLabel, children }: Props) {
   const track = useRef<HTMLDivElement>(null);
@@ -45,9 +49,11 @@ export function MethodTrack({ steps, images, stepLabel, children }: Props) {
     let last = 0;
     let pos = el.scrollLeft;
     let pausedUntil = 0;
-    let hover = false;
+    let stopped = false;
     let holding = false;
     let visible = false;
+    let downX = 0;
+    let downY = 0;
     const pause = () => {
       pausedUntil = performance.now() + RESUME_MS;
     };
@@ -55,7 +61,7 @@ export function MethodTrack({ steps, images, stepLabel, children }: Props) {
       raf = requestAnimationFrame(tick);
       const dt = Math.min((now - last) / 1000, 0.1);
       last = now;
-      if (!visible || hover || holding || now < pausedUntil || document.hidden) {
+      if (!visible || stopped || holding || now < pausedUntil || document.hidden) {
         // Le visiteur a la main : on repart de là où il a laissé la piste.
         pos = el.scrollLeft;
         return;
@@ -72,24 +78,23 @@ export function MethodTrack({ steps, images, stepLabel, children }: Props) {
       }
       el.scrollLeft = pos;
     };
-    const onEnter = (event: PointerEvent) => {
-      if (event.pointerType === "mouse") hover = true;
-    };
-    const onLeave = () => {
-      hover = false;
-    };
-    const onDown = () => {
+    const onDown = (event: PointerEvent) => {
       holding = true;
+      downX = event.clientX;
+      downY = event.clientY;
     };
-    const onUp = () => {
+    const onUp = (event: PointerEvent) => {
+      holding = false;
+      if (Math.hypot(event.clientX - downX, event.clientY - downY) < CLICK_PX) stopped = !stopped;
+      else pause();
+    };
+    const onCancel = () => {
       holding = false;
       pause();
     };
-    el.addEventListener("pointerenter", onEnter);
-    el.addEventListener("pointerleave", onLeave);
     el.addEventListener("pointerdown", onDown);
     el.addEventListener("pointerup", onUp);
-    el.addEventListener("pointercancel", onUp);
+    el.addEventListener("pointercancel", onCancel);
     el.addEventListener("wheel", pause, { passive: true });
     el.addEventListener("focusin", pause);
     const io = new IntersectionObserver((entries) => {
@@ -101,11 +106,9 @@ export function MethodTrack({ steps, images, stepLabel, children }: Props) {
     return () => {
       cancelAnimationFrame(raf);
       io.disconnect();
-      el.removeEventListener("pointerenter", onEnter);
-      el.removeEventListener("pointerleave", onLeave);
       el.removeEventListener("pointerdown", onDown);
       el.removeEventListener("pointerup", onUp);
-      el.removeEventListener("pointercancel", onUp);
+      el.removeEventListener("pointercancel", onCancel);
       el.removeEventListener("wheel", pause);
       el.removeEventListener("focusin", pause);
     };

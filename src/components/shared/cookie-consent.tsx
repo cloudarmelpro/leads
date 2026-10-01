@@ -41,6 +41,10 @@ export function CookieConsent({ lang, dict }: { lang: Locale; dict: Pick<Diction
     // montage, volontaire pour éviter un mismatch d'hydratation de la bannière.
     // eslint-disable-next-line react-hooks/set-state-in-effect
     if (stored) setOpen(false);
+    // Le script avant peinture masque le bandeau par `tw-consented` tant que React n'a pas la
+    // main ; une fois monté, c'est l'état `open` qui décide — sinon « Gérer mes témoins »
+    // rouvrait un bandeau invisible (incident du 2026-10-01).
+    document.documentElement.classList.remove("tw-consented");
 
     const reopen = () => setOpen(true);
     window.addEventListener(OPEN_COOKIE_PREFS, reopen);
