@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 
 type Step = { title: string; desc: string };
 type Props = {
@@ -13,142 +13,83 @@ type Props = {
   children: ReactNode;
 };
 
-// Défilement automatique : 14 px/s, soit une carte toutes les 25 s environ (« très lent »,
-// demande du client du 2026-10-01). Reprise 4 s après la dernière interaction.
+// Vitesse du défilement en px/s (« un peu plus vite » que 14, demande du client du 2026-10-01).
+// La durée de l'animation est recalculée à partir de la largeur réelle d'une série, pour la
+// même vitesse à toutes les largeurs d'écran.
 const SPEED = 22;
-const RESUME_MS = 4000;
-// En deçà, un pointeur enfoncé puis relâché est un clic (pause / reprise), au-delà un geste.
-const CLICK_PX = 6;
-
-/** Largeur d'une série de cartes : distance entre la première carte et sa copie. */
-function seriesWidth(el: HTMLElement | null, count: number): number {
-  const first = el?.children[0];
-  const copy = el?.children[count];
-  if (!(first instanceof HTMLElement) || !(copy instanceof HTMLElement)) return 0;
-  return copy.offsetLeft - first.offsetLeft;
-}
 
 /**
  * Piste des étapes (maquette Accueil) : cartes 4:5 à l'horizontale, la piste déborde jusqu'aux
- * bords de l'écran et reste alignée sur le rail de 1400px à gauche. Les flèches de la maquette
- * ont été retirées (client, 2026-10-01). Depuis ce jour, la piste glisse toute seule de gauche vers droite,
- * très lentement et sans fin : la liste est rendue deux fois et, revenue au début de la première
- * série, la position saute d'une série en avant (même contenu, saut invisible). Un clic met en
- * pause, un second relance (le survol ne change rien : demande du client) ; pause pendant un
- * geste, à la molette, au focus clavier, reprise 4 s après ; rien sous `prefers-reduced-motion`.
- * Les copies sont `aria-hidden`.
+ * bords de l'écran et reste alignée sur le rail de 1400px à gauche. Depuis le 2026-10-01, elle
+ * défile toute seule comme les rangées d'Outils : la liste est rendue deux fois dans une piste
+ * animée en CSS (`tw-tools-rail-rev`, de -50 % à 0, donc de gauche vers droite, boucle sans
+ * saut). Un clic met en pause, un second relance ; le survol ne change rien ; immobile sous
+ * `prefers-reduced-motion`. Les flèches de la maquette ont été retirées. Copies `aria-hidden`.
  */
 export function MethodTrack({ steps, images, stepLabel, children }: Props) {
-  const track = useRef<HTMLDivElement>(null);
-  const count = steps.length;
+  const series = useRef<HTMLDivElement>(null);
+  const [paused, setPaused] = useState(false);
+  const [duration, setDuration] = useState("120s");
 
   useEffect(() => {
-    const el = track.current;
-    if (!el || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    let raf = 0;
-    let last = 0;
-    let pos = el.scrollLeft;
-    let pausedUntil = 0;
-    let stopped = false;
-    let holding = false;
-    let visible = false;
-    let downX = 0;
-    let downY = 0;
-    const pause = () => {
-      pausedUntil = performance.now() + RESUME_MS;
+    const el = series.current;
+    if (!el) return;
+    const measure = () => {
+      const w = el.offsetWidth;
+      if (w) setDuration(`${Math.round(w / SPEED)}s`);
     };
-    const tick = (now: number) => {
-      raf = requestAnimationFrame(tick);
-      const dt = Math.min((now - last) / 1000, 0.1);
-      last = now;
-      if (!visible || stopped || holding || now < pausedUntil || document.hidden) {
-        // Le visiteur a la main : on repart de là où il a laissé la piste.
-        pos = el.scrollLeft;
-        return;
-      }
-      const w = seriesWidth(el, count);
-      if (!w) return;
-      // Les cartes glissent de gauche vers droite (demande du client) : la position recule ;
-      // au début de la première série, on saute d'une série en avant (même contenu).
-      pos -= SPEED * dt;
-      if (pos < 0) {
-        pos += w;
-        el.scrollLeft = pos;
-        pos = el.scrollLeft;
-      }
-      el.scrollLeft = pos;
-    };
-    const onDown = (event: PointerEvent) => {
-      holding = true;
-      downX = event.clientX;
-      downY = event.clientY;
-    };
-    const onUp = (event: PointerEvent) => {
-      holding = false;
-      if (Math.hypot(event.clientX - downX, event.clientY - downY) < CLICK_PX) stopped = !stopped;
-      else pause();
-    };
-    const onCancel = () => {
-      holding = false;
-      pause();
-    };
-    el.addEventListener("pointerdown", onDown);
-    el.addEventListener("pointerup", onUp);
-    el.addEventListener("pointercancel", onCancel);
-    el.addEventListener("wheel", pause, { passive: true });
-    el.addEventListener("focusin", pause);
-    const io = new IntersectionObserver((entries) => {
-      visible = entries.some((entry) => entry.isIntersecting);
-    });
-    io.observe(el);
-    last = performance.now();
-    raf = requestAnimationFrame(tick);
-    return () => {
-      cancelAnimationFrame(raf);
-      io.disconnect();
-      el.removeEventListener("pointerdown", onDown);
-      el.removeEventListener("pointerup", onUp);
-      el.removeEventListener("pointercancel", onCancel);
-      el.removeEventListener("wheel", pause);
-      el.removeEventListener("focusin", pause);
-    };
-  }, [count]);
+    measure();
+    const ro = new ResizeObserver(measure);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
 
-  const cards = [...steps, ...steps];
+  const cards = (copy: number) =>
+    steps.map((step, n) => {
+      const image = images[n];
+      return (
+        <article key={`${step.title}-${copy}`} className="flex w-[min(78vw,320px)] shrink-0 grow-0 flex-col gap-[14px] min-[640px]:w-[clamp(280px,23vw,340px)]">
+          {/* Deux rendus par étape (mode clair demandé le 2026-09-30) : `<nom>.webp` nuit et
+              `<nom>-clair.webp` studio clair ; le thème affiche l'un des deux. L'étiquette suit. */}
+          <div className="relative aspect-[4/5] overflow-hidden rounded-[16px] bg-carte shadow-[inset_0_0_0_1px_var(--color-contour)] dark:shadow-[inset_0_0_0_1px_rgba(255,255,255,0.06)]">
+            {image && (
+              <>
+                <Image src={`/images/home/${image.replace(/\.webp$/, "-clair.webp")}`} alt={step.title} fill sizes="(max-width: 640px) 78vw, 340px" className="object-cover dark:hidden" />
+                <Image src={`/images/home/${image}`} alt={step.title} fill sizes="(max-width: 640px) 78vw, 340px" className="hidden object-cover dark:block" />
+              </>
+            )}
+            <span className="absolute top-1/2 left-1/2 inline-flex min-h-[36px] w-max max-w-[calc(100%-32px)] -translate-x-1/2 -translate-y-1/2 items-center gap-[8px] rounded-[8px] bg-[rgba(253,253,253,0.78)] py-[5px] pr-[6px] pl-[14px] text-[14px] leading-[18px] font-medium text-encre shadow-[inset_0_0_0_1px_rgba(30,30,30,0.1)] backdrop-blur-[14px] dark:bg-[rgba(1,24,35,0.62)] dark:text-white dark:shadow-[inset_0_0_0_1px_rgba(255,255,255,0.12)]">
+              <span className="min-w-[0px] text-balance">{step.title}</span>
+              <span className="inline-flex h-[26px] shrink-0 items-center rounded-[6px] bg-[rgba(30,30,30,0.08)] px-[9px] text-[12px] font-normal whitespace-nowrap text-texte2 dark:bg-[rgba(255,255,255,0.12)] dark:text-[#E4ECEF]">
+                {stepLabel.replace("{n}", String(n + 1))}
+              </span>
+            </span>
+          </div>
+          <p className="m-[0px] px-[4px] text-[14.5px] leading-[23px] font-normal text-texte2 text-pretty">{step.desc}</p>
+        </article>
+      );
+    });
 
   return (
     <>
       <div className="flex flex-wrap items-end justify-between gap-[24px]">{children}</div>
 
-      <div
-        ref={track}
-        className="mx-[calc(50%-50vw)] flex gap-[16px] overflow-x-auto pr-[16px] pb-[4px] pl-[max(clamp(16px,4vw,56px),calc(50vw-700px))] [scroll-padding-left:max(clamp(16px,4vw,56px),calc(50vw-700px))] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-      >
-        {cards.map((step, i) => {
-          const n = i % count;
-          const image = images[n];
-          return (
-            <article key={`${step.title}-${i}`} aria-hidden={i >= count || undefined} className="flex w-[min(78vw,320px)] shrink-0 grow-0 flex-col gap-[14px] min-[640px]:w-[clamp(280px,23vw,340px)]">
-              {/* Deux rendus par étape (mode clair demandé le 2026-09-30) : `<nom>.webp` nuit et
-                  `<nom>-clair.webp` studio clair ; le thème affiche l'un des deux. L'étiquette suit. */}
-              <div className="relative aspect-[4/5] overflow-hidden rounded-[16px] bg-carte shadow-[inset_0_0_0_1px_var(--color-contour)] dark:shadow-[inset_0_0_0_1px_rgba(255,255,255,0.06)]">
-                {image && (
-                  <>
-                    <Image src={`/images/home/${image.replace(/\.webp$/, "-clair.webp")}`} alt={step.title} fill sizes="(max-width: 640px) 78vw, 340px" className="object-cover dark:hidden" />
-                    <Image src={`/images/home/${image}`} alt={step.title} fill sizes="(max-width: 640px) 78vw, 340px" className="hidden object-cover dark:block" />
-                  </>
-                )}
-                <span className="absolute top-1/2 left-1/2 inline-flex min-h-[36px] w-max max-w-[calc(100%-32px)] -translate-x-1/2 -translate-y-1/2 items-center gap-[8px] rounded-[8px] bg-[rgba(253,253,253,0.78)] py-[5px] pr-[6px] pl-[14px] text-[14px] leading-[18px] font-medium text-encre shadow-[inset_0_0_0_1px_rgba(30,30,30,0.1)] backdrop-blur-[14px] dark:bg-[rgba(1,24,35,0.62)] dark:text-white dark:shadow-[inset_0_0_0_1px_rgba(255,255,255,0.12)]">
-                  <span className="min-w-[0px] text-balance">{step.title}</span>
-                  <span className="inline-flex h-[26px] shrink-0 items-center rounded-[6px] bg-[rgba(30,30,30,0.08)] px-[9px] text-[12px] font-normal whitespace-nowrap text-texte2 dark:bg-[rgba(255,255,255,0.12)] dark:text-[#E4ECEF]">
-                    {stepLabel.replace("{n}", String(n + 1))}
-                  </span>
-                </span>
-              </div>
-              <p className="m-[0px] px-[4px] text-[14.5px] leading-[23px] font-normal text-texte2 text-pretty">{step.desc}</p>
-            </article>
-          );
-        })}
+      {/* Même retrait à gauche qu'avant (rail de 1400px), débord jusqu'aux bords de l'écran. */}
+      <div className="mx-[calc(50%-50vw)] overflow-hidden pb-[4px] pl-[max(clamp(16px,4vw,56px),calc(50vw-700px))]">
+        <div
+          onClick={() => setPaused((p) => !p)}
+          // Propriétés séparées, pas le raccourci `animation` : en ligne, il imposerait
+          // `play-state: running` et la pause par classe n'aurait plus d'effet (voir tools.tsx).
+          style={{ animationName: "tw-tools-rail-rev", animationDuration: duration, animationTimingFunction: "linear", animationIterationCount: "infinite" }}
+          className={`flex w-max cursor-pointer motion-reduce:[animation:none] ${paused ? "[animation-play-state:paused]" : ""}`}
+        >
+          <div ref={series} className="flex shrink-0 gap-[16px] pr-[16px]">
+            {cards(0)}
+          </div>
+          <div aria-hidden className="flex shrink-0 gap-[16px] pr-[16px]">
+            {cards(1)}
+          </div>
+        </div>
       </div>
     </>
   );
