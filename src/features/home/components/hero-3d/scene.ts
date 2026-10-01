@@ -5,49 +5,47 @@
  * carte, sortie au défilement où le logo se dissout. Chargé à la demande (import dynamique)
  * pour que three.js ne pèse pas sur le premier affichage.
  */
-import {
-  AdditiveBlending,
-  AmbientLight,
-  BufferAttribute,
-  BufferGeometry,
-  Camera,
-  CanvasTexture,
-  Clock,
-  Color,
-  DirectionalLight,
-  EquirectangularReflectionMapping,
-  ExtrudeGeometry,
-  Group,
-  LinearFilter,
-  Material,
-  MathUtils,
-  Mesh,
-  MeshBasicMaterial,
-  MeshPhysicalMaterial,
-  NormalBlending,
-  PerspectiveCamera,
-  PlaneGeometry,
-  PMREMGenerator,
-  PointLight,
-  Points,
-  RepeatWrapping,
-  RGBAFormat,
-  Scene,
-  ShaderMaterial,
-  Shape,
-  Texture,
-  UnsignedByteType,
-  Vector2,
-  Vector3,
-  WebGLMultisampleRenderTarget,
-  WebGLRenderer,
-  WebGLRenderTarget,
-  type WebGLRenderTargetOptions,
-} from "three";
+// Modules source de three (r128, sans champ `exports`) plutôt que le paquet entier : Turbopack ne
+// retient alors que les classes utilisées, le chunk est deux fois plus léger à analyser sur téléphone.
+import { PerspectiveCamera } from "three/src/cameras/PerspectiveCamera.js";
+import { Camera } from "three/src/cameras/Camera.js";
+import { AdditiveBlending, EquirectangularReflectionMapping, LinearFilter, NormalBlending, RepeatWrapping, RGBAFormat, UnsignedByteType } from "three/src/constants.js";
+import { BufferAttribute } from "three/src/core/BufferAttribute.js";
+import { BufferGeometry } from "three/src/core/BufferGeometry.js";
+import { Clock } from "three/src/core/Clock.js";
+import { Shape } from "three/src/extras/core/Shape.js";
+import { PMREMGenerator } from "three/src/extras/PMREMGenerator.js";
+import { ExtrudeGeometry } from "three/src/geometries/ExtrudeGeometry.js";
+import { PlaneGeometry } from "three/src/geometries/PlaneGeometry.js";
+import { AmbientLight } from "three/src/lights/AmbientLight.js";
+import { DirectionalLight } from "three/src/lights/DirectionalLight.js";
+import { PointLight } from "three/src/lights/PointLight.js";
+import type { Material } from "three/src/materials/Material.js";
+import { MeshBasicMaterial } from "three/src/materials/MeshBasicMaterial.js";
+import { MeshPhysicalMaterial } from "three/src/materials/MeshPhysicalMaterial.js";
+import { ShaderMaterial } from "three/src/materials/ShaderMaterial.js";
+import { Color } from "three/src/math/Color.js";
+import { Vector2 } from "three/src/math/Vector2.js";
+import { Vector3 } from "three/src/math/Vector3.js";
+import { Group } from "three/src/objects/Group.js";
+import { Mesh } from "three/src/objects/Mesh.js";
+import { Points } from "three/src/objects/Points.js";
+import { WebGLMultisampleRenderTarget } from "three/src/renderers/WebGLMultisampleRenderTarget.js";
+import { WebGLRenderer } from "three/src/renderers/WebGLRenderer.js";
+import { WebGLRenderTarget, type WebGLRenderTargetOptions } from "three/src/renderers/WebGLRenderTarget.js";
+import { Scene } from "three/src/scenes/Scene.js";
+import { CanvasTexture } from "three/src/textures/CanvasTexture.js";
+import { Texture } from "three/src/textures/Texture.js";
 
 import { HERO_MAP as MAP } from "./map-data";
 
-export type HeroSceneOptions = { skipIntro: boolean; mapIntensity: number | null; logoScale: number | null };
+export type HeroSceneOptions = {
+  skipIntro: boolean;
+  mapIntensity: number | null;
+  logoScale: number | null;
+  /** Faux dès que le hero est démonté : la construction en cours s'arrête et libère le WebGL. */
+  alive: () => boolean;
+};
 export type HeroScene = {
   setExit: (p: number) => void;
   /** Centre voulu du logo, en fraction de la hauteur depuis le haut ; `null` = cadrage de la maquette. */
@@ -122,7 +120,17 @@ type Post = {
   comp: ShaderMaterial;
 };
 
-export function createHeroScene(host: HTMLElement, pointerArea: HTMLElement, opts: HeroSceneOptions): HeroScene {
+/** Rend la main au navigateur (une image peinte, puis une macrotâche) entre deux étapes. */
+const breathe = () => new Promise<void>((resolve) => requestAnimationFrame(() => setTimeout(resolve, 0)));
+
+/**
+ * Construit la scène en étapes séparées par `breathe()` : contexte WebGL, environnement, logo,
+ * textures de fumée, fumée, carte, post-traitement — chacune coûte 50 à 300 ms sur téléphone
+ * (bruit calculé pixel par pixel, compilation des shaders). D'un seul bloc, c'était 1 à 2 s de
+ * gel du défilement après le chargement. `renderer.compile` après chaque étape laisse le pilote
+ * compiler les programmes pendant l'étape suivante. Renvoie `null` si le hero a été démonté.
+ */
+export async function createHeroScene(host: HTMLElement, pointerArea: HTMLElement, opts: HeroSceneOptions): Promise<HeroScene | null> {
   const D2R = Math.PI / 180;
   const mobile = host.clientWidth < 768;
   const reduce = !!window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -299,7 +307,17 @@ export function createHeroScene(host: HTMLElement, pointerArea: HTMLElement, opt
   scene.background = new Color(BG);
   const camera = new PerspectiveCamera(38, 1, 0.1, 100);
   camera.position.set(0, 0, 5.3);
-  const TANH = Math.tan(MathUtils.degToRad(camera.fov * 0.5));
+  const TANH = Math.tan(camera.fov * 0.5 * D2R);
+
+  // Abandon entre deux étapes : le contexte WebGL est rendu, le reste part avec lui.
+  const abort = () => {
+    renderer.dispose();
+    renderer.forceContextLoss();
+    canvas.remove();
+    return null;
+  };
+  await breathe();
+  if (!opts.alive()) return abort();
 
   /* environnement studio */
   try {
@@ -346,6 +364,8 @@ export function createHeroScene(host: HTMLElement, pointerArea: HTMLElement, opt
   } catch {
     // sans environnement, le logo garde ses lumières directes
   }
+  await breathe();
+  if (!opts.alive()) return abort();
 
   /* logo */
   const FOREST = new Color(0x177e4f);
@@ -443,9 +463,17 @@ export function createHeroScene(host: HTMLElement, pointerArea: HTMLElement, opt
   scene.add(rim2);
   const sweep = new PointLight(0xffffff, 2.3, 16, 2);
   scene.add(sweep);
+  renderer.compile(scene, camera);
+  await breathe();
+  if (!opts.alive()) return abort();
 
   /* fumée */
-  const TEX = [smokeTexture(3), smokeTexture(29), smokeTexture(101), smokeTexture(211)];
+  const TEX = [smokeTexture(3), smokeTexture(29)];
+  await breathe();
+  if (!opts.alive()) return abort();
+  TEX.push(smokeTexture(101), smokeTexture(211));
+  await breathe();
+  if (!opts.alive()) return abort();
   const smokeGroup = new Group();
   scene.add(smokeGroup);
   const WX = 1.0;
@@ -599,6 +627,10 @@ export function createHeroScene(host: HTMLElement, pointerArea: HTMLElement, opt
       b.mesh.material.opacity = env * b.peak;
     }
   };
+
+  renderer.compile(scene, camera);
+  await breathe();
+  if (!opts.alive()) return abort();
 
   /* carte du monde */
   const MAP_Z = -3.4;
@@ -797,6 +829,9 @@ export function createHeroScene(host: HTMLElement, pointerArea: HTMLElement, opt
   };
   const pulseM = pulseMesh(MAP.mtl);
   const pulseA = pulseMesh(MAP.tnr);
+  renderer.compile(scene, camera);
+  await breathe();
+  if (!opts.alive()) return abort();
 
   const PULSE_T0 = mapSettled + 1.0;
   let introT = opts.skipIntro ? mapSettled : 0;
@@ -958,6 +993,11 @@ export function createHeroScene(host: HTMLElement, pointerArea: HTMLElement, opt
         ].join("\n"),
       }),
     };
+    // Précompilation des trois programmes du post-traitement : sinon la première image les attend.
+    for (const m of [post.bright, post.blur, post.comp]) {
+      post.quad.material = m;
+      renderer.compile(post.scene, post.cam);
+    }
   } catch {
     post = null;
   }
@@ -1023,6 +1063,10 @@ export function createHeroScene(host: HTMLElement, pointerArea: HTMLElement, opt
     const haut = (0.5 - 0.27) * 2 * TANH * baseCamZ;
     logoY = LOGO_Y0 + (Math.max(LOGO_Y0, haut) - LOGO_Y0) * portrait;
   }
+  // Dernière pause avant l'allocation des cibles de rendu (`resize`) et la première image, qui
+  // compile les programmes du post-traitement.
+  await breathe();
+  if (!opts.alive()) return abort();
   const ro = new ResizeObserver(resize);
   ro.observe(host);
   resize();

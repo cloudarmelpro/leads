@@ -177,9 +177,10 @@ export function HeroStage({ children, fallback, mapIntensity = 2, exitLength = 0
       el.style.setProperty("--exit", p.toFixed(4));
     };
     const start = () => import("./scene")
-      .then(({ createHeroScene }) => {
-        if (!alive) return;
-        const scene = createHeroScene(host, area, { skipIntro: false, mapIntensity, logoScale: null });
+      .then(({ createHeroScene }) => (alive ? createHeroScene(host, area, { skipIntro: false, mapIntensity, logoScale: null, alive: () => alive }) : null))
+      .then((scene) => {
+        if (!scene) return;
+        if (!alive) return scene.dispose();
         hero = scene;
         sceneRef.current = scene;
         scene.setTheme(darkRef.current);
