@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 
+
 type Step = { title: string; desc: string };
 type Props = {
   steps: Step[];
@@ -23,12 +24,11 @@ const SPEED = 22;
  * bords de l'écran et reste alignée sur le rail de 1400px à gauche. Depuis le 2026-10-01, elle
  * défile toute seule comme les rangées d'Outils : la liste est rendue deux fois dans une piste
  * animée en CSS (`tw-tools-rail-rev`, de -50 % à 0, donc de gauche vers droite, boucle sans
- * saut). Un clic met en pause, un second relance ; le survol ne change rien ; immobile sous
+ * saut). Pause au survol, reprise dès que la souris sort, comme les Outils ; immobile sous
  * `prefers-reduced-motion`. Les flèches de la maquette ont été retirées. Copies `aria-hidden`.
  */
 export function MethodTrack({ steps, images, stepLabel, children }: Props) {
   const series = useRef<HTMLDivElement>(null);
-  const [paused, setPaused] = useState(false);
   const [duration, setDuration] = useState("120s");
 
   useEffect(() => {
@@ -75,13 +75,12 @@ export function MethodTrack({ steps, images, stepLabel, children }: Props) {
       <div className="flex flex-wrap items-end justify-between gap-[24px]">{children}</div>
 
       {/* Même retrait à gauche qu'avant (rail de 1400px), débord jusqu'aux bords de l'écran. */}
-      <div className="mx-[calc(50%-50vw)] overflow-hidden pb-[4px] pl-[max(clamp(16px,4vw,56px),calc(50vw-700px))]">
+      <div className="group mx-[calc(50%-50vw)] overflow-hidden pb-[4px] pl-[max(clamp(16px,4vw,56px),calc(50vw-700px))]">
         <div
-          onClick={() => setPaused((p) => !p)}
           // Propriétés séparées, pas le raccourci `animation` : en ligne, il imposerait
-          // `play-state: running` et la pause par classe n'aurait plus d'effet (voir tools.tsx).
+          // `play-state: running` et la pause au survol (classe) n'aurait plus d'effet (voir tools.tsx).
           style={{ animationName: "tw-tools-rail-rev", animationDuration: duration, animationTimingFunction: "linear", animationIterationCount: "infinite" }}
-          className={`flex w-max cursor-pointer motion-reduce:[animation:none] ${paused ? "[animation-play-state:paused]" : ""}`}
+          className="flex w-max group-hover:[animation-play-state:paused] motion-reduce:[animation:none]"
         >
           <div ref={series} className="flex shrink-0 gap-[16px] pr-[16px]">
             {cards(0)}
