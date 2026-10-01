@@ -288,11 +288,14 @@ export function ServicesExplorer({ lang, dict }: Props) {
                 <p className="m-[0px] ml-auto max-w-[420px] text-right text-[14px] leading-[24px] font-normal text-texte2 text-pretty">{f.desc}</p>
               </div>
 
-              <div className="grid grid-cols-[repeat(auto-fill,minmax(min(100%,max(280px,calc((100%-32px)/3))),1fr))] gap-[16px]">
+              {/* Flex et non grille : une famille d'une ou deux cartes se centre (demande du client,
+                  2026-10-01) ; chaque carte garde le tiers de la largeur, 280px au moins, pleine
+                  largeur sur téléphone. */}
+              <div className="flex flex-wrap justify-center gap-[16px]">
                 {f.plans.map((plan) => {
                   const { amount, suffix } = splitPrice(plan.price);
                   return (
-                    <div key={plan.name} className="flex min-w-[0px] flex-col gap-[12px]">
+                    <div key={plan.name} className="flex max-w-full min-w-[min(100%,280px)] grow basis-[calc((100%-32px)/3)] flex-col gap-[12px] min-[900px]:grow-0">
                       {/* Mode clair : le visuel clair détouré de l'accueil, posé sur la carte grise ;
                           mode sombre : la photo nuit de la maquette (demande du client, 2026-09-30). */}
                       <div className="relative aspect-[16/10] overflow-hidden rounded-[24px] bg-surface-2 dark:bg-[#011823]">

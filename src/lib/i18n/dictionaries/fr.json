@@ -199,7 +199,7 @@
     "note": "Réponse en moins de 24 h, du lundi au vendredi."
   },
   "footer": {
-    "description": "Des sites web qui font sonner le téléphone.",
+    "description": "Votre partenaire de développement.",
     "navTitle": "Explorer",
     "coordTitle": "Coordonnées",
     "social": {
@@ -470,7 +470,7 @@
     "labels": {
       "kicker": "Services",
       "from": "À partir de",
-      "minimum": "Prix minimum",
+      "minimum": "À partir de",
       "youGet": "Ce que vous obtenez"
     },
     "families": [
