@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test": "vitest run"
+    "test": "vitest run",
+    "check": "tsc --noEmit && eslint && vitest run && npx --yes knip"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.1.0",
