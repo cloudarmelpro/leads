@@ -211,9 +211,9 @@ Aucun secret ne transite par un Client Component ni par une variable `NEXT_PUBLI
 La règle 3 (« la logique vit dans `services/` ») n'a de valeur que si cette logique est
 réellement testée — sinon c'est un rangement, pas une architecture.
 
-- **Vitest**, tests colocalisés : `services/create-lead.test.ts` (à mettre en place : aucun
-  test automatisé n'existe encore ; la vérification se fait par build, lint, knip et parcours
-  Playwright des pages).
+- **Vitest**, tests colocalisés (`vitest.config.mts`, `npm test`) : `schemas/soumission.test.ts`,
+  `services/create-lead.test.ts`, `actions/submit-soumission.test.ts`. `server-only` y est
+  remplacé par `src/test/server-only.ts`.
 - **Ce qu'on teste en priorité** : les services (règles métier), les schémas Zod (cas
   limites, entrées hostiles), les helpers `lib/`.
 - **Ce qu'on ne teste pas** : le rendu cosmétique des composants.

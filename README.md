@@ -15,6 +15,7 @@ Tailwind CSS v4 · GSAP · three.js (hero 3D) · Neon Postgres (SQL brut via
 npm run dev     # serveur de développement (http://localhost:3000)
 npm run build   # build de production (type-check inclus)
 npm run lint    # ESLint
+npm test        # Vitest (schémas, services, actions)
 ```
 
 ## Documentation

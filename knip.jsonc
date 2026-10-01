@@ -1,0 +1,5 @@
+{
+  "$schema": "https://unpkg.com/knip@5/schema.json",
+  // Chargé par Vitest à travers un alias de résolution (vitest.config.mts), invisible pour knip.
+  "ignore": ["src/test/server-only.ts"]
+}
