@@ -63,6 +63,10 @@ const nextConfig: NextConfig = {
     staticGenerationMinPagesPerWorker: 25,
   },
   enablePrerenderSourceMaps: false,
+  // Le journal Hostinger du 2026-10-01 montre le blocage DÈS « Creating an optimized production
+  // build » (compilation Turbopack, Next 16.3), alors que les déploiements de septembre (Next
+  // 16.2) passaient : `npm run build` utilise donc `next build --webpack` (package.json). Même
+  // sortie, 9 s et ≈ 500 Mo ici pour les deux bundlers ; `next dev` reste sur Turbopack.
   // Même cause : la vérification des types (`tsc`) dans le build dépassait le délai sur cette
   // machine. Elle est faite AVANT chaque push par `npm run check` (types, lint, tests, knip) ;
   // `main` ne reçoit que des fusions déjà vérifiées. Ne jamais pousser sans `npm run check`.
