@@ -31,10 +31,10 @@ export function HeroCentre({ title, lede, children, className = "" }: Props) {
     >
       <HeroSpot />
       <div className="relative flex w-full flex-col items-center gap-[22px]">
-        <LineReveal as="h1" rollOnHover className="m-[0px] cursor-default text-[clamp(24px,17.79px+1.66vw,36px)] leading-[1.08] font-semibold tracking-[-1px] text-encre uppercase min-[620px]:tracking-[-2px]">
+        <LineReveal as="h1" immediate rollOnHover className="m-[0px] cursor-default text-[clamp(24px,17.79px+1.66vw,36px)] leading-[1.08] font-semibold tracking-[-1px] text-encre uppercase min-[620px]:tracking-[-2px]">
           {title}
         </LineReveal>
-        <LineReveal delay={0.3} className="m-[0px] max-w-[620px] text-[clamp(15px,13.45px+0.41vw,18px)] leading-[1.34] font-normal text-texte2 text-pretty">
+        <LineReveal immediate delay={0.3} className="m-[0px] max-w-[620px] text-[clamp(15px,13.45px+0.41vw,18px)] leading-[1.34] font-normal text-texte2 text-pretty">
           {lede}
         </LineReveal>
         {children}

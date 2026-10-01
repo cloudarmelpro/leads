@@ -20,7 +20,10 @@ export const OPEN_COOKIE_PREFS = "open-cookie-prefs";
  */
 export function CookieConsent({ lang, dict }: { lang: Locale; dict: Pick<Dictionary, "cookies"> }) {
   const t = dict.cookies;
-  const [open, setOpen] = useState(false);
+  // Ouvert dans le HTML : le bandeau compte dès la première peinture (LCP) au lieu de
+  // surgir après l'hydratation. Pour un visiteur qui a déjà choisi, le script avant peinture
+  // le masque (`tw-consented`, globals.css) et l'effet ci-dessous le retire.
+  const [open, setOpen] = useState(true);
 
   // Sur mobile, le bandeau est une barre pleine largeur en bas : on masque alors
   // la bulle « Parlez-nous » (via cette classe) pour éviter le chevauchement.
@@ -34,10 +37,10 @@ export function CookieConsent({ lang, dict }: { lang: Locale; dict: Pick<Diction
     try {
       stored = localStorage.getItem(STORAGE_KEY);
     } catch {}
-    // Ouverture décidée d'après localStorage (indisponible au SSR) : sync unique au
+    // Fermeture décidée d'après localStorage (indisponible au SSR) : sync unique au
     // montage, volontaire pour éviter un mismatch d'hydratation de la bannière.
     // eslint-disable-next-line react-hooks/set-state-in-effect
-    if (!stored) setOpen(true);
+    if (stored) setOpen(false);
 
     const reopen = () => setOpen(true);
     window.addEventListener(OPEN_COOKIE_PREFS, reopen);
@@ -58,6 +61,7 @@ export function CookieConsent({ lang, dict }: { lang: Locale; dict: Pick<Diction
     <div
       role="dialog"
       aria-label={t.title}
+      data-cookie-banner
       className="fixed right-4 bottom-4 left-4 z-90 rounded-[20px] border border-ligne bg-surface p-5 sm:p-6 md:right-auto md:w-[min(400px,calc(100vw-2rem))] dark:border-transparent dark:shadow-[inset_0_0_0_1px_#0a2a3a]"
     >
       <p className="mb-2">

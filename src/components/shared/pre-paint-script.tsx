@@ -8,8 +8,10 @@ import { useServerInsertedHTML } from "next/navigation";
 // donc jamais l'arbre React côté client : aux navigations client (ex. changement de
 // langue), React ne réconcilie aucun <script> (pas d'avertissement « script tag »).
 // Même passe : `tw-seen` masque l'écran de bienvenue déjà vu (clé de welcome-splash.tsx),
-// sinon il s'afficherait jusqu'à l'hydratation.
-const PRE_PAINT = `var h=document.documentElement;try{if(localStorage.getItem('theme')!=='light')h.classList.add('dark');if(localStorage.getItem('talgasy-welcome-v3'))h.classList.add('tw-seen')}catch(e){h.classList.add('dark')}`;
+// sinon il s'afficherait jusqu'à l'hydratation ; `tw-consented` masque le bandeau témoins
+// (rendu ouvert dans le HTML, clé de cookie-consent.tsx), et sans choix mémorisé
+// `cookie-open` cache la bulle de contact sous le bandeau dès la première peinture.
+const PRE_PAINT = `var h=document.documentElement;try{if(localStorage.getItem('theme')!=='light')h.classList.add('dark');if(localStorage.getItem('talgasy-welcome-v3'))h.classList.add('tw-seen');if(localStorage.getItem('cookie-consent'))h.classList.add('tw-consented');else h.classList.add('cookie-open')}catch(e){h.classList.add('dark')}`;
 
 export function PrePaintScript() {
   useServerInsertedHTML(() => <script dangerouslySetInnerHTML={{ __html: PRE_PAINT }} />);

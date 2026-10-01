@@ -3,7 +3,7 @@
 import { useEffect, useId, useRef, useState } from "react";
 
 import { Reveal } from "@/components/shared/reveal";
-import { gsap, reducedMotion, ScrollTrigger } from "@/lib/motion/gsap";
+import { loadMotion, reducedMotion } from "@/lib/motion/load";
 
 type Item = { title: string; body: string };
 type Props = { quote: string; paragraphs: string[]; items: Item[] };
@@ -91,64 +91,71 @@ export function StoryPin({ quote, paragraphs, items }: Props) {
     // recalcul de ScrollTrigger pouvait figer un flou en cours comme point de départ, et
     // le bloc restait flou au centre de l'écran. Le filtre est retiré dès la sortie revenue
     // à zéro, sinon `blur(0px)` laisse le texte rendu sur une couche à part, moins net.
-    const ctx = gsap.context(() => {
-      if (reduce || !inner.current || !grid.current) return;
-      const content = grid.current;
-      const trig = pinned ? el : inner.current;
-      const enter = pinned ? ["top bottom", "top top"] : ["top bottom", "center 55%"];
-      const exit = pinned ? ["bottom bottom", "bottom top"] : ["center 40%", "bottom top"];
-      gsap.fromTo(
-        inner.current,
-        { rotationX: 10, y: 40, opacity: 0.75, transformPerspective: 1200, transformOrigin: "50% 100%" },
-        { rotationX: 0, y: 0, opacity: 1, ease: "none", immediateRender: true, scrollTrigger: { trigger: trig, start: enter[0], end: enter[1], scrub: 0.5 } },
-      );
-      gsap.fromTo(
-        content,
-        { y: 0, opacity: 1, filter: "blur(0px)" },
-        {
-          y: -90,
-          opacity: 0.35,
-          filter: "blur(6px)",
-          ease: "none",
-          immediateRender: false,
-          scrollTrigger: { trigger: trig, start: exit[0], end: exit[1], scrub: 0.5 },
-          // `this` est l'animation elle-même (GSAP l'appelle ainsi dès sa création).
-          onUpdate(this: gsap.core.Tween) {
-            if (this.progress() === 0) content.style.filter = "";
-          },
-        },
-      );
-      if (mark.current) {
-        gsap.fromTo(mark.current, { rotate: -12 }, { rotate: 0, ease: "none", scrollTrigger: { trigger: el, start: "top bottom", end: "top top", scrub: true } });
-      }
-    });
-    // Épinglé, le contenu est centré dans un écran entier : le vide au-dessus et au-dessous
-    // (P) apparaîtrait aussi avant et après l'épinglage. On remonte la section de P moins
-    // l'espacement voulu (GAP, celui de l'accueil), et pareil en bas.
+    let cancelled = false;
+    let ctx: gsap.Context | null = null;
     let ro: ResizeObserver | null = null;
-    if (pinned && inner.current && grid.current) {
-      const box = inner.current;
-      const content = grid.current;
-      const place = () => {
-        const p = Math.max(0, (box.clientHeight - content.offsetHeight) / 2);
-        el.style.marginTop = `calc(${GAP} - ${p}px)`;
-        el.style.marginBottom = `calc(${GAP} - ${p}px)`;
-        ScrollTrigger.refresh();
-      };
-      ro = new ResizeObserver(place);
-      ro.observe(box);
-      ro.observe(content);
-    } else {
-      el.style.marginTop = "";
-      el.style.marginBottom = "";
-    }
-    // La hauteur épinglée (260vh) déplace tout ce qui suit : les déclencheurs se recalculent.
-    const refresh = window.setTimeout(() => ScrollTrigger.refresh(), 600);
+    let refresh = 0;
+    loadMotion().then(({ gsap, ScrollTrigger }) => {
+      if (cancelled) return;
+      ctx = gsap.context(() => {
+        if (reduce || !inner.current || !grid.current) return;
+        const content = grid.current;
+        const trig = pinned ? el : inner.current;
+        const enter = pinned ? ["top bottom", "top top"] : ["top bottom", "center 55%"];
+        const exit = pinned ? ["bottom bottom", "bottom top"] : ["center 40%", "bottom top"];
+        gsap.fromTo(
+          inner.current,
+          { rotationX: 10, y: 40, opacity: 0.75, transformPerspective: 1200, transformOrigin: "50% 100%" },
+          { rotationX: 0, y: 0, opacity: 1, ease: "none", immediateRender: true, scrollTrigger: { trigger: trig, start: enter[0], end: enter[1], scrub: 0.5 } },
+        );
+        gsap.fromTo(
+          content,
+          { y: 0, opacity: 1, filter: "blur(0px)" },
+          {
+            y: -90,
+            opacity: 0.35,
+            filter: "blur(6px)",
+            ease: "none",
+            immediateRender: false,
+            scrollTrigger: { trigger: trig, start: exit[0], end: exit[1], scrub: 0.5 },
+            // `this` est l'animation elle-même (GSAP l'appelle ainsi dès sa création).
+            onUpdate(this: gsap.core.Tween) {
+              if (this.progress() === 0) content.style.filter = "";
+            },
+          },
+        );
+        if (mark.current) {
+          gsap.fromTo(mark.current, { rotate: -12 }, { rotate: 0, ease: "none", scrollTrigger: { trigger: el, start: "top bottom", end: "top top", scrub: true } });
+        }
+      });
+      // Épinglé, le contenu est centré dans un écran entier : le vide au-dessus et au-dessous
+      // (P) apparaîtrait aussi avant et après l'épinglage. On remonte la section de P moins
+      // l'espacement voulu (GAP, celui de l'accueil), et pareil en bas.
+      if (pinned && inner.current && grid.current) {
+        const box = inner.current;
+        const content = grid.current;
+        const place = () => {
+          const p = Math.max(0, (box.clientHeight - content.offsetHeight) / 2);
+          el.style.marginTop = `calc(${GAP} - ${p}px)`;
+          el.style.marginBottom = `calc(${GAP} - ${p}px)`;
+          ScrollTrigger.refresh();
+        };
+        ro = new ResizeObserver(place);
+        ro.observe(box);
+        ro.observe(content);
+      } else {
+        el.style.marginTop = "";
+        el.style.marginBottom = "";
+      }
+      // La hauteur épinglée (260vh) déplace tout ce qui suit : les déclencheurs se recalculent.
+      refresh = window.setTimeout(() => ScrollTrigger.refresh(), 600);
+    });
     return () => {
+      cancelled = true;
       cancelAnimationFrame(raf);
       window.clearTimeout(refresh);
       ro?.disconnect();
-      ctx.revert();
+      ctx?.revert();
     };
   }, [pinned]);
 

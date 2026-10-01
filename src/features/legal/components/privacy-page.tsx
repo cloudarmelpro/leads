@@ -47,10 +47,10 @@ export async function PrivacyPage({ lang }: Props) {
       >
         <HeroSpot />
         <div className="relative flex w-full max-w-[1100px] flex-col items-center gap-[22px]">
-          <LineReveal as="h1" rollOnHover className="m-[0px] cursor-default text-[clamp(24px,17.79px+1.66vw,36px)] leading-[1.08] font-semibold tracking-[-1px] text-encre uppercase text-balance min-[620px]:tracking-[-2px]">
+          <LineReveal as="h1" immediate rollOnHover className="m-[0px] cursor-default text-[clamp(24px,17.79px+1.66vw,36px)] leading-[1.08] font-semibold tracking-[-1px] text-encre uppercase text-balance min-[620px]:tracking-[-2px]">
             {doc.title}
           </LineReveal>
-          <LineReveal delay={0.3} className="m-[0px] max-w-[620px] text-[18px] leading-[24px] font-normal text-texte-bascule text-pretty">
+          <LineReveal immediate delay={0.3} className="m-[0px] max-w-[620px] text-[18px] leading-[24px] font-normal text-texte-bascule text-pretty">
             {doc.intro}
           </LineReveal>
           {/* Marge plus aérée que la maquette (16–32px), demande du client du 2026-09-30 : avec les

@@ -5,22 +5,15 @@ type Props = { dict: Pick<Dictionary, "tools"> };
 
 const MASK = "linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)";
 
+const symbolId = (name: string) => `tool-${name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
+
 function Chip({ tool }: { tool: Tool }) {
   return (
     <span className="inline-flex h-[44px] items-center gap-[10px] rounded-[8px] bg-carte px-[20px] text-[15px] leading-[1] font-medium whitespace-nowrap text-puce">
       {tool.kind === "icon" ? (
         // Les glyphes blancs de la maquette suivent la couleur du texte : lisibles en clair aussi.
-        <svg
-          width="18"
-          height="18"
-          viewBox={tool.viewBox}
-          fill={tool.color.toUpperCase() === "#FFFFFF" ? "currentColor" : tool.color}
-          aria-hidden
-          className="block shrink-0 text-encre"
-        >
-          {tool.paths.map((d) => (
-            <path key={d} d={d} />
-          ))}
+        <svg width="18" height="18" viewBox={tool.viewBox} fill={tool.color.toUpperCase() === "#FFFFFF" ? "currentColor" : tool.color} aria-hidden className="block shrink-0 text-encre">
+          <use href={`#${symbolId(tool.name)}`} />
         </svg>
       ) : (
         <span
@@ -42,12 +35,25 @@ function Chip({ tool }: { tool: Tool }) {
  * seconde moitié de la piste est à la place de la première, la boucle est invisible.
  * Bords fondus par un masque, pause au survol, arrêt sous `prefers-reduced-motion`. La
  * liste est lue une seule fois par les lecteurs d'écran (les copies sont `aria-hidden`).
+ * Chaque glyphe est défini une seule fois (sprite `<symbol>`) et référencé par `<use>` dans
+ * les quatre copies : les tracés pesaient 100 Ko dans le HTML, et autant dans la charge React.
  */
 export function Tools({ dict }: Props) {
   const t = dict.tools;
+  const icons = TOOL_ROWS.flatMap((row) => row.tools).filter((tool) => tool.kind === "icon");
 
   return (
     <section id="outils" aria-label={t.aria} className="group relative flex flex-col items-center gap-[clamp(28px,3vw,40px)] pb-[clamp(128px,14vw,230px)]">
+      {/* Sprite : ni `display: none` ni `hidden`, qui casseraient les références dans Safari. */}
+      <svg aria-hidden focusable="false" className="absolute h-[0px] w-[0px] overflow-hidden">
+        {icons.map((tool) => (
+          <symbol key={tool.name} id={symbolId(tool.name)} viewBox={tool.viewBox}>
+            {tool.paths.map((d) => (
+              <path key={d} d={d} />
+            ))}
+          </symbol>
+        ))}
+      </svg>
       <div className="box-border flex w-full max-w-[1400px] flex-col items-center gap-[14px] px-[clamp(16px,4vw,56px)]">
         <span className="text-[13px] leading-[20px] font-normal tracking-[0.08em] text-vert uppercase">{t.kicker}</span>
         <h2 className="m-[0px] max-w-[640px] text-center text-[clamp(22px,2.2vw,30px)] leading-[1.2] font-semibold tracking-[-0.01em] text-encre text-balance">{t.title}</h2>

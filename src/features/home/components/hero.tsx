@@ -43,9 +43,17 @@ export function Hero({ lang, dict }: Props) {
     <section id="top" data-fab-avoid className="relative z-[2] block">
       <HeroStage
         fallback={{
-          portrait: { src: "/images/home/hero-repli-mobile.webp", width: 830, height: 1612 },
-          tablet: { src: "/images/home/hero-repli-tablette.webp", width: 1118, height: 1470 },
-          landscape: { src: "/images/home/hero-repli-paysage.webp", width: 1868, height: 1110 },
+          dark: {
+            portrait: { src: "/images/home/hero-repli-mobile.webp", width: 830, height: 1612 },
+            tablet: { src: "/images/home/hero-repli-tablette.webp", width: 1118, height: 1470 },
+            landscape: { src: "/images/home/hero-repli-paysage.webp", width: 1868, height: 1110 },
+          },
+          // Captures de la scène en thème clair (2026-10-01), mêmes formats.
+          light: {
+            portrait: { src: "/images/home/hero-repli-mobile-clair.webp", width: 815, height: 1612 },
+            tablet: { src: "/images/home/hero-repli-tablette-clair.webp", width: 1103, height: 1470 },
+            landscape: { src: "/images/home/hero-repli-paysage-clair.webp", width: 1853, height: 1110 },
+          },
         }}
       >
         <span

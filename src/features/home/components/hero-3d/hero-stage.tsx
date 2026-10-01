@@ -8,13 +8,15 @@ import { useTheme } from "@/lib/use-theme";
 import type { HeroScene } from "./scene";
 
 type Still = { src: string; width: number; height: number };
+type StillSet = { portrait: Still; tablet: Still; landscape: Still };
 type Props = {
   children: ReactNode;
   /**
-   * Images fixes de secours, si l'appareil n'affiche pas le WebGL. Une par format d'écran :
-   * une image très haute rognée sur un écran moins allongé coupait le logo.
+   * Images fixes de secours, si l'appareil n'affiche pas le WebGL (ou seulement en logiciel).
+   * Un jeu par thème ; dans chaque jeu, une image par format d'écran : une image très haute
+   * rognée sur un écran moins allongé coupait le logo.
    */
-  fallback: { portrait: Still; tablet: Still; landscape: Still };
+  fallback: { dark: StillSet; light: StillSet };
   mapIntensity?: number;
   /** Fraction de hauteur d'écran sur laquelle le hero se dissout en sortant. */
   exitLength?: number;
@@ -22,6 +24,46 @@ type Props = {
 
 // Bas de l'en-tête fixe (80px), mesuré depuis le haut du panneau.
 const HEADER_BOTTOM = 80;
+
+/**
+ * Vrai si le navigateur rend le WebGL avec le processeur graphique. Avec
+ * `failIfMajorPerformanceCaveat`, il refuse le contexte quand il devrait rendre en logiciel
+ * (accélération désactivée, machine virtuelle, robots d'audit) : la scène y tournerait à
+ * quelques images par seconde en bloquant la page. L'image fixe est alors le meilleur rendu.
+ */
+function hasHardwareWebGl(): boolean {
+  try {
+    const canvas = document.createElement("canvas");
+    const options: WebGLContextAttributes = { failIfMajorPerformanceCaveat: true };
+    const gl: WebGLRenderingContext | null = canvas.getContext("webgl2", options) ?? canvas.getContext("webgl", options);
+    if (!gl) return false;
+    gl.getExtension("WEBGL_lose_context")?.loseContext();
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Appelle `fn` une fois la page chargée et le fil principal libre (au plus 1,5 s après le
+ * chargement). three.js et la construction de la scène (textures, shaders) ne retardent ainsi
+ * ni l'hydratation ni l'affichage du texte du hero. Renvoie l'annulation.
+ */
+function afterLoadIdle(fn: () => void): () => void {
+  let idle = 0;
+  let timer = 0;
+  const schedule = () => {
+    if (typeof window.requestIdleCallback === "function") idle = window.requestIdleCallback(fn, { timeout: 1500 });
+    else timer = window.setTimeout(fn, 200);
+  };
+  if (document.readyState === "complete") schedule();
+  else window.addEventListener("load", schedule, { once: true });
+  return () => {
+    window.removeEventListener("load", schedule);
+    if (idle) window.cancelIdleCallback(idle);
+    window.clearTimeout(timer);
+  };
+}
 
 /**
  * Scène du hero (maquette `talgasy-hero3d`, mode `data-static`, sans marge ni rayon) :
@@ -51,16 +93,17 @@ export function HeroStage({ children, fallback, mapIntensity = 2, exitLength = 0
     sceneRef.current?.setTheme(isDark);
   }, [isDark]);
 
-  // Une seule image téléchargée : celle du format courant (<picture> + getImageProps).
+  // Une seule image téléchargée : celle du thème et du format courants (<picture> + getImageProps).
+  const stills = isDark ? fallback.dark : fallback.light;
   const common = { alt: "", sizes: "100vw", loading: "eager", fetchPriority: "high" } as const;
-  const landscape = getImageProps({ ...common, ...fallback.landscape }).props.srcSet;
-  const tablet = getImageProps({ ...common, ...fallback.tablet }).props.srcSet;
-  const { srcSet: portraitSet, ...portrait } = getImageProps({ ...common, ...fallback.portrait }).props;
+  const landscape = getImageProps({ ...common, ...stills.landscape }).props.srcSet;
+  const tablet = getImageProps({ ...common, ...stills.tablet }).props.srcSet;
+  const { srcSet: portraitSet, ...portrait } = getImageProps({ ...common, ...stills.portrait }).props;
 
-  // Le WebGL ne démarre que côté client ; l'image fixe n'est qu'un secours (voir `.catch`).
+  // Le WebGL ne démarre que côté client, et seulement s'il est accéléré ; sinon l'image fixe.
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
-    setMode("webgl");
+    setMode(hasHardwareWebGl() ? "webgl" : "still");
   }, []);
 
   useEffect(() => {
@@ -133,7 +176,7 @@ export function HeroStage({ children, fallback, mapIntensity = 2, exitLength = 0
       hero?.setExit(p);
       el.style.setProperty("--exit", p.toFixed(4));
     };
-    import("./scene")
+    const start = () => import("./scene")
       .then(({ createHeroScene }) => {
         if (!alive) return;
         const scene = createHeroScene(host, area, { skipIntro: false, mapIntensity, logoScale: null });
@@ -165,8 +208,12 @@ export function HeroStage({ children, fallback, mapIntensity = 2, exitLength = 0
         // WebGL indisponible : image fixe à la place de la scène
         if (alive) setMode("still");
       });
+    const cancelStart = afterLoadIdle(() => {
+      if (alive) start();
+    });
     return () => {
       alive = false;
+      cancelStart();
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
       io?.disconnect();
@@ -185,8 +232,8 @@ export function HeroStage({ children, fallback, mapIntensity = 2, exitLength = 0
           {mode === "still" && (
             <span ref={still} className="absolute top-[-4%] left-[-4%] block h-[108%] w-[108%] origin-[50%_45%] will-change-transform">
               <picture>
-                <source media={LANDSCAPE} srcSet={landscape} />
-                <source media={TABLET} srcSet={tablet} />
+                <source media={LANDSCAPE} srcSet={landscape} sizes="100vw" />
+                <source media={TABLET} srcSet={tablet} sizes="100vw" />
                 <img {...portrait} srcSet={portraitSet} alt="" className="absolute inset-[0px] h-full w-full object-cover object-[center_25%]" />
               </picture>
             </span>

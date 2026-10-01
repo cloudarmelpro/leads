@@ -4,7 +4,7 @@ import { useEffect, useRef, type PointerEvent } from "react";
 
 import { LineReveal } from "@/components/shared/line-reveal";
 import { Reveal } from "@/components/shared/reveal";
-import { gsap, reducedMotion } from "@/lib/motion/gsap";
+import { loadMotion, reducedMotion } from "@/lib/motion/load";
 
 type Item = { title: string; body: string };
 type Props = { title: string; intro: string; items: Item[] };
@@ -44,22 +44,30 @@ export function Principles({ title, intro, items }: Props) {
   useEffect(() => {
     const el = grid.current;
     if (!el || reducedMotion()) return;
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        el,
-        { rotationX: 35, y: 120, transformPerspective: 1100, transformOrigin: "50% 0%" },
-        { rotationX: 0, y: 0, ease: "none", immediateRender: true, scrollTrigger: { trigger: el, start: "top bottom", end: "center 55%", scrub: 0.5 } },
-      );
-      gsap.fromTo(
-        el,
-        { rotationX: 0, y: 0, opacity: 1 },
-        { rotationX: -12, y: -60, opacity: 0.4, ease: "none", immediateRender: false, scrollTrigger: { trigger: el, start: "center 40%", end: "bottom top", scrub: 0.5 } },
-      );
-      el.querySelectorAll<HTMLElement>("[data-filigrane]").forEach((mark, i) => {
-        gsap.fromTo(mark, { y: 30 * (i - 1) }, { y: -30 * (i - 1), ease: "none", scrollTrigger: { trigger: el, start: "top bottom", end: "bottom top", scrub: true } });
+    let cancelled = false;
+    let ctx: gsap.Context | null = null;
+    loadMotion().then(({ gsap }) => {
+      if (cancelled) return;
+      ctx = gsap.context(() => {
+        gsap.fromTo(
+          el,
+          { rotationX: 35, y: 120, transformPerspective: 1100, transformOrigin: "50% 0%" },
+          { rotationX: 0, y: 0, ease: "none", immediateRender: true, scrollTrigger: { trigger: el, start: "top bottom", end: "center 55%", scrub: 0.5 } },
+        );
+        gsap.fromTo(
+          el,
+          { rotationX: 0, y: 0, opacity: 1 },
+          { rotationX: -12, y: -60, opacity: 0.4, ease: "none", immediateRender: false, scrollTrigger: { trigger: el, start: "center 40%", end: "bottom top", scrub: 0.5 } },
+        );
+        el.querySelectorAll<HTMLElement>("[data-filigrane]").forEach((mark, i) => {
+          gsap.fromTo(mark, { y: 30 * (i - 1) }, { y: -30 * (i - 1), ease: "none", scrollTrigger: { trigger: el, start: "top bottom", end: "bottom top", scrub: true } });
+        });
       });
     });
-    return () => ctx.revert();
+    return () => {
+      cancelled = true;
+      ctx?.revert();
+    };
   }, []);
 
   const spot = (e: PointerEvent<HTMLElement>) => {

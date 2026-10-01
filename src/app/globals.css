@@ -143,6 +143,11 @@ section[id],
 .tw-seen [data-splash] {
   display: none;
 }
+/* Bandeau témoins rendu dans le HTML (il compte dès la première peinture, au lieu d'arriver
+   après l'hydratation) : masqué dès le HTML pour un visiteur qui a déjà choisi. */
+.tw-consented [data-cookie-banner] {
+  display: none;
+}
 
 /* Sur mobile, le bandeau témoins est une barre pleine largeur en bas : on masque
    la bulle « Parlez-nous » pendant qu'il est affiché pour éviter le chevauchement.
@@ -285,6 +290,30 @@ body {
   [data-reveal]:not([data-in]) {
     visibility: hidden;
     animation: tw-reveal-guard 0s linear 2.5s forwards;
+  }
+}
+/* Hero (line-reveal.tsx, `immediate`) : entrée en CSS, sans attendre le script — le bloc monte
+   d'un masque dès la première peinture. Même débord de 0,14em que les masques de lignes. */
+[data-line-rise] > .tw-rise-mask {
+  display: block;
+  overflow: clip;
+  padding-block: 0.14em;
+  margin-block: -0.14em;
+}
+[data-line-rise] .tw-rise-line {
+  display: block;
+}
+@media (prefers-reduced-motion: no-preference) {
+  [data-line-rise] .tw-rise-line {
+    animation: tw-line-rise 1.1s cubic-bezier(0.16, 1, 0.3, 1) var(--rise-delay, 0s) both;
+  }
+}
+@keyframes tw-line-rise {
+  from {
+    transform: translateY(110%);
+  }
+  to {
+    transform: none;
   }
 }
 /* Rangées d'outils : chaque piste contient deux fois la liste, -50 % boucle sans saut. */

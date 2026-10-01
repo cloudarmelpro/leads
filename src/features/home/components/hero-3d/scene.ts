@@ -5,7 +5,45 @@
  * carte, sortie au défilement où le logo se dissout. Chargé à la demande (import dynamique)
  * pour que three.js ne pèse pas sur le premier affichage.
  */
-import * as THREE from "three";
+import {
+  AdditiveBlending,
+  AmbientLight,
+  BufferAttribute,
+  BufferGeometry,
+  Camera,
+  CanvasTexture,
+  Clock,
+  Color,
+  DirectionalLight,
+  EquirectangularReflectionMapping,
+  ExtrudeGeometry,
+  Group,
+  LinearFilter,
+  Material,
+  MathUtils,
+  Mesh,
+  MeshBasicMaterial,
+  MeshPhysicalMaterial,
+  NormalBlending,
+  PerspectiveCamera,
+  PlaneGeometry,
+  PMREMGenerator,
+  PointLight,
+  Points,
+  RepeatWrapping,
+  RGBAFormat,
+  Scene,
+  ShaderMaterial,
+  Shape,
+  Texture,
+  UnsignedByteType,
+  Vector2,
+  Vector3,
+  WebGLMultisampleRenderTarget,
+  WebGLRenderer,
+  WebGLRenderTarget,
+  type WebGLRenderTargetOptions,
+} from "three";
 
 import { HERO_MAP as MAP } from "./map-data";
 
@@ -32,7 +70,7 @@ const THEMES = {
   light: { bg: 0xeef1f3, haze: 0xd7e3dd, fade: [0.992, 0.992, 0.992] as const, lo: 0x177e4f, hi: 0x22b06e, bloom: 0, vig: 0.1, additiveMap: false, puffLight: true, mapMul: 0.55 },
 };
 
-type Plane = THREE.Mesh<THREE.PlaneGeometry, THREE.MeshBasicMaterial>;
+type Plane = Mesh<PlaneGeometry, MeshBasicMaterial>;
 type Puff = {
   mesh: Plane;
   phase: number;
@@ -72,16 +110,16 @@ type PulseUniforms = {
   uVis: { value: number };
 };
 type Post = {
-  scene: THREE.Scene;
-  cam: THREE.Camera;
-  quad: THREE.Mesh<THREE.PlaneGeometry, THREE.Material>;
-  rtScene: THREE.WebGLRenderTarget;
-  rtBright: THREE.WebGLRenderTarget;
-  rtA: THREE.WebGLRenderTarget;
-  rtB: THREE.WebGLRenderTarget;
-  bright: THREE.ShaderMaterial;
-  blur: THREE.ShaderMaterial;
-  comp: THREE.ShaderMaterial;
+  scene: Scene;
+  cam: Camera;
+  quad: Mesh<PlaneGeometry, Material>;
+  rtScene: WebGLRenderTarget;
+  rtBright: WebGLRenderTarget;
+  rtA: WebGLRenderTarget;
+  rtB: WebGLRenderTarget;
+  bright: ShaderMaterial;
+  blur: ShaderMaterial;
+  comp: ShaderMaterial;
 };
 
 export function createHeroScene(host: HTMLElement, pointerArea: HTMLElement, opts: HeroSceneOptions): HeroScene {
@@ -99,7 +137,7 @@ export function createHeroScene(host: HTMLElement, pointerArea: HTMLElement, opt
   const PATH_T: [number, number][] = [[0, 0], [0, 225], [439, 225], [439, 1771], [707, 1771], [707, 225], [2129, 225], [2129, 0]];
   const PATH_G: [number, number][] = [[1018, 348], [1018, 1771], [2129, 1771], [2129, 579], [1525, 579], [1525, 798], [1872, 798], [1872, 1531], [1300, 1531], [1300, 348]];
   const mkShape = (p: [number, number][]) => {
-    const s = new THREE.Shape();
+    const s = new Shape();
     p.forEach((pt, i) => {
       const x = (pt[0] - 2129 / 2) / 1000;
       const y = -(pt[1] - 1771 / 2) / 1000;
@@ -142,7 +180,7 @@ export function createHeroScene(host: HTMLElement, pointerArea: HTMLElement, opt
     const cv = document.createElement("canvas");
     cv.width = cv.height = S;
     const cx = cv.getContext("2d");
-    if (!cx) return new THREE.Texture();
+    if (!cx) return new Texture();
     const img = cx.createImageData(S, S);
     const vn = noiseFactory(seed);
     const wn = noiseFactory(seed + 17);
@@ -176,8 +214,8 @@ export function createHeroScene(host: HTMLElement, pointerArea: HTMLElement, opt
         img.data[k + 3] = (a * 255) | 0;
       }
     cx.putImageData(img, 0, 0);
-    const t = new THREE.CanvasTexture(cv);
-    t.minFilter = THREE.LinearFilter;
+    const t = new CanvasTexture(cv);
+    t.minFilter = LinearFilter;
     return t;
   };
 
@@ -234,8 +272,8 @@ export function createHeroScene(host: HTMLElement, pointerArea: HTMLElement, opt
       nx.putImageData(ni, 0, 0);
     }
     const tex = (c: HTMLCanvasElement) => {
-      const t = new THREE.CanvasTexture(c);
-      t.wrapS = t.wrapT = THREE.RepeatWrapping;
+      const t = new CanvasTexture(c);
+      t.wrapS = t.wrapT = RepeatWrapping;
       t.repeat.set(5, 5);
       return t;
     };
@@ -243,7 +281,12 @@ export function createHeroScene(host: HTMLElement, pointerArea: HTMLElement, opt
   };
 
   /* renderer */
-  const renderer = new THREE.WebGLRenderer({ antialias: false, alpha: false, powerPreference: "high-performance" });
+  const renderer = new WebGLRenderer({ antialias: false, alpha: false, powerPreference: "high-performance" });
+  // En production, three ne relit pas le journal de compilation de chaque programme : cette
+  // lecture (`getProgramInfoLog`) force le pilote à finir de compiler tout de suite et bloque
+  // le fil principal (≈ 1 s de la construction de la scène sur mobile). Sans elle, le pilote
+  // compile en tâche de fond pendant qu'on bâtit le reste de la scène.
+  renderer.debug.checkShaderErrors = process.env.NODE_ENV !== "production";
   const DPR = Math.min(window.devicePixelRatio || 1, mobile ? 1.25 : 1.5);
   renderer.setPixelRatio(DPR);
   renderer.sortObjects = true;
@@ -252,11 +295,11 @@ export function createHeroScene(host: HTMLElement, pointerArea: HTMLElement, opt
   host.appendChild(canvas);
   const isGL2 = !!renderer.capabilities.isWebGL2;
 
-  const scene = new THREE.Scene();
-  scene.background = new THREE.Color(BG);
-  const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 100);
+  const scene = new Scene();
+  scene.background = new Color(BG);
+  const camera = new PerspectiveCamera(38, 1, 0.1, 100);
   camera.position.set(0, 0, 5.3);
-  const TANH = Math.tan(THREE.MathUtils.degToRad(camera.fov * 0.5));
+  const TANH = Math.tan(MathUtils.degToRad(camera.fov * 0.5));
 
   /* environnement studio */
   try {
@@ -292,9 +335,9 @@ export function createHeroScene(host: HTMLElement, pointerArea: HTMLElement, opt
       softbox(600, 70, 240, 100, "rgba(210,255,238,0.62)", 30);
       softbox(380, 250, 420, 90, "rgba(48,217,140,0.34)", 44);
       softbox(-40, 200, 180, 120, "rgba(23,126,79,0.30)", 40);
-      const envTex = new THREE.CanvasTexture(ec);
-      envTex.mapping = THREE.EquirectangularReflectionMapping;
-      const pm = new THREE.PMREMGenerator(renderer);
+      const envTex = new CanvasTexture(ec);
+      envTex.mapping = EquirectangularReflectionMapping;
+      const pm = new PMREMGenerator(renderer);
       pm.compileEquirectangularShader();
       scene.environment = pm.fromEquirectangular(envTex).texture;
       envTex.dispose();
@@ -305,10 +348,10 @@ export function createHeroScene(host: HTMLElement, pointerArea: HTMLElement, opt
   }
 
   /* logo */
-  const FOREST = new THREE.Color(0x177e4f);
-  const BRIGHT = new THREE.Color(0x30d98c);
+  const FOREST = new Color(0x177e4f);
+  const BRIGHT = new Color(0x30d98c);
   const MM = microMaps();
-  const matFace = new THREE.MeshPhysicalMaterial({
+  const matFace = new MeshPhysicalMaterial({
     color: FOREST.clone(),
     metalness: 0.22,
     roughness: CONFIG.rough,
@@ -317,9 +360,9 @@ export function createHeroScene(host: HTMLElement, pointerArea: HTMLElement, opt
     envMapIntensity: 1.0,
     roughnessMap: MM.rough,
     normalMap: MM.norm,
-    normalScale: new THREE.Vector2(0.14, 0.14),
+    normalScale: new Vector2(0.14, 0.14),
   });
-  const matSide = new THREE.MeshPhysicalMaterial({
+  const matSide = new MeshPhysicalMaterial({
     color: FOREST.clone().multiplyScalar(0.62),
     metalness: 0.86,
     roughness: Math.max(0.05, CONFIG.rough * 0.85),
@@ -328,12 +371,12 @@ export function createHeroScene(host: HTMLElement, pointerArea: HTMLElement, opt
     envMapIntensity: 1.4,
     roughnessMap: MM.rough,
     normalMap: MM.norm,
-    normalScale: new THREE.Vector2(0.22, 0.22),
+    normalScale: new Vector2(0.22, 0.22),
   });
   matFace.color.copy(FOREST).lerp(BRIGHT, CONFIG.tint);
   matSide.color.copy(matFace.color).multiplyScalar(0.62);
 
-  const dissolveU = { uDissolve: { value: 0 }, uEdgeCol: { value: new THREE.Color(0x1d5a45) } };
+  const dissolveU = { uDissolve: { value: 0 }, uEdgeCol: { value: new Color(0x1d5a45) } };
   const DISSOLVE_FNS = [
     "varying vec3 vTgObj;",
     "uniform float uDissolve;",
@@ -351,7 +394,7 @@ export function createHeroScene(host: HTMLElement, pointerArea: HTMLElement, opt
     "if(tgN<uDissolve) discard;",
     "float tgEdge=(1.0-smoothstep(uDissolve,uDissolve+0.07,tgN))*step(0.001,uDissolve);",
   ].join("\n");
-  const addDissolve = (mat: THREE.MeshPhysicalMaterial) => {
+  const addDissolve = (mat: MeshPhysicalMaterial) => {
     mat.onBeforeCompile = (sh) => {
       sh.uniforms.uDissolve = dissolveU.uDissolve;
       sh.uniforms.uEdgeCol = dissolveU.uEdgeCol;
@@ -369,10 +412,10 @@ export function createHeroScene(host: HTMLElement, pointerArea: HTMLElement, opt
   addDissolve(matSide);
 
   const bev = Math.min(0.022, CONFIG.extrude * 0.16);
-  const logoGeo = new THREE.ExtrudeGeometry(SHAPES, { depth: CONFIG.extrude, curveSegments: 1, bevelEnabled: true, bevelThickness: bev, bevelSize: bev, bevelSegments: 5 });
+  const logoGeo = new ExtrudeGeometry(SHAPES, { depth: CONFIG.extrude, curveSegments: 1, bevelEnabled: true, bevelThickness: bev, bevelSize: bev, bevelSegments: 5 });
   logoGeo.center();
   logoGeo.computeVertexNormals();
-  const logo = new THREE.Mesh(logoGeo, [matFace, matSide]);
+  const logo = new Mesh(logoGeo, [matFace, matSide]);
   logo.scale.setScalar(opts.logoScale || 0.82);
   scene.add(logo);
   const LOGO_Y0 = 0.28; // logo légèrement remonté : dégage la zone du titre
@@ -385,25 +428,25 @@ export function createHeroScene(host: HTMLElement, pointerArea: HTMLElement, opt
   let logoAnchor: number | null = null;
 
   /* lumières */
-  scene.add(new THREE.AmbientLight(0x0b2520, 0.2));
-  const key = new THREE.DirectionalLight(0xf2fff8, 1.9);
+  scene.add(new AmbientLight(0x0b2520, 0.2));
+  const key = new DirectionalLight(0xf2fff8, 1.9);
   key.position.set(4.2, 5.2, 2.6);
   scene.add(key);
-  const fill = new THREE.DirectionalLight(0x30d98c, 0.28);
+  const fill = new DirectionalLight(0x30d98c, 0.28);
   fill.position.set(-4, -2, 2.5);
   scene.add(fill);
-  const rim = new THREE.DirectionalLight(0xa9e8cd, 2.0);
+  const rim = new DirectionalLight(0xa9e8cd, 2.0);
   rim.position.set(-0.5, 1.4, -5);
   scene.add(rim);
-  const rim2 = new THREE.DirectionalLight(0x9effd2, 0.75);
+  const rim2 = new DirectionalLight(0x9effd2, 0.75);
   rim2.position.set(2.2, -1.6, -4);
   scene.add(rim2);
-  const sweep = new THREE.PointLight(0xffffff, 2.3, 16, 2);
+  const sweep = new PointLight(0xffffff, 2.3, 16, 2);
   scene.add(sweep);
 
   /* fumée */
   const TEX = [smokeTexture(3), smokeTexture(29), smokeTexture(101), smokeTexture(211)];
-  const smokeGroup = new THREE.Group();
+  const smokeGroup = new Group();
   scene.add(smokeGroup);
   const WX = 1.0;
   const WY = 0.82;
@@ -422,8 +465,8 @@ export function createHeroScene(host: HTMLElement, pointerArea: HTMLElement, opt
   };
   const puffs: Puff[] = [];
   // Teintes HSL d'origine de chaque nappe de fumée : en clair, on les réapplique plus pâles.
-  const smokeTints: { mat: THREE.MeshBasicMaterial; h: number; s: number; l: number }[] = [];
-  const tint = (mat: THREE.MeshBasicMaterial, h: number, s: number, l: number) => {
+  const smokeTints: { mat: MeshBasicMaterial; h: number; s: number; l: number }[] = [];
+  const tint = (mat: MeshBasicMaterial, h: number, s: number, l: number) => {
     smokeTints.push({ mat, h, s, l });
     mat.color.setHSL(h, s, l);
   };
@@ -431,9 +474,9 @@ export function createHeroScene(host: HTMLElement, pointerArea: HTMLElement, opt
   for (let i = 0; i < N_BODY; i++) {
     const s = samplePos(0.1, 0.75);
     const L = 0.33 - Math.min(1, s[2]) * 0.15 + (Math.random() - 0.5) * 0.06;
-    const mesh: Plane = new THREE.Mesh(
-      new THREE.PlaneGeometry(1, 1),
-      new THREE.MeshBasicMaterial({ map: TEX[(Math.random() * TEX.length) | 0], transparent: true, depthWrite: false, depthTest: true, blending: THREE.NormalBlending, opacity: 0 }),
+    const mesh: Plane = new Mesh(
+      new PlaneGeometry(1, 1),
+      new MeshBasicMaterial({ map: TEX[(Math.random() * TEX.length) | 0], transparent: true, depthWrite: false, depthTest: true, blending: NormalBlending, opacity: 0 }),
     );
     tint(mesh.material, 0.424 + (Math.random() - 0.5) * 0.05, 0.24 + Math.random() * 0.18, L);
     mesh.renderOrder = 5;
@@ -459,10 +502,10 @@ export function createHeroScene(host: HTMLElement, pointerArea: HTMLElement, opt
     smokeGroup.add(mesh);
   }
 
-  const hazeU = { uClear: { value: CONFIG.clear }, uDensity: { value: CONFIG.smoke }, uCol: { value: new THREE.Color(0x14463a) } };
-  const haze = new THREE.Mesh(
-    new THREE.PlaneGeometry(2, 2),
-    new THREE.ShaderMaterial({
+  const hazeU = { uClear: { value: CONFIG.clear }, uDensity: { value: CONFIG.smoke }, uCol: { value: new Color(0x14463a) } };
+  const haze = new Mesh(
+    new PlaneGeometry(2, 2),
+    new ShaderMaterial({
       uniforms: hazeU,
       transparent: true,
       depthTest: false,
@@ -512,9 +555,9 @@ export function createHeroScene(host: HTMLElement, pointerArea: HTMLElement, opt
 
   const burst: Burst[] = [];
   for (let b = 0; b < 28; b++) {
-    const bm: Plane = new THREE.Mesh(
-      new THREE.PlaneGeometry(1, 1),
-      new THREE.MeshBasicMaterial({
+    const bm: Plane = new Mesh(
+      new PlaneGeometry(1, 1),
+      new MeshBasicMaterial({
         map: TEX[b % TEX.length],
         transparent: true,
         depthWrite: false,
@@ -561,7 +604,7 @@ export function createHeroScene(host: HTMLElement, pointerArea: HTMLElement, opt
   const MAP_Z = -3.4;
   const HS = 0.34;
   const RMAX = 0.26;
-  const mapGroup = new THREE.Group();
+  const mapGroup = new Group();
   mapGroup.position.z = MAP_Z;
   scene.add(mapGroup);
   const raw = atob(MAP.data);
@@ -606,38 +649,38 @@ export function createHeroScene(host: HTMLElement, pointerArea: HTMLElement, opt
     aN[q * 3 + 2] = tn;
     if (delay + 0.7 * dur > mapSettled) mapSettled = delay + 0.7 * dur;
   }
-  const mg = new THREE.BufferGeometry();
-  mg.setAttribute("position", new THREE.BufferAttribute(mPos, 3));
-  mg.setAttribute("aTarget", new THREE.BufferAttribute(aT, 2));
-  mg.setAttribute("aCorner", new THREE.BufferAttribute(aC, 2));
-  mg.setAttribute("aJit", new THREE.BufferAttribute(aJ, 2));
-  mg.setAttribute("aAnim", new THREE.BufferAttribute(aN, 3));
-  mg.setAttribute("aSphere", new THREE.BufferAttribute(aS, 3));
+  const mg = new BufferGeometry();
+  mg.setAttribute("position", new BufferAttribute(mPos, 3));
+  mg.setAttribute("aTarget", new BufferAttribute(aT, 2));
+  mg.setAttribute("aCorner", new BufferAttribute(aC, 2));
+  mg.setAttribute("aJit", new BufferAttribute(aJ, 2));
+  mg.setAttribute("aAnim", new BufferAttribute(aN, 3));
+  mg.setAttribute("aSphere", new BufferAttribute(aS, 3));
 
   // Intensité de base des points et facteur du thème (voir `THEMES.*.mapMul`).
   let mapBase = 0.5 * (opts.mapIntensity != null ? opts.mapIntensity : CONFIG.map);
   let mapMul = 1;
   const mapU = {
     uIntro: { value: 0 },
-    uCornerExt: { value: new THREE.Vector2(0.8, 0.45) },
+    uCornerExt: { value: new Vector2(0.8, 0.45) },
     uSpacingPx: { value: 10 },
     uRmax: { value: RMAX },
     uBaseDist: { value: 8.7 },
-    uCityA: { value: new THREE.Vector2(MAP.mtl[0], MAP.mtl[1]) },
-    uCityB: { value: new THREE.Vector2(MAP.tnr[0], MAP.tnr[1]) },
+    uCityA: { value: new Vector2(MAP.mtl[0], MAP.mtl[1]) },
+    uCityB: { value: new Vector2(MAP.tnr[0], MAP.tnr[1]) },
     uPA: { value: -1 },
     uPB: { value: -1 },
     uBase: { value: mapBase },
     uNight: { value: CONFIG.night },
-    uSun: { value: new THREE.Vector3(1, 0, 0) },
-    uCursor: { value: new THREE.Vector2(9, 9) },
+    uSun: { value: new Vector3(1, 0, 0) },
+    uCursor: { value: new Vector2(9, 9) },
     uHover: { value: 0 },
     uTime: { value: 0 },
-    uClick: { value: new THREE.Vector2(9, 9) },
+    uClick: { value: new Vector2(9, 9) },
     uClickT: { value: -1 },
     uVis: { value: 1 },
-    uLo: { value: new THREE.Color(0x177e4f) },
-    uHi: { value: new THREE.Color(0x30d98c) },
+    uLo: { value: new Color(0x177e4f) },
+    uHi: { value: new Color(0x30d98c) },
   };
   const MAP_VS = [
     "attribute vec2 aTarget; attribute vec2 aCorner; attribute vec2 aJit; attribute vec3 aAnim; attribute vec3 aSphere;",
@@ -694,8 +737,8 @@ export function createHeroScene(host: HTMLElement, pointerArea: HTMLElement, opt
     "  gl_FragColor=vec4(col*b*uVis,m*vA);",
     "}",
   ].join("\n");
-  const mapMat = new THREE.ShaderMaterial({ uniforms: mapU, transparent: true, depthTest: true, depthWrite: false, blending: THREE.AdditiveBlending, vertexShader: MAP_VS, fragmentShader: MAP_FS });
-  const mapDots = new THREE.Points(mg, mapMat);
+  const mapMat = new ShaderMaterial({ uniforms: mapU, transparent: true, depthTest: true, depthWrite: false, blending: AdditiveBlending, vertexShader: MAP_VS, fragmentShader: MAP_FS });
+  const mapDots = new Points(mg, mapMat);
   mapDots.frustumCulled = false;
   mapDots.renderOrder = -5;
   mapGroup.add(mapDots);
@@ -733,14 +776,14 @@ export function createHeroScene(host: HTMLElement, pointerArea: HTMLElement, opt
   ].join("\n");
   const pulseMesh = (city: [number, number]): PulseUniforms => {
     const u: PulseUniforms = { uTau: { value: -1 }, uFire: { value: 0 }, uBeacon: { value: 0 }, uHS: { value: HS }, uRmax: { value: RMAX }, uVis: { value: 1 } };
-    const m = new THREE.Mesh(
-      new THREE.PlaneGeometry(2, 2),
-      new THREE.ShaderMaterial({
+    const m = new Mesh(
+      new PlaneGeometry(2, 2),
+      new ShaderMaterial({
         uniforms: u,
         transparent: true,
         depthTest: true,
         depthWrite: false,
-        blending: THREE.AdditiveBlending,
+        blending: AdditiveBlending,
         vertexShader: "varying vec2 vUv; void main(){ vUv=uv; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0); }",
         fragmentShader: PULSE_FS,
       }),
@@ -777,8 +820,8 @@ export function createHeroScene(host: HTMLElement, pointerArea: HTMLElement, opt
     return [Math.cos(dec) * Math.cos(lon), Math.cos(dec) * Math.sin(lon), Math.sin(dec)];
   };
 
-  const curT = new THREE.Vector2(9, 9);
-  const cur = new THREE.Vector2(9, 9);
+  const curT = new Vector2(9, 9);
+  const cur = new Vector2(9, 9);
   let hoverT = 0;
   let hover = 0;
   let clickT = -1;
@@ -833,38 +876,38 @@ export function createHeroScene(host: HTMLElement, pointerArea: HTMLElement, opt
   };
 
   /* post-traitement */
-  const makeRT = (w: number, h: number, ms: boolean): THREE.WebGLRenderTarget => {
-    const o: THREE.WebGLRenderTargetOptions = {
-      minFilter: THREE.LinearFilter,
-      magFilter: THREE.LinearFilter,
-      format: THREE.RGBAFormat,
-      type: THREE.UnsignedByteType,
+  const makeRT = (w: number, h: number, ms: boolean): WebGLRenderTarget => {
+    const o: WebGLRenderTargetOptions = {
+      minFilter: LinearFilter,
+      magFilter: LinearFilter,
+      format: RGBAFormat,
+      type: UnsignedByteType,
       depthBuffer: true,
       stencilBuffer: false,
     };
     if (ms && isGL2) {
-      const rt = new THREE.WebGLMultisampleRenderTarget(w, h, o);
+      const rt = new WebGLMultisampleRenderTarget(w, h, o);
       rt.samples = 4;
       return rt;
     }
-    return new THREE.WebGLRenderTarget(w, h, o);
+    return new WebGLRenderTarget(w, h, o);
   };
   const VS = "varying vec2 vUv; void main(){ vUv=uv; gl_Position=vec4(position.xy,0.0,1.0); }";
   let post: Post | null = null;
   try {
-    const pScene = new THREE.Scene();
-    const quad = new THREE.Mesh<THREE.PlaneGeometry, THREE.Material>(new THREE.PlaneGeometry(2, 2));
+    const pScene = new Scene();
+    const quad = new Mesh<PlaneGeometry, Material>(new PlaneGeometry(2, 2));
     quad.frustumCulled = false;
     pScene.add(quad);
     post = {
       scene: pScene,
-      cam: new THREE.Camera(),
+      cam: new Camera(),
       quad,
       rtScene: makeRT(2, 2, true),
       rtBright: makeRT(2, 2, false),
       rtA: makeRT(2, 2, false),
       rtB: makeRT(2, 2, false),
-      bright: new THREE.ShaderMaterial({
+      bright: new ShaderMaterial({
         uniforms: { tD: { value: null }, uT: { value: 0.82 }, uK: { value: 0.15 } },
         vertexShader: VS,
         fragmentShader: [
@@ -873,8 +916,8 @@ export function createHeroScene(host: HTMLElement, pointerArea: HTMLElement, opt
           " gl_FragColor=vec4(c*smoothstep(uT,uT+uK,l),1.0); }",
         ].join("\n"),
       }),
-      blur: new THREE.ShaderMaterial({
-        uniforms: { tD: { value: null }, uDir: { value: new THREE.Vector2() } },
+      blur: new ShaderMaterial({
+        uniforms: { tD: { value: null }, uDir: { value: new Vector2() } },
         vertexShader: VS,
         fragmentShader: [
           "precision highp float; varying vec2 vUv; uniform sampler2D tD; uniform vec2 uDir;",
@@ -887,7 +930,7 @@ export function createHeroScene(host: HTMLElement, pointerArea: HTMLElement, opt
           " gl_FragColor=vec4(s,1.0); }",
         ].join("\n"),
       }),
-      comp: new THREE.ShaderMaterial({
+      comp: new ShaderMaterial({
         uniforms: {
           tBase: { value: null },
           tBloom: { value: null },
@@ -896,7 +939,7 @@ export function createHeroScene(host: HTMLElement, pointerArea: HTMLElement, opt
           uTime: { value: 0 },
           uVig: { value: 0.42 },
           uFade: { value: 0 },
-          uFadeCol: { value: new THREE.Vector3(...THEMES.dark.fade) },
+          uFadeCol: { value: new Vector3(...THEMES.dark.fade) },
         },
         vertexShader: VS,
         fragmentShader: [
@@ -918,7 +961,7 @@ export function createHeroScene(host: HTMLElement, pointerArea: HTMLElement, opt
   } catch {
     post = null;
   }
-  const pass = (m: THREE.Material, t: THREE.WebGLRenderTarget | null) => {
+  const pass = (m: Material, t: WebGLRenderTarget | null) => {
     if (!post) return;
     post.quad.material = m;
     renderer.setRenderTarget(t);
@@ -1045,7 +1088,7 @@ export function createHeroScene(host: HTMLElement, pointerArea: HTMLElement, opt
   pointerArea.addEventListener("pointerleave", onLeave);
 
   /* boucle */
-  const clock = new THREE.Clock();
+  const clock = new Clock();
   let t01 = 0;
   let raf = 0;
   let active = true;
@@ -1137,11 +1180,11 @@ export function createHeroScene(host: HTMLElement, pointerArea: HTMLElement, opt
       const T = dark ? THEMES.dark : THEMES.light;
       mapMul = T.mapMul;
       mapU.uBase.value = mapBase * mapMul;
-      (scene.background as THREE.Color).setHex(T.bg);
+      (scene.background as Color).setHex(T.bg);
       hazeU.uCol.value.setHex(T.haze);
       mapU.uLo.value.setHex(T.lo);
       mapU.uHi.value.setHex(T.hi);
-      mapMat.blending = T.additiveMap ? THREE.AdditiveBlending : THREE.NormalBlending;
+      mapMat.blending = T.additiveMap ? AdditiveBlending : NormalBlending;
       mapMat.needsUpdate = true;
       for (const { mat, h, s, l } of smokeTints) {
         if (T.puffLight) mat.color.setHSL(h, s * 0.55, 0.8 + (l - 0.25) * 0.35);
@@ -1176,9 +1219,9 @@ export function createHeroScene(host: HTMLElement, pointerArea: HTMLElement, opt
       pointerArea.removeEventListener("pointermove", onHover);
       pointerArea.removeEventListener("pointerleave", onLeave);
       scene.traverse((obj) => {
-        if (obj instanceof THREE.Mesh || obj instanceof THREE.Points) {
+        if (obj instanceof Mesh || obj instanceof Points) {
           obj.geometry.dispose();
-          const mat: THREE.Material | THREE.Material[] = obj.material;
+          const mat: Material | Material[] = obj.material;
           if (Array.isArray(mat)) mat.forEach((x) => x.dispose());
           else mat.dispose();
         }

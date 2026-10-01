@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 
-import { gsap, reducedMotion } from "@/lib/motion/gsap";
+import { reducedMotion } from "@/lib/motion/load";
 
 type Props = { items: string[]; label: string };
 
@@ -19,7 +19,7 @@ const BEAM =
  * Bandeau sous le hero À propos, remonté sur le bas fondu de la carte : les quatre
  * phrases défilent en continu (liste répétée trois fois, décalée d'un tiers pour boucler
  * sans saut), et deux faisceaux de lumière balaient le bandeau toutes les 7 s. Immobile
- * sous `prefers-reduced-motion`.
+ * sous `prefers-reduced-motion`. Une seule boucle `requestAnimationFrame`, sans GSAP.
  */
 export function HeroBand({ items, label }: Props) {
   const band = useRef<HTMLDivElement>(null);
@@ -29,24 +29,25 @@ export function HeroBand({ items, label }: Props) {
   useEffect(() => {
     const el = band.current;
     if (!el || reducedMotion()) return;
-    let x = 0;
-    const tick = (_time: number, dt: number) => {
-      const unit = el.scrollWidth / 3;
-      const vw = el.parentElement?.clientWidth || window.innerWidth;
-      if (!unit) return;
-      x -= Math.min(vw / 28, 60) * (dt / 1000);
-      if (-x >= unit) x += unit;
-      gsap.set(el, { x });
-    };
-    gsap.ticker.add(tick);
-
     const beams: [HTMLDivElement | null, number][] = [
       [beamA.current, 0],
       [beamB.current, 5],
     ];
+    let x = 0;
+    let last = performance.now();
     let raf = 0;
-    const sweep = (now: number) => {
-      raf = requestAnimationFrame(sweep);
+    const tick = (now: number) => {
+      raf = requestAnimationFrame(tick);
+      // Onglet revenu au premier plan : on ne rattrape pas le temps caché (saut du bandeau).
+      const dt = Math.min(now - last, 100);
+      last = now;
+      const unit = el.scrollWidth / 3;
+      const vw = el.parentElement?.clientWidth || window.innerWidth;
+      if (unit) {
+        x -= Math.min(vw / 28, 60) * (dt / 1000);
+        if (-x >= unit) x += unit;
+        el.style.transform = `translate3d(${x.toFixed(2)}px,0,0)`;
+      }
       for (const [beam, offset] of beams) {
         if (!beam) continue;
         const bw = beam.offsetWidth || 1;
@@ -65,11 +66,8 @@ export function HeroBand({ items, label }: Props) {
         }
       }
     };
-    raf = requestAnimationFrame(sweep);
-    return () => {
-      gsap.ticker.remove(tick);
-      cancelAnimationFrame(raf);
-    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
   }, []);
 
   const list = [...items, ...items, ...items];

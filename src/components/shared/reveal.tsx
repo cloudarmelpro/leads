@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, type CSSProperties, type ElementType, type ReactNode } from "react";
 
-import { gsap, reducedMotion } from "@/lib/motion/gsap";
+import { loadMotion, reducedMotion } from "@/lib/motion/load";
 
 type Kind = "fade" | "up" | "left" | "scale";
 type Props = {
@@ -36,8 +36,8 @@ const TO: Record<Kind, gsap.TweenVars> = {
 /**
  * Apparition d'un bloc (maquettes Claude Design, `data-reveal`) : une seule fois, quand
  * son haut passe 88 % de l'écran — ou tout de suite avec `immediate`. Masqué avant
- * l'hydratation (globals.css, `[data-reveal]`) pour ne pas clignoter ; rien sous
- * `prefers-reduced-motion`.
+ * l'hydratation et jusqu'à l'arrivée de GSAP (globals.css, `[data-reveal]`) pour ne pas
+ * clignoter ; rien sous `prefers-reduced-motion`.
  */
 export function Reveal({ as: Tag = "div", className, style, children, kind = "fade", delay = 0, immediate = false, ariaHidden }: Props) {
   const ref = useRef<HTMLElement>(null);
@@ -45,19 +45,28 @@ export function Reveal({ as: Tag = "div", className, style, children, kind = "fa
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    el.dataset.in = "";
-    if (reducedMotion()) return;
-    const tween = gsap.fromTo(el, FROM[kind], {
-      ...TO[kind],
-      duration: kind === "up" ? 1.2 : 1.1,
-      delay: delay / 1000,
-      ease: kind === "up" ? "expo.out" : "power3.out",
-      clearProps: "transform,opacity",
-      scrollTrigger: immediate ? undefined : { trigger: el, start: "top 88%", once: true },
+    if (reducedMotion()) {
+      el.dataset.in = "";
+      return;
+    }
+    let cancelled = false;
+    let tween: gsap.core.Tween | null = null;
+    loadMotion().then(({ gsap }) => {
+      if (cancelled) return;
+      el.dataset.in = "";
+      tween = gsap.fromTo(el, FROM[kind], {
+        ...TO[kind],
+        duration: kind === "up" ? 1.2 : 1.1,
+        delay: delay / 1000,
+        ease: kind === "up" ? "expo.out" : "power3.out",
+        clearProps: "transform,opacity",
+        scrollTrigger: immediate ? undefined : { trigger: el, start: "top 88%", once: true },
+      });
     });
     return () => {
-      tween.scrollTrigger?.kill();
-      tween.kill();
+      cancelled = true;
+      tween?.scrollTrigger?.kill();
+      tween?.kill();
     };
   }, [kind, delay, immediate]);
 

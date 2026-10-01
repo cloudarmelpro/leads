@@ -75,13 +75,16 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[la
         >
           {dict.common.skipToContent}
         </a>
+        {/* Bandeau témoins en tête du <body> (il est `fixed`, sa place n'y change rien) : en fin
+            de document, il n'était peint qu'une fois tout le HTML analysé, soit 1 à 2 s plus
+            tard sur téléphone, et c'est lui que Google retenait comme élément LCP. */}
+        <CookieConsent lang={lang} dict={{ cookies: dict.cookies }} />
         {/* Les composants clients ne reçoivent que leur tranche du dictionnaire : tout ce
             qu'on leur passe est copié dans le HTML de chaque page (≈ 69 Ko en entier). */}
         <Header lang={lang} dict={{ nav: dict.nav, header: dict.header, common: dict.common, placeholders: dict.placeholders }} />
         <main id="contenu">{children}</main>
         <Footer lang={lang} dict={dict} />
         <FloatingContact dict={{ floating: dict.floating }} />
-        <CookieConsent lang={lang} dict={{ cookies: dict.cookies }} />
         <SiteCursor />
       </body>
     </html>
