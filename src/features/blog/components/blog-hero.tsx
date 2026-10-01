@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { CoverImage } from "@/features/blog/components/cover-image";
 import type { Post } from "@/features/blog/mock-posts";
@@ -22,6 +22,21 @@ const EASE = "cubic-bezier(0.22,1,0.36,1)";
 export function BlogHero({ posts, lang, dict }: Props) {
   const t = dict.blog;
   const [index, setIndex] = useState(0);
+  // Les couvertures des autres articles (fondu au clic) ne sont montées qu'une fois la page
+  // chargée : au démarrage, seule celle de l'article courant se dispute la bande passante.
+  const [warm, setWarm] = useState(false);
+  useEffect(() => {
+    let timer = 0;
+    const schedule = () => {
+      timer = window.setTimeout(() => setWarm(true), 300);
+    };
+    if (document.readyState === "complete") schedule();
+    else window.addEventListener("load", schedule, { once: true });
+    return () => {
+      window.removeEventListener("load", schedule);
+      window.clearTimeout(timer);
+    };
+  }, []);
   const current = posts[index] ?? posts[0];
   if (!current) return null;
   const next = Array.from({ length: Math.min(3, posts.length - 1) }, (_, k) => (index + 1 + k) % posts.length);
@@ -46,7 +61,7 @@ export function BlogHero({ posts, lang, dict }: Props) {
             transition: `opacity 900ms ${EASE}, transform 1400ms ${EASE}`,
           }}
         >
-          <CoverImage post={post} priority={i === 0} sizes="100vw" />
+          {(i === index || warm) && <CoverImage post={post} priority={i === 0} sizes="100vw" />}
         </span>
       ))}
       <span aria-hidden className={`absolute inset-[0px] block bg-[linear-gradient(90deg,rgba(238,241,243,0.92)_0%,rgba(238,241,243,0.7)_38%,rgba(238,241,243,0.25)_70%,rgba(238,241,243,0.35)_100%)] dark:bg-[linear-gradient(90deg,rgba(1,24,35,0.92)_0%,rgba(1,24,35,0.7)_38%,rgba(1,24,35,0.25)_70%,rgba(1,24,35,0.35)_100%)]`} />
