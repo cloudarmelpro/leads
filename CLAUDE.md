@@ -54,7 +54,8 @@ URL, ses canonical/hreflang. Connexion et admin vivent **hors `[lang]`**, en fra
 Une feature démarre avec `services/ + schemas/ + components/` ; les autres dossiers naissent
 au premier besoin réel — pas de dossier vide.
 
-**Pages au lancement** : Accueil · À propos · Services · Contact · Blog · FAQ (+ Portfolio · Témoignages plus tard).
+**Pages au lancement** : Accueil · À propos · Services · Soumission · Blog · Confidentialité
+(FAQ intégrée à l'accueil et à Services ; `/contact` et `/prix` redirigent ; + Portfolio · Témoignages plus tard).
 
 ## Conventions
 
@@ -81,7 +82,8 @@ A11y non négociable : contraste ≥ 4.5:1, focus visibles, cibles ≥ 44px, res
 
 ## Fonctionnalités & intégrations
 
-- **Formulaire de contact** et **prise de rendez-vous en ligne via Cal.com**.
+- **Formulaire de soumission** en sept étapes (`features/soumission`, lead en base + notification
+  Resend, consentement Loi 25). Cal.com et la page Contact ont été retirés le 2026-09-30.
 - **Blog administrable** (contenu géré dans la durée).
 - **Liens réseaux sociaux** + **accès rapides WhatsApp** (et possiblement Messenger).
 - **Module de contact flottant** envisagé.

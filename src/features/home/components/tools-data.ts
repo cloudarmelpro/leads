@@ -201,7 +201,7 @@ export const TOOL_ROWS: ToolRow[] = [
         "name": "Photoshop",
         "kind": "letter",
         "color": "#31A8FF",
-        "ink": "#FFFFFF",
+        "ink": "#001E36",
         "letter": "Ps"
       }
     ],
@@ -232,7 +232,7 @@ export const TOOL_ROWS: ToolRow[] = [
         "name": "Illustrator",
         "kind": "letter",
         "color": "#FF9A00",
-        "ink": "#FFFFFF",
+        "ink": "#330000",
         "letter": "Ai"
       },
       {

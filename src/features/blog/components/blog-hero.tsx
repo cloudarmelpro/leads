@@ -81,7 +81,7 @@ export function BlogHero({ posts, lang, dict }: Props) {
               className="flex min-h-[44px] items-center gap-[10px] rounded-[9px] bg-bouton px-[22px] text-[14px] leading-[18px] font-medium text-sur-bouton no-underline transition-colors duration-200 hover:bg-bouton-clair"
             >
               {t.readArticle}
-              <span className="opacity-60">
+              <span className="opacity-80">
                 · {current.readMinutes} {t.min}
               </span>
             </Link>
@@ -98,12 +98,14 @@ export function BlogHero({ posts, lang, dict }: Props) {
                   key={post.slug}
                   type="button"
                   onClick={() => setIndex(j)}
-                  aria-label={`${t.showArticle} : ${post.title}`}
                   className="relative aspect-[3/4.1] max-w-[168px] min-w-[0px] flex-1 cursor-pointer overflow-hidden rounded-[16px] bg-surface-2 shadow-[0_18px_40px_rgba(30,30,30,0.16)] transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-[6px] min-[620px]:max-w-[min(200px,26vh)] dark:bg-[#01212F] dark:shadow-[0_18px_40px_rgba(1,24,35,0.45)]"
                 >
                   <CoverImage post={post} sizes="200px" />
                   <span aria-hidden className={`absolute inset-[0px] block bg-[linear-gradient(180deg,rgba(238,241,243,0)_40%,rgba(238,241,243,0.9)_100%)] dark:bg-[linear-gradient(180deg,rgba(1,24,35,0)_40%,rgba(1,24,35,0.88)_100%)]`} />
                   <span className="absolute inset-x-[0px] bottom-[0px] flex flex-col items-start gap-[6px] p-[16px] text-left">
+                    {/* Nom accessible = ce texte + le texte visible : un aria-label qui ne reprend pas
+                        le texte visible est signalé (label-content-name-mismatch). */}
+                    <span className="sr-only">{t.showArticle} : </span>
                     <span aria-hidden className="block h-[2px] w-[14px] rounded-[2px] bg-vert dark:bg-[#30D98C]" />
                     <span className="text-[11px] leading-[14px] font-normal text-texte2 dark:text-[#D6E2E6]">{post.category}</span>
                     {/* Coupure aux espaces seulement : la maquette coupait les mots lettre à lettre sur téléphone. */}

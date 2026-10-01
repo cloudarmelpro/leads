@@ -69,10 +69,12 @@ export function StoryPin({ quote, paragraphs, items }: Props) {
       else lp = clamp01((vh * 0.9 - lit.getBoundingClientRect().top) / (vh * 0.65));
       const glow = lp * (words.length + 2);
       words.forEach((w, i) => {
-        const o = Math.min(1, Math.max(0.2, glow - i)).toFixed(3);
+        // `--lit` (0 → 1) mélange la couleur du mot entre note et encre (voir la classe du
+        // mot) : un mot éteint reste lisible (contraste ≥ 4,5), ce qu'une opacité de 0,2 ne donnait pas.
+        const o = Math.min(1, Math.max(0, glow - i)).toFixed(3);
         if (o === wordOpacity[i]) return;
         wordOpacity[i] = o;
-        w.style.opacity = o;
+        w.style.setProperty("--lit", o);
       });
 
       cards.forEach((card, i) => {
@@ -200,15 +202,21 @@ export function StoryPin({ quote, paragraphs, items }: Props) {
                 <path d="M4 64V38C4 18 12 6 34 0l4 10C26 15 21 22 20 32h16v32H4Zm42 0V38c0-20 8-32 30-38l4 10c-12 5-17 12-18 22h16v32H46Z" fill="#30D98C" />
               </svg>
             </Reveal>
-            <p className="m-[0px] text-[clamp(22px,2.4vw,32px)] leading-[1.32] font-normal tracking-[-0.2px] text-encre text-pretty">
+            {/* H2 (et non <p>) : seul titre de la section, entre le H1 du hero et les H3 des volets. */}
+            <h2 className="m-[0px] text-[clamp(22px,2.4vw,32px)] leading-[1.32] font-normal tracking-[-0.2px] text-encre text-pretty">
               {quote.split(" ").map((word, i) => (
                 <span key={i}>
-                  <span data-word className="opacity-20 transition-opacity duration-300 ease-[cubic-bezier(0.2,0.7,0.2,1)]">
+                  <span
+                    data-word
+                    // Mot éteint en `texte2` (pas `texte-note`) : le bloc entre à 75 % d'opacité, il faut
+                    // encore 4,5:1 à ce moment-là.
+                    className="[color:color-mix(in_srgb,var(--color-encre)_calc(var(--lit,0)*100%),var(--color-texte2))] transition-[color] duration-300 ease-[cubic-bezier(0.2,0.7,0.2,1)]"
+                  >
                     {word}
                   </span>{" "}
                 </span>
               ))}
-            </p>
+            </h2>
             <div className="flex max-w-[620px] flex-col gap-[12px]">
               {paragraphs.map((text, i) => (
                 <p key={i} className={`m-[0px] text-[15px] leading-[25px] text-pretty ${i === paragraphs.length - 1 ? "font-medium text-encre" : "font-normal text-texte2"}`}>

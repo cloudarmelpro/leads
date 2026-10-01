@@ -14,8 +14,6 @@ export const site = {
   address: null as string | null,
   // Numéro WhatsApp confirmé par le client (2026-09-07) — distinct du téléphone. Indicatif +1 exigé par wa.me.
   whatsapp: "+1 (514) 808-6549" as string | null,
-  // Nom d'utilisateur Messenger (m.me/<nom>). null tant que le compte n'existe pas.
-  messenger: null as string | null,
   // Clés = `footer.social.*` des dictionnaires (libellés a11y). Ordre d'affichage
   // voulu par le client : Facebook, Instagram, LinkedIn.
   social: [

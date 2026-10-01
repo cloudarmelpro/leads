@@ -6,8 +6,8 @@ Domaine : `talgasyweb.ca` (voir `src/config/site.ts`).
 ## Stack
 
 Next.js 16 (App Router, React Compiler, Turbopack) · React 19 · TypeScript strict ·
-Tailwind CSS v4 · GSAP + Lenis · Neon Postgres (SQL brut via `@neondatabase/serverless`) ·
-Resend (notification des leads) · Cal.com (prise de rendez-vous).
+Tailwind CSS v4 · GSAP · three.js (hero 3D) · Neon Postgres (SQL brut via
+`@neondatabase/serverless`) · Resend (notification des demandes de soumission).
 
 ## Commandes
 
