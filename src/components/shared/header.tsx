@@ -66,8 +66,8 @@ const BAR_MIDDLE = 40;
  * dès qu'on défile (demande du client du même jour), jamais de filet. Logo à
  * gauche ; au centre, Accueil (avec le panneau des sections), À propos, Services, Blogue ;
  * à droite langue · thème · « Soumettre une soumission ». Sous 1100px, la navigation et le
- * bouton laissent place au bouton menu (40×40) qui ouvre un menu plein écran listant aussi
- * les sections de l'accueil. Une cale de sa hauteur évite qu'il recouvre le haut des pages
+ * bouton laissent place au bouton menu (40×40) qui ouvre un menu plein écran des quatre
+ * pages. Une cale de sa hauteur évite qu'il recouvre le haut des pages
  * intérieures ; sur l'accueil et les pages à hero pleine largeur (`FULL_BLEED`), le hero
  * passe dessous.
  */
@@ -225,10 +225,9 @@ export function Header({ lang, dict }: Props) {
             <span className="contents max-[359px]:hidden">
               <ThemeToggle label={dict.header.themeAria} optionLabels={dict.header.theme} />
             </span>
-            <Link
-              href={`${home}/soumission`}
-              className={`${BTN_PLEIN} hidden min-[1100px]:inline-flex`}
-            >
+            {/* `max-[1100px]:hidden` (variante) et non `hidden` : `BTN_PLEIN` contient `inline-flex`,
+                qui l'emportait et laissait le bouton déborder sur téléphone, poussant le menu hors écran. */}
+            <Link href={`${home}/soumission`} className={`${BTN_PLEIN} max-[1100px]:hidden`}>
               {dict.nav.quote}
             </Link>
             <button
@@ -271,7 +270,8 @@ export function Header({ lang, dict }: Props) {
             </button>
           </div>
 
-          {/* Accueil puis ses sections en retrait, puis les autres pages (maquette). */}
+          {/* Les quatre pages seulement : les sections de l'accueil (maquette) ont été retirées du
+              menu mobile à la demande du client (2026-10-01) ; elles restent dans le panneau desktop. */}
           <nav aria-label={dict.nav.quickNav} className="mt-[30px] flex flex-col items-start gap-[8px]">
             <Link
               href={home}
@@ -281,11 +281,6 @@ export function Header({ lang, dict }: Props) {
             >
               {dict.nav.home}
             </Link>
-            {sections.map((item) => (
-              <Link key={item.href} href={item.href} onClick={close} className={`flex min-h-[32px] items-center pl-[16px] text-[15px] leading-[22px] font-normal text-texte2 no-underline ${EASE} hover:text-vert`}>
-                {item.label}
-              </Link>
-            ))}
             {nav.map((item) => (
               <Link
                 key={item.href}
