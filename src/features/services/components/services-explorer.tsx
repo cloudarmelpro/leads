@@ -4,9 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState, useSyncExternalStore, type ReactNode } from "react";
 
-import { HeroSpot, moveSpot, SPOT_STYLE } from "@/components/shared/hero-spot";
-import { LineReveal } from "@/components/shared/line-reveal";
 import { DotMap } from "@/components/shared/dot-map";
+import { HeroCentre } from "@/components/shared/hero-centre";
 import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 
@@ -184,21 +183,7 @@ export function ServicesExplorer({ lang, dict }: Props) {
         className={`pointer-events-none fixed inset-x-[0px] top-[0px] z-[55] bg-fond/94 transition-opacity duration-[420ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${compact ? "opacity-100" : "opacity-0"}`}
         style={{ height: BAR_TOP + barHeight + 14 }}
       />
-      <section
-        id="top"
-        onPointerMove={moveSpot}
-        style={SPOT_STYLE}
-        className="relative flex justify-center overflow-clip px-[calc(10px+clamp(18px,5vw,72px))] pt-[168px] text-center min-[620px]:pt-[190px] min-[900px]:pt-[240px]"
-      >
-        <HeroSpot />
-        <div className="relative flex w-full flex-col items-center gap-[22px]">
-          <LineReveal as="h1" rollOnHover className="m-[0px] cursor-default text-[clamp(24px,17.79px+1.66vw,36px)] leading-[1.08] font-semibold tracking-[-1px] text-encre uppercase min-[620px]:tracking-[-2px]">
-            {t.title}
-          </LineReveal>
-          <LineReveal delay={0.3} className="m-[0px] max-w-[620px] text-[clamp(15px,13.45px+0.41vw,18px)] leading-[1.34] font-normal text-texte2 text-pretty">
-            {t.lede}
-          </LineReveal>
-
+      <HeroCentre title={t.title} lede={t.lede}>
           {/* L'animation d'entrée est retirée en mode compact : une animation de `transform`,
               même terminée, ferait de ce bloc le repère de la grille fixe.
               Marge haute plus aérée que la maquette (14–30px), demande du client du 2026-09-30 :
@@ -287,8 +272,7 @@ export function ServicesExplorer({ lang, dict }: Props) {
               <DotMap label={t.mapAria} />
             </div>
           </div>
-        </div>
-      </section>
+      </HeroCentre>
 
       <div id="prix" />
 

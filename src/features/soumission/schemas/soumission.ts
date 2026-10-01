@@ -15,10 +15,10 @@ const normalize = (s: string) => s.replace(/[\r\n\t]+/g, " ").trim().normalize("
 const line = (max: number, key: string) => z.string().transform(normalize).pipe(z.string().max(max, key));
 
 /** Clés des réponses du parcours (les libellés vivent dans `soumission.*` des dictionnaires). */
-export const PROJECT_TYPES = ["web", "webapp", "shop", "mobile", "saas", "integ", "logo", "identity", "host"] as const;
-export const SECTORS = ["pme", "startup", "industrial", "enterprise", "institution", "nonprofit"] as const;
-export const STAGES = ["idea", "spec", "existing"] as const;
-export const TIMINGS = ["asap", "month", "quarter", "later"] as const;
+const PROJECT_TYPES = ["web", "webapp", "shop", "mobile", "saas", "integ", "logo", "identity", "host"] as const;
+const SECTORS = ["pme", "startup", "industrial", "enterprise", "institution", "nonprofit"] as const;
+const STAGES = ["idea", "spec", "existing"] as const;
+const TIMINGS = ["asap", "month", "quarter", "later"] as const;
 
 /**
  * Schéma de la demande de soumission (parcours en sept étapes). Les messages sont des

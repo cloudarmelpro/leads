@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 
+import { BTN_PLEIN } from "@/components/shared/buttons";
 import { HeroStage } from "@/features/home/components/hero-3d/hero-stage";
 import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
@@ -23,7 +24,7 @@ const ARROW = <path d="M5 12h14M13 6l6 6-6 6" />;
 // Boutons en texte seul (décision du client, 2026-09-30, malgré le pictogramme de la maquette).
 // Le hero suit le thème depuis le 2026-09-30 (scène 3D claire, textes encre) : valeurs de la
 // maquette sombre sous `dark:`, équivalents clairs par défaut.
-const BTN = "tap-44 pointer-events-auto inline-flex h-[40px] items-center rounded-[8px] px-[18px] text-[13.5px] leading-[1] font-medium whitespace-nowrap no-underline";
+const BTN_VERRE = "tap-44 pointer-events-auto inline-flex h-[40px] items-center rounded-[8px] px-[18px] text-[13.5px] leading-[1] font-medium whitespace-nowrap no-underline";
 const HALO =
   "relative isolate before:absolute before:-inset-x-[28px] before:-inset-y-[22px] before:z-[-1] before:rounded-[32px] before:bg-[rgba(238,241,243,0.62)] before:blur-[24px] before:content-[''] dark:before:hidden";
 const WORD = "inline-block [animation:tw-hero-word_1400ms_cubic-bezier(0.16,0.68,0.16,1)_both] motion-reduce:[animation:none]";
@@ -67,12 +68,12 @@ export function Hero({ lang, dict }: Props) {
                 </h1>
                 <p className="m-[0px] max-w-[440px] text-[15px] leading-[24px] font-normal text-texte-bascule text-pretty dark:text-[#E4ECEF]">{t.lede}</p>
                 <div className="mt-[8px] flex flex-wrap items-center gap-[12px]">
-                  <Link href={`/${lang}/soumission`} className={`${BTN} bg-bouton text-sur-bouton transition-colors hover:bg-bouton-clair`}>
+                  <Link href={`/${lang}/soumission`} className={`${BTN_PLEIN} pointer-events-auto`}>
                     <span className="whitespace-nowrap">{t.ctaBook}</span>
                   </Link>
                   <Link
                     href={`/${lang}/services`}
-                    className={`${BTN} bg-verre text-encre shadow-[inset_0_0_0_1px_var(--color-filet-verre)] backdrop-blur-[14px] transition-[color,box-shadow] hover:text-vert hover:shadow-[inset_0_0_0_1px_var(--color-vert)] dark:bg-[rgba(1,41,60,0.72)] dark:text-white dark:shadow-[inset_0_0_0_1px_#0A3247] dark:backdrop-blur-none dark:hover:text-[#30D98C] dark:hover:shadow-[inset_0_0_0_1px_#30D98C]`}
+                    className={`${BTN_VERRE} bg-verre text-encre shadow-[inset_0_0_0_1px_var(--color-filet-verre)] backdrop-blur-[14px] transition-[color,box-shadow] hover:text-vert hover:shadow-[inset_0_0_0_1px_var(--color-vert)] dark:bg-[rgba(1,41,60,0.72)] dark:text-white dark:shadow-[inset_0_0_0_1px_#0A3247] dark:backdrop-blur-none dark:hover:text-[#30D98C] dark:hover:shadow-[inset_0_0_0_1px_#30D98C]`}
                   >
                     <span className="whitespace-nowrap">{t.ctaServices}</span>
                   </Link>

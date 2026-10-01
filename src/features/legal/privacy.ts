@@ -10,7 +10,7 @@ import type { Locale } from "@/lib/i18n/config";
  * NOM du responsable désigné reste à confirmer (voir `RESPONSIBLE_NAME`).
  */
 
-export type PrivacySection = { h: string; p: string[] };
+type PrivacySection = { h: string; p: string[] };
 export type PrivacyDoc = {
   title: string;
   /** Eyebrow de la section (« Loi 25 ») et intitulé du sommaire ancré. */

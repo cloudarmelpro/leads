@@ -1,8 +1,7 @@
 "use client";
 
-import { HERO_BTN_GLASS, HERO_BTN_PRIMARY } from "@/components/shared/hero-buttons";
-import { HeroSpot, moveSpot, SPOT_STYLE } from "@/components/shared/hero-spot";
-import { LineReveal } from "@/components/shared/line-reveal";
+import { HERO_BTN_GLASS, HERO_BTN_PRIMARY } from "@/components/shared/buttons";
+import { HeroCentre } from "@/components/shared/hero-centre";
 import { Reveal } from "@/components/shared/reveal";
 import { HeroBand } from "@/features/about/components/hero-band";
 import { DotMap } from "@/components/shared/dot-map";
@@ -22,20 +21,7 @@ export function AboutHero({ lang, dict }: Props) {
 
   return (
     <>
-      <section
-        id="top"
-        onPointerMove={moveSpot}
-        style={SPOT_STYLE}
-        className="relative flex justify-center px-[clamp(16px,4vw,56px)] pt-[clamp(168px,16.7vw,240px)] text-center"
-      >
-        <HeroSpot />
-        <div className="relative flex w-full flex-col items-center gap-[22px]">
-          <LineReveal as="h1" rollOnHover className="m-[0px] cursor-default text-center text-[clamp(24px,17.79px+1.66vw,36px)] leading-[1.08] font-semibold tracking-[-1px] text-encre uppercase min-[620px]:tracking-[-2px]">
-            {t.title}
-          </LineReveal>
-          <LineReveal delay={0.3} className="m-[0px] max-w-[620px] text-[clamp(15px,13.45px+0.41vw,18px)] leading-[1.34] font-normal text-texte2 text-pretty">
-            {t.lede}
-          </LineReveal>
+      <HeroCentre title={t.title} lede={t.lede}>
           <Reveal delay={640} immediate className="mt-[clamp(10px,1.6vw,22px)] flex flex-wrap justify-center gap-[12px]">
             <a href={`/${lang}/soumission`} className={HERO_BTN_PRIMARY}>
               {t.ctaBook}
@@ -49,8 +35,7 @@ export function AboutHero({ lang, dict }: Props) {
           <Reveal kind="scale" delay={760} immediate className="relative mt-[clamp(50px,8vw,118px)] w-full max-w-[960px]">
             <DotMap label={t.mapAria} />
           </Reveal>
-        </div>
-      </section>
+      </HeroCentre>
 
       <HeroBand items={t.band} label={t.bandAria} />
     </>

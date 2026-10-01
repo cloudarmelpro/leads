@@ -6,7 +6,8 @@ type Props = { label: string; brand: string };
 
 // Clé partagée avec le script avant peinture (pre-paint-script.tsx), qui masque l'écran
 // dès le HTML pour un visiteur qui l'a déjà vu.
-export const WELCOME_KEY = "talgasy-welcome-v3";
+// Même clé que dans pre-paint-script.tsx (classe `tw-seen` posée avant peinture).
+const WELCOME_KEY = "talgasy-welcome-v3";
 
 const T = "M55.9557 140H34.6925V17.836H0L0 0L168.333 0V17.836L55.9557 17.836V140Z";
 const G = "M168.333 45.7126H120.479V63.1308H147.898V121.028H102.853V27.4766H80.4709V140H168.333V45.7126Z";

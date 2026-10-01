@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { BTN_PLEIN } from "@/components/shared/buttons";
 import { SectorStack } from "@/features/home/components/sector-steps";
 import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
@@ -86,7 +87,7 @@ export function Sectors({ lang, dict }: Props) {
                   <p className="m-[0px] max-w-[480px] text-[15px] leading-[26px] font-normal text-texte-bascule text-pretty dark:text-white">{item.text}</p>
                   <Link
                     href={`/${lang}/soumission`}
-                    className="tap-44 mt-[6px] inline-flex h-[40px] w-fit items-center rounded-[8px] bg-bouton px-[18px] text-[13.5px] leading-[1] font-medium whitespace-nowrap text-sur-bouton no-underline transition-[background] duration-[240ms] ease-[cubic-bezier(0.2,0.7,0.2,1)] hover:bg-bouton-clair"
+                    className={`${BTN_PLEIN} mt-[6px] w-fit`}
                   >
                     {t.cta}
                   </Link>

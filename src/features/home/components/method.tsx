@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { BTN_PLEIN } from "@/components/shared/buttons";
 import { ObfuscatedEmail } from "@/components/shared/obfuscated-email";
 import { MethodTrack } from "@/features/home/components/method-track";
 import { site, telHref, whatsappHref } from "@/config/site";
@@ -56,7 +57,7 @@ export function Method({ lang, dict }: Props) {
           )}
           <Link
             href={`/${lang}/soumission`}
-            className="tap-44 inline-flex h-[40px] items-center rounded-[8px] bg-bouton px-[18px] text-[13.5px] leading-[1] font-medium whitespace-nowrap text-sur-bouton no-underline transition-colors hover:bg-bouton-clair"
+            className={BTN_PLEIN}
           >
             {t.cta}
           </Link>

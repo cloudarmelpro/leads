@@ -11,19 +11,6 @@ const STORAGE_KEY = "cookie-consent";
 export type CookieChoice = "accepted" | "declined";
 // Événement global : le lien « Gérer mes témoins » du footer rouvre le bandeau.
 export const OPEN_COOKIE_PREFS = "open-cookie-prefs";
-// Événement global : émis à chaque choix, pour que les embeds tiers (Cal.com)
-// réagissent sans recharger la page.
-export const COOKIE_CHOICE_EVENT = "cookie-choice";
-
-/** Choix mémorisé, ou `null` si l'utilisateur n'a pas encore tranché (client seulement). */
-export function readCookieChoice(): CookieChoice | null {
-  try {
-    const v = localStorage.getItem(STORAGE_KEY);
-    return v === "accepted" || v === "declined" ? v : null;
-  } catch {
-    return null;
-  }
-}
 
 /**
  * Bandeau de consentement (Loi 25), calqué sur la référence. Le site n'utilise
@@ -62,7 +49,6 @@ export function CookieConsent({ lang, dict }: { lang: Locale; dict: Pick<Diction
       localStorage.setItem(STORAGE_KEY, value);
     } catch {}
     setOpen(false);
-    window.dispatchEvent(new CustomEvent<CookieChoice>(COOKIE_CHOICE_EVENT, { detail: value }));
     // Le jour où une mesure d'audience est ajoutée : l'activer ici si accepté.
   }
 

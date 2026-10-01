@@ -16,18 +16,16 @@
 @theme {
   --color-encre: #1e1e1e;
   --color-sapin: #14402f;
-  --color-sapin-fonce: #0e2f22;
   --color-emeraude: #177e4f;
   --color-lueur: #9be8c0;
   --color-menthe: #e7f2eb;
   /* Mode clair = couleurs du cadre Figma « Light » (fond #fdfdfd, cartes blanches,
-     texte neutre #1e1e1e / #646468) mais MÊME mise en forme que le sombre : cartes
-     plates délimitées par un filet, jamais par une ombre portée. Le filet est un
-     cran plus foncé que le « Stroke » Figma (#f2f2f3) pour rester visible sans ombre. */
+     texte neutre #1e1e1e / #646468). Le client ne veut PAS de filet en clair : les
+     cartes se détachent par leur fond gris (`surface-2`), `ligne` ne sert qu'aux rares
+     séparateurs (article de blogue, articles de la confidentialité). */
   --color-fond: #fdfdfd;
   --color-ligne: #e8e8ea;
   --color-texte2: #646468;
-  --color-sapin-doux: #c9dad1;
 
   /* Tokens sémantiques ajoutés pour le mode sombre (voir bloc `.dark` plus bas).
      - surface : couleur des cartes (remplace les `bg-white` codés en dur).
@@ -41,24 +39,22 @@
   --color-accent-strong: #177e4f;
 
   /* Jetons de la maquette « Accueil » (valeurs sombres littérales dans `.dark`) :
-     - vert / vert-clair : bouton plein et son survol ; sur-vert : texte posé dessus.
+     - vert / vert-clair : vert de TEXTE (surtitres, liens, pictogrammes) et son survol,
+       foncé en clair pour le contraste.
      - texte3 : liens du pied de page ; texte-note : mention sous le bouton d'appel.
      - contour : bordure des boutons contournés du menu mobile. */
   --color-vert: #177e4f;
   --color-vert-clair: #14402f;
-  --color-sur-vert: #ffffff;
   /* Boutons pleins : MÊME rendu dans les deux thèmes (vert vif, texte nuit) — demande du
-     client du 2026-09-30. `vert` reste le vert de texte (foncé en clair pour le contraste). */
+     client du 2026-09-30. */
   --color-bouton: #30d98c;
   --color-bouton-clair: #7fefc0;
   --color-sur-bouton: #011823;
   --color-texte3: #646468;
   --color-texte-note: #6b7f79;
   --color-contour: #d9d9dc;
-  /* Page Prix : libellé de la bascule, croix « non inclus », piste de l'interrupteur. */
+  /* Texte un cran plus foncé que `texte2` (filtres du blogue, textes d'appui des heros photo). */
   --color-texte-bascule: #3a3a3f;
-  --color-croix: #9a9aa0;
-  --color-piste: #c9c9ce;
   /* Page Soumission : texte d'erreur du formulaire (rouge doux, contraste 4,5:1 en sombre). */
   --color-erreur: #c0362c;
   /* Corps des articles de blog (17px/30px) : gris encre en clair, #c6d5db en sombre. */
@@ -68,7 +64,6 @@
   --color-verre: rgba(253, 253, 253, 0.72);
   --color-verre-fort: rgba(253, 253, 253, 0.92);
   --color-filet-verre: rgba(30, 30, 30, 0.1);
-  --color-pastille: rgba(30, 30, 30, 0.06);
   --color-lien-barre: #3a3a3f;
   --color-texte-sourd: #646468;
   --color-puce: #1e1e1e;
@@ -87,33 +82,13 @@
      pour qu'un usage futur ne fasse pas revenir une deuxieme police. */
   --font-mono: var(--font-oxanium), -apple-system, "Segoe UI", sans-serif;
 
-  /*
-   * Tokens shadcn/ui mappés sur la marque (valeurs sombres dans `.dark`), pour les
-   * composants ui/ quand le kit sera installé — jamais de couleur codée en dur
-   * dans un composant.
-   */
-  --color-background: #fdfdfd;
-  --color-foreground: var(--color-encre);
-  --color-primary: var(--color-emeraude);
-  --color-primary-foreground: #ffffff;
-  --color-secondary: var(--color-menthe);
-  --color-secondary-foreground: var(--color-sapin);
-  --color-muted: var(--color-fond);
-  --color-muted-foreground: var(--color-texte2);
-  --color-accent: var(--color-menthe);
-  --color-accent-foreground: var(--color-sapin);
-  --color-destructive: #c0362c;
-  --color-border: var(--color-ligne);
-  /* Bordure d'input volontairement plus foncée que --border (gris moyen défini),
-     comme dans le projet de référence — sinon les champs paraissent effacés. */
-  --color-input: oklch(0.62 0 0);
+  /* Anneau de focus global (voir `:focus-visible` plus bas). */
   --color-ring: var(--color-emeraude);
 }
 
 /*
  * Mode sombre — palette « bleu-sarcelle » du designer (tokens Figma). On ne
- * redéfinit QUE les tokens sémantiques ; `emeraude` (boutons pleins) reste fixe à
- * ce stade — le traitement bouton vert vif (#30d98c) se fait section par section.
+ * redéfinit QUE les tokens sémantiques.
  * Fond #011823 · cartes #011b28 · bordures #012232 · texte #fff/#bfbfbf · accent #30d98c.
  */
 .dark {
@@ -129,37 +104,20 @@
 
   --color-vert: #30d98c;
   --color-vert-clair: #7fefc0;
-  --color-sur-vert: #011823;
   --color-texte3: #bfbfbf;
   --color-texte-note: #7e9a93;
   --color-contour: #0a3247;
   --color-texte-bascule: #d6e2e6;
-  --color-croix: #54707d;
-  --color-piste: #3b5764;
   --color-erreur: #ff8f7a;
   --color-prose: #c6d5db;
   --color-verre: rgba(1, 24, 35, 0.55);
   --color-verre-fort: rgba(1, 24, 35, 0.75);
   --color-filet-verre: rgba(255, 255, 255, 0.09);
-  --color-pastille: rgba(255, 255, 255, 0.1);
   --color-lien-barre: #d5e0e5;
   --color-texte-sourd: #8fa3ac;
   --color-puce: #d7e3e8;
   --color-mot-accueil: #012a3c;
   --color-carte: #022536;
-
-  /* Alias shadcn */
-  --color-background: #011823;
-  --color-foreground: var(--color-encre);
-  --color-secondary: var(--color-menthe);
-  --color-secondary-foreground: #bfe9d4;
-  --color-accent: var(--color-menthe);
-  --color-accent-foreground: #bfe9d4;
-  --color-muted: #011b28;
-  --color-muted-foreground: var(--color-texte2);
-  --color-border: var(--color-ligne);
-  --color-input: oklch(0.5 0.03 220);
-  --color-destructive: #e5675c;
   --color-ring: #30d98c;
 }
 
@@ -174,16 +132,10 @@ html {
   overflow-x: clip;
 }
 
-/* L'en-tête n'est PAS collant (il défile avec la page) : pas besoin de réserver sa
-   hauteur. La section a déjà un généreux padding haut ; on ajoute juste un petit
-   décalage pour un cadrage propre près du haut (le carrousel précédent ne dépasse pas). */
-/* Ancres de la page (sections et libellés de section) : 72px sous le haut. */
+/* Ancres (sections et repère `#prix` de la page Services) : 84px sous le haut, l'en-tête
+   fixe de 80px ne les recouvre pas. */
 section[id],
-[id="services"],
-[id="secteurs"],
-[id="methode"],
-[id="faq"],
-[id="contact"] {
+[id="prix"] {
   scroll-margin-top: 84px;
 }
 
@@ -228,18 +180,8 @@ body {
   border-radius: 6px;
 }
 
-/* Décors SVG à traits blancs (globe, enveloppe, labyrinthe) : en clair, on les
-   teinte en vert pâle comme la maquette ; en sombre ils restent blancs. */
-@utility tint-vert {
-  filter: brightness(0.86) sepia(1) hue-rotate(90deg) saturate(2.2);
-}
-
-/* Rôles typographiques des textes courants, en rem : ils suivent la racine fluide
-   définie sur <html> (14px mobile → 16px ordinateur). */
-@utility text-body-fluid {
-  font-size: 1rem;
-  line-height: 1.5;
-}
+/* Rôles typographiques du bandeau des témoins et de la page 404, en rem : ils suivent la
+   racine fluide définie sur <html> (14px mobile → 16px ordinateur). */
 @utility text-small-fluid {
   font-size: .9375rem;
   line-height: 1.6;
@@ -251,14 +193,6 @@ body {
 @utility text-title-fluid {
   font-size: 1.125rem;
   line-height: 1.3;
-}
-@utility text-lead-fluid {
-  font-size: 1.25rem;
-  line-height: 1.25;
-}
-@utility text-nav-fluid {
-  font-size: .9375rem;
-  line-height: 1.4;
 }
 
 /* Zone tactile de 44px (Apple HIG / WCAG 2.5.8) sans changer la place occupée :
@@ -353,10 +287,6 @@ body {
     animation: tw-reveal-guard 0s linear 2.5s forwards;
   }
 }
-.tw-line-mask {
-  padding-block: 0.14em;
-  margin-block: -0.14em;
-}
 /* Rangées d'outils : chaque piste contient deux fois la liste, -50 % boucle sans saut. */
 @keyframes tw-tools-rail {
   from {
@@ -374,7 +304,7 @@ body {
     transform: translateX(0);
   }
 }
-/* Page Services : entrée des blocs du hero (montée de 28px), décalés dans le temps. */
+/* Pages intérieures : entrée des blocs du hero (montée de 28px), décalés dans le temps. */
 @keyframes tw-rise {
   from {
     opacity: 0;

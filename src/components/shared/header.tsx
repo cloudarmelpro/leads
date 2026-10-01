@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 
 import { ActionLink } from "@/components/shared/action-link";
+import { BTN_PLEIN } from "@/components/shared/buttons";
 import { LangMenu } from "@/components/shared/lang-menu";
 import { Logo } from "@/components/shared/logo";
 import { ThemeToggle } from "@/components/shared/theme-toggle";
@@ -226,7 +227,7 @@ export function Header({ lang, dict }: Props) {
             </span>
             <Link
               href={`${home}/soumission`}
-              className={`hidden h-[40px] items-center rounded-[8px] bg-bouton px-[18px] text-[13.5px] leading-[1] font-medium whitespace-nowrap text-sur-bouton no-underline ${EASE} hover:bg-bouton-clair min-[1100px]:flex`}
+              className={`${BTN_PLEIN} hidden min-[1100px]:inline-flex`}
             >
               {dict.nav.quote}
             </Link>

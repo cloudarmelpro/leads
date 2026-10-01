@@ -31,14 +31,6 @@ export function telHref(phone: string | null): string | null {
   return phone ? `tel:${phone.replace(/[^\d+]/g, "")}` : null;
 }
 
-export function mailtoHref(email: string | null): string | null {
-  return email ? `mailto:${email}` : null;
-}
-
 export function whatsappHref(number: string | null): string | null {
   return number ? `https://wa.me/${number.replace(/\D/g, "")}` : null;
-}
-
-export function messengerHref(username: string | null): string | null {
-  return username ? `https://m.me/${username}` : null;
 }
