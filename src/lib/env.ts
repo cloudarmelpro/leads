@@ -8,10 +8,15 @@ import "server-only";
  * absente et signalée dans les logs (aucune donnée sensible n'est loguée).
  */
 
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+// Pas de guillemets ni de chevrons dans une adresse : Resend refuse `a@b.ca"` (422).
+const EMAIL_RE = /^[^\s@"'<>]+@[^\s@"'<>]+\.[^\s@"'<>]+$/;
 
+/**
+ * Espaces et guillemets de bord retirés : le panneau Hostinger garde les guillemets saisis
+ * dans la valeur (incident du 2026-10-01 : `cedric@…ca"` → notifications refusées par Resend).
+ */
 function clean(value: string | undefined): string | undefined {
-  const v = value?.trim();
+  const v = value?.trim().replace(/^["']+|["']+$/g, "").trim();
   return v ? v : undefined;
 }
 
