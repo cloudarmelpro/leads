@@ -10,12 +10,16 @@ export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   // 1. Canonicalisation de l'hôte : www → apex (avec Location absolue). Évite le
-  //    contenu dupliqué www/apex servi sans redirection.
-  const host = request.nextUrl.hostname;
-  if (host.startsWith("www.")) {
-    const url = request.nextUrl.clone();
-    url.hostname = host.slice(4);
-    return NextResponse.redirect(url, 308);
+  //    contenu dupliqué www/apex servi sans redirection. Derrière le proxy Hostinger,
+  //    `nextUrl.hostname` est l'hôte interne : le vrai nom arrive dans `x-forwarded-host`
+  //    (vérifié le 2026-10-02 : www.talgasyweb.ca répondait 200 au lieu de rediriger).
+  const host = (request.headers.get("x-forwarded-host") ?? request.headers.get("host") ?? request.nextUrl.hostname)
+    .split(",")[0]
+    ?.trim()
+    .toLowerCase()
+    .replace(/:\d+$/, "");
+  if (host?.startsWith("www.")) {
+    return NextResponse.redirect(`https://${host.slice(4)}${pathname}${request.nextUrl.search}`, 308);
   }
 
   // 2. Locale déjà présente (comparaison insensible à la casse). Une URL en

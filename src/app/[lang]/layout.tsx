@@ -15,7 +15,6 @@ import { SiteCursor } from "@/components/shared/site-cursor";
 import { site } from "@/config/site";
 import { isLocale, localeHtmlLang, locales } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
-import { pageMetadata } from "@/lib/seo/metadata";
 
 import { setRequestLocale } from "@/lib/i18n/request-locale";
 
@@ -46,9 +45,12 @@ export async function generateMetadata({ params }: LayoutProps<"/[lang]">): Prom
 
   const dict = await getDictionary(lang);
 
+  // Valeurs par défaut seulement : chaque page publique déclare ses propres métadonnées
+  // (pageMetadata), canonical comprise. Sans canonical ici, la 404 n'en hérite pas.
   return {
     metadataBase: new URL(`https://${site.domain}`),
-    ...pageMetadata({ lang, title: dict.meta.title, description: dict.meta.description }),
+    title: dict.meta.title,
+    description: dict.meta.description,
   };
 }
 

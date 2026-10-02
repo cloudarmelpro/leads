@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { BreadcrumbLd } from "@/components/shared/breadcrumb-ld";
 import { FaqLd } from "@/components/shared/faq-ld";
 import { Cta, Faq } from "@/features/home";
-import { ServicesExplorer } from "@/features/services";
+import { ServicesExplorer, ServicesLd } from "@/features/services";
 import { isLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { pageMetadata } from "@/lib/seo/metadata";
@@ -39,6 +39,7 @@ export default async function ServicesPage({ params }: PageProps<"/[lang]/servic
         ]}
       />
       <FaqLd items={dict.servicesPage.faq.items} />
+      <ServicesLd lang={lang} dict={{ servicesPage: dict.servicesPage }} />
       <ServicesExplorer lang={lang} dict={{ servicesPage: dict.servicesPage }} />
       <Faq dict={{ faq: dict.servicesPage.faq }} lang={lang} />
       <Cta dict={{ final: dict.final, placeholders: dict.placeholders }} />

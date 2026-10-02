@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "Web development, apps and SaaS | Talgasy Web",
-    "description": "Websites, web and mobile apps, SaaS platforms and integrations for Canadian businesses. From idea to launch, with clear starting prices."
+    "title": "Websites, apps and SaaS in Québec | Talgasy Web",
+    "description": "Websites, web and mobile apps, SaaS platforms and integrations for businesses in Québec and across Canada. From idea to launch, with clear starting prices."
   },
   "og": {
     "kicker": "Development · Canada",
@@ -230,7 +230,7 @@
     },
     "listKicker": "Blog — {n} articles",
     "listKickerOne": "Blog — 1 article",
-    "listTitle": "Ideas & advice",
+    "listTitle": "Web ideas & advice for small businesses",
     "listIntro": "Practical articles to win more customers with your website. Conversion, local SEO, content: what we apply for our clients, explained without jargon.",
     "filterAll": "All",
     "read": "Read",
@@ -247,8 +247,8 @@
   },
   "about": {
     "meta": {
-      "title": "About Talgasy Web — Your development partner, from idea to launch",
-      "description": "Talgasy Web helps Canadian businesses turn their ideas into concrete digital solutions: websites, applications, SaaS, automation. Quality, professionalism, trust."
+      "title": "About Talgasy Web, your development partner",
+      "description": "Talgasy Web helps Canadian businesses turn their ideas into concrete digital solutions: websites, applications, SaaS and automation, from idea to launch."
     },
     "breadcrumb": "About",
     "hero": {
@@ -456,8 +456,8 @@
   },
   "servicesPage": {
     "meta": {
-      "title": "Services — Web development, apps, SaaS, identity and hosting | Talgasy Web",
-      "description": "Clear starting points for your digital projects: websites, web and mobile apps, SaaS platforms, integrations, logo and identity, hosting. Every engagement can grow with the complexity."
+      "title": "Services and pricing: websites, apps, SaaS | Talgasy Web",
+      "description": "Clear starting prices: websites from $1,500, web and mobile apps, SaaS, integrations, logo and hosting. A no-commitment quote within 24 hours."
     },
     "breadcrumb": "Services",
     "title": "Services",
