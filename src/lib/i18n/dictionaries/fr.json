@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "Développement web, applications et SaaS | Talgasy Web",
-    "description": "Sites web, applications web et mobiles, plateformes SaaS et intégrations pour les entreprises canadiennes. De l’idée au déploiement, avec des prix de départ clairs."
+    "title": "Sites web, applications et SaaS au Québec | Talgasy Web",
+    "description": "Sites web, applications web et mobiles, SaaS et intégrations pour les entreprises du Québec et du Canada. De l’idée au déploiement, prix de départ clairs."
   },
   "og": {
     "kicker": "Développement · Canada",
@@ -228,9 +228,9 @@
       "title": "Blogue — Conseils web pour les PME du Québec | Talgasy Web",
       "description": "Idées et conseils concrets pour aider les PME du Québec à attirer plus de clients avec leur site web : conversion, référencement local et bonnes pratiques."
     },
-    "listKicker": "Blog — {n} articles",
-    "listKickerOne": "Blog — 1 article",
-    "listTitle": "Idées & conseils",
+    "listKicker": "Blogue — {n} articles",
+    "listKickerOne": "Blogue — 1 article",
+    "listTitle": "Idées & conseils web pour les PME",
     "listIntro": "Des articles concrets pour attirer plus de clients avec votre site web. Conversion, référencement local, contenu : ce qu’on applique chez nos clients, expliqué sans jargon.",
     "filterAll": "Tous",
     "read": "Lire",
@@ -247,8 +247,8 @@
   },
   "about": {
     "meta": {
-      "title": "À propos de Talgasy Web — Partenaire de développement, de l’idée au déploiement",
-      "description": "Talgasy Web aide les entreprises canadiennes à transformer leurs idées en solutions numériques concrètes : sites web, applications, SaaS, automatisation. Qualité, professionnalisme, confiance."
+      "title": "À propos de Talgasy Web, partenaire de développement",
+      "description": "Talgasy Web aide les entreprises canadiennes à transformer leurs idées en solutions numériques : sites web, applications, SaaS et automatisation."
     },
     "breadcrumb": "À propos",
     "hero": {
@@ -456,8 +456,8 @@
   },
   "servicesPage": {
     "meta": {
-      "title": "Services — Développement web, applications, SaaS, identité et hébergement | Talgasy Web",
-      "description": "Des points de départ clairs pour vos projets numériques : sites web, applications web et mobiles, plateformes SaaS, intégrations, logo et identité, hébergement. Chaque mandat peut évoluer selon la complexité."
+      "title": "Services et prix : sites web, apps et SaaS | Talgasy Web",
+      "description": "Prix de départ clairs : site web dès 1 500 $, applications web et mobiles, SaaS, intégrations, logo et hébergement. Soumission en 24 h, sans engagement."
     },
     "breadcrumb": "Services",
     "title": "Services",

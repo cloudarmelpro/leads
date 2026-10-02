@@ -20,6 +20,8 @@ export type PrivacyDoc = {
   updatedLabel: string;
   updated: string;
   /** Description SEO (120-160 caractères) : l'intro est trop longue pour un <meta>. */
+  /** Titre de l'onglet et des résultats de recherche, sans la marque. */
+  metaTitle: string;
   metaDescription: string;
   intro: string;
   /** Les quatre repères du hero (maquette du 2026-09-30), résumés fidèles des articles. */
@@ -46,6 +48,7 @@ function fr(): PrivacyDoc {
     tocLabel: "Sommaire",
     updatedLabel: "Dernière mise à jour",
     updated: UPDATED,
+    metaTitle: "Politique de confidentialité et Loi 25",
     metaDescription: `Politique de confidentialité de ${site.name} : ce que le formulaire de soumission recueille, pourquoi, où c'est conservé et vos droits sous la Loi 25 (Québec).`,
     intro: `Chez ${site.name}, nous prenons la protection de vos renseignements personnels au sérieux. Cette politique explique ce que nous recueillons, pourquoi, et les droits dont vous disposez, conformément à la Loi 25 (Québec).`,
     brief: [
@@ -151,6 +154,7 @@ function en(): PrivacyDoc {
     tocLabel: "Contents",
     updatedLabel: "Last updated",
     updated: UPDATED,
+    metaTitle: "Privacy Policy and Quebec Law 25",
     metaDescription: `${site.name} privacy policy: what the quote form collects, why, where it is stored, and the rights you have under Quebec's Law 25.`,
     intro: `At ${site.name}, we take the protection of your personal information seriously. This policy explains what we collect, why, and the rights you have, in line with Quebec's Law 25.`,
     brief: [

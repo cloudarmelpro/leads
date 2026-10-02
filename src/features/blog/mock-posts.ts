@@ -339,7 +339,7 @@ const POSTS: RawPost[] = [
       title: "Job-site photos that win the job",
       short: "Job-site photos",
       excerpt:
-        "Your real photos beat any stock image. What to frame, and what to avoid.",
+        "Your real job-site photos are worth more than any stock image bank. What to frame, and what you should avoid.",
       body: [
         { type: "p", text: "A homeowner comparing two landscapers doesn’t read your copy first. They look at your photos, and ask themselves whether what they see looks like what they want at home. A stock image, with a perfect lawn and a smiling family, answers “no” to that question before they even ask it." },
         { type: "h", text: "Why your photos always win" },

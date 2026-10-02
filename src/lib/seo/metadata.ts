@@ -14,6 +14,12 @@ type Args = {
   /** Dates ISO — ignorées si `type` n'est pas "article". */
   publishedTime?: string;
   modifiedTime?: string;
+  /**
+   * Image de partage : par défaut celle de la langue. `null` quand le segment a son propre
+   * fichier `opengraph-image` : Next l'annonce alors lui-même, avec la bonne adresse (dans un
+   * groupe de routes, elle porte un suffixe, ex. `opengraph-image-1lykkh`).
+   */
+  image?: string | null;
 };
 
 /**
@@ -30,6 +36,7 @@ export function pageMetadata({
   type = "website",
   publishedTime,
   modifiedTime,
+  image = `/${lang}/opengraph-image`,
 }: Args): Metadata {
   const canonical = `/${lang}${path}`;
 
@@ -42,7 +49,7 @@ export function pageMetadata({
     // Sans cette clé, l'`openGraph` défini par page ÉCRASE l'image héritée du
     // fichier [lang]/opengraph-image.tsx → sous-pages sans aperçu social. On
     // pointe la route OG par langue (résolue en absolu via metadataBase).
-    images: [`/${lang}/opengraph-image`],
+    ...(image ? { images: [{ url: image, width: 1200, height: 630, alt: title }] } : {}),
   };
 
   return {
@@ -64,7 +71,7 @@ export function pageMetadata({
       card: "summary_large_image",
       title,
       description,
-      images: [`/${lang}/opengraph-image`],
+      ...(image ? { images: [image] } : {}),
     },
   };
 }

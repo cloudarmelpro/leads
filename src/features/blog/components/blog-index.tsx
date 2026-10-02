@@ -1,6 +1,7 @@
 import { BreadcrumbLd } from "@/components/shared/breadcrumb-ld";
 import { ScrollProgress } from "@/components/shared/scroll-progress";
 import { BlogHero } from "@/features/blog/components/blog-hero";
+import { BlogLd } from "@/features/blog/components/blog-ld";
 import { PostGrid } from "@/features/blog/components/post-grid";
 import { getPosts } from "@/features/blog/mock-posts";
 import { Cta } from "@/features/home";
@@ -31,6 +32,7 @@ export async function BlogIndex({ lang }: Props) {
 
       {posts.length > 0 && (
         <>
+          <BlogLd posts={posts} lang={lang} name={dict.blog.meta.title} description={dict.blog.meta.description} />
           <BlogHero posts={posts} lang={lang} dict={{ blog: dict.blog }} />
           <section id="articles" className="relative flex justify-center px-[clamp(16px,4vw,56px)] pt-[clamp(72px,9vw,120px)] pb-[clamp(96px,12vw,160px)]">
             <div className="flex w-full max-w-[1400px] flex-col gap-[clamp(32px,4vw,48px)]">

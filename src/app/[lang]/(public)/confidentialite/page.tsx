@@ -16,7 +16,7 @@ export async function generateMetadata({
   return pageMetadata({
     lang,
     path: "/confidentialite",
-    title: `${doc.title} — ${site.name}`,
+    title: `${doc.metaTitle} | ${site.name}`,
     description: doc.metaDescription,
   });
 }
