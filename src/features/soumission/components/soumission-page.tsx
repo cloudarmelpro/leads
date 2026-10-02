@@ -26,9 +26,9 @@ export function SoumissionPage({ lang, dict }: Props) {
       />
       <ScrollProgress />
 
-      {/* Bas du hero plus aéré que la maquette (48–88px) : demandes du client du 2026-09-30,
-          puis du 2026-10-02 (« ajoute un peu l'espace » : 72–140px → 104–200px). */}
-      <HeroCentre title={t.title} lede={t.lede} className="pb-[clamp(104px,12.5vw,200px)]" />
+      {/* Même écart sous le texte d'appui que Services et Confidentialité (72–140px, avec les
+          22px de la colonne côté Services) : règle du client du 2026-10-02, « le Services pour tout ». */}
+      <HeroCentre title={t.title} lede={t.lede} className="pb-[clamp(72px,9.5vw,140px)]" />
 
       <SoumissionWizard lang={lang} dict={{ soumission: t }} />
       <Faq dict={{ faq: dict.faq }} lang={lang} />
