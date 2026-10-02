@@ -140,14 +140,15 @@ section[id],
 }
 
 /* Écran de bienvenue : masqué par défaut ; visible seulement quand le script avant peinture a
-   posé `tw-welcome` (premier chargement de la session). Filet de sécurité : il s'efface seul
-   après 12 s si le JavaScript ne prenait jamais la main (welcome-splash.tsx l'annule). */
+   posé `tw-welcome` (premier chargement de la session). Il s'efface seul après 3 s si le
+   JavaScript n'a pas encore pris la main (réseau lent : ne pas cacher la page derrière un fond
+   vide) ; welcome-splash.tsx annule ce fondu dès qu'il démarre, et 3 s = sa constante LATE. */
 [data-splash] {
   display: none;
 }
 .tw-welcome [data-splash] {
   display: block;
-  animation: tw-splash-out 400ms ease 12s both;
+  animation: tw-splash-out 400ms ease 3s both;
 }
 /* Bandeau témoins rendu dans le HTML (il compte dès la première peinture, au lieu d'arriver
    après l'hydratation) : masqué dès le HTML pour un visiteur qui a déjà choisi. */

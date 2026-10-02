@@ -12,7 +12,15 @@ const DONE_EVENT = "tw:welcome-done";
 
 // Réglages de la maquette Accueil (préchargeur « BIENVENUE » en particules, 2026-10-02).
 const PT = { accentShare: 0.08, fontWeight: 600, tracking: -0.02, maxParticles: 4500, ambientShare: 0.14, mobileSpeed: 1.1 };
-const T = { appear: 0.3, gather: 0.95, gatherSpread: 0.55, gatherDur: 1.15, disperse: 2.95, end: 4.0 };
+// Temps en secondes. Lié au chargement réel (demande du client, 2026-10-02) : le mot est formé
+// vers 1,4 s ; `disperse` n'est qu'un minimum, l'envol attend que la page soit chargée.
+// La maquette, à durée fixe, dispersait à 2,95 s et finissait à 4 s.
+const T = { appear: 0.1, appearSpread: 0.4, appearDur: 0.5, gather: 0.3, gatherSpread: 0.25, gatherDur: 0.8, disperse: 1.4, end: 2.45 };
+// Au-delà, on n'attend plus la page (ressource bloquée) : le visiteur n'est jamais retenu.
+const MAX_WAIT = 6000;
+// Réseau lent : si le JavaScript prend la main après ce délai (ms depuis l'ouverture), le
+// visiteur a déjà attendu devant le fond vide ; l'écran s'efface sans jouer les particules.
+const LATE = 3000;
 const EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
 
 type Particle = {
@@ -50,7 +58,7 @@ function particle(w: number, h: number, tx: number | null, ty: number | null, di
   const ry = ty ?? sy;
   const out = Math.atan2(ry - cy, rx - cx) + (Math.random() - 0.5) * 0.9;
   return {
-    sx, sy, tx, ty, z, ph: Math.random() * 6.283, fr: 0.3 + Math.random() * 0.6, appear: Math.random() * 0.7,
+    sx, sy, tx, ty, z, ph: Math.random() * 6.283, fr: 0.3 + Math.random() * 0.6, appear: Math.random() * T.appearSpread,
     gd: Math.random() * T.gatherSpread + (tx === null || ty === null ? 0 : (Math.hypot(tx - cx, ty - cy) / diag) * 0.25),
     curve: (Math.random() - 0.5) * 0.35,
     ox: Math.cos(out), oy: Math.sin(out), dist: diag * (0.35 + Math.random() * 0.55 + z * 0.3),
@@ -109,7 +117,8 @@ function build(word: string, font: string, w: number, h: number): Particle[] {
 
 /**
  * Écran de bienvenue (maquette Accueil, 2026-10-02) : des particules dérivent, se rassemblent
- * pour écrire « BIENVENUE », puis s'envolent pendant que le fond s'efface et que la page entre
+ * pour écrire « BIENVENUE », puis s'envolent dès que la page est chargée (1,4 s au plus tôt),
+ * pendant que le fond s'efface et que la page entre
  * (en-tête, titre, textes). Une fois par session, au premier chargement de l'accueil ou d'À
  * propos. Un clic, Échap, Entrée ou Espace passe directement à la dispersion. Sous
  * `prefers-reduced-motion`, le mot s'affiche fixe puis l'écran s'efface. Décoratif (aria-hidden).
@@ -126,11 +135,18 @@ export function WelcomeSplash({ word }: Props) {
     const el = root.current;
     const cv = canvas.current;
     const back = bg.current;
-    if (!html.classList.contains(ACTIVE) || !el || !cv || !back) {
+    // JavaScript arrivé trop tard (réseau lent) : le CSS a déjà effacé l'écran (globals.css,
+    // fondu à LATE), on ne le rallume pas.
+    const late = performance.now() > LATE;
+    if (!html.classList.contains(ACTIVE) || !el || !cv || !back || late) {
+      if (late && html.classList.contains(ACTIVE)) {
+        html.classList.remove(ACTIVE);
+        window.dispatchEvent(new Event(DONE_EVENT));
+      }
       setOpen(false);
       return;
     }
-    // Le filet de sécurité CSS (fondu après 12 s, si le JavaScript plantait) n'a plus lieu d'être.
+    // Sinon le fondu de secours CSS est annulé : c'est l'animation qui décide de la fin.
     el.style.animation = "none";
 
     let alive = true;
@@ -161,12 +177,17 @@ export function WelcomeSplash({ word }: Props) {
     };
     window.addEventListener("keydown", onKey);
 
-    // La dispersion attend la police (au plus 2,5 s), sinon le mot se dessinerait en police de repli.
-    void Promise.race([document.fonts.ready, new Promise((r) => setTimeout(r, 2500))]).then(() =>
-      setTimeout(() => {
-        ready = true;
-      }, 200),
-    );
+    // L'envol attend la page chargée (événement `load` : images, styles, scripts) et la police,
+    // au plus MAX_WAIT après l'ouverture de la page (`performance.now()` part de la navigation).
+    const loaded = new Promise<void>((r) => {
+      if (document.readyState === "complete") r();
+      else window.addEventListener("load", () => r(), { once: true });
+    });
+    const cap = new Promise((r) => setTimeout(r, Math.max(0, MAX_WAIT - performance.now())));
+    const pageReady = Promise.race([Promise.all([loaded, document.fonts.ready]), cap]);
+    void pageReady.then(() => {
+      ready = true;
+    });
 
     const reveal = (k: number) => {
       const ms = (v: number) => v * k;
@@ -196,6 +217,13 @@ export function WelcomeSplash({ word }: Props) {
         // police indisponible : on dessine avec celle de repli
       }
       if (!alive) return;
+      if (performance.now() > LATE) {
+        announce();
+        const fade = el.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 300, fill: "both" });
+        anims.push(fade);
+        fade.finished.then(close, () => {});
+        return;
+      }
       const w = cv.clientWidth;
       const h = cv.clientHeight;
       const dpr = Math.min(2, window.devicePixelRatio || 1);
@@ -211,7 +239,7 @@ export function WelcomeSplash({ word }: Props) {
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
         ctx.fillText(word, w / 2, h / 2);
-        await new Promise((r) => setTimeout(r, 900));
+        await Promise.all([pageReady, new Promise((r) => setTimeout(r, 900))]);
         if (!alive) return;
         announce();
         const fade = el.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 400, fill: "both" });
@@ -242,7 +270,7 @@ export function WelcomeSplash({ word }: Props) {
           ctx.fillStyle = pass ? accent : ink;
           for (const p of P) {
             if (p.accent !== (pass === 1)) continue;
-            const ap = oc(seg(t, T.appear + p.appear, T.appear + p.appear + 0.7));
+            const ap = oc(seg(t, T.appear + p.appear, T.appear + p.appear + T.appearDur));
             if (ap <= 0) continue;
             const amp = 6 + p.z * 22;
             const fx = Math.sin(s * p.fr + p.ph + p.sy * 0.004) * amp + Math.cos(s * 0.37 + p.sx * 0.003) * amp * 0.5;
