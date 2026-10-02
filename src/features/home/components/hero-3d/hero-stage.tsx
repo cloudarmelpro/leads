@@ -5,6 +5,8 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 
 import { useTheme } from "@/lib/use-theme";
 
+import { whenWelcomeDone } from "../welcome-splash";
+
 import type { HeroScene } from "./scene";
 
 type Still = { src: string; width: number; height: number };
@@ -209,9 +211,17 @@ export function HeroStage({ children, fallback, mapIntensity = 2, exitLength = 0
         // WebGL indisponible : image fixe à la place de la scène
         if (alive) setMode("still");
       });
-    const cancelStart = afterLoadIdle(() => {
-      if (alive) start();
+    // Après l'écran de bienvenue s'il joue (sa construction saccaderait les particules).
+    let cancelIdle = () => {};
+    const cancelWelcome = whenWelcomeDone(() => {
+      cancelIdle = afterLoadIdle(() => {
+        if (alive) start();
+      });
     });
+    const cancelStart = () => {
+      cancelWelcome();
+      cancelIdle();
+    };
     return () => {
       alive = false;
       cancelStart();

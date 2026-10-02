@@ -25,6 +25,9 @@ export function SiteCursor() {
     const ring = document.createElement("div");
     dot.setAttribute("aria-hidden", "true");
     ring.setAttribute("aria-hidden", "true");
+    // Hors transition de page (page-transition.tsx) : ni estompé ni photographié.
+    dot.setAttribute("data-tp-keep", "");
+    ring.setAttribute("data-tp-keep", "");
     dot.style.cssText =
       "position:fixed;left:0;top:0;z-index:9999;width:6px;height:6px;margin:-3px 0 0 -3px;border-radius:999px;background:#30D98C;pointer-events:none;opacity:0;transition:opacity 200ms,width 200ms,height 200ms,margin 200ms";
     ring.style.cssText = `position:fixed;left:0;top:0;z-index:9998;width:36px;height:36px;margin:-18px 0 0 -18px;border-radius:999px;box-shadow:inset 0 0 0 1.5px rgba(48,217,140,0.55);pointer-events:none;opacity:0;transition:opacity 200ms,width 280ms ${EASE},height 280ms ${EASE},margin 280ms ${EASE},background 280ms,box-shadow 280ms`;

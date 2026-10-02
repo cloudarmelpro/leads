@@ -139,9 +139,15 @@ section[id],
   scroll-margin-top: 84px;
 }
 
-/* Écran de bienvenue déjà vu : masqué dès le HTML (classe posée par le script avant peinture). */
-.tw-seen [data-splash] {
+/* Écran de bienvenue : masqué par défaut ; visible seulement quand le script avant peinture a
+   posé `tw-welcome` (premier chargement de la session). Filet de sécurité : il s'efface seul
+   après 12 s si le JavaScript ne prenait jamais la main (welcome-splash.tsx l'annule). */
+[data-splash] {
   display: none;
+}
+.tw-welcome [data-splash] {
+  display: block;
+  animation: tw-splash-out 400ms ease 12s both;
 }
 /* Bandeau témoins rendu dans le HTML (il compte dès la première peinture, au lieu d'arriver
    après l'hydratation) : masqué dès le HTML pour un visiteur qui a déjà choisi. */
@@ -349,41 +355,6 @@ body {
   from {
     opacity: 0;
     transform: translateY(0.22em);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-/* Écran de bienvenue : le vert balaie le mot puis le monogramme, de gauche à droite. */
-@keyframes tw-wave-rect {
-  0% {
-    transform: translateX(0px) scaleX(0);
-  }
-  38% {
-    transform: translateX(0px) scaleX(1);
-  }
-  76%,
-  100% {
-    transform: translateX(169px) scaleX(0);
-  }
-}
-@keyframes tw-wave-text {
-  0% {
-    clip-path: inset(0 100% 0 0);
-  }
-  38% {
-    clip-path: inset(0 0 0 0);
-  }
-  76%,
-  100% {
-    clip-path: inset(0 0 0 100%);
-  }
-}
-@keyframes tw-lockup-in {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
   }
   to {
     opacity: 1;

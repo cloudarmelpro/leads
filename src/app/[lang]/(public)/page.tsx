@@ -15,7 +15,7 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
   return (
     <div>
       <FaqLd items={dict.faq.items} />
-      <WelcomeSplash label={dict.welcome.before} brand={dict.welcome.brand} />
+      <WelcomeSplash word={dict.welcome.word} />
       <ScrollProgress />
       <Hero lang={lang} dict={{ hero: dict.hero }} />
       <Positioning dict={{ positioning: dict.positioning }} />
