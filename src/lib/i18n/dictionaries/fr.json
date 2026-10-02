@@ -313,8 +313,7 @@
     }
   },
   "welcome": {
-    "before": "Bienvenue chez",
-    "brand": "Web"
+    "word": "BIENVENUE"
   },
   "tools": {
     "kicker": "Outils",

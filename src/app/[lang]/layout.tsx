@@ -9,6 +9,7 @@ import { Footer } from "@/components/shared/footer";
 import { FloatingContact } from "@/components/shared/floating-contact";
 import { Header } from "@/components/shared/header";
 import { JsonLd } from "@/components/shared/json-ld";
+import { PageTransition } from "@/components/shared/page-transition";
 import { PrePaintScript } from "@/components/shared/pre-paint-script";
 import { SiteCursor } from "@/components/shared/site-cursor";
 import { site } from "@/config/site";
@@ -86,6 +87,7 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[la
         <Footer lang={lang} dict={dict} />
         <FloatingContact dict={{ floating: dict.floating }} />
         <SiteCursor />
+        <PageTransition />
       </body>
     </html>
   );

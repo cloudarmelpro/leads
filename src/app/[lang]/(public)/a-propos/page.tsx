@@ -39,7 +39,7 @@ export default async function AboutPage({ params }: PageProps<"/[lang]/a-propos"
           { name: t.breadcrumb, path: "/a-propos" },
         ]}
       />
-      <WelcomeSplash label={dict.welcome.before} brand={dict.welcome.brand} />
+      <WelcomeSplash word={dict.welcome.word} />
       <ScrollProgress />
       <AboutHero lang={lang} dict={dict} />
       <StoryPin quote={t.story.quote} paragraphs={t.story.paragraphs} items={t.story.items} />

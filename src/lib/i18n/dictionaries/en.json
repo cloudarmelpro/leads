@@ -313,8 +313,7 @@
     }
   },
   "welcome": {
-    "before": "Welcome to",
-    "brand": "Web"
+    "word": "WELCOME"
   },
   "tools": {
     "kicker": "Tools",

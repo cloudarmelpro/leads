@@ -75,7 +75,7 @@ export function Hero({ lang, dict }: Props) {
                   <span className={`${WORD} text-vert [animation-delay:560ms] dark:text-[#30D98C]`}>{t.titleB}</span>
                 </h1>
                 <p className="m-[0px] max-w-[440px] text-[15px] leading-[24px] font-normal text-texte-bascule text-pretty dark:text-[#E4ECEF]">{t.lede}</p>
-                <div className="mt-[8px] flex flex-wrap items-center gap-[12px]">
+                <div data-hero-cta className="mt-[8px] flex flex-wrap items-center gap-[12px]">
                   <Link href={`/${lang}/soumission`} className={`${BTN_PLEIN} pointer-events-auto`}>
                     <span className="whitespace-nowrap">{t.ctaBook}</span>
                   </Link>
