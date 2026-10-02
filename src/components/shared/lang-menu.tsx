@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
-import { localeLabels, localeNames, locales, type Locale } from "@/lib/i18n/config";
+import { localeHtmlLang, localeLabels, localeNames, locales, type Locale } from "@/lib/i18n/config";
 
 type Props = {
   current: Locale;
@@ -34,13 +34,33 @@ const LOOK: Record<NonNullable<Props["variant"]>, string> = {
  * le panneau liste les deux langues, la courante cochée. Chaque langue garde son URL
  * (`/fr/...` ↔ `/en/...`, exigence SEO) : les entrées sont de vrais liens. Ouverture au
  * survol ou au clic, fermeture à Échap, au clic extérieur ou en quittant la zone.
+ * L'adresse de l'autre langue vient des `<link rel="alternate" hreflang>` de la page quand
+ * elle en déclare (articles du blogue : slugs traduits), sinon du seul échange de préfixe.
  */
+function readAlternates(pathname: string, current: Locale): Partial<Record<Locale, string>> {
+  const found: Partial<Record<Locale, string>> = {};
+  for (const locale of locales) {
+    const link = document.querySelector<HTMLLinkElement>(`link[rel="alternate"][hreflang="${localeHtmlLang[locale]}"]`);
+    if (link) found[locale] = new URL(link.href).pathname;
+  }
+  // Balises d'une autre page (navigation en cours) : on ne s'y fie pas.
+  return found[current] === pathname ? found : {};
+}
+
 export function LangMenu({ current, label, variant = "glass", placement = "below" }: Props) {
   const [open, setOpen] = useState(false);
+  const [alternates, setAlternates] = useState<Partial<Record<Locale, string>>>({});
   const pathname = usePathname();
   const root = useRef<HTMLDivElement>(null);
 
+  const show = () => {
+    setAlternates(readAlternates(pathname, current));
+    setOpen(true);
+  };
+
   const pathFor = (locale: Locale) => {
+    const alternate = alternates[locale];
+    if (alternate) return alternate;
     const segments = pathname.split("/");
     // segments[0] est vide (le chemin commence par "/"), segments[1] est la locale.
     segments[1] = locale;
@@ -64,10 +84,10 @@ export function LangMenu({ current, label, variant = "glass", placement = "below
   }, [open]);
 
   return (
-    <div ref={root} className="relative" onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
+    <div ref={root} className="relative" onMouseEnter={show} onMouseLeave={() => setOpen(false)}>
       <button
         type="button"
-        onClick={() => setOpen((v) => !v)}
+        onClick={() => (open ? setOpen(false) : show())}
         aria-expanded={open}
         aria-haspopup="true"
         aria-label={`${label} : ${localeLabels[current]}`}
