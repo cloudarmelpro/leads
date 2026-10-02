@@ -7,6 +7,11 @@ type Args = {
   lang: Locale;
   /** Chemin public SANS préfixe de langue. "" = accueil. Ex. "/a-propos". */
   path?: string;
+  /**
+   * Chemin propre à chaque langue quand il diffère (article du blogue au slug traduit) ;
+   * prime sur `path` pour la canonical et les hreflang.
+   */
+  paths?: Record<Locale, string>;
   title: string;
   description: string;
   /** "article" pour un billet de blog (og:type + dates), "website" ailleurs. */
@@ -31,6 +36,7 @@ type Args = {
 export function pageMetadata({
   lang,
   path = "",
+  paths = { fr: path, en: path },
   title,
   description,
   type = "website",
@@ -38,7 +44,7 @@ export function pageMetadata({
   modifiedTime,
   image = `/${lang}/opengraph-image`,
 }: Args): Metadata {
-  const canonical = `/${lang}${path}`;
+  const canonical = `/${lang}${paths[lang]}`;
 
   const openGraphCommon = {
     title,
@@ -58,9 +64,9 @@ export function pageMetadata({
     alternates: {
       canonical,
       languages: {
-        "fr-CA": `/fr${path}`,
-        "en-CA": `/en${path}`,
-        "x-default": `/fr${path}`,
+        "fr-CA": `/fr${paths.fr}`,
+        "en-CA": `/en${paths.en}`,
+        "x-default": `/fr${paths.fr}`,
       },
     },
     openGraph:

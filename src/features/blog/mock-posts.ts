@@ -23,7 +23,11 @@ type PostContent = {
 };
 
 type RawPost = {
-  slug: string;
+  /**
+   * Adresse de l'article dans chaque langue (slugs anglais traduits le 2026-10-02). L'ancienne
+   * adresse anglaise portait le slug français : elle redirige (`resolveSlug`, page de l'article).
+   */
+  slugs: Record<Locale, string>;
   date: string; // ISO
   readMinutes: number;
   author: { name: string };
@@ -35,14 +39,15 @@ type RawPost = {
   en: PostContent;
 };
 
-export type Post = Omit<RawPost, "fr" | "en"> & PostContent;
+/** Article dans une langue : `slug` est celui de cette langue, `slugs` donne les deux. */
+export type Post = Omit<RawPost, "fr" | "en"> & PostContent & { slug: string };
 
 // Aucun auteur nommé n'est confirmé par le client : l'entreprise signe.
 const AUTEUR = { name: site.name };
 
 const POSTS: RawPost[] = [
   {
-    slug: "pourquoi-votre-site-ne-fait-pas-sonner-le-telephone",
+    slugs: { fr: "pourquoi-votre-site-ne-fait-pas-sonner-le-telephone", en: "why-your-website-doesnt-make-the-phone-ring" },
     date: "2026-09-12",
     readMinutes: 6,
     author: AUTEUR,
@@ -109,7 +114,7 @@ const POSTS: RawPost[] = [
     },
   },
   {
-    slug: "etre-trouve-dans-votre-region-avant-vos-concurrents",
+    slugs: { fr: "etre-trouve-dans-votre-region-avant-vos-concurrents", en: "getting-found-in-your-area-before-your-competitors" },
     date: "2026-09-08",
     readMinutes: 7,
     author: AUTEUR,
@@ -175,7 +180,7 @@ const POSTS: RawPost[] = [
     },
   },
   {
-    slug: "combien-coute-un-site-web-au-quebec",
+    slugs: { fr: "combien-coute-un-site-web-au-quebec", en: "how-much-does-a-website-cost-in-quebec" },
     date: "2026-09-02",
     readMinutes: 5,
     author: AUTEUR,
@@ -243,7 +248,7 @@ const POSTS: RawPost[] = [
     },
   },
   {
-    slug: "bilingue-par-defaut-pourquoi-ca-compte-ici",
+    slugs: { fr: "bilingue-par-defaut-pourquoi-ca-compte-ici", en: "bilingual-by-default-why-it-matters-here" },
     date: "2026-08-26",
     readMinutes: 4,
     author: AUTEUR,
@@ -301,7 +306,7 @@ const POSTS: RawPost[] = [
     },
   },
   {
-    slug: "les-photos-de-chantier-qui-convainquent",
+    slugs: { fr: "les-photos-de-chantier-qui-convainquent", en: "job-site-photos-that-win-the-job" },
     date: "2026-08-19",
     readMinutes: 6,
     author: AUTEUR,
@@ -364,7 +369,7 @@ const POSTS: RawPost[] = [
     },
   },
   {
-    slug: "refonte-ou-nouveau-site-comment-decider",
+    slugs: { fr: "refonte-ou-nouveau-site-comment-decider", en: "redesign-or-new-website-how-to-decide" },
     date: "2026-08-12",
     readMinutes: 5,
     author: AUTEUR,
@@ -429,7 +434,7 @@ const POSTS: RawPost[] = [
 
 function localize(post: RawPost, lang: Locale): Post {
   const { fr, en, ...rest } = post;
-  return { ...rest, ...(lang === "en" ? en : fr) };
+  return { ...rest, ...(lang === "en" ? en : fr), slug: post.slugs[lang] };
 }
 
 /** Tous les articles, du plus récent au plus ancien. */
@@ -439,9 +444,19 @@ export function getPosts(lang: Locale): Post[] {
     .map((post) => localize(post, lang));
 }
 
+/** L'article dont le slug, dans `lang`, est `slug`. */
 export function getPost(lang: Locale, slug: string): Post | null {
-  const post = POSTS.find((p) => p.slug === slug);
+  const post = POSTS.find((p) => p.slugs[lang] === slug);
   return post ? localize(post, lang) : null;
+}
+
+/**
+ * Slug à utiliser dans `lang` quand `slug` est celui d'un article dans une AUTRE langue
+ * (anciennes adresses anglaises en français, ou sélecteur de langue) ; sinon `null`.
+ */
+export function resolveSlug(lang: Locale, slug: string): string | null {
+  const post = POSTS.find((p) => Object.values(p.slugs).includes(slug));
+  return post && post.slugs[lang] !== slug ? post.slugs[lang] : null;
 }
 
 /** Les `count` articles les plus récents autres que `slug` (bloc « À lire ensuite »). */
@@ -451,7 +466,7 @@ export function getRelatedPosts(lang: Locale, slug: string, count = 3): Post[] {
     .slice(0, count);
 }
 
-/** Slugs de tous les articles — pour `generateStaticParams`. */
-export function getAllSlugs(): string[] {
-  return POSTS.map((p) => p.slug);
+/** Slugs de tous les articles dans `lang` — pour `generateStaticParams`. */
+export function getAllSlugs(lang: Locale): string[] {
+  return POSTS.map((p) => p.slugs[lang]);
 }

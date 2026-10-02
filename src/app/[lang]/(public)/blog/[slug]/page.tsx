@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 
 import { site } from "@/config/site";
-import { BlogArticle, getAllSlugs, getPost } from "@/features/blog";
+import { BlogArticle, getAllSlugs, getPost, resolveSlug } from "@/features/blog";
 import { isLocale, locales } from "@/lib/i18n/config";
 import { pageMetadata } from "@/lib/seo/metadata";
 
@@ -12,7 +12,7 @@ const SUFFIXE = ` | ${site.name}`;
 const TITRE_MAX = 60;
 
 export function generateStaticParams() {
-  return locales.flatMap((lang) => getAllSlugs().map((slug) => ({ lang, slug })));
+  return locales.flatMap((lang) => getAllSlugs(lang).map((slug) => ({ lang, slug })));
 }
 
 export async function generateMetadata({
@@ -26,7 +26,7 @@ export async function generateMetadata({
 
   return pageMetadata({
     lang,
-    path: `/blog/${slug}`,
+    paths: { fr: `/blog/${post.slugs.fr}`, en: `/blog/${post.slugs.en}` },
     title: post.title.length + SUFFIXE.length > TITRE_MAX ? post.title : `${post.title}${SUFFIXE}`,
     description: post.excerpt,
     type: "article",
@@ -43,7 +43,13 @@ export default async function Page({ params }: PageProps<"/[lang]/blog/[slug]">)
   if (!isLocale(lang)) notFound();
 
   const post = getPost(lang, slug);
-  if (!post) notFound();
+  if (!post) {
+    // Slug de l'autre langue (anciennes adresses anglaises en français, sélecteur de langue) :
+    // redirection définitive (308) vers l'adresse de cette langue.
+    const other = resolveSlug(lang, slug);
+    if (other) permanentRedirect(`/${lang}/blog/${other}`);
+    notFound();
+  }
 
   return (
     <div>

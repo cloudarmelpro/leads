@@ -11,7 +11,7 @@ import { isLocale, locales, type Locale } from "@/lib/i18n/config";
 // et la marque, sur le dégradé de l'image du site. Plus parlante en partage que la couverture
 // (souvent carrée, et commune à plusieurs articles).
 export function generateStaticParams() {
-  return locales.flatMap((lang) => getAllSlugs().map((slug) => ({ lang, slug })));
+  return locales.flatMap((lang) => getAllSlugs(lang).map((slug) => ({ lang, slug })));
 }
 
 export const size = { width: 1200, height: 630 };
